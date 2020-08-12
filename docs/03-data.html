@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 データ・ハンドリング | 心理学データ応用解析法</title>
+  <meta name="description" content="Chapter 5 データ・ハンドリング | 心理学データ応用解析法" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 データ・ハンドリング | 心理学データ応用解析法" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 データ・ハンドリング | 心理学データ応用解析法" />
+  
+  
+  
+
+<meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
+
+
+<meta name="date" content="2020-08-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="02-summary.html"/>
+<link rel="next" href="04-graph.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#この授業について"><i class="fa fa-check"></i><b>1.1</b> この授業について</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#この資料について"><i class="fa fa-check"></i><b>1.2</b> この資料について</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#読み方"><i class="fa fa-check"></i><b>1.2.1</b> 読み方</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#使用上の注意"><i class="fa fa-check"></i><b>1.2.2</b> 使用上の注意</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="01-intro.html"><a href="01-intro.html"><i class="fa fa-check"></i><b>2</b> Rの使い方</a><ul>
+<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#r及びrstudioのインストール"><i class="fa fa-check"></i><b>2.1</b> R及びRStudioのインストール</a></li>
+<li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="01-intro.html#rstudioのインストール"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
+<li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="01-intro.html#プログラムの書き方"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#コンソールとスクリプト"><i class="fa fa-check"></i><b>2.3.1</b> コンソールとスクリプト</a></li>
+<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="01-intro.html#注意"><i class="fa fa-check"></i><b>2.3.2</b> 注意</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="01-intro.html#変数"><i class="fa fa-check"></i><b>2.4</b> 変数</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="01-intro.html#変数の使い方の注意"><i class="fa fa-check"></i><b>2.4.1</b> 変数の使い方の注意</a></li>
+<li class="chapter" data-level="2.4.2" data-path="01-intro.html"><a href="01-intro.html#変数の型"><i class="fa fa-check"></i><b>2.4.2</b> 変数の型</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="01-intro.html"><a href="01-intro.html#データ構造"><i class="fa fa-check"></i><b>2.5</b> データ構造</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="01-intro.html"><a href="01-intro.html#ベクトル"><i class="fa fa-check"></i><b>2.5.1</b> ベクトル</a></li>
+<li class="chapter" data-level="2.5.2" data-path="01-intro.html"><a href="01-intro.html#データフレーム"><i class="fa fa-check"></i><b>2.5.2</b> データフレーム</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="01-intro.html"><a href="01-intro.html#欠損値"><i class="fa fa-check"></i><b>2.6</b> 欠損値</a></li>
+<li class="chapter" data-level="2.7" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストールとロード"><i class="fa fa-check"></i><b>2.7</b> パッケージのインストールとロード</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストール"><i class="fa fa-check"></i><b>2.7.1</b> パッケージのインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="01-intro.html"><a href="01-intro.html#データの読み込み"><i class="fa fa-check"></i><b>2.8</b> データの読み込み</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="01-intro.html"><a href="01-intro.html#ワーキングディレクトリを指定する"><i class="fa fa-check"></i><b>2.8.1</b> ワーキングディレクトリを指定する。</a></li>
+<li class="chapter" data-level="2.8.2" data-path="01-intro.html"><a href="01-intro.html#データを読み込む"><i class="fa fa-check"></i><b>2.8.2</b> データを読み込む</a></li>
+<li class="chapter" data-level="2.8.3" data-path="01-intro.html"><a href="01-intro.html#サンプルデータ"><i class="fa fa-check"></i><b>2.8.3</b> サンプルデータ</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="01-intro.html"><a href="01-intro.html#rを終わらせる"><i class="fa fa-check"></i><b>2.9</b> Rを終わらせる</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="02-summary.html"><a href="02-summary.html"><i class="fa fa-check"></i><b>3</b> 統計学の基礎の復習</a></li>
+<li class="chapter" data-level="4" data-path="02-summary.html"><a href="02-summary.html#変数の区別"><i class="fa fa-check"></i><b>4</b> 変数の区別</a><ul>
+<li class="chapter" data-level="4.0.1" data-path="02-summary.html"><a href="02-summary.html#量的変数"><i class="fa fa-check"></i><b>4.0.1</b> 量的変数</a></li>
+<li class="chapter" data-level="4.0.2" data-path="02-summary.html"><a href="02-summary.html#カテゴリカル変数質的変数"><i class="fa fa-check"></i><b>4.0.2</b> カテゴリカル変数（質的変数）</a></li>
+<li class="chapter" data-level="4.1" data-path="02-summary.html"><a href="02-summary.html#基本統計"><i class="fa fa-check"></i><b>4.1</b> 基本統計</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="02-summary.html"><a href="02-summary.html#代表値"><i class="fa fa-check"></i><b>4.1.1</b> 代表値</a></li>
+<li class="chapter" data-level="4.1.2" data-path="02-summary.html"><a href="02-summary.html#散布度"><i class="fa fa-check"></i><b>4.1.2</b> 散布度</a></li>
+<li class="chapter" data-level="4.1.3" data-path="02-summary.html"><a href="02-summary.html#要約統計量"><i class="fa fa-check"></i><b>4.1.3</b> 要約統計量</a></li>
+<li class="chapter" data-level="4.1.4" data-path="02-summary.html"><a href="02-summary.html#表の作り方"><i class="fa fa-check"></i><b>4.1.4</b> 表の作り方</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="02-summary.html"><a href="02-summary.html#相関"><i class="fa fa-check"></i><b>4.2</b> 相関</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>5</b> データ・ハンドリング</a><ul>
+<li class="chapter" data-level="5.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>5.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="5.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>5.2</b> 変数の作成</a></li>
+<li class="chapter" data-level="5.3" data-path="03-data.html"><a href="03-data.html#データの抽出"><i class="fa fa-check"></i><b>5.3</b> データの抽出</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="03-data.html"><a href="03-data.html#必要な変数のみを取り出すselect"><i class="fa fa-check"></i><b>5.3.1</b> 必要な変数のみを取り出す（select）</a></li>
+<li class="chapter" data-level="5.3.2" data-path="03-data.html"><a href="03-data.html#条件に合う行を取り出すfilter"><i class="fa fa-check"></i><b>5.3.2</b> 条件に合う行を取り出す（filter）</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="03-data.html"><a href="03-data.html#パイプ"><i class="fa fa-check"></i><b>5.4</b> パイプ</a></li>
+<li class="chapter" data-level="5.5" data-path="03-data.html"><a href="03-data.html#グルーピング"><i class="fa fa-check"></i><b>5.5</b> グルーピング</a></li>
+<li class="chapter" data-level="5.6" data-path="03-data.html"><a href="03-data.html#データの変換"><i class="fa fa-check"></i><b>5.6</b> データの変換</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="03-data.html"><a href="03-data.html#wide型とlong型の区別"><i class="fa fa-check"></i><b>5.6.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="5.6.2" data-path="03-data.html"><a href="03-data.html#データレイアウトの変換"><i class="fa fa-check"></i><b>5.6.2</b> データレイアウトの変換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="03-data.html"><a href="03-data.html#データの結合"><i class="fa fa-check"></i><b>5.7</b> データの結合（＊）</a></li>
+<li class="chapter" data-level="5.8" data-path="03-data.html"><a href="03-data.html#データの読み込み-1"><i class="fa fa-check"></i><b>5.8</b> データの読み込み（＊）</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="03-data.html"><a href="03-data.html#readxl"><i class="fa fa-check"></i><b>5.8.1</b> readxl</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="04-graph.html"><a href="04-graph.html"><i class="fa fa-check"></i><b>6</b> グラフ</a><ul>
+<li class="chapter" data-level="6.1" data-path="04-graph.html"><a href="04-graph.html#rのグラフィック"><i class="fa fa-check"></i><b>6.1</b> Rのグラフィック</a></li>
+<li class="chapter" data-level="6.2" data-path="04-graph.html"><a href="04-graph.html#ggplot2の基本"><i class="fa fa-check"></i><b>6.2</b> ggplot2の基本</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="04-graph.html"><a href="04-graph.html#散布図"><i class="fa fa-check"></i><b>6.2.1</b> 散布図</a></li>
+<li class="chapter" data-level="6.2.2" data-path="04-graph.html"><a href="04-graph.html#ヒストグラム"><i class="fa fa-check"></i><b>6.2.2</b> ヒストグラム</a></li>
+<li class="chapter" data-level="6.2.3" data-path="04-graph.html"><a href="04-graph.html#箱ひげ図"><i class="fa fa-check"></i><b>6.2.3</b> 箱ひげ図</a></li>
+<li class="chapter" data-level="6.2.4" data-path="04-graph.html"><a href="04-graph.html#バイオリンプロット"><i class="fa fa-check"></i><b>6.2.4</b> バイオリンプロット</a></li>
+<li class="chapter" data-level="6.2.5" data-path="04-graph.html"><a href="04-graph.html#折れ線グラフ"><i class="fa fa-check"></i><b>6.2.5</b> 折れ線グラフ</a></li>
+<li class="chapter" data-level="6.2.6" data-path="04-graph.html"><a href="04-graph.html#エラーバーつきのグラフ"><i class="fa fa-check"></i><b>6.2.6</b> エラーバーつきのグラフ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="04-graph.html"><a href="04-graph.html#ファセットfacet"><i class="fa fa-check"></i><b>6.3</b> ファセット（Facet）</a></li>
+<li class="chapter" data-level="6.4" data-path="04-graph.html"><a href="04-graph.html#ラベル"><i class="fa fa-check"></i><b>6.4</b> ラベル</a></li>
+<li class="chapter" data-level="6.5" data-path="04-graph.html"><a href="04-graph.html#テーマtheme"><i class="fa fa-check"></i><b>6.5</b> テーマ（Theme）</a></li>
+<li class="chapter" data-level="6.6" data-path="04-graph.html"><a href="04-graph.html#図の保存"><i class="fa fa-check"></i><b>6.6</b> 図の保存</a></li>
+<li class="chapter" data-level="6.7" data-path="04-graph.html"><a href="04-graph.html#その他の機能"><i class="fa fa-check"></i><b>6.7</b> その他の機能</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html"><i class="fa fa-check"></i><b>7</b> 確率分布</a><ul>
+<li class="chapter" data-level="7.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率変数と確率分布"><i class="fa fa-check"></i><b>7.1</b> 確率変数と確率分布</a></li>
+<li class="chapter" data-level="7.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#一様分布"><i class="fa fa-check"></i><b>7.2</b> 一様分布</a></li>
+<li class="chapter" data-level="7.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布"><i class="fa fa-check"></i><b>7.3</b> 二項分布</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布の例"><i class="fa fa-check"></i><b>7.3.1</b> 二項分布の例</a></li>
+<li class="chapter" data-level="7.3.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布の期待値と分散"><i class="fa fa-check"></i><b>7.3.2</b> 二項分布の期待値と分散</a></li>
+<li class="chapter" data-level="7.3.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ベルヌーイ分布"><i class="fa fa-check"></i><b>7.3.3</b> ベルヌーイ分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布"><i class="fa fa-check"></i><b>7.4</b> 正規分布</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布の基礎"><i class="fa fa-check"></i><b>7.4.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="7.4.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#rで使える確率分布の関数"><i class="fa fa-check"></i><b>7.4.2</b> Rで使える確率分布の関数</a></li>
+<li class="chapter" data-level="7.4.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#なぜ正規分布はよく使われるのか"><i class="fa fa-check"></i><b>7.4.3</b> なぜ正規分布はよく使われるのか？</a></li>
+<li class="chapter" data-level="7.4.4" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#中心極限定理"><i class="fa fa-check"></i><b>7.4.4</b> 中心極限定理</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ポイント"><i class="fa fa-check"></i><b>7.5</b> ポイント</a></li>
+<li class="chapter" data-level="7.6" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#その他の確率分布"><i class="fa fa-check"></i><b>7.6</b> その他の確率分布（＊）</a><ul>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ポアソン分布"><i class="fa fa-check"></i>ポアソン分布</a></li>
+<li class="chapter" data-level="7.6.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#指数分布"><i class="fa fa-check"></i><b>7.6.1</b> 指数分布</a></li>
+<li class="chapter" data-level="7.6.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#対数正規分布"><i class="fa fa-check"></i><b>7.6.2</b> 対数正規分布</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#練習問題"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#問"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#問-1"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#補足"><i class="fa fa-check"></i><b>7.7</b> 補足</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率分布に関連するrの関数"><i class="fa fa-check"></i><b>7.7.1</b> 確率分布に関連するRの関数</a></li>
+<li class="chapter" data-level="7.7.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#中心極限定理の例外"><i class="fa fa-check"></i><b>7.7.2</b> 中心極限定理の例外</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="06-test.html"><a href="06-test.html"><i class="fa fa-check"></i><b>8</b> ｔ検定，分散分析</a><ul>
+<li class="chapter" data-level="8.1" data-path="06-test.html"><a href="06-test.html#t検定"><i class="fa fa-check"></i><b>8.1</b> t検定</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="06-test.html"><a href="06-test.html#一標本のt検定"><i class="fa fa-check"></i><b>8.1.1</b> 一標本のt検定</a></li>
+<li class="chapter" data-level="8.1.2" data-path="06-test.html"><a href="06-test.html#二標本の差のt検定対応なし"><i class="fa fa-check"></i><b>8.1.2</b> 二標本の差のt検定（対応なし）</a></li>
+<li class="chapter" data-level="8.1.3" data-path="06-test.html"><a href="06-test.html#二標本の差のt検定対応あり"><i class="fa fa-check"></i><b>8.1.3</b> 二標本の差のt検定（対応あり）</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="06-test.html"><a href="06-test.html#分散分析"><i class="fa fa-check"></i><b>8.2</b> 分散分析</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="06-test.html"><a href="06-test.html#一要因の分散分析"><i class="fa fa-check"></i><b>8.2.1</b> 一要因の分散分析</a></li>
+<li class="chapter" data-level="8.2.2" data-path="06-test.html"><a href="06-test.html#多重比較"><i class="fa fa-check"></i><b>8.2.2</b> 多重比較</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="06-test.html"><a href="06-test.html#まとめ"><i class="fa fa-check"></i><b>8.3</b> まとめ</a></li>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#練習問題-1"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#問-2"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#問-3"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#問-4"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html"><i class="fa fa-check"></i><b>9</b> 統計的帰無仮説検定の問題</a><ul>
+<li class="chapter" data-level="9.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#p値の問題"><i class="fa fa-check"></i><b>9.1</b> p値の問題</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#第種の過誤"><i class="fa fa-check"></i><b>9.1.1</b> 第Ⅰ種の過誤</a></li>
+<li class="chapter" data-level="9.1.2" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#p値と標本数の関係"><i class="fa fa-check"></i><b>9.1.2</b> p値と標本数の関係</a></li>
+<li class="chapter" data-level="9.1.3" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#p-hacking"><i class="fa fa-check"></i><b>9.1.3</b> p-hacking（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#効果量"><i class="fa fa-check"></i><b>9.2</b> 効果量</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#cohens-d"><i class="fa fa-check"></i><b>9.2.1</b> Cohen’s d</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#検定力"><i class="fa fa-check"></i><b>9.3</b> 検定力</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#第種の過誤-1"><i class="fa fa-check"></i><b>9.3.1</b> 第Ⅱ種の過誤</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#有意水準効果量検定力標本数の関係"><i class="fa fa-check"></i><b>9.4</b> 有意水準，効果量，検定力，標本数の関係</a></li>
+<li class="chapter" data-level="9.5" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#信頼区間"><i class="fa fa-check"></i><b>9.5</b> 信頼区間</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#信頼区間の求め方"><i class="fa fa-check"></i><b>9.5.1</b> 信頼区間の求め方</a></li>
+<li class="chapter" data-level="9.5.2" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#信頼区間と統計的帰無仮説検定の関係"><i class="fa fa-check"></i><b>9.5.2</b> 信頼区間と統計的帰無仮説検定の関係</a></li>
+<li class="chapter" data-level="9.5.3" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#平均値以外の信頼区間の求め方"><i class="fa fa-check"></i><b>9.5.3</b> 平均値以外の信頼区間の求め方（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#練習問題-2"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#問-5"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#問-6"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="08-regression.html"><a href="08-regression.html"><i class="fa fa-check"></i><b>10</b> 回帰分析</a><ul>
+<li class="chapter" data-level="10.1" data-path="08-regression.html"><a href="08-regression.html#回帰分析-1"><i class="fa fa-check"></i><b>10.1</b> 回帰分析</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="08-regression.html"><a href="08-regression.html#回帰分析の結果の解釈"><i class="fa fa-check"></i><b>10.1.1</b> 回帰分析の結果の解釈</a></li>
+<li class="chapter" data-level="10.1.2" data-path="08-regression.html"><a href="08-regression.html#最小二乗法"><i class="fa fa-check"></i><b>10.1.2</b> 最小二乗法（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="08-regression.html"><a href="08-regression.html#重回帰分析"><i class="fa fa-check"></i><b>10.2</b> 重回帰分析</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="08-regression.html"><a href="08-regression.html#多重共線性"><i class="fa fa-check"></i><b>10.2.1</b> 多重共線性（＊）</a></li>
+<li class="chapter" data-level="10.2.2" data-path="08-regression.html"><a href="08-regression.html#決定係数"><i class="fa fa-check"></i><b>10.2.2</b> 決定係数</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="08-regression.html"><a href="08-regression.html#ダミー変数独立変数が質的変数の場合"><i class="fa fa-check"></i><b>10.3</b> ダミー変数（独立変数が質的変数の場合）</a></li>
+<li class="chapter" data-level="" data-path="08-regression.html"><a href="08-regression.html#練習問題-3"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="08-regression.html"><a href="08-regression.html#問-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="08-regression.html"><a href="08-regression.html#問-8"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="09-linear_model.html"><a href="09-linear_model.html"><i class="fa fa-check"></i><b>11</b> 線形モデル</a><ul>
+<li class="chapter" data-level="11.1" data-path="09-linear_model.html"><a href="09-linear_model.html#一般化線形モデル"><i class="fa fa-check"></i><b>11.1</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="09-linear_model.html"><a href="09-linear_model.html#線形予測子"><i class="fa fa-check"></i><b>11.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="11.1.2" data-path="09-linear_model.html"><a href="09-linear_model.html#誤差分布"><i class="fa fa-check"></i><b>11.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="11.1.3" data-path="09-linear_model.html"><a href="09-linear_model.html#リンク関数"><i class="fa fa-check"></i><b>11.1.3</b> リンク関数</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="09-linear_model.html"><a href="09-linear_model.html#一般化線形モデルと統計解析との関係"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデルと統計解析との関係</a></li>
+<li class="chapter" data-level="11.3" data-path="09-linear_model.html"><a href="09-linear_model.html#rでの一般化線形モデルの方法"><i class="fa fa-check"></i><b>11.3</b> Rでの一般化線形モデルの方法</a></li>
+<li class="chapter" data-level="11.4" data-path="09-linear_model.html"><a href="09-linear_model.html#線形モデルに含まれる統計解析"><i class="fa fa-check"></i><b>11.4</b> 線形モデルに含まれる統計解析</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="09-linear_model.html"><a href="09-linear_model.html#重回帰分析-1"><i class="fa fa-check"></i><b>11.4.1</b> 重回帰分析</a></li>
+<li class="chapter" data-level="11.4.2" data-path="09-linear_model.html"><a href="09-linear_model.html#t検定-1"><i class="fa fa-check"></i><b>11.4.2</b> t検定</a></li>
+<li class="chapter" data-level="11.4.3" data-path="09-linear_model.html"><a href="09-linear_model.html#分散分析-1"><i class="fa fa-check"></i><b>11.4.3</b> 分散分析</a></li>
+<li class="chapter" data-level="11.4.4" data-path="09-linear_model.html"><a href="09-linear_model.html#共分散分析"><i class="fa fa-check"></i><b>11.4.4</b> 共分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="09-linear_model.html"><a href="09-linear_model.html#練習問題-4"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="09-linear_model.html"><a href="09-linear_model.html#問-9"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="09-linear_model.html"><a href="09-linear_model.html#問-10"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="10-glm.html"><a href="10-glm.html"><i class="fa fa-check"></i><b>12</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="12.1" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデル再掲"><i class="fa fa-check"></i><b>12.1</b> 一般化線形モデル（再掲）</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="10-glm.html"><a href="10-glm.html#線形予測子-1"><i class="fa fa-check"></i><b>12.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="12.1.2" data-path="10-glm.html"><a href="10-glm.html#誤差分布-1"><i class="fa fa-check"></i><b>12.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="12.1.3" data-path="10-glm.html"><a href="10-glm.html#リンク関数-1"><i class="fa fa-check"></i><b>12.1.3</b> リンク関数</a></li>
+<li class="chapter" data-level="12.1.4" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデルと統計解析との関係-1"><i class="fa fa-check"></i><b>12.1.4</b> 一般化線形モデルと統計解析との関係</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="10-glm.html"><a href="10-glm.html#今回の予定"><i class="fa fa-check"></i><b>12.2</b> 今回の予定</a></li>
+<li class="chapter" data-level="12.3" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>12.3</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="10-glm.html"><a href="10-glm.html#二項分布-1"><i class="fa fa-check"></i><b>12.3.1</b> 二項分布</a></li>
+<li class="chapter" data-level="12.3.2" data-path="10-glm.html"><a href="10-glm.html#例題"><i class="fa fa-check"></i><b>12.3.2</b> 例題</a></li>
+<li class="chapter" data-level="12.3.3" data-path="10-glm.html"><a href="10-glm.html#まとめ-1"><i class="fa fa-check"></i><b>12.3.3</b> まとめ</a></li>
+<li class="chapter" data-level="12.3.4" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>12.3.4</b> Rでのロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="10-glm.html"><a href="10-glm.html#最尤法"><i class="fa fa-check"></i><b>12.4</b> 最尤法（＊）</a></li>
+<li class="chapter" data-level="12.5" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰分析"><i class="fa fa-check"></i><b>12.5</b> ポアソン回帰分析（＊）</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布-1"><i class="fa fa-check"></i><b>12.5.1</b> ポアソン分布（＊）</a></li>
+<li class="chapter" data-level="12.5.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>12.5.2</b> ポアソン回帰（＊）</a></li>
+<li class="chapter" data-level="12.5.3" data-path="10-glm.html"><a href="10-glm.html#例題-1"><i class="fa fa-check"></i><b>12.5.3</b> 例題（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="10-glm.html"><a href="10-glm.html#モデルの予測力"><i class="fa fa-check"></i><b>12.6</b> モデルの予測力</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="10-glm.html"><a href="10-glm.html#決定係数-1"><i class="fa fa-check"></i><b>12.6.1</b> 決定係数</a></li>
+<li class="chapter" data-level="12.6.2" data-path="10-glm.html"><a href="10-glm.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>12.6.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="12.6.3" data-path="10-glm.html"><a href="10-glm.html#モデル選択"><i class="fa fa-check"></i><b>12.6.3</b> モデル選択（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#練習問題-5"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問-11"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#参考文献-1"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="11-glmm.html"><a href="11-glmm.html"><i class="fa fa-check"></i><b>13</b> 一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="13.1" data-path="11-glmm.html"><a href="11-glmm.html#個人差や集団差の影響"><i class="fa fa-check"></i><b>13.1</b> 個人差や集団差の影響</a></li>
+<li class="chapter" data-level="13.2" data-path="11-glmm.html"><a href="11-glmm.html#一般化線形混合モデル-1"><i class="fa fa-check"></i><b>13.2</b> 一般化線形混合モデル</a></li>
+<li class="chapter" data-level="13.3" data-path="11-glmm.html"><a href="11-glmm.html#rでの一般化線形混合モデル"><i class="fa fa-check"></i><b>13.3</b> Rでの一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="11-glmm.html"><a href="11-glmm.html#対応のある要因を含む分散分析"><i class="fa fa-check"></i><b>13.3.1</b> 対応のある要因を含む分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="11-glmm.html"><a href="11-glmm.html#一般化線型混合モデルの拡張ロジスティック回帰"><i class="fa fa-check"></i><b>13.4</b> 一般化線型混合モデルの拡張（ロジスティック回帰）</a></li>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#練習問題-6"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#問-12"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#問-13"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#参考文献-2"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="12-Appendix.html"><a href="12-Appendix.html"><i class="fa fa-check"></i><b>A</b> tidyverseとは？</a><ul>
+<li class="chapter" data-level="A.1" data-path="12-Appendix.html"><a href="12-Appendix.html#tidyverseパッケージのインストールとロード"><i class="fa fa-check"></i><b>A.1</b> tidyverseパッケージのインストールとロード</a></li>
+<li class="chapter" data-level="A.2" data-path="12-Appendix.html"><a href="12-Appendix.html#tibble-1"><i class="fa fa-check"></i><b>A.2</b> tibble</a></li>
+<li class="chapter" data-level="A.3" data-path="12-Appendix.html"><a href="12-Appendix.html#readr-1"><i class="fa fa-check"></i><b>A.3</b> readr</a></li>
+<li class="chapter" data-level="A.4" data-path="12-Appendix.html"><a href="12-Appendix.html#readxl-1"><i class="fa fa-check"></i><b>A.4</b> readxl</a></li>
+<li class="chapter" data-level="A.5" data-path="12-Appendix.html"><a href="12-Appendix.html#dplyr"><i class="fa fa-check"></i><b>A.5</b> dplyr</a></li>
+<li class="chapter" data-level="A.6" data-path="12-Appendix.html"><a href="12-Appendix.html#purrr"><i class="fa fa-check"></i><b>A.6</b> purrr</a></li>
+<li class="chapter" data-level="A.7" data-path="12-Appendix.html"><a href="12-Appendix.html#ggplot2"><i class="fa fa-check"></i><b>A.7</b> ggplot2</a><ul>
+<li class="chapter" data-level="A.7.1" data-path="12-Appendix.html"><a href="12-Appendix.html#ggplot2の使い方の基本"><i class="fa fa-check"></i><b>A.7.1</b> ggplot2の使い方の基本</a></li>
+</ul></li>
+<li class="chapter" data-level="A.8" data-path="12-Appendix.html"><a href="12-Appendix.html#tidyr"><i class="fa fa-check"></i><b>A.8</b> tidyr</a><ul>
+<li class="chapter" data-level="A.8.1" data-path="12-Appendix.html"><a href="12-Appendix.html#wide型とlong型の区別-1"><i class="fa fa-check"></i><b>A.8.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="A.8.2" data-path="12-Appendix.html"><a href="12-Appendix.html#どのデータ型にすべきか-1"><i class="fa fa-check"></i><b>A.8.2</b> どのデータ型にすべきか？</a></li>
+<li class="chapter" data-level="A.8.3" data-path="12-Appendix.html"><a href="12-Appendix.html#データレイアウトの変換-1"><i class="fa fa-check"></i><b>A.8.3</b> データレイアウトの変換</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="12-Appendix.html"><a href="12-Appendix.html#使い方まとめ"><i class="fa fa-check"></i><b>B</b> 使い方まとめ</a><ul>
+<li class="chapter" data-level="B.1" data-path="12-Appendix.html"><a href="12-Appendix.html#tidyverseパッケージのインストールとロード-1"><i class="fa fa-check"></i><b>B.1</b> tidyverseパッケージのインストールとロード</a></li>
+<li class="chapter" data-level="B.2" data-path="12-Appendix.html"><a href="12-Appendix.html#データの読み込み-2"><i class="fa fa-check"></i><b>B.2</b> データの読み込み</a></li>
+<li class="chapter" data-level="B.3" data-path="12-Appendix.html"><a href="12-Appendix.html#結果の集計"><i class="fa fa-check"></i><b>B.3</b> 結果の集計</a></li>
+<li class="chapter" data-level="B.4" data-path="12-Appendix.html"><a href="12-Appendix.html#グラフの作成"><i class="fa fa-check"></i><b>B.4</b> グラフの作成</a></li>
+<li class="chapter" data-level="B.5" data-path="12-Appendix.html"><a href="12-Appendix.html#新しい変数を作る"><i class="fa fa-check"></i><b>B.5</b> 新しい変数を作る</a></li>
+<li class="chapter" data-level="B.6" data-path="12-Appendix.html"><a href="12-Appendix.html#データを保存する"><i class="fa fa-check"></i><b>B.6</b> データを保存する</a></li>
+<li class="chapter" data-level="B.7" data-path="12-Appendix.html"><a href="12-Appendix.html#もっと知りたい人は"><i class="fa fa-check"></i><b>B.7</b> もっと知りたい人は</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="12-Appendix.html"><a href="12-Appendix.html#第10章一般化線形モデルの付録"><i class="fa fa-check"></i><b>C</b> 第10章「一般化線形モデル」の付録</a><ul>
+<li class="chapter" data-level="C.1" data-path="12-Appendix.html"><a href="12-Appendix.html#指数と対数"><i class="fa fa-check"></i><b>C.1</b> １．指数と対数</a><ul>
+<li class="chapter" data-level="C.1.1" data-path="12-Appendix.html"><a href="12-Appendix.html#指数関数"><i class="fa fa-check"></i><b>C.1.1</b> 指数関数</a></li>
+<li class="chapter" data-level="C.1.2" data-path="12-Appendix.html"><a href="12-Appendix.html#対数関数"><i class="fa fa-check"></i><b>C.1.2</b> 対数関数</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="12-Appendix.html"><a href="12-Appendix.html#ロジスティック関数とロジット関数の関係"><i class="fa fa-check"></i><b>C.2</b> ２．ロジスティック関数とロジット関数の関係</a></li>
+<li class="chapter" data-level="C.3" data-path="12-Appendix.html"><a href="12-Appendix.html#ロジスティック回帰の係数の意味"><i class="fa fa-check"></i><b>C.3</b> ３．ロジスティック回帰の係数の意味</a></li>
+<li class="chapter" data-level="C.4" data-path="12-Appendix.html"><a href="12-Appendix.html#ポアソン回帰で対数をリンク関数とする理由"><i class="fa fa-check"></i><b>C.4</b> ４．ポアソン回帰で対数をリンク関数とする理由</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理学データ応用解析法</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="データハンドリング" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> データ・ハンドリング</h1>
+<p>tidyverseパッケージに入っている関数を主に使いながら，今後のデータ分析の演習で必要なデータ操作について学ぶ。</p>
+<ul>
+<li>変数の作成<br />
+</li>
+<li>データの抽出<br />
+</li>
+<li>パイプ<br />
+</li>
+<li>グルーピング<br />
+</li>
+<li>データの変換<br />
+</li>
+<li>データの結合<br />
+</li>
+<li>データの読み込み</li>
+</ul>
+<div id="tidyverseパッケージのロード" class="section level2">
+<h2><span class="header-section-number">5.1</span> tidyverseパッケージのロード</h2>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) </a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="kw">library</span>(tidyverse) </a></code></pre></div>
+<p>tidyverseは様々なパッケージを含んだ，パッケージのセットである。Rを使いやすくするための便利なパッケージがまとめて入っている。具体的には，以下のパッケージが入っている。</p>
+<ul>
+<li>ggplot2: グラフを作るのに特化したパッケージ<br />
+</li>
+<li>readr: ファイルの読み込みに特化したパッケージ<br />
+</li>
+<li>dplyr: データの整理に特化したパッケージ<br />
+など</li>
+</ul>
+<p>詳細はtidyverseの公式ページを参照。
+<a href="https://www.tidyverse.org">https://www.tidyverse.org</a></p>
+<p>注意：<br />
+* 以降のプログラムで関数は「XXXX::YYYY」と表現されているが，これらは「XXXXパッケージに入っているYYYYという関数を使う」という意味である。XXXX::の部分は，基本的に省略しても問題ない。<br />
+* tidyverse以外のパッケージも読み込んでいる場合，同じ名前の関数を含むパッケージがあるとエラーが生じてしまう。もしエラーが生じたときは，XXXX::を付けてどのパッケージの関数を使いたいのかを指定しよう。</p>
+<p>以降では，Rに最初から入っている<code>iris</code>データを使ってファイル操作の練習を行う。</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">head</span>(iris) <span class="co">#irisの先頭数行を表示する</span></a></code></pre></div>
+</div>
+<div id="変数の作成" class="section level2">
+<h2><span class="header-section-number">5.2</span> 変数の作成</h2>
+<p>dplyrパッケージに入っている<code>mutate()</code>を使うと，新たに変数を追加することができる。
+<code>mutate()</code>に，<em>データの名前，新しい変数</em>の順番で入力すると，データの右端に新しい変数を追加してくれる。</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb111-3" data-line-number="3">dat2 =<span class="st"> </span><span class="kw">mutate</span>(dat, <span class="dt">new_var =</span> Sepal.Length <span class="op">+</span><span class="st"> </span>Petal.Length, <span class="dt">hoge =</span> <span class="kw">ifelse</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="co">#Sepal.LengthとPetal.Lengthを足し合わせて，new_varという名前の新しい変数を作る。更に，Sepeciesが&quot;setosa&quot;ならば1, そうでなければ0とするhogeという変数を作る。</span></a>
+<a class="sourceLine" id="cb111-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb111-5" data-line-number="5"><span class="kw">head</span>(dat2)</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species new_var hoge
+## 1          5.1         3.5          1.4         0.2  setosa     6.5    1
+## 2          4.9         3.0          1.4         0.2  setosa     6.3    1
+## 3          4.7         3.2          1.3         0.2  setosa     6.0    1
+## 4          4.6         3.1          1.5         0.2  setosa     6.1    1
+## 5          5.0         3.6          1.4         0.2  setosa     6.4    1
+## 6          5.4         3.9          1.7         0.4  setosa     7.1    1</code></pre>
+</div>
+<div id="データの抽出" class="section level2">
+<h2><span class="header-section-number">5.3</span> データの抽出</h2>
+<p>dplyrパッケージに入っている<code>select</code>, <code>filter</code>関数を使うと，データの中から必要な部分のみを取り出すことができる。</p>
+<div id="必要な変数のみを取り出すselect" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> 必要な変数のみを取り出す（select）</h3>
+<p><code>select()</code>で，<em>データの名前，取り出したい変数名（複数選択可）</em>の順番で入力すると，指定した変数の列のみを取り出してくれる。</p>
+<p>以下には，<code>iris</code>データから<code>Sepal.Length</code>と<code>Petal.Length</code>のみを取り出す場合のプログラム例を示す。</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb113-3" data-line-number="3">dat2 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(dat, Sepal.Length, Petal.Length) <span class="co">#データから必要な例を取り出す。Sepal.LengthとPetal.Lengthの列を取り出す。</span></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="kw">head</span>(dat2)</a></code></pre></div>
+<pre><code>##   Sepal.Length Petal.Length
+## 1          5.1          1.4
+## 2          4.9          1.4
+## 3          4.7          1.3
+## 4          4.6          1.5
+## 5          5.0          1.4
+## 6          5.4          1.7</code></pre>
+</div>
+<div id="条件に合う行を取り出すfilter" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> 条件に合う行を取り出す（filter）</h3>
+<p>ある条件に合う部分のみを取り出したい場合（例えばデータの中から男性のみを取り出したいなど），<code>filter()</code>で，<em>データの名前，条件式</em>の順番で入力すると，データの中から条件に合う行のみを取り出してくれる。</p>
+<p>以下には，<code>iris</code>データから，あやめの種類（<code>&quot;Species&quot;</code>）のうち<code>&quot;versicolor&quot;</code>のみを取り出す場合のプログラム例を示す。</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb115-3" data-line-number="3">dat2 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(dat, Species <span class="op">==</span><span class="st"> &quot;versicolor&quot;</span>) <span class="co">#データから条件にあう行だけを取り出す。Speciesのうち，versicolorのみを取り出す。「イコール」は=ではなく，==にするのに注意（計算式と論理式ではイコールの表現が異なる）。</span></a>
+<a class="sourceLine" id="cb115-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb115-5" data-line-number="5"><span class="kw">head</span>(dat2)</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 1          7.0         3.2          4.7         1.4 versicolor
+## 2          6.4         3.2          4.5         1.5 versicolor
+## 3          6.9         3.1          4.9         1.5 versicolor
+## 4          5.5         2.3          4.0         1.3 versicolor
+## 5          6.5         2.8          4.6         1.5 versicolor
+## 6          5.7         2.8          4.5         1.3 versicolor</code></pre>
+</div>
+</div>
+<div id="パイプ" class="section level2">
+<h2><span class="header-section-number">5.4</span> パイプ</h2>
+<p>複数のプログラムをつなげることを<em>パイプ処理</em>という。<em>purrr</em>パッケージで，Rでパイプ処理をすることができる。</p>
+<p>具体的な例として，<code>iris</code>データで「あやめの種類のうち<code>&quot;setosa&quot;</code>を取り出して，かつ変数として<code>Species</code>，<code>Sepal.Width</code>,<br />
+<code>Sepal.Length</code>のみを取り出したい」とする。<br />
+先程まで学んだ知識だけでもできなくはないが，プログラムが数行に渡って面倒くさくなる（プログラムが長くなるとミスも生じやすくなる）。</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb117-3" data-line-number="3">dat2 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(dat, Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="co">#まずSpeciesのうち，setosaのみを取り出す。dat2という名前で保存する。</span></a>
+<a class="sourceLine" id="cb117-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb117-5" data-line-number="5">dat3 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(dat2, Species, Sepal.Length, Petal.Length) <span class="co">#別の名前で保存し直したdat2から，Sepal.LengthとPetal.Lengthの列を取り出す。dat3という名前で保存する</span></a>
+<a class="sourceLine" id="cb117-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb117-7" data-line-number="7"><span class="kw">head</span>(dat3)</a></code></pre></div>
+<pre><code>##   Species Sepal.Length Petal.Length
+## 1  setosa          5.1          1.4
+## 2  setosa          4.9          1.4
+## 3  setosa          4.7          1.3
+## 4  setosa          4.6          1.5
+## 5  setosa          5.0          1.4
+## 6  setosa          5.4          1.7</code></pre>
+<p>パイプ（<code>%&gt;%</code>）を使えば，このプログラムを1行で書くことができる。</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb119-3" data-line-number="3">dat2 =<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(., Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb119-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(., Species, Sepal.Length, Petal.Length)</a>
+<a class="sourceLine" id="cb119-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb119-6" data-line-number="6"><span class="kw">head</span>(dat2)</a></code></pre></div>
+<pre><code>##   Species Sepal.Length Petal.Length
+## 1  setosa          5.1          1.4
+## 2  setosa          4.9          1.4
+## 3  setosa          4.7          1.3
+## 4  setosa          4.6          1.5
+## 5  setosa          5.0          1.4
+## 6  setosa          5.4          1.7</code></pre>
+<p><code>%&gt;%</code>はプログラムを渡していく関数であり，<code>.</code>はそのプログラム以前の結果を示している。<code>iris</code>データを<code>filter</code>に渡し，その結果を<code>select</code>に渡している。</p>
+<p>ドットは省いてしまっても良い（以降のプログラムの例でも，<code>.</code>は省略することにする）。</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">dat2 =<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="st">  </span>dply<span class="op">::</span><span class="kw">select</span>(Species, Sepal.Length, Petal.Length)</a></code></pre></div>
+</div>
+<div id="グルーピング" class="section level2">
+<h2><span class="header-section-number">5.5</span> グルーピング</h2>
+<p>パイプを利用することで，グループごとに統計量を算出することが簡単になる。</p>
+<p><code>iris</code>データを例として，グループごとに平均や標準偏差を計算する方法を身につけよう。</p>
+<p>あやめの種類ごとに，がくの長さの平均と標準偏差を算出してみる。<br />
+先ほど学んだパイプ処理（<code>%&gt;%</code>）に加え，<code>dplyr</code>パッケージの<code>group_by</code>と<code>summarise</code>関数を利用する。</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">dat2 =<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">Mean =</span> <span class="kw">mean</span>(Sepal.Width, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">SD =</span> <span class="kw">sd</span>(Sepal.Width, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">N =</span> <span class="kw">length</span>(Sepal.Width))</a>
+<a class="sourceLine" id="cb122-6" data-line-number="6"><span class="co">#Speciesをグループ化し，グループごとにSepal.Widthの平均，標準偏差，サンプル数（ベクトルの長さ）を出力する。</span></a>
+<a class="sourceLine" id="cb122-7" data-line-number="7">dat2</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 4
+##   Species     Mean    SD     N
+##   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1 setosa      3.43 0.379    50
+## 2 versicolor  2.77 0.314    50
+## 3 virginica   2.97 0.322    50</code></pre>
+<ul>
+<li><code>group_by()</code>はグループ変数を作成する関数である。データの中でグループとして使いたい変数を括弧内に指定する。<br />
+</li>
+<li><code>summarise()</code>は，複数の関数を実行させる関数である。この例では，<code>mean()</code>，<code>sd()</code>, <code>length()</code>の3つの関数を実行し，それぞれの結果をMean, SD, Nという別の名前で保存している。</li>
+</ul>
+</div>
+<div id="データの変換" class="section level2">
+<h2><span class="header-section-number">5.6</span> データの変換</h2>
+<p><code>tidyr</code>パッケージに入っている<code>gather()</code>と<code>spread()</code>を使うと，データの並び替えなどをすることができる。</p>
+<div id="wide型とlong型の区別" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> wide型とlong型の区別</h3>
+<p>まず，データのレイアウトには，<em>wide型</em>と<em>long型</em>の二種類があることを理解しよう。</p>
+<p>以下のデータを例として説明する。A, B, Cの3人の参加者が，X, Y, Z条件の３つの条件で実験課題を行ったとする。<br />
+それぞれの条件での課題の成績（数値），参加者の性別，年齢をデータとして入力する。</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">dat_wide =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Subject =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), <span class="dt">X =</span> <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>), <span class="dt">Y =</span> <span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="dt">Z =</span> <span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">7</span>), <span class="dt">Gender =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>), <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>))  <span class="co">#サンプルデータを作る</span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb124-3" data-line-number="3">dat_wide</a></code></pre></div>
+<pre><code>##   Subject X Y Z Gender Age
+## 1       A 6 9 7      M  18
+## 2       B 2 3 5      F  19
+## 3       C 7 4 7      F  20</code></pre>
+<p>このようにデータの入力方法として，<strong>１行につき１人の参加者の情報</strong>を入力するやり方がある（実験でデータを入力する際も，このレイアウトの方が入力しやすいだろう）。このようなデータのレイアウトをwide型という。</p>
+<p>同じデータを，以下のようなレイアウトで表現することもできる。</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co">#以下のプログラムを実行して，サンプルデータを作る</span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">dat_long =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Subject =</span> <span class="kw">sort</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), <span class="dv">3</span>)), <span class="dt">Condition =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;Z&quot;</span>), <span class="dv">3</span>), <span class="dt">Score =</span> <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">7</span>), <span class="dt">Gender =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>), <span class="dt">Age =</span> <span class="kw">sort</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>), <span class="dv">3</span>)))  </a>
+<a class="sourceLine" id="cb126-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb126-4" data-line-number="4">dat_long</a></code></pre></div>
+<pre><code>##   Subject Condition Score Gender Age
+## 1       A         X     6      M  18
+## 2       A         Y     9      M  18
+## 3       A         Z     7      M  18
+## 4       B         X     2      F  19
+## 5       B         Y     3      F  19
+## 6       B         Z     5      F  19
+## 7       C         X     7      F  20
+## 8       C         Y     4      F  20
+## 9       C         Z     7      F  20</code></pre>
+<p><strong>実験成績ごとに１行ずつ</strong>でデータが作られている。すなわち，同じ参加者１人につき３行のデータがある。このようなデータの方をlong型と呼ぶ。</p>
+<div id="どのデータ型にすべきか" class="section level4">
+<h4><span class="header-section-number">5.6.1.1</span> どのデータ型にすべきか？</h4>
+<p>Rでのデータ分析用関数は，long型でデータが入っていることを想定として作られている。従って，wide型で入力したデータを，Rでデータ解析をする際にはlong型に変換する必要が生じる時がある。</p>
+<p>今後学ぶデータ解析も，基本的に分析で使うデータはlong型を前提とする。</p>
+</div>
+</div>
+<div id="データレイアウトの変換" class="section level3">
+<h3><span class="header-section-number">5.6.2</span> データレイアウトの変換</h3>
+<p>wide型をlong型に変換するには，tidyrパッケージの<code>gather()</code>を使う。</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">dat_wide <span class="co">#wide型のデータ</span></a></code></pre></div>
+<pre><code>##   Subject X Y Z Gender Age
+## 1       A 6 9 7      M  18
+## 2       B 2 3 5      F  19
+## 3       C 7 4 7      F  20</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">dat_long2 =<span class="st"> </span>dat_wide <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Z&quot;</span>, <span class="dt">key =</span> Condition, <span class="dt">value =</span> Score) <span class="co">#並び替える変数を指定する。そして，key変数，value変数として新たにつけたい名前を指定する。</span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3">dat_long2</a></code></pre></div>
+<pre><code>##   Subject Gender Age Condition Score
+## 1       A      M  18         X     6
+## 2       B      F  19         X     2
+## 3       C      F  20         X     7
+## 4       A      M  18         Y     9
+## 5       B      F  19         Y     3
+## 6       C      F  20         Y     4
+## 7       A      M  18         Z     7
+## 8       B      F  19         Z     5
+## 9       C      F  20         Z     7</code></pre>
+<p>逆に，long型をwide型に変換するには，tidyrパッケージの<code>spread()</code>を使う。</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">dat_long <span class="co">#long型のデータ</span></a></code></pre></div>
+<pre><code>##   Subject Condition Score Gender Age
+## 1       A         X     6      M  18
+## 2       A         Y     9      M  18
+## 3       A         Z     7      M  18
+## 4       B         X     2      F  19
+## 5       B         Y     3      F  19
+## 6       B         Z     5      F  19
+## 7       C         X     7      F  20
+## 8       C         Y     4      F  20
+## 9       C         Z     7      F  20</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">dat_long2 =<span class="st"> </span>dat_long <span class="op">%&gt;%</span><span class="st"> </span>tidyr<span class="op">::</span><span class="kw">spread</span>(<span class="dt">key =</span> Condition, <span class="dt">value =</span> Score) <span class="co">#key変数（ここではCondition），value変数（ここではScore）とする変数を指定する。</span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">dat_long2</a></code></pre></div>
+<pre><code>##   Subject Gender Age X Y Z
+## 1       A      M  18 6 9 7
+## 2       B      F  19 2 3 5
+## 3       C      F  20 7 4 7</code></pre>
+</div>
+</div>
+<div id="データの結合" class="section level2">
+<h2><span class="header-section-number">5.7</span> データの結合（＊）</h2>
+<p>複数のデータを結合したい場合は，<code>dplyr</code>パッケージの<code>join</code>関数を使うとよい。<code>join</code>関数には，<code>left_join</code>, <code>full_join</code>など，いくつかの種類が用意されている。</p>
+<p>サンプルデータを使いながら，手順について説明する。
+例えば，実験で参加者3人について，X, Y, Zのデータを取ったとする。</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">dat_sample =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Subject =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), <span class="dt">X =</span> <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>), <span class="dt">Y =</span> <span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="dt">Z =</span> <span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">7</span>), <span class="dt">Gender =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>), <span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>))  <span class="co">#サンプルデータを作る</span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb136-3" data-line-number="3">dat_sample</a></code></pre></div>
+<pre><code>##   Subject X Y Z Gender Age
+## 1       A 6 9 7      M  18
+## 2       B 2 3 5      F  19
+## 3       C 7 4 7      F  20</code></pre>
+<p>更に，2人の参加者（AとB）に追加で実験を行い，Wのデータを取ったとする。</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">dat_sample2 =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Subject =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="dt">W =</span> <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">3</span>))  </a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3">dat_sample2</a></code></pre></div>
+<pre><code>##   Subject W
+## 1       A 8
+## 2       B 3</code></pre>
+<p><code>dat_sample</code>と<code>dat_sample2</code>のデータを結合して一つのデータにしたい。</p>
+<p><code>full_join()</code>で結合したい2つのデータ，更に結合する際にキーとなる変数（2つのデータに共通して存在する変数）を<code>by=</code>で指定すると2つのデータを結合してくれる。</p>
+<ul>
+<li><code>by=</code>を省くと，自動で2つのデータに共通する変数を見つけて，それを手がかりに結合してくれる。</li>
+</ul>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">dat_sample3 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">full_join</span>(dat_sample, dat_sample2, <span class="dt">by =</span> <span class="st">&quot;Subject&quot;</span>)</a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3">dat_sample3</a></code></pre></div>
+<pre><code>##   Subject X Y Z Gender Age  W
+## 1       A 6 9 7      M  18  8
+## 2       B 2 3 5      F  19  3
+## 3       C 7 4 7      F  20 NA</code></pre>
+<p><code>full_join()</code>だと，2つのデータをすべてつなげてくれる。データが含まれていない部分は，欠損になる（<code>data_sample2</code>に参加者Cのデータはないので，欠損になっている）。</p>
+<p><code>left_join()</code>だと，<code>left_join()</code>で左側に入力したデータを含む部分のみをつなげてくれる。</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">dat_sample3 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(dat_sample2, dat_sample, <span class="dt">by =</span> <span class="st">&quot;Subject&quot;</span>)</a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb142-3" data-line-number="3">dat_sample3</a></code></pre></div>
+<pre><code>##   Subject W X Y Z Gender Age
+## 1       A 8 6 9 7      M  18
+## 2       B 3 2 3 5      F  19</code></pre>
+</div>
+<div id="データの読み込み-1" class="section level2">
+<h2><span class="header-section-number">5.8</span> データの読み込み（＊）</h2>
+<p>Rにもともと入っている<code>read.csv()</code>を使えばcsvファイルを読み込むことができるが，<code>readr</code>パッケージの関数を使うと大量のデータが含まれるファイルも高速で読み込んでくれる。また，<code>readxl</code>パッケージの関数を使えば，Excelファイルも読み込んでくれる。</p>
+<div id="readr" class="section level4">
+<h4><span class="header-section-number">5.8.0.1</span> readr</h4>
+<p>様々な形式のファイルを高速で読み書きことを目標としたパッケージ。</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">dat =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./sample_data/0_sample.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">dat</a></code></pre></div>
+<pre><code>##   X Y Gender
+## 1 4 6      M
+## 2 7 3      F
+## 3 7 6      M
+## 4 3 3      M
+## 5 4 4      F</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">dat_<span class="dv">2</span> =<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;./sample_data/0_sample.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X = col_double(),
+##   Y = col_double(),
+##   Gender = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">dat_<span class="dv">2</span></a></code></pre></div>
+<pre><code>## # A tibble: 5 x 3
+##       X     Y Gender
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
+## 1     4     6 M     
+## 2     7     3 F     
+## 3     7     6 M     
+## 4     3     3 M     
+## 5     4     4 F</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co">#データの書き出し</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">readr<span class="op">::</span><span class="kw">write_excel_csv</span>(dat_<span class="dv">2</span>, <span class="st">&quot;./sample_data/0_sample_2.csv&quot;</span>)</a></code></pre></div>
+<ul>
+<li>Rで標準で入っている<code>read.csv()</code>ではなく，<code>read_csv()</code>なので注意（ドットではなく，アンダースコア）。</li>
+</ul>
+<p>ファイルを書き出すための関数も用意されている。
+* ここでは<code>write_excel_csv()</code> を使っているが，単に<code>write_csv()</code>でも可。</p>
+<p><code>read_csv()</code>で読み込んだファイルは，データフレームではなく，<em>tibble</em>という形式になる。</p>
+<div id="tibble" class="section level5">
+<h5><span class="header-section-number">5.8.0.1.1</span> tibble（＊）</h5>
+<p>tibbleとは，データフレームに代わるものとして開発された，Rの新たなデータ形式である。</p>
+<p>tibbleは，データフレームよりも可読性を向上させているのが特徴である。コンソールにはデータ全てではなく，最初の10行程度のみ，列も画面に入る範囲のみが表示される。</p>
+<p><code>as_tibble()</code>でデータフレームをtibble形式にすることもできる。</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">dat =<span class="st"> </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>(iris) <span class="co">#irisデータをtibble型にして，datという名前で保存する</span></a>
+<a class="sourceLine" id="cb151-2" data-line-number="2">dat</a></code></pre></div>
+<pre><code>## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # … with 140 more rows</code></pre>
+<p>tibbleだとデータをすべて閲覧することはできないが，すべて閲覧したい場合は<code>View()</code>を使えばよい。</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">View</span>(dat)</a></code></pre></div>
+</div>
+</div>
+<div id="readxl" class="section level3">
+<h3><span class="header-section-number">5.8.1</span> readxl</h3>
+<p>エクセル形式（xlsx）のファイルを読み込むことができる。</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">dat =<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;./sample/0_sample.xlsx&quot;</span>) <span class="co">#特にオプションを指定しなければ，1番目に保存されているシートの中身をtibble形式で読み込んでくれる。シートや読み込む範囲を指定したい場合は，ヘルプを参照。</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2">dat</a></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="02-summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="04-graph.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed",
+"download": null,
+"search": true,
+"fontsettings": {
+"size": 1
+},
+"sharing": null
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

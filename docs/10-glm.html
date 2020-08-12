@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 一般化線形モデル | 心理学データ応用解析法</title>
+  <meta name="description" content="Chapter 12 一般化線形モデル | 心理学データ応用解析法" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 一般化線形モデル | 心理学データ応用解析法" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 一般化線形モデル | 心理学データ応用解析法" />
+  
+  
+  
+
+<meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
+
+
+<meta name="date" content="2020-08-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="09-linear_model.html"/>
+<link rel="next" href="11-glmm.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#この授業について"><i class="fa fa-check"></i><b>1.1</b> この授業について</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#この資料について"><i class="fa fa-check"></i><b>1.2</b> この資料について</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#読み方"><i class="fa fa-check"></i><b>1.2.1</b> 読み方</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#使用上の注意"><i class="fa fa-check"></i><b>1.2.2</b> 使用上の注意</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="01-intro.html"><a href="01-intro.html"><i class="fa fa-check"></i><b>2</b> Rの使い方</a><ul>
+<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#r及びrstudioのインストール"><i class="fa fa-check"></i><b>2.1</b> R及びRStudioのインストール</a></li>
+<li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="01-intro.html#rstudioのインストール"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
+<li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="01-intro.html#プログラムの書き方"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#コンソールとスクリプト"><i class="fa fa-check"></i><b>2.3.1</b> コンソールとスクリプト</a></li>
+<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="01-intro.html#注意"><i class="fa fa-check"></i><b>2.3.2</b> 注意</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="01-intro.html#変数"><i class="fa fa-check"></i><b>2.4</b> 変数</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="01-intro.html#変数の使い方の注意"><i class="fa fa-check"></i><b>2.4.1</b> 変数の使い方の注意</a></li>
+<li class="chapter" data-level="2.4.2" data-path="01-intro.html"><a href="01-intro.html#変数の型"><i class="fa fa-check"></i><b>2.4.2</b> 変数の型</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="01-intro.html"><a href="01-intro.html#データ構造"><i class="fa fa-check"></i><b>2.5</b> データ構造</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="01-intro.html"><a href="01-intro.html#ベクトル"><i class="fa fa-check"></i><b>2.5.1</b> ベクトル</a></li>
+<li class="chapter" data-level="2.5.2" data-path="01-intro.html"><a href="01-intro.html#データフレーム"><i class="fa fa-check"></i><b>2.5.2</b> データフレーム</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="01-intro.html"><a href="01-intro.html#欠損値"><i class="fa fa-check"></i><b>2.6</b> 欠損値</a></li>
+<li class="chapter" data-level="2.7" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストールとロード"><i class="fa fa-check"></i><b>2.7</b> パッケージのインストールとロード</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストール"><i class="fa fa-check"></i><b>2.7.1</b> パッケージのインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="01-intro.html"><a href="01-intro.html#データの読み込み"><i class="fa fa-check"></i><b>2.8</b> データの読み込み</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="01-intro.html"><a href="01-intro.html#ワーキングディレクトリを指定する"><i class="fa fa-check"></i><b>2.8.1</b> ワーキングディレクトリを指定する。</a></li>
+<li class="chapter" data-level="2.8.2" data-path="01-intro.html"><a href="01-intro.html#データを読み込む"><i class="fa fa-check"></i><b>2.8.2</b> データを読み込む</a></li>
+<li class="chapter" data-level="2.8.3" data-path="01-intro.html"><a href="01-intro.html#サンプルデータ"><i class="fa fa-check"></i><b>2.8.3</b> サンプルデータ</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="01-intro.html"><a href="01-intro.html#rを終わらせる"><i class="fa fa-check"></i><b>2.9</b> Rを終わらせる</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="02-summary.html"><a href="02-summary.html"><i class="fa fa-check"></i><b>3</b> 統計学の基礎の復習</a></li>
+<li class="chapter" data-level="4" data-path="02-summary.html"><a href="02-summary.html#変数の区別"><i class="fa fa-check"></i><b>4</b> 変数の区別</a><ul>
+<li class="chapter" data-level="4.0.1" data-path="02-summary.html"><a href="02-summary.html#量的変数"><i class="fa fa-check"></i><b>4.0.1</b> 量的変数</a></li>
+<li class="chapter" data-level="4.0.2" data-path="02-summary.html"><a href="02-summary.html#カテゴリカル変数質的変数"><i class="fa fa-check"></i><b>4.0.2</b> カテゴリカル変数（質的変数）</a></li>
+<li class="chapter" data-level="4.1" data-path="02-summary.html"><a href="02-summary.html#基本統計"><i class="fa fa-check"></i><b>4.1</b> 基本統計</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="02-summary.html"><a href="02-summary.html#代表値"><i class="fa fa-check"></i><b>4.1.1</b> 代表値</a></li>
+<li class="chapter" data-level="4.1.2" data-path="02-summary.html"><a href="02-summary.html#散布度"><i class="fa fa-check"></i><b>4.1.2</b> 散布度</a></li>
+<li class="chapter" data-level="4.1.3" data-path="02-summary.html"><a href="02-summary.html#要約統計量"><i class="fa fa-check"></i><b>4.1.3</b> 要約統計量</a></li>
+<li class="chapter" data-level="4.1.4" data-path="02-summary.html"><a href="02-summary.html#表の作り方"><i class="fa fa-check"></i><b>4.1.4</b> 表の作り方</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="02-summary.html"><a href="02-summary.html#相関"><i class="fa fa-check"></i><b>4.2</b> 相関</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>5</b> データ・ハンドリング</a><ul>
+<li class="chapter" data-level="5.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>5.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="5.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>5.2</b> 変数の作成</a></li>
+<li class="chapter" data-level="5.3" data-path="03-data.html"><a href="03-data.html#データの抽出"><i class="fa fa-check"></i><b>5.3</b> データの抽出</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="03-data.html"><a href="03-data.html#必要な変数のみを取り出すselect"><i class="fa fa-check"></i><b>5.3.1</b> 必要な変数のみを取り出す（select）</a></li>
+<li class="chapter" data-level="5.3.2" data-path="03-data.html"><a href="03-data.html#条件に合う行を取り出すfilter"><i class="fa fa-check"></i><b>5.3.2</b> 条件に合う行を取り出す（filter）</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="03-data.html"><a href="03-data.html#パイプ"><i class="fa fa-check"></i><b>5.4</b> パイプ</a></li>
+<li class="chapter" data-level="5.5" data-path="03-data.html"><a href="03-data.html#グルーピング"><i class="fa fa-check"></i><b>5.5</b> グルーピング</a></li>
+<li class="chapter" data-level="5.6" data-path="03-data.html"><a href="03-data.html#データの変換"><i class="fa fa-check"></i><b>5.6</b> データの変換</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="03-data.html"><a href="03-data.html#wide型とlong型の区別"><i class="fa fa-check"></i><b>5.6.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="5.6.2" data-path="03-data.html"><a href="03-data.html#データレイアウトの変換"><i class="fa fa-check"></i><b>5.6.2</b> データレイアウトの変換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="03-data.html"><a href="03-data.html#データの結合"><i class="fa fa-check"></i><b>5.7</b> データの結合（＊）</a></li>
+<li class="chapter" data-level="5.8" data-path="03-data.html"><a href="03-data.html#データの読み込み-1"><i class="fa fa-check"></i><b>5.8</b> データの読み込み（＊）</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="03-data.html"><a href="03-data.html#readxl"><i class="fa fa-check"></i><b>5.8.1</b> readxl</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="04-graph.html"><a href="04-graph.html"><i class="fa fa-check"></i><b>6</b> グラフ</a><ul>
+<li class="chapter" data-level="6.1" data-path="04-graph.html"><a href="04-graph.html#rのグラフィック"><i class="fa fa-check"></i><b>6.1</b> Rのグラフィック</a></li>
+<li class="chapter" data-level="6.2" data-path="04-graph.html"><a href="04-graph.html#ggplot2の基本"><i class="fa fa-check"></i><b>6.2</b> ggplot2の基本</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="04-graph.html"><a href="04-graph.html#散布図"><i class="fa fa-check"></i><b>6.2.1</b> 散布図</a></li>
+<li class="chapter" data-level="6.2.2" data-path="04-graph.html"><a href="04-graph.html#ヒストグラム"><i class="fa fa-check"></i><b>6.2.2</b> ヒストグラム</a></li>
+<li class="chapter" data-level="6.2.3" data-path="04-graph.html"><a href="04-graph.html#箱ひげ図"><i class="fa fa-check"></i><b>6.2.3</b> 箱ひげ図</a></li>
+<li class="chapter" data-level="6.2.4" data-path="04-graph.html"><a href="04-graph.html#バイオリンプロット"><i class="fa fa-check"></i><b>6.2.4</b> バイオリンプロット</a></li>
+<li class="chapter" data-level="6.2.5" data-path="04-graph.html"><a href="04-graph.html#折れ線グラフ"><i class="fa fa-check"></i><b>6.2.5</b> 折れ線グラフ</a></li>
+<li class="chapter" data-level="6.2.6" data-path="04-graph.html"><a href="04-graph.html#エラーバーつきのグラフ"><i class="fa fa-check"></i><b>6.2.6</b> エラーバーつきのグラフ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="04-graph.html"><a href="04-graph.html#ファセットfacet"><i class="fa fa-check"></i><b>6.3</b> ファセット（Facet）</a></li>
+<li class="chapter" data-level="6.4" data-path="04-graph.html"><a href="04-graph.html#ラベル"><i class="fa fa-check"></i><b>6.4</b> ラベル</a></li>
+<li class="chapter" data-level="6.5" data-path="04-graph.html"><a href="04-graph.html#テーマtheme"><i class="fa fa-check"></i><b>6.5</b> テーマ（Theme）</a></li>
+<li class="chapter" data-level="6.6" data-path="04-graph.html"><a href="04-graph.html#図の保存"><i class="fa fa-check"></i><b>6.6</b> 図の保存</a></li>
+<li class="chapter" data-level="6.7" data-path="04-graph.html"><a href="04-graph.html#その他の機能"><i class="fa fa-check"></i><b>6.7</b> その他の機能</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html"><i class="fa fa-check"></i><b>7</b> 確率分布</a><ul>
+<li class="chapter" data-level="7.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率変数と確率分布"><i class="fa fa-check"></i><b>7.1</b> 確率変数と確率分布</a></li>
+<li class="chapter" data-level="7.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#一様分布"><i class="fa fa-check"></i><b>7.2</b> 一様分布</a></li>
+<li class="chapter" data-level="7.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布"><i class="fa fa-check"></i><b>7.3</b> 二項分布</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布の例"><i class="fa fa-check"></i><b>7.3.1</b> 二項分布の例</a></li>
+<li class="chapter" data-level="7.3.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布の期待値と分散"><i class="fa fa-check"></i><b>7.3.2</b> 二項分布の期待値と分散</a></li>
+<li class="chapter" data-level="7.3.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ベルヌーイ分布"><i class="fa fa-check"></i><b>7.3.3</b> ベルヌーイ分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布"><i class="fa fa-check"></i><b>7.4</b> 正規分布</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布の基礎"><i class="fa fa-check"></i><b>7.4.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="7.4.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#rで使える確率分布の関数"><i class="fa fa-check"></i><b>7.4.2</b> Rで使える確率分布の関数</a></li>
+<li class="chapter" data-level="7.4.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#なぜ正規分布はよく使われるのか"><i class="fa fa-check"></i><b>7.4.3</b> なぜ正規分布はよく使われるのか？</a></li>
+<li class="chapter" data-level="7.4.4" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#中心極限定理"><i class="fa fa-check"></i><b>7.4.4</b> 中心極限定理</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ポイント"><i class="fa fa-check"></i><b>7.5</b> ポイント</a></li>
+<li class="chapter" data-level="7.6" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#その他の確率分布"><i class="fa fa-check"></i><b>7.6</b> その他の確率分布（＊）</a><ul>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ポアソン分布"><i class="fa fa-check"></i>ポアソン分布</a></li>
+<li class="chapter" data-level="7.6.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#指数分布"><i class="fa fa-check"></i><b>7.6.1</b> 指数分布</a></li>
+<li class="chapter" data-level="7.6.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#対数正規分布"><i class="fa fa-check"></i><b>7.6.2</b> 対数正規分布</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#練習問題"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#問"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#問-1"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#補足"><i class="fa fa-check"></i><b>7.7</b> 補足</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率分布に関連するrの関数"><i class="fa fa-check"></i><b>7.7.1</b> 確率分布に関連するRの関数</a></li>
+<li class="chapter" data-level="7.7.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#中心極限定理の例外"><i class="fa fa-check"></i><b>7.7.2</b> 中心極限定理の例外</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="06-test.html"><a href="06-test.html"><i class="fa fa-check"></i><b>8</b> ｔ検定，分散分析</a><ul>
+<li class="chapter" data-level="8.1" data-path="06-test.html"><a href="06-test.html#t検定"><i class="fa fa-check"></i><b>8.1</b> t検定</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="06-test.html"><a href="06-test.html#一標本のt検定"><i class="fa fa-check"></i><b>8.1.1</b> 一標本のt検定</a></li>
+<li class="chapter" data-level="8.1.2" data-path="06-test.html"><a href="06-test.html#二標本の差のt検定対応なし"><i class="fa fa-check"></i><b>8.1.2</b> 二標本の差のt検定（対応なし）</a></li>
+<li class="chapter" data-level="8.1.3" data-path="06-test.html"><a href="06-test.html#二標本の差のt検定対応あり"><i class="fa fa-check"></i><b>8.1.3</b> 二標本の差のt検定（対応あり）</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="06-test.html"><a href="06-test.html#分散分析"><i class="fa fa-check"></i><b>8.2</b> 分散分析</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="06-test.html"><a href="06-test.html#一要因の分散分析"><i class="fa fa-check"></i><b>8.2.1</b> 一要因の分散分析</a></li>
+<li class="chapter" data-level="8.2.2" data-path="06-test.html"><a href="06-test.html#多重比較"><i class="fa fa-check"></i><b>8.2.2</b> 多重比較</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="06-test.html"><a href="06-test.html#まとめ"><i class="fa fa-check"></i><b>8.3</b> まとめ</a></li>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#練習問題-1"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#問-2"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#問-3"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path="06-test.html"><a href="06-test.html#問-4"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html"><i class="fa fa-check"></i><b>9</b> 統計的帰無仮説検定の問題</a><ul>
+<li class="chapter" data-level="9.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#p値の問題"><i class="fa fa-check"></i><b>9.1</b> p値の問題</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#第種の過誤"><i class="fa fa-check"></i><b>9.1.1</b> 第Ⅰ種の過誤</a></li>
+<li class="chapter" data-level="9.1.2" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#p値と標本数の関係"><i class="fa fa-check"></i><b>9.1.2</b> p値と標本数の関係</a></li>
+<li class="chapter" data-level="9.1.3" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#p-hacking"><i class="fa fa-check"></i><b>9.1.3</b> p-hacking（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#効果量"><i class="fa fa-check"></i><b>9.2</b> 効果量</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#cohens-d"><i class="fa fa-check"></i><b>9.2.1</b> Cohen’s d</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#検定力"><i class="fa fa-check"></i><b>9.3</b> 検定力</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#第種の過誤-1"><i class="fa fa-check"></i><b>9.3.1</b> 第Ⅱ種の過誤</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#有意水準効果量検定力標本数の関係"><i class="fa fa-check"></i><b>9.4</b> 有意水準，効果量，検定力，標本数の関係</a></li>
+<li class="chapter" data-level="9.5" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#信頼区間"><i class="fa fa-check"></i><b>9.5</b> 信頼区間</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#信頼区間の求め方"><i class="fa fa-check"></i><b>9.5.1</b> 信頼区間の求め方</a></li>
+<li class="chapter" data-level="9.5.2" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#信頼区間と統計的帰無仮説検定の関係"><i class="fa fa-check"></i><b>9.5.2</b> 信頼区間と統計的帰無仮説検定の関係</a></li>
+<li class="chapter" data-level="9.5.3" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#平均値以外の信頼区間の求め方"><i class="fa fa-check"></i><b>9.5.3</b> 平均値以外の信頼区間の求め方（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#練習問題-2"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#問-5"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#問-6"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="07-problems_of_NHT.html"><a href="07-problems_of_NHT.html#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="08-regression.html"><a href="08-regression.html"><i class="fa fa-check"></i><b>10</b> 回帰分析</a><ul>
+<li class="chapter" data-level="10.1" data-path="08-regression.html"><a href="08-regression.html#回帰分析-1"><i class="fa fa-check"></i><b>10.1</b> 回帰分析</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="08-regression.html"><a href="08-regression.html#回帰分析の結果の解釈"><i class="fa fa-check"></i><b>10.1.1</b> 回帰分析の結果の解釈</a></li>
+<li class="chapter" data-level="10.1.2" data-path="08-regression.html"><a href="08-regression.html#最小二乗法"><i class="fa fa-check"></i><b>10.1.2</b> 最小二乗法（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="08-regression.html"><a href="08-regression.html#重回帰分析"><i class="fa fa-check"></i><b>10.2</b> 重回帰分析</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="08-regression.html"><a href="08-regression.html#多重共線性"><i class="fa fa-check"></i><b>10.2.1</b> 多重共線性（＊）</a></li>
+<li class="chapter" data-level="10.2.2" data-path="08-regression.html"><a href="08-regression.html#決定係数"><i class="fa fa-check"></i><b>10.2.2</b> 決定係数</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="08-regression.html"><a href="08-regression.html#ダミー変数独立変数が質的変数の場合"><i class="fa fa-check"></i><b>10.3</b> ダミー変数（独立変数が質的変数の場合）</a></li>
+<li class="chapter" data-level="" data-path="08-regression.html"><a href="08-regression.html#練習問題-3"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="08-regression.html"><a href="08-regression.html#問-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="08-regression.html"><a href="08-regression.html#問-8"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="09-linear_model.html"><a href="09-linear_model.html"><i class="fa fa-check"></i><b>11</b> 線形モデル</a><ul>
+<li class="chapter" data-level="11.1" data-path="09-linear_model.html"><a href="09-linear_model.html#一般化線形モデル"><i class="fa fa-check"></i><b>11.1</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="09-linear_model.html"><a href="09-linear_model.html#線形予測子"><i class="fa fa-check"></i><b>11.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="11.1.2" data-path="09-linear_model.html"><a href="09-linear_model.html#誤差分布"><i class="fa fa-check"></i><b>11.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="11.1.3" data-path="09-linear_model.html"><a href="09-linear_model.html#リンク関数"><i class="fa fa-check"></i><b>11.1.3</b> リンク関数</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="09-linear_model.html"><a href="09-linear_model.html#一般化線形モデルと統計解析との関係"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデルと統計解析との関係</a></li>
+<li class="chapter" data-level="11.3" data-path="09-linear_model.html"><a href="09-linear_model.html#rでの一般化線形モデルの方法"><i class="fa fa-check"></i><b>11.3</b> Rでの一般化線形モデルの方法</a></li>
+<li class="chapter" data-level="11.4" data-path="09-linear_model.html"><a href="09-linear_model.html#線形モデルに含まれる統計解析"><i class="fa fa-check"></i><b>11.4</b> 線形モデルに含まれる統計解析</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="09-linear_model.html"><a href="09-linear_model.html#重回帰分析-1"><i class="fa fa-check"></i><b>11.4.1</b> 重回帰分析</a></li>
+<li class="chapter" data-level="11.4.2" data-path="09-linear_model.html"><a href="09-linear_model.html#t検定-1"><i class="fa fa-check"></i><b>11.4.2</b> t検定</a></li>
+<li class="chapter" data-level="11.4.3" data-path="09-linear_model.html"><a href="09-linear_model.html#分散分析-1"><i class="fa fa-check"></i><b>11.4.3</b> 分散分析</a></li>
+<li class="chapter" data-level="11.4.4" data-path="09-linear_model.html"><a href="09-linear_model.html#共分散分析"><i class="fa fa-check"></i><b>11.4.4</b> 共分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="09-linear_model.html"><a href="09-linear_model.html#練習問題-4"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="09-linear_model.html"><a href="09-linear_model.html#問-9"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="09-linear_model.html"><a href="09-linear_model.html#問-10"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="10-glm.html"><a href="10-glm.html"><i class="fa fa-check"></i><b>12</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="12.1" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデル再掲"><i class="fa fa-check"></i><b>12.1</b> 一般化線形モデル（再掲）</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="10-glm.html"><a href="10-glm.html#線形予測子-1"><i class="fa fa-check"></i><b>12.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="12.1.2" data-path="10-glm.html"><a href="10-glm.html#誤差分布-1"><i class="fa fa-check"></i><b>12.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="12.1.3" data-path="10-glm.html"><a href="10-glm.html#リンク関数-1"><i class="fa fa-check"></i><b>12.1.3</b> リンク関数</a></li>
+<li class="chapter" data-level="12.1.4" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデルと統計解析との関係-1"><i class="fa fa-check"></i><b>12.1.4</b> 一般化線形モデルと統計解析との関係</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="10-glm.html"><a href="10-glm.html#今回の予定"><i class="fa fa-check"></i><b>12.2</b> 今回の予定</a></li>
+<li class="chapter" data-level="12.3" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>12.3</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="10-glm.html"><a href="10-glm.html#二項分布-1"><i class="fa fa-check"></i><b>12.3.1</b> 二項分布</a></li>
+<li class="chapter" data-level="12.3.2" data-path="10-glm.html"><a href="10-glm.html#例題"><i class="fa fa-check"></i><b>12.3.2</b> 例題</a></li>
+<li class="chapter" data-level="12.3.3" data-path="10-glm.html"><a href="10-glm.html#まとめ-1"><i class="fa fa-check"></i><b>12.3.3</b> まとめ</a></li>
+<li class="chapter" data-level="12.3.4" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>12.3.4</b> Rでのロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="10-glm.html"><a href="10-glm.html#最尤法"><i class="fa fa-check"></i><b>12.4</b> 最尤法（＊）</a></li>
+<li class="chapter" data-level="12.5" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰分析"><i class="fa fa-check"></i><b>12.5</b> ポアソン回帰分析（＊）</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布-1"><i class="fa fa-check"></i><b>12.5.1</b> ポアソン分布（＊）</a></li>
+<li class="chapter" data-level="12.5.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>12.5.2</b> ポアソン回帰（＊）</a></li>
+<li class="chapter" data-level="12.5.3" data-path="10-glm.html"><a href="10-glm.html#例題-1"><i class="fa fa-check"></i><b>12.5.3</b> 例題（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="10-glm.html"><a href="10-glm.html#モデルの予測力"><i class="fa fa-check"></i><b>12.6</b> モデルの予測力</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="10-glm.html"><a href="10-glm.html#決定係数-1"><i class="fa fa-check"></i><b>12.6.1</b> 決定係数</a></li>
+<li class="chapter" data-level="12.6.2" data-path="10-glm.html"><a href="10-glm.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>12.6.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="12.6.3" data-path="10-glm.html"><a href="10-glm.html#モデル選択"><i class="fa fa-check"></i><b>12.6.3</b> モデル選択（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#練習問題-5"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問-11"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#参考文献-1"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="11-glmm.html"><a href="11-glmm.html"><i class="fa fa-check"></i><b>13</b> 一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="13.1" data-path="11-glmm.html"><a href="11-glmm.html#個人差や集団差の影響"><i class="fa fa-check"></i><b>13.1</b> 個人差や集団差の影響</a></li>
+<li class="chapter" data-level="13.2" data-path="11-glmm.html"><a href="11-glmm.html#一般化線形混合モデル-1"><i class="fa fa-check"></i><b>13.2</b> 一般化線形混合モデル</a></li>
+<li class="chapter" data-level="13.3" data-path="11-glmm.html"><a href="11-glmm.html#rでの一般化線形混合モデル"><i class="fa fa-check"></i><b>13.3</b> Rでの一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="11-glmm.html"><a href="11-glmm.html#対応のある要因を含む分散分析"><i class="fa fa-check"></i><b>13.3.1</b> 対応のある要因を含む分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="11-glmm.html"><a href="11-glmm.html#一般化線型混合モデルの拡張ロジスティック回帰"><i class="fa fa-check"></i><b>13.4</b> 一般化線型混合モデルの拡張（ロジスティック回帰）</a></li>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#練習問題-6"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#問-12"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#問-13"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#参考文献-2"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="12-Appendix.html"><a href="12-Appendix.html"><i class="fa fa-check"></i><b>A</b> tidyverseとは？</a><ul>
+<li class="chapter" data-level="A.1" data-path="12-Appendix.html"><a href="12-Appendix.html#tidyverseパッケージのインストールとロード"><i class="fa fa-check"></i><b>A.1</b> tidyverseパッケージのインストールとロード</a></li>
+<li class="chapter" data-level="A.2" data-path="12-Appendix.html"><a href="12-Appendix.html#tibble-1"><i class="fa fa-check"></i><b>A.2</b> tibble</a></li>
+<li class="chapter" data-level="A.3" data-path="12-Appendix.html"><a href="12-Appendix.html#readr-1"><i class="fa fa-check"></i><b>A.3</b> readr</a></li>
+<li class="chapter" data-level="A.4" data-path="12-Appendix.html"><a href="12-Appendix.html#readxl-1"><i class="fa fa-check"></i><b>A.4</b> readxl</a></li>
+<li class="chapter" data-level="A.5" data-path="12-Appendix.html"><a href="12-Appendix.html#dplyr"><i class="fa fa-check"></i><b>A.5</b> dplyr</a></li>
+<li class="chapter" data-level="A.6" data-path="12-Appendix.html"><a href="12-Appendix.html#purrr"><i class="fa fa-check"></i><b>A.6</b> purrr</a></li>
+<li class="chapter" data-level="A.7" data-path="12-Appendix.html"><a href="12-Appendix.html#ggplot2"><i class="fa fa-check"></i><b>A.7</b> ggplot2</a><ul>
+<li class="chapter" data-level="A.7.1" data-path="12-Appendix.html"><a href="12-Appendix.html#ggplot2の使い方の基本"><i class="fa fa-check"></i><b>A.7.1</b> ggplot2の使い方の基本</a></li>
+</ul></li>
+<li class="chapter" data-level="A.8" data-path="12-Appendix.html"><a href="12-Appendix.html#tidyr"><i class="fa fa-check"></i><b>A.8</b> tidyr</a><ul>
+<li class="chapter" data-level="A.8.1" data-path="12-Appendix.html"><a href="12-Appendix.html#wide型とlong型の区別-1"><i class="fa fa-check"></i><b>A.8.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="A.8.2" data-path="12-Appendix.html"><a href="12-Appendix.html#どのデータ型にすべきか-1"><i class="fa fa-check"></i><b>A.8.2</b> どのデータ型にすべきか？</a></li>
+<li class="chapter" data-level="A.8.3" data-path="12-Appendix.html"><a href="12-Appendix.html#データレイアウトの変換-1"><i class="fa fa-check"></i><b>A.8.3</b> データレイアウトの変換</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="12-Appendix.html"><a href="12-Appendix.html#使い方まとめ"><i class="fa fa-check"></i><b>B</b> 使い方まとめ</a><ul>
+<li class="chapter" data-level="B.1" data-path="12-Appendix.html"><a href="12-Appendix.html#tidyverseパッケージのインストールとロード-1"><i class="fa fa-check"></i><b>B.1</b> tidyverseパッケージのインストールとロード</a></li>
+<li class="chapter" data-level="B.2" data-path="12-Appendix.html"><a href="12-Appendix.html#データの読み込み-2"><i class="fa fa-check"></i><b>B.2</b> データの読み込み</a></li>
+<li class="chapter" data-level="B.3" data-path="12-Appendix.html"><a href="12-Appendix.html#結果の集計"><i class="fa fa-check"></i><b>B.3</b> 結果の集計</a></li>
+<li class="chapter" data-level="B.4" data-path="12-Appendix.html"><a href="12-Appendix.html#グラフの作成"><i class="fa fa-check"></i><b>B.4</b> グラフの作成</a></li>
+<li class="chapter" data-level="B.5" data-path="12-Appendix.html"><a href="12-Appendix.html#新しい変数を作る"><i class="fa fa-check"></i><b>B.5</b> 新しい変数を作る</a></li>
+<li class="chapter" data-level="B.6" data-path="12-Appendix.html"><a href="12-Appendix.html#データを保存する"><i class="fa fa-check"></i><b>B.6</b> データを保存する</a></li>
+<li class="chapter" data-level="B.7" data-path="12-Appendix.html"><a href="12-Appendix.html#もっと知りたい人は"><i class="fa fa-check"></i><b>B.7</b> もっと知りたい人は</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="12-Appendix.html"><a href="12-Appendix.html#第10章一般化線形モデルの付録"><i class="fa fa-check"></i><b>C</b> 第10章「一般化線形モデル」の付録</a><ul>
+<li class="chapter" data-level="C.1" data-path="12-Appendix.html"><a href="12-Appendix.html#指数と対数"><i class="fa fa-check"></i><b>C.1</b> １．指数と対数</a><ul>
+<li class="chapter" data-level="C.1.1" data-path="12-Appendix.html"><a href="12-Appendix.html#指数関数"><i class="fa fa-check"></i><b>C.1.1</b> 指数関数</a></li>
+<li class="chapter" data-level="C.1.2" data-path="12-Appendix.html"><a href="12-Appendix.html#対数関数"><i class="fa fa-check"></i><b>C.1.2</b> 対数関数</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="12-Appendix.html"><a href="12-Appendix.html#ロジスティック関数とロジット関数の関係"><i class="fa fa-check"></i><b>C.2</b> ２．ロジスティック関数とロジット関数の関係</a></li>
+<li class="chapter" data-level="C.3" data-path="12-Appendix.html"><a href="12-Appendix.html#ロジスティック回帰の係数の意味"><i class="fa fa-check"></i><b>C.3</b> ３．ロジスティック回帰の係数の意味</a></li>
+<li class="chapter" data-level="C.4" data-path="12-Appendix.html"><a href="12-Appendix.html#ポアソン回帰で対数をリンク関数とする理由"><i class="fa fa-check"></i><b>C.4</b> ４．ポアソン回帰で対数をリンク関数とする理由</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理学データ応用解析法</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="一般化線形モデル-1" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> 一般化線形モデル</h1>
+<p>誤差分布が正規分布以外の場合の「一般化線形モデル」について学ぶ。</p>
+<ul>
+<li>ロジスティック回帰</li>
+<li>最尤法<br />
+</li>
+<li>ポアソン回帰</li>
+</ul>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;MASS&quot;</span>)</a>
+<a class="sourceLine" id="cb345-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb345-3" data-line-number="3"><span class="kw">library</span>(MASS)</a></code></pre></div>
+<div id="一般化線形モデル再掲" class="section level2">
+<h2><span class="header-section-number">12.1</span> 一般化線形モデル（再掲）</h2>
+<p>一般化線形モデルとは，線形の式で従属変数と独立変数の関係を表した統計モデルのことをいう。一般化線形モデルを理解するには，以下の３つの要素を知っておく必要がある。</p>
+<div id="線形予測子-1" class="section level3">
+<h3><span class="header-section-number">12.1.1</span> 線形予測子</h3>
+<p>従属変数と独立変数を表した式。いわゆる，「回帰式」である。</p>
+<p><span class="math display">\[
+\hat{y} = \beta_{0} + \beta_{1} x  \tag{1}\\
+\]</span></p>
+<p>xを独立変数（説明変数），yを従属変数（応答変数または目的変数）と呼ぶ。独立変数は1個でなくても構わない。また，独立変数は質的変数でも量的変数でも構わない（その両方でもOK）。
+線形予測子から，従属変数の予測値(<span class="math inline">\(\hat{y}\)</span>)を推定する。</p>
+</div>
+<div id="誤差分布-1" class="section level3">
+<h3><span class="header-section-number">12.1.2</span> 誤差分布</h3>
+<p>従属変数の実際の値(<span class="math inline">\(y\)</span>)と従属変数の予測値(<span class="math inline">\(\hat{y}\)</span>)の誤差が従う確率分布のことをいう。</p>
+<div id="確率分布の復習-1" class="section level4 unnumbered">
+<h4>確率分布の復習</h4>
+<ul>
+<li>正規分布，二項分布，ポアソン分布などがあった。変数の種類によって，ある変数が従うだろうと仮定する確率分布が異なることを学んだ。
+<ul>
+<li>例えば，連続量ならば正規分布，二値の値ならば二項分布，カウントデータ（非負の離散値）ならばポアソン分布というように，変数の特徴によって仮定する確率分布が異なる。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="リンク関数-1" class="section level3">
+<h3><span class="header-section-number">12.1.3</span> リンク関数</h3>
+<ul>
+<li>線形予測子と従属変数との関係をリンクさせる関数。
+<ul>
+<li>恒等リンク（線形予測子を変形せずにそのまま利用すること），logリンク，logitリンク関数などがある（誤差分布によってどのリンク関数を指定するかは大体定まっている）。</li>
+</ul></li>
+</ul>
+</div>
+<div id="一般化線形モデルと統計解析との関係-1" class="section level3">
+<h3><span class="header-section-number">12.1.4</span> 一般化線形モデルと統計解析との関係</h3>
+<p>誤差分布やリンク関数の組み合わせによって，様々な解析を表現することが可能になる。</p>
+<ol style="list-style-type: decimal">
+<li>重回帰分析：誤差分布が正規分布，リンク関数には何も指定しない（線形式をそのまま使う）<br />
+</li>
+<li>ロジスティック回帰：誤差分布が二項分布，リンク関数はロジット</li>
+<li>ポアソン回帰：誤差分布がポアソン分布，リンク関数はlog</li>
+<li>対数線形分析：誤差分布がポアソン分布，リンク関数はlog（ポアソン回帰と同じだが，説明変数がカテゴリカルのみの場合）</li>
+</ol>
+<p>つまり，一般化線形モデルとはある分析手法を指す言葉というよりも，「あらゆる統計解析を共通の枠組みから包括的に理解する統計解析の考え方」といえる。</p>
+</div>
+</div>
+<div id="今回の予定" class="section level2">
+<h2><span class="header-section-number">12.2</span> 今回の予定</h2>
+<p>前回は，誤差分布が正規分布である場合の解析（回帰分析，t検定，分散分析など）を扱った。今回は，誤差分布として正規分布以外を仮定する場合の解析について扱う。</p>
+<p><img src="10_fig.png" /></p>
+<p>Figure: 一般化線形混合モデル，一般化線形モデル，線形モデルの関係図</p>
+</div>
+<div id="ロジスティック回帰" class="section level2">
+<h2><span class="header-section-number">12.3</span> ロジスティック回帰</h2>
+<p>ロジスティック回帰は，「ある事象が生じる確率を予測する回帰分析」である。誤差分布が<strong>二項分布</strong>に従う場合において，二項分布のパラメータq（ある事象が生じる確率）を独立変数から推定する回帰分析である。</p>
+<div id="二項分布-1" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> 二項分布</h3>
+<p><span class="math display">\[
+P(r) = {}_n\mathrm{C}_rq^{r}(1-q)^{(n-r)} \tag{2}
+\]</span></p>
+<p>qはある事象が生じる確率（投げたコインが表の確率など），nがすべての試行数，rがある事象が生じた回数を意味する。</p>
+<p>n=1のときは，「ベルヌーイ分布」と呼ばれる（例えば誰か1人を選んだときに，その人が病気であるか否かなど）。</p>
+<p>二項分布は，<strong>生じる事象が2つのカテゴリに分けられる場合</strong>に当てはまる確率分布である。コインを投げたときに出る面が「表か裏」か，学生の中から選んだ人の性別が「男か女」か，ある意見について「賛成か反対」かなど。このような事象が生じる確率は，理論的には二項分布に従う。</p>
+</div>
+<div id="例題" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> 例題</h3>
+<p>例えば次のようなデータを考えてみる。MASSパッケージに入っている生検の結果のサンプルデータを用いる。</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="kw">library</span>(MASS) </a>
+<a class="sourceLine" id="cb346-2" data-line-number="2">b &lt;-<span class="st"> </span>biopsy</a>
+<a class="sourceLine" id="cb346-3" data-line-number="3">b<span class="op">$</span>classn[b<span class="op">$</span>class<span class="op">==</span><span class="st">&quot;benign&quot;</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb346-4" data-line-number="4">b<span class="op">$</span>classn[b<span class="op">$</span>class<span class="op">==</span><span class="st">&quot;malignant&quot;</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb346-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb346-6" data-line-number="6"><span class="kw">head</span>(b)</a></code></pre></div>
+<pre><code>##        ID V1 V2 V3 V4 V5 V6 V7 V8 V9     class classn
+## 1 1000025  5  1  1  1  2  1  3  1  1    benign      0
+## 2 1002945  5  4  4  5  7 10  3  2  1    benign      0
+## 3 1015425  3  1  1  1  2  2  3  1  1    benign      0
+## 4 1016277  6  8  8  1  3  4  3  7  1    benign      0
+## 5 1017023  4  1  1  3  2  1  3  1  1    benign      0
+## 6 1017122  8 10 10  8  7 10  9  7  1 malignant      1</code></pre>
+<p>V1は整数の変数，classnは1ならば癌，0ならば癌ではないことを意味する変数とする。 まず，独立変数V1と従属変数classnとの関係をプロットする。</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">p1 =<span class="st"> </span><span class="kw">ggplot</span>(b, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>classn)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.3</span>, <span class="dt">height=</span><span class="fl">0.06</span>), <span class="dt">alpha=</span><span class="fl">0.8</span>, <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;V1&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;classn&quot;</span>)</a>
+<a class="sourceLine" id="cb348-2" data-line-number="2">p1</a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<p>これに回帰分析のモデルを当てはめる。</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1">fit_lm =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data=</span>b, classn <span class="op">~</span><span class="st"> </span>V1)</a>
+<a class="sourceLine" id="cb349-2" data-line-number="2"><span class="kw">summary</span>(fit_lm)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = classn ~ V1, data = b)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.77804 -0.17331 -0.01994  0.06859  1.06859 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -0.189535   0.023395  -8.102 2.43e-15 ***
+## V1           0.120947   0.004467  27.078  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3323 on 697 degrees of freedom
+## Multiple R-squared:  0.5127, Adjusted R-squared:  0.512 
+## F-statistic: 733.2 on 1 and 697 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">p2 =<span class="st"> </span><span class="kw">ggplot</span>(b, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>classn)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.3</span>, <span class="dt">height=</span><span class="fl">0.06</span>), <span class="dt">alpha=</span><span class="fl">0.8</span>, <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span>F, <span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;q&quot;</span>)</a>
+<a class="sourceLine" id="cb351-2" data-line-number="2">p2</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<p>推定された回帰式をプロット上に当てはめる。</p>
+<p>がんにかかるリスク（確率）を推定したいが，例えばxが10を超えると，従属変数の予測値として1以上の値が推定されてしまう。xが2.5を下回ったときも，0未満の数値が推定されてしまう。従属変数は0か1しか取らない変数なのに，それぞれを超える値が予測されてしまう。これは確率の推定としては不都合である。</p>
+<p>そこで，この直線を以下のように変換してみたらどうだろうか。</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1">p3 =<span class="st"> </span><span class="kw">ggplot</span>(b, <span class="kw">aes</span>(<span class="dt">x=</span>V1, <span class="dt">y=</span>classn)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">position=</span><span class="kw">position_jitter</span>(<span class="dt">width=</span><span class="fl">0.3</span>, <span class="dt">height=</span><span class="fl">0.06</span>), <span class="dt">alpha=</span><span class="fl">0.8</span>, <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method=</span>glm, <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>),<span class="dt">se=</span>F, <span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;q&quot;</span>)</a>
+<a class="sourceLine" id="cb353-2" data-line-number="2">p3</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p>この予測線は，以下の式で作成されたものである。</p>
+<p><span class="math display">\[
+q_{i} =  \frac{1}{1+\exp[-(\beta_{0} + \beta_{1}x_{i})]} \tag{3}
+\]</span></p>
+<p>qは「y=1が生じる確率」を意味する。<span class="math inline">\(1/(1+\exp(-y))\)</span>は，ロジスティック関数と呼ばれる。<br />
+xがどのような値をとっても，<span class="math inline">\(q_{i}\)</span>は<span class="math inline">\(0\leq q \leq1\)</span>となる。</p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<p>更に，式(3)は，以下の式(4)に変換することができる（理由は付録参照）。</p>
+<p><span class="math display">\[
+\log\frac{q_{i}}{1-q_{i}} = \beta_{0} + \beta_{1} x_{i} \tag{4}\\
+\]</span></p>
+<p>左辺のことを，ロジット関数（logit function）という。つまり，線形の式をロジット関数でリンクさせたものがロジスティック回帰である（リンク関数を”ロジット”とする理由）。</p>
+<p>まとめると，ロジスティック回帰は誤差分布が二項分布，リンク関数をロジット関数とした一般化線形モデルのことをいう。</p>
+</div>
+<div id="まとめ-1" class="section level3">
+<h3><span class="header-section-number">12.3.3</span> まとめ</h3>
+<ul>
+<li><p>ロジスティック回帰は，独立変数がある事象が生じる確率に及ぼす影響を推定したいときに使う回帰分析である。従属変数が0か1を取る変数の場合には，ロジスティック回帰を行う。</p></li>
+<li><p>一般化線形モデルの誤差分布を二項分布，リンク関数をロジット関数としたものが，ロジスティック回帰に相当する。</p></li>
+</ul>
+</div>
+<div id="rでのロジスティック回帰" class="section level3">
+<h3><span class="header-section-number">12.3.4</span> Rでのロジスティック回帰</h3>
+<p>glm()関数で行う。familyにbinomial, linkにlogitを設定すれば良い。先程のサンプルデータbを使って，glm()関数でロジスティック回帰を行ってみる。</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1">fit_logistic =<span class="st"> </span><span class="kw">glm</span>(<span class="dt">data=</span>b, classn <span class="op">~</span><span class="st"> </span>V1, <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))</a>
+<a class="sourceLine" id="cb355-2" data-line-number="2"><span class="kw">summary</span>(fit_logistic)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = classn ~ V1, family = binomial(link = &quot;logit&quot;), 
+##     data = b)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.1986  -0.4261  -0.1704   0.1730   2.9118  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -5.16017    0.37795  -13.65   &lt;2e-16 ***
+## V1           0.93546    0.07377   12.68   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 900.53  on 698  degrees of freedom
+## Residual deviance: 464.05  on 697  degrees of freedom
+## AIC: 468.05
+## 
+## Number of Fisher Scoring iterations: 6</code></pre>
+<ul>
+<li><p>(link=“logit”)は省略しても良い。familyにbinomialを設定すれば，リンク関数はデフォルトでlogitとなる。</p></li>
+<li><p>結果の見方は，重回帰と同じである。</p></li>
+<li><p>[Coefficients]の部分を見る。Estimateが係数。更にその効果のp値が表示される。係数の推定値の解釈は重回帰分析のときと同じで，プラスならば従属変数が1の値，マイナスならば従属変数が0の値を取りやすいことを意味する。</p></li>
+</ul>
+</div>
+</div>
+<div id="最尤法" class="section level2">
+<h2><span class="header-section-number">12.4</span> 最尤法（＊）</h2>
+<p>線形回帰のときは，切片及び傾きの値は最小二乗法で求めると学んだ。ロジスティック回帰の場合はどうなのだろうか？</p>
+<p>一般化線形モデルでは，<strong>最尤法</strong>（さいゆうほう）と呼ばれる手法を通してパラメータの推定を行う。</p>
+<p>表が出る確率が未知のコインを何回か投げて，表が出る確率<span class="math inline">\(\theta\)</span>（シータ）を推定するとする。</p>
+<p>1回目は，表が出た。この実験結果が生じる確率は<span class="math inline">\(\theta\)</span>である。<br />
+2回目は，裏が出た。ここまでの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\)</span>である。<br />
+3回目は，表が出た。ここまでの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)*\theta\)</span>である。</p>
+<p>その後，4回目は裏，5回目は裏だったとする。この実験結果が生じる確率は以下のように表すことができる。</p>
+<p><span class="math display">\[
+L = (1-\theta)^3 \theta^2 \tag{5}
+\]</span></p>
+<p>Lのことを<strong>尤度</strong>(likelihood)と呼ぶ（”ゆうど”と読む。”いぬど”ではない）。</p>
+<p>尤度とは「もっともらしさ」を示すものである。イメージとしては，「今回の実験結果が得られる確率」である。今回の観測データに対して最も当てはまりが良くなる，すなわち最も尤度の高いパラメータを求めるのが，最尤法と呼ばれる手法である。<br />
+掛け算を扱う尤度は計算が困難なので，対数化して足し算にする。対数化した尤度を対数尤度と呼ぶ。対数尤度が最大となるパラメータを求めるのが，最尤法である。</p>
+<p><span class="math display">\[
+\log L = \log(1-\theta)+\log(1-\theta)+\log(1-\theta)+\log(\theta)+\log(\theta) \tag{6}
+\]</span></p>
+<p>パラメータ<span class="math inline">\(\theta\)</span>と対数尤度<span class="math inline">\(\log L\)</span>との関係を以下に示す。</p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<p>対数尤度が最も大きくなるのは，<span class="math inline">\(\theta= 0.40\)</span> のときである（2/5と一致）。</p>
+<p>一般化線形モデルでは，最尤法で対数尤度の高くなる切片及び傾きを推定する（上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする）。</p>
+<ul>
+<li>なお，回帰分析で切片及び傾きを求めるときに最小二乗法を使うと前回説明したが，最尤法でも同じ値が推定される（証明は省略）。</li>
+</ul>
+</div>
+<div id="ポアソン回帰分析" class="section level2">
+<h2><span class="header-section-number">12.5</span> ポアソン回帰分析（＊）</h2>
+<p>従属変数がカウントデータ（非負の整数。1個，2個,3個といった個数など）の場合は，理論的にはポアソン回帰分析をするのが適切である。</p>
+<p>確率分布はポアソン分布(poisson)，リンク関数はlogを指定する。</p>
+<div id="ポアソン分布-1" class="section level3">
+<h3><span class="header-section-number">12.5.1</span> ポアソン分布（＊）</h3>
+<p><span class="math display">\[
+P(y) = \frac{\lambda^y\exp(-\lambda)}{y!} \tag{7}\\
+\]</span></p>
+<ul>
+<li>yは0以上の整数（0, 1, 2, 3, …）とする。P(y)はyが生じる確率。<br />
+</li>
+<li>ポアソン分布のパラメータは<span class="math inline">\(\lambda\)</span>だけである。期待値（平均）は<span class="math inline">\(\lambda\)</span>，分散は<span class="math inline">\(\lambda\)</span>である。つまり，平均と分散が等しい分布である。</li>
+</ul>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+</div>
+<div id="ポアソン回帰" class="section level3">
+<h3><span class="header-section-number">12.5.2</span> ポアソン回帰（＊）</h3>
+<p><span class="math display">\[
+\log\lambda_{i}=\beta_{0}+\beta_{1}x_{i} \tag{8}\\
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{i}=\exp(\beta_{0}+\beta_{1}x_{i}) \tag{9}\\
+\]</span></p>
+<p>ポアソン回帰では，誤差分布をポアソン分布，リンク関数を対数（log）に設定する。</p>
+</div>
+<div id="例題-1" class="section level3">
+<h3><span class="header-section-number">12.5.3</span> 例題（＊）</h3>
+<p>嶋田・阿部(2017)「Rで学ぶ統計学入門」 p. 167の演習問題（改題）。</p>
+<p>鳥種Aの雄はときどき高い柱にとまって，自分の縄張りを見張る行動を示す。鳥の体重(wt)と見張り行動の発生数（mihari）を調べた。体重が見張り行動に及ぼす影響を調べる。</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="co">#　サンプルデータ（嶋田・阿部(2017) p. 167より）</span></a>
+<a class="sourceLine" id="cb357-2" data-line-number="2">mihari =<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">8</span>) </a>
+<a class="sourceLine" id="cb357-3" data-line-number="3">wt =<span class="st"> </span><span class="kw">c</span>(<span class="dv">110</span>, <span class="dv">88</span>, <span class="dv">80</span>, <span class="dv">95</span>, <span class="dv">120</span>, <span class="dv">103</span>, <span class="dv">97</span>, <span class="dv">84</span>, <span class="dv">91</span>, <span class="dv">114</span>, <span class="dv">107</span>)</a>
+<a class="sourceLine" id="cb357-4" data-line-number="4">data_poisson &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mihari =</span> mihari, <span class="dt">wt =</span> wt)</a>
+<a class="sourceLine" id="cb357-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb357-6" data-line-number="6"><span class="kw">head</span>(data_poisson)</a></code></pre></div>
+<pre><code>##   mihari  wt
+## 1      7 110
+## 2      3  88
+## 3      3  80
+## 4      5  95
+## 5     10 120
+## 6      8 103</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="co">#　family にpoisson，linkにlogを指定する。</span></a>
+<a class="sourceLine" id="cb359-2" data-line-number="2">result_poisson &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">data =</span> data_poisson, mihari <span class="op">~</span><span class="st"> </span>wt, <span class="dt">family =</span> <span class="kw">poisson</span> (<span class="dt">link =</span> <span class="st">&quot;log&quot;</span>))</a>
+<a class="sourceLine" id="cb359-3" data-line-number="3"><span class="kw">summary</span>(result_poisson)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = mihari ~ wt, family = poisson(link = &quot;log&quot;), data = data_poisson)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.06361  -0.55141   0.04139   0.52133   0.97431  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -2.67643    1.17805  -2.272 0.023092 *  
+## wt           0.04263    0.01112   3.833 0.000127 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 19.8308  on 10  degrees of freedom
+## Residual deviance:  4.2671  on  9  degrees of freedom
+## AIC: 45.232
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+</div>
+</div>
+<div id="モデルの予測力" class="section level2">
+<h2><span class="header-section-number">12.6</span> モデルの予測力</h2>
+<div id="決定係数-1" class="section level3">
+<h3><span class="header-section-number">12.6.1</span> 決定係数</h3>
+<p>回帰分析では，データに対する回帰分析のモデルの予測力を表す指標として，決定係数（R-squared）というものがある。</p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1">model_lm =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data=</span>iris, Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Width)</a>
+<a class="sourceLine" id="cb361-2" data-line-number="2"><span class="kw">summary</span>(model_lm)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Sepal.Length ~ Petal.Width, data = iris)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.38822 -0.29358 -0.04393  0.26429  1.34521 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  4.77763    0.07293   65.51   &lt;2e-16 ***
+## Petal.Width  0.88858    0.05137   17.30   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.478 on 148 degrees of freedom
+## Multiple R-squared:  0.669,  Adjusted R-squared:  0.6668 
+## F-statistic: 299.2 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1"><span class="kw">summary</span>(model_lm)<span class="op">$</span>r.squared <span class="co">#r.squaredで決定係数のみを取り出すことができる。</span></a></code></pre></div>
+<pre><code>## [1] 0.6690277</code></pre>
+<p>これは，回帰式から求めた予測値と実測値の分散が，実際のデータの分散に占める割合を意味する指標である。つまり，回帰分析でどれだけ全データの分散を説明できているかを意味する。</p>
+<p><span class="math display">\[
+R^2 = \sum_{i=1}^{n} \frac {(y_{i}-\hat{y}_{i})^2}{(y_{i}-\bar{y})^2} \tag{10}
+\]</span></p>
+<p>ただし，決定係数は単純に，独立変数が増えるほど大きくなる（説明できる分散の量が増える）。</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">model_lm2 =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data=</span>iris, Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Petal.Width)</a>
+<a class="sourceLine" id="cb365-2" data-line-number="2"><span class="kw">summary</span>(model_lm2)<span class="op">$</span>r.squared</a></code></pre></div>
+<pre><code>## [1] 0.8586117</code></pre>
+<p>仮に独立変数に影響を及ぼさない変数を含めても，モデルのデータに対する説明力は上昇してしまう。</p>
+<ul>
+<li>複雑なモデルは現在のデータによく当てはまるのは，ある意味当然である（単なる偶然で生じた誤差も無駄に説明してしまっている）。しかし，複雑なモデルは現在のデータに当てはまっても，未知のデータにもうまく当てはまるとは限らない（overfittingと呼ばれる問題）。<br />
+</li>
+<li>良いモデルとは，「予測力が高く，かつできるだけシンプルである」ことである。<br />
+</li>
+<li>決定係数は上記の目的をかなえるのに常に適切な指標であるとは言えない。</li>
+</ul>
+</div>
+<div id="赤池情報量基準aic" class="section level3">
+<h3><span class="header-section-number">12.6.2</span> 赤池情報量基準（AIC）</h3>
+<p>変数の少なさとモデルの予測力の高さのバランスを取った指標の一つとして，AIC(Akaike inoformation criteria)が知られている。AICは以下の式で計算される。</p>
+<p><span class="math display">\[
+AIC = -2 \log L + 2k \tag{11}\\
+\]</span></p>
+<p><span class="math inline">\(\log L\)</span>は最大対数尤度，kはパラメータ（独立変数）の数である。</p>
+<p>AICの値が低いほど，データに対するモデルの予測力が高いと評価する。</p>
+<p>AICは余計なパラメータが多くなる（kが大きくなる）ほど大きい値を取る。つまり，データをうまく予測しつつ，かつパラメータ数を抑えてシンプルなモデルを探ることにかなっている。</p>
+<ul>
+<li>Rではglm関数でAICの結果も出力してくれる。</li>
+</ul>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">model=<span class="kw">glm</span>(<span class="dt">data=</span>b, classn <span class="op">~</span><span class="st"> </span>V1<span class="op">+</span>V2<span class="op">+</span>V3<span class="op">+</span>V4<span class="op">+</span>V5<span class="op">+</span>V6<span class="op">+</span>V7<span class="op">+</span>V8<span class="op">+</span>V9, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))</a>
+<a class="sourceLine" id="cb367-2" data-line-number="2"><span class="kw">summary</span>(model)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = classn ~ V1 + V2 + V3 + V4 + V5 + V6 + V7 + V8 + 
+##     V9, family = binomial(link = &quot;logit&quot;), data = b)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -3.4841  -0.1153  -0.0619   0.0222   2.4698  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -10.10394    1.17488  -8.600  &lt; 2e-16 ***
+## V1            0.53501    0.14202   3.767 0.000165 ***
+## V2           -0.00628    0.20908  -0.030 0.976039    
+## V3            0.32271    0.23060   1.399 0.161688    
+## V4            0.33064    0.12345   2.678 0.007400 ** 
+## V5            0.09663    0.15659   0.617 0.537159    
+## V6            0.38303    0.09384   4.082 4.47e-05 ***
+## V7            0.44719    0.17138   2.609 0.009073 ** 
+## V8            0.21303    0.11287   1.887 0.059115 .  
+## V9            0.53484    0.32877   1.627 0.103788    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 884.35  on 682  degrees of freedom
+## Residual deviance: 102.89  on 673  degrees of freedom
+##   (16 observations deleted due to missingness)
+## AIC: 122.89
+## 
+## Number of Fisher Scoring iterations: 8</code></pre>
+</div>
+<div id="モデル選択" class="section level3">
+<h3><span class="header-section-number">12.6.3</span> モデル選択（＊）</h3>
+<p>最も予測力の高いモデルを探す手続きを「モデル選択（model selection）」という。</p>
+<ul>
+<li>MASSパッケージに入っているstepAICという関数を使ってAICが最も低いモデルの探索を行うことができる（stepwise法）。</li>
+</ul>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1">MASS<span class="op">::</span><span class="kw">stepAIC</span>(<span class="kw">glm</span>(<span class="dt">data=</span>b, classn <span class="op">~</span><span class="st"> </span>V1<span class="op">+</span>V2<span class="op">+</span>V3<span class="op">+</span>V4<span class="op">+</span>V5<span class="op">+</span>V6<span class="op">+</span>V7<span class="op">+</span>V8<span class="op">+</span>V9, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>)))</a></code></pre></div>
+<pre><code>## Start:  AIC=122.89
+## classn ~ V1 + V2 + V3 + V4 + V5 + V6 + V7 + V8 + V9
+## 
+##        Df Deviance    AIC
+## - V2    1   102.89 120.89
+## - V5    1   103.27 121.27
+## - V3    1   104.74 122.74
+## &lt;none&gt;      102.89 122.89
+## - V9    1   106.61 124.61
+## - V8    1   106.66 124.66
+## - V4    1   110.31 128.31
+## - V7    1   110.33 128.33
+## - V1    1   120.72 138.72
+## - V6    1   122.07 140.07
+## 
+## Step:  AIC=120.89
+## classn ~ V1 + V3 + V4 + V5 + V6 + V7 + V8 + V9
+## 
+##        Df Deviance    AIC
+## - V5    1   103.27 119.27
+## &lt;none&gt;      102.89 120.89
+## - V9    1   106.66 122.66
+## - V3    1   106.66 122.66
+## - V8    1   106.76 122.76
+## - V4    1   110.64 126.64
+## - V7    1   110.70 126.70
+## - V1    1   121.10 137.10
+## - V6    1   122.07 138.07
+## 
+## Step:  AIC=119.27
+## classn ~ V1 + V3 + V4 + V6 + V7 + V8 + V9
+## 
+##        Df Deviance    AIC
+## &lt;none&gt;      103.27 119.27
+## - V9    1   107.14 121.14
+## - V8    1   107.72 121.72
+## - V3    1   107.90 121.90
+## - V7    1   111.69 125.69
+## - V4    1   112.17 126.17
+## - V1    1   121.55 135.55
+## - V6    1   123.15 137.15</code></pre>
+<pre><code>## 
+## Call:  glm(formula = classn ~ V1 + V3 + V4 + V6 + V7 + V8 + V9, family = binomial(link = &quot;logit&quot;), 
+##     data = b)
+## 
+## Coefficients:
+## (Intercept)           V1           V3           V4           V6           V7  
+##     -9.9828       0.5340       0.3453       0.3425       0.3883       0.4619  
+##          V8           V9  
+##      0.2261       0.5312  
+## 
+## Degrees of Freedom: 682 Total (i.e. Null);  675 Residual
+##   (16 observations deleted due to missingness)
+## Null Deviance:       884.4 
+## Residual Deviance: 103.3     AIC: 119.3</code></pre>
+<ul>
+<li><p>しかし，データに含まれるすべての変数を対象にしてstepwiseで最適なモデルを探して，出てきた結果を鵜呑みにするのは，あまり良い方法とは言えない。解析の前に研究者自身が仮説を立て，関連するであろう変数をモデルに入れる作業を繰り返してモデルを選択するのが仮説検証型の研究としてふさわしいメソッドである。</p></li>
+<li><p>他にもモデル選択に使われる指標として，BIC（ベイズ情報量基準）などもある。</p></li>
+</ul>
+</div>
+</div>
+<div id="練習問題-5" class="section level2 unnumbered">
+<h2>練習問題</h2>
+<p>宿題にはしない。</p>
+<div id="問-11" class="section level3 unnumbered">
+<h3>問１</h3>
+<p>以下のプログラムを実行し，サンプルデータを作成する。</p>
+<p>変数の意味は以下の通りである。</p>
+<p>Disease: ある病気にかかっているか（1=かかっている，0=かかっていない）<br />
+BMI: BMI（肥満度を表す指標）<br />
+Exercise: 1週間あたりの運動時間（単位：時間）<br />
+Sleep: 1日の睡眠時間（単位：時間）</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1">Disease =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb372-2" data-line-number="2">BMI =<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">33</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">41</span>, <span class="dv">43</span>, <span class="dv">43</span>)</a>
+<a class="sourceLine" id="cb372-3" data-line-number="3">Exercise =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb372-4" data-line-number="4">Sleep =<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb372-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb372-6" data-line-number="6">data_q01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Disease =</span> Disease, <span class="dt">BMI =</span> BMI, <span class="dt">Exercise =</span> Exercise, <span class="dt">Sleep =</span> Sleep)</a></code></pre></div>
+<div id="小問-6" class="section level4 unnumbered">
+<h4>小問１</h4>
+<p>Diseaseを従属変数，BMI，Exercise，Sleepを独立変数としたロジスティック回帰を行い，結果について報告せよ。</p>
+<p>ヒント: 重回帰のときと同じく，回帰係数とp値を報告すれば良い（b=x.xxx, p = .xxx）。有意な効果があった場合は，その係数の増減によって従属変数がどう影響するかを述べる。</p>
+</div>
+<div id="小問-7" class="section level4 unnumbered">
+<h4>小問２</h4>
+<p>BMIのみを独立変数とした場合(model 1)，BMIとExerciseを独立変数とした場合(model 2)，BMI, Exercise, 及びSleepを独立変数とした場合(model 3)について，いずれのモデルの方がデータに対する説明力が高いかを，それぞれのモデルのAICを報告した上で述べよ。</p>
+</div>
+</div>
+</div>
+<div id="参考文献-1" class="section level2 unnumbered">
+<h2>参考文献</h2>
+<p>久保拓弥 (2012) データ解析のための統計モデリング入門　岩波書店<br />
+嶋田正和・阿部真人 (2017) Rで学ぶ統計学入門　東京化学同人</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="09-linear_model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="11-glmm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed",
+"download": null,
+"search": true,
+"fontsettings": {
+"size": 1
+},
+"sharing": null
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

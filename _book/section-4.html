@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 確率分布 | 心理学データ解析法Ⅰ 2019</title>
+  <meta name="description" content="Chapter 4 確率分布 | 心理学データ解析法Ⅰ 2019" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 確率分布 | 心理学データ解析法Ⅰ 2019" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 確率分布 | 心理学データ解析法Ⅰ 2019" />
+  
+  
+  
+
+<meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
+
+
+<meta name="date" content="2019-06-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="section-3.html">
+<link rel="next" href="section-5.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#section-0.1"><i class="fa fa-check"></i><b>0.1</b> この授業について</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#section-0.1.1"><i class="fa fa-check"></i><b>0.1.1</b> 授業の進め方</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#section-0.1.2"><i class="fa fa-check"></i><b>0.1.2</b> 授業資料の配布</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#section-0.1.3"><i class="fa fa-check"></i><b>0.1.3</b> 練習問題</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#section-0.1.4"><i class="fa fa-check"></i><b>0.1.4</b> 授業の前にやること</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#section-0.1.5"><i class="fa fa-check"></i><b>0.1.5</b> この資料について</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>1</b> Ｒの使い方</a><ul>
+<li class="chapter" data-level="1.1" data-path="section-1.html"><a href="section-1.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> Ｒを使う前の準備</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="section-1.html"><a href="section-1.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> ファイルの場所の指定</a></li>
+<li class="chapter" data-level="1.1.2" data-path="section-1.html"><a href="section-1.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> スクリプトファイルの作成</a></li>
+<li class="chapter" data-level="1.1.3" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>1.1.3</b> tidyverseのインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> プログラムの練習</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="section-1.html"><a href="section-1.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 簡単な計算</a></li>
+<li class="chapter" data-level="1.2.2" data-path="section-1.html"><a href="section-1.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 変数</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="section-1.html"><a href="section-1.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> データの扱い方</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="section-1.html"><a href="section-1.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> データフレーム</a></li>
+<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#tibble"><i class="fa fa-check"></i><b>1.3.2</b> tibble（＊）</a></li>
+<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 外部データの読み込み</a></li>
+<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> データの出力</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="section-1.html"><a href="section-1.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 外部パッケージの利用</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="section-1.html"><a href="section-1.html#section-1.4.1"><i class="fa fa-check"></i><b>1.4.1</b> インストールされているパッケージの確認</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>1.5</b> Rを終わらせる</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#e5958fefbc91"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-2"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>2</b> 平均値，標準偏差など</a><ul>
+<li class="chapter" data-level="2.1" data-path="section-2.html"><a href="section-2.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 尺度水準</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="section-2.html"><a href="section-2.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 質的変数</a></li>
+<li class="chapter" data-level="2.1.2" data-path="section-2.html"><a href="section-2.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 量的変数</a></li>
+<li class="chapter" data-level="2.1.3" data-path="section-2.html"><a href="section-2.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 離散変数と連続変数</a></li>
+<li class="chapter" data-level="2.1.4" data-path="section-2.html"><a href="section-2.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 量的変数と質的変数の区別</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="section-2.html"><a href="section-2.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 母集団と標本</a></li>
+<li class="chapter" data-level="2.3" data-path="section-2.html"><a href="section-2.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 代表値</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="section-2.html"><a href="section-2.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 平均値</a></li>
+<li class="chapter" data-level="2.3.2" data-path="section-2.html"><a href="section-2.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 中央値</a></li>
+<li class="chapter" data-level="2.3.3" data-path="section-2.html"><a href="section-2.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 平均値と中央値</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="section-2.html"><a href="section-2.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> データの散らばり</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="section-2.html"><a href="section-2.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分散と標準偏差</a></li>
+<li class="chapter" data-level="2.4.2" data-path="section-2.html"><a href="section-2.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> その他の散らばり具合を意味するもの（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="section-2.html"><a href="section-2.html#section-2.5"><i class="fa fa-check"></i><b>2.5</b> データの要約</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-2"><i class="fa fa-check"></i>練習問題</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>3</b> データの可視化</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-3.html"><a href="section-3.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 相関</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="section-3.html"><a href="section-3.html#section-3.1.1"><i class="fa fa-check"></i><b>3.1.1</b> ピアソンの積率相関係数</a></li>
+<li class="chapter" data-level="3.1.2" data-path="section-3.html"><a href="section-3.html#section-3.1.2"><i class="fa fa-check"></i><b>3.1.2</b> スピアマンの順位相関係数</a></li>
+<li class="chapter" data-level="3.1.3" data-path="section-3.html"><a href="section-3.html#section-3.1.3"><i class="fa fa-check"></i><b>3.1.3</b> 外れ値の影響</a></li>
+<li class="chapter" data-level="3.1.4" data-path="section-3.html"><a href="section-3.html#section-3.1.4"><i class="fa fa-check"></i><b>3.1.4</b> 相関関係と因果関係</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>3.2</b> データの可視化（＊）</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-3.html"><a href="section-3.html#section-3.2.1"><i class="fa fa-check"></i><b>3.2.1</b> 散布図（＊）</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-3.html"><a href="section-3.html#section-3.2.2"><i class="fa fa-check"></i><b>3.2.2</b> ヒストグラム（＊）</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-3.html"><a href="section-3.html#section-3.2.3"><i class="fa fa-check"></i><b>3.2.3</b> 箱ひげ図（＊）</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-3.html"><a href="section-3.html#section-3.2.4"><i class="fa fa-check"></i><b>3.2.4</b> 棒グラフ（＊）</a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-3.html"><a href="section-3.html#section-3.2.5"><i class="fa fa-check"></i><b>3.2.5</b> 折れ線グラフ（＊）</a></li>
+<li class="chapter" data-level="3.2.6" data-path="section-3.html"><a href="section-3.html#section-3.2.6"><i class="fa fa-check"></i><b>3.2.6</b> 応用（＊）</a></li>
+<li class="chapter" data-level="3.2.7" data-path="section-3.html"><a href="section-3.html#qplot"><i class="fa fa-check"></i><b>3.2.7</b> qplot関数を使った簡単なグラフの作り方</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-3"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-3"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-4"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#e58f82e88083e69687e78cae"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>4</b> 確率分布</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-4.html"><a href="section-4.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 確率変数と確率分布</a></li>
+<li class="chapter" data-level="4.2" data-path="section-4.html"><a href="section-4.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 二項分布</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-4.html"><a href="section-4.html#section-4.2.1"><i class="fa fa-check"></i><b>4.2.1</b> 二項分布の基本</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-4.html"><a href="section-4.html#section-4.2.2"><i class="fa fa-check"></i><b>4.2.2</b> 二項分布の期待値と分散</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="section-4.html"><a href="section-4.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 正規分布</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="section-4.html"><a href="section-4.html#section-4.3.1"><i class="fa fa-check"></i><b>4.3.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="4.3.2" data-path="section-4.html"><a href="section-4.html#section-4.3.2"><i class="fa fa-check"></i><b>4.3.2</b> 中心極限定理（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="section-4.html"><a href="section-4.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> その他の確率分布（＊）</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="section-4.html"><a href="section-4.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 離散確率分布</a></li>
+<li class="chapter" data-level="4.4.2" data-path="section-4.html"><a href="section-4.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 連続確率分布</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-4"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-5"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-6"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i><b>5</b> 統計的帰無仮説検定</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-5.html"><a href="section-5.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 統計的帰無仮説検定の考え方</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="section-5.html"><a href="section-5.html#section-5.1.1"><i class="fa fa-check"></i><b>5.1.1</b> 二項分布の復習</a></li>
+<li class="chapter" data-level="5.1.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>5.1.2</b> 統計的帰無仮説検定</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="section-5.html"><a href="section-5.html#12"><i class="fa fa-check"></i><b>5.2</b> 第1種の過誤と第2種の過誤</a></li>
+<li class="chapter" data-level="5.3" data-path="section-5.html"><a href="section-5.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 統計的帰無検定の問題</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="section-5.html"><a href="section-5.html#p"><i class="fa fa-check"></i><b>5.3.1</b> p値</a></li>
+<li class="chapter" data-level="5.3.2" data-path="section-5.html"><a href="section-5.html#section-5.3.2"><i class="fa fa-check"></i><b>5.3.2</b> 多重比較の問題（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-5"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-8"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i><b>6</b> ｔ検定，分散分析</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1</b> t検定</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1.1</b> 一標本のt検定</a></li>
+<li class="chapter" data-level="6.1.2" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1.2</b> 二標本の差のt検定（対応なし）</a></li>
+<li class="chapter" data-level="6.1.3" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1.3</b> 二標本の差のt検定（対応あり）</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="section-6.html"><a href="section-6.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 分散分析</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-6.html"><a href="section-6.html#section-6.2.1"><i class="fa fa-check"></i><b>6.2.1</b> 一要因の分散分析</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-6.html"><a href="section-6.html#section-6.2.2"><i class="fa fa-check"></i><b>6.2.2</b> 多重比較</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-6.html"><a href="section-6.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> まとめ</a></li>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-6"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-9"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-10"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-11"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="section-7.html"><a href="section-7.html"><i class="fa fa-check"></i><b>7</b> 統計的帰無仮説検定の問題</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-5.html"><a href="section-5.html#p"><i class="fa fa-check"></i><b>7.1</b> p値の問題</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="section-7.html"><a href="section-7.html#section-7.1.1"><i class="fa fa-check"></i><b>7.1.1</b> 第Ⅰ種の過誤</a></li>
+<li class="chapter" data-level="7.1.2" data-path="section-5.html"><a href="section-5.html#p"><i class="fa fa-check"></i><b>7.1.2</b> p値と標本数の関係</a></li>
+<li class="chapter" data-level="7.1.3" data-path="section-7.html"><a href="section-7.html#p-hacking"><i class="fa fa-check"></i><b>7.1.3</b> p-hacking（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="section-7.html"><a href="section-7.html#section-7.2"><i class="fa fa-check"></i><b>7.2</b> 効果量</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="section-7.html"><a href="section-7.html#cohens-d"><i class="fa fa-check"></i><b>7.2.1</b> Cohen’s d</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="section-7.html"><a href="section-7.html#section-7.3"><i class="fa fa-check"></i><b>7.3</b> 検定力</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>7.3.1</b> 第Ⅱ種の過誤</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="section-7.html"><a href="section-7.html#section-7.4"><i class="fa fa-check"></i><b>7.4</b> 有意水準，効果量，検定力，標本数の関係</a></li>
+<li class="chapter" data-level="7.5" data-path="section-7.html"><a href="section-7.html#section-7.5"><i class="fa fa-check"></i><b>7.5</b> 信頼区間</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="section-7.html"><a href="section-7.html#section-7.5.1"><i class="fa fa-check"></i><b>7.5.1</b> 信頼区間の求め方</a></li>
+<li class="chapter" data-level="7.5.2" data-path="section-7.html"><a href="section-7.html#section-7.5.2"><i class="fa fa-check"></i><b>7.5.2</b> 信頼区間と統計的帰無仮説検定の関係</a></li>
+<li class="chapter" data-level="7.5.3" data-path="section-7.html"><a href="section-7.html#section-7.5.3"><i class="fa fa-check"></i><b>7.5.3</b> 平均値以外の信頼区間の求め方（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-7"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-7.html"><a href="section-7.html#-12"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-7.html"><a href="section-7.html#-13"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-8.html"><a href="section-8.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>8.1</b> 回帰分析</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-8.html"><a href="section-8.html#section-8.1.1"><i class="fa fa-check"></i><b>8.1.1</b> 回帰分析の結果の解釈</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-8.html"><a href="section-8.html#section-8.1.2"><i class="fa fa-check"></i><b>8.1.2</b> 最小二乗法（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="section-8.html"><a href="section-8.html#section-8.2"><i class="fa fa-check"></i><b>8.2</b> 重回帰分析</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-8.html"><a href="section-8.html#section-8.2.1"><i class="fa fa-check"></i><b>8.2.1</b> 多重共線性（＊）</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-8.html"><a href="section-8.html#section-8.2.2"><i class="fa fa-check"></i><b>8.2.2</b> 決定係数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="section-8.html"><a href="section-8.html#section-8.3"><i class="fa fa-check"></i><b>8.3</b> ダミー変数（独立変数が質的変数の場合）</a></li>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-8"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-8.html"><a href="section-8.html#-14"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-8.html"><a href="section-8.html#-15"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-9.html"><a href="section-9.html"><i class="fa fa-check"></i><b>9</b> 線形モデル</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-9.html"><a href="section-9.html#section-9.1"><i class="fa fa-check"></i><b>9.1</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="section-9.html"><a href="section-9.html#section-9.1.1"><i class="fa fa-check"></i><b>9.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="9.1.2" data-path="section-9.html"><a href="section-9.html#section-9.1.2"><i class="fa fa-check"></i><b>9.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="9.1.3" data-path="section-9.html"><a href="section-9.html#section-9.1.3"><i class="fa fa-check"></i><b>9.1.3</b> リンク関数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="section-9.html"><a href="section-9.html#section-9.2"><i class="fa fa-check"></i><b>9.2</b> 一般化線形モデルと統計解析との関係</a></li>
+<li class="chapter" data-level="9.3" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>9.3</b> Rでの一般化線形モデルの方法</a></li>
+<li class="chapter" data-level="9.4" data-path="section-9.html"><a href="section-9.html#section-9.4"><i class="fa fa-check"></i><b>9.4</b> 線形モデルに含まれる統計解析</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>9.4.1</b> 重回帰分析</a></li>
+<li class="chapter" data-level="9.4.2" data-path="section-9.html"><a href="section-9.html#t-1"><i class="fa fa-check"></i><b>9.4.2</b> t検定</a></li>
+<li class="chapter" data-level="9.4.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>9.4.3</b> 分散分析</a></li>
+<li class="chapter" data-level="9.4.4" data-path="section-9.html"><a href="section-9.html#section-9.4.4"><i class="fa fa-check"></i><b>9.4.4</b> 共分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-9"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-9.html"><a href="section-9.html#-16"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-9.html"><a href="section-9.html#-17"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="10.1" data-path="-1.html"><a href="-1.html"><i class="fa fa-check"></i><b>10.1</b> 一般化線形モデル（再掲）</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="10.1.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="10.1.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.3</b> リンク関数</a></li>
+<li class="chapter" data-level="10.1.4" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.4</b> 一般化線形モデルと統計解析との関係</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="-1.html"><a href="-1.html#section-10.2"><i class="fa fa-check"></i><b>10.2</b> 今回の予定</a></li>
+<li class="chapter" data-level="10.3" data-path="-1.html"><a href="-1.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.3.1</b> 二項分布</a></li>
+<li class="chapter" data-level="10.3.2" data-path="-1.html"><a href="-1.html#section-10.3.2"><i class="fa fa-check"></i><b>10.3.2</b> 例題</a></li>
+<li class="chapter" data-level="10.3.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.3.3</b> まとめ</a></li>
+<li class="chapter" data-level="10.3.4" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>10.3.4</b> Rでのロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="-1.html"><a href="-1.html#section-10.4"><i class="fa fa-check"></i><b>10.4</b> 最尤法（＊）</a></li>
+<li class="chapter" data-level="10.5" data-path="-1.html"><a href="-1.html#section-10.5"><i class="fa fa-check"></i><b>10.5</b> ポアソン回帰分析（＊）</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.5.1</b> ポアソン分布（＊）</a></li>
+<li class="chapter" data-level="10.5.2" data-path="-1.html"><a href="-1.html#section-10.5.2"><i class="fa fa-check"></i><b>10.5.2</b> ポアソン回帰（＊）</a></li>
+<li class="chapter" data-level="10.5.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.5.3</b> 例題（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="-1.html"><a href="-1.html#section-10.6"><i class="fa fa-check"></i><b>10.6</b> モデルの予測力</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.6.1</b> 決定係数</a></li>
+<li class="chapter" data-level="10.6.2" data-path="-1.html"><a href="-1.html#aic"><i class="fa fa-check"></i><b>10.6.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="10.6.3" data-path="-1.html"><a href="-1.html#section-10.6.3"><i class="fa fa-check"></i><b>10.6.3</b> モデル選択（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-10"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="-1.html"><a href="-1.html#-18"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-2"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-11.html"><a href="section-11.html"><i class="fa fa-check"></i><b>11</b> 一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-11.html"><a href="section-11.html#section-11.1"><i class="fa fa-check"></i><b>11.1</b> 個人差や集団差の影響</a></li>
+<li class="chapter" data-level="11.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形混合モデル</a></li>
+<li class="chapter" data-level="11.3" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>11.3</b> Rでの一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="section-11.html"><a href="section-11.html#section-11.3.1"><i class="fa fa-check"></i><b>11.3.1</b> 対応のある要因を含む分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="section-11.html"><a href="section-11.html#section-11.4"><i class="fa fa-check"></i><b>11.4</b> 一般化線型混合モデルの拡張（ロジスティック回帰）</a></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-11"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-11.html"><a href="section-11.html#-19"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-11.html"><a href="section-11.html#-20"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-3"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>A</b> tidyverseの解説</a><ul>
+<li class="chapter" data-level="A.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>A.1</b> tibble</a></li>
+<li class="chapter" data-level="A.2" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>A.2</b> ggplot2</a></li>
+<li class="chapter" data-level="A.3" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>A.3</b> dplyr</a></li>
+<li class="chapter" data-level="A.4" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>A.4</b> purrr</a></li>
+<li class="chapter" data-level="A.5" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>A.5</b> readr</a></li>
+<li class="chapter" data-level="A.6" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>A.6</b> tidyr</a></li>
+<li class="chapter" data-level="A.7" data-path="tidyverse.html"><a href="tidyverse.html#read_excel"><i class="fa fa-check"></i><b>A.7</b> read_excel</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="04-probability_distribution.html"><a href="#section-B"><i class="fa fa-check"></i><b>B</b> 使い方まとめ</a><ul>
+<li class="chapter" data-level="B.1" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>B.1</b> tidyverseパッケージのインストールとロード</a></li>
+<li class="chapter" data-level="B.2" data-path="04-probability_distribution.html"><a href="#section-B.2"><i class="fa fa-check"></i><b>B.2</b> データの読み込み</a></li>
+<li class="chapter" data-level="B.3" data-path="04-probability_distribution.html"><a href="#section-B.3"><i class="fa fa-check"></i><b>B.3</b> 結果の集計</a></li>
+<li class="chapter" data-level="B.4" data-path="04-probability_distribution.html"><a href="#section-B.4"><i class="fa fa-check"></i><b>B.4</b> グラフの作成</a></li>
+<li class="chapter" data-level="B.5" data-path="04-probability_distribution.html"><a href="#section-B.5"><i class="fa fa-check"></i><b>B.5</b> 新しい変数を作る</a></li>
+<li class="chapter" data-level="B.6" data-path="04-probability_distribution.html"><a href="#section-B.6"><i class="fa fa-check"></i><b>B.6</b> データを保存する</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="10.html"><a href="10.html"><i class="fa fa-check"></i><b>C</b> 第10章「一般化線形モデル」の付録</a><ul>
+<li class="chapter" data-level="C.1" data-path="04-probability_distribution.html"><a href="#section-C.1"><i class="fa fa-check"></i><b>C.1</b> １．指数と対数</a><ul>
+<li class="chapter" data-level="C.1.1" data-path="04-probability_distribution.html"><a href="#section-C.1.1"><i class="fa fa-check"></i><b>C.1.1</b> 指数関数</a></li>
+<li class="chapter" data-level="C.1.2" data-path="04-probability_distribution.html"><a href="#section-C.1.2"><i class="fa fa-check"></i><b>C.1.2</b> 対数関数</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="04-probability_distribution.html"><a href="#section-C.2"><i class="fa fa-check"></i><b>C.2</b> ２．ロジスティック関数とロジット関数の関係</a></li>
+<li class="chapter" data-level="C.3" data-path="04-probability_distribution.html"><a href="#section-C.3"><i class="fa fa-check"></i><b>C.3</b> ３．ロジスティック回帰の係数の意味</a></li>
+<li class="chapter" data-level="C.4" data-path="04-probability_distribution.html"><a href="#section-C.4"><i class="fa fa-check"></i><b>C.4</b> ４．ポアソン回帰で対数をリンク関数とする理由</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理学データ解析法Ⅰ 2019</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-4" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> 確率分布</h1>
+<ul>
+<li>確率分布とは何かについて学ぶ。
+<ul>
+<li>確率変数と確率分布</li>
+<li>二項分布</li>
+<li>正規分布</li>
+<li>その他の確率分布</li>
+</ul></li>
+</ul>
+<p>今回の演習でも，tidyverseパッケージを使うので，予めロードしておく。また，set.seed(1234)というプログラムを実行しておく。</p>
+<ul>
+<li>set.seed()はいわゆる「乱数の種」というものを設定するための関数。乱数の種を同じ値に設定しておくと，乱数を再現することが出来る（このテキストに書いてあるのと同じ結果が再現できる）。</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
+<span class="kw">library</span>(tidyverse)
+<span class="kw">set.seed</span>(<span class="dv">1234</span>)</code></pre>
+<div id="section-4.1" class="section level2">
+<h2><span class="header-section-number">4.1</span> 確率変数と確率分布</h2>
+<p>サイコロを1個投げるとする。それぞれの目が出る確率は1/6である。それぞれの目をX（1, 2, 3, 4, 5, 6），それぞれの目が出る確率をP(X)とする。<br />
+XとP(X)を以下の表1で示す。</p>
+<p>表1<br />
+<img src="04_table01.png" /></p>
+<p>このとき，Xを<strong>確率変数</strong>と呼ぶ。その値と対応する確率が存在する変数のことをいう。表1のように，確率変数とその変数が取り得る確率の分布を<strong>確率分布</strong>という。</p>
+<p>確率分布には様々な種類がある。今回は特に，その中でも<strong>二項分布</strong>と<strong>正規分布</strong>について扱う。</p>
+<p>※なお，上のサイコロの目の例のように，どの確率変数Xについても常に一定値の確率を取る確率分布は<strong>一様分布(uniform distribution)</strong>と呼ばれる。</p>
+</div>
+<div id="section-4.2" class="section level2">
+<h2><span class="header-section-number">4.2</span> 二項分布</h2>
+<div id="section-4.2.1" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> 二項分布の基本</h3>
+<p>コインをn回投げる。表が出る確率を<span class="math inline">\(q\)</span>とすると, 裏が出る確率は<span class="math inline">\((1-q)\)</span>となる。n回中，表がx回出る確率P(x)は，理論的には以下の式で算出される。</p>
+<p><span class="math display">\[
+P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}
+\]</span></p>
+<p>xを確率変数とした場合，上記の式の確率に従う確率分布を<strong>二項分布</strong>という。
+つまり二項分布は，<strong>生じる事象が2つのカテゴリに分けられる場合</strong>に当てはまる確率分布である。コインを投げたときに出る面が「表か裏」か，学生の中から選んだ人の性別が「男か女」か，ある意見について「賛成か反対」かなど。このような事象が生じる確率は，理論的には二項分布に従う。</p>
+<p>コインを投げる場合の例に戻る。例えば，表が出る確率qを0.5として，10回投げたときに表が6回出る確率を計算してみよう。Rならば，dbinom()関数を使えば簡単に計算できる。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#xは確率変数（コインの例での），sizeは試行回数（コインの例のnに相当），</span>
+<span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">6</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob=</span><span class="fl">0.5</span>)</code></pre>
+<pre><code>## [1] 0.2050781</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#上の式n, x, pに実際に値を入れて計算する場合。dbinom()関数を使った場合と結果が一致することを確認しよう。</span>
+<span class="kw">choose</span>(<span class="dv">10</span>, <span class="dv">6</span>) <span class="op">*</span><span class="st"> </span><span class="fl">0.5</span><span class="op">^</span><span class="dv">6</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span>) <span class="op">^</span><span class="dv">4</span></code></pre>
+<pre><code>## [1] 0.2050781</code></pre>
+<p>二項分布は以下のように表現されることもある。</p>
+<p><span class="math display">\[
+x \sim Binomial(n, q)
+\]</span></p>
+<p>Binomialのカッコ内のn, qのように，確率分布を構成する変数のことをパラメータと呼ぶ。
+Binomialは二項分布，<span class="math inline">\(\sim\)</span>は「従う」という意味である。つまりこの式は，「xは，nとqをパラメータとする二項分布に従う」ということをいっている。</p>
+</div>
+<div id="section-4.2.2" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> 二項分布の期待値と分散</h3>
+<p>表が出る回数xが0〜10回の場合全てについて，それぞれが生じる確率を計算すると以下のようになる。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob=</span><span class="fl">0.5</span>)</code></pre>
+<pre><code>##  [1] 0.0009765625 0.0097656250 0.0439453125 0.1171875000 0.2050781250
+##  [6] 0.2460937500 0.2050781250 0.1171875000 0.0439453125 0.0097656250
+## [11] 0.0009765625</code></pre>
+<p>グラフにすると以下のようになる。横軸をx, 縦軸をP(x)とする。</p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/dbinom_2_plot_chap04-1.png" width="672" /></p>
+<p>グラフからもわかるように，表が出る確率が0.5のコインを10回投げたときに，最も出やすいのは10回中5回であることがわかる。10回中1回，10回中10回出るケースはほとんどまれであることがわかる。<br />
+この図からも，確率分布には最も出やすい変数（平均値。確率分布の場合は期待値と呼ぶ）と分散が存在することがわかる。</p>
+<p>二項分布の期待値<span class="math inline">\(E(x)\)</span>と分散<span class="math inline">\(Var(x)\)</span>は，以下の式から計算できる。</p>
+<p><span class="math display">\[
+E(x) = nq\\
+Var(x) = nq(1-q)
+\]</span></p>
+<p>表が出る確率が0.5（i.e., q=0.5）のコインを10回(i.e., n=10)投げた場合における，表が出る回数xの期待値と分散を計算してみよう。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#E(x) = nq</span>
+<span class="dv">10</span><span class="op">*</span><span class="fl">0.5</span></code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Var(x) = nq(1-q)</span>
+<span class="dv">10</span><span class="op">*</span><span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)</code></pre>
+<pre><code>## [1] 2.5</code></pre>
+<p>n=1のときは，<em>ベルヌーイ分布</em>と呼ばれる（例えばコインを1回だけ投げる場合）。</p>
+</div>
+</div>
+<div id="section-4.3" class="section level2">
+<h2><span class="header-section-number">4.3</span> 正規分布</h2>
+<div id="section-4.3.1" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> 正規分布の基礎</h3>
+<p>統計学で用いられる確率分布の中でも有名なのは<em>正規分布</em>である。正規分布は，平均<span class="math inline">\(\mu\)</span>，標準偏差<span class="math inline">\(\sigma\)</span>をパラメータとする確率分布で，釣鐘型（ベル・カーブ）状の分布を描く。</p>
+<p>平均<span class="math inline">\(\mu\)</span>，標準偏差<span class="math inline">\(\sigma\)</span>とする正規分布の確率密度関数f(x)は，以下の式から計算される。</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\]</span></p>
+<ul>
+<li><p>この式自体を覚える必要はない。</p></li>
+<li><p>これは確率分布ではなく，<strong>確率密度関数</strong>と呼ばれるものである。確率分布は縦軸が横軸の値それぞれが生じる確率を意味しているが，確率密度関数の縦軸は確率そのものを意味しない。確率密度関数の面積が確率を意味する。すなわち，確率密度関数の面積全てを合計した値は，1となる。</p></li>
+</ul>
+<p>または，以下のように表現することもある。</p>
+<p><span class="math display">\[
+x \sim Normal(\mu, \sigma)
+\]</span></p>
+<p>平均<span class="math inline">\(\mu\)</span>を0，標準偏差<span class="math inline">\(\sigma\)</span>を1とする正規分布について考えてみる。<br />
+Rならば，dnorm関数で確率密度関数を出力することができる。</p>
+<pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.05</span>)
+y =<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x=</span>x, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>)
+y</code></pre>
+<p>これをグラフにすると以下のようになる。</p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/norm_distribution_plot_chap04-1.png" width="672" /></p>
+<p>x=0からx=1の範囲が生じる確率は，その範囲に対応するグラフの面積となる。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Rならば，pnorm関数でxが-∞からqまでの範囲の確率を求めることができる</span>
+<span class="co">#以下は，平均0，標準偏差1の正規分布で 0までの確率を求めている。正規分布の半分に相当するので，0.5である。</span>
+<span class="kw">pnorm</span>(<span class="dt">q=</span><span class="dv">0</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>)</code></pre>
+<pre><code>## [1] 0.5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#特定の範囲を求めたい場合は以下のように使えば良い。例えば以下は，xが1から2の範囲の確率である。</span>
+x =<span class="st"> </span><span class="kw">pnorm</span>(<span class="dt">q=</span><span class="dv">2</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dt">q=</span><span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">1</span>) 
+x</code></pre>
+<pre><code>## [1] 0.1359051</code></pre>
+<p>以下が平均<span class="math inline">\(\mu\)</span>と標準偏差<span class="math inline">\(\sigma\)</span>の値をそれぞれ変えた場合の正規分布である。</p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/norm_distribution_plot2_chap04-1.png" width="672" /></p>
+<ul>
+<li>正規分布は平均<span class="math inline">\(\mu\)</span>を対象として左右対称のかたちを描く。</li>
+<li>統計学では様々な変数について，「変数が正規分布に従う」という仮定を置くことが多い。体重や身長なども経験的に正規分布を描く。正規分布は以降でも述べるように確率変数xが連続量の場合の確率分布であるが，離散値のデータについても正規分布を仮定して分析することもよくある（テストの点数，質問紙の回答得点など）。</li>
+<li>しかし，世の中には正規分布に従わない変数もある(例えば年収などは釣鐘型の分布にならない)。データ分析の前に事前に実際のデータの分布を見て，左右対称でないなど明らかに正規分布を仮定できない変数については分析のやりかたを考える必要がある。</li>
+<li><p>平均0, 標準偏差1の正規分布は<strong>標準正規分布</strong>と呼ばれる。</p></li>
+<li><p>二項分布<span class="math inline">\(Binomial(n, p)\)</span>の<span class="math inline">\(n\)</span>が十分に大きい場合，二項分布は正規分布<span class="math inline">\(Normal(np, \sqrt{np(1-p)})\)</span>に近似する。例えば，以下にn=50のときの二項分布を示す。</p></li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#n=50のとき</span>
+plot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">p=</span><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">0</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">size=</span><span class="dv">50</span>, <span class="dt">prob=</span><span class="fl">0.5</span>))
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data=</span>plot, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">factor</span>(x), <span class="dt">y=</span>p)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;P(x)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>)
+p</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/binom_norm_chap04-1.png" width="672" /></p>
+</div>
+<div id="section-4.3.2" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> 中心極限定理（＊）</h3>
+<p>「母集団の確率分布が平均<span class="math inline">\(\mu\)</span>，標準偏差<span class="math inline">\(\sigma\)</span>を持つ確率分布に従う<span class="math inline">\(X\)</span>について，その平均値<span class="math inline">\(\bar{X_{n}}\)</span>はnが大きくなれば，平均<span class="math inline">\(\mu\)</span>，標準偏差<span class="math inline">\(\sigma\)</span>の正規分布に収束する」というのが<strong>中心極限定理</strong>である。つまり，元の分布がどのような分布でも，そこから平均値を計算することを何回も繰り返すとその分布は正規分布のかたちになるということを意味する。</p>
+<p>シミュレーションで確認する。6面のサイコロを100回振る実験を行うとする。</p>
+<pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>)
+<span class="kw">mean</span>(X)</code></pre>
+<pre><code>## [1] 3.24</code></pre>
+<p>それぞれの目が出る確率は1/6で一定である。すなわち，サイコロが出る目は一様分布に従う（正規分布ではない）。一様分布の平均値は，最大値をa, 最小値をbとすると，(a+b)/2。すなわち，サイコロの例の場合の平均値は理論的には(1+6)/2=3.5となる。</p>
+<p>サイコロを100回振って平均値を求める。この平均値を求めるのを，1,000回繰り返し行う。求めた平均値1,000個の分布を見てみると。。</p>
+<pre class="sourceCode r"><code class="sourceCode r">sample.means &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>), <span class="cf">function</span>(x) {<span class="kw">mean</span>(<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )
+<span class="kw">qplot</span>(sample.means)</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/central_limit_1000_chap04-1.png" width="672" /></p>
+<p>正規分布に近似する。1,000回よりももっと回数を増やすと，より正規分布っぽいかたちになる。</p>
+<p>このように，元の母集団の分布がたとえ正規分布でなくても，その標本平均は正規分布に近似する。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#サイコロを7回振ってその合計を求める。これを10,000回行ったときの出目の合計値の分布</span>
+Y &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>) <span class="op">+</span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>) <span class="op">+</span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>) <span class="op">+</span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>) <span class="op">+</span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>) <span class="op">+</span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>) <span class="op">+</span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10000</span>,<span class="dt">min=</span><span class="dv">1</span>,<span class="dt">max=</span><span class="dv">6</span>),<span class="dv">0</span>)
+<span class="kw">qplot</span>(Y)</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/central_limit_2_chap04-1.png" width="672" /></p>
+<p>中心極限定理が成り立つため，たとえ元の変数が正規分布に従ってなくても，平均化したものを使えば正規分布を前提とした統計的仮説検定を行なっても大きな問題はない。</p>
+<ul>
+<li>複数の質問項目（順序尺度）をまとめて平均化した心理尺度を分析に使う。<br />
+</li>
+<li>選挙への投票（「した」もしくは「しなかった」の二値）者の割合を県ごとに算出して，県を単位として分析に使う。</li>
+</ul>
+</div>
+</div>
+<div id="section-4.4" class="section level2">
+<h2><span class="header-section-number">4.4</span> その他の確率分布（＊）</h2>
+<p>二項分布のように，確率変数xが離散変数の場合の確率分布は，<strong>離散確率分布</strong>という。<br />
+正規分布のように，確率変数xが連続変数の場合は，<strong>連続確率分布</strong>という。</p>
+<p>他にも確率分布は以下のようなものがある。</p>
+<div id="section-4.4.1" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> 離散確率分布</h3>
+<div id="e3839de382a2e382bde383b3e58886e5b883" class="section level4 unnumbered">
+<h4>ポアソン分布</h4>
+<p><span class="math display">\[
+P(x) = \frac{\lambda^x\exp(-\lambda)}{x!}\\
+x \sim Poisson(\lambda)\\
+\]</span></p>
+<ul>
+<li>xは0以上の整数（0, 1, 2, 3, …）とする。<br />
+</li>
+<li>ポアソン分布のパラメータは<span class="math inline">\(\lambda\)</span>だけである。期待値（平均）は<span class="math inline">\(\lambda\)</span>，分散は<span class="math inline">\(\lambda\)</span>である。つまり，平均と分散が等しい分布である。</li>
+<li>以下に，パラメータ<span class="math inline">\(\lambda\)</span>をそれぞれ変えた場合のポアソン分布を示す。</li>
+</ul>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/poisson_distribution_plot2_chap04-1.png" width="672" /></p>
+<ul>
+<li><p>一定の期間中にランダムで生じる事象はポアソン分布に従う。具体的な例としては，1日の間に届くメールの件数，営業時間中に来る客の数など。</p></li>
+<li><p>二項分布<span class="math inline">\(Binomial(n, p)\)</span>の<span class="math inline">\(n\)</span>が十分大きく，かつ<span class="math inline">\(p\)</span>が小さい場合は平均を<span class="math inline">\(np\)</span>とするポアソン分布に近似する。つまり，めったに起こらない事象はポアソン分布に従う。例えば，1年間の間に生じる交通事故の件数など（365日それぞれで0.1%で生じるとした場合）。歴史的に有名な例は，「ドイツ軍で1年間で馬に蹴られて死亡した兵士の数」がポアソン分布に従うというもの。</p></li>
+</ul>
+</div>
+</div>
+<div id="section-4.4.2" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> 連続確率分布</h3>
+<div id="t" class="section level4 unnumbered">
+<h4>t分布</h4>
+<p><span class="math display">\[
+P(x) = \frac{\Gamma((v+1)/2)}{\Gamma(v/2)\sqrt{\pi v}\sigma}\left(1+\frac{1}{v}\left(\frac{x-\mu}{\sigma}\right)^2\right)^{-(v+1)/2}\\
+x \sim Student\_t(v, \mu, \sigma)\\
+\]</span></p>
+<ul>
+<li>パラメータは3つ。vは自由度と呼ばれる。<br />
+</li>
+<li>自由度の小さいt分布は分布の裾が長くなる。すなわち，外れ値を含んだ分布となる。</li>
+<li>自由度<span class="math inline">\(\infty\)</span>のt分布は正規分布と一致する。</li>
+</ul>
+<p>連続確率分布には他にも対数正規分布，指数分布などがあるが，とりあえずは正規分布を知っておけば良い。</p>
+</div>
+</div>
+</div>
+<div id="-4" class="section level2 unnumbered">
+<h2>練習問題</h2>
+<div id="-5" class="section level3 unnumbered">
+<h3>問１</h3>
+<ul>
+<li>あなたは野球部の監督で，自分のチームの勝率はこれまでの練習の経験から32%だとわかっている。</li>
+<li><p>これから遠征で，全部で10試合を行う予定である。</p></li>
+<li>勝つ試合の回数を確率変数nとし，nとそれぞれのnに対応する確率を表で示せ。</li>
+<li><p>平均して何試合勝つことができるかを述べよ。</p></li>
+</ul>
+</div>
+<div id="-6" class="section level3 unnumbered">
+<h3>問２</h3>
+<ul>
+<li><p>ある学校で小学6年生の身長を測ったところ，平均は150.2 cmで標準偏差が3.5 cmであった。</p></li>
+<li>身長152 cmから155 cmの児童の割合はいくらか。</li>
+<li>身長158 cmを超える児童は何割いるか。
+<ul>
+<li>ヒント：pnorm関数を使おう。なお，全ての範囲の確率の合計は1である。</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Data-Analysis-for-Psychology.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed",
+"download": null,
+"search": true,
+"fontsettings": {
+"size": 1
+},
+"sharing": null
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

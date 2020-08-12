@@ -1,0 +1,375 @@
+
+```{r setup_chap03, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) 
+library(MASS) 
+```
+
+# データ・ハンドリング
+
+tidyverseパッケージに入っている関数を主に使いながら，今後のデータ分析の演習で必要なデータ操作について学ぶ。  
+
+* 変数の作成  
+* データの抽出  
+* パイプ  
+* グルーピング  
+* データの変換  
+* データの結合  
+* データの読み込み  
+
+
+## tidyverseパッケージのロード
+  
+
+```{r setup2_chap03, warning=FALSE, message=FALSE, eval=FALSE}
+
+install.packages("tidyverse") 
+library(tidyverse) 
+
+```
+
+
+tidyverseは様々なパッケージを含んだ，パッケージのセットである。Rを使いやすくするための便利なパッケージがまとめて入っている。具体的には，以下のパッケージが入っている。  
+  
+* ggplot2: グラフを作るのに特化したパッケージ  
+* readr: ファイルの読み込みに特化したパッケージ  
+* dplyr: データの整理に特化したパッケージ  
+など
+
+詳細はtidyverseの公式ページを参照。
+[https://www.tidyverse.org](https://www.tidyverse.org)
+
+注意：  
+* 以降のプログラムで関数は「XXXX::YYYY」と表現されているが，これらは「XXXXパッケージに入っているYYYYという関数を使う」という意味である。XXXX::の部分は，基本的に省略しても問題ない。  
+* tidyverse以外のパッケージも読み込んでいる場合，同じ名前の関数を含むパッケージがあるとエラーが生じてしまう。もしエラーが生じたときは，XXXX::を付けてどのパッケージの関数を使いたいのかを指定しよう。  
+  
+  
+以降では，Rに最初から入っている`iris`データを使ってファイル操作の練習を行う。
+
+```{r, eval=FALSE}
+
+head(iris) #irisの先頭数行を表示する
+
+```
+
+## 変数の作成
+
+dplyrパッケージに入っている`mutate()`を使うと，新たに変数を追加することができる。
+`mutate()`に，*データの名前，新しい変数*の順番で入力すると，データの右端に新しい変数を追加してくれる。
+
+```{r}
+
+dat = iris #irisデータをdatという名前に置き換える
+
+dat2 = mutate(dat, new_var = Sepal.Length + Petal.Length, hoge = ifelse(Species == "setosa", 1, 0)) #Sepal.LengthとPetal.Lengthを足し合わせて，new_varという名前の新しい変数を作る。更に，Sepeciesが"setosa"ならば1, そうでなければ0とするhogeという変数を作る。
+
+head(dat2)
+
+```
+
+
+## データの抽出
+
+dplyrパッケージに入っている`select`, `filter`関数を使うと，データの中から必要な部分のみを取り出すことができる。
+
+### 必要な変数のみを取り出す（select）
+
+`select()`で，*データの名前，取り出したい変数名（複数選択可）*の順番で入力すると，指定した変数の列のみを取り出してくれる。  
+  
+以下には，`iris`データから`Sepal.Length`と`Petal.Length`のみを取り出す場合のプログラム例を示す。
+
+```{r}
+
+dat = iris #irisデータをdatという名前に置き換える
+
+dat2 = dplyr::select(dat, Sepal.Length, Petal.Length) #データから必要な例を取り出す。Sepal.LengthとPetal.Lengthの列を取り出す。
+
+head(dat2)
+
+```
+
+
+### 条件に合う行を取り出す（filter）
+
+ある条件に合う部分のみを取り出したい場合（例えばデータの中から男性のみを取り出したいなど），`filter()`で，*データの名前，条件式*の順番で入力すると，データの中から条件に合う行のみを取り出してくれる。  
+  
+以下には，`iris`データから，あやめの種類（`"Species"`）のうち`"versicolor"`のみを取り出す場合のプログラム例を示す。
+
+```{r}
+
+dat = iris #irisデータをdatという名前に置き換える
+
+dat2 = dplyr::filter(dat, Species == "versicolor") #データから条件にあう行だけを取り出す。Speciesのうち，versicolorのみを取り出す。「イコール」は=ではなく，==にするのに注意（計算式と論理式ではイコールの表現が異なる）。
+
+head(dat2)
+
+```
+
+
+
+## パイプ
+
+複数のプログラムをつなげることを*パイプ処理*という。*purrr*パッケージで，Rでパイプ処理をすることができる。  
+  
+具体的な例として，`iris`データで「あやめの種類のうち`"setosa"`を取り出して，かつ変数として`Species`，`Sepal.Width`,  
+`Sepal.Length`のみを取り出したい」とする。  
+先程まで学んだ知識だけでもできなくはないが，プログラムが数行に渡って面倒くさくなる（プログラムが長くなるとミスも生じやすくなる）。
+
+```{r}
+
+dat = iris #irisデータをdatという名前に置き換える
+
+dat2 = dplyr::filter(dat, Species == "setosa") #まずSpeciesのうち，setosaのみを取り出す。dat2という名前で保存する。
+
+dat3 = dplyr::select(dat2, Species, Sepal.Length, Petal.Length) #別の名前で保存し直したdat2から，Sepal.LengthとPetal.Lengthの列を取り出す。dat3という名前で保存する
+
+head(dat3)
+
+
+```
+
+パイプ（`%>%`）を使えば，このプログラムを1行で書くことができる。
+
+
+```{r}
+
+dat = iris #irisデータをdatという名前に置き換える
+
+dat2 = dat %>% dplyr::filter(., Species == "setosa") %>% 
+  dply::select(., Species, Sepal.Length, Petal.Length)
+
+head(dat2)
+
+```
+
+`%>%`はプログラムを渡していく関数であり，`.`はそのプログラム以前の結果を示している。`iris`データを`filter`に渡し，その結果を`select`に渡している。
+
+ドットは省いてしまっても良い（以降のプログラムの例でも，`.`は省略することにする）。
+
+```{r, eval = FALSE}
+
+dat2 = dat %>% dplyr::filter(Species == "setosa") %>% 
+  dply::select(Species, Sepal.Length, Petal.Length)
+
+```
+
+
+## グルーピング
+
+パイプを利用することで，グループごとに統計量を算出することが簡単になる。
+  
+`iris`データを例として，グループごとに平均や標準偏差を計算する方法を身につけよう。  
+  
+あやめの種類ごとに，がくの長さの平均と標準偏差を算出してみる。  
+先ほど学んだパイプ処理（`%>%`）に加え，`dplyr`パッケージの`group_by`と`summarise`関数を利用する。
+
+```{r}
+
+dat = iris #irisデータをdatという名前に置き換える
+
+dat2 = dat %>% 
+  dplyr::group_by(Species) %>% 
+  dplyr::summarise(Mean = mean(Sepal.Width, na.rm = TRUE), SD = sd(Sepal.Width, na.rm = TRUE), N = length(Sepal.Width))
+#Speciesをグループ化し，グループごとにSepal.Widthの平均，標準偏差，サンプル数（ベクトルの長さ）を出力する。
+dat2
+
+```
+
+* `group_by()`はグループ変数を作成する関数である。データの中でグループとして使いたい変数を括弧内に指定する。  
+* `summarise()`は，複数の関数を実行させる関数である。この例では，`mean()`，`sd()`, `length()`の3つの関数を実行し，それぞれの結果をMean, SD, Nという別の名前で保存している。  
+  
+
+
+
+## データの変換
+
+`tidyr`パッケージに入っている`gather()`と`spread()`を使うと，データの並び替えなどをすることができる。
+
+### wide型とlong型の区別
+
+まず，データのレイアウトには，*wide型*と*long型*の二種類があることを理解しよう。  
+  
+以下のデータを例として説明する。A, B, Cの3人の参加者が，X, Y, Z条件の３つの条件で実験課題を行ったとする。  
+それぞれの条件での課題の成績（数値），参加者の性別，年齢をデータとして入力する。  
+  
+
+```{r}
+
+dat_wide = data.frame(Subject = c("A","B","C"), X = c(6,2,7), Y = c(9,3,4), Z = c(7,5,7), Gender = c("M", "F", "F"), Age = c(18, 19, 20))  #サンプルデータを作る
+
+dat_wide
+
+```
+
+このようにデータの入力方法として，**１行につき１人の参加者の情報**を入力するやり方がある（実験でデータを入力する際も，このレイアウトの方が入力しやすいだろう）。このようなデータのレイアウトをwide型という。  
+  
+同じデータを，以下のようなレイアウトで表現することもできる。
+
+```{r}
+
+#以下のプログラムを実行して，サンプルデータを作る
+dat_long = data.frame(Subject = sort(rep(c("A","B","C"), 3)), Condition = rep(c("X","Y","Z"), 3), Score = c(6,9,7,2,3,5,7,4,7), Gender = c("M", "M", "M", "F","F","F","F","F", "F"), Age = sort(rep(c(18,19,20), 3)))  
+
+dat_long
+
+
+```
+
+**実験成績ごとに１行ずつ**でデータが作られている。すなわち，同じ参加者１人につき３行のデータがある。このようなデータの方をlong型と呼ぶ。
+
+
+#### どのデータ型にすべきか？
+
+Rでのデータ分析用関数は，long型でデータが入っていることを想定として作られている。従って，wide型で入力したデータを，Rでデータ解析をする際にはlong型に変換する必要が生じる時がある。  
+  
+今後学ぶデータ解析も，基本的に分析で使うデータはlong型を前提とする。
+
+### データレイアウトの変換
+
+wide型をlong型に変換するには，tidyrパッケージの`gather()`を使う。
+
+
+```{r}
+
+dat_wide #wide型のデータ
+
+dat_long2 = dat_wide %>% tidyr::gather("X", "Y", "Z", key = Condition, value = Score) #並び替える変数を指定する。そして，key変数，value変数として新たにつけたい名前を指定する。
+
+dat_long2
+
+```
+
+逆に，long型をwide型に変換するには，tidyrパッケージの`spread()`を使う。
+
+
+```{r}
+
+dat_long #long型のデータ
+
+dat_long2 = dat_long %>% tidyr::spread(key = Condition, value = Score) #key変数（ここではCondition），value変数（ここではScore）とする変数を指定する。
+dat_long2
+
+```
+
+
+## データの結合（＊）
+
+複数のデータを結合したい場合は，`dplyr`パッケージの`join`関数を使うとよい。`join`関数には，`left_join`, `full_join`など，いくつかの種類が用意されている。  
+  
+  
+サンプルデータを使いながら，手順について説明する。
+例えば，実験で参加者3人について，X, Y, Zのデータを取ったとする。  
+
+```{r}
+
+dat_sample = data.frame(Subject = c("A","B","C"), X = c(6,2,7), Y = c(9,3,4), Z = c(7,5,7), Gender = c("M", "F", "F"), Age = c(18, 19, 20))  #サンプルデータを作る
+
+dat_sample
+
+```
+
+更に，2人の参加者（AとB）に追加で実験を行い，Wのデータを取ったとする。
+
+```{r}
+
+dat_sample2 = data.frame(Subject = c("A","B"), W = c(8,3))  
+
+dat_sample2
+
+```
+
+
+`dat_sample`と`dat_sample2`のデータを結合して一つのデータにしたい。  
+  
+`full_join()`で結合したい2つのデータ，更に結合する際にキーとなる変数（2つのデータに共通して存在する変数）を`by=`で指定すると2つのデータを結合してくれる。
+
+* `by=`を省くと，自動で2つのデータに共通する変数を見つけて，それを手がかりに結合してくれる。
+
+```{r, message=FALSE, warning=FALSE}
+
+dat_sample3 = dplyr::full_join(dat_sample, dat_sample2, by = "Subject")
+
+dat_sample3
+
+```
+
+`full_join()`だと，2つのデータをすべてつなげてくれる。データが含まれていない部分は，欠損になる（`data_sample2`に参加者Cのデータはないので，欠損になっている）。  
+  
+`left_join()`だと，`left_join()`で左側に入力したデータを含む部分のみをつなげてくれる。
+
+
+```{r, message=FALSE, warning=FALSE}
+
+dat_sample3 = dplyr::left_join(dat_sample2, dat_sample, by = "Subject")
+
+dat_sample3
+
+```
+
+## データの読み込み（＊）
+
+Rにもともと入っている`read.csv()`を使えばcsvファイルを読み込むことができるが，`readr`パッケージの関数を使うと大量のデータが含まれるファイルも高速で読み込んでくれる。また，`readxl`パッケージの関数を使えば，Excelファイルも読み込んでくれる。
+
+#### readr
+
+様々な形式のファイルを高速で読み書きことを目標としたパッケージ。
+
+```{r}
+
+dat = read.csv("./sample_data/0_sample.csv")
+dat
+
+
+dat_2 = readr::read_csv("./sample_data/0_sample.csv")
+dat_2
+
+#データの書き出し
+readr::write_excel_csv(dat_2, "./sample_data/0_sample_2.csv")
+
+```
+
+* Rで標準で入っている`read.csv()`ではなく，`read_csv()`なので注意（ドットではなく，アンダースコア）。
+
+ファイルを書き出すための関数も用意されている。
+* ここでは`write_excel_csv()` を使っているが，単に`write_csv()`でも可。  
+  
+`read_csv()`で読み込んだファイルは，データフレームではなく，*tibble*という形式になる。  
+  
+##### tibble（＊）
+
+tibbleとは，データフレームに代わるものとして開発された，Rの新たなデータ形式である。  
+  
+tibbleは，データフレームよりも可読性を向上させているのが特徴である。コンソールにはデータ全てではなく，最初の10行程度のみ，列も画面に入る範囲のみが表示される。  
+
+
+`as_tibble()`でデータフレームをtibble形式にすることもできる。
+
+```{r}
+z_tibble = as_tibble(z)
+z_tibble
+
+dat = tibble::as_tibble(iris) #irisデータをtibble型にして，datという名前で保存する
+dat
+```
+
+
+tibbleだとデータをすべて閲覧することはできないが，すべて閲覧したい場合は`View()`を使えばよい。
+
+```{r tibble_Appendix_2, eval=FALSE}
+View(dat)
+```
+  
+
+### readxl
+
+エクセル形式（xlsx）のファイルを読み込むことができる。  
+
+
+```{r readxl, eval=FALSE}
+
+dat = readxl::read_excel("./sample/0_sample.xlsx") #特にオプションを指定しなければ，1番目に保存されているシートの中身をtibble形式で読み込んでくれる。シートや読み込む範囲を指定したい場合は，ヘルプを参照。
+dat
+
+
+```
+

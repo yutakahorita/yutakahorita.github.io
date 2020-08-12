@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Ｒの使い方 | 心理学データ解析法Ⅰ 2019</title>
+  <meta name="description" content="Chapter 1 Ｒの使い方 | 心理学データ解析法Ⅰ 2019" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Ｒの使い方 | 心理学データ解析法Ⅰ 2019" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Ｒの使い方 | 心理学データ解析法Ⅰ 2019" />
+  
+  
+  
+
+<meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
+
+
+<meta name="date" content="2019-06-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="section-2.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#section-0.1"><i class="fa fa-check"></i><b>0.1</b> この授業について</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#section-0.1.1"><i class="fa fa-check"></i><b>0.1.1</b> 授業の進め方</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#section-0.1.2"><i class="fa fa-check"></i><b>0.1.2</b> 授業資料の配布</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#section-0.1.3"><i class="fa fa-check"></i><b>0.1.3</b> 練習問題</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#section-0.1.4"><i class="fa fa-check"></i><b>0.1.4</b> 授業の前にやること</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#section-0.1.5"><i class="fa fa-check"></i><b>0.1.5</b> この資料について</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>1</b> Ｒの使い方</a><ul>
+<li class="chapter" data-level="1.1" data-path="section-1.html"><a href="section-1.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> Ｒを使う前の準備</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="section-1.html"><a href="section-1.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> ファイルの場所の指定</a></li>
+<li class="chapter" data-level="1.1.2" data-path="section-1.html"><a href="section-1.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> スクリプトファイルの作成</a></li>
+<li class="chapter" data-level="1.1.3" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>1.1.3</b> tidyverseのインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="section-1.html"><a href="section-1.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> プログラムの練習</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="section-1.html"><a href="section-1.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 簡単な計算</a></li>
+<li class="chapter" data-level="1.2.2" data-path="section-1.html"><a href="section-1.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 変数</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="section-1.html"><a href="section-1.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> データの扱い方</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="section-1.html"><a href="section-1.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> データフレーム</a></li>
+<li class="chapter" data-level="1.3.2" data-path="section-1.html"><a href="section-1.html#tibble"><i class="fa fa-check"></i><b>1.3.2</b> tibble（＊）</a></li>
+<li class="chapter" data-level="1.3.3" data-path="section-1.html"><a href="section-1.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 外部データの読み込み</a></li>
+<li class="chapter" data-level="1.3.4" data-path="section-1.html"><a href="section-1.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> データの出力</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="section-1.html"><a href="section-1.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 外部パッケージの利用</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="section-1.html"><a href="section-1.html#section-1.4.1"><i class="fa fa-check"></i><b>1.4.1</b> インストールされているパッケージの確認</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>1.5</b> Rを終わらせる</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#e5958fefbc91"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-2"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>2</b> 平均値，標準偏差など</a><ul>
+<li class="chapter" data-level="2.1" data-path="section-2.html"><a href="section-2.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 尺度水準</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="section-2.html"><a href="section-2.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 質的変数</a></li>
+<li class="chapter" data-level="2.1.2" data-path="section-2.html"><a href="section-2.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 量的変数</a></li>
+<li class="chapter" data-level="2.1.3" data-path="section-2.html"><a href="section-2.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 離散変数と連続変数</a></li>
+<li class="chapter" data-level="2.1.4" data-path="section-2.html"><a href="section-2.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 量的変数と質的変数の区別</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="section-2.html"><a href="section-2.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 母集団と標本</a></li>
+<li class="chapter" data-level="2.3" data-path="section-2.html"><a href="section-2.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 代表値</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="section-2.html"><a href="section-2.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 平均値</a></li>
+<li class="chapter" data-level="2.3.2" data-path="section-2.html"><a href="section-2.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 中央値</a></li>
+<li class="chapter" data-level="2.3.3" data-path="section-2.html"><a href="section-2.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 平均値と中央値</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="section-2.html"><a href="section-2.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> データの散らばり</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="section-2.html"><a href="section-2.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分散と標準偏差</a></li>
+<li class="chapter" data-level="2.4.2" data-path="section-2.html"><a href="section-2.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> その他の散らばり具合を意味するもの（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="section-2.html"><a href="section-2.html#section-2.5"><i class="fa fa-check"></i><b>2.5</b> データの要約</a></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-2"><i class="fa fa-check"></i>練習問題</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>3</b> データの可視化</a><ul>
+<li class="chapter" data-level="3.1" data-path="section-3.html"><a href="section-3.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 相関</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="section-3.html"><a href="section-3.html#section-3.1.1"><i class="fa fa-check"></i><b>3.1.1</b> ピアソンの積率相関係数</a></li>
+<li class="chapter" data-level="3.1.2" data-path="section-3.html"><a href="section-3.html#section-3.1.2"><i class="fa fa-check"></i><b>3.1.2</b> スピアマンの順位相関係数</a></li>
+<li class="chapter" data-level="3.1.3" data-path="section-3.html"><a href="section-3.html#section-3.1.3"><i class="fa fa-check"></i><b>3.1.3</b> 外れ値の影響</a></li>
+<li class="chapter" data-level="3.1.4" data-path="section-3.html"><a href="section-3.html#section-3.1.4"><i class="fa fa-check"></i><b>3.1.4</b> 相関関係と因果関係</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>3.2</b> データの可視化（＊）</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="section-3.html"><a href="section-3.html#section-3.2.1"><i class="fa fa-check"></i><b>3.2.1</b> 散布図（＊）</a></li>
+<li class="chapter" data-level="3.2.2" data-path="section-3.html"><a href="section-3.html#section-3.2.2"><i class="fa fa-check"></i><b>3.2.2</b> ヒストグラム（＊）</a></li>
+<li class="chapter" data-level="3.2.3" data-path="section-3.html"><a href="section-3.html#section-3.2.3"><i class="fa fa-check"></i><b>3.2.3</b> 箱ひげ図（＊）</a></li>
+<li class="chapter" data-level="3.2.4" data-path="section-3.html"><a href="section-3.html#section-3.2.4"><i class="fa fa-check"></i><b>3.2.4</b> 棒グラフ（＊）</a></li>
+<li class="chapter" data-level="3.2.5" data-path="section-3.html"><a href="section-3.html#section-3.2.5"><i class="fa fa-check"></i><b>3.2.5</b> 折れ線グラフ（＊）</a></li>
+<li class="chapter" data-level="3.2.6" data-path="section-3.html"><a href="section-3.html#section-3.2.6"><i class="fa fa-check"></i><b>3.2.6</b> 応用（＊）</a></li>
+<li class="chapter" data-level="3.2.7" data-path="section-3.html"><a href="section-3.html#qplot"><i class="fa fa-check"></i><b>3.2.7</b> qplot関数を使った簡単なグラフの作り方</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-3"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-3"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-4"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#e58f82e88083e69687e78cae"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>4</b> 確率分布</a><ul>
+<li class="chapter" data-level="4.1" data-path="section-4.html"><a href="section-4.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 確率変数と確率分布</a></li>
+<li class="chapter" data-level="4.2" data-path="section-4.html"><a href="section-4.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 二項分布</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="section-4.html"><a href="section-4.html#section-4.2.1"><i class="fa fa-check"></i><b>4.2.1</b> 二項分布の基本</a></li>
+<li class="chapter" data-level="4.2.2" data-path="section-4.html"><a href="section-4.html#section-4.2.2"><i class="fa fa-check"></i><b>4.2.2</b> 二項分布の期待値と分散</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="section-4.html"><a href="section-4.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 正規分布</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="section-4.html"><a href="section-4.html#section-4.3.1"><i class="fa fa-check"></i><b>4.3.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="4.3.2" data-path="section-4.html"><a href="section-4.html#section-4.3.2"><i class="fa fa-check"></i><b>4.3.2</b> 中心極限定理（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="section-4.html"><a href="section-4.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> その他の確率分布（＊）</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="section-4.html"><a href="section-4.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 離散確率分布</a></li>
+<li class="chapter" data-level="4.4.2" data-path="section-4.html"><a href="section-4.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 連続確率分布</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-4"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-5"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-6"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i><b>5</b> 統計的帰無仮説検定</a><ul>
+<li class="chapter" data-level="5.1" data-path="section-5.html"><a href="section-5.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 統計的帰無仮説検定の考え方</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="section-5.html"><a href="section-5.html#section-5.1.1"><i class="fa fa-check"></i><b>5.1.1</b> 二項分布の復習</a></li>
+<li class="chapter" data-level="5.1.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>5.1.2</b> 統計的帰無仮説検定</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="section-5.html"><a href="section-5.html#12"><i class="fa fa-check"></i><b>5.2</b> 第1種の過誤と第2種の過誤</a></li>
+<li class="chapter" data-level="5.3" data-path="section-5.html"><a href="section-5.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 統計的帰無検定の問題</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="section-5.html"><a href="section-5.html#p"><i class="fa fa-check"></i><b>5.3.1</b> p値</a></li>
+<li class="chapter" data-level="5.3.2" data-path="section-5.html"><a href="section-5.html#section-5.3.2"><i class="fa fa-check"></i><b>5.3.2</b> 多重比較の問題（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-5"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-8"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i><b>6</b> ｔ検定，分散分析</a><ul>
+<li class="chapter" data-level="6.1" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1</b> t検定</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1.1</b> 一標本のt検定</a></li>
+<li class="chapter" data-level="6.1.2" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1.2</b> 二標本の差のt検定（対応なし）</a></li>
+<li class="chapter" data-level="6.1.3" data-path="section-4.html"><a href="section-4.html#t"><i class="fa fa-check"></i><b>6.1.3</b> 二標本の差のt検定（対応あり）</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="section-6.html"><a href="section-6.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 分散分析</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="section-6.html"><a href="section-6.html#section-6.2.1"><i class="fa fa-check"></i><b>6.2.1</b> 一要因の分散分析</a></li>
+<li class="chapter" data-level="6.2.2" data-path="section-6.html"><a href="section-6.html#section-6.2.2"><i class="fa fa-check"></i><b>6.2.2</b> 多重比較</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="section-6.html"><a href="section-6.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> まとめ</a></li>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html#-6"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-9"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-10"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-11"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="section-7.html"><a href="section-7.html"><i class="fa fa-check"></i><b>7</b> 統計的帰無仮説検定の問題</a><ul>
+<li class="chapter" data-level="7.1" data-path="section-5.html"><a href="section-5.html#p"><i class="fa fa-check"></i><b>7.1</b> p値の問題</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="section-7.html"><a href="section-7.html#section-7.1.1"><i class="fa fa-check"></i><b>7.1.1</b> 第Ⅰ種の過誤</a></li>
+<li class="chapter" data-level="7.1.2" data-path="section-5.html"><a href="section-5.html#p"><i class="fa fa-check"></i><b>7.1.2</b> p値と標本数の関係</a></li>
+<li class="chapter" data-level="7.1.3" data-path="section-7.html"><a href="section-7.html#p-hacking"><i class="fa fa-check"></i><b>7.1.3</b> p-hacking（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="section-7.html"><a href="section-7.html#section-7.2"><i class="fa fa-check"></i><b>7.2</b> 効果量</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="section-7.html"><a href="section-7.html#cohens-d"><i class="fa fa-check"></i><b>7.2.1</b> Cohen’s d</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="section-7.html"><a href="section-7.html#section-7.3"><i class="fa fa-check"></i><b>7.3</b> 検定力</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>7.3.1</b> 第Ⅱ種の過誤</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="section-7.html"><a href="section-7.html#section-7.4"><i class="fa fa-check"></i><b>7.4</b> 有意水準，効果量，検定力，標本数の関係</a></li>
+<li class="chapter" data-level="7.5" data-path="section-7.html"><a href="section-7.html#section-7.5"><i class="fa fa-check"></i><b>7.5</b> 信頼区間</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="section-7.html"><a href="section-7.html#section-7.5.1"><i class="fa fa-check"></i><b>7.5.1</b> 信頼区間の求め方</a></li>
+<li class="chapter" data-level="7.5.2" data-path="section-7.html"><a href="section-7.html#section-7.5.2"><i class="fa fa-check"></i><b>7.5.2</b> 信頼区間と統計的帰無仮説検定の関係</a></li>
+<li class="chapter" data-level="7.5.3" data-path="section-7.html"><a href="section-7.html#section-7.5.3"><i class="fa fa-check"></i><b>7.5.3</b> 平均値以外の信頼区間の求め方（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-7"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-7.html"><a href="section-7.html#-12"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-7.html"><a href="section-7.html#-13"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="section-8.html"><a href="section-8.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a><ul>
+<li class="chapter" data-level="8.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>8.1</b> 回帰分析</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="section-8.html"><a href="section-8.html#section-8.1.1"><i class="fa fa-check"></i><b>8.1.1</b> 回帰分析の結果の解釈</a></li>
+<li class="chapter" data-level="8.1.2" data-path="section-8.html"><a href="section-8.html#section-8.1.2"><i class="fa fa-check"></i><b>8.1.2</b> 最小二乗法（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="section-8.html"><a href="section-8.html#section-8.2"><i class="fa fa-check"></i><b>8.2</b> 重回帰分析</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="section-8.html"><a href="section-8.html#section-8.2.1"><i class="fa fa-check"></i><b>8.2.1</b> 多重共線性（＊）</a></li>
+<li class="chapter" data-level="8.2.2" data-path="section-8.html"><a href="section-8.html#section-8.2.2"><i class="fa fa-check"></i><b>8.2.2</b> 決定係数</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="section-8.html"><a href="section-8.html#section-8.3"><i class="fa fa-check"></i><b>8.3</b> ダミー変数（独立変数が質的変数の場合）</a></li>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html#-8"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-8.html"><a href="section-8.html#-14"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-8.html"><a href="section-8.html#-15"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="section-9.html"><a href="section-9.html"><i class="fa fa-check"></i><b>9</b> 線形モデル</a><ul>
+<li class="chapter" data-level="9.1" data-path="section-9.html"><a href="section-9.html#section-9.1"><i class="fa fa-check"></i><b>9.1</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="section-9.html"><a href="section-9.html#section-9.1.1"><i class="fa fa-check"></i><b>9.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="9.1.2" data-path="section-9.html"><a href="section-9.html#section-9.1.2"><i class="fa fa-check"></i><b>9.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="9.1.3" data-path="section-9.html"><a href="section-9.html#section-9.1.3"><i class="fa fa-check"></i><b>9.1.3</b> リンク関数</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="section-9.html"><a href="section-9.html#section-9.2"><i class="fa fa-check"></i><b>9.2</b> 一般化線形モデルと統計解析との関係</a></li>
+<li class="chapter" data-level="9.3" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>9.3</b> Rでの一般化線形モデルの方法</a></li>
+<li class="chapter" data-level="9.4" data-path="section-9.html"><a href="section-9.html#section-9.4"><i class="fa fa-check"></i><b>9.4</b> 線形モデルに含まれる統計解析</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>9.4.1</b> 重回帰分析</a></li>
+<li class="chapter" data-level="9.4.2" data-path="section-9.html"><a href="section-9.html#t-1"><i class="fa fa-check"></i><b>9.4.2</b> t検定</a></li>
+<li class="chapter" data-level="9.4.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>9.4.3</b> 分散分析</a></li>
+<li class="chapter" data-level="9.4.4" data-path="section-9.html"><a href="section-9.html#section-9.4.4"><i class="fa fa-check"></i><b>9.4.4</b> 共分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-9"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-9.html"><a href="section-9.html#-16"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-9.html"><a href="section-9.html#-17"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10</b> 一般化線形モデル</a><ul>
+<li class="chapter" data-level="10.1" data-path="-1.html"><a href="-1.html"><i class="fa fa-check"></i><b>10.1</b> 一般化線形モデル（再掲）</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.1</b> 線形予測子</a></li>
+<li class="chapter" data-level="10.1.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.2</b> 誤差分布</a></li>
+<li class="chapter" data-level="10.1.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.3</b> リンク関数</a></li>
+<li class="chapter" data-level="10.1.4" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.1.4</b> 一般化線形モデルと統計解析との関係</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="-1.html"><a href="-1.html#section-10.2"><i class="fa fa-check"></i><b>10.2</b> 今回の予定</a></li>
+<li class="chapter" data-level="10.3" data-path="-1.html"><a href="-1.html#section-10.3"><i class="fa fa-check"></i><b>10.3</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.3.1</b> 二項分布</a></li>
+<li class="chapter" data-level="10.3.2" data-path="-1.html"><a href="-1.html#section-10.3.2"><i class="fa fa-check"></i><b>10.3.2</b> 例題</a></li>
+<li class="chapter" data-level="10.3.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.3.3</b> まとめ</a></li>
+<li class="chapter" data-level="10.3.4" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>10.3.4</b> Rでのロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="-1.html"><a href="-1.html#section-10.4"><i class="fa fa-check"></i><b>10.4</b> 最尤法（＊）</a></li>
+<li class="chapter" data-level="10.5" data-path="-1.html"><a href="-1.html#section-10.5"><i class="fa fa-check"></i><b>10.5</b> ポアソン回帰分析（＊）</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.5.1</b> ポアソン分布（＊）</a></li>
+<li class="chapter" data-level="10.5.2" data-path="-1.html"><a href="-1.html#section-10.5.2"><i class="fa fa-check"></i><b>10.5.2</b> ポアソン回帰（＊）</a></li>
+<li class="chapter" data-level="10.5.3" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.5.3</b> 例題（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="-1.html"><a href="-1.html#section-10.6"><i class="fa fa-check"></i><b>10.6</b> モデルの予測力</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>10.6.1</b> 決定係数</a></li>
+<li class="chapter" data-level="10.6.2" data-path="-1.html"><a href="-1.html#aic"><i class="fa fa-check"></i><b>10.6.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="10.6.3" data-path="-1.html"><a href="-1.html#section-10.6.3"><i class="fa fa-check"></i><b>10.6.3</b> モデル選択（＊）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-10"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="-1.html"><a href="-1.html#-18"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1.html"><a href="section-1.html#-2"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="section-11.html"><a href="section-11.html"><i class="fa fa-check"></i><b>11</b> 一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="11.1" data-path="section-11.html"><a href="section-11.html#section-11.1"><i class="fa fa-check"></i><b>11.1</b> 個人差や集団差の影響</a></li>
+<li class="chapter" data-level="11.2" data-path="section-1.html"><a href="section-1.html#-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形混合モデル</a></li>
+<li class="chapter" data-level="11.3" data-path="section-1.html"><a href="section-1.html#r"><i class="fa fa-check"></i><b>11.3</b> Rでの一般化線形混合モデル</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="section-11.html"><a href="section-11.html#section-11.3.1"><i class="fa fa-check"></i><b>11.3.1</b> 対応のある要因を含む分散分析</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="section-11.html"><a href="section-11.html#section-11.4"><i class="fa fa-check"></i><b>11.4</b> 一般化線型混合モデルの拡張（ロジスティック回帰）</a></li>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html#-11"><i class="fa fa-check"></i>練習問題</a><ul>
+<li class="chapter" data-level="" data-path="section-11.html"><a href="section-11.html#-19"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="section-11.html"><a href="section-11.html#-20"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3.html"><a href="section-3.html#-3"><i class="fa fa-check"></i>参考文献</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>A</b> tidyverseの解説</a><ul>
+<li class="chapter" data-level="A.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>A.1</b> tibble</a></li>
+<li class="chapter" data-level="A.2" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>A.2</b> ggplot2</a></li>
+<li class="chapter" data-level="A.3" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>A.3</b> dplyr</a></li>
+<li class="chapter" data-level="A.4" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>A.4</b> purrr</a></li>
+<li class="chapter" data-level="A.5" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>A.5</b> readr</a></li>
+<li class="chapter" data-level="A.6" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>A.6</b> tidyr</a></li>
+<li class="chapter" data-level="A.7" data-path="tidyverse.html"><a href="tidyverse.html#read_excel"><i class="fa fa-check"></i><b>A.7</b> read_excel</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="01-Intro.html"><a href="#section-B"><i class="fa fa-check"></i><b>B</b> 使い方まとめ</a><ul>
+<li class="chapter" data-level="B.1" data-path="section-1.html"><a href="section-1.html#tidyverse"><i class="fa fa-check"></i><b>B.1</b> tidyverseパッケージのインストールとロード</a></li>
+<li class="chapter" data-level="B.2" data-path="01-Intro.html"><a href="#section-B.2"><i class="fa fa-check"></i><b>B.2</b> データの読み込み</a></li>
+<li class="chapter" data-level="B.3" data-path="01-Intro.html"><a href="#section-B.3"><i class="fa fa-check"></i><b>B.3</b> 結果の集計</a></li>
+<li class="chapter" data-level="B.4" data-path="01-Intro.html"><a href="#section-B.4"><i class="fa fa-check"></i><b>B.4</b> グラフの作成</a></li>
+<li class="chapter" data-level="B.5" data-path="01-Intro.html"><a href="#section-B.5"><i class="fa fa-check"></i><b>B.5</b> 新しい変数を作る</a></li>
+<li class="chapter" data-level="B.6" data-path="01-Intro.html"><a href="#section-B.6"><i class="fa fa-check"></i><b>B.6</b> データを保存する</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="10.html"><a href="10.html"><i class="fa fa-check"></i><b>C</b> 第10章「一般化線形モデル」の付録</a><ul>
+<li class="chapter" data-level="C.1" data-path="01-Intro.html"><a href="#section-C.1"><i class="fa fa-check"></i><b>C.1</b> １．指数と対数</a><ul>
+<li class="chapter" data-level="C.1.1" data-path="01-Intro.html"><a href="#section-C.1.1"><i class="fa fa-check"></i><b>C.1.1</b> 指数関数</a></li>
+<li class="chapter" data-level="C.1.2" data-path="01-Intro.html"><a href="#section-C.1.2"><i class="fa fa-check"></i><b>C.1.2</b> 対数関数</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="01-Intro.html"><a href="#section-C.2"><i class="fa fa-check"></i><b>C.2</b> ２．ロジスティック関数とロジット関数の関係</a></li>
+<li class="chapter" data-level="C.3" data-path="01-Intro.html"><a href="#section-C.3"><i class="fa fa-check"></i><b>C.3</b> ３．ロジスティック回帰の係数の意味</a></li>
+<li class="chapter" data-level="C.4" data-path="01-Intro.html"><a href="#section-C.4"><i class="fa fa-check"></i><b>C.4</b> ４．ポアソン回帰で対数をリンク関数とする理由</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理学データ解析法Ⅰ 2019</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-1" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Ｒの使い方</h1>
+<p>まずはRの操作になれる。以下を行う。</p>
+<ul>
+<li>準備<br />
+</li>
+<li>プログラムに慣れる<br />
+</li>
+<li>データの読み書き<br />
+</li>
+<li>パッケージのインストール<br />
+</li>
+<li>Rを終わらせる</li>
+</ul>
+<div id="section-1.1" class="section level2">
+<h2><span class="header-section-number">1.1</span> Ｒを使う前の準備</h2>
+<div id="section-1.1.1" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> ファイルの場所の指定</h3>
+<p>Rを起動すると，「R Console」という画面が表示されるはず。</p>
+<ul>
+<li>「File」から「Change dir」を選ぶ。<br />
+</li>
+<li>デスクトップを選んでおく。
+<ul>
+<li>「ローカルディスク」→「ユーザー」→「SETUP」→「デスクトップ」を選ぶ（帝京大学841のマシンの場合）。</li>
+</ul></li>
+<li>これで「作業ディレクトリ（working directory）」をデスクトップに設定した。Rで作成したファイルは作業ディレクトリとして設定した場所に保存される。また，作業ディレクトリに保存したファイルをRから読み込むこともできる（後述）。
+<ul>
+<li>もちろん，デスクトップ以外の場所も作業ディレクトリに設定することができる。この授業ではとりあえずデスクトップに設定しておく。<br />
+</li>
+<li>帝京大学のマシンは一度電源を切るとデスクトップに保存したファイルが自動で削除されてしまう。必ず，自分のUSBメモリなどに保存しておくこと。</li>
+</ul></li>
+<li>コンソールに以下のプログラムを直接書き込んでもOK。</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#作業ディレクトリとしてデスクトップを設定する（帝京の情報処理教室の場合） </span>
+<span class="kw">setwd</span>(<span class="st">&quot;C:/Users/SETUP/Desktop&quot;</span>) 
+<span class="co">#正しく設定されたかを確認する</span>
+<span class="kw">getwd</span>() </code></pre>
+</div>
+<div id="section-1.1.2" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> スクリプトファイルの作成</h3>
+<p>「R Console」に直接プログラムを書き込んでも良いが，復習のためにもプログラムは別のファイルに保存しておいて方が良い（コンソールに入力したプログラムは保存されない）。</p>
+<ul>
+<li>「File」から「New Script」を選ぶ。何も書かれていないファイル（R Editor）が開かれる。<br />
+</li>
+<li><p>名前をつけて保存する。「File」から「Save as..」を選び，名前をつけて保存する（自分のUSBファイルにでも保存しておく）。拡張子が「.R」のファイルとして保存される。</p></li>
+<li><p>スクリプトに，試しに以下のプログラムを入力する。</p></li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<pre><code>## [1] 2</code></pre>
+<ul>
+<li><p>プログラムを選択し，Ctrl+Rで実行する（「Run line or selection」を選んでも可）。すると，「R Console」にプログラムの結果が出力される。</p></li>
+<li>一旦スクリプトを閉じる（閉じる前に，Cntrl+Sで保存しておく）。<br />
+</li>
+<li>Rの「File」から「Open script」を選び，さっき閉じたスクリプトのファイルを選ぶ。すると，さっき作成したプログラムが表示される。<br />
+</li>
+<li><p>このように，プログラムをスクリプトファイルとして残しておくと便利なので，この授業でも実行したプログラムは基本スクリプトファイルとして保存しておくこと。</p></li>
+</ul>
+</div>
+<div id="tidyverse" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> tidyverseのインストール</h3>
+<p>Rを使いやすくするために，tidyverseパッケージをインストールしておく。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre>
+<p>「Please select a CRAN mirror …」というのが表示されたら，Japan (Tokyo)を選んで「OK」を押す。</p>
+<p>インストールしただけではパッケージは使えない。使う前にロードする必要がある。<code>library()</code>で，括弧内に使いたいパッケージ名を入力する。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre>
+<p>通常なら，一度インストールすれば今後は<code>library()</code>でロードするだけで使うことができる。毎回インストールする必要はない。ただし，帝京大学のマシンは，ログアウトするたびに設定がリセットされてしまうので，毎回この作業を行う必要があるので注意。</p>
+</div>
+</div>
+<div id="section-1.2" class="section level2">
+<h2><span class="header-section-number">1.2</span> プログラムの練習</h2>
+<div id="section-1.2.1" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> 簡単な計算</h3>
+<p>まずは簡単な計算を通して，Rが動くことを確かめる。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">3</span></code></pre>
+<pre><code>## [1] -1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span></code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span></code></pre>
+<pre><code>## [1] 0.6666667</code></pre>
+<p><code>+, -, *, /</code>で四則計算ができる（それぞれ，キーボードのどの位置にあるかを確認する！）。</p>
+<p>なお，<code>#</code>（シャープ）はコメントとして使うことができる（<code>#</code>から改行までの内容は実行されない）。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> <span class="co">#これは割り算</span></code></pre>
+<pre><code>## [1] 0.6666667</code></pre>
+</div>
+<div id="section-1.2.2" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> 変数</h3>
+<p>次は，変数について理解する。以下のプログラムを入力する。</p>
+<pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>
+
+<span class="co">##以下でも可</span>
+<span class="co">#x &lt;- 5 + 8</span>
+x</code></pre>
+<pre><code>## [1] 13</code></pre>
+<p>13が出力されることを確認する。このように，変数を使って数値を代入することが可能。</p>
+<p>以下のプログラムも実行してみよう。</p>
+<pre class="sourceCode r"><code class="sourceCode r">y =<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">2</span>
+y</code></pre>
+<pre><code>## [1] 11</code></pre>
+<p>なお，Rは小文字と大文字を区別するので注意。たとえば，<code>x</code>（小文字）と入力して実行すると結果が出力されるが，<code>X</code>（大文字）では出力されない（変数が作られていないので）。今後プログラムがうまく動かない場面に直面したら，単に変数の記入ミスではないかをまず確認すること。</p>
+</div>
+</div>
+<div id="section-1.3" class="section level2">
+<h2><span class="header-section-number">1.3</span> データの扱い方</h2>
+<div id="section-1.3.1" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> データフレーム</h3>
+<p>エクセルなどから自分で作ったファイルをデータとして読み込むことももちろん出来る。 ただ，その前にRを使って簡単なサンプルデータを作って，<strong>データフレーム</strong>について理解する。以下のプログラムを入力する。</p>
+<pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)
+y =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)
+x</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">y</code></pre>
+<pre><code>## [1] 4 5 6</code></pre>
+<p><code>c()</code>はベクトルを作るための関数。ベクトルとは，Rで数値や文字の並びを表現するデータの型である。</p>
+<p>更に，以下のプログラムを実行する</p>
+<pre class="sourceCode r"><code class="sourceCode r">z =<span class="st"> </span><span class="kw">data.frame</span>(x, y) 
+z</code></pre>
+<pre><code>##   x y
+## 1 1 4
+## 2 2 5
+## 3 3 6</code></pre>
+<p>Rではデータ解析の際には，データをデータフレーム（data.frame）という行列で表現する。<code>data.frame()</code>はデータフレームを作るための関数である。</p>
+<p>以下のように，<strong>データフレーム$変数名</strong>　で，データフレームの特定の列を参照することが出来る。</p>
+<pre class="sourceCode r"><code class="sourceCode r">z<span class="op">$</span>x</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<p>データフレームに新たに変数を加えることも出来る。</p>
+<pre class="sourceCode r"><code class="sourceCode r">z<span class="op">$</span>x2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)
+z<span class="op">$</span>y2 &lt;-<span class="st"> </span>z<span class="op">$</span>x <span class="op">+</span><span class="st"> </span>z<span class="op">$</span>y
+z</code></pre>
+<pre><code>##   x y x2 y2
+## 1 1 4  A  5
+## 2 2 5  B  7
+## 3 3 6  C  9</code></pre>
+</div>
+<div id="tibble" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> tibble（＊）</h3>
+<p>データフレーム以外に，tibbleというデータ形式もある。</p>
+<pre class="sourceCode r"><code class="sourceCode r">dat =<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>))
+dat</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##       x `c(4, 5, 6)`
+##   &lt;dbl&gt;        &lt;dbl&gt;
+## 1     1            4
+## 2     2            5
+## 3     3            6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">z_tibble =<span class="st"> </span><span class="kw">as_tibble</span>(z) <span class="co">#既に作ったデータフレームをtibble形式に変えることもできる。</span>
+z_tibble</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##       x     y x2       y2
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1     4 A         5
+## 2     2     5 B         7
+## 3     3     6 C         9</code></pre>
+<p>tibbleにはデータフレームとは異なる，以下のメリットがある。</p>
+<ul>
+<li>コンソールにはデータ全てではなく，最初の10行程度が表示される。行数が多すぎるデータでも，見にくくならない。</li>
+<li>変数の型の種類も表示される。</li>
+</ul>
+<p>この授業でも基本的には，tibble形式を使う。ただし，データフレーム形式も覚えておくこと（tibbleはtidyverseパッケージを読み込んでいないと使えない。データフレームはデフォルトで使える）。</p>
+</div>
+<div id="section-1.3.3" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> 外部データの読み込み</h3>
+<p>実際には上述のようなR上でデータを作ることはなく，多くの場合は外部にあるファイルを読み込むこととなる。</p>
+<ul>
+<li><p>データを用意するときの注意点！</p>
+<ul>
+<li>データファイルはCSV形式にすること。CSVとは，値をカンマで区切った形式のテキストファイルをいう。</li>
+<li>データファイル内では，漢字や仮名など日本語を入れない（全角を入れない）。どうしても入れなければならない場合は，文字コードを「UTF-8」にする。</li>
+</ul></li>
+</ul>
+<p>サンプルデータを読み込んでみよう。<code>read_csv()</code>関数で読み込むことが出来る。</p>
+<pre class="sourceCode r"><code class="sourceCode r">sample_data =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;1_sample.csv&quot;</span>)
+
+sample_data</code></pre>
+</div>
+<div id="section-1.3.4" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> データの出力</h3>
+<p><code>write_excel_csv()</code>を使う。以下のように，保存したいデータフレームの名前，出力後のファイルの名前を入力する。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_excel_csv</span>(sample_data, <span class="st">&quot;1_sample_2.csv&quot;</span>)</code></pre>
+</div>
+</div>
+<div id="section-1.4" class="section level2">
+<h2><span class="header-section-number">1.4</span> 外部パッケージの利用</h2>
+<p>パッケージとは，Rの機能を拡張するためにインターネットからインストールして使うものである。<br />
+この授業でも外部パッケージをインストールして使う場合がある。具体的には今後，<strong>ggplot2</strong>, <strong>lme4</strong>, <strong>lmerTest</strong>パッケージを使う予定。</p>
+<p>先にも説明したように，帝京のマシンでは毎回ログインするたびにインストールし直す必要があるので注意（自宅のPCならば，一度インストールすれば，もう毎回インストールし直す必要ない）。</p>
+<div id="section-1.4.1" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> インストールされているパッケージの確認</h3>
+<p><code>library()</code>で，現在自分のマシンのRにインストールされているパッケージの一覧が出る。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>() <span class="co">#標準でインストールされているライブラリもいくつかある。</span></code></pre>
+</div>
+</div>
+<div id="r" class="section level2">
+<h2><span class="header-section-number">1.5</span> Rを終わらせる</h2>
+<p>そのまま閉じてよい。コンソールに <code>q()</code> と打ち込んでも良い。</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">q</span>()</code></pre>
+<p>「Save workspace image?（作業スペースを保存しますか？）」が表示されるが，これは「いいえ」にする。</p>
+</div>
+<div id="-1" class="section level2 unnumbered">
+<h2>練習問題</h2>
+<div id="e5958fefbc91" class="section level3 unnumbered">
+<h3>問１</h3>
+<p>Rを使って以下のa, bを計算し、aとbの式どちらの方が答えが大きいかを確認せよ。</p>
+<p>a: 1 × 1 × 2 × 2 × 3 × 4 × 5 × 9 × 8 × 7 × 6</p>
+<p>b: 9 × 8 × 7 × 6 × 1 × 7 × 5 × 1 × 3 × 2 × 1</p>
+</div>
+<div id="-1" class="section level3 unnumbered">
+<h3>問２</h3>
+<p>Rを使って、3の10乗の値を求めよ。<br />
+ヒント：aのx乗は^を使って求める（<code>a^x</code>）</p>
+</div>
+<div id="-2" class="section level3 unnumbered">
+<h3>問３</h3>
+<p>サンプルデータ「1_sample.csv」をデータフレームとして読み込み，データフレーム上の変数X, Yを用いて，Z = X - 3Y の新しい変数Zをデータフレームに追加せよ。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Data-Analysis-for-Psychology.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "fixed",
+"download": null,
+"search": true,
+"fontsettings": {
+"size": 1
+},
+"sharing": null
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

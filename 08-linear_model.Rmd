@@ -1,0 +1,317 @@
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+set.seed(1)
+```
+
+# 線形モデル
+
+
+これまで学んできた様々な統計手法（t検定，分散分析など）を，「線形モデル」という一つの枠組みで捉えていく。
+  
+
+## 準備
+  
+いつもどおり，`tidyverse`パッケージをロードしよう。
+
+```{r, eval=FALSE}
+library(tidyverse)
+```
+
+
+## 線形モデルの概要
+
+まず，線形モデルの表現の仕方を理解する。  
+以下の式は，変数$x$から，変数$y$を予測するプロセスを記述したものである。
+変数$x$は**予測変数**（predictor variable），変数$y$は**応答変数**（response variable）と呼ばれる。このように，応答変数と予測変数との関係を式で表現したものを**モデル**と呼ぶ。
+
+***
+予測変数は，独立変数や説明変数とも呼ばれる。応答変数は，従属変数や被説明変数とも呼ばれる。このテキストでは，「予測変数」及び「応答変数」と表現することにする。  
+***
+
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta x  \tag{1}\\
+  y \sim Normal(\hat{y}, \sigma)
+\end{equation}
+$$
+
+1番目の式の右側に$\alpha + \beta x$という線形の式がある。この式は，**線形予測子(linear predictor)**と呼ばれる。変数$x$に係る$\beta$は予測変数に係る**傾き(slope)**，$\alpha$は**切片(intercept)**である。1番目の式は，変数$x$の持つ効果（傾き）及びそれ以外の効果（切片）と変数$y$の予測値（$\hat{y}$）との関係を示している。  
+
+***  
+予測変数は2個以上でも構わない。予測変数の個数を$K$とすると，(1)の1番目の式は以下のように表現できる。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \sum_{k=1}^{K} \beta_{k} x \\ \tag{2}
+\end{equation}
+$$
+
+***
+
+$y \sim Normal(\hat{y}, \sigma)$は，「応答変数$y$が，予測値$\hat{y}$を平均，$\sigma$を標準偏差とする正規分布に従う」ということを意味している。つまり，線形予測子から予測された値$\hat{y}$と誤差$\sigma$から，実際の値$y$が推定されるというプロセスを表現している。  
+    
+応答変数が正規分布に従うという前提をおいたモデルのことを，一般的に**線形モデル(linear model)**と呼ぶ。  
+  
+線形モデルは，基本的に心理統計でも学んだ「**回帰分析(regression analysis)**」と同じである。  
+  
+  
+応答変数$y$を決定づける変数，$\alpha$, $\beta$，及び $\sigma$は**パラメータ(parameter)**と呼ばれる。このパラメータを，既知の変数である$x$と$y$から推定する。  
+  
+### まとめ
+
+「線形予測子」，「傾き」，「切片」といったキーワードを覚えておく。  
+  
+* 線形モデルは，応答変数と予測変数の関係を線形の式で表したモデルである。  
+* 線形予測子の傾き，切片及び誤差（正規分布の分散パラメータ）を推定する。  
+* 予測変数が応答変数に及ぼす効果を推定することが，線形モデルの目的である。  
+
+
+## 線形モデルによる解析
+
+実際に，Rで線形モデルの解析をしてみよう。  
+  
+Rには線形モデルを扱える関数`lm()`がある。`iris`データを使って解析をしてみよう。
+
+
+`Sepal.Length`と`Petal.Length`の関係を散布図で確認する。
+
+```{r}
+p = ggplot() + 
+  geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length))
+p
+```
+
+`Sepal.Length`が大きいほど`Petal.Length`が大きいという関係（正の相関）がありそうである。  
+そこで，`Sepal.Length`の大きさから，`Petal.Length`の大きさを予測することを試みる。
+
+
+  
+`lm()`関数に，「応答変数~予測変数」のかたちで入力する。以下のプログラムを実行してみよう。
+
+```{r}
+result = lm(data = iris, Petal.Length ~ Sepal.Length) 
+```
+
+結果をresultという名前で一旦保存した（名前はresult以外でも構わない）。`summary()`関数の中に，resultを入れて実行すると詳細な結果が出力される。
+
+```{r}
+summary(result)
+```
+
+色んな情報が出力されるが，まずは**係数（Coefficients）**の部分を見てみよう。ここでは，データから推定された切片や予測変数の傾きの結果が出力されている。  
+  
+* Interceptの部分が切片の推定結果である。各変数の名前の部分（ここではSepal.Length）が予測変数の傾きの推定結果を示している。  
+* Estimateが推定された切片または傾きの値である。  
+* Std.Errorは推定された係数の標準誤差である。  
+
+予測変数が応答変数に対して影響力を持っているか？   それは傾きの係数の推定結果からわかる。係数の値は，**予測変数が1単位増えたら応答変数がどう変化するか****を意味している。  
+* 係数がプラスならば，係数の値が増えると従属変数の値が増える関係にあることを意味する。
+* 係数がマイナスならば，係数が値が増えると従属変数が減る関係にあることを意味する。  
+    
+* t value及びPrは係数の有意性検定の結果を示している（それぞれt値，p値）。ここでは，「係数がゼロである」という帰無仮説を検定している。p値が極端に低い場合は，「求めた係数の値は有意にゼロから離れている」と結論付けることができる。  
+  
+`Sepal.Lenght`と`Petal.Length`の散布図に，線形モデルから推定された切片と傾きの値を持つ以下の直線を引いてみよう。
+
+$$
+\begin{equation}
+  Petal.Length =  -7.10 + 1.86 Sepal.Length\\ \tag{3}
+\end{equation}
+$$
+
+
+
+```{r}
+p = ggplot() + 
+  geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_smooth(data = iris, aes(x = Sepal.Length, y = Petal.Length), formula = y~x, method = "lm", se = FALSE)
+p
+
+```
+
+線形モデルでは，直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような，直線の式を推定する（予測と実測値とのズレが最小になるのが，最も良い予測である）。
+
+## 最尤法
+
+では，どうやって実測値と予測値とのずれが最小になるように傾きと切片の値を求めるのか？  
+線形モデル（及び一般化線形モデル）では，パラメータの推定に**最尤法（maximum likelihood method）**という最適化手法が用いられる。  
+  
+### 最尤法によるパラメータ推定
+
+ここにコインが1枚ある。コインが表が出るかを決定づけるパラメータ（つまりコインを投げて表が出る確率）を$\theta$（シータ）とする。この$\theta$の値を何回かコインを投げる実験を通して推定する。  
+  
+1回目は，表が出た。この時点で，この実験結果が生じる確率は$\theta$である。  
+2回目は，裏が出た。1回目と2回目までの実験結果が生じる確率は$\theta(1-\theta)$である。  
+3回目は，表が出た。ここまでの実験結果が生じる確率は$\theta(1-\theta)*\theta$である。  
+    
+その後，4回目は裏，5回目は裏だったとする。5回目で実験をストップすることにする。この実験結果が生じる確率は以下のように表すことができる。  
+
+$$
+L = (1-\theta)^3 \theta^2 \tag{4}
+$$
+
+$L$のことを**尤度**(likelihood)と呼ぶ（”ゆうど”と読む）。  
+  
+尤度とは「もっともらしさ」を示す概念である。イメージとしては，「今回の実験結果が得られる確率」である。今回の観測データに対して最も当てはまりが良くなる，すなわち尤度が最も高くなるときのパラメータを求めるのが，最尤法 (maximum likelihood method)と呼ばれる手法である。   
+掛け算を扱う尤度は計算が困難なので，実際のパラメータ推定の際には対数化して足し算を扱う。対数化した尤度を**対数尤度(log-likelihood)**と呼ぶ。対数尤度が最大となるパラメータ$\theta$を求める。  
+  
+
+
+$$
+\log L = \log(1-\theta)+\log(1-\theta)+\log(1-\theta)+\log(\theta)+\log(\theta) \tag{5}
+$$
+
+パラメータ$\theta$と対数尤度$\log L$との関係を以下に示す。
+
+
+```{r, echo=FALSE}
+
+D <- c(1, 0, 1, 0, 0)
+
+LogLikelihood <- function(x){
+  return(function(theta){
+    L <- 1
+    for(i in 1:length(x)){
+      L <- L * theta^(x[i]) * (1-theta)^(1-x[i])
+    }
+    return(log(L))
+  })
+}
+
+result <- optimize(f = LogLikelihood(D), c(0, 1), maximum=TRUE)
+AIC_result <- -2 * (result$objective - 1)
+
+#
+theta <- seq(0.01,0.99,0.01)
+logL <- log(theta)+log(1-theta)+log(theta)+log(1-theta) + log(1-theta)
+
+data <- data.frame(x=theta, y=logL)
+ggplot(data=data, aes(x=x, y= y)) + geom_line(size=1)+ xlab("theta") + ylab("log L") + geom_vline(xintercept=0.4, linetype="dashed", colour="red", size=1)
+
+```
+
+対数尤度が最も大きくなるのは，$\theta= 0.40$ のときである（2/5と一致）。  
+  
+ここではわかりやすくパラメータ一つのみを使って説明しているが，線形モデルの傾きや切片の推定も同じである。上の例の$\theta$を線形予測子に置き換えて同様の計算をする。  
+
+
+  
+***
+線形モデルのときのパラメータ推定には，**最小二乗法**と呼ばれる別の推定方法も用いられている。しかし，最小二乗法を使っても最尤法を使っても，線形モデルの傾きや切片の推定結果は全く同じになる。
+
+
+## 信頼区間と予測区間
+
+モデルでパラメータの推定を行ったあとは，そのモデルがデータを上手く予測できているかを確認することも重要である。  
+  
+具体的には，パラメータの**信頼区間(confidence interval)**とデータの**予測区間 (predictive interval)**をチェックする。  
+  
+信頼区間とは，パラメータが分布する区間のことをいう。今回得られた標本を用いて係数を推定したが，標本の元となる母集団の係数の値はどのくらいか？その母集団の係数の予想の範囲が，信頼区間である。  
+  
+予測区間とは，標本がどの範囲に分布するかを予測する範囲のことをいう。新たな標本を取ったときに，そのデータがどの範囲に分布するか。その予想の範囲が予測区間である。  
+  
+Rには，線形モデルの推定結果から信頼区間と予測区間を算出してくれる`predict()`関数が用意されている。先ほどの線形モデルの解析結果を使って，信頼区間と予測区間を求めてみよう。
+
+### 信頼区間
+
+```{r}
+
+result = lm(data = iris, Petal.Length ~ Sepal.Length) 
+
+result_conf = predict(result, interval = "confidence", level = 0.95)
+
+```
+
+`interval = "confidence"`とすると，信頼区間を求めてくれる。
+`level =` に信頼区間の幅を入力する（デフォルトで0.95だが，幅を変えたい場合は指定する）。
+
+```{r}
+head(result_conf)
+```
+
+uprが95%信頼区間の上限，lwrが95%信頼区間の下限に当たる。
+
+
+求めた信頼区間を図示してみよう
+
+```{r}
+
+plot_conf = cbind(iris, result_conf) #実測値のデータと予測値のデータを結合する。
+
+ggplot() + 
+  geom_point(data = plot_conf, aes(x = Sepal.Length, y = Petal.Length)) + 
+  geom_line(data = plot_conf, aes(x = Sepal.Length, y = fit)) + 
+  geom_ribbon(data = plot_conf, aes(x = Sepal.Length, ymax = upr, ymin = lwr), alpha = 0.4) 
+```
+
+
+### 予測区間
+
+
+```{r}
+
+result = lm(data = iris, Petal.Length ~ Sepal.Length) 
+
+new = data.frame(Sepal.Length = seq(4, 8, 0.1))
+
+result_pred = predict(result, newdata = new, interval = "prediction", level = 0.95)
+head(result_pred)
+
+```
+
+`interval = "prediction"`と入力する。
+
+予測区間を図示してみよう。
+
+```{r}
+
+plot_pred = data.frame(Sepal.Length = seq(4, 8, 0.1), result_pred)
+
+ggplot() + 
+  geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length)) + 
+  geom_line(data = plot_pred, aes(x = Sepal.Length, y = fit)) + 
+  geom_ribbon(data = plot_pred, aes(x = Sepal.Length, ymax = upr, ymin = lwr), alpha = 0.4) 
+```
+
+実際のデータが予測区間の範囲に収まっているならば，そのモデルは概ねよくデータを予測できていることを意味している。
+
+
+## まとめ
+
+この章では，線形モデルの概念について学んできた。
+次章では，線形モデルを扱う上で注意すべき点について見ていく。
+
+
+## 練習問題{-}
+
+Rに入っているサンプルデータ`trees`を使って，線形モデルの結果の解釈の仕方と`lm()`関数の扱い方を復習をする。
+
+```{r}
+head(trees)
+```
+
+### 問１{-}
+
+Heightを応答変数，Girthを予測変数として，切片と傾きの推定値を求めよ。
+
+```{r, include=FALSE}
+
+summary(lm(data = trees, Height ~ Girth))
+```
+
+### 問２{-}
+
+Heightを応答変数，Volumeを予測変数として，切片と傾きの推定値を求めよ。
+
+```{r, include=FALSE}
+
+summary(lm(data = trees, Height ~ Volume))
+```
+
+### 問３{-}
+
+問2の推定結果から，Volumeが1単位増えるとHeightがどう変化するかを説明せよ。
+

@@ -1,0 +1,567 @@
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+set.seed(1)
+```
+
+
+# 線形モデルの注意点
+
+前の章で，線形モデルの全体像を見てきた。  
+次に，線形モデルを扱う上で注意すべき点についてみていく。  
+
+
+## 予測変数がカテゴリカル変数の場合
+
+前の章では，予測変数が量的変数の場合を例として扱ったが，予測変数はカテゴリカル変数でも構わない。ただし，予測変数がカテゴリカル変数の場合は，予測変数を0か1のどちらかの値を取る**ダミー変数**(dummy variable)に変換する必要がある。  
+  
+Rに入っている`sleep`データを少し変えたもの使って，カテゴリカル変数を使って線形モデルの解析をしてみよう。
+
+```{r}
+dat = sleep #データを別の名前datに保存し直す
+
+#変数の名前を変える
+dat$x = ifelse(dat$group == 1, "control", "treatment") 
+dat$y = dat$extra 
+dat = dat %>% dplyr::select(y, x)
+str(dat) #datの構成を確認する
+
+```
+
+`x`はグループを意味する変数で，カテゴリカル変数である（統制群`control`もしくは実験群`treatment`）。まずこれを，「`treatment`なら1，`control`なら0」とする新たな変数`x_1`を作る。  
+
+```{r}
+dat$x_1 = ifelse(dat$x == "treatment", 1, 0)
+str(dat)
+```
+
+`ifelse()`関数は，`ifelse(XXX, A, B)`と表記することで，「XXXの条件に当てはまればA，当てはまらなければB」という処理をしてくれる。ここでは，予測変数のベクトルxについて，treatmentならば1, それ以外なら0に変換し，0か1を取る変数$x_{1}$を新たに作った。  
+  
+この$x_{1}$が*ダミー変数*である。  
+  
+解析に用いるモデルを確認すると，以下のようになる。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta x_{1} \\ \tag{1}\\
+  y \sim Normal(\hat{y}, \sigma)
+\end{equation}
+$$
+
+$x_{1}$は0か1のどちらかを取る変数で，$x_{1} = 0$のとき，つまり統制群のときは予測値は$\hat{y} = \alpha$，$x_{1} = 1$のとき，つまり実験群のときは予測値は$\hat{y} = \alpha + \beta$となる。すなわち，切片$\alpha$は統制群のときの効果，傾き$\beta$は実験群の時に加わる実験群特有の効果を意味するパラメータということになる。  
+
+`lm()`を使って，上のモデル式のパラメータの推定をしよう。
+
+```{r}
+
+result = lm(data = dat, y ~ x_1)
+summary(result)
+
+```
+
+2つの群間で平均値を比較するときにはt検定がよく使われる。`t.test()`関数を使って$x_{1}=0$と$x_{1}=1$との間で$y$の値の平均値を比較したときのt値及びp値の結果が，`lm()`の傾きのt値及びp値と一致することを確認しよう。
+
+```{r}
+
+t.test(data = dat, y ~ x_1)
+
+```
+
+`lm()`の傾きの検定は，「傾きがゼロである」という帰無仮説を検定している。傾きの係数が意味することは，予測変数$x_{1}$が1単位増えたときの$y$の変化量であった。傾きの検定は，「$x_{1}=0$ から $x_{1}=1$ に変化することによって， $y$ が上昇（下降）するか（傾きがゼロではないか）」を検定している。要は，「$x_{1}=0$と$x_{1}=1$の間で$y$の値に差があるか」を検定しているのと論理的に同じである。  
+  
+このように，*予測変数が1つで，予測変数が二値（0もしくは1）であるときの線形モデルは，t検定に対応する*。  
+
+
+## グループが複数ある場合
+
+先ほどの例は，統制群と実験群の二つのグループの場合であった。例えば実験で統制群，実験群1，実験群2といったように三つ以上のグループを設定した場合は，どうダミー変数を作成すればよいのか？  
+  
+Rに入っている`PlantGrowth`を例として見ていこう。例えばやり方としては，以下の方法がある。
+
+```{r}
+dat = PlantGrowth
+
+dat$y  <- dat$weight #名前をyに変える
+
+dat$x_c = ifelse(dat$group == "ctrl", 1, 0)
+dat$x_t1 = ifelse(dat$group == "trt1", 1, 0)
+dat$x_t2 = ifelse(dat$group == "trt2", 1, 0)
+
+str(dat)
+head(dat)
+```
+
+3種類のダミー変数を作った。それぞれ，`x_c`は「`ctrl`ならば1，それ以外なら0」，`x_t1`は「`trt1`ならば1，それ以外なら0」，`x_t2`は「`trt2`ならば1，それ以外なら0」となっている。これら3つのダミー変数を使ってモデルを作り，パラメータの推定をする。  
+
+$$
+\begin{equation}
+  \hat{y} = \beta_{c} x_{c} + \beta_{t1} x_{t1} + \beta_{t2} x_{t2}  \\ \tag{2}
+  y \sim Normal(\hat{y}, \sigma)
+\end{equation}
+$$
+
+ここで注意が必要なのは，今回のモデルでは切片$\alpha$が省かれていることである。その理由は後ほど説明する。  
+  
+モデルを`lm()`で記述して，推定してみよう。以下のプログラムを実行する。
+
+```{r}
+
+result = lm(data = dat, y ~ x_c + x_t1 + x_t2 - 1)
+summary(result)
+
+```
+
+`lm(data = dat, y ~ x_c + x_t1 + x_t2 - 1)`の中に*-1が加わっている*点に注意。これは「切片を除いた結果を出力せよ」という命令である。  
+それぞれのダミー変数に係る傾きの係数，すなわち式(2)における$\beta_{c}$，$\beta_{t1}$，$\beta_{t2}$の推定結果が出力される。それぞれ，`ctrl`，`trt1`, `trt2`における応答変数(`y`)の値の推定値を意味している。  
+
+    
+### 変数の中心化
+
+上記の例で出力される係数の推定値$\beta_{c}$，$\beta_{t1}$，$\beta_{t2}$は，各条件の平均値と一致している。  
+  
+```{r}
+
+dat %>% group_by(group) %>% summarise(M = mean(y))
+
+```
+  
+つまり，係数が意味していることは，各条件での応答変数の推定値（平均）であって，その条件の効果の強さを必ずしも反映しているわけではない。各係数の有意性検定の結果を見るとp値が非常に低く「有意」であるが，*これらの結果は何の意味も持たない*。係数の有意性検定は係数がゼロから有意に離れているかを検定していて，今回のデータならば応答変数（植物の重量）は正の値を取りうるので，「0より有意に大きい」という結果は当然である。  
+  
+係数からその条件の効果の強さ（例えば実験条件は植物の生長を促す効果があるのかなど）を直接解釈したいならば，モデルを組み直す必要がある。  
+  
+例えば，適切な処理として，応答変数から応答変数の平均値を引く**中心化(centering)**という処理を事前に行う。
+
+```{r}
+
+dat$y_2 <- dat$y - mean(dat$y) #yからyの平均値を引いた新たな変数y_2を作る
+
+summary(lm(data = dat, y_2 ~ x_c + x_t1 + x_t2 - 1)) #y_2を応答変数として解析する
+
+```
+
+係数の推定結果及び有意性検定の結果が変わった。今度は，x_t1の係数が負でp値も$p<.05$に，x_t2の係数は正でp値も$p<.05$となった。これらが意味していることは，「`x_t1` = 1のときに，`y_2`の値は有意に-0.41下がる」と「`x_t2` = 1のときに，`y_2`の値は有意に0.45上がる」ということである。言い換えれば，「実験条件1では平均よりも植物の重量の値が低く」，「実験条件2では平均よりも植物の重量の値が高い」傾向にあることを示している。  
+  
+図でも条件別に`y_2`の分布を確認してみよう。分布を見ても同様の傾向があるが，線形モデルの解析の結果その効果が有意であることが確認できた。
+  
+```{r}
+
+ggplot() + 
+  geom_boxplot(data = dat, aes(x = group, y = y_2))
+
+```
+
+
+このように，係数が持つ意味を直感的に理解しやすくするために，ここでは応答変数を変換した。応答変数だけではなく，予測変数も中心化する必要もある。  
+  
+モデル（式）を意識しながら，係数が何を意味しているかを考える習慣を身に着けよう。
+
+## 予測変数が複数ある場合
+
+前の章でも述べたように，予測変数は2つ以上入れても良い。予測変数が複数ある場合の注意点について見ていく。  
+  
+### 変数の効果の統制
+
+Rで標準で入っている`attitude`データを使って，予測変数が複数ある場合の線形モデルの解析の結果を確認してみよう。
+
+```{r}
+head(attitude)
+```
+
+以下のように，`complaints`, `privileges`, `learning`, `raises`の4つを予測変数として，`rating`の値の推定を行ってみよう。
+
+```{r}
+result = lm(data = attitude, rating ~ complaints + privileges + learning + raises)
+summary(result)
+```
+
+
+Interceptは，全ての予測変数の値がゼロのときの応答変数の予測値を意味している。各予測変数の係数は，予測変数が1単位増えた場合の応答変数の変化量を意味している。例えば，complaintsの係数は`r round(result$coefficients[2], 2)`であるが，これは「`complaints`が1増えると`rating`は`r round(result$coefficients[2], 2)`増える傾向にある」ことを意味している。  
+  
+各係数の値は「他の変数の値がゼロであるときの効果」を意味している。先程の`complaints`の係数`r round(result$coefficients[2], 2)`は，その他の予測変数`privileges`, `learning`, `raises`がゼロのときの，`complaints`が`rating`に与えるそのものの効果を示している。  
+このように複数の予測変数を入れることで，他の予測変数の効果を**統制(control)**した上での予測変数の効果を検討することが可能となる。   
+
+
+### 交互作用
+
+
+以下のプログラムを実行して，サンプルデータ`d`を作ろう。
+
+
+```{r}
+
+set.seed(1)
+x = round(runif(n = 20, min = 1, max = 10),0) 
+mu = 0.1 + 0.4 * x
+y = rnorm(n = 20, mean = mu, sd = 1)
+d_M = data.frame(x = x, y = y, gender = "M")
+
+x = round(runif(n = 20, min = 1, max = 10),0) 
+mu = 0.3 + -0.6 * x
+y = rnorm(n = 20, mean = mu, sd = 1)
+d_F = data.frame(x = x, y = y, gender = "F")
+
+d = rbind(d_M, d_F)
+
+str(d)
+
+
+```
+
+
+このデータ`d`には，`x`, `y`, `gender`の3つの変数が含まれている。`gender`は性別を意味する変数としよう。M（男性）かF（女性）のいずれかである。男女別に，実験で2つの変数を測定したとしよう。
+
+応答変数を`y`，予測変数を`x`として線形モデルで切片及び`x`の傾きのパラメータを推定する。モデルは以下のようになる。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta x  \\ \tag{3}
+  y \sim Normal(\hat{y}, \sigma)
+\end{equation}
+$$
+
+
+`lm()`関数を使って推定しよう（$x$と$y$の散布図及び係数の信頼区間も図示する）。
+
+```{r}
+result = lm(data = d, y ~ x)
+summary(result)
+
+newdat = data.frame(x = seq(1,10,0.1))
+result_conf = predict(result, new = newdat, interval = "confidence", level = 0.95)
+plot_conf = data.frame(x = seq(1,10,0.1), result_conf)
+
+ggplot() + 
+  geom_point(data = d, aes(x = x, y = y), size = 3) + 
+  geom_line(data = plot_conf, aes(x = x, y = fit)) + 
+  geom_ribbon(data = plot_conf, aes(x = x, ymax = upr, ymin = lwr), alpha = 0.4) 
+  
+
+```
+
+予測変数`x`の傾きはほぼフラットで，`y`に対してあまり効果がないようにみえる。  
+  
+しかし，このデータ`d`にはもう一つ性別を意味する`gender`という変数が含まれていた。`gender`を区別して，また`x`と`y`の散布図を見てみよう。
+
+```{r}
+ggplot() + 
+  geom_point(data = d, aes(x = x, y = y, shape = gender, color=gender), size = 3) 
+
+```
+
+性別が女性（F）か男性（M）かで，`x`と`y`の関係が違うようにみえる。  
+このように，別の変数との組み合わせにより，変数間の関係が変化することを**交互作用**という。このデータでも，応答変数`y`に対して性別`gender`と`x`の交互作用がありそうである。  
+  
+交互作用のあるモデルは，以下のように表現する。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta_{1} x + \beta_{2} M + \beta_{3} xM  \\ \tag{4}
+  y \sim Normal(\hat{y}, \sigma)
+\end{equation}
+$$
+
+$M$は性別`gender`のダミー変数で，`M`（男性）ならば1，`F`（女性）ならば0の変数とする。  
+線形モデルでは，**交互作用は予測変数同士の積**で扱う。男性（M=1）の場合のyの推定値は，$\alpha +(\beta_{1} + \beta_{3}) x +\beta_{2}$となる。一方，女性（M=0）の場合は，$\alpha +\beta_{1} x $となる。このように，交互作用を考慮する予測変数の積をモデルに加えることで，男性か女性かで切片及び傾きが変化することを表現できる。
+
+```{r}
+
+d$M = ifelse(d$gender == "M", 1, 0) #genderがMならば1, Fならば1のダミー変数を作る
+result = lm(data = d, y ~ x*M)
+summary(result)
+
+```
+
+2つの予測変数の積の傾きは，`x:M`である。p値も小さく，有意な効果を持っているようである。  
+  
+ここで注意が必要なのは，交互作用を含む線形モデルの係数は解釈が複雑になることである。  
+
+  
+男性(M = 1)の予測値は，線形モデルの式に推定された傾きと切片及び$M=1$を代入して，(`r as.numeric(round(result$coefficients[1],2))` + `r as.numeric(round(result$coefficients[3],2))`) + (`r as.numeric(round(result$coefficients[2],2))` +  `r as.numeric(round(result$coefficients[4],2))`) $x$ となる。  
+  
+女性(M = 0)の場合は，`r as.numeric(round(result$coefficients[1],2))` `r as.numeric(round(result$coefficients[2],2))` $x$ となる。  
+  
+`x`と`M`の傾きの推定値は，`x`や`M`のそのものの効果（いわゆる主効果）を反映しなくなる。  
+  
+交互作用効果が見られた場合は，解釈は慎重に行う必要がある。  
+  
+サンプルデータについて，推定されたパラメータを元に，男女別に線形モデルの直線の信頼区間を図示したのが以下の図である。  
+  
+```{r}
+
+new_x = seq(1,10,0.1)
+newdat = data.frame(x = rep(new_x,2), M = c(rep(0,length(new_x)), rep(1,length(new_x))))
+result_conf = predict(result, new = newdat, interval = "confidence", level = 0.95)
+plot_conf = data.frame(newdat, result_conf)
+plot_conf$gender = ifelse(plot_conf$M == 1, "M", "F")
+
+ggplot() + 
+  geom_point(data = d, aes(x = x, y = y, shape = gender, color=gender), size = 3) + 
+  geom_line(data = plot_conf, aes(x = x, y = fit, color=gender)) + 
+  geom_ribbon(data = plot_conf, aes(x = x, ymax = upr, ymin = lwr, color =gender), alpha = 0.4) 
+
+```
+
+
+
+## 線形モデルが抱える問題
+
+### 予測変数を増やすことによる問題
+
+予測変数を複数加えることで，どのような変数が応答変数に効果を持っているかを検証することが可能となるが，予測変数を加えることで生じる問題もある。
+
+#### 多重共線性
+
+予測変数同士が非常に強く相関しあっている場合，予測変数の係数の推定結果が信頼できなくなる恐れがある。この問題は，**多重共線性(multicollinearity)**と呼ばれる。  
+  
+サンプルデータを使って確認してみよう。Rには多重共線性の例として`longley`というサンプルデータがある。  
+  
+```{r}
+head(longley)
+```
+
+まず，このデータに入っている変数間の相関を確認してみよう。
+
+```{r}
+
+cor(longley)
+
+```
+
+`Employed`，`GNP`を予測変数としたモデル（model01）と，`GNP.deflator`を応答変数，Populationを予測変数としたモデル（model02）でそれぞれ解析してみよう。
+
+```{r}
+
+model01 = lm(data = longley, Employed ~ GNP.deflator)
+summary(model01)
+
+model02 = lm(data = longley, Employed ~ GNP)
+summary(model02)
+
+
+```
+
+次に，`Employed`を応答変数，`GNP`と`GNP.deflator`の両方を予測変数として入れて解析をしてみよう。
+
+
+```{r}
+
+model03 = lm(data = longley, Employed ~ GNP.deflator + GNP)
+summary(model03)
+
+```
+
+それぞれの予測変数の係数を見てみると，一つずつ予測変数として入れたときと比べて値が変わっており，p値も低くなっている。  
+  
+`GNP`と`GNP.deflator`同士は相関係数`r round(cor(longley$GNP, longley$GNP.deflator), 2)`とかなり強く相関している。このように，強く相関し合う変数を入れると係数の効果について信頼できる結果が得られなくなってしまう。  
+  
+なぜ強く相関しあっている変数を入れるとまずいのか？  
+予測変数が2つであるモデルは，以下のように表現できる。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta_{1} x_{1} + \beta_{2} x_{2} \\ \tag{5}
+\end{equation}
+$$
+
+2つの予測変数$x_{1}$と$x_{2}$が強く相関している場合，つまり$x_{1}=x_{2}$だとすると，式(5)は以下のように置き換えることができる。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + (\beta_{1} + \beta_{2}) x_{1} \\ \tag{6}
+\end{equation}
+$$
+
+$(\beta_{1} + \beta_{2})$について，パラメータ$\beta_{1}$と$\beta_{2}$の組み合わせは無限に考えられる。このように，強く相関する予測変数を入れると２つの予測変数のパラメータについて推定することが難しくなってしまう（パラメータの信頼区間が大きくなってしまう）。  
+  
+##### 多重共線性への対処
+
+多重共線性の対策として，**VIF(variance inflation factor)**という指標がよく用いられる。一般的に，$VIF > 10$の場合は，多重共線性を疑った方が良いといわれている。VIFの高い変数同士のうちどちらか一方を予測変数から除くといった対処をして，解析し直してみるのが良い。
+
+`car`パッケージの`vif()`関数を使えば，VIFを算出することができる。
+
+```{r}
+
+library(car)
+vif(model03)
+
+```
+
+
+
+#### 過学習
+
+以下のプログラムを実行して，サンプルデータ`d`を作成しよう。
+
+```{r}
+
+set.seed(10)
+
+N = 10
+x = seq(1,N,1)
+y = runif(N, min = 1, max = 5)
+d = data.frame(x = x, y = y)
+str(d)
+
+ggplot() + 
+  geom_point(data =d, aes(x=x, y = y))
+
+```
+
+このデータについて，以下の線形モデルを当てはめ，パラメータを推定しよう。図に線形モデルの直線及び信頼区間を図示するところまでやってみる。
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta_{1} x\\ \tag{7}
+\end{equation}
+$$
+
+```{r}
+
+result_1 = lm(data = d, y ~ x)
+
+newdat = data.frame(x = x)
+conf.int_1 = predict(result_1, newdata = newdat, interval = "confidence", level = 0.95)
+conf_dat = data.frame(d, newdat, conf.int_1)
+
+
+ggplot() + 
+  geom_point(data = conf_dat, aes(x = x, y = y))+
+  geom_line(data = conf_dat, aes(x = x, y = fit)) +
+  geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
+
+```
+
+直線はほとんど観測値から外れており，当てはまりが悪いようである。  
+  
+そこで，予測変数を増やして検討してみる。モデルでは，予測変数$x$のn乗を含む多項式のモデルを考慮することも可能である。例えば，以下は3次の多項式の例である。  
+
+$$
+\begin{equation}
+  \hat{y} = \alpha + \beta_{1} x  + \beta_{2} x^{2}  + \beta_{3} x^{3}\\ \tag{8}
+\end{equation}
+$$
+
+n次式のモデルは**多項式回帰**(polynomial regression)と呼ばれる。  
+    
+`lm()`では，`I()`の中に書くかたちでn次の予測変数を入れることができる。  
+
+```{r}
+
+result_3 = lm(data = d, y ~ x + I(x^2) + I(x^3))
+
+```
+
+同じく，3次の多項式による予測の結果を図で確認しよう。
+
+```{r}
+
+newdat = data.frame(x = x)
+conf.int_3 = predict(result_3, newdata = newdat, interval = "confidence", level = 0.95)
+conf_dat = data.frame(d, newdat, conf.int_3)
+
+
+ggplot() + 
+  geom_point(data = conf_dat, aes(x = x, y = y))+
+  geom_line(data = conf_dat, aes(x = x, y = fit)) + 
+  geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
+
+```
+
+
+9次の式でも推定してみよう。  
+
+```{r, warning=FALSE, message=FALSE}
+
+result_9 = lm(data = d, y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9))
+
+
+newdat = data.frame(x = x)
+conf.int_9 = predict(result_9, newdata = newdat, interval = "confidence", level = 0.95)
+conf_dat = data.frame(d, newdat, conf.int_9)
+
+
+ggplot() + 
+  geom_point(data = conf_dat, aes(x = x, y = y))+
+  geom_line(data = conf_dat, aes(x = x, y = fit)) + 
+  geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
+
+```
+
+線は全てのデータ点を完全に通っている。当然ながら，データの観測値の分だけパラメータがあれば，そのモデルはデータ点を全て通る線を引くことができる。現在のデータ点全ての当てることができる。  
+  
+しかし，そのモデルは現在のデータを全て当てられても，*将来得られる未知のデータを当てられるとは限らない*。  
+  
+予測変数を多くすると現在のデータには当てはまるが，当てはまりすぎて未知のデータの予測力が低下してしまう現象を**過学習(overfitting)**という。  
+  
+複雑なモデルは現在のデータによく当てはまるのは，ある意味当然である（単なる偶然で生じた誤差も無駄に説明してしまっている）。しかし，複雑なモデルは現在のデータに当てはまっても，未知のデータにもうまく当てはまるとは限らない。  
+  
+すなわち，理想的なモデルは，「**予測力が高く，かつ予測変数ができるだけ少なくてシンプルなモデル**」ということである。
+
+#### モデルの予測力の評価
+
+モデルが現在及び将来のデータに対して予測力を有するかを示す指標がいくつかある。
+
+##### 決定係数 
+
+線形モデルでは，データに対する回帰分析のモデルの予測力を表す指標として，**決定係数**（R-squared）というものがある。  
+  
+サンプルデータ`attitude`を例に見てみよう。
+
+```{r, echo=TRUE}
+
+model_01 = lm(data=attitude, rating ~ complaints + learning)
+summary(model_01)$r.squared #r.squaredで決定係数のみを取り出すことができる。
+
+```
+
+これは，モデルから求めた予測値と実測値の分散が，実際のデータの分散に占める割合を意味する指標である。つまり，そのモデルでどれだけ全データの分散を説明できているかを意味する。
+
+$$
+R^2 = \sum_{i=1}^{n} \frac {(y_{i}-\hat{y}_{i})^2}{(y_{i}-\bar{y})^2} \tag{9}
+$$
+
+ただし，決定係数は単純に，予測変数が増えるほど大きくなる（説明できる分散の量が増える）。  
+  
+例えば`attitude`データ内の全ての変数を予測変数に使ってみる
+
+```{r, echo=TRUE}
+
+model_full = lm(data=attitude, rating ~ .) #線形予測子を入力するところにドットを入力すると，そのデータに含まれる全ての変数を予測変数として扱う
+summary(model_full)$r.squared 
+
+```
+
+予測変数に影響を及ぼさない変数を含めても，決定係数は上昇してしまう。  
+  
+決定係数は，「予測力が高く，シンプルなモデル」を探す目的をかなえるのに常に適切な指標であるとは言えない。
+
+#### 赤池情報量基準（AIC）
+
+予測変数の少なさとモデルの予測力の高さのバランスを取った指標の一つとして，**赤池情報量基準(Akaike inoformation criteria: AIC)**がよく知られている。AICは以下の式で計算される。
+
+$$
+AIC = -2 \log L + 2k \tag{10}\\
+$$
+
+$\log L$は最大対数尤度，$k$はパラメータの数である。  
+  
+AICの値が低いほど，データに対するモデルの予測力が高いと評価する。  
+  
+AICは余計なパラメータが多くなる（$k$が大きくなる）ほど大きい値を取る。つまり，データをうまく予測しつつ，かつパラメータ数を抑えてシンプルなモデルを探ることにかなっている。
+
+
+`AIC()`関数でモデルをカッコ内に入れると，AICを算出してくれる。さきほどの`attitude`に当てはめた2つのモデルのAICを見てみよう。
+
+```{r}
+
+AIC(model_full)
+AIC(model_01)
+
+```
+
+`model_full`よりも`model_01`のAICが低く，`model_01`の予想力の方が高いことを示している。
+
+  
+## 練習問題{-}
+  
+  

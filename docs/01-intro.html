@@ -134,10 +134,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="01-intro.html"><a href="01-intro.html"><i class="fa fa-check"></i><b>2</b> Rの使い方</a><ul>
-<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#r及びrstudioのインストール"><i class="fa fa-check"></i><b>2.1</b> R及びRStudioのインストール</a></li>
+<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#rのインストール"><i class="fa fa-check"></i><b>2.1</b> Rのインストール</a></li>
 <li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="01-intro.html#rstudioのインストール"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
 <li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="01-intro.html#プログラムの書き方"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#コンソールとスクリプト"><i class="fa fa-check"></i><b>2.3.1</b> コンソールとスクリプト</a></li>
+<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#コンソールconsole"><i class="fa fa-check"></i><b>2.3.1</b> コンソール（Console）</a></li>
+<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="01-intro.html#スクリプト"><i class="fa fa-check"></i><b>2.3.2</b> スクリプト</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="01-intro.html#単純な演算"><i class="fa fa-check"></i><b>2.4</b> 単純な演算</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="01-intro.html#コメント文"><i class="fa fa-check"></i><b>2.4.1</b> コメント文</a></li>
@@ -397,15 +398,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li><p>データの読み込み</p></li>
 </ul>
-<div id="r及びrstudioのインストール" class="section level2">
-<h2><span class="header-section-number">2.1</span> R及びRStudioのインストール</h2>
+<div id="rのインストール" class="section level2">
+<h2><span class="header-section-number">2.1</span> Rのインストール</h2>
 <p>インストールは，<a href="https://cran.r-project.org">https://cran.r-project.org</a>から可能。自分のOSにあったインストーラを選ぶ。</p>
 <p><img src="images/image01_R.png" /></p>
 <p>インストーラを実行したら，あとは指示に従ってインストールをすすめる。</p>
 </div>
 <div id="rstudioのインストール" class="section level2">
 <h2><span class="header-section-number">2.2</span> RStudioのインストール</h2>
-<p>RStudioとは，Rの使いやすさを向上させる目的で開発されているアプリケーションである。Rをインストールしたら，RStudioもインストールしておくこともすすめる。このマニュアルでも，RStudioを使って解析することを前提に説明する。</p>
+<p>RStudioとは，Rの使いやすさを向上させる目的で開発されているアプリケーションである。Rをインストールしたら，RStudioもインストールしておくこともすすめる。このテキストでも，RStudioを使って解析することを前提に説明する。</p>
 <p>インストールは，<a href="https://rstudio.com/products/rstudio/#rstudio-desktop">https://rstudio.com/products/rstudio/#rstudio-desktop</a>からできる。</p>
 <p><img src="images/image01_RStudio.png" /></p>
 <p>「DOWNLOAD RSTUDIO DESKTOP」を選択（無料版で良い）。</p>
@@ -420,26 +421,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>同じくOSがWindowsの場合，アカウント名にマルチバイト文字（全角文字）を含んでいるとRが正常に起動しない。つまり，マシンにログインする時の名前を「ほげ」など全角文字（日本語）にしてしまっていると，うまくいかない。この場合は面倒ではあるが，「既にあるアカウントの名前を半角英数に変更する（[hoge]など）」，あるいは「もう一つ別の半角のアカウントを作る」といった方法で対処してみよう。</p></li>
 <li><p>Rに限らず，ファイルやフォルダ名に全角文字が含まれていると障害になる場合がある。ファイル名やフォルダ名には，なるべく日本語（全角文字）は使わない習慣を身に着けよう。</p></li>
 </ul>
+<hr />
 </div>
 <div id="プログラムの書き方" class="section level2">
 <h2><span class="header-section-number">2.3</span> プログラムの書き方</h2>
 <p>Rの画面構成について確認する。</p>
-<div id="コンソールとスクリプト" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> コンソールとスクリプト</h3>
-<div id="コンソールconsole" class="section level4">
-<h4><span class="header-section-number">2.3.1.1</span> コンソール（Console）</h4>
+<div id="コンソールconsole" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> コンソール（Console）</h3>
 <p><strong>コンソール（Console）</strong>という部分にプログラムを入力すると，結果が出力される。
 ためしに，コンソールの<code>&gt;</code>の部分に，以下のプログラムを入力して，Enterを押してみよう。</p>
 <ul>
-<li>このマニュアルでは以下のように，背景が灰色の箇所にプログラムとその出力結果（行頭に##が付いている部分）が示されている。</li>
+<li>このテキストでは以下のように，背景が灰色の箇所にプログラムとその出力結果（行頭に##が付いている部分）が示されている。</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>同じコンソールに，答えである2が出力されたはずである。
 このように，コンソールに直接プログラムを入力すると，結果を返してくれる。</p>
 </div>
-<div id="スクリプト" class="section level4">
-<h4><span class="header-section-number">2.3.1.2</span> スクリプト</h4>
+<div id="スクリプト" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> スクリプト</h3>
 <p>コンソールに入力したプログラムや出力結果は，Rを閉じると消えてしまう。これでは復習できないので，プログラムは別のファイルに残しておいた方が良い。</p>
 <p>プログラムを書き込んだ別ファイルのことを「<strong>スクリプト</strong>」と呼ぶ。プログラムはなるべく，スクリプトファイルに残しておく習慣をつけよう。</p>
 <ul>
@@ -463,7 +463,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>他にもカッコの閉じ忘れなどでも，同じようなことが生じる。</p>
 <p>なお，<strong>Esc（エスケープ）キーを押せば</strong>，プログラムを中止することができる。困ったときには，Escキーを押そう。</p>
 <p>他にも，エラーが生じた場合は，エラーメッセージを読んで，<strong>プログラムの書き方に間違いがないかを確認しよう</strong>。たいてい，「変数の入力間違い」など大したことのないミスが原因である。ちょっとプログラムを間違えたくらいでRが壊れるということは決してないので，冷静に対処しよう。</p>
-</div>
 </div>
 </div>
 <div id="単純な演算" class="section level2">

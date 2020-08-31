@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-08-29" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7" data-path="01-intro.html"><a href="01-intro.html#欠損値"><i class="fa fa-check"></i><b>2.7</b> 欠損値</a></li>
 <li class="chapter" data-level="2.8" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストールとロード"><i class="fa fa-check"></i><b>2.8</b> パッケージのインストールとロード</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストール"><i class="fa fa-check"></i><b>2.8.1</b> パッケージのインストール</a></li>
+<li class="chapter" data-level="2.8.2" data-path="01-intro.html"><a href="01-intro.html#パッケージのロード"><i class="fa fa-check"></i><b>2.8.2</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="2.9" data-path="01-intro.html"><a href="01-intro.html#データの読み込み"><i class="fa fa-check"></i><b>2.9</b> データの読み込み</a><ul>
 <li class="chapter" data-level="2.9.1" data-path="01-intro.html"><a href="01-intro.html#ワーキングディレクトリを指定する"><i class="fa fa-check"></i><b>2.9.1</b> ワーキングディレクトリを指定する。</a></li>
@@ -358,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="12-Bayese.html"><a href="12-Bayese.html"><i class="fa fa-check"></i><b>13</b> ベイズ統計</a><ul>
 <li class="chapter" data-level="13.1" data-path="12-Bayese.html"><a href="12-Bayese.html#準備-4"><i class="fa fa-check"></i><b>13.1</b> 準備</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="12-Bayese.html"><a href="12-Bayese.html#rtanとbrmsパッケージのインストール"><i class="fa fa-check"></i><b>13.1.1</b> rtanとbrmsパッケージのインストール</a></li>
-<li class="chapter" data-level="13.1.2" data-path="12-Bayese.html"><a href="12-Bayese.html#パッケージのロード"><i class="fa fa-check"></i><b>13.1.2</b> パッケージのロード</a></li>
+<li class="chapter" data-level="13.1.2" data-path="12-Bayese.html"><a href="12-Bayese.html#パッケージのロード-1"><i class="fa fa-check"></i><b>13.1.2</b> パッケージのロード</a></li>
 <li class="chapter" data-level="13.1.3" data-path="12-Bayese.html"><a href="12-Bayese.html#brmsでベイズ統計"><i class="fa fa-check"></i><b>13.1.3</b> brmsでベイズ統計</a></li>
 <li class="chapter" data-level="13.1.4" data-path="12-Bayese.html"><a href="12-Bayese.html#事前分布の設定"><i class="fa fa-check"></i><b>13.1.4</b> 事前分布の設定</a></li>
 </ul></li>
@@ -509,8 +510,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="変数の型" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> 変数の型</h3>
 <p>Rでは変数の種類として，<em>数値型</em>，<em>文字列</em>，<em>日付</em>，<em>論理型</em>の区別をする。</p>
-<div id="数値型numeric" class="section level4">
-<h4><span class="header-section-number">2.5.2.1</span> 数値型(numeric)</h4>
+<div id="数値型numeric" class="section level4 unnumbered">
+<h4>数値型(numeric)</h4>
 <p>数値型として格納した変数は，数値として扱うことができる。数値型の変数同士で，演算（足し算・引き算・掛け算・割り算）を行うことができる。</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">x_num =<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="kw">class</span>(x_num) <span class="co">#class()でその変数の型を確認することができる</span></a></code></pre></div>
@@ -521,8 +522,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">x_num <span class="op">+</span><span class="st"> </span>y_num <span class="co">#数値型同士は演算することができる</span></a></code></pre></div>
 <pre><code>## [1] 6.2</code></pre>
 </div>
-<div id="文字列character" class="section level4">
-<h4><span class="header-section-number">2.5.2.2</span> 文字列(character)</h4>
+<div id="文字列character" class="section level4 unnumbered">
+<h4>文字列(character)</h4>
 <p>文字として扱われる。文字列同士は演算をすることができない。
 文字を変数として代入したい場合は，文字をクオテーションマーク<code>(&quot;&quot;)</code>で囲む。</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">x_char =<span class="st"> &quot;hello&quot;</span></a>
@@ -532,8 +533,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb24-2" data-line-number="2"><span class="kw">class</span>(y_char) <span class="co">#数値でもクオテーションで囲めば文字列として扱われる。</span></a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
-<div id="日付date" class="section level4">
-<h4><span class="header-section-number">2.5.2.3</span> 日付(date)</h4>
+<div id="日付date" class="section level4 unnumbered">
+<h4>日付(date)</h4>
 <p>Dateは日付のみを保存し，POSIXctは日付と時間を保存する。
 日付型同士で日数や秒数などの演算をすることができる。</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">x_date =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-06-15&quot;</span>)</a>
@@ -546,8 +547,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb30-2" data-line-number="2">x_date_<span class="dv">2</span><span class="op">-</span><span class="st"> </span>x_date_<span class="dv">1</span></a></code></pre></div>
 <pre><code>## Time difference of 1 days</code></pre>
 </div>
-<div id="論理型logical" class="section level4">
-<h4><span class="header-section-number">2.5.2.4</span> 論理型(logical)</h4>
+<div id="論理型logical" class="section level4 unnumbered">
+<h4>論理型(logical)</h4>
 <p><code>TRUE</code>か<code>FALSE</code>の2つの値のどちらかを取る変数の型である。</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">a =<span class="st"> </span><span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">class</span>(a) <span class="co">#class()でその変数の型を確認することができる</span></a></code></pre></div>
@@ -555,8 +556,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">b =<span class="st"> </span><span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">class</span>(b) <span class="co">#class()でその変数の型を確認することができる</span></a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div id="論理式" class="section level5">
-<h5><span class="header-section-number">2.5.2.4.1</span> 論理式</h5>
+<div id="論理式" class="section level5 unnumbered">
+<h5>論理式</h5>
 <p>数値の大小関係などを扱うときに用いる。</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="co">#2 と 1 は同じか？</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
@@ -576,7 +577,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="データ構造" class="section level2">
 <h2><span class="header-section-number">2.6</span> データ構造</h2>
-<p>複数の数値などをまとめたものをデータと呼ぶ。Rには，データを扱うためのいくつかのデータ構造が用意されている。</p>
+<p>複数の数値などをまとめたものをデータと呼ぶ。Rには，いくつかのデータ構造が用意されている。</p>
 <div id="ベクトル" class="section level3">
 <h3><span class="header-section-number">2.6.1</span> ベクトル</h3>
 <p>同じ型の要素を集めたもの。Rでは，<code>c()</code>関数でベクトルを作成することができる。</p>
@@ -665,6 +666,9 @@ Rに標準で入っている機能に加え，追加で<strong>tidyverse</strong
 <p>ここでは<code>tidyverse</code>というパッケージをインストールするのを例として，パッケージのインストール方法について示す。</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
 <p>もし「Please select a CRAN mirror …」というのが表示されたら，Japan (Tokyo)を選んで「OK」を押す。</p>
+</div>
+<div id="パッケージのロード" class="section level3">
+<h3><span class="header-section-number">2.8.2</span> パッケージのロード</h3>
 <p>インストールしただけではパッケージは使えない。使う前にロードする必要がある。<code>library()</code>で，括弧内に使いたいパッケージ名を入力する。</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
 <p>一度インストールしておけば，今後は最初に<code>library()</code>でロードするだけで使うことができる。毎回インストールする必要はない。</p>
@@ -672,6 +676,7 @@ Rに標準で入っている機能に加え，追加で<strong>tidyverse</strong
 <p>マシンにインストールされているパッケージの情報は，RStudioの右下の「Packages」というタブから確認することができる。</p>
 <p><img src="images/image01_RStudio_packages.png" /></p>
 <p>パッケージは世界中で開発され，アップデータもなされている。RStudioならば同じく「Packages」の「Update」を選ぶことでアップデートすることができる。</p>
+<hr />
 </div>
 </div>
 <div id="データの読み込み" class="section level2">
@@ -689,14 +694,12 @@ Rに標準で入っている機能に加え，追加で<strong>tidyverse</strong
 試しに，現在のワーキングディレクトリを確認しよう。以下のプログラムをコンソールに入力して実行する。</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">getwd</span>()</a></code></pre></div>
 <p>出力された場所が，現在のワーキングディレクトリである。Rは読み込むファイルをワーキングディレクトリを起点として探す。<strong>読み込むファイルは，ワーキングディレクトリに置くことにしよう</strong>。</p>
-<div id="ワーキングディレクトリの指定" class="section level4">
-<h4><span class="header-section-number">2.9.1.1</span> ワーキングディレクトリの指定</h4>
-<p>以下に，ワーキングディレクトリをデスクトップに指定する方法について説明する。</p>
-<div id="方法" class="section level5">
-<h5><span class="header-section-number">2.9.1.1.1</span> 方法１</h5>
-<ul>
-<li>コンソールに以下のプログラムを直接書き込んで実行する。</li>
-</ul>
+<div id="ワーキングディレクトリの指定" class="section level4 unnumbered">
+<h4>ワーキングディレクトリの指定</h4>
+<p>以下に，デスクトップをワーキングディレクトリに指定する方法について説明する。</p>
+<div id="方法" class="section level5 unnumbered">
+<h5>方法１</h5>
+<p>コンソールに以下のプログラムを直接書き込んで実行する。</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="co">#Windowsの場合</span></a>
 <a class="sourceLine" id="cb77-2" data-line-number="2"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/ユーザー名/Desktop&quot;</span>) <span class="co">#ユーザー名には設定しているアカウント名を入れる。</span></a>
 <a class="sourceLine" id="cb77-3" data-line-number="3"></a>
@@ -706,15 +709,15 @@ Rに標準で入っている機能に加え，追加で<strong>tidyverse</strong
 <a class="sourceLine" id="cb77-7" data-line-number="7"><span class="co">#正しく設定されたかを確認する</span></a>
 <a class="sourceLine" id="cb77-8" data-line-number="8"><span class="kw">getwd</span>() </a></code></pre></div>
 </div>
-<div id="方法-1" class="section level5">
-<h5><span class="header-section-number">2.9.1.1.2</span> 方法２</h5>
+<div id="方法-1" class="section level5 unnumbered">
+<h5>方法２</h5>
 <ul>
 <li>RStudioならば，右の方にある「File」からデスクトップを表示し，「Set As Working Directory」を選ぶ。</li>
 </ul>
 <p><img src="images/image02_Working.png" /></p>
 </div>
-<div id="方法-2" class="section level5">
-<h5><span class="header-section-number">2.9.1.1.3</span> 方法３</h5>
+<div id="方法-2" class="section level5 unnumbered">
+<h5>方法３</h5>
 <ul>
 <li>RStudioならば，「Session」から「Set Working Directory」，「Choose Working Directory」を選び，デスクトップを選ぶ。</li>
 </ul>
@@ -724,21 +727,21 @@ Rに標準で入っている機能に加え，追加で<strong>tidyverse</strong
 </div>
 <div id="データを読み込む" class="section level3">
 <h3><span class="header-section-number">2.9.2</span> データを読み込む</h3>
-<div id="csvファイルの場合" class="section level4">
-<h4><span class="header-section-number">2.9.2.1</span> csvファイルの場合</h4>
+<div id="csvファイルの場合" class="section level4 unnumbered">
+<h4>csvファイルの場合</h4>
 <p><code>read.csv()</code>関数で読み込むことが出来る。</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">dat =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>) <span class="co">#ファイル名をクオテーションで囲んで入れる。ここでは読み込んだデータを「dat」という名前で保存した。</span></a>
 <a class="sourceLine" id="cb78-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb78-3" data-line-number="3">dat <span class="co">#データの中身がコンソールに出力される</span></a></code></pre></div>
 </div>
-<div id="excelファイルの場合" class="section level4">
-<h4><span class="header-section-number">2.9.2.2</span> Excelファイルの場合</h4>
+<div id="excelファイルの場合" class="section level4 unnumbered">
+<h4>Excelファイルの場合</h4>
 <p><code>tidyverse</code>パッケージをロードした上で，<code>read_excel()</code>を使う。</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">dat =<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data.xlsx&quot;</span>)</a>
 <a class="sourceLine" id="cb79-2" data-line-number="2">dat</a></code></pre></div>
 </div>
-<div id="相対パス" class="section level4">
-<h4><span class="header-section-number">2.9.2.3</span> 相対パス</h4>
+<div id="相対パス" class="section level4 unnumbered">
+<h4>相対パス</h4>
 <p>ワーキングディレクトリを起点として指定されるファイルの場所のことを<em>相対パス</em>という。</p>
 <p>上記の例は，デスクトップ上に読み込みたいファイルを保存し，デスクトップをワーキングディレクトリとして指定して読み込むという手順であった。しかし，例えばデスクトップにあるフォルダの中にデータを保存してあってそのファイルを読み込みたい場合，いちいちワーキングディレクトリを設定し直すのが面倒くさくなる。</p>
 <p>このような場合，相対パスでファイルを指定するのが便利である。
@@ -779,7 +782,7 @@ Rに標準で入っている機能に加え，追加で<strong>tidyverse</strong
 </div>
 <div id="問-1" class="section level3 unnumbered">
 <h3>問２</h3>
-<p>ある細菌が，1分後に2個に分裂して増殖するとする。つまり，1個の細菌が1分後には2個に，2分後にはその2個が2秒後にはその2個が分裂して合計4個に，3分後にはその4個が分裂して合計8個になる。<br />
+<p>ある細菌が，1分後に2個に分裂して増殖するとする。つまり，1個の細菌が1分後には2個に，2分後にはその2個が分裂して合計4個に，3分後にはその4個が分裂して合計8個になる。<br />
 1個の細菌は，30分後には何個になっているだろうか？</p>
 <p>ヒント：aのx乗は^を使って求める（a^x）</p>
 </div>

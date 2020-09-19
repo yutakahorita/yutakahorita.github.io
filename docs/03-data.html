@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-09-05" />
+<meta name="date" content="2020-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,7 +202,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="03-data.html"><a href="03-data.html#データの結合"><i class="fa fa-check"></i><b>4.7</b> データの結合</a></li>
 <li class="chapter" data-level="4.8" data-path="03-data.html"><a href="03-data.html#データの読み込み-1"><i class="fa fa-check"></i><b>4.8</b> データの読み込み</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="03-data.html"><a href="03-data.html#readxl"><i class="fa fa-check"></i><b>4.8.1</b> readxl</a></li>
+<li class="chapter" data-level="4.8.1" data-path="03-data.html"><a href="03-data.html#readr"><i class="fa fa-check"></i><b>4.8.1</b> readr</a></li>
+<li class="chapter" data-level="4.8.2" data-path="03-data.html"><a href="03-data.html#readxl"><i class="fa fa-check"></i><b>4.8.2</b> readxl</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="03-data.html"><a href="03-data.html#確認問題-2"><i class="fa fa-check"></i>確認問題</a><ul>
 <li class="chapter" data-level="" data-path="03-data.html"><a href="03-data.html#問-6"><i class="fa fa-check"></i>問１</a></li>
@@ -383,8 +384,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="データハンドリング" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> データ・ハンドリング</h1>
-<p>データに新しく変数を加えたり，データの形式を変えるなど，より高度で複雑な（だが以降の章の解析で必要な）データの操作について学んでいく。<br />
-この章では，<code>tidyverse</code>というパッケージに入っている一連の関数を解説する。</p>
+<p>データに新しく変数を加えたり，データの形式を変えるなど，より高度で複雑なデータの操作について学んでいく。<br />
+この章では，<code>tidyverse</code>というパッケージに入っている関数を解説する。</p>
 <ul>
 <li>変数の作成<br />
 </li>
@@ -415,13 +416,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>dplyr: データの整理に特化したパッケージ<br />
 など</li>
 </ul>
-<p>このテキストでは，以降の章での解析に必要なパッケージ及び関数のみに絞って解説する。詳細はtidyverseの公式ページを参照のこと。
+<p>このテキストでは，以降の章での解析に必要なパッケージ及び関数のみに絞って解説する。詳細はtidyverseの公式ページを参照のこと。<br />
 <a href="https://www.tidyverse.org">https://www.tidyverse.org</a></p>
 <hr />
 <p>注意：<br />
-以降のプログラムでは，関数を「<code>XXXX::YYYY</code>」と表現しているが，これらは「<code>XXXX</code>パッケージに入っている<code>YYYY</code>という関数を使う」ということを意味する。<code>XXXX::</code>の部分は，基本的に省略しても問題ないが，例えば<code>tidyverse</code>パッケージ以外もロードしていて，同じ名前の関数が別のパッケージに含まれている場合には，思った通りの結果が表示されない場合もある。外部パッケージの関数を使う場合は，できる限り<code>XXXX::</code>を付けて使って指定した方が無難である。</p>
+以降のプログラムでは，関数を「<code>XXXX::YYYY</code>」と表現しているが，これらは「<code>XXXX</code>パッケージに入っている<code>YYYY</code>という名前の関数を使う」ということを意味している。<code>XXXX::</code>の部分は基本的に省略しても問題ないが，例えば<code>tidyverse</code>パッケージ以外もロードしていて，同じ名前の関数が別のパッケージに含まれている場合には，思った通りの結果が表示されない場合もある。外部パッケージの関数を使う場合は，できる限り<code>XXXX::</code>を付けた方が無難である。</p>
 <hr />
-<p>以降では，Rに標準で入っている<code>iris</code>データを例として，ファイル操作の練習を行う。以下のプログラムを実行し，<code>iris</code>データを<code>dat</code>という名前に置き換えて使っていく。</p>
+<p>以降では，Rに標準で入っている<code>iris</code>データを例として，ファイル操作の練習を行う。以下のプログラムを実行し，<code>iris</code>データを<code>dat</code>という名前に置き換えて使っていこう。</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">dat =<span class="st"> </span>iris </a></code></pre></div>
 </div>
 <div id="変数の作成" class="section level2">
@@ -443,7 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="データの抽出" class="section level2">
 <h2><span class="header-section-number">4.3</span> データの抽出</h2>
-<p>dplyrパッケージに入っている<code>select</code>, <code>filter</code>関数を使うと，データの中から必要な部分のみを取り出すことができる。</p>
+<p>dplyrパッケージに入っている<code>select</code>や <code>filter</code>関数を使うと，データの中から必要な部分のみを取り出すことができる。</p>
 <div id="必要な列のみを取り出すselect" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> 必要な列のみを取り出す（select）</h3>
 <p><code>select()</code>で，<em>データの名前，取り出したい変数名（複数選択可）</em>の順番で入力すると，指定した変数の列のみを取り出してくれる。</p>
@@ -473,16 +474,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          5.5         2.3          4.0         1.3 versicolor
 ## 5          6.5         2.8          4.6         1.5 versicolor
 ## 6          5.7         2.8          4.5         1.3 versicolor</code></pre>
-<p>データから条件にあう行だけが取り出される。上の例では，「<code>Species</code>が<code>versicolor</code>である」という条件を指定して，条件に合うデータのみを取り出している。</p>
+<p>データから条件に合う行だけが取り出される。上の例では，「<code>Species</code>が<code>versicolor</code>である」行を<code>dat</code>から取り出している。</p>
 <hr />
-<p>「イコール」は<code>=</code>ではなく，<code>==</code>としているのに注意。つまり，計算式と論理式ではイコールの表現が異なる。他の論理式の表現については，第2章で説明しているので確認しておこう。例えば，「<code>Sepal.Length</code>が7以上」という条件で取り出したいときは，<code>dplyr::filter(iris, Sepal.Length &gt;= 7)</code>とすれば良い。</p>
+<p>「イコール」は<code>=</code>ではなく，<code>==</code>と表記していることに注意。つまり，計算式と論理式ではイコールの表現が異なる。他の論理式の表現については，第2章で説明しているので確認しておこう。例えば，「<code>Sepal.Length</code>が7以上」という条件で取り出したいときは，<code>dplyr::filter(iris, Sepal.Length &gt;= 7)</code>とすれば良い。</p>
 </div>
 </div>
 <div id="パイプ" class="section level2">
 <h2><span class="header-section-number">4.4</span> パイプ</h2>
 <p>複数のプログラムをつなげることを<em>パイプ処理</em>という。purrrパッケージで，Rでパイプ処理をすることができる。</p>
-<p>例えば，<code>iris</code>データで「あやめの種類のうち<code>&quot;setosa&quot;</code>を取り出して，かつ変数として<code>Species</code>，<code>Sepal.Width</code>, <code>Sepal.Length</code>のみを取り出したい」という複数の処理をする場合を例として考える。<br />
-先程まで学んだ内容を駆使すれば，以下のように複数のプラグラムを段階的に書けばできなくはないが，非常に面倒くさくなる（プログラムを分けて書くと途中でミスも生じやすくなる）。</p>
+<p>例えば，<code>iris</code>データで「あやめの種類のうち<code>&quot;setosa&quot;</code>のみの行を取り出して，更に<code>Species</code>，<code>Sepal.Width</code>, <code>Sepal.Length</code>のみの列を取り出したい」という複数の処理をする場合を例として考える。<br />
+先程まで学んだ内容を駆使すれば，以下のように複数のプラグラムを段階的に書けばできなくはないが，プログラムが非常に長くなる（プログラムを分けて書くと途中でミスも生じやすくなる）。</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
 <a class="sourceLine" id="cb124-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb124-3" data-line-number="3">dat2 =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(dat, Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="co">#まずSpeciesのうち，setosaのみを取り出す。dat2という名前で保存する。</span></a>
@@ -512,23 +513,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5  setosa          5.0          1.4
 ## 6  setosa          5.4          1.7</code></pre>
 <p><code>%&gt;%</code>はプログラムを渡していく関数であり，<code>.</code>はそのプログラム以前の結果を示している。<code>iris</code>データを<code>filter</code>に渡し，その結果を<code>select</code>に渡している。</p>
-<p>ドットは省いてしまっても良い（以降でも，<code>.</code>は省略して表記する）。</p>
+<p>ドットは省いても良い（以降でも，<code>.</code>は省略して表記する）。</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">dat2 =<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span>dply<span class="op">::</span><span class="kw">select</span>(Species, Sepal.Length, Petal.Length)</a></code></pre></div>
 </div>
 <div id="グルーピング" class="section level2">
 <h2><span class="header-section-number">4.5</span> グルーピング</h2>
 <p>パイプを利用することで，グループごとに統計量を算出することができる。</p>
-<p><code>iris</code>データを例として，グループごとに平均や標準偏差を計算する方法を身につけよう。</p>
-<p>あやめの種類ごとに，がくの長さの平均と標準偏差を算出してみる。<br />
+<p><code>iris</code>データを例として，グループごとに平均や標準偏差を計算する方法を覚えよう。</p>
+<p>あやめの種類ごとに，がくの長さの平均値と標準偏差を算出してみる。<br />
 先ほど学んだパイプ処理（<code>%&gt;%</code>）に加え，<code>dplyr</code>パッケージの<code>group_by</code>と<code>summarise</code>関数を利用する。</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">dat =<span class="st"> </span>iris <span class="co">#irisデータをdatという名前に置き換える</span></a>
 <a class="sourceLine" id="cb129-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb129-3" data-line-number="3">dat2 =<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb129-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">Mean =</span> <span class="kw">mean</span>(Sepal.Width, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">SD =</span> <span class="kw">sd</span>(Sepal.Width, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">N =</span> <span class="kw">length</span>(Sepal.Width))</a>
-<a class="sourceLine" id="cb129-6" data-line-number="6"><span class="co">#Speciesをグループ化し，グループごとにSepal.Widthの平均，標準偏差，サンプル数（ベクトルの長さ）を出力する。</span></a>
-<a class="sourceLine" id="cb129-7" data-line-number="7">dat2</a></code></pre></div>
+<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">Mean =</span> <span class="kw">mean</span>(Sepal.Width, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb129-6" data-line-number="6">                   <span class="dt">SD =</span> <span class="kw">sd</span>(Sepal.Width, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb129-7" data-line-number="7">                   <span class="dt">N =</span> <span class="kw">length</span>(Sepal.Width))</a>
+<a class="sourceLine" id="cb129-8" data-line-number="8">dat2</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   Species     Mean    SD     N
 ##   &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
@@ -546,7 +548,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>まず，データのレイアウトには，<em>wide型</em>と<em>long型</em>の二種類があることを理解しよう。</p>
 <p>以下のデータを例として説明する。A, B, Cの3人の参加者が，X, Y, Z条件の３つの条件で実験課題を行ったとする。<br />
 それぞれの条件での課題の成績（数値），参加者の性別，年齢をデータとして入力する。</p>
-<p>まずは，以下のプログラムを実行してサンプルデータを作成しよう（初めて見る関数もあるが，気にせずプログラムを入力して実行しよう）。</p>
+<p>まずは，以下のプログラムを実行してサンプルデータを作成しよう。</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">dat_wide =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Subject =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), </a>
 <a class="sourceLine" id="cb131-2" data-line-number="2">                      <span class="dt">X =</span> <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>), </a>
 <a class="sourceLine" id="cb131-3" data-line-number="3">                      <span class="dt">Y =</span> <span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">4</span>), </a>
@@ -576,11 +578,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7       C         X     7      F  20
 ## 8       C         Y     4      F  20
 ## 9       C         Z     7      F  20</code></pre>
-<p><strong>実験成績ごとに１行ずつ</strong>でデータが作られている。すなわち，同じ参加者１人につき３行のデータがある。このようなデータの方をlong型と呼ぶ。</p>
-<div id="どのデータ型にすべきか" class="section level4">
-<h4><span class="header-section-number">4.6.1.1</span> どのデータ型にすべきか？</h4>
+<p><strong>実験成績ごとに１行ずつ</strong>でデータが作られている。すなわち，同じ参加者1人につき3行のデータがある。このようなデータの方をlong型と呼ぶ。</p>
+<div id="どのデータ型にすべきか" class="section level4 unnumbered">
+<h4>どのデータ型にすべきか？</h4>
 <p>Rでデータ解析に使う関数は，「1つの観測値（observation）につき1行」が原則，つまりlong型でデータが入っていることを前提として作られている。このテキストで学ぶデータ解析も，基本的に分析で使うデータはlong型を前提とする。</p>
-<p>その一方，データを入力する際にはwide型で用意する方が楽な場合もある。データ入力は研究者の都合に応じてやりやすい方法で用意するとして，解析をする際ときに必要なデータ形式に変換するすべを身に着けておこう。</p>
+<p>その一方，データを入力する際にはwide型で用意する方が楽な場合もある。データ入力は研究者の都合に応じてやりやすい方法で用意するとして，解析をする際に適切なデータ形式に変換するすべを身に着けておこう。</p>
 </div>
 </div>
 <div id="wide型からlong型に変換" class="section level3">
@@ -599,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7       A      M  18         Z     7
 ## 8       B      F  19         Z     5
 ## 9       C      F  20         Z     7</code></pre>
-<p><code>gather()</code>で，並び替える変数を指定する。そして，<code>key=</code>でkey変数，<code>value=</code>でvalue変数として新たにつけたい名前を指定する。</p>
+<p><code>gather()</code>で，並べ替える変数を指定する。そして，<code>key=</code>でkey変数，<code>value=</code>でvalue変数として新たにつけたい名前を指定する。</p>
 </div>
 <div id="long型からwide型に変換" class="section level3">
 <h3><span class="header-section-number">4.6.3</span> long型からwide型に変換</h3>
@@ -658,8 +660,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="データの読み込み-1" class="section level2">
 <h2><span class="header-section-number">4.8</span> データの読み込み</h2>
 <p>Rにもともと入っている<code>read.csv()</code>を使えばcsvファイルを読み込むことができるが，<code>readr</code>パッケージの関数を使うと大量のデータが含まれるファイルも高速で読み込んでくれる。また，<code>readxl</code>パッケージの関数を使えば，Excelファイルも読み込んでくれる。</p>
-<div id="readr" class="section level4">
-<h4><span class="header-section-number">4.8.0.1</span> readr</h4>
+<div id="readr" class="section level3">
+<h3><span class="header-section-number">4.8.1</span> readr</h3>
 <p>様々な形式のファイルを高速で読み書きことを目標としたパッケージ。</p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">dat =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./sample_data/0_sample.csv&quot;</span>)</a>
 <a class="sourceLine" id="cb147-2" data-line-number="2">dat</a></code></pre></div>
@@ -683,10 +685,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb151-2" data-line-number="2">readr<span class="op">::</span><span class="kw">write_excel_csv</span>(dat_<span class="dv">2</span>, <span class="st">&quot;./sample_data/0_sample_2.csv&quot;</span>)</a></code></pre></div>
 <p><code>read.csv()</code>ではなく，<code>read_csv()</code>なので注意（ドットではなく，アンダースコア）。</p>
 <p>ファイルを書き出すための関数も用意されている。<br />
-* ここでは<code>write_excel_csv()</code> を使っているが，単に<code>write_csv()</code>でも可。</p>
+ここでは<code>write_excel_csv()</code> を使っているが，単に<code>write_csv()</code>でも可。</p>
 <p>また，<code>read_csv()</code>で読み込んだファイルは，データフレームではなく，<em>tibble</em>という形式になる。</p>
-<div id="tibble" class="section level5">
-<h5><span class="header-section-number">4.8.0.1.1</span> tibble</h5>
+<div id="tibble" class="section level4 unnumbered">
+<h4>tibble</h4>
 <p>tibbleとは，Rのデータ形式の一つである。</p>
 <p>tibbleは，データフレームよりも可読性を向上させているのが特徴である。コンソールにはデータ全てではなく，最初の10行程度のみ，列も画面に入る範囲のみが表示される。</p>
 <p><code>as_tibble()</code>でデータフレームをtibble形式にすることもできる。</p>
@@ -711,7 +713,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="readxl" class="section level3">
-<h3><span class="header-section-number">4.8.1</span> readxl</h3>
+<h3><span class="header-section-number">4.8.2</span> readxl</h3>
 <p><code>readxl</code>パッケージで，エクセル形式（xlsx）のファイルを読み込むことができる。</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">dat =<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;./sample/0_sample.xlsx&quot;</span>) </a>
 <a class="sourceLine" id="cb155-2" data-line-number="2">dat</a></code></pre></div>
@@ -722,16 +724,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>確認問題</h2>
 <div id="問-6" class="section level3 unnumbered">
 <h3>問１</h3>
-<p>irisデータから，1)Speciesがversicolorである行を選び，2) Species, Petal.Length及びPetal.Widthの列を抽出し，3) Petal.LengthとPetal.Widthを足した変数hogeを作るという一連の処理を，パイプ処理を使って行ってみよう。</p>
+<p><code>iris</code>データから，1)<code>Species</code>が<code>versicolor</code>である行を選び，2) <code>Species</code>, <code>Petal.Length</code>及び<code>Petal.Width</code>の列を取り出し，3) <code>Petal.Length</code>と<code>Petal.Width</code>を足し合わせた変数<code>hoge</code>を作るという一連の処理を，パイプ処理を使ってプログラム1行でやってみよう。</p>
 </div>
 <div id="問-7" class="section level3 unnumbered">
 <h3>問２</h3>
-<p>irisデータから，1)Speciesがvirginica以外の行を選び，2) Species, Petal.Length及びPetal.Widthの列を抽出する処理を，パイプ処理を使って行ってみよう。</p>
+<p><code>iris</code>データから，1)<code>Species</code>が<code>virginica</code>以外の行を選び，2) <code>Species</code>, <code>Petal.Length</code>及び<code>Petal.Width</code>の列を取り出す処理を，パイプ処理を使ってプログラム1行でやってみよう。</p>
 <p>ヒント：Rでは，<code>!=</code>が「○○ではない」を意味する論理式である（第2章参照）。</p>
 </div>
 <div id="問-8" class="section level3 unnumbered">
 <h3>問３</h3>
-<p>irisデータで，Species別にPetal.Lengthの平均値，標準偏差を求めよう。</p>
+<p><code>iris</code>データで，<code>Species</code>別に<code>Petal.Length</code>の平均値，標準偏差を求めよう。</p>
 <p>ヒント：<code>group_by()</code>と<code>summarise()</code>の使い方をおさらいする。</p>
 
 </div>

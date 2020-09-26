@@ -9,9 +9,7 @@ library(MASS)
 
 データをグラフで表現する方法について学ぶ。
   
-データの傾向をグラフによって表現することを*可視化*という。
-  
-この章では，`ggplot2`パッケージを使って，データを可視化する方法について学んでいく。  
+データの傾向をグラフによって表現することを*可視化*という。この章では，`ggplot2`パッケージを使って，データを可視化する方法について学んでいく。  
   
 `ggplot2`も`tidyverse`パッケージに含まれている。まずは，`tidyverse`パッケージをロードしよう。
 
@@ -53,9 +51,7 @@ boxplot(iris$Sepal.Length) #箱ひげ図を作成する
 
 ## ggplot2の基本
 
-早速，`ggplot2`を使ってグラフを作ってみよう。  
-  
-以下のプログラムを実行してみよう。
+早速，`ggplot2`を使ってグラフを作ってみよう。以下のプログラムを実行してみよう。
 
 
 ```{r}
@@ -69,7 +65,7 @@ p
 
 プログラムの解説：  
   
-`ggplot()`：初期設定。「ggplot2を使ってグラフを書きますよ」という意味。必ず書く。カッコの中には何も入れなくて良い。  
+`ggplot()`：初期設定。「ggplot2を使ってグラフを書きます」という意味。必ず書く。カッコの中には何も入れなくて良い。  
   
 `geom_xxxx()`：グラフの種類の指定。必ず書く。`xxxx`には，グラフの種類を入力する。この例では，散布図を書くので`geom_point`を指定した。更に，カッコの中に必要な設定を記す。  
   
@@ -91,11 +87,9 @@ p = ggplot2::ggplot() +
   geom_point(data=mpg, aes(x=cty, y=hwy, shape = fl)) 
 p
 
-
-
 ```
 
-この例では，`shape=`でグループを指定して，グループごとに点のかたちを変えた散布図を作成した。    
+この例では，`shape =`でグループを指定して，グループごとに点のかたちを変えた散布図を作成した。    
     
 点が重なって見えにくい場合は，`geom_jitter`を使うとランダムのズレを生成して表示してくれる。
 
@@ -161,7 +155,6 @@ p
 p = ggplot() + 
   geom_violin(data = InsectSprays, aes(x=spray, y=count))
 p
-
 
 p = ggplot() + 
   geom_violin(data = InsectSprays, aes(x=spray, y=count, fill = spray))
@@ -297,7 +290,7 @@ ggsave(plot = p, filename = "plot_3.png", width = 8, height = 5) #幅(width)や�
 ## その他の機能
 
 `ggplot2`の機能はまだまだある。このテキストで説明しきれていないことについては，関数のヘルプやRStudioのサイトにある`ggplot2`のCheat sheetを見てみよう（日本語訳もある）。  
-[https://rstudio.com/resources/cheatsheets/]https://rstudio.com/resources/cheatsheets/
+[https://rstudio.com/resources/cheatsheets/](https://rstudio.com/resources/cheatsheets/)
 
 ## 確認問題{-}
 

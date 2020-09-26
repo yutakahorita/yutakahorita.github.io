@@ -16,6 +16,11 @@ options(mc.cores = parallel::detectCores())
 
 # ベイズ統計
 
+## ベイズの定理
+
+## MCMC
+
+
 
 ## 準備
 

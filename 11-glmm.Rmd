@@ -230,7 +230,7 @@ summary(model_logistic_glmm)
 
 
 
-## 練習問題{-}
+## 確認問題{-}
 
 ### 問１{-}
 

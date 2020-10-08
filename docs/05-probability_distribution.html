@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-09-26" />
+<meta name="date" content="2020-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -269,14 +269,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定の考え方"><i class="fa fa-check"></i><b>7.2</b> 統計的仮説検定の考え方</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="06-NHT.html"><a href="06-NHT.html#二項分布の復習"><i class="fa fa-check"></i><b>7.2.1</b> 二項分布の復習</a></li>
 <li class="chapter" data-level="7.2.2" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定-1"><i class="fa fa-check"></i><b>7.2.2</b> 統計的仮説検定</a></li>
-<li class="chapter" data-level="7.2.3" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定の種類"><i class="fa fa-check"></i><b>7.2.3</b> 統計的仮説検定の種類</a></li>
-<li class="chapter" data-level="7.2.4" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定で重要な概念"><i class="fa fa-check"></i><b>7.2.4</b> 統計的仮説検定で重要な概念</a></li>
-<li class="chapter" data-level="7.2.5" data-path="06-NHT.html"><a href="06-NHT.html#統計的検定が抱える問題"><i class="fa fa-check"></i><b>7.2.5</b> 統計的検定が抱える問題</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定の種類"><i class="fa fa-check"></i><b>7.3</b> 統計的仮説検定の種類</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="06-NHT.html"><a href="06-NHT.html#二項検定"><i class="fa fa-check"></i><b>7.3.1</b> 二項検定</a></li>
+<li class="chapter" data-level="7.3.2" data-path="06-NHT.html"><a href="06-NHT.html#t検定"><i class="fa fa-check"></i><b>7.3.2</b> t検定</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定で重要な概念"><i class="fa fa-check"></i><b>7.4</b> 統計的仮説検定で重要な概念</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤と第2種の過誤"><i class="fa fa-check"></i><b>7.4.1</b> 第1種の過誤と第2種の過誤</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#統計的検定が抱える問題"><i class="fa fa-check"></i><b>7.5</b> 統計的検定が抱える問題</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="06-NHT.html"><a href="06-NHT.html#p値と標本数の関係"><i class="fa fa-check"></i><b>7.5.1</b> p値と標本数の関係</a></li>
+<li class="chapter" data-level="7.5.2" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.5.2</b> 多重比較の問題</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#確認問題-5"><i class="fa fa-check"></i>確認問題</a><ul>
 <li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#問-14"><i class="fa fa-check"></i>問１</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="07-analysis.html"><a href="07-analysis.html"><i class="fa fa-check"></i><b>8</b> 様々な解析法</a><ul>
 <li class="chapter" data-level="8.1" data-path="07-analysis.html"><a href="07-analysis.html#t検定-1"><i class="fa fa-check"></i><b>8.1</b> t検定</a><ul>
@@ -502,8 +509,8 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 <pre><code>## [1] 0.3989423</code></pre>
 <p><code>dnorm()</code>は，確率密度関数の縦軸の値を出力する。<code>x = 0</code>のときの縦軸の値は0.4であり，先程のグラフからもわかるように，縦軸の値と一致している。しかし，<code>x = 0</code>が生じる確率は0.4というわけではない。確率密度関数の場合，縦軸の値そのものは何の意味も持たない。</p>
 <hr />
-<p>二項分布のような離散型の変数である場合に対して，正規分布のように変数が連続型（小数点を含む値）であるものは，特定の値の確率を定義することができない。例えば，身長が170.5cmである確率を求めるにしても，170cmから171cmまでの間に,170.001cm, 170.002cmと無限の値が広がっている。170.5cmぴったりである確率を求めることはできない（特定の値が生じる確率はゼロということになる）。したがって，連続型の変数の確率分布は，個々の確率を求めるのではなく，確率密度関数によって区間の確率を求める。<br />
-***</p>
+<p>二項分布のような離散型の変数である場合に対して，正規分布のように変数が連続型（小数点を含む値）であるものは，特定の値の確率を定義することができない。例えば，身長が170.5cmである確率を求めるにしても，170cmから171cmまでの間に,170.001cm, 170.002cmと無限の値が広がっている。170.5cmぴったりである確率を求めることはできない（特定の値が生じる確率はゼロということになる）。したがって，連続型の変数の確率分布は，個々の確率を求めるのではなく，確率密度関数によって区間の確率を求める。</p>
+<hr />
 <p>x &lt; 0の範囲の面積を求めよう。正規分布の左半分なので，確率は0.5である。</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">pnorm</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co">#-∞からqの値までの範囲を求めてくれる。</span></a></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>

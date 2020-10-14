@@ -184,7 +184,9 @@ LogLikelihood = function(x){
 }
 
 #optimize関数で，対数尤度が最も高くなるパラメータthetaを推定する
-result = optimize(f = LogLikelihood(D), c(0, 1), maximum=TRUE) 
+result_mlm = optimize(f = LogLikelihood(D), c(0, 1), maximum=TRUE) 
+
+result_mlm
 
 ```
 
@@ -197,16 +199,16 @@ result = optimize(f = LogLikelihood(D), c(0, 1), maximum=TRUE)
 theta = seq(0.01,0.99,0.01)
 logL = log(theta)+log(1-theta)+log(theta)+log(1-theta) + log(1-theta)
 
-data = data.frame(x=theta, y=logL)
+data_mlm = data.frame(x=theta, y=logL)
 
 ggplot() +
-  geom_line(data=data, aes(x=x, y= y), size=1) + 
-  geom_vline(xintercept = result$maximum, linetype="dashed", colour="red", size=1) +
+  geom_line(data=data_mlm, aes(x=x, y= y), size=1) + 
+  geom_vline(xintercept = result_mlm$maximum, linetype="dashed", colour="red", size=1) +
   labs(x ="theta", y= "log L") 
 
 ```
 
-対数尤度が最も大きくなるのは，$\theta=$ `r round(result$maximum, 2)`のときである（表が出た割合である2/5と一致）。  
+対数尤度が最も大きくなるのは，$\theta=$ `r round(result_mlm$maximum, 2)`のときである（表が出た割合である2/5と一致）。  
   
 ここではわかりやすくパラメータ一つのみを使って説明しているが，線形モデルの傾きや切片の推定も同じである。上の例の$\theta$を線形予測子に置き換えて同様の計算をする。  
 

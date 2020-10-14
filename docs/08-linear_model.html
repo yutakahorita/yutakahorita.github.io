@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-10-08" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -393,16 +393,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="準備-1" class="section level2">
 <h2><span class="header-section-number">9.1</span> 準備</h2>
 <p>いつもどおり，<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 </div>
 <div id="線形モデルの概要" class="section level2">
 <h2><span class="header-section-number">9.2</span> 線形モデルの概要</h2>
-<p>まず，線形モデルの表現の仕方を理解する。<br />
-以下の式は，変数<span class="math inline">\(x\)</span>から，変数<span class="math inline">\(y\)</span>を予測するプロセスを記述したものである。
-変数<span class="math inline">\(x\)</span>は<strong>予測変数</strong>（predictor variable），変数<span class="math inline">\(y\)</span>は<strong>応答変数</strong>（response variable）と呼ばれる。このように，応答変数と予測変数との関係を式で表現したものを<strong>モデル</strong>と呼ぶ。</p>
+<p>まず，線形モデルの表現の仕方を理解する。以下の式は，変数<span class="math inline">\(x\)</span>から，変数<span class="math inline">\(y\)</span>を予測するプロセスを記述したものである。変数<span class="math inline">\(x\)</span>は<strong>予測変数</strong>（predictor variable），変数<span class="math inline">\(y\)</span>は<strong>応答変数</strong>（response variable）と呼ばれる。このように，応答変数と予測変数との関係を式で表現したものを<strong>モデル</strong>と呼ぶ。</p>
 <hr />
-<p>予測変数は，独立変数や説明変数とも呼ばれる。応答変数は，従属変数や被説明変数とも呼ばれる。このテキストでは，「予測変数」及び「応答変数」と表現することにする。<br />
-***</p>
+<p>予測変数は，「独立変数」や「説明変数」とも呼ばれる。応答変数は，「従属変数」や「被説明変数」とも呼ばれる。</p>
+<hr />
 <p><span class="math display">\[
 \begin{equation}
   \hat{y} = \alpha + \beta x  \tag{1}\\
@@ -418,13 +416,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}
 \]</span></p>
 <hr />
-<p><span class="math inline">\(y \sim Normal(\hat{y}, \sigma)\)</span>は，「応答変数<span class="math inline">\(y\)</span>が，予測値<span class="math inline">\(\hat{y}\)</span>を平均，<span class="math inline">\(\sigma\)</span>を標準偏差とする正規分布に従う」ということを意味している。つまり，線形予測子から予測された値<span class="math inline">\(\hat{y}\)</span>と誤差<span class="math inline">\(\sigma\)</span>から，実際の値<span class="math inline">\(y\)</span>が推定されるというプロセスを表現している。</p>
+<p><span class="math inline">\(y \sim Normal(\hat{y}, \sigma)\)</span>は，「応答変数<span class="math inline">\(y\)</span>が，予測値<span class="math inline">\(\hat{y}\)</span>を平均，<span class="math inline">\(\sigma\)</span>を標準偏差とする正規分布に従う」ことを示している。つまり，線形予測子から予測された値<span class="math inline">\(\hat{y}\)</span>と誤差<span class="math inline">\(\sigma\)</span>から，実際の値<span class="math inline">\(y\)</span>が推定されるプロセスを表現している。</p>
 <p>応答変数が正規分布に従うという前提をおいたモデルのことを，一般的に<strong>線形モデル(linear model)</strong>と呼ぶ。</p>
 <p>線形モデルは，基本的に心理統計でも学んだ「<strong>回帰分析(regression analysis)</strong>」と同じである。</p>
 <p>応答変数<span class="math inline">\(y\)</span>を決定づける変数，<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>，及び <span class="math inline">\(\sigma\)</span>は<strong>パラメータ(parameter)</strong>と呼ばれる。このパラメータを，既知の変数である<span class="math inline">\(x\)</span>と<span class="math inline">\(y\)</span>から推定する。</p>
 <div id="まとめ-1" class="section level3">
 <h3><span class="header-section-number">9.2.1</span> まとめ</h3>
-<p>「線形予測子」，「傾き」，「切片」といったキーワードを覚えておく。</p>
+<p>まずは，「線形予測子」，「傾き」，「切片」といったキーワードを覚えておく。</p>
 <ul>
 <li>線形モデルは，応答変数と予測変数の関係を線形の式で表したモデルである。<br />
 </li>
@@ -439,16 +437,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>実際に，Rで線形モデルの解析をしてみよう。</p>
 <p>Rには線形モデルを扱える関数<code>lm()</code>がある。<code>iris</code>データを使って解析をしてみよう。</p>
 <p><code>Sepal.Length</code>と<code>Petal.Length</code>の関係を散布図で確認する。</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1">p =<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb279-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length))</a>
-<a class="sourceLine" id="cb279-3" data-line-number="3">p</a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
-<p><code>Sepal.Length</code>が大きいほど<code>Petal.Length</code>が大きいという関係（正の相関）がありそうである。<br />
-そこで，<code>Sepal.Length</code>の大きさから，<code>Petal.Length</code>の大きさを予測することを試みる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">p =<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length))</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">p</a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><code>Sepal.Length</code>が大きいほど<code>Petal.Length</code>が大きいという関係（正の相関）がありそうである。そこで，<code>Sepal.Length</code>の大きさから，<code>Petal.Length</code>の大きさを予測することを試みる。</p>
 <p><code>lm()</code>関数に，「応答変数~予測変数」のかたちで入力する。以下のプログラムを実行してみよう。</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> iris, Petal.Length <span class="op">~</span><span class="st"> </span>Sepal.Length) </a></code></pre></div>
-<p>結果をresultという名前で一旦保存した（名前はresult以外でも構わない）。<code>summary()</code>関数の中に，resultを入れて実行すると詳細な結果が出力される。</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1"><span class="kw">summary</span>(result)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> iris, Petal.Length <span class="op">~</span><span class="st"> </span>Sepal.Length) </a></code></pre></div>
+<p>結果をresultという名前でいったん保存した（名前はresult以外でも構わない）。<code>summary()</code>関数の中に，resultを入れて実行すると詳細な結果が出力される。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">summary</span>(result)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Petal.Length ~ Sepal.Length, data = iris)
@@ -475,11 +472,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Std.Errorは推定された係数の標準誤差である。</li>
 </ul>
-<p>予測変数が応答変数に対して影響力を持っているか？ それは傾きの係数の推定結果からわかる。係数の値は，<strong>予測変数が1単位増えたら応答変数がどう変化するか</strong>**を意味している。<br />
-* 係数がプラスならば，係数の値が増えると従属変数の値が増える関係にあることを意味する。
-* 係数がマイナスならば，係数が値が増えると従属変数が減る関係にあることを意味する。</p>
+<p>予測変数が応答変数に対して影響力を持っているか？ それは傾きの係数の推定結果からわかる。係数の値は，<strong>予測変数が1単位増えたら応答変数がどう変化するか</strong>を意味している。</p>
 <ul>
-<li>t value及びPrは係数の有意性検定の結果を示している（それぞれt値，p値）。ここでは，「係数がゼロである」という帰無仮説を検定している。p値が極端に低い場合は，「求めた係数の値は有意にゼロから離れている」と結論付けることができる。</li>
+<li><p>係数がプラスならば，係数の値が増えると従属変数の値が増加する関係にあることを意味する。</p></li>
+<li><p>係数がマイナスならば，係数の値が増えると従属変数が減少する関係にあることを意味する。</p></li>
+<li><p>t value及びPrは係数の有意性検定の結果を示している（それぞれt値，p値）。ここでは，「係数がゼロである」という帰無仮説を検定している。p値が極端に低い場合は，「求めた係数の値は有意にゼロから離れている」と結論付けることができる。</p></li>
 </ul>
 <p><code>Sepal.Lenght</code>と<code>Petal.Length</code>の散布図に，線形モデルから推定された切片と傾きの値を持つ以下の直線を引いてみよう。</p>
 <p><span class="math display">\[
@@ -487,12 +484,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   Petal.Length =  -7.10 + 1.86 Sepal.Length\\ \tag{3}
 \end{equation}
 \]</span></p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">p =<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb283-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb283-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length), <span class="dt">formula =</span> y<span class="op">~</span>x, <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb283-4" data-line-number="4">p</a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
-<p>線形モデルでは，直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような，直線の式を推定する（予測と実測値とのズレが最小になるのが，最も良い予測である）。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">p =<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length), <span class="dt">formula =</span> y<span class="op">~</span>x, <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">p</a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>線形モデルでは，直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような，直線の式を推定する（予測値と実測値とのズレが最小になるのが，最も良い予測である）。</p>
 </div>
 <div id="最尤法" class="section level2">
 <h2><span class="header-section-number">9.4</span> 最尤法</h2>
@@ -500,26 +497,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 線形モデル（及び一般化線形モデル）では，パラメータの推定に<strong>最尤法（maximum likelihood method）</strong>という最適化手法が用いられる。</p>
 <div id="最尤法によるパラメータ推定" class="section level3">
 <h3><span class="header-section-number">9.4.1</span> 最尤法によるパラメータ推定</h3>
-<p>ここにコインが1枚ある。コインが表が出るかを決定づけるパラメータ（つまりコインを投げて表が出る確率）を<span class="math inline">\(\theta\)</span>（シータ）とする。この<span class="math inline">\(\theta\)</span>の値を何回かコインを投げる実験を通して推定する。</p>
+<p>ここにコインが1枚ある。コインの表が出るかを決定づけるパラメータ（つまりコインを投げて表が出る確率）を<span class="math inline">\(\theta\)</span>（シータ）とする。この<span class="math inline">\(\theta\)</span>の値を何回かコインを投げる実験を通して推定する。</p>
 <p>1回目は，表が出た。この時点で，この実験結果が生じる確率は<span class="math inline">\(\theta\)</span>である。<br />
 2回目は，裏が出た。1回目と2回目までの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\)</span>である。<br />
-3回目は，表が出た。ここまでの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)*\theta\)</span>である。</p>
-<p>その後，4回目は裏，5回目は裏だったとする。5回目で実験をストップすることにする。この実験結果が生じる確率は以下のように表すことができる。</p>
+3回目は，表が出た。ここまでの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\theta\)</span>である。</p>
+<p>その後，4回目は裏，5回目は裏だったとする。5回目で実験をストップすることにする。この実験結果が生じる確率<span class="math inline">\(L\)</span>は以下のように表すことができる。</p>
 <p><span class="math display">\[
 L = (1-\theta)^3 \theta^2 \tag{4}
 \]</span></p>
 <p><span class="math inline">\(L\)</span>のことを<strong>尤度</strong>(likelihood)と呼ぶ（”ゆうど”と読む）。</p>
-<p>尤度とは「もっともらしさ」を示す概念である。イメージとしては，「今回の実験結果が得られる確率」である。今回の観測データに対して最も当てはまりが良くなる，すなわち尤度が最も高くなるときのパラメータを求めるのが，最尤法 (maximum likelihood method)と呼ばれる手法である。<br />
-掛け算を扱う尤度は計算が困難なので，実際のパラメータ推定の際には対数化して足し算を扱う。対数化した尤度を<strong>対数尤度(log-likelihood)</strong>と呼ぶ。対数尤度が最大となるパラメータ<span class="math inline">\(\theta\)</span>を求める。</p>
+<p>尤度とは「もっともらしさ」を示す概念である。イメージとしては，「今回の観測結果が得られる確率」である。今回の観測データに対して最も当てはまりが良くなる，すなわち尤度が最も高くなるときのパラメータを求めるのが，最尤法 (maximum likelihood method)と呼ばれる手法である。</p>
+<p>掛け算を扱う尤度は計算が困難なので，実際のパラメータ推定の際には対数化して足し算を扱う。対数化した尤度を<strong>対数尤度(log-likelihood)</strong>と呼ぶ。対数尤度が最大となるパラメータ<span class="math inline">\(\theta\)</span>を求める。</p>
 <p><span class="math display">\[
 \log L = \log(1-\theta)+\log(1-\theta)+\log(1-\theta)+\log(\theta)+\log(\theta) \tag{5}
 \]</span></p>
+<p>以下のプログラムで，上のコイン投げの例で最も対数尤度が高くなるときの<span class="math inline">\(\theta\)</span>を求めている。maximumが対数尤度が最も高くなるパラメータの値で，objectiveがそのときの対数尤度である。（プログラムの意味については理解しなくて良い）</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">D =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>) <span class="co">#観測データのベクトル：1=表，0=裏とする</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#対数尤度を求める関数</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">LogLikelihood =<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="kw">return</span>(<span class="cf">function</span>(theta){</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">    L =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(x)){</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">      L =<span class="st"> </span>L <span class="op">*</span><span class="st"> </span>theta<span class="op">^</span>(x[i]) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>theta)<span class="op">^</span>(<span class="dv">1</span><span class="op">-</span>x[i])</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">    }</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="kw">return</span>(<span class="kw">log</span>(L))</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">  })</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#optimize関数で，対数尤度が最も高くなるパラメータthetaを推定する</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">result =<span class="st"> </span><span class="kw">optimize</span>(<span class="dt">f =</span> <span class="kw">LogLikelihood</span>(D), <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">maximum=</span><span class="ot">TRUE</span>) </a></code></pre></div>
 <p>パラメータ<span class="math inline">\(\theta\)</span>と対数尤度<span class="math inline">\(\log L\)</span>との関係を以下に示す。</p>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
-<p>対数尤度が最も大きくなるのは，<span class="math inline">\(\theta= 0.40\)</span> のときである（2/5と一致）。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">#図示する</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">theta =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="fl">0.01</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">logL =<span class="st"> </span><span class="kw">log</span>(theta)<span class="op">+</span><span class="kw">log</span>(<span class="dv">1</span><span class="op">-</span>theta)<span class="op">+</span><span class="kw">log</span>(theta)<span class="op">+</span><span class="kw">log</span>(<span class="dv">1</span><span class="op">-</span>theta) <span class="op">+</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">1</span><span class="op">-</span>theta)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">data =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>theta, <span class="dt">y=</span>logL)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span>data, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span> y), <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> result<span class="op">$</span>maximum, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span><span class="st">&quot;theta&quot;</span>, <span class="dt">y=</span> <span class="st">&quot;log L&quot;</span>) </a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>対数尤度が最も大きくなるのは，<span class="math inline">\(\theta=\)</span> 0.4のときである（表が出た割合である2/5と一致）。</p>
 <p>ここではわかりやすくパラメータ一つのみを使って説明しているが，線形モデルの傾きや切片の推定も同じである。上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする。</p>
 <hr />
-<p>線形モデルのときのパラメータ推定には，<strong>最小二乗法</strong>と呼ばれる別の推定方法も用いられている。しかし，最小二乗法を使っても最尤法を使っても，線形モデルの傾きや切片の推定結果は全く同じになる。</p>
+<p>線形モデルのときのパラメータ推定には，<strong>最小二乗法</strong>と呼ばれる別の推定方法もある。ただし，最小二乗法を使っても最尤法を使っても，線形モデルの傾きや切片の推定結果は全く同じになる。</p>
 </div>
 </div>
 <div id="信頼区間と予測区間" class="section level2">
@@ -531,12 +554,12 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <p>Rには，線形モデルの推定結果から信頼区間と予測区間を算出してくれる<code>predict()</code>関数が用意されている。先ほどの線形モデルの解析結果を使って，信頼区間と予測区間を求めてみよう。</p>
 <div id="信頼区間" class="section level3">
 <h3><span class="header-section-number">9.5.1</span> 信頼区間</h3>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> iris, Petal.Length <span class="op">~</span><span class="st"> </span>Sepal.Length) </a>
-<a class="sourceLine" id="cb284-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb284-3" data-line-number="3">result_conf =<span class="st"> </span><span class="kw">predict</span>(result, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> iris, Petal.Length <span class="op">~</span><span class="st"> </span>Sepal.Length) </a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">result_conf =<span class="st"> </span><span class="kw">predict</span>(result, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>)</a></code></pre></div>
 <p><code>interval = &quot;confidence&quot;</code>とすると，信頼区間を求めてくれる。
 <code>level =</code> に信頼区間の幅を入力する（デフォルトで0.95だが，幅を変えたい場合は指定する）。</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1"><span class="kw">head</span>(result_conf)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">head</span>(result_conf)</a></code></pre></div>
 <pre><code>##        fit      lwr      upr
 ## 1 2.376565 2.188121 2.565009
 ## 2 2.004878 1.792226 2.217531
@@ -546,22 +569,23 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 6 2.934095 2.775149 3.093040</code></pre>
 <p>uprが95%信頼区間の上限，lwrが95%信頼区間の下限に当たる。</p>
 <p>求めた信頼区間を図示してみよう</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1">plot_conf =<span class="st"> </span><span class="kw">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></a>
-<a class="sourceLine" id="cb287-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb287-3" data-line-number="3"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb287-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plot_conf, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb287-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plot_conf, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> fit)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb287-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="dt">data =</span> plot_conf, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">ymax =</span> upr, <span class="dt">ymin =</span> lwr), <span class="dt">alpha =</span> <span class="fl">0.4</span>) </a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">plot_conf =<span class="st"> </span><span class="kw">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plot_conf, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plot_conf, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> fit)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="dt">data =</span> plot_conf, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">ymax =</span> upr, <span class="dt">ymin =</span> lwr), <span class="dt">alpha =</span> <span class="fl">0.4</span>) </a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="予測区間" class="section level3">
 <h3><span class="header-section-number">9.5.2</span> 予測区間</h3>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> iris, Petal.Length <span class="op">~</span><span class="st"> </span>Sepal.Length) </a>
-<a class="sourceLine" id="cb288-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb288-3" data-line-number="3">new =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="kw">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>))</a>
-<a class="sourceLine" id="cb288-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb288-5" data-line-number="5">result_pred =<span class="st"> </span><span class="kw">predict</span>(result, <span class="dt">newdata =</span> new, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>)</a>
-<a class="sourceLine" id="cb288-6" data-line-number="6"><span class="kw">head</span>(result_pred)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> iris, Petal.Length <span class="op">~</span><span class="st"> </span>Sepal.Length) </a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">new =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="kw">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>)) <span class="co">#0.1刻みで4から8まで範囲の数値ベクトルを入れたデータを仮に作る</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">result_pred =<span class="st"> </span><span class="kw">predict</span>(result, <span class="dt">newdata =</span> new, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>) <span class="co">#newdataに先ほど作成した仮のデータを入れる。</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="kw">head</span>(result_pred) <span class="co">#仮データの数値に対応する予測区間が求められる</span></a></code></pre></div>
 <pre><code>##         fit        lwr      upr
 ## 1 0.3322885 -1.4165179 2.081095
 ## 2 0.5181318 -1.2277203 2.263984
@@ -571,25 +595,24 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 6 1.2615050 -0.4741389 2.997149</code></pre>
 <p><code>interval = &quot;prediction&quot;</code>と入力する。</p>
 <p>予測区間を図示してみよう。</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">plot_pred =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="kw">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred)</a>
-<a class="sourceLine" id="cb290-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb290-3" data-line-number="3"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb290-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb290-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plot_pred, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> fit)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb290-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="dt">data =</span> plot_pred, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">ymax =</span> upr, <span class="dt">ymin =</span> lwr), <span class="dt">alpha =</span> <span class="fl">0.4</span>) </a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
-<p>実際のデータが予測区間の範囲に収まっているならば，そのモデルは概ねよくデータを予測できていることを意味している。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">plot_pred =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="kw">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred) <span class="co">#予測区間のデータを作成する</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plot_pred, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> fit)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="dt">data =</span> plot_pred, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">ymax =</span> upr, <span class="dt">ymin =</span> lwr), <span class="dt">alpha =</span> <span class="fl">0.4</span>) </a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>実際のデータが予測区間の範囲に収まっているならば，そのモデルは概ねよくデータを予測できていることを示している。</p>
 </div>
 </div>
 <div id="まとめ-2" class="section level2">
 <h2><span class="header-section-number">9.6</span> まとめ</h2>
-<p>この章では，線形モデルの概念について学んできた。
-次章では，線形モデルを扱う上で注意すべき点について見ていく。</p>
+<p>この章では，線形モデルの概念について学んできた。次章では，線形モデルを扱う上で注意すべき点について見ていく。</p>
 </div>
 <div id="確認問題-6" class="section level2 unnumbered">
 <h2>確認問題</h2>
 <p>Rに入っているサンプルデータ<code>trees</code>を使って，線形モデルの結果の解釈の仕方と<code>lm()</code>関数の扱い方を復習をする。</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">head</span>(trees)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">head</span>(trees)</a></code></pre></div>
 <pre><code>##   Girth Height Volume
 ## 1   8.3     70   10.3
 ## 2   8.6     65   10.3

@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-10-22" />
+<meta name="date" content="2020-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -751,7 +751,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}
 \]</span></p>
 <p><span class="math inline">\(M\)</span>は性別<code>gender</code>のダミー変数で，<code>M</code>（男性）ならば1，<code>F</code>（女性）ならば0の変数とする。<br />
-線形モデルでは，<strong>交互作用は予測変数同士の積</strong>で扱う。男性（M=1）の場合のyの推定値は，<span class="math inline">\(\alpha +(\beta_{1} + \beta_{3}) x +\beta_{2}\)</span>となる。一方，女性（M=0）の場合は，$+<em>{1} x <span class="math inline">\(となる。\)</span></em>{3}<span class="math inline">\(は，男性のときの\)</span>x$に係る傾きの変化量を意味することになる。このように，交互作用を考慮する予測変数の積をモデルに加えることで，男性か女性かで切片及び傾きが変化することを表現できる。</p>
+線形モデルでは，<strong>交互作用は予測変数同士の積</strong>で扱う。男性（M=1）の場合のyの推定値は，<span class="math inline">\(\alpha +(\beta_{1} + \beta_{3}) x +\beta_{2}\)</span>となる。一方，女性（M=0）の場合は，<span class="math inline">\(\alpha +\beta_{1} x\)</span>となる。<span class="math inline">\(\beta_{3}\)</span>は，男性のときの<span class="math inline">\(x\)</span>に係る傾きの変化量を意味することになる。このように，交互作用を考慮する予測変数の積をモデルに加えることで，男性か女性かで切片及び傾きが変化することを表現できる。</p>
 <div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1">d<span class="op">$</span>M =<span class="st"> </span><span class="kw">ifelse</span>(d<span class="op">$</span>gender <span class="op">==</span><span class="st"> &quot;M&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#genderがMならば1, Fならば1のダミー変数を作る</span></a>
 <a class="sourceLine" id="cb332-2" data-line-number="2">result =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> d, y <span class="op">~</span><span class="st"> </span>x<span class="op">*</span>M)</a>
 <a class="sourceLine" id="cb332-3" data-line-number="3"><span class="kw">summary</span>(result)</a></code></pre></div>

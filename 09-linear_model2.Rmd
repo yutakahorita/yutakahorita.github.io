@@ -375,7 +375,7 @@ cor(longley)
 
 ```
 
-`Employed`，`GNP.deflator`を予測変数としたモデル（model01）と，`Employed`を応答変数，`GNP`を予測変数としたモデル（model02）でそれぞれ解析してみよう。
+`Employed`を応答変数，`GNP.deflator`を予測変数としたモデル（model01）と，`Employed`を応答変数，`GNP`を予測変数としたモデル（model02）でそれぞれ解析してみよう。
 
 ```{r}
 

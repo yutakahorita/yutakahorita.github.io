@@ -827,7 +827,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Population   0.9939528 0.9603906
 ## Year         1.0000000 0.9713295
 ## Employed     0.9713295 1.0000000</code></pre>
-<p><code>Employed</code>，<code>GNP.deflator</code>を予測変数としたモデル（model01）と，<code>Employed</code>を応答変数，<code>GNP</code>を予測変数としたモデル（model02）でそれぞれ解析してみよう。</p>
+<p><code>Employed</code>を応答変数，<code>GNP.deflator</code>を予測変数としたモデル（model01）と，<code>Employed</code>を応答変数，<code>GNP</code>を予測変数としたモデル（model02）でそれぞれ解析してみよう。</p>
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">model01 =<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> longley, Employed <span class="op">~</span><span class="st"> </span>GNP.deflator)</a>
 <a class="sourceLine" id="cb339-2" data-line-number="2"><span class="kw">summary</span>(model01)</a></code></pre></div>
 <pre><code>## 

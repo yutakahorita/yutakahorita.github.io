@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-11-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="09-linear_model2.html"/>
-<link rel="next" href="11-glmm.html"/>
+<link rel="next" href="11-glm2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -346,39 +346,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="10-glm.html"><a href="10-glm.html"><i class="fa fa-check"></i><b>11</b> 一般化線形モデル</a><ul>
 <li class="chapter" data-level="11.1" data-path="10-glm.html"><a href="10-glm.html#準備-3"><i class="fa fa-check"></i><b>11.1</b> 準備</a></li>
 <li class="chapter" data-level="11.2" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデル-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデル</a></li>
-<li class="chapter" data-level="11.3" data-path="10-glm.html"><a href="10-glm.html#応答変数が二値の場合"><i class="fa fa-check"></i><b>11.3</b> 応答変数が二値の場合</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>11.3.1</b> ロジスティック回帰</a></li>
-<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#rでの一般化線形モデル"><i class="fa fa-check"></i><b>11.3.2</b> Rでの一般化線形モデル</a></li>
+<li class="chapter" data-level="11.3" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>11.3</b> ロジスティック回帰</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#ここまでのまとめ"><i class="fa fa-check"></i><b>11.3.1</b> ここまでのまとめ</a></li>
+<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>11.3.2</b> Rでのロジスティック回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="10-glm.html"><a href="10-glm.html#応答変数がカウントデータの場合"><i class="fa fa-check"></i><b>11.4</b> 応答変数がカウントデータの場合</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>11.4.1</b> ポアソン回帰</a></li>
-<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布の復習"><i class="fa fa-check"></i><b>11.4.2</b> ポアソン分布の復習</a></li>
-<li class="chapter" data-level="11.4.3" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰のリンク関数"><i class="fa fa-check"></i><b>11.4.3</b> ポアソン回帰のリンク関数</a></li>
-<li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#rでのポアソン回帰"><i class="fa fa-check"></i><b>11.4.4</b> Rでのポアソン回帰</a></li>
-<li class="chapter" data-level="11.4.5" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデルのまとめ"><i class="fa fa-check"></i><b>11.4.5</b> 一般化線形モデルのまとめ</a></li>
+<li class="chapter" data-level="11.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>11.4</b> ポアソン回帰</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布の復習"><i class="fa fa-check"></i><b>11.4.1</b> ポアソン分布の復習</a></li>
+<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰のリンク関数"><i class="fa fa-check"></i><b>11.4.2</b> ポアソン回帰のリンク関数</a></li>
+<li class="chapter" data-level="11.4.3" data-path="10-glm.html"><a href="10-glm.html#rでのポアソン回帰"><i class="fa fa-check"></i><b>11.4.3</b> Rでのポアソン回帰</a></li>
+<li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#過分散の問題"><i class="fa fa-check"></i><b>11.4.4</b> 過分散の問題</a></li>
 </ul></li>
+<li class="chapter" data-level="11.5" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデルのまとめ"><i class="fa fa-check"></i><b>11.5</b> 一般化線形モデルのまとめ</a></li>
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#確認問題-8"><i class="fa fa-check"></i>確認問題</a><ul>
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問-18"><i class="fa fa-check"></i>問１</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="11-glmm.html"><a href="11-glmm.html"><i class="fa fa-check"></i><b>12</b> マルチレベルモデル</a><ul>
-<li class="chapter" data-level="12.1" data-path="11-glmm.html"><a href="11-glmm.html#準備-4"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
-<li class="chapter" data-level="12.2" data-path="11-glmm.html"><a href="11-glmm.html#個人差や集団差の問題"><i class="fa fa-check"></i><b>12.2</b> 個人差や集団差の問題</a></li>
-<li class="chapter" data-level="12.3" data-path="11-glmm.html"><a href="11-glmm.html#マルチレベルモデルの概要"><i class="fa fa-check"></i><b>12.3</b> マルチレベルモデルの概要</a></li>
-<li class="chapter" data-level="12.4" data-path="11-glmm.html"><a href="11-glmm.html#rでのマルチレベルモデル"><i class="fa fa-check"></i><b>12.4</b> Rでのマルチレベルモデル</a></li>
-<li class="chapter" data-level="12.5" data-path="11-glmm.html"><a href="11-glmm.html#正規分布以外を扱う例"><i class="fa fa-check"></i><b>12.5</b> 正規分布以外を扱う例</a></li>
-<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#確認問題-9"><i class="fa fa-check"></i>確認問題</a><ul>
-<li class="chapter" data-level="" data-path="11-glmm.html"><a href="11-glmm.html#問-19"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="12" data-path="11-glm2.html"><a href="11-glm2.html"><i class="fa fa-check"></i><b>12</b> その他のカウントデータの解析</a><ul>
+<li class="chapter" data-level="12.1" data-path="11-glm2.html"><a href="11-glm2.html#準備-4"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
+<li class="chapter" data-level="12.2" data-path="11-glm2.html"><a href="11-glm2.html#負の二項回帰"><i class="fa fa-check"></i><b>12.2</b> 負の二項回帰</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="11-glm2.html"><a href="11-glm2.html#負の二項分布"><i class="fa fa-check"></i><b>12.2.1</b> 負の二項分布</a></li>
+<li class="chapter" data-level="12.2.2" data-path="11-glm2.html"><a href="11-glm2.html#rでの負の二項回帰"><i class="fa fa-check"></i><b>12.2.2</b> Rでの負の二項回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="11-glm2.html"><a href="11-glm2.html#順序ロジスティック回帰"><i class="fa fa-check"></i><b>12.3</b> 順序ロジスティック回帰</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="11-glm2.html"><a href="11-glm2.html#順序ロジスティック回帰モデルの詳細"><i class="fa fa-check"></i><b>12.3.1</b> 順序ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="12.3.2" data-path="11-glm2.html"><a href="11-glm2.html#rでの順序ロジスティック回帰"><i class="fa fa-check"></i><b>12.3.2</b> Rでの順序ロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="11-glm2.html"><a href="11-glm2.html#多項ロジスティック回帰"><i class="fa fa-check"></i><b>12.4</b> 多項ロジスティック回帰</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="11-glm2.html"><a href="11-glm2.html#rでの多項ロジスティック回帰"><i class="fa fa-check"></i><b>12.4.1</b> Rでの多項ロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="11-glm2.html"><a href="11-glm2.html#ゼロ過剰ポアソン回帰"><i class="fa fa-check"></i><b>12.5</b> ゼロ過剰ポアソン回帰</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="11-glm2.html"><a href="11-glm2.html#rでのゼロ過剰ポアソン回帰"><i class="fa fa-check"></i><b>12.5.1</b> Rでのゼロ過剰ポアソン回帰</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="12-Bayese.html"><a href="12-Bayese.html"><i class="fa fa-check"></i><b>13</b> ベイズ統計</a><ul>
-<li class="chapter" data-level="13.1" data-path="12-Bayese.html"><a href="12-Bayese.html#ベイズの定理"><i class="fa fa-check"></i><b>13.1</b> ベイズの定理</a></li>
-<li class="chapter" data-level="13.2" data-path="12-Bayese.html"><a href="12-Bayese.html#mcmc"><i class="fa fa-check"></i><b>13.2</b> MCMC</a></li>
-<li class="chapter" data-level="13.3" data-path="12-Bayese.html"><a href="12-Bayese.html#準備-5"><i class="fa fa-check"></i><b>13.3</b> 準備</a><ul>
-<li class="chapter" data-level="13.3.1" data-path="12-Bayese.html"><a href="12-Bayese.html#rtanとbrmsパッケージのインストール"><i class="fa fa-check"></i><b>13.3.1</b> rtanとbrmsパッケージのインストール</a></li>
-<li class="chapter" data-level="13.3.2" data-path="12-Bayese.html"><a href="12-Bayese.html#パッケージのロード-1"><i class="fa fa-check"></i><b>13.3.2</b> パッケージのロード</a></li>
-<li class="chapter" data-level="13.3.3" data-path="12-Bayese.html"><a href="12-Bayese.html#brmsでベイズ統計"><i class="fa fa-check"></i><b>13.3.3</b> brmsでベイズ統計</a></li>
-<li class="chapter" data-level="13.3.4" data-path="12-Bayese.html"><a href="12-Bayese.html#事前分布の設定"><i class="fa fa-check"></i><b>13.3.4</b> 事前分布の設定</a></li>
+<li class="chapter" data-level="13" data-path="12-glmm.html"><a href="12-glmm.html"><i class="fa fa-check"></i><b>13</b> マルチレベルモデル</a><ul>
+<li class="chapter" data-level="13.1" data-path="12-glmm.html"><a href="12-glmm.html#準備-5"><i class="fa fa-check"></i><b>13.1</b> 準備</a></li>
+<li class="chapter" data-level="13.2" data-path="12-glmm.html"><a href="12-glmm.html#個人差や集団差の問題"><i class="fa fa-check"></i><b>13.2</b> 個人差や集団差の問題</a></li>
+<li class="chapter" data-level="13.3" data-path="12-glmm.html"><a href="12-glmm.html#マルチレベルモデルの概要"><i class="fa fa-check"></i><b>13.3</b> マルチレベルモデルの概要</a></li>
+<li class="chapter" data-level="13.4" data-path="12-glmm.html"><a href="12-glmm.html#rでのマルチレベルモデル"><i class="fa fa-check"></i><b>13.4</b> Rでのマルチレベルモデル</a></li>
+<li class="chapter" data-level="13.5" data-path="12-glmm.html"><a href="12-glmm.html#正規分布以外を扱う例"><i class="fa fa-check"></i><b>13.5</b> 正規分布以外を扱う例</a></li>
+<li class="chapter" data-level="" data-path="12-glmm.html"><a href="12-glmm.html#確認問題-9"><i class="fa fa-check"></i>確認問題</a><ul>
+<li class="chapter" data-level="" data-path="12-glmm.html"><a href="12-glmm.html#問-19"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="13-Bayese.html"><a href="13-Bayese.html"><i class="fa fa-check"></i><b>14</b> ベイズ統計</a><ul>
+<li class="chapter" data-level="14.1" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズの定理"><i class="fa fa-check"></i><b>14.1</b> ベイズの定理</a></li>
+<li class="chapter" data-level="14.2" data-path="13-Bayese.html"><a href="13-Bayese.html#mcmc"><i class="fa fa-check"></i><b>14.2</b> MCMC</a></li>
+<li class="chapter" data-level="14.3" data-path="13-Bayese.html"><a href="13-Bayese.html#準備-6"><i class="fa fa-check"></i><b>14.3</b> 準備</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="13-Bayese.html"><a href="13-Bayese.html#rtanとbrmsパッケージのインストール"><i class="fa fa-check"></i><b>14.3.1</b> rtanとbrmsパッケージのインストール</a></li>
+<li class="chapter" data-level="14.3.2" data-path="13-Bayese.html"><a href="13-Bayese.html#パッケージのロード-1"><i class="fa fa-check"></i><b>14.3.2</b> パッケージのロード</a></li>
+<li class="chapter" data-level="14.3.3" data-path="13-Bayese.html"><a href="13-Bayese.html#brmsでベイズ統計"><i class="fa fa-check"></i><b>14.3.3</b> brmsでベイズ統計</a></li>
+<li class="chapter" data-level="14.3.4" data-path="13-Bayese.html"><a href="13-Bayese.html#事前分布の設定"><i class="fa fa-check"></i><b>14.3.4</b> 事前分布の設定</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -400,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="一般化線形モデル" class="section level1">
 <h1><span class="header-section-number">Chapter 11</span> 一般化線形モデル</h1>
-<p>誤差分布が正規分布以外の場合の「一般化線形モデル」について学ぶ。</p>
+<p>確率分布が正規分布以外の場合の「一般化線形モデル」について学ぶ。</p>
 <ul>
 <li>ロジスティック回帰</li>
 <li>ポアソン回帰</li>
@@ -424,13 +441,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}
 \]</span></p>
 <p>線形モデルでは，応答変数が正規分布に従うという前提で，応答変数<span class="math inline">\(y\)</span>を予測するパラメータ（線形予測子の切片と係数，及び正規分布の分散）を求めた。</p>
-<p>今回は，応答変数が<strong>正規分布以外の確率分布に従うモデル</strong>を扱う。</p>
-<p>線形モデルを正規分布以外の確率分布に拡張したモデルを，<strong>一般化線形モデル</strong>という。</p>
-<p>まず，応答変数が<strong>二値のカテゴリカル変数</strong>の場合に例として用いながら見ていく。</p>
+<p>今回は，応答変数が<em>正規分布以外の確率分布に従うモデル</em>を扱う。</p>
+<p>線形モデルを正規分布以外の確率分布に拡張したモデルを，<strong>一般化線形モデル(generalized linear model)</strong>という（GLMと略されることも多い）。一般化線形モデルを理解する上で重要なのは，応答変数が従う<strong>確率分布</strong>に加え，<strong>リンク関数(link function)</strong>という考え方である。</p>
 </div>
-<div id="応答変数が二値の場合" class="section level2">
-<h2><span class="header-section-number">11.3</span> 応答変数が二値の場合</h2>
+<div id="ロジスティック回帰" class="section level2">
+<h2><span class="header-section-number">11.3</span> ロジスティック回帰</h2>
 <p>前の章までは応答変数が量的変数の例を扱ってきた。では，応答変数がカテゴリカル変数である場合は，どのような解析をすればよいのだろうか。</p>
+<p>応答変数が<em>二値のカテゴリカル変数</em>の場合に例として用いながら見ていく。</p>
 <p><code>MASS</code>パッケージに入っているサンプルデータ<code>biopsy</code>を使いながら検討していこう。まず，以下のプログラムを実行して，練習用のデータ<code>dat</code>を作成する。</p>
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1"><span class="kw">library</span>(MASS) </a>
 <a class="sourceLine" id="cb372-2" data-line-number="2"></a>
@@ -494,9 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>線形モデルから推定された直線は，「<code>x</code>が増えるほど<code>y</code>が増える」関係を表しているように見える。</p>
 <p>しかし，この線形モデルの結果は，<code>y</code>を予測する上で問題がある。</p>
 <p>解析の目的は，<span class="math inline">\(y = 1\)</span>の確率，つまりがんにかかる確率を推定することであるが，例えば<span class="math inline">\(x\)</span>が10を超えると，応答変数の予測値は1以上の値を取る。また，<span class="math inline">\(x\)</span>が2.5を下回ったときも，0未満の数値が推定されてしまう。応答変数は0か1しか取らないのに，それぞれを超える値が予測されてしまう。これは確率の推定としては不都合である。</p>
-<p>応答変数<span class="math inline">\(y\)</span>は連続量ではなく，0か1の値を取るカテゴリカル変数である。連続量の確率分布である正規分布に応答変数が従うという前提を置くのは理論的に正しくない。</p>
-<div id="ロジスティック回帰" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> ロジスティック回帰</h3>
+<p>応答変数<span class="math inline">\(y\)</span>は連続量ではなく，0か1の値を取るカテゴリカル変数である。連続量の確率分布である正規分布に応答変数が従うという前提を置くのは予測モデルとして適切ではない。</p>
 <p>ではどうすれば良いのか？<br />
 解決策として，モデルを以下のように変更する。</p>
 <p><span class="math display">\[
@@ -541,13 +556,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>この変換は，<strong>ロジット関数（logit function）</strong>と呼ばれる。<br />
 ロジットとは確率の対数オッズのことをいう。オッズとは成功確率と失敗確率の比（<span class="math inline">\(q/(1-q)\)</span>），対数オッズとはオッズの対数を取ったものである。</p>
 <hr />
+<div id="ここまでのまとめ" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> ここまでのまとめ</h3>
 <p>線形予測子を変換する関数は，「<strong>リンク関数</strong>」と呼ばれる。上の例のように，応答変数が二値の場合は，推定値を0から1に収めるためにロジット関数をリンク関数として使うのが適切である。</p>
-<p>このように，「応答変数が従う<strong>確率分布</strong>」と「線形予測子に変換をほどこす<strong>リンク関数</strong>」を選ぶことにより，線形モデルを様々なデータ解析に一般化させたものが<strong>一般化線形モデル(generalized linear model)</strong>である。<br />
-「確率分布」と「リンク関数」を応答変数のタイプに応じてカスタマイズするというイメージで捉えると良い。</p>
+<p>このように，「応答変数が従う<strong>確率分布</strong>」と「線形予測子に変換をほどこす<strong>リンク関数</strong>」を選ぶことにより，線形モデルを様々なデータ解析に一般化させたものが<strong>一般化線形モデル(generalized linear model)</strong>である。一般化線形モデルは，「確率分布」と「リンク関数」を応答変数のタイプに応じてカスタマイズするというイメージで捉えると良い。</p>
 <p>上の例で見た「応答変数が従う確率分布をベルヌーイ分布（または二項分布）」，「リンク関数をロジスティック関数（ロジット関数）」とした一般化線形モデルは，<strong>ロジスティック回帰</strong>と呼ばれる。</p>
 </div>
-<div id="rでの一般化線形モデル" class="section level3">
-<h3><span class="header-section-number">11.3.2</span> Rでの一般化線形モデル</h3>
+<div id="rでのロジスティック回帰" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> Rでのロジスティック回帰</h3>
 <p>Rには，一般化線形モデルを行うための関数<code>glm()</code>がある。線形モデルを扱う<code>lm()</code>と同じ要領でプログラムを書けばよいが，確率分布とリンク関数のオプションを自分で指定する必要がある。先程のサンプルデータ<code>dat</code>で，<code>glm()</code>関数を使ってロジスティック回帰をやってみよう。</p>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" data-line-number="1">result_glm =<span class="st"> </span><span class="kw">glm</span>(<span class="dt">data =</span> dat, y <span class="op">~</span><span class="st"> </span>x, <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))</a></code></pre></div>
 <p><code>glm</code>で設定すること：</p>
@@ -616,14 +632,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>予測線は0から1の範囲に収まっており，線形予測子から確率の予測ができている。</p>
 </div>
 </div>
-<div id="応答変数がカウントデータの場合" class="section level2">
-<h2><span class="header-section-number">11.4</span> 応答変数がカウントデータの場合</h2>
+<div id="ポアソン回帰" class="section level2">
+<h2><span class="header-section-number">11.4</span> ポアソン回帰</h2>
 <p>応答変数が正規分布以外に従う場合の例として，先程は応答変数が0か1の二値の値の場合を扱った。同じく応答変数に制約がある場合の例として，次は<strong>応答変数が正の値の整数しか取らない場合</strong>（0を含む）の例を扱う。</p>
 <p>具体的には，応答変数がカウントデータの場合である（非負の整数。0個，1個，2個,3個といった個数など）。この場合は，<strong>ポアソン回帰</strong>と呼ばれる一般化線形モデルによる解析をするのが適切だと言われている。</p>
-<p>サンプルデータを扱いながら，ポアソン回帰について学んでいこう。</p>
-<div id="ポアソン回帰" class="section level3">
-<h3><span class="header-section-number">11.4.1</span> ポアソン回帰</h3>
-<p>以下のプログラムを実行して，サンプルデータ<code>dat</code>を作成しよう。</p>
+<p>サンプルデータを扱いながら，ポアソン回帰について学んでいこう。以下のプログラムを実行して，サンプルデータ<code>dat</code>を作成しよう。</p>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb386-2" data-line-number="2">N=<span class="st"> </span><span class="dv">50</span></a>
 <a class="sourceLine" id="cb386-3" data-line-number="3">x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span>N, <span class="dt">mean =</span> <span class="dv">2</span>, <span class="dt">sd=</span><span class="dv">1</span>)</a>
@@ -643,15 +656,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>モデルは以下のようになる。</p>
 <p><span class="math display">\[
 \begin{equation}
-  \lambda = \exp(\alpha +  \beta x) \\
+  \lambda = \exp(\alpha +  \beta x)  \tag{6}\\
   y \sim Poisson(\lambda)
 \end{equation}
 \]</span></p>
 <p>1つ目の式では，線形予測子から<span class="math inline">\(\lambda\)</span>を求めている。
 2つ目の式では，1つ目で求めた<span class="math inline">\(\lambda\)</span>をパラメータとするポアソン分布から，応答変数<span class="math inline">\(y\)</span>が生成されるということを示している。</p>
-</div>
 <div id="ポアソン分布の復習" class="section level3">
-<h3><span class="header-section-number">11.4.2</span> ポアソン分布の復習</h3>
+<h3><span class="header-section-number">11.4.1</span> ポアソン分布の復習</h3>
 <p>ポアソン分布は，パラメータ<span class="math inline">\(\lambda\)</span>を持つ確率分布である。</p>
 <p><span class="math display">\[
 P(y) = \frac{\lambda^y\exp(-\lambda)}{y!} \tag{7}\\
@@ -661,20 +673,20 @@ P(y) = \frac{\lambda^y\exp(-\lambda)}{y!} \tag{7}\\
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
 <p>ポアソン分布は，二項分布とも関連している。</p>
 <p>二項分布のパラメータは，試行回数<span class="math inline">\(n\)</span>と成功確率<span class="math inline">\(p\)</span>であった。二項分布の期待値（平均）は<span class="math inline">\(np\)</span>，分散はnp(1-p)である。</p>
-<p>$$
-y Binomial(n, p)\
-E(y) = np\
-Var(y) = np(1-p)\</p>
-<p>$$</p>
+<p><span class="math display">\[
+y \sim Binomial(n, p) \tag{8}\\
+E(y) = np\\
+Var(y) = np(1-p)\\
+\]</span></p>
 <p>二項分布の試行回数<span class="math inline">\(n\)</span>が大きく，成功確率<span class="math inline">\(p\)</span>が小さい場合，二項分布の平均と分散はほとんど等しくなり，ポアソン分布に近似する。</p>
 <p>つまり，めったに起こらないイベントが生じる回数は，ポアソン分布に従うといわれている。</p>
 </div>
 <div id="ポアソン回帰のリンク関数" class="section level3">
-<h3><span class="header-section-number">11.4.3</span> ポアソン回帰のリンク関数</h3>
+<h3><span class="header-section-number">11.4.2</span> ポアソン回帰のリンク関数</h3>
 <p>線形予測子がリンク関数でどう変換されているかを確認すると，</p>
 <p><span class="math display">\[
 \begin{equation}
-  \lambda = \exp(\alpha +  \beta x) \tag{3} \\ 
+  \lambda = \exp(\alpha +  \beta x) \tag{9} \\ 
 \end{equation}
 \]</span></p>
 <p>なぜ指数関数を用いるのか？<span class="math inline">\(z=\alpha + \beta x\)</span>として，<span class="math inline">\(\lambda=\exp(z)\)</span>との関係を図で見てみよう。</p>
@@ -686,14 +698,14 @@ Var(y) = np(1-p)\</p>
 <a class="sourceLine" id="cb389-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> d, <span class="kw">aes</span>(<span class="dt">x=</span>z, <span class="dt">y=</span>lambda))</a></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
 <p>図からもわかるように，<span class="math inline">\(z\)</span>の値に関わらず，<span class="math inline">\(\lambda\)</span>は正の値を取る。ポアソン分布のパラメータ<span class="math inline">\(\lambda\)</span>は<span class="math inline">\(\lambda&gt;0\)</span>という制約であるため，このように変換することでちょうどよくなる。</p>
-<p>また，式(3)の右辺を線形予測子に直すと，以下になる。</p>
+<p>また，式(9)の右辺を線形予測子に直すと，以下になる。</p>
 <p><span class="math display">\[
-\log\lambda_{i}=\alpha+\beta x \tag{4}\\
+\log\lambda_{i}=\alpha+\beta x \tag{10}\\
 \]</span></p>
 <p>このように，ポアソン回帰では，応答変数が従う確率分布をポアソン分布，線形予測子と応答変数をリンクさせるリンク関数は<strong>対数関数</strong>（log）を設定する。</p>
 </div>
 <div id="rでのポアソン回帰" class="section level3">
-<h3><span class="header-section-number">11.4.4</span> Rでのポアソン回帰</h3>
+<h3><span class="header-section-number">11.4.3</span> Rでのポアソン回帰</h3>
 <p>Rでポアソン回帰をやってみよう。
 一般化線形モデルを扱う関数<code>glm()</code>で，確率分布にポアソン分布，リンク関数に対数を指定して，ポアソン回帰をやってみる。<br />
 <code>(link = &quot;log&quot;)</code>は省略しても構わない。<code>family = poisson</code>で確率分布をポアソン分布にすれば，リンク関数は自動で対数になる。</p>
@@ -732,15 +744,22 @@ Var(y) = np(1-p)\</p>
 <a class="sourceLine" id="cb392-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> dat_predict, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) </a></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
 </div>
-<div id="一般化線形モデルのまとめ" class="section level3">
-<h3><span class="header-section-number">11.4.5</span> 一般化線形モデルのまとめ</h3>
+<div id="過分散の問題" class="section level3">
+<h3><span class="header-section-number">11.4.4</span> 過分散の問題</h3>
+<p>ポアソン分布のパラメータ<span class="math inline">\(\lambda\)</span>は，平均と分散の両方を意味するパラメータであった。つまり，ポアソン分布は平均と分散が等しい分布である。しかし，現実のデータでは平均と分散が等しいケースは少ない。逆に，分散が平均よりもかなり大きいケースがよく見られる。分散が平均よりも大きいときにポアソン回帰を使うと，分散を実際よりも小さいと判断して分析してしまい，予測変数が平均に与える効果を過大に評価してしまう恐れがある（p値を過剰に小さく判断してしまい，第一種の過誤を犯しやすくなる）。この問題は，<strong>過分散(overdispersion)</strong>と呼ばれる。</p>
+<p>ポアソン回帰で過分散の恐れがある場合，対処法としては以下がある。<br />
+1. 応答変数が従う確率分布として，負の二項分布を用いたモデルで分析する。<br />
+2. 一般化線形混合モデルで，個体差を意味するパラメータを追加したモデルを用いる（分散を個体差パラメータに吸収させる）。</p>
+<p>いずれについても，次以降の章で説明する。</p>
+</div>
+</div>
+<div id="一般化線形モデルのまとめ" class="section level2">
+<h2><span class="header-section-number">11.5</span> 一般化線形モデルのまとめ</h2>
 <ul>
 <li><p>線形モデルを正規分布以外の別の確率分布に拡張したモデルのことを，一般化線形モデルという。</p></li>
 <li><p>二値のデータや割合である場合→ロジスティック回帰（確率分布はベルヌーイ分布もしくは二項分布，リンク関数はロジット）</p></li>
 <li><p>カウントデータである場合→ポアソン回帰（確率分布はポアソン分布，リンク関数は対数）</p></li>
 </ul>
-<p>次の章では，ロジスティック回帰やポアソン回帰以外の一般化線形モデルを扱う。</p>
-</div>
 </div>
 <div id="確認問題-8" class="section level2 unnumbered">
 <h2>確認問題</h2>
@@ -757,7 +776,10 @@ Sleep: 1日の睡眠時間（単位：時間）</p>
 <a class="sourceLine" id="cb393-3" data-line-number="3">Exercise =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb393-4" data-line-number="4">Sleep =<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">7</span>)</a>
 <a class="sourceLine" id="cb393-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb393-6" data-line-number="6">data_q01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Disease =</span> Disease, <span class="dt">BMI =</span> BMI, <span class="dt">Exercise =</span> Exercise, <span class="dt">Sleep =</span> Sleep)</a></code></pre></div>
+<a class="sourceLine" id="cb393-6" data-line-number="6">data_q01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Disease =</span> Disease, </a>
+<a class="sourceLine" id="cb393-7" data-line-number="7">                       <span class="dt">BMI =</span> BMI, </a>
+<a class="sourceLine" id="cb393-8" data-line-number="8">                       <span class="dt">Exercise =</span> Exercise, </a>
+<a class="sourceLine" id="cb393-9" data-line-number="9">                       <span class="dt">Sleep =</span> Sleep)</a></code></pre></div>
 <p>Diseaseを応答変数，BMI，Exercise，Sleepを予測変数としたロジスティック回帰を行い，5%水準で有意な効果を持つ予測変数について報告せよ。</p>
 <p>ヒント：係数の値が正か負かにも注意して，予測変数が応答変数にどのような影響を持っていたかについて報告する。</p>
 
@@ -770,7 +792,7 @@ Sleep: 1日の睡眠時間（単位：時間）</p>
         </div>
       </div>
 <a href="09-linear_model2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="11-glmm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="11-glm2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

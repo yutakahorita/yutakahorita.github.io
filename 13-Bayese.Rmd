@@ -1,0 +1,134 @@
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+library(rstan)
+library(brms)
+library(lme4)
+
+#計算を高速化するオプション
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+```
+
+
+# ベイズ統計
+
+## ベイズの定理
+
+## MCMC
+
+
+
+## 準備
+
+### rtanとbrmsパッケージのインストール
+
+`rstan`パッケージのインストールについては，「Rstan Getting Started (Japanese)」[https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese))のページを参照のこと。  
+  
+「RStan」と「C++コンパイラ」のインストールを行う。  
+  
+`rstan`をインストールできたら，`brms`パッケージもインストールする。
+
+### パッケージのロード
+
+`rstan`と`brms`をロードする。
+
+```{r, eval=FALSE}
+library(rstan)
+library(brms)
+```
+
+また，計算の高速化のために，以下のプログラムも実行しておく。
+
+```{r, eval=FALSE}
+#計算を高速化するオプション
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+```
+
+
+### brmsでベイズ統計
+
+#### 一般化線形モデル
+`brms`パッケージの`brm()`関数を使う。
+
+`formula`に線形予測子，`family`に確率分布とリンク関数を指定する。
+
+`lme4`パッケージの`glmer()`関数と同様の形式でプログラムを書ける。
+
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+
+dat = iris
+
+result = brms::brm(data = dat, #データを指定
+    formula = Sepal.Length ~ Sepal.Width, #線形予測子
+    family = gaussian(link = "identity"), #確率分布とリンク関数
+    seed = 1 #乱数の種
+    )
+
+result
+
+```
+
+
+
+#### マルチレベルモデル
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+
+dat = iris
+
+library(lme4)
+result_lmer = lme4::lmer(data = dat, Sepal.Length ~ Sepal.Width + (1|Species))
+summary(result_lmer)
+
+result_brm = brm(data = dat,
+    formula = Sepal.Length ~ Sepal.Width + (1|Species),
+    family = gaussian(link = "identity"),
+    seed = 1)
+result_brm
+
+```
+
+### 事前分布の設定
+
+#### 無情報事前分布
+
+```{r, eval=FALSE}
+
+
+result_brm = brm(data = dat,
+    formula = Sepal.Length ~ Sepal.Width + (1|Species),
+    family = gaussian(link = "identity"),
+    seed = 1,
+    prior = c(set_prior("", class = "intercept"),
+              set_prior("", class = "sigma"))
+    )
+
+result_brm
+
+```
+
+
+#### 弱情報事前分布
+
+```{r, eval=FALSE}
+
+
+result_brm = brm(data = dat,
+    formula = Sepal.Length ~ Sepal.Width + (1|Species),
+    family = gaussian(link = "identity"),
+    seed = 1,
+    prior = c(set_prior(normal(0, 10), class = "intercept"),
+              set_prior("", class = "sigma"))
+    )
+
+result_brm
+
+```
+
+

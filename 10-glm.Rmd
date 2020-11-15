@@ -225,7 +225,7 @@ summary(result_glm)
 
 ***
   
-`x`に係る傾の値き`r round(result_glm$coefficient[2],2)`は何を意味しているのか？  
+`x`に係る傾きの値`r round(result_glm$coefficient[2],2)`は何を意味しているのか？  
   
 線形モデルでは傾きの推定値は，「予測変数が1単位増えたときの応答変数の変化量」を意味していた。今回の例も，`x`が1増えると確率が`r round(result_glm$coefficient[2],2)`上がるということを示しているのか？  
   

@@ -113,13 +113,15 @@ $$
 Pr(\theta|x) = \frac{Pr(x|\theta) Pr(\theta)}{Pr(x)}
 $$
 
+$Pr(\theta|x)$を**事後分布(posterior distribution)**，$Pr(\theta)$を**事前分布(prior distribution)**，$Pr(x|\theta)$を**尤度(likelihood)**と呼ぶ。  
+  
 $Pr(x)$はデータの分布を意味しているが，確率変数を含まないので定数とみなすことができる（基準化定数や周辺尤度と呼ばれる）。したがって，この式は以下のようなかたちで表現されることもある。$\propto$は「比例する」という意味である。
 
 $$
 Pr(\theta|x) \propto Pr(x|\theta) Pr(\theta)
 $$
 
-$Pr(\theta|x)$を**事後分布(posterior distribution)**，$Pr(\theta)$を事**前分布(prior distribution)**，$Pr(x|\theta)$を**尤度(likelihood)**と呼ぶ。事後分布はデータを得たあとで推定したパラメータの分布であり，事前分布と尤度の積に比例する。
+事後分布はデータを得たあとで推定したパラメータの分布であり，事前分布と尤度の積に比例する。
 
 
 ## ベイズ推定の例

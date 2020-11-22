@@ -452,12 +452,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="パッケージのロード-1" class="section level3">
 <h3><span class="header-section-number">15.0.2</span> パッケージのロード</h3>
 <p><code>rstan</code>と<code>brms</code>をロードする。</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1"><span class="kw">library</span>(rstan)</a>
-<a class="sourceLine" id="cb454-2" data-line-number="2"><span class="kw">library</span>(brms)</a></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1"><span class="kw">library</span>(rstan)</a>
+<a class="sourceLine" id="cb453-2" data-line-number="2"><span class="kw">library</span>(brms)</a></code></pre></div>
 <p>また，計算の高速化のために，以下のプログラムも実行しておく。</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1"><span class="co">#計算を高速化するオプション</span></a>
-<a class="sourceLine" id="cb455-2" data-line-number="2"><span class="kw">rstan_options</span>(<span class="dt">auto_write =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb455-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">mc.cores =</span> parallel<span class="op">::</span><span class="kw">detectCores</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1"><span class="co">#計算を高速化するオプション</span></a>
+<a class="sourceLine" id="cb454-2" data-line-number="2"><span class="kw">rstan_options</span>(<span class="dt">auto_write =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb454-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">mc.cores =</span> parallel<span class="op">::</span><span class="kw">detectCores</span>())</a></code></pre></div>
 </div>
 <div id="brmsでベイズ統計" class="section level3">
 <h3><span class="header-section-number">15.0.3</span> brmsでベイズ統計</h3>
@@ -466,56 +466,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>brms</code>パッケージの<code>brm()</code>関数を使う。</p>
 <p><code>formula</code>に線形予測子，<code>family</code>に確率分布とリンク関数を指定する。</p>
 <p><code>lme4</code>パッケージの<code>glmer()</code>関数と同様の形式でプログラムを書ける。</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">dat =<span class="st"> </span>iris</a>
-<a class="sourceLine" id="cb456-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb456-3" data-line-number="3">result =<span class="st"> </span>brms<span class="op">::</span><span class="kw">brm</span>(<span class="dt">data =</span> dat, <span class="co">#データを指定</span></a>
-<a class="sourceLine" id="cb456-4" data-line-number="4">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width, <span class="co">#線形予測子</span></a>
-<a class="sourceLine" id="cb456-5" data-line-number="5">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>), <span class="co">#確率分布とリンク関数</span></a>
-<a class="sourceLine" id="cb456-6" data-line-number="6">    <span class="dt">seed =</span> <span class="dv">1</span> <span class="co">#乱数の種</span></a>
-<a class="sourceLine" id="cb456-7" data-line-number="7">    )</a>
-<a class="sourceLine" id="cb456-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb456-9" data-line-number="9">result</a></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">dat =<span class="st"> </span>iris</a>
+<a class="sourceLine" id="cb455-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb455-3" data-line-number="3">result =<span class="st"> </span>brms<span class="op">::</span><span class="kw">brm</span>(<span class="dt">data =</span> dat, <span class="co">#データを指定</span></a>
+<a class="sourceLine" id="cb455-4" data-line-number="4">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width, <span class="co">#線形予測子</span></a>
+<a class="sourceLine" id="cb455-5" data-line-number="5">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>), <span class="co">#確率分布とリンク関数</span></a>
+<a class="sourceLine" id="cb455-6" data-line-number="6">    <span class="dt">seed =</span> <span class="dv">1</span> <span class="co">#乱数の種</span></a>
+<a class="sourceLine" id="cb455-7" data-line-number="7">    )</a>
+<a class="sourceLine" id="cb455-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb455-9" data-line-number="9">result</a></code></pre></div>
 </div>
 <div id="マルチレベルモデル-1" class="section level4">
 <h4><span class="header-section-number">15.0.3.2</span> マルチレベルモデル</h4>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">dat =<span class="st"> </span>iris</a>
-<a class="sourceLine" id="cb457-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb457-3" data-line-number="3"><span class="kw">library</span>(lme4)</a>
-<a class="sourceLine" id="cb457-4" data-line-number="4">result_lmer =<span class="st"> </span>lme4<span class="op">::</span><span class="kw">lmer</span>(<span class="dt">data =</span> dat, Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species))</a>
-<a class="sourceLine" id="cb457-5" data-line-number="5"><span class="kw">summary</span>(result_lmer)</a>
-<a class="sourceLine" id="cb457-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb457-7" data-line-number="7">result_brm =<span class="st"> </span><span class="kw">brm</span>(<span class="dt">data =</span> dat,</a>
-<a class="sourceLine" id="cb457-8" data-line-number="8">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species),</a>
-<a class="sourceLine" id="cb457-9" data-line-number="9">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>),</a>
-<a class="sourceLine" id="cb457-10" data-line-number="10">    <span class="dt">seed =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb457-11" data-line-number="11">result_brm</a></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">dat =<span class="st"> </span>iris</a>
+<a class="sourceLine" id="cb456-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb456-3" data-line-number="3"><span class="kw">library</span>(lme4)</a>
+<a class="sourceLine" id="cb456-4" data-line-number="4">result_lmer =<span class="st"> </span>lme4<span class="op">::</span><span class="kw">lmer</span>(<span class="dt">data =</span> dat, Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species))</a>
+<a class="sourceLine" id="cb456-5" data-line-number="5"><span class="kw">summary</span>(result_lmer)</a>
+<a class="sourceLine" id="cb456-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb456-7" data-line-number="7">result_brm =<span class="st"> </span><span class="kw">brm</span>(<span class="dt">data =</span> dat,</a>
+<a class="sourceLine" id="cb456-8" data-line-number="8">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species),</a>
+<a class="sourceLine" id="cb456-9" data-line-number="9">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>),</a>
+<a class="sourceLine" id="cb456-10" data-line-number="10">    <span class="dt">seed =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb456-11" data-line-number="11">result_brm</a></code></pre></div>
 </div>
 </div>
 <div id="事前分布の設定" class="section level3">
 <h3><span class="header-section-number">15.0.4</span> 事前分布の設定</h3>
 <div id="無情報事前分布" class="section level4">
 <h4><span class="header-section-number">15.0.4.1</span> 無情報事前分布</h4>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">result_brm =<span class="st"> </span><span class="kw">brm</span>(<span class="dt">data =</span> dat,</a>
+<a class="sourceLine" id="cb457-2" data-line-number="2">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species),</a>
+<a class="sourceLine" id="cb457-3" data-line-number="3">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>),</a>
+<a class="sourceLine" id="cb457-4" data-line-number="4">    <span class="dt">seed =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb457-5" data-line-number="5">    <span class="dt">prior =</span> <span class="kw">c</span>(<span class="kw">set_prior</span>(<span class="st">&quot;&quot;</span>, <span class="dt">class =</span> <span class="st">&quot;intercept&quot;</span>),</a>
+<a class="sourceLine" id="cb457-6" data-line-number="6">              <span class="kw">set_prior</span>(<span class="st">&quot;&quot;</span>, <span class="dt">class =</span> <span class="st">&quot;sigma&quot;</span>))</a>
+<a class="sourceLine" id="cb457-7" data-line-number="7">    )</a>
+<a class="sourceLine" id="cb457-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb457-9" data-line-number="9">result_brm</a></code></pre></div>
+</div>
+<div id="弱情報事前分布" class="section level4">
+<h4><span class="header-section-number">15.0.4.2</span> 弱情報事前分布</h4>
 <div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" data-line-number="1">result_brm =<span class="st"> </span><span class="kw">brm</span>(<span class="dt">data =</span> dat,</a>
 <a class="sourceLine" id="cb458-2" data-line-number="2">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species),</a>
 <a class="sourceLine" id="cb458-3" data-line-number="3">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>),</a>
 <a class="sourceLine" id="cb458-4" data-line-number="4">    <span class="dt">seed =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb458-5" data-line-number="5">    <span class="dt">prior =</span> <span class="kw">c</span>(<span class="kw">set_prior</span>(<span class="st">&quot;&quot;</span>, <span class="dt">class =</span> <span class="st">&quot;intercept&quot;</span>),</a>
+<a class="sourceLine" id="cb458-5" data-line-number="5">    <span class="dt">prior =</span> <span class="kw">c</span>(<span class="kw">set_prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">class =</span> <span class="st">&quot;intercept&quot;</span>),</a>
 <a class="sourceLine" id="cb458-6" data-line-number="6">              <span class="kw">set_prior</span>(<span class="st">&quot;&quot;</span>, <span class="dt">class =</span> <span class="st">&quot;sigma&quot;</span>))</a>
 <a class="sourceLine" id="cb458-7" data-line-number="7">    )</a>
 <a class="sourceLine" id="cb458-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb458-9" data-line-number="9">result_brm</a></code></pre></div>
-</div>
-<div id="弱情報事前分布" class="section level4">
-<h4><span class="header-section-number">15.0.4.2</span> 弱情報事前分布</h4>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">result_brm =<span class="st"> </span><span class="kw">brm</span>(<span class="dt">data =</span> dat,</a>
-<a class="sourceLine" id="cb459-2" data-line-number="2">    <span class="dt">formula =</span> Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>Species),</a>
-<a class="sourceLine" id="cb459-3" data-line-number="3">    <span class="dt">family =</span> <span class="kw">gaussian</span>(<span class="dt">link =</span> <span class="st">&quot;identity&quot;</span>),</a>
-<a class="sourceLine" id="cb459-4" data-line-number="4">    <span class="dt">seed =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb459-5" data-line-number="5">    <span class="dt">prior =</span> <span class="kw">c</span>(<span class="kw">set_prior</span>(<span class="kw">normal</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">class =</span> <span class="st">&quot;intercept&quot;</span>),</a>
-<a class="sourceLine" id="cb459-6" data-line-number="6">              <span class="kw">set_prior</span>(<span class="st">&quot;&quot;</span>, <span class="dt">class =</span> <span class="st">&quot;sigma&quot;</span>))</a>
-<a class="sourceLine" id="cb459-7" data-line-number="7">    )</a>
-<a class="sourceLine" id="cb459-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb459-9" data-line-number="9">result_brm</a></code></pre></div>
 
 </div>
 </div>

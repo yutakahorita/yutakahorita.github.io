@@ -528,8 +528,8 @@ Pr(\theta|x) \propto Pr(x|\theta) Pr(\theta)
 <p><span class="math display">\[
 Pr(\theta) = 1
 \]</span></p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">theta_seq =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>) <span class="co">#0から1までの範囲で0.01刻みでベクトルを作る</span></a>
-<a class="sourceLine" id="cb451-2" data-line-number="2">theta_prior =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">length</span>(theta_seq))</a></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" data-line-number="1">theta_seq =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>) <span class="co">#0から1までの範囲で0.01刻みでベクトルを作る</span></a>
+<a class="sourceLine" id="cb450-2" data-line-number="2">theta_prior =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">length</span>(theta_seq))</a></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
 <hr />
 <p>もちろん事前確率について仮説がある場合は，範囲を定めた一様分布あるいは別の確率分布を事前確率を設定しても良い。例えば，身長の分布を推定するときは，0cm ~ 250cmの範囲の一様分布を事前分布として設定するのは妥当であるといえる。</p>
@@ -541,7 +541,7 @@ Pr(\theta) = 1
 <p><span class="math display">\[
 Pr(x|\theta) = {}_n\mathrm{C}_h\theta^{h}(1-\theta)^{(n-h)}
 \]</span></p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" data-line-number="1">theta_likelihood =<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">6</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> theta_seq)</a></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">theta_likelihood =<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x=</span><span class="dv">6</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> theta_seq)</a></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 </div>
 <div id="事後分布" class="section level3">
@@ -551,8 +551,8 @@ Pr(x|\theta) = {}_n\mathrm{C}_h\theta^{h}(1-\theta)^{(n-h)}
 Pr(\theta|x) \propto Pr(x|\theta) Pr(\theta)
 \]</span></p>
 <p>尤度と事前分布をかけて事後分布を求める（正確には，更に基準化定数<span class="math inline">\(Pr(x)\)</span>で割る）。</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">theta_posterior =<span class="st"> </span>theta_likelihood <span class="op">*</span><span class="st"> </span>theta_prior</a>
-<a class="sourceLine" id="cb453-2" data-line-number="2">theta_posterior_std =<span class="st"> </span>theta_posterior<span class="op">/</span><span class="kw">sum</span>(theta_posterior) </a></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" data-line-number="1">theta_posterior =<span class="st"> </span>theta_likelihood <span class="op">*</span><span class="st"> </span>theta_prior</a>
+<a class="sourceLine" id="cb452-2" data-line-number="2">theta_posterior_std =<span class="st"> </span>theta_posterior<span class="op">/</span><span class="kw">sum</span>(theta_posterior) </a></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 </div>
 </div>

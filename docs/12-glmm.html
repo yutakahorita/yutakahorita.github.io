@@ -642,38 +642,6 @@ y \sim Bernoulli(q)
 ## Correlation of Fixed Effects:
 ##    (Intr)
 ## x1 -0.987</code></pre>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1"><span class="co">### ポアソン回帰</span></a>
-<a class="sourceLine" id="cb448-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb448-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb448-4" data-line-number="4">alpha =<span class="st"> </span><span class="fl">0.5</span></a>
-<a class="sourceLine" id="cb448-5" data-line-number="5">beta =<span class="st"> </span><span class="fl">0.2</span></a>
-<a class="sourceLine" id="cb448-6" data-line-number="6">x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb448-7" data-line-number="7">alpha_<span class="dv">0</span> =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb448-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb448-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb448-10" data-line-number="10">lambda_<span class="dv">1</span> =<span class="st"> </span><span class="kw">exp</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>x[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>] <span class="op">+</span><span class="st"> </span>alpha_<span class="dv">0</span>[<span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb448-11" data-line-number="11">lambda_<span class="dv">2</span> =<span class="st"> </span><span class="kw">exp</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>x[<span class="dv">11</span><span class="op">:</span><span class="dv">20</span>] <span class="op">+</span><span class="st"> </span>alpha_<span class="dv">0</span>[<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb448-12" data-line-number="12">lambda_<span class="dv">3</span> =<span class="st"> </span><span class="kw">exp</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>x[<span class="dv">21</span><span class="op">:</span><span class="dv">30</span>] <span class="op">+</span><span class="st"> </span>alpha_<span class="dv">0</span>[<span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb448-13" data-line-number="13">lambda_<span class="dv">4</span> =<span class="st"> </span><span class="kw">exp</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>x[<span class="dv">31</span><span class="op">:</span><span class="dv">40</span>] <span class="op">+</span><span class="st"> </span>alpha_<span class="dv">0</span>[<span class="dv">4</span>])</a>
-<a class="sourceLine" id="cb448-14" data-line-number="14">lambda_<span class="dv">5</span> =<span class="st"> </span><span class="kw">exp</span>(alpha <span class="op">+</span><span class="st"> </span>beta <span class="op">*</span><span class="st"> </span>x[<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>] <span class="op">+</span><span class="st"> </span>alpha_<span class="dv">0</span>[<span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb448-15" data-line-number="15">y_<span class="dv">1</span> =<span class="st"> </span><span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">10</span>, lambda_<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb448-16" data-line-number="16">y_<span class="dv">2</span> =<span class="st"> </span><span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">10</span>, lambda_<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb448-17" data-line-number="17">y_<span class="dv">3</span> =<span class="st"> </span><span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">10</span>, lambda_<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb448-18" data-line-number="18">y_<span class="dv">4</span> =<span class="st"> </span><span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">10</span>, lambda_<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb448-19" data-line-number="19">y_<span class="dv">5</span> =<span class="st"> </span><span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">10</span>, lambda_<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb448-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb448-21" data-line-number="21">dat =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">y =</span> <span class="kw">c</span>(y_<span class="dv">1</span>, y_<span class="dv">2</span>, y_<span class="dv">3</span>, y_<span class="dv">4</span>, y_<span class="dv">5</span>), </a>
-<a class="sourceLine" id="cb448-22" data-line-number="22">           <span class="dt">x =</span> x <span class="op">+</span><span class="st"> </span><span class="dv">20</span>,</a>
-<a class="sourceLine" id="cb448-23" data-line-number="23">           <span class="dt">ID =</span> <span class="kw">sort</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">10</span>)))</a>
-<a class="sourceLine" id="cb448-24" data-line-number="24">dat<span class="op">$</span>x_std =<span class="st"> </span>dat<span class="op">$</span>x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(dat<span class="op">$</span>x)</a>
-<a class="sourceLine" id="cb448-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb448-26" data-line-number="26"><span class="kw">summary</span>(<span class="kw">glmer</span>(<span class="dt">data =</span> dat, y <span class="op">~</span><span class="st"> </span>x_std <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>ID), <span class="dt">family =</span> poisson))</a>
-<a class="sourceLine" id="cb448-27" data-line-number="27"><span class="kw">summary</span>(<span class="kw">glm</span>(<span class="dt">data =</span> dat, y <span class="op">~</span><span class="st"> </span>x_std, <span class="dt">family =</span> poisson))</a>
-<a class="sourceLine" id="cb448-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb448-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb448-30" data-line-number="30"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb448-31" data-line-number="31"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> dat, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb448-32" data-line-number="32"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(<span class="kw">factor</span>(ID)))</a></code></pre></div>
 </div>
 </div>
 <div id="確認問題-9" class="section level2 unnumbered">
@@ -681,8 +649,8 @@ y \sim Bernoulli(q)
 <div id="問-19" class="section level3 unnumbered">
 <h3>問１</h3>
 <p><code>car</code>パッケージに入っているカナダにおける職業の威信度に関する調査データ<code>Prestige</code>を使う。102業種に関する調査結果が入っている。</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1"><span class="kw">library</span>(car)</a>
-<a class="sourceLine" id="cb449-2" data-line-number="2"><span class="kw">head</span>(Prestige)</a></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1"><span class="kw">library</span>(car)</a>
+<a class="sourceLine" id="cb448-2" data-line-number="2"><span class="kw">head</span>(Prestige)</a></code></pre></div>
 <pre><code>##                     education income women prestige census type
 ## gov.administrators      13.11  12351 11.16     68.8   1113 prof
 ## general.managers        12.26  25879  4.02     69.1   1130 prof
@@ -690,16 +658,15 @@ y \sim Bernoulli(q)
 ## purchasing.officers     11.42   8865  9.11     56.8   1175 prof
 ## chemists                14.62   8403 11.68     73.5   2111 prof
 ## physicists              15.64  11030  5.13     77.6   2113 prof</code></pre>
-<p><code>prestige</code>を応答変数，<code>education</code>, <code>income</code>及び <code>women</code>を予測変数，<code>type</code>をランダム効果（切片）としたマルチレベルモデルで解析せよ。確率分布は正規分布を用いるものとする。</p>
-<p>解析の結果，有意な効果を持った予測変数を挙げ，結論を述べよ（その予測変数が大きくなるほど，応答変数がどう変化するか）。</p>
+<p><code>prestige</code>を応答変数，<code>education</code>, <code>income</code>及び <code>women</code>を予測変数，<code>type</code>をランダム効果（切片）としたマルチレベルモデルで解析せよ。応答変数が従う確率分布は，正規分布を用いるものとする。</p>
+<p>各予測変数が応答変数に及ぼす効果について述べよ（その予測変数が1単位変化すると，応答変数がどう変化するか）。</p>
 <p>なお，変数の意味は以下の通りである。<br />
 <code>prestige</code>：職業威信度（値が高いほど威信度が高い）<br />
 <code>education</code>：在職者の平均教育年数<br />
 <code>income</code>：平均所得（単位はドル）<br />
 <code>women</code>：女性の割合<br />
 <code>type</code>：職業のカテゴリ（bc=ブルーカラー，wc=ホワイトカラー，prof=専門職）</p>
-<p>ヒント：正規分布を扱うマルチレベルの場合は，<code>lme4</code>パッケージの<code>lmer()</code>を使えば良い。p値を出力したい場合は，<code>lmerTest()</code>パッケージも必要になる。<br />
-なお，出力時にメッセージが出ても無視して良い（中心化せよという命令だが，無視して良い）。</p>
+<p>ヒント：正規分布を扱うマルチレベルの場合は，<code>lme4</code>パッケージの<code>lmer()</code>を使えば良い。なお，出力時にメッセージが出ても無視して良い（中心化せよという命令だが，無視して良い）。</p>
 
 </div>
 </div>

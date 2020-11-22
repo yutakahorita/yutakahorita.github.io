@@ -503,7 +503,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
 <p>種を無視して検討したところ，がくの長さとがくの幅の間には関係がないようにみえたが，種ごとに分けてみると「がくの長さが大きくなるほど，がくの幅が大きくなる」関係にあるように見える。</p>
 <p>このあやめのデータのように，いくつかのデータが同じグループに属している構造の場合，グループの影響を統制しないと誤った結論を招いてしまう恐れがある。それらのデータ間には，<strong>統計的独立性が保証されていない</strong>ためである。つまり，同じ種同士のものは似た傾向にある可能性が高い（データ間で相関が存在する）。</p>
-<p><strong>独立(independence)</strong>とは，各データが他のデータに影響されないという意味である。これまで学んできた確率分布では，<strong>独立同分布(independent and identically distributed: i.i.d.)</strong>が前提とされている。例えば，コインを数回投げて投げて表が出る回数は二項分布に従うが，表が出るかどうかは前の試行に影響されることはない（前回表が出たら，次も表が出やすいということはありえないという前提を置く）。</p>
+<p><strong>独立(independence)</strong>とは，各データが他のデータに影響されないという意味である。これまで学んできた確率分布では，<strong>独立同分布(independent and identically distributed: i.i.d.)</strong>が前提とされている。例えば，コインを数回投げて表が出る回数は二項分布に従うが，表が出るかどうかは前の試行に影響されることはない（前回表が出たら，次も表が出やすいということはありえないという前提を置く）。</p>
 <p>しかし，現実のデータでは，データ間の相関などにより，事象の独立性が保たれていないケースもありえる。その場合，統計的独立性を前提とした解析を行うと，上の例のように誤った結論を導いてしまう恐れがある。</p>
 <p>この例に限らず，<strong>階層構造を持つデータや繰り返し測定データ</strong>にも，同じことがいえる。例えば，学校ごとに学力テストを行った場合，同じ学校の生徒たちは成績が似通っている可能性がある（上位校の生徒は他の学校と比べて成績が良いなど）。同一参加者に複数の実験条件に参加してもらった場合，その参加者のデータは似たような傾向になる可能性も考えられる。</p>
 <p>このようなデータに対して，<strong>個人や集団の影響を考慮した</strong>統計モデルとして，<strong>マルチレベルモデル(multilevel model)</strong>が提案されている。</p>
@@ -530,14 +530,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>一般化線形モデルの線形予測子は，以下のような数式で表現できた。</p>
 <p><span class="math display">\[
 \hat{y_{i}} = \alpha + \beta x_{i} \tag{1}\\
-y_{j} \sim Normal(\hat{y_{i}}, \sigma)
+y_{i} \sim Normal(\hat{y_{i}}, \sigma)
 \]</span></p>
 <p><span class="math inline">\(\alpha\)</span>が切片，<span class="math inline">\(\beta\)</span>が予測変数<span class="math inline">\(x\)</span>に係る傾きであった。</p>
 <p>これに対し，マルチレベルモデルでは，以下のように線形予測子に<span class="math inline">\(\alpha_{j}\)</span>が加わる。</p>
 <p><span class="math display">\[
 y_{i} = \alpha_{0} + \beta x_{i} + \alpha_{j} \tag{2} \\
 \alpha_{j} \sim Normal(0, \sigma_{\alpha})\\
-y_{j} \sim Normal(\hat{y_{i}}, \sigma)
+y_{i} \sim Normal(\hat{y_{i}}, \sigma)
 \]</span></p>
 <p>すべての個人に共通して影響する切片<span class="math inline">\(\alpha_{0}\)</span>に加え，個人ないしはグループごとに異なる切片<span class="math inline">\(\alpha_{j}\)</span>を考慮する。<br />
 更に，<span class="math inline">\(y_{j} \sim Normal(\hat{y_{i}}, \sigma)\)</span>にあるように，個人ごとの切片<span class="math inline">\(\alpha_{j}\)</span>が「平均をゼロ，<span class="math inline">\(\sigma_{\alpha}\)</span>を標準偏差とする正規分布から生成される」という仮定を置く。<br />
@@ -752,7 +752,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Data-Analysis-for-Psychology.epub"],
 "toc": {
 "collapse": "subsection"
 },

@@ -540,7 +540,7 @@ y_{i} = \alpha_{0} + \beta x_{i} + \alpha_{j} \tag{2} \\
 y_{i} \sim Normal(\hat{y_{i}}, \sigma)
 \]</span></p>
 <p>すべての個人に共通して影響する切片<span class="math inline">\(\alpha_{0}\)</span>に加え，個人ないしはグループごとに異なる切片<span class="math inline">\(\alpha_{j}\)</span>を考慮する。<br />
-更に，<span class="math inline">\(\alpha_{j} \sim Normal(0, \sigma_{alpha})\)</span>にあるように，個人ごとの切片<span class="math inline">\(\alpha_{j}\)</span>が「平均をゼロ，<span class="math inline">\(\sigma_{\alpha}\)</span>を標準偏差とする正規分布から生成される」という仮定を置く。<br />
+更に，<span class="math inline">\(\alpha_{j} \sim Normal(0, \sigma_{\alpha})\)</span>にあるように，個人ごとの切片<span class="math inline">\(\alpha_{j}\)</span>が「平均をゼロ，<span class="math inline">\(\sigma_{\alpha}\)</span>を標準偏差とする正規分布から生成される」という仮定を置く。<br />
 これにより，同じグループに属するデータ（例えば<span class="math inline">\(j=1\)</span>）には同じ効果（<span class="math inline">\(\alpha_{1}\)</span>）が共通して係ることを表現できる。</p>
 <hr />
 <p>傾きを<span class="math inline">\(\beta_{ j}\)</span>にする，すなわち個人ごとに予測変数に係る効果が異なるという前提を置くこともできる。しかし，実際に傾きをランダム効果としたモデルは複雑で推定するのは困難であるため（最尤推定法では解が求まらない場合がある），多くの場合，個人差の影響（ランダム効果）は切片のみを考慮したモデルで表現されることが多い。ランダム傾きを含むマルチレベルモデルを扱う際には，ベイズ統計の手法が必要になる。</p>

@@ -566,7 +566,7 @@ Pr(\theta|x) \propto Pr(x|\theta) Pr(\theta)
 <h3><span class="header-section-number">14.4.1</span> MCMCの例</h3>
 <p>さきほどのコイン投げで表が出る確率<span class="math inline">\(\theta\)</span>の事後分布をMCMCで推定する方法を通して，MCMCの全体像について説明する。</p>
 <p>MCMCでは，まずパラメータの初期値を適当に選び（例えば<span class="math inline">\(\theta_{1}\)</span>とする），それを元に事後分布<span class="math inline">\(Pr(\theta_{1}|x)\)</span>に従う乱数を生成する。次に，<span class="math inline">\(Pr(\theta_{1}|x)\)</span>をある基準で評価した上で，その評価を元に新たなパラメータ<span class="math inline">\(\theta_{2}\)</span>を元に乱数を生成する。このようなシミュレーションを何回も繰り返す。何回も繰り返していくうち，生成される乱数はある分布に収束していく（定常分布と呼ばれる）。最終的に出来上がった定常分布をパラメータの事後分布として採用するというのが，（非常に大雑把な）MCMCの概要である。</p>
-<p>例えば以下に，シミュレーションを2,000回行ったときのパラメータ<span class="math inline">\(\theta\)</span>の推定の推移を示している。最初の1,000回の推定結果は適当に選んだ初期値に依存するため，これらは切り捨てて（warmup期間と呼ばれる），残りの1,000回のシミュレーション結果を事後分布として採用する。</p>
+<p>例えば以下に，シミュレーションを2,000回行ったときのパラメータ<span class="math inline">\(\theta\)</span>の推定の推移を示している。最初の1,000回の推定結果は適当に選んだ初期値に依存するため，これらは切り捨てて（warmup期間と呼ばれる），残りの1,000回のシミュレーション結果（MCMCサンプル）を事後分布として採用する。</p>
 <p><img src="13_1_MCMC_example.png" /></p>
 <p>事後分布をプロットしたのが，以下である。</p>
 <p><img src="13_2_MCMC_dens.png" /></p>

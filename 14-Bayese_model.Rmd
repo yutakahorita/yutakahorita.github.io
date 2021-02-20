@@ -16,14 +16,27 @@ options(mc.cores = parallel::detectCores())
 
 # ベイズ統計モデリング
 
-
-### rtanとbrmsパッケージのインストール
-
-`rstan`パッケージのインストールについては，「Rstan Getting Started (Japanese)」[https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese))のページを参照のこと。  
+この章では，これまで学んできた一般化線形モデルなどの解析をベイズ統計の枠組みで行う方法について解説する。`rstan`と`brms`パッケージを使い，一般化線形モデルやマルチレベルモデルのパラメータの事後分布をMCMCで推定する。  
   
-「RStan」と「C++コンパイラ」のインストールを行う。  
+この章で書かれている内容を行う前に，前の章で説明したベイズ統計の概要を理解しておくこと（前の章を読んでいるという前提で説明をする）。「事前分布」，「事後分布」，「MCMC」について，前の章で確認しておくこと。
+
+## 準備
+
+### Rtanのインストール
+
+MCMCを行うために，Stanと呼ばれるプラットフォームが必要にある。RStanはRからStanを使うために開発されたインターフェースである。この章の内容の解析を行うためには，RStanパッケージのインストールが事前に必要となる。  
   
-`rstan`をインストールできたら，`brms`パッケージもインストールする。
+Rstan（`rstan`）のインストール方法については，「Rstan Getting Started (Japanese)」[https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese))のページを参照のこと。「Rtool」，「C++コンパイラ（MacならばXCode）」のインストールも必要になる。  
+
+
+### brmsパッケージのインストール
+  
+`rstan`をインストールできたら，`brms`パッケージもインストールする。  
+Stanを使ってベイズ推定（MCMC）を行うためには，Stan言語で解析用のコードを書く必要があるが，`brms`パッケージを使えばユーザーがコードを書く必要なく，線形のモデルやオプションを指定するだけで自動でStanコードを生成してMCMCを行ってくれる。  
+
+```{r, eval=FALSE}
+install.packages("brms")
+```
 
 ### パッケージのロード
 
@@ -42,87 +55,342 @@ rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
 ```
 
+## Rによるベイズ統計モデリング
 
-### brmsでベイズ統計
+回帰分析のパラメータ（傾きと切片）のベイズ推定を例として，`brms`パッケージを使った解析の手順について確認していく。  
+  
+第9章で，`iris`データを用いて以下の回帰分析を行った。
 
-#### 一般化線形モデル
-`brms`パッケージの`brm()`関数を使う。
+```{r}
+result = lm(data = iris, Petal.Length ~ Sepal.Length) 
+summary(result)
+```
 
-`formula`に線形予測子，`family`に確率分布とリンク関数を指定する。
+同じデータについて`brms`パッケージの`brm()`を使って，MCMCでパラメータの事後分布を推定してみよう。`glm()`と同じ書き方で，線形予測子，確率分布，リンク関数を指定すれば良い。回帰分析なので，確率分布は正規分布(gaussian)，リンク関数は恒等リンク(identity)とする。  
+  
+また，オプションの`seed`には常に一定の値を指定すること（ここでは1と指定した）。MCMCは乱数を使ったシミュレーションであるので，やり直すたびに微妙に異なる結果が得られる可能性にある。しかし，`seed`に同じ値を設定すれば，やり直しても同じ結果を再現することできる。  
+  
 
-`lme4`パッケージの`glmer()`関数と同様の形式でプログラムを書ける。
+```{r, message = FALSE, warning=FALSE, results='hide'}
+result_brms_lm = brms::brm(data = iris, 
+                        Petal.Length ~ Sepal.Length, 
+                        family = gaussian(link="identity"),
+                        seed = 1 
+                        )
+```
 
-
-```{r, eval=FALSE, message=FALSE, warning=FALSE}
-
-dat = iris
-
-result = brms::brm(data = dat, #データを指定
-    formula = Sepal.Length ~ Sepal.Width, #線形予測子
-    family = gaussian(link = "identity"), #確率分布とリンク関数
-    seed = 1 #乱数の種
-    )
-
-result
-
+```{r, message = FALSE, warning=FALSE}
+summary(result_brms_lm)
 ```
 
 
+最初に，応答変数が従う確率分布(Family)，リンク関数(Links)，線形予測子(Formula)，データ(Data)の情報が出力される。更に，Samplesの部分にMCMCの設定が表記されているが，これらの意味については後ほど説明する。  
+  
+`lm()`の出力と同様に，Population-Level Effectsという部分に各パラメータ（切片と傾き）の推定結果が出力されている。Estimateが係数の事後分布の期待値を示している。`lm()`で解析したときとほぼ同じ値が推定されている。    
+他にも，l-95% CIとu-95% CIといった数値が出力されているが，これらの意味を理解するにはパラメータの事後分布を図示するとよい。`plot()`に出力結果を入れると，MCMCの結果を図で示してくれる。
 
-#### マルチレベルモデル
+```{r}
 
-```{r, eval=FALSE, message=FALSE, warning=FALSE}
-
-dat = iris
-
-library(lme4)
-result_lmer = lme4::lmer(data = dat, Sepal.Length ~ Sepal.Width + (1|Species))
-summary(result_lmer)
-
-result_brm = brm(data = dat,
-    formula = Sepal.Length ~ Sepal.Width + (1|Species),
-    family = gaussian(link = "identity"),
-    seed = 1)
-result_brm
+plot(result_brms_lm)
 
 ```
+
+左側に表示されているのが，パラメータの事後分布（MCMCでサンプリングされた事後分布に従う乱数の分布）である。右側は，**トレースプロット(traceplot)**と呼ばれるものである。トレースプロットの下の軸はMCMCの試行数を示しており，MCMCのサンプリング結果の推移を示している。  
+  
+もう一度`brm()`の出力のl-95% CIとu-95% CIの値を確認し，図との関係を確認しよう。l-95% CIとu-95%は，パラメータの事後分布の下位5%点と上位95%点の値を示しており，この下位5%から上位95%の範囲は95% **信用区間(credible intervals)**と呼ばれる。95%信用区間とは，95%の確率で真のパラメータの値が含まれる範囲を意味する。  
+  
+例えば，切片（`intercept`）の事後分布のプロットを確認すると，だいたい-7が分布の中央に位置しており，推定された切片の事後分布の期待値（Estimate）と概ね一致しているのがわかる。また，-8から-6の範囲に事後分布の大部分が締めており，これも95%信用区間の推定結果と概ね一致している。  
+  
+***
+最尤推定法（最小二乗法）によるパラメータ推定である`lm()`の出力結果とは異なり，ベイズ推定である`brm()`の結果ではp値が表示されていていない点に注目しよう。前の章でも述べたように，データを定数，パラメータを確率変数として考えるベイズ統計には，統計的仮説検定の枠組みで扱うp値（帰無仮説のもとでデータが得られる確率）という概念はない。  
+  
+ベイズ推定による一般化線形モデルで係数の効果に意味があるかを議論したいのならば，パラメータの信用区間について注目する。`brm()`の出力結果で係数の信用区間にゼロが含まれているかどうかが，`lm()`のp値が示す結果（係数がゼロから有意に離れているか）と対応している。  
+
+***
+
+
+## ベイズ統計モデリングのプロセス
+
+`brm()`のプログラムの書き方を確認しながら，ベイズ統計モデリングの手順について確認していこう。
 
 ### 事前分布の設定
 
-#### 無情報事前分布
+パラメータの事後分布を推定するためには，まずパラメータ（切片と傾き）の事前分布を設定する必要がある。何か仮説があって事前にパラメータの範囲を設けることに正当な理由があるのならば，任意の範囲を設定しても構わない。例えば，身長を予測するならば切片の事前分布として0cm - 300cmの一様分布を設定するというのは妥当であろう。それに対し，特に仮説がない，パラメータの事前分布について確信がない場合は，**無情報事前分布(non-informative prior)**を設定する。  
+  
+特に仮説がなければ，`brm()`では何も設定する必要はない。自動で事前分布を無情報事前分布としてくれる（例えば傾きなどをフラットな一様分布に設定してくれる）。  
+  
+`get_prior()`に，モデル，確率分布，リンク関数を指定すれば，設定される事前分布を推定の前に確認することができる。
 
-```{r, eval=FALSE}
+```{r}
 
-
-result_brm = brm(data = dat,
-    formula = Sepal.Length ~ Sepal.Width + (1|Species),
-    family = gaussian(link = "identity"),
-    seed = 1,
-    prior = c(set_prior("", class = "intercept"),
-              set_prior("", class = "sigma"))
-    )
-
-result_brm
+brms::get_prior(data= iris, 
+                Sepal.Length ~ Sepal.Width,
+                family = gaussian(link="identity")) 
 
 ```
 
 
-#### 弱情報事前分布
+事前分布を任意に指定したい場合は，`brm()`のオプションとして`set_prior()`で設定することができる。以下に，プログラムの例を示す。
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 
-
-result_brm = brm(data = dat,
-    formula = Sepal.Length ~ Sepal.Width + (1|Species),
-    family = gaussian(link = "identity"),
-    seed = 1,
-    prior = c(set_prior(normal(0, 10), class = "intercept"),
-              set_prior("", class = "sigma"))
-    )
-
-result_brm
+result_brm_lm = brms::brm(data= iris, 
+                          Sepal.Length ~ Sepal.Width,
+                          family = gaussian(link="identity"),
+                          prior = c(set_prior("normal(0,10)", class = "b"),
+                                    #傾きbの事前分布を平均0, 標準偏差10の正規分布に設定
+                                    set_prior("cauchy(0,5)", class = "sigma")
+                                    #正規分布の分散の事前分布を半コーシー分布に設定
+                                    ),
+                          seed = 1
+)
+brms::prior_summary(result_brm_lm) #prior_summaryに結果を入れると，設定した事前分布を確認することができる
 
 ```
 
 
+### MCMCの設定
+
+`brm()`のオプションで，MCMCシミュレーションの設定を指定することができる。
+
+```{r, eval = FALSE}
+result_brms = brms::brm(data = iris, 
+                        Petal.Length ~ Sepal.Length, 
+                        iter = 2000,
+                        warmup = 1000,
+                        chains = 4,
+                        seed = 1)
+```
+
+`iter`で乱数生成の試行数，`warmup`でwarmup期間の数，`chains`でマルコフ連鎖の数を指定する。前の章の内容をおさらいすると，MCMCではパラメータの事後分布に従う乱数を生成するシミュレーションを繰り返し，全シミュレーションの結果から作られた分布をパラメータの事後分布として採用する。`iter`で，乱数生成の繰り返し数を設定する（この例では，2,000試行に設定）。また，MCMCシミュレーションの最初の部分は，乱数の初期値による影響を大きく受けていて最終的に事後分布を作成する上で使い物にならない。そのため，最初の試行は切り捨てられる。`warmup`で，その切り捨てる期間を指定する（この例では，最初の1,000試行を切り捨てるように設定）。MCMCでは一般的に乱数生成を1からやり直して何セットか行い，事後分布を評価する。`chain`で，このセット数を設定する（この例では，4セットに設定）。最終的に得られるMCMCサンプル（シミュレーションの結果）は，(iter - warmup)*chains個になる。  
+  
+`iter`, `warmup`, `chains`の指定をしなければ，デフォルトで設定されている値(`iter = 2000, warmup = 1000, chains = 4`)でMCMCが実行される。  
+    
+
+### 事後分布の評価
+
+事前分布，MCMCの設定ができたら，`brm()`を実行してMCMCを行う。  
+  
+シミュレーションが終わったら，結果を確認する。先ほど示したように，`summary()`で事後分布の期待値などの要約を確認するのももちろん，図でも確認する。`plot()`で簡単な図を作成することができる。
+
+```{r, eval = FALSE}
+
+summary(result_brms_lm)
+plot(result_brms_lm)
+
+```
+
+
+他にも，MCMCの結果を図示するためのパッケージとして，`bayesplot`パッケージがある（`brms`パッケージをインストールすると一緒にインストールされる）。
+  
+以下に，事後分布を図示する例をいくつか示す（`pars`で出力したいパラメータの値を任意に指定することも可能）。
+
+```{r, message = FALSE, warning=FALSE}
+library(bayesplot)
+
+bayesplot::mcmc_trace(result_brms_lm, pars = c("b_Intercept", "b_Sepal.Length")) #トレースプロット
+bayesplot::mcmc_hist(result_brms_lm, pars = c("b_Intercept", "b_Sepal.Length")) #事後分布（ヒストグラム）
+bayesplot::mcmc_dens(result_brms_lm, pars = c("b_Intercept", "b_Sepal.Length")) #事後分布（密度曲線）
+
+bayesplot::mcmc_intervals(result_brms_lm, 
+                          pars = c("b_Intercept", "b_Sepal.Length"), 
+                          prob = 0.89, #太い線が意味する範囲（89%区間とした）
+                          prob_outer = 0.95#細い線が意味する範囲（95%区間とした）
+                          ) #パラメータの分布を線で示したグラフ
+
+
+bayesplot::mcmc_areas(result_brms_lm, 
+                          pars = c("b_Intercept", "b_Sepal.Length"), 
+                          prob = 0.89, #色が塗られた部分（89%区間とした）
+                          prob_outer = 0.95#細い線が意味する範囲（95%区間とした）
+) #分布も一緒に示したグラフ
+
+bayesplot::mcmc_combo(result_brms_lm, combo = c("hist", "dens"), 
+                      pars = c("b_Intercept", "b_Sepal.Length"))#mcmc_comboで，出力する図を複数指定することができる。
+
+
+```
+
+
+### 収束の評価
+
+MCMCによる事後分布の推定は乱数を使ったシミュレーションなので，シミュレーション結果は毎回異なる。しかし，得られた結果が毎回かなり違うのならば，その結果は信用できないということになる。`summary()`の出力に表示されている`Rhat`が，MCMCの結果が安定している（収束している）かを評価する指標として用いられる。`Rhat`が1.00を超えている場合は収束していないことが疑われるので，MCMCの設定やモデルの修正などの対処が必要になる（詳細については，参考文献リストに挙げたベイズ統計モデリングに関する解説書を参照のこと）。  
+  
+
+### モデルの予測評価
+
+推定結果が，実際のデータをうまく予測できているかを評価する。ここでは，回帰直線の信用区間や予測区間を図示して確認する方法を示す。
+
+```{r, message = FALSE}
+
+pred_line = brms::conditional_effects(result_brms_lm,
+                                      method = "posterior_epred", prob=0.95 #95%信用区間を表示 
+                                      )
+plot(pred_line, points=TRUE)　#points=TRUEで点と一緒に示す
+
+
+pred_line = brms::conditional_effects(result_brms_lm,
+                                      method = "posterior_predict", prob=0.95 #95%予測区間を表示 
+                                      )
+plot(pred_line, points=TRUE)　#pointsで点と一緒に示す
+
+```
+
+
+## brmsパッケージでの一般化線形モデル
+
+`brm()`で確率分布やリンク関数を変更すれば，ロジスティック回帰やポアソン回帰のベイズ推定も行うことができる。プログラムの書き方は`glm()`とほぼ同じである。
+
+
+###　ロジスティック回帰
+
+第12章でロジスティック回帰の練習に使ったサンプルデータを使って，パラメータの事後分布の推定を行ってみよう。以下に第12章に示したサンプルデータの作成プログラムを再掲する。
+
+```{r, message = FALSE}
+
+library(MASS) 
+
+dat = biopsy
+dat$y = ifelse(dat$class == "malignant", 1, 0) #classがbenignならばゼロ，それ以外なら1という変数yを作る
+dat$x = dat$V1 #V1という変数をxという名前に変える
+
+```
+
+`glm()`を使ったパラメータの推定結果は以下である。
+
+```{r, message = FALSE}
+
+result_glm = glm(data = dat, y ~ x, family = binomial(link="logit"))
+summary(result_glm)
+
+```
+
+`brm()`で同様の解析を行い，パラメータの爾後分布の推定をしよう。確率分布（family）とリンク関数（link）を適切なものに指定する。
+
+```{r, message = FALSE, warning=FALSE, results='hide'}
+
+result_brms_logistic = brms::brm(data = dat, 
+          y ~ x, 
+          family = binomial(link="logit") #確率分布にbinomial，linkにlogitを指定
+          )
+
+```
+
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(result_brms_logistic)
+
+
+```
+
+
+### ポアソン回帰
+
+同じく，第12章のサンプルデータを使って，`brm()`でポアソン回帰を行ってみる。
+
+```{r, message = FALSE}
+set.seed(1)
+N= 50
+x = rnorm(n=N, mean = 2, sd=1)
+lambda = exp(0.01+ 0.6*x)
+y = rpois(n=N, lambda = lambda)
+dat = data.frame(y=y, x=x)
+```
+
+`glm()`で推定した結果が以下である。
+
+```{r, message = FALSE}
+result_poisson = glm(data = dat, y ~ x, family = poisson(link = "log"))
+summary(result_poisson)
+```
+
+`brm()`でも同様に，確率分布（family）とリンク関数（link）を指定する。
+
+```{r, message = FALSE, warning=FALSE, results='hide'}
+
+result_brms_poisson = brms::brm(data = dat, 
+                                 y ~ x, 
+                                 family = poisson(link="log")) #確率分布にpoisson，リンク関数にlogを指定する
+
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(result_brms_poisson)
+
+```
+
+##  brmsパッケージでのマルチレベルモデル
+
+繰り返し測定を含むデータの場合は，マルチレベルモデルで個人差や集団差を統制する必要がある（マルチレベルモデルについては，第13章を参照のこと）。`brm()`では，マルチレベルモデルを扱うこともできる。  
+`lme4`パッケージの`glmer()`関数と同様の形式でランダム効果を加えることで，マルチレベルモデルの推定を行うことができる。  
+  
+第13章で例として用いた`iris`データを使って，マルチレベルモデルのベイズ推定を行ってみよう。
+
+### ランダム切片
+
+グループごとに異なる切片（ランダム切片）を考慮する場合，式の中に`(1|グループを意味する変数)`というかたちでランダム切片を加える。
+
+```{r, message = FALSE, warning=FALSE, results='hide'}
+model_brm_lmm = brms::brm(data= iris, 
+                          Sepal.Length ~ Sepal.Width + (1|Species),#(1|Species)をランダム切片として加える
+                          family = gaussian(link="identity"),
+                          seed = 1
+                          )
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(model_brm_lmm)
+
+```
+
+上の例では，あやめの種（`Species`）ごとに切片（`Intercept`）が異なるという前提で推定を行っている。Group-Level Effectsに，ランダム切片の分散の推定結果が出力されている。
+
+### ランダム傾き
+
+グループごとに異なる傾き，すなわちランダム傾きをモデルに入れることもできる。式の中に`(予測変数|グループを意味する変数)`というかたちで加える。
+
+```{r, message=FALSE, warning=FALSE, results='hide'}
+model_brm_lmm_2 = brms::brm(data= iris, 
+                          Sepal.Length ~ Sepal.Width + (Sepal.Width|Species),
+                          #(Sepal.Width|Species)を加える。Speciesごとに異なる切片とSepal.Widthに係る傾きを想定する。
+                          family = gaussian(link="identity"),
+                          seed = 1
+)
+
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(model_brm_lmm_2)
+
+```
+
+上の例では，あやめの種（`Species`）ごとに`Sepal.Width`に係る傾きが異なるという前提で推定を行っている。  
+  
+Group-Level Effectsの部分に，ランダム傾きとランダム切片の分散の推定結果が表示されている。同時に，ランダム効果同士（グループごとの傾きと切片）の相関の推定結果も出力される。  
+  
+
+
+## その他
+
+### Stanコードの出力
+
+`make_stancode()`で，モデルのStanコードを出力することができる。モデルに直接修正を加えたいときに使える。
+
+```{r, message = FALSE, warning=FALSE}
+brms::make_stancode(data = iris, 
+                    Petal.Length ~ Sepal.Length, 
+                    family = gaussian(link="identity"))
+```
+
+
+### より深く学ぶには
+
+このように，`brm()`を使えばStanに関するプログラミングの知識が特になくても，簡単にMCMCで一般化線形モデルのパラメータ推定を行うことができる。ただし，この章の内容は，あくまでMCMCの練習に過ぎない。特にマルチレベルモデルのような複雑なモデルの推定は，推定結果が収束しないなど，うまく行かないケースに直面することも多い（実際に上で示した例でも出力で警告メッセージが生じされており，対策が必要となる）。  
+  
+本格的にMCMCによる一般化線形モデルのベイズ推定を行うとなると，事前分布やMCMCの設定についてもっと深い知識が必要になる。より深く学ぶには，StanのWebサイトあるいはRとStanの使い方に関する解説書などを参照してほしい（付録の参考文献リストに示している）。  
+  
 

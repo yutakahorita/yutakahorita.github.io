@@ -9,7 +9,7 @@ library(MASS)
 
 データをグラフで表現する方法について学ぶ。
   
-データの傾向をグラフによって表現することを*可視化*という。この章では，`ggplot2`パッケージを使って，データを可視化する方法について学んでいく。  
+データの傾向をグラフによって表現することを**可視化(visualization)**という。この章では，`ggplot2`パッケージを使って，データを可視化する方法について学んでいく。  
   
 `ggplot2`も`tidyverse`パッケージに含まれている。まずは，`tidyverse`パッケージをロードしよう。
 
@@ -28,8 +28,6 @@ library(tidyverse)
 
 ## Rのグラフィック
 
-Rの利点は，データのグラフィックに優れていることである。  
-  
 Rには標準でグラフを作成するための関数がいくつか用意されている。  
 `hist()`はヒストグラム，`plot()`は散布図，`boxplot()`は箱ひげ図を作成するための関数である。
   
@@ -45,10 +43,8 @@ boxplot(iris$Sepal.Length) #箱ひげ図を作成する
   
 しかし，標準で入っている関数は出力されるグラフがきれいではなかったり（論文やレポートなどで報告するには不十分），自分の好みに合わせてグラフの体裁を変えることもできるがオプションの指定方法が複雑といったデメリットもある。作成できるグラフの種類も限られている。  
   
-これに対し，`ggplot2`はグラフを作る機能に特化したパッケージである。  
+これに対し，グラフを作る機能に特化したパッケージとして`ggplot2`というパッケージが開発されている。以降では，`ggplot2`の基本的な使い方を解説する。  
   
-`ggplot2`の使い方も初学者には難しいが，以降で基本的な使い方について絞って確認していこう。
-
 ## ggplot2の基本
 
 早速，`ggplot2`を使ってグラフを作ってみよう。以下のプログラムを実行してみよう。
@@ -75,7 +71,7 @@ p
 オプション：上での例では，`labs()`でx軸やy軸のラベルを指定している。他にも，軸の値の範囲，軸のラベル，グラフの色の設定などをオプションで指定することができる。オプションを加えなくてもグラフは出力される。  
   
   
-とりあえず，これらだけ知っておけば`ggplot2`でグラフが作れる。  
+とりあえず，これらだけ知っておけば`ggplot2`でグラフを作れる。  
 
 ### 散布図
 
@@ -109,15 +105,15 @@ p
 
 ```{r, message=FALSE, warning=FALSE}
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_histogram(data = iris, aes(x=Sepal.Length))  #xに，横軸にしたい変数を入れる。
 p
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_histogram(data = iris, aes(x=Sepal.Length, fill = Species))  #種類ごとに色の塗りつぶしを変えたい場合は，fillに指定する。
 p
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_histogram(data = iris, aes(x=Sepal.Length, color = Species))  #colorだと周りの線の色を変える。
 p
 
@@ -134,11 +130,11 @@ p
 
 ```{r, message=FALSE, warning=FALSE}
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_boxplot(data = InsectSprays, aes(x=spray, y=count))
 p
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_boxplot(data = InsectSprays, aes(x=spray, y=count, fill = spray))
 p
 
@@ -152,11 +148,11 @@ p
 
 ```{r, message=FALSE, warning=FALSE}
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_violin(data = InsectSprays, aes(x=spray, y=count))
 p
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_violin(data = InsectSprays, aes(x=spray, y=count, fill = spray))
 p
 
@@ -177,7 +173,7 @@ temperature = data.frame(
 )
 temperature
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_line(data = temperature, aes(x=Days, y=Celsius)) + 
   geom_point(data = temperature, aes(x=Days, y=Celsius)) 
 p
@@ -198,14 +194,14 @@ sample_dat = data.frame(Condition=c("A", "B" ,"C"),
                         upper=c(3.0, 6.8, 9.1))
 #meanが平均，lowerとupperにそれぞれ下限値と上限値。
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_point(data = sample_dat, aes(x = Condition, y = mean)) + 
   geom_errorbar(data = sample_dat, aes(x = Condition, ymax = upper, ymin = lower), width = 0.1) 
 #まず，geom_pointで平均を点で示したグラフを作成する。そのグラフに，ymaxとyminにそれぞれ上限値と下限値を指定したエラーバーのグラフを重ねる（widthでエラーバーの横の長さを指定できる）。
 p
 
 
-p2 = ggplot() + 
+p2 = ggplot2::ggplot() + 
   geom_pointrange(data = sample_dat, aes(x = Condition, y = mean, ymax = upper, ymin = lower)) 
 #geom_pointrangeならば，点とエラーバーの両方を一括して指定できる。
 p2
@@ -222,7 +218,7 @@ p2
 グループごとにグラフを分けたい場合は，ファセット（facet）を利用すると良い。`facet_wrap()`を使う。
 
 ```{r, message=FALSE, warning=FALSE}
-p = ggplot() +
+p = ggplot2::ggplot() +
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + facet_wrap(vars(Species)) 
 p
 
@@ -234,7 +230,7 @@ x軸やy軸のラベルを変えたいときは，`labs`を使うと良い。
 
 ```{r, message=FALSE, warning=FALSE}
 
-p = ggplot() +
+p = ggplot2::ggplot() +
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + 
   labs(x = "Length of sepal", y = "Length of petal")
 
@@ -249,7 +245,7 @@ p = ggplot() +
 
 ```{r, message=FALSE, warning=FALSE}
 
-p = ggplot() +
+p = ggplot2::ggplot() +
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) 
 p + theme(axis.title.x = element_text(size = 20)) #x軸のフォントサイズを変える
 p + theme(panel.background = element_rect(fill = "white", colour = "black")) #背景や枠線の色を変える
@@ -261,7 +257,7 @@ p + theme(panel.background = element_rect(fill = "white", colour = "black")) #�
 
 ```{r, message=FALSE, warning=FALSE}
 
-p = ggplot() +
+p = ggplot2::ggplot() +
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) 
 p + theme_bw()
 p + theme_gray()
@@ -276,14 +272,14 @@ p + theme_classic()
 
 ```{r, eval=FALSE}
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + 
   labs(x = "Sepal Length", y = "Petal Length") + 
   theme_bw()
 
-ggsave(plot = p, filename = "plot.png") #ファイル名を指定する。拡張子も忘れずにつける。
-ggsave(plot = p, filename = "plot_2.png", dpi = 300) #解像度（dpi）を指定可能。
-ggsave(plot = p, filename = "plot_3.png", width = 8, height = 5) #幅(width)や高さ(height)を指定可能（単位はインチ）。
+ggplot2::ggsave(plot = p, filename = "plot.png") #ファイル名を指定する。拡張子も忘れずにつける。
+ggplot2::ggsave(plot = p, filename = "plot_2.png", dpi = 300) #解像度（dpi）を指定可能。
+ggplot2::ggsave(plot = p, filename = "plot_3.png", width = 8, height = 5) #幅(width)や高さ(height)を指定可能（単位はインチ）。
 
 ```
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 その他のカウントデータの解析 | 心理学データ応用解析法</title>
-  <meta name="description" content="Chapter 12 その他のカウントデータの解析 | 心理学データ応用解析法" />
+  <title>Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法</title>
+  <meta name="description" content="Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 その他のカウントデータの解析 | 心理学データ応用解析法" />
+  <meta property="og:title" content="Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 その他のカウントデータの解析 | 心理学データ応用解析法" />
+  <meta name="twitter:title" content="Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2020-11-22" />
+<meta name="date" content="2021-02-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,7 +163,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9.2" data-path="01-intro.html"><a href="01-intro.html#データを読み込む"><i class="fa fa-check"></i><b>2.9.2</b> データを読み込む</a></li>
 <li class="chapter" data-level="2.9.3" data-path="01-intro.html"><a href="01-intro.html#サンプルデータ"><i class="fa fa-check"></i><b>2.9.3</b> サンプルデータ</a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="01-intro.html"><a href="01-intro.html#rを終わらせる"><i class="fa fa-check"></i><b>2.10</b> Rを終わらせる</a></li>
+<li class="chapter" data-level="2.10" data-path="01-intro.html"><a href="01-intro.html#ヘルプ"><i class="fa fa-check"></i><b>2.10</b> ヘルプ</a></li>
+<li class="chapter" data-level="2.11" data-path="01-intro.html"><a href="01-intro.html#rを終わらせる"><i class="fa fa-check"></i><b>2.11</b> Rを終わらせる</a></li>
 <li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#確認問題"><i class="fa fa-check"></i>確認問題</a><ul>
 <li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#問"><i class="fa fa-check"></i>問１</a></li>
 <li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#問-1"><i class="fa fa-check"></i>問２</a></li>
@@ -279,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定で重要な概念"><i class="fa fa-check"></i><b>7.4</b> 統計的仮説検定で重要な概念</a><ul>
 <li class="chapter" data-level="7.4.1" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤と第2種の過誤"><i class="fa fa-check"></i><b>7.4.1</b> 第1種の過誤と第2種の過誤</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#統計的検定が抱える問題"><i class="fa fa-check"></i><b>7.5</b> 統計的検定が抱える問題</a><ul>
+<li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定が抱える問題"><i class="fa fa-check"></i><b>7.5</b> 統計的仮説検定が抱える問題</a><ul>
 <li class="chapter" data-level="7.5.1" data-path="06-NHT.html"><a href="06-NHT.html#p値と標本数の関係"><i class="fa fa-check"></i><b>7.5.1</b> p値と標本数の関係</a></li>
 <li class="chapter" data-level="7.5.2" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.5.2</b> 多重比較の問題</a></li>
 </ul></li>
@@ -298,12 +299,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.2" data-path="07-analysis.html"><a href="07-analysis.html#クラスカルウォリスの検定"><i class="fa fa-check"></i><b>8.3.2</b> クラスカル・ウォリスの検定</a></li>
 <li class="chapter" data-level="8.3.3" data-path="07-analysis.html"><a href="07-analysis.html#カイ二乗検定"><i class="fa fa-check"></i><b>8.3.3</b> カイ二乗検定</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="07-analysis.html"><a href="07-analysis.html#まとめ"><i class="fa fa-check"></i><b>8.4</b> まとめ</a></li>
+<li class="chapter" data-level="8.4" data-path="07-analysis.html"><a href="07-analysis.html#統計モデルとの関係"><i class="fa fa-check"></i><b>8.4</b> 「統計モデル」との関係</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="08-linear_model.html"><a href="08-linear_model.html"><i class="fa fa-check"></i><b>9</b> 線形モデル</a><ul>
 <li class="chapter" data-level="9.1" data-path="08-linear_model.html"><a href="08-linear_model.html#準備-1"><i class="fa fa-check"></i><b>9.1</b> 準備</a></li>
 <li class="chapter" data-level="9.2" data-path="08-linear_model.html"><a href="08-linear_model.html#線形モデルの概要"><i class="fa fa-check"></i><b>9.2</b> 線形モデルの概要</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="08-linear_model.html"><a href="08-linear_model.html#まとめ-1"><i class="fa fa-check"></i><b>9.2.1</b> まとめ</a></li>
+<li class="chapter" data-level="9.2.1" data-path="08-linear_model.html"><a href="08-linear_model.html#まとめ"><i class="fa fa-check"></i><b>9.2.1</b> まとめ</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="08-linear_model.html"><a href="08-linear_model.html#線形モデルによる解析"><i class="fa fa-check"></i><b>9.3</b> 線形モデルによる解析</a></li>
 <li class="chapter" data-level="9.4" data-path="08-linear_model.html"><a href="08-linear_model.html#最尤法"><i class="fa fa-check"></i><b>9.4</b> 最尤法</a><ul>
@@ -313,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.1" data-path="08-linear_model.html"><a href="08-linear_model.html#信頼区間"><i class="fa fa-check"></i><b>9.5.1</b> 信頼区間</a></li>
 <li class="chapter" data-level="9.5.2" data-path="08-linear_model.html"><a href="08-linear_model.html#予測区間"><i class="fa fa-check"></i><b>9.5.2</b> 予測区間</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="08-linear_model.html"><a href="08-linear_model.html#まとめ-2"><i class="fa fa-check"></i><b>9.6</b> まとめ</a></li>
+<li class="chapter" data-level="9.6" data-path="08-linear_model.html"><a href="08-linear_model.html#まとめ-1"><i class="fa fa-check"></i><b>9.6</b> まとめ</a></li>
 <li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#確認問題-6"><i class="fa fa-check"></i>確認問題</a><ul>
 <li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#問-15"><i class="fa fa-check"></i>問１</a></li>
 <li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#問-16"><i class="fa fa-check"></i>問２</a></li>
@@ -331,7 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.4.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の効果の統制"><i class="fa fa-check"></i><b>10.4.1</b> 変数の効果の統制</a></li>
 <li class="chapter" data-level="10.4.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#交互作用"><i class="fa fa-check"></i><b>10.4.2</b> 交互作用</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルが抱える問題"><i class="fa fa-check"></i><b>10.5</b> 線形モデルが抱える問題</a><ul>
+<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルを扱う上での問題"><i class="fa fa-check"></i><b>10.5</b> 線形モデルを扱う上での問題</a><ul>
 <li class="chapter" data-level="10.5.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#多重共線性"><i class="fa fa-check"></i><b>10.5.1</b> 多重共線性</a></li>
 <li class="chapter" data-level="10.5.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#過学習"><i class="fa fa-check"></i><b>10.5.2</b> 過学習</a></li>
 </ul></li>
@@ -356,14 +357,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布の復習"><i class="fa fa-check"></i><b>11.4.1</b> ポアソン分布の復習</a></li>
 <li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰のリンク関数"><i class="fa fa-check"></i><b>11.4.2</b> ポアソン回帰のリンク関数</a></li>
 <li class="chapter" data-level="11.4.3" data-path="10-glm.html"><a href="10-glm.html#rでのポアソン回帰"><i class="fa fa-check"></i><b>11.4.3</b> Rでのポアソン回帰</a></li>
-<li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#過分散の問題"><i class="fa fa-check"></i><b>11.4.4</b> 過分散の問題</a></li>
+<li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰で注意すること過分散"><i class="fa fa-check"></i><b>11.4.4</b> ポアソン回帰で注意すること：過分散</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデルのまとめ"><i class="fa fa-check"></i><b>11.5</b> 一般化線形モデルのまとめ</a></li>
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#確認問題-8"><i class="fa fa-check"></i>確認問題</a><ul>
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問-18"><i class="fa fa-check"></i>問１</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="11-glm2.html"><a href="11-glm2.html"><i class="fa fa-check"></i><b>12</b> その他のカウントデータの解析</a><ul>
+<li class="chapter" data-level="12" data-path="11-glm2.html"><a href="11-glm2.html"><i class="fa fa-check"></i><b>12</b> 一般化線形モデルの応用</a><ul>
 <li class="chapter" data-level="12.1" data-path="11-glm2.html"><a href="11-glm2.html#準備-4"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
 <li class="chapter" data-level="12.2" data-path="11-glm2.html"><a href="11-glm2.html#負の二項回帰"><i class="fa fa-check"></i><b>12.2</b> 負の二項回帰</a><ul>
 <li class="chapter" data-level="12.2.1" data-path="11-glm2.html"><a href="11-glm2.html#負の二項分布"><i class="fa fa-check"></i><b>12.2.1</b> 負の二項分布</a></li>
@@ -419,11 +420,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html"><i class="fa fa-check"></i><b>15</b> ベイズ統計モデリング</a><ul>
-<li class="chapter" data-level="15.0.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanとbrmsパッケージのインストール"><i class="fa fa-check"></i><b>15.0.1</b> rtanとbrmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.0.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.0.2</b> パッケージのロード</a></li>
-<li class="chapter" data-level="15.0.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsでベイズ統計"><i class="fa fa-check"></i><b>15.0.3</b> brmsでベイズ統計</a></li>
-<li class="chapter" data-level="15.0.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#事前分布の設定"><i class="fa fa-check"></i><b>15.0.4</b> 事前分布の設定</a></li>
+<li class="chapter" data-level="15.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#準備-7"><i class="fa fa-check"></i><b>15.1</b> 準備</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
+<li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
+<li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
+<li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#事前分布の設定"><i class="fa fa-check"></i><b>15.3.1</b> 事前分布の設定</a></li>
+<li class="chapter" data-level="15.3.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#mcmcの設定"><i class="fa fa-check"></i><b>15.3.2</b> MCMCの設定</a></li>
+<li class="chapter" data-level="15.3.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#事後分布の評価"><i class="fa fa-check"></i><b>15.3.3</b> 事後分布の評価</a></li>
+<li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
+<li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-1"><i class="fa fa-check"></i><b>15.4.1</b> ポアソン回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a><ul>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>付録</b></span></li>
+<li class="chapter" data-level="A" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html"><i class="fa fa-check"></i><b>A</b> 参考資料</a><ul>
+<li class="chapter" data-level="A.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#文献"><i class="fa fa-check"></i><b>A.1</b> 文献</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#統計学の解説書"><i class="fa fa-check"></i><b>A.1.1</b> 統計学の解説書</a></li>
+<li class="chapter" data-level="A.1.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#rを用いた統計解析の解説書"><i class="fa fa-check"></i><b>A.1.2</b> Rを用いた統計解析の解説書</a></li>
+<li class="chapter" data-level="A.1.3" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#一般化線形モデルマルチレベルモデルなどの解説書"><i class="fa fa-check"></i><b>A.1.3</b> 一般化線形モデル，マルチレベルモデルなどの解説書</a></li>
+<li class="chapter" data-level="A.1.4" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#ベイズ統計モデリングの解説書"><i class="fa fa-check"></i><b>A.1.4</b> ベイズ統計モデリングの解説書</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#webサイト"><i class="fa fa-check"></i><b>A.2</b> Webサイト</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#r-markdownの使い方"><i class="fa fa-check"></i><b>B</b> R Markdownの使い方</a></li>
 </ul>
 
       </nav>
@@ -433,7 +465,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理学データ応用解析法</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理データ応用解析法</a>
           </h1>
         </div>
 
@@ -441,9 +473,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="その他のカウントデータの解析" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> その他のカウントデータの解析</h1>
-<p>前の章で，カウントデータの解析としてポアソン回帰を扱った。この章では，その他のカウントデータの解析法について説明する。</p>
+<div id="一般化線形モデルの応用" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> 一般化線形モデルの応用</h1>
+<p>前の章では，代表的な一般化線形モデルとして，ロジスティック回帰とポアソン回帰を学んだ。この章では，一般化線形モデルを応用したその他の解析法について説明する。</p>
 <ul>
 <li>負の二項回帰（過分散対策）<br />
 </li>
@@ -453,45 +485,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="準備-4" class="section level2">
 <h2><span class="header-section-number">12.1</span> 準備</h2>
-<p>tidyverseパッケージに加え，<code>MASS</code>，<code>nnet</code>パッケージを使う。<br />
-<code>MASS</code>パッケージは負の二項分布を用いたモデルのときに，<code>nnet</code>パッケージは多項ロジスティック回帰のときに必要になる。初めて使う際には，事前にインストールが必要になる。</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1"><span class="kw">library</span>(tidyverse, MASS, nnet)</a></code></pre></div>
+<p><code>tidyverse</code>パッケージに加え，<code>MASS</code>，<code>nnet</code>パッケージを使う。<br />
+<code>MASS</code>パッケージは負の二項分布を用いたモデルのときに，<code>nnet</code>パッケージは多項ロジスティック回帰のときに必要になる。初めて使う際には，事前にインストールが必要なので注意。</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1"><span class="kw">library</span>(tidyverse, MASS, nnet)</a></code></pre></div>
 </div>
 <div id="負の二項回帰" class="section level2">
 <h2><span class="header-section-number">12.2</span> 負の二項回帰</h2>
-<p>応答変数がカウントデータの場合，ポアソン回帰で分析する方法を前の章で学んだ。しかし，実際のデータは分散が平均よりも大きい場合が多く，平均と分散が等しい確率分布であるポアソン分布を用いると予測変数の効果を誤って判断してしまう恐れがある。これが，<strong>過分散（overdispersion）</strong>の問題である。</p>
-<p>過分散対策として，応答変数が従う分布をポアソン分布ではなく，<strong>負の二項分布(negative binomial distribution)</strong>を用いる方法がよく使われる。</p>
+<p>前の章で，応答変数がカウントデータの場合，ポアソン回帰で解析するのが適切であると学んだ。しかし，実際のデータは分散が平均よりも大きい場合が多く，平均と分散が等しいという前提のポアソン分布を用いると予測変数の効果を誤って判断してしまう恐れがある。これが，<strong>過分散（overdispersion）</strong>と呼ばれる問題である。</p>
+<p>過分散対策として，応答変数が従う分布としてポアソン分布の代わりに，<strong>負の二項分布(negative binomial distribution)</strong>を用いる方法がよく使われる。</p>
 <div id="負の二項分布" class="section level3">
 <h3><span class="header-section-number">12.2.1</span> 負の二項分布</h3>
-<p>例えばコインを投げて表が出る確率を0.5として，3回表が出るまで投げようと決めたとする。8回投げたところで3回出た場合，表が3回出る確率は以下から求めることができる。</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1"><span class="kw">choose</span>(<span class="dv">8-1</span>, <span class="dv">3-1</span>)<span class="op">*</span><span class="fl">0.5</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)<span class="op">^</span>(<span class="dv">8-3</span>)<span class="op">*</span><span class="fl">0.5</span> <span class="co">#つまり，7回中表が2回，裏が5回出て，最後の１回で表が出る確率を求める。</span></a></code></pre></div>
+<p>例えばコインを投げて表が出る確率を0.5として，表が3回出るまで投げると決めたとする。8回投げたところで表が3回出た場合，表が3回出る確率は以下から求めることができる。</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="kw">choose</span>(<span class="dv">8-1</span>, <span class="dv">3-1</span>)<span class="op">*</span><span class="fl">0.5</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)<span class="op">^</span>(<span class="dv">8-3</span>)<span class="op">*</span><span class="fl">0.5</span> <span class="co">#つまり，7回中表が2回，裏が5回出て，最後の１回で表が出る確率を求める。</span></a></code></pre></div>
 <pre><code>## [1] 0.08203125</code></pre>
 <p>これを一般化した式が以下である。成功確率を<span class="math inline">\(q\)</span>として，<span class="math inline">\(r\)</span>回成功するまでに試行が<span class="math inline">\(x\)</span>回かかる確率を表した確率分布が，負の二項分布である。</p>
 <p><span class="math display">\[
 P(x) = {}_{x-1}\mathrm{C}_{r-1} q^{r}(1-q)^{x-r}
 \]</span>
-失敗回数を<span class="math inline">\(y\)</span>として，以下のように置き換えることもできる(<span class="math inline">\(x=y+r\)</span>を代入する)。<span class="math inline">\(x\)</span>回目までに<span class="math inline">\(r\)</span>回ある事象が生じる確率と言い換えることができる。</p>
+失敗回数を<span class="math inline">\(y\)</span>として，以下のように置き換えることもできる(<span class="math inline">\(x=y+r\)</span>を代入する)。<span class="math inline">\(x\)</span>回目までにある事象が<span class="math inline">\(r\)</span>回生じる確率と言い換えることができる。</p>
 <p><span class="math display">\[
 P(y) = {}_{y+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{y}
 \]</span></p>
 <p>Rでも<code>nbinom</code>で負の二項分布の確率を計算することができる。</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1">x =<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb402-2" data-line-number="2">p_y =<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x =</span> x, <span class="dt">size =</span> <span class="dv">10</span> <span class="op">-</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb402-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb402-4" data-line-number="4">d_plot =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">p_y =</span> p_y)</a>
-<a class="sourceLine" id="cb402-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb402-6" data-line-number="6"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb402-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data =</span> d_plot, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> p_y), <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb402-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;number of trials&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;probability&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;number of success = 3&quot;</span>)</a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1">x =<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb406-2" data-line-number="2">p_y =<span class="st"> </span><span class="kw">dbinom</span>(<span class="dt">x =</span> x, <span class="dt">size =</span> <span class="dv">10</span> <span class="op">-</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb406-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb406-4" data-line-number="4">d_plot =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">p_y =</span> p_y)</a>
+<a class="sourceLine" id="cb406-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb406-6" data-line-number="6"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data =</span> d_plot, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> p_y), <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;number of trials&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;probability&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;number of success = 3&quot;</span>)</a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 <p>負の二項分布の期待値を<span class="math inline">\(E(x)=\mu\)</span>とすると，分散は<span class="math inline">\(Var(x)=\mu + \mu^{2}/r\)</span>で，分散が期待値（平均）よりも<span class="math inline">\(\mu^{2}/r\)</span>大きい。負の二項分布によって，分散が平均よりも大きい分布を扱うことができる。</p>
 </div>
 <div id="rでの負の二項回帰" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Rでの負の二項回帰</h3>
 <p>Rでは，<code>MASS</code>パッケージに含まれている<code>glm.nb()</code>関数で，負の二項回帰を扱うことができる。Rに入っている<code>warpbreaks</code>をサンプルデータとして，ポアソン回帰と負の二項回帰の結果を比較してみよう。</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1">d =<span class="st"> </span>warpbreaks <span class="co">#別の名前(d)で保存する</span></a>
-<a class="sourceLine" id="cb403-2" data-line-number="2">d<span class="op">$</span>A &lt;-<span class="st"> </span><span class="kw">ifelse</span>(d<span class="op">$</span>wool <span class="op">==</span><span class="st"> &quot;A&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#Aなら1, Bなら0のダミー</span></a>
-<a class="sourceLine" id="cb403-3" data-line-number="3"><span class="kw">head</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1">d =<span class="st"> </span>warpbreaks <span class="co">#別の名前(d)で保存する</span></a>
+<a class="sourceLine" id="cb407-2" data-line-number="2">d<span class="op">$</span>A &lt;-<span class="st"> </span><span class="kw">ifelse</span>(d<span class="op">$</span>wool <span class="op">==</span><span class="st"> &quot;A&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#Aなら1, Bなら0のダミー</span></a>
+<a class="sourceLine" id="cb407-3" data-line-number="3"><span class="kw">head</span>(d)</a></code></pre></div>
 <pre><code>##   breaks wool tension A
 ## 1     26    A       L 1
 ## 2     30    A       L 1
@@ -499,16 +531,16 @@ P(y) = {}_{y+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{y}
 ## 4     25    A       L 1
 ## 5     70    A       L 1
 ## 6     52    A       L 1</code></pre>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb405-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> d, <span class="kw">aes</span>(<span class="dt">x =</span> breaks, <span class="dt">fill =</span> wool), <span class="dt">binwidth =</span> <span class="dv">1</span>)</a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1">ggplot2<span class="op">::</span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb409-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> d, <span class="kw">aes</span>(<span class="dt">x =</span> breaks, <span class="dt">fill =</span> wool), <span class="dt">binwidth =</span> <span class="dv">1</span>)</a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p><code>breaks</code>に対する<code>wool</code>(A or B)の効果を検討する。まずは，ポアソン回帰の結果を見てみる。<code>breaks</code>を<span class="math inline">\(y\)</span>，<code>A</code>を<span class="math inline">\(x\)</span>とすると，モデルは以下のように表現できる。</p>
-<p>$$</p>
-<p>= + x\</p>
-<p>y Poisson()</p>
-<p>$$</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1">model_poisson =<span class="st"> </span><span class="kw">glm</span>(<span class="dt">data =</span> d, breaks <span class="op">~</span><span class="st"> </span>A, <span class="dt">family =</span> <span class="kw">poisson</span>(<span class="dt">link =</span> <span class="st">&quot;log&quot;</span>))</a>
-<a class="sourceLine" id="cb406-2" data-line-number="2"><span class="kw">summary</span>(model_poisson)</a></code></pre></div>
+<p><span class="math display">\[
+\lambda = \alpha + \beta x\\
+y \sim Poisson(\lambda)
+\]</span></p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1">model_poisson =<span class="st"> </span><span class="kw">glm</span>(<span class="dt">data =</span> d, breaks <span class="op">~</span><span class="st"> </span>A, <span class="dt">family =</span> <span class="kw">poisson</span>(<span class="dt">link =</span> <span class="st">&quot;log&quot;</span>))</a>
+<a class="sourceLine" id="cb410-2" data-line-number="2"><span class="kw">summary</span>(model_poisson)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = breaks ~ A, family = poisson(link = &quot;log&quot;), data = d)
@@ -531,9 +563,9 @@ P(y) = {}_{y+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{y}
 ## AIC: 560
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1"><span class="kw">mean</span>(d<span class="op">$</span>breaks)</a></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1"><span class="kw">mean</span>(d<span class="op">$</span>breaks)</a></code></pre></div>
 <pre><code>## [1] 28.14815</code></pre>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1"><span class="kw">var</span>(d<span class="op">$</span>breaks)</a></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1"><span class="kw">var</span>(d<span class="op">$</span>breaks)</a></code></pre></div>
 <pre><code>## [1] 174.2041</code></pre>
 <p><code>A</code>に係る傾きの推定値について，かなり小さいp値が推定されている。</p>
 <p>次に，負の二項回帰の結果と比較してみよう。</p>
@@ -542,8 +574,8 @@ P(y) = {}_{y+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{y}
 y \sim NegativeBinom(\mu, r)
 \]</span></p>
 <p><code>MASS</code>パッケージの<code>glm.nb()</code>を使う。</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1">model_nb =<span class="st"> </span>MASS<span class="op">::</span><span class="kw">glm.nb</span>(<span class="dt">data =</span> d, breaks <span class="op">~</span><span class="st"> </span>A) <span class="co">#lm関数と同じ要領で，線形の式を入力する。確率分布はオプションで指定しないで良い。</span></a>
-<a class="sourceLine" id="cb412-2" data-line-number="2"><span class="kw">summary</span>(model_nb)</a></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1">model_nb =<span class="st"> </span>MASS<span class="op">::</span><span class="kw">glm.nb</span>(<span class="dt">data =</span> d, breaks <span class="op">~</span><span class="st"> </span>A) <span class="co">#lm関数と同じ要領で，線形の式を入力する。確率分布はオプションで指定しないで良い。</span></a>
+<a class="sourceLine" id="cb416-2" data-line-number="2"><span class="kw">summary</span>(model_nb)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## MASS::glm.nb(formula = breaks ~ A, data = d, init.theta = 6.960797279, 
@@ -578,16 +610,16 @@ y \sim NegativeBinom(\mu, r)
 </div>
 <div id="順序ロジスティック回帰" class="section level2">
 <h2><span class="header-section-number">12.3</span> 順序ロジスティック回帰</h2>
-<p>「優，良，可」といった成績や「1=当てはまらない，…, 5 = 当てはまる」といったリッカート尺度といった順序変数はカテゴリカル変数であるので，正規分布に従う前提を置くなど，量的変数のように扱うのは本来は適切といえない。二値のカテゴリカル変数の場合は二項分布を用いるロジスティック回帰で検討できたが，3つ以上のカテゴリを持つ変数の場合はどうすればよいか？</p>
-<p>応答変数が順序変数の場合は，<strong>順序ロジスティック回帰(ordred logistic regression)</strong>が使われる。</p>
+<p>「優，良，可」といった成績や「1=当てはまらない，…, 5 = 当てはまる」といったリッカート尺度といった順序尺度はカテゴリカル変数であるので，正規分布に従う前提を置くなど量的変数のように扱うのは本来は適切ではない。二値のカテゴリカル変数の場合は二項分布を用いるロジスティック回帰で検討できたが，3つ以上のカテゴリを持つ変数の場合はどうすればよいか？</p>
+<p>応答変数が順序尺度である場合は，<strong>順序ロジスティック回帰(ordred logistic regression)</strong>が適切なモデルとされる。</p>
 <div id="例題" class="section level3">
 <h3><span class="header-section-number">12.3.1</span> 例題</h3>
-<p>例えば，<code>Score</code>を試験の成績を意味する順序変数として「1=不可，2=可，3=良，4=優，5=秀」の値を取るとする。この成績<code>Score</code>に対して，試験前日の睡眠時間<code>Sleep</code>が及ぼす影響を検討するとしよう。</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1"><span class="co">###サンプルデータの作成</span></a>
-<a class="sourceLine" id="cb414-2" data-line-number="2">Sleep =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb414-3" data-line-number="3">Score =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb414-4" data-line-number="4">sample_ordered =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Score =</span> Score, <span class="dt">Sleep =</span> Sleep)</a>
-<a class="sourceLine" id="cb414-5" data-line-number="5"><span class="kw">head</span>(sample_ordered)</a></code></pre></div>
+<p>例えば，<code>Score</code>を試験の成績を意味する順序尺度として「1=不可，2=可，3=良，4=優，5=秀」の値を取るとする。この成績<code>Score</code>に対して，試験前日の睡眠時間<code>Sleep</code>が及ぼす影響を検討するとしよう。</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1"><span class="co">###サンプルデータの作成</span></a>
+<a class="sourceLine" id="cb418-2" data-line-number="2">Sleep =<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb418-3" data-line-number="3">Score =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb418-4" data-line-number="4">sample_ordered =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Score =</span> Score, <span class="dt">Sleep =</span> Sleep)</a>
+<a class="sourceLine" id="cb418-5" data-line-number="5"><span class="kw">head</span>(sample_ordered)</a></code></pre></div>
 <pre><code>##   Score Sleep
 ## 1     3     6
 ## 2     3     1
@@ -595,24 +627,24 @@ y \sim NegativeBinom(\mu, r)
 ## 4     2     2
 ## 5     3     5
 ## 6     3     6</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb416-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> sample_ordered, <span class="kw">aes</span>(<span class="dt">x =</span> Sleep, <span class="dt">y =</span> Score))</a></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1">ggplot2<span class="op">::</span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb420-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> sample_ordered, <span class="kw">aes</span>(<span class="dt">x =</span> Sleep, <span class="dt">y =</span> Score))</a></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
 </div>
 <div id="順序ロジスティック回帰モデルの詳細" class="section level3">
 <h3><span class="header-section-number">12.3.2</span> 順序ロジスティック回帰モデルの詳細</h3>
 <div id="累積確率と累積ロジット" class="section level4 unnumbered">
 <h4>累積確率と累積ロジット</h4>
-<p>順序のあるカテゴリカル変数を扱う場合には，<strong>累積確率（cumulative probability）</strong>で各変数が生じる確率を表現する。累積確率とは，順序変数のある値以下が生じる確率のことをいう。例えば，<span class="math inline">\(y\)</span>が<span class="math inline">\(k\)</span>以下の値を取る累積確率を<span class="math inline">\(Pr(y≤k)\)</span>と表現する。<span class="math inline">\(Pr(y≤3)\)</span>は，<span class="math inline">\(y\)</span>が1, 2, 3のいずれかが生じる確率を意味する。 カテゴリ<span class="math inline">\(k\)</span>が生じる確率<span class="math inline">\(p_{k}\)</span>とすると，<span class="math inline">\(p_{3}\)</span>は累積確率<span class="math inline">\(Pr(y≤3)\)</span>から累積確率<span class="math inline">\(Pr(y≤2)\)</span>を引けば求められる。</p>
-<p>つまり，<span class="math inline">\(p_{k}\)</span>は以下の式で表現することができる。</p>
+<p>順序のあるカテゴリカル変数を扱う場合には，<strong>累積確率（cumulative probability）</strong>で各変数が生じる確率を表現する。累積確率とは，順序変数のある値以下が生じる確率のことをいう。例えば，<span class="math inline">\(y\)</span>が<span class="math inline">\(k\)</span>以下の値を取る累積確率を<span class="math inline">\(Pr(y≤k)\)</span>と表現する。 カテゴリ<span class="math inline">\(k\)</span>が生じる確率<span class="math inline">\(p_{k}\)</span>とすると，<span class="math inline">\(p_{k}\)</span>は累積確率を用いて以下の式で表現することができる。</p>
 <p><span class="math display">\[
 p_{k}=Pr(y≤k)−Pr(y≤k−1)
 \]</span></p>
-<p>なお，カテゴリの最大値が出る確率は，全体の確率から引けば求まる。例えば，<span class="math inline">\(p_{5}\)</span>は全体から累積確率<span class="math inline">\(Pr(y≤5)-Pr(y≤4)\)</span>を計算しなくとも，<span class="math inline">\(1-Pr(y≤5)\)</span>で求まる。</p>
+<p>例えば試験の成績（1=不可，2=可，3=良，4=優，5=秀）を<span class="math inline">\(y\)</span>として考えると，<span class="math inline">\(Pr(y≤3)\)</span>は，試験の成績が1, 2もしくは3である確率を示している。試験の成績が3である確率<span class="math inline">\(p_{3}\)</span>は，累積確率<span class="math inline">\(Pr(y≤3)\)</span>から累積確率<span class="math inline">\(Pr(y≤2)\)</span>を引くことで求めることができる。</p>
+<p>なお，カテゴリの最大値が出る確率は，全体の確率から引けば求まる。例えば，試験の成績が5である確率<span class="math inline">\(p_{5}\)</span>は累積確率<span class="math inline">\(Pr(y≤5)-Pr(y≤4)\)</span>を計算しなくとも，<span class="math inline">\(1-Pr(y≤5)\)</span>で求めることができる。</p>
 </div>
 <div id="線形予測子との関係" class="section level4 unnumbered">
 <h4>線形予測子との関係</h4>
-<p>カテゴリ<span class="math inline">\(k\)</span>が得られる累積確率<span class="math inline">\(Pr(y ≤ k)\)</span>は，K-1個の切片<span class="math inline">\(\alpha_{k}\)</span>で示すことができる。<span class="math inline">\(\alpha_{k}\)</span>は累積確率を区切るポイントを意味し，<em>カットポイント(cutpoint)</em>とも呼ばれる。</p>
+<p>カテゴリ<span class="math inline">\(k\)</span>が得られる累積確率<span class="math inline">\(Pr(y ≤ k)\)</span>は，K-1個の切片<span class="math inline">\(\alpha_{k}\)</span>で示すことができる（上で述べたように，最大カテゴリの確率は1から<span class="math inline">\(Pr(y≤K-1)\)</span>を引けば求まるので，すべての確率を表現するために切片をK個用意する必要はない）。<span class="math inline">\(\alpha_{k}\)</span>は累積確率を区切るポイントを意味し，<em>カットポイント(cutpoint)</em>とも呼ばれる。</p>
 <p><span class="math display">\[
 Pr(y≤k) = \frac{\exp(\alpha_{k})}{1+\exp(\alpha_{k})}
 \]</span></p>
@@ -621,33 +653,33 @@ Pr(y≤k) = \frac{\exp(\alpha_{k})}{1+\exp(\alpha_{k})}
 \eta = \beta x\\
 Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 \]</span></p>
-<p>以下のように書き換えることもできる（左辺が累積確率の対数オッズ，右辺が線形の式）。</p>
+<p>以下のように書き換えることもできる（左辺を累積確率の対数オッズ，右辺を線形の式としたもの）。</p>
 <p><span class="math display">\[
 \eta = \beta x\\
 \log\frac{Pr(y ≤ k)}{Pr(y &gt; k)} = \alpha_{k} - \eta
 \]</span></p>
-<p>各切片から傾きの効果を引いているところに注意する必要がある。引くことによって，予測変数の値が大きいほど，累積確率の値が低くなる。言い換えれば，<span class="math inline">\(Pr(y&gt;k)\)</span>が大きくなる。つまり，予測変数の値が大きくなるほど，より大きい値のカテゴリが生じる確率が大きくなることを表現できる。</p>
-<p>このように，各カテゴリについての累積確率を推定する切片<span class="math inline">\(\alpha_{k}\)</span>と傾き<span class="math inline">\(\beta\)</span>を推定する。</p>
+<p>各切片から傾きの効果を引いているところに注意する必要がある。引くことによって，予測変数の値が大きいほど，累積確率の値が低くなる。言い換えれば，<span class="math inline">\(Pr(y&gt;k)\)</span>が大きくなる。つまり，傾きの効果を引くことによって，予測変数の値が大きくなるほど，より大きい値のカテゴリが生じる確率が大きくなることを表現できる。</p>
+<p>このように，順序ロジスティック回帰のモデルでは，各カテゴリの累積確率を決定づける切片<span class="math inline">\(\alpha_{k}\)</span>と傾き<span class="math inline">\(\beta\)</span>を用いて，各カテゴリが生じる確率を推定する。</p>
 </div>
 </div>
 <div id="rでの順序ロジスティック回帰" class="section level3">
 <h3><span class="header-section-number">12.3.3</span> Rでの順序ロジスティック回帰</h3>
-<p>Rで順序ロジスティック回帰を行うには，外部パッケージの関数を利用する。以下では，<code>MASS</code>パッケージに含まれている<code>polr</code>関数を使った例を示す。</p>
+<p>Rで順序ロジスティック回帰を行うには，外部パッケージの関数を利用する。以下では，<code>MASS</code>パッケージに含まれている<code>polr</code>関数を使って，先ほど作成したサンプルデータ<code>sample_ordered</code>で順序ロジスティック回帰を行う。</p>
 </div>
 <div id="準備-5" class="section level3 unnumbered">
 <h3>準備</h3>
 <p>解析の前に，Rで順序尺度を扱う場合は，変数を順序付きの因子型(factor)変数にする必要がある。<code>factor()</code>もしくは<code>ordered()</code>のいずれかの方法で作成する。</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1"><span class="co">#以下のいずれかの方法で因子型に変換する</span></a>
-<a class="sourceLine" id="cb417-2" data-line-number="2">sample_ordered<span class="op">$</span>Score =<span class="st"> </span><span class="kw">factor</span>(sample_ordered<span class="op">$</span>Score, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb417-3" data-line-number="3">sample_ordered<span class="op">$</span>Score =<span class="st"> </span><span class="kw">ordered</span>(sample_ordered<span class="op">$</span>Score, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>))</a>
-<a class="sourceLine" id="cb417-4" data-line-number="4"><span class="co">#levelsで，水準の順序を指定する</span></a>
-<a class="sourceLine" id="cb417-5" data-line-number="5"><span class="co">#factor()では，オプションoredered=TRUEを加える</span></a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1"><span class="co">#以下のいずれかの方法で因子型に変換する</span></a>
+<a class="sourceLine" id="cb421-2" data-line-number="2">sample_ordered<span class="op">$</span>Score =<span class="st"> </span><span class="kw">factor</span>(sample_ordered<span class="op">$</span>Score, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb421-3" data-line-number="3">sample_ordered<span class="op">$</span>Score =<span class="st"> </span><span class="kw">ordered</span>(sample_ordered<span class="op">$</span>Score, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>))</a>
+<a class="sourceLine" id="cb421-4" data-line-number="4"><span class="co">#levelsで，水準の順序を指定する</span></a>
+<a class="sourceLine" id="cb421-5" data-line-number="5"><span class="co">#factor()では，オプションoredered=TRUEを加える</span></a></code></pre></div>
 </div>
 <div id="解析" class="section level3 unnumbered">
 <h3>解析</h3>
 <p>応答変数を順序付きの因子型変数に変更したら，<code>MASS</code>パッケージに含まれている<code>polr()</code>で解析する。<code>lm()</code>と同じ要領で，応答変数~予測変数のモデルを書けば結果を出力してくれる。</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1">model_polr =<span class="st"> </span>MASS<span class="op">::</span><span class="kw">polr</span>(<span class="dt">data =</span> sample_ordered, Score <span class="op">~</span><span class="st"> </span>Sleep, <span class="dt">Hess =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb418-2" data-line-number="2"><span class="kw">summary</span>(model_polr)</a></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1">model_polr =<span class="st"> </span>MASS<span class="op">::</span><span class="kw">polr</span>(<span class="dt">data =</span> sample_ordered, Score <span class="op">~</span><span class="st"> </span>Sleep, <span class="dt">Hess =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb422-2" data-line-number="2"><span class="kw">summary</span>(model_polr)</a></code></pre></div>
 <pre><code>## Call:
 ## MASS::polr(formula = Score ~ Sleep, data = sample_ordered, Hess = TRUE)
 ## 
@@ -667,12 +699,12 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 </div>
 <div id="解釈" class="section level3 unnumbered">
 <h3>解釈</h3>
-<p><code>Coefficients</code>に予測変数に係る傾きの係数の推定値が出力されている。傾きの解釈は，一般化線形モデルのときと同じである（累積確率の対数オッズの変化量：要は係数がプラスならば高順位のカテゴリの確率を上昇させる効果を持つと解釈すれば良い）。<code>Intercepts</code>に出力されているのは，各切片（カットポイント）の推定値である。</p>
+<p><code>Coefficients</code>に予測変数に係る傾きの係数の推定値が出力されている。傾きの解釈は，一般化線形モデルのときと同じである（累積確率の対数オッズの変化量：要は係数がプラスならば，予測変数は高順位のカテゴリが生じる確率を上昇させる効果を持つと解釈すれば良い）。<code>Intercepts</code>に出力されているのは，順序ロジスティック回帰モデルの各切片（カットポイント）の推定値である。</p>
 <hr />
 <p><code>polr()</code>ではp値を出力してくれないので，求めたい場合は自分で計算する必要がある。t値を元に，以下のプログラムで計算する。</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1">coef_table =<span class="st"> </span><span class="kw">coef</span>(<span class="kw">summary</span>(model_polr))</a>
-<a class="sourceLine" id="cb420-2" data-line-number="2">p =<span class="st"> </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(coef_table[,<span class="st">&quot;t value&quot;</span>]), <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb420-3" data-line-number="3">(<span class="kw">cbind</span>(coef_table, <span class="st">&quot;p value&quot;</span> =<span class="st"> </span>p))</a></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1">coef_table =<span class="st"> </span><span class="kw">coef</span>(<span class="kw">summary</span>(model_polr))</a>
+<a class="sourceLine" id="cb424-2" data-line-number="2">p =<span class="st"> </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(coef_table[,<span class="st">&quot;t value&quot;</span>]), <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)<span class="op">*</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb424-3" data-line-number="3">(<span class="kw">cbind</span>(coef_table, <span class="st">&quot;p value&quot;</span> =<span class="st"> </span>p))</a></code></pre></div>
 <pre><code>##            Value Std. Error    t value      p value
 ## Sleep  0.4422630  0.1826583  2.4212592 0.0154668454
 ## 1|2   -0.7336097  0.8375601 -0.8758889 0.3810904074
@@ -684,17 +716,18 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 </div>
 <div id="多項ロジスティック回帰" class="section level2">
 <h2><span class="header-section-number">12.4</span> 多項ロジスティック回帰</h2>
-<p>応答変数が3つ以上のカテゴリの名義尺度（順序関係がない）場合は，<strong>多項ロジスティック回帰(multinomial logistic regression)</strong>が適切である。</p>
+<p>先ほどの成績（1=不可，2=可，3=良，4=優，5=秀）の例では，成績はカテゴリであるが順序関係のある順序尺度であった。順序関係がないカテゴリカル変数の場合はどうすればよいか？<br />
+応答変数が3つ以上のカテゴリの名義尺度（順序関係がない）場合は，<strong>多項ロジスティック回帰(multinomial logistic regression)</strong>が適切である。</p>
 <div id="例題-1" class="section level3 unnumbered">
 <h3>例題</h3>
-<p>高校生が進学先（大学の学部）を選択する場合を例として考える。学部の種類（文学部，経済学部，理学部など）には順序関係はない。性別，高校のときの成績が学科選択に及ぼす影響を検討する。</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1"><span class="co">###サンプルデータの作成</span></a>
-<a class="sourceLine" id="cb422-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb422-3" data-line-number="3">Male =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">25</span>))</a>
-<a class="sourceLine" id="cb422-4" data-line-number="4">Grade =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb422-5" data-line-number="5">Faculty =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Literature&quot;</span>, <span class="dv">15</span>), <span class="kw">rep</span>(<span class="st">&quot;Economics&quot;</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="st">&quot;Physical&quot;</span>, <span class="dv">15</span>))</a>
-<a class="sourceLine" id="cb422-6" data-line-number="6">sample_mnl =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Faculty =</span> Faculty, <span class="dt">Male =</span> Male, <span class="dt">Grade =</span> Grade)</a>
-<a class="sourceLine" id="cb422-7" data-line-number="7"><span class="kw">head</span>(sample_mnl)</a></code></pre></div>
+<p>高校生が進学先（大学の学部）を選択する場合を例として考える。学部の種類（文学部，経済学部，理学部など）には順序関係はないので，学部の種類は名義尺度である。性別，高校のときの成績が学科選択に及ぼす影響を検討する。</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="co">###サンプルデータの作成</span></a>
+<a class="sourceLine" id="cb426-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb426-3" data-line-number="3">Male =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">25</span>))</a>
+<a class="sourceLine" id="cb426-4" data-line-number="4">Grade =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb426-5" data-line-number="5">Faculty =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;Literature&quot;</span>, <span class="dv">15</span>), <span class="kw">rep</span>(<span class="st">&quot;Economics&quot;</span>, <span class="dv">20</span>), <span class="kw">rep</span>(<span class="st">&quot;Physical&quot;</span>, <span class="dv">15</span>))</a>
+<a class="sourceLine" id="cb426-6" data-line-number="6">sample_mnl =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Faculty =</span> Faculty, <span class="dt">Male =</span> Male, <span class="dt">Grade =</span> Grade)</a>
+<a class="sourceLine" id="cb426-7" data-line-number="7"><span class="kw">head</span>(sample_mnl)</a></code></pre></div>
 <pre><code>##      Faculty Male    Grade
 ## 1 Literature    0 3.747092
 ## 2 Literature    1 5.367287
@@ -706,23 +739,23 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 </div>
 <div id="多項ロジスティック回帰モデルの詳細" class="section level3">
 <h3><span class="header-section-number">12.4.1</span> 多項ロジスティック回帰モデルの詳細</h3>
-<p>多項ロジスティック回帰では<em>基準となるカテゴリを設定し</em>，基準カテゴリと比べて各カテゴリが生じやすいかを推定する複数のモデルを設定する。</p>
-<p>例えば，例題で経済学部(Economics)を基準カテゴリとし，他のカテゴリ(Literature, Physical)が生じる確率を線形の式で表した例を以下に示す。</p>
+<p>多項ロジスティック回帰では基準となるカテゴリを設定し，基準カテゴリと比べて各カテゴリが生じやすいかを推定する複数のモデルを設定する。</p>
+<p>例えば，経済学部(Economics)を基準カテゴリとする。他のカテゴリ(Literature, Physical)が生じる確率を線形の式で表した例を以下に示す。</p>
 <p><span class="math display">\[
 \log\frac{Pr(Literature)}{Pr(Economics)}= \alpha_{1} + \beta_{1,1} Male + \beta_{2,1} Grade \\
 \log\frac{Pr(Physical)}{Pr(Economics)}= \alpha_{2} + \beta_{1,2} Male + \beta_{2,2} Grade \\
 \]</span></p>
-<p>多項ロジスティック回帰では，カテゴリごとに異なる切片と傾きの値を推定する。</p>
+<p>多項ロジスティック回帰では，カテゴリごとに異なる線形予測子を設定し，それぞれ異なる切片と傾きの値を推定する。</p>
 </div>
 <div id="rでの多項ロジスティック回帰" class="section level3">
 <h3><span class="header-section-number">12.4.2</span> Rでの多項ロジスティック回帰</h3>
-<p>多項ロジスティック回帰を行うことのできるパッケージとして，<code>nnet</code>パッケージの<code>multinom()</code>関数がある。<code>lm()</code>と同じ要領でモデルを記述すると，推定結果を出力してくれる。</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1">result_mnl =<span class="st"> </span>nnet<span class="op">::</span><span class="kw">multinom</span>(<span class="dt">data =</span> sample_mnl, Faculty <span class="op">~</span><span class="st"> </span>Male <span class="op">+</span><span class="st"> </span>Grade)</a></code></pre></div>
+<p>Rには多項ロジスティック回帰を行うための関数として，<code>nnet</code>パッケージの<code>multinom()</code>関数がある。<code>lm()</code>と同じ要領でモデルを記述すると，推定結果を出力してくれる。先ほど作ったサンプルデータ<code>sample_mnl</code>で，多項ロジスティック回帰を行ってみる。</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1">result_mnl =<span class="st"> </span>nnet<span class="op">::</span><span class="kw">multinom</span>(<span class="dt">data =</span> sample_mnl, Faculty <span class="op">~</span><span class="st"> </span>Male <span class="op">+</span><span class="st"> </span>Grade)</a></code></pre></div>
 <pre><code>## # weights:  12 (6 variable)
 ## initial  value 54.930614 
 ## final  value 54.309165 
 ## converged</code></pre>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1"><span class="kw">summary</span>(result_mnl)</a></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1"><span class="kw">summary</span>(result_mnl)</a></code></pre></div>
 <pre><code>## Call:
 ## nnet::multinom(formula = Faculty ~ Male + Grade, data = sample_mnl)
 ## 
@@ -738,51 +771,19 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 ## 
 ## Residual Deviance: 108.6183 
 ## AIC: 120.6183</code></pre>
-<p><code>Coeffficients</code>の部分に，係数の推定結果が出力される。このモデルでは<code>Economics</code>を基準カテゴリとなっている（デフォルトで，アルファベット順で一番はじめの変数が基準となる）。<code>Literature</code>の部分に出力されるのが上の式でいう<span class="math inline">\(\alpha_{1}\)</span>, <span class="math inline">\(\beta_{1, 1}\)</span>, <span class="math inline">\(\beta_{2, 1}\)</span>に，<code>Physical</code>の部分に出力されるのが<span class="math inline">\(\alpha_{2}\)</span>, <span class="math inline">\(\beta_{1, 2}\)</span>, <span class="math inline">\(\beta_{2, 2}\)</span>に当たる。</p>
-<p><code>Literature</code>の予測変数の傾きの推定値は，基準カテゴリ（<code>Economics</code>）と比べてのその予測変数の効果をイミシル（その予測変数が1単位変化したときの<code>Literature</code>と<code>Economics</code>の対数オッズの変化量）。</p>
+<p><code>Coeffficients</code>の部分に，係数の推定結果が出力される。このモデルでは<code>Economics</code>が基準カテゴリとなっている（デフォルトで，アルファベット順で一番はじめに出てくるカテゴリが基準となる）。<code>Literature</code>の部分に出力されるのが上の式でいう<span class="math inline">\(\alpha_{1}\)</span>, <span class="math inline">\(\beta_{1, 1}\)</span>, <span class="math inline">\(\beta_{2, 1}\)</span>に，<code>Physical</code>の部分に出力されるのが<span class="math inline">\(\alpha_{2}\)</span>, <span class="math inline">\(\beta_{1, 2}\)</span>, <span class="math inline">\(\beta_{2, 2}\)</span>に相当する。</p>
+<p><code>Literature</code>の予測変数の傾きの推定値は，基準カテゴリ（<code>Economics</code>）と比べた上でのその予測変数の効果を意味する（その予測変数が1単位変化したときの<code>Literature</code>と<code>Economics</code>の対数オッズの変化量）。</p>
 <p>このように，多項ロジスティック回帰の係数はある基準カテゴリと比較した上での効果を意味するため，解釈は複雑になる。</p>
 <hr />
 <p><code>multinom()</code>ではp値を出力してくれないので，求めたい場合は自分で計算する必要がある。以下には，z scoreを元に計算する方法を示す。</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1"><span class="co">#p値の出力</span></a>
-<a class="sourceLine" id="cb428-2" data-line-number="2">z =<span class="st"> </span><span class="kw">summary</span>(result_mnl)<span class="op">$</span>coefficients<span class="op">/</span><span class="kw">summary</span>(result_mnl)<span class="op">$</span>standard.errors</a>
-<a class="sourceLine" id="cb428-3" data-line-number="3">p =<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(z), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb428-4" data-line-number="4">p</a></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1"><span class="co">#p値の出力</span></a>
+<a class="sourceLine" id="cb432-2" data-line-number="2">z =<span class="st"> </span><span class="kw">summary</span>(result_mnl)<span class="op">$</span>coefficients<span class="op">/</span><span class="kw">summary</span>(result_mnl)<span class="op">$</span>standard.errors</a>
+<a class="sourceLine" id="cb432-3" data-line-number="3">p =<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(z), <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb432-4" data-line-number="4">p</a></code></pre></div>
 <pre><code>##            (Intercept)      Male     Grade
 ## Literature   0.7644787 0.8585197 0.8998131
 ## Physical     0.5323786 0.8132228 0.7123104</code></pre>
 <hr />
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1"><span class="co">## ゼロ過剰ポアソン回帰</span></a>
-<a class="sourceLine" id="cb430-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb430-3" data-line-number="3"><span class="co">### 例題</span></a>
-<a class="sourceLine" id="cb430-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb430-5" data-line-number="5"><span class="co">### Rでのゼロ過剰ポアソン回帰</span></a>
-<a class="sourceLine" id="cb430-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb430-7" data-line-number="7"><span class="co">#`pscl`パッケージの`zeroinfl()`関数で解析することができる。`lm()`と同じ要領でモデルを記述すると，推定結果を出力してくれる。</span></a>
-<a class="sourceLine" id="cb430-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb430-9" data-line-number="9"><span class="kw">head</span>(bioChemists)</a>
-<a class="sourceLine" id="cb430-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb430-11" data-line-number="11"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb430-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> bioChemists, <span class="kw">aes</span>(<span class="dt">x=</span>art), <span class="dt">binwidth =</span> <span class="dv">1</span>, <span class="dt">fill=</span><span class="st">&quot;white&quot;</span>, <span class="dt">color=</span><span class="st">&quot;black&quot;</span>)</a>
-<a class="sourceLine" id="cb430-13" data-line-number="13"><span class="kw">table</span>(bioChemists<span class="op">$</span>art)</a>
-<a class="sourceLine" id="cb430-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb430-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb430-16" data-line-number="16">model_zeroinfl =<span class="st"> </span>pscl<span class="op">::</span><span class="kw">zeroinfl</span>(<span class="dt">data =</span> bioChemists, art <span class="op">~</span><span class="st"> </span>fem <span class="op">+</span><span class="st"> </span>mar <span class="op">+</span><span class="st"> </span>kid5 <span class="op">+</span><span class="st"> </span>phd <span class="op">+</span><span class="st"> </span>ment)</a>
-<a class="sourceLine" id="cb430-17" data-line-number="17"><span class="kw">summary</span>(model_zeroinfl)</a></code></pre></div>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" data-line-number="1"><span class="co">#確認問題</span></a>
-<a class="sourceLine" id="cb431-2" data-line-number="2"><span class="co">#MASSのhousingを使う</span></a>
-<a class="sourceLine" id="cb431-3" data-line-number="3"><span class="kw">str</span>(housing)</a>
-<a class="sourceLine" id="cb431-4" data-line-number="4">d =<span class="st"> </span>housing</a>
-<a class="sourceLine" id="cb431-5" data-line-number="5">d<span class="op">$</span>ID =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(d)</a>
-<a class="sourceLine" id="cb431-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb431-7" data-line-number="7"><span class="kw">mean</span>(d<span class="op">$</span>Freq)</a>
-<a class="sourceLine" id="cb431-8" data-line-number="8"><span class="kw">var</span>(d<span class="op">$</span>Freq)</a>
-<a class="sourceLine" id="cb431-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb431-10" data-line-number="10"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb431-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> d, <span class="kw">aes</span>(<span class="dt">x =</span> Freq), <span class="dt">binwidth =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb431-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb431-13" data-line-number="13"><span class="kw">summary</span>(<span class="kw">glm</span>(<span class="dt">data =</span> d, Freq <span class="op">~</span><span class="st"> </span>Cont, <span class="dt">family =</span> <span class="kw">poisson</span>(<span class="dt">link =</span> <span class="st">&quot;log&quot;</span>)))</a>
-<a class="sourceLine" id="cb431-14" data-line-number="14"><span class="kw">summary</span>(<span class="kw">glm.nb</span>(<span class="dt">data =</span> d, Freq <span class="op">~</span><span class="st"> </span>Cont))</a>
-<a class="sourceLine" id="cb431-15" data-line-number="15"><span class="kw">summary</span>(<span class="kw">glmer</span>(<span class="dt">data =</span> d, Freq <span class="op">~</span><span class="st"> </span>Cont <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">|</span>ID), <span class="dt">family=</span>poisson))</a></code></pre></div>
 
 </div>
 </div>

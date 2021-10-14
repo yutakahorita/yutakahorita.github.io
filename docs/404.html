@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 マルチレベルモデル | 心理データ応用解析法</title>
-  <meta name="description" content="Chapter 13 マルチレベルモデル | 心理データ応用解析法" />
+  <title>Page not found | 心理データ応用解析法</title>
+  <meta name="description" content="Page not found | 心理データ応用解析法" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 マルチレベルモデル | 心理データ応用解析法" />
+  <meta property="og:title" content="Page not found | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 マルチレベルモデル | 心理データ応用解析法" />
+  <meta name="twitter:title" content="Page not found | 心理データ応用解析法" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="11-glm2.html"/>
-<link rel="next" href="13-Bayese.html"/>
+
+
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -551,243 +551,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="マルチレベルモデル" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> マルチレベルモデル</h1>
-<p>一般化線形モデルを拡張し，個人差や集団差を扱うモデルについて学ぶ。</p>
-<div id="準備-6" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> 準備</h2>
-<p>tidyverseパッケージに加え，新たに<code>lme4</code>及び<code>lmerTest</code>というパッケージを使う。<code>lme4</code>と<code>lmerTest</code>は初めて使うので，インストールした上でロードしよう。</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="12-glmm.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb429-2"><a href="12-glmm.html#cb429-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-3"><a href="12-glmm.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lme4&quot;</span>, <span class="st">&quot;lmerTest&quot;</span>)</span>
-<span id="cb429-4"><a href="12-glmm.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4, lmerTest)</span></code></pre></div>
-</div>
-<div id="個人差や集団差の問題" class="section level2" number="13.2">
-<h2><span class="header-section-number">13.2</span> 個人差や集団差の問題</h2>
-<p>以下では，Rにデフォルトで入っている <code>iris</code> データを例として使う。</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="12-glmm.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris) <span class="co">#irisデータの上数行を表示</span></span></code></pre></div>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<p>まず，がくの長さ（<code>Sepal.Length</code>）とがくの幅（<code>Sepal.Width</code>）の関係を散布図で示してみよう。</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="12-glmm.html#cb432-1" aria-hidden="true" tabindex="-1"></a>graph_1 <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb432-2"><a href="12-glmm.html#cb432-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width),<span class="at">size =</span> <span class="dv">3</span>)</span>
-<span id="cb432-3"><a href="12-glmm.html#cb432-3" aria-hidden="true" tabindex="-1"></a>graph_1</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
-<p>まず，<code>lm()</code>を使って，がくの幅を応答変数，がくの長さを予測変数とした線形モデルで係数を推定する。</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="12-glmm.html#cb433-1" aria-hidden="true" tabindex="-1"></a>iris_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Sepal.Width <span class="sc">~</span> Sepal.Length)</span>
-<span id="cb433-2"><a href="12-glmm.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris_lm)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = Sepal.Width ~ Sepal.Length, data = iris)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -1.1095 -0.2454 -0.0167  0.2763  1.3338 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   3.41895    0.25356   13.48   &lt;2e-16 ***
-## Sepal.Length -0.06188    0.04297   -1.44    0.152    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.4343 on 148 degrees of freedom
-## Multiple R-squared:  0.01382,    Adjusted R-squared:  0.007159 
-## F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519</code></pre>
-<p>推定された切片及び傾きの値から予測直線を引くと，以下のようになる。</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="12-glmm.html#cb435-1" aria-hidden="true" tabindex="-1"></a>graph_lm <span class="ot">=</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb435-2"><a href="12-glmm.html#cb435-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width), <span class="at">size =</span> <span class="dv">3</span>)  <span class="sc">+</span></span>
-<span id="cb435-3"><a href="12-glmm.html#cb435-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width), <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb435-4"><a href="12-glmm.html#cb435-4" aria-hidden="true" tabindex="-1"></a>graph_lm</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
-<p>がくの長さ（<code>Sepal.Length</code>）は，がくの幅に対してあまり影響を持っていない可能性にあることがうかがえる。</p>
-<p>では，この散布図を種（<code>Species</code>）ごとに色わけして示してみる。</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="12-glmm.html#cb436-1" aria-hidden="true" tabindex="-1"></a>graph_2 <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb436-2"><a href="12-glmm.html#cb436-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">color =</span> Species, <span class="at">shape =</span> Species), <span class="at">size =</span> <span class="dv">3</span>) </span>
-<span id="cb436-3"><a href="12-glmm.html#cb436-3" aria-hidden="true" tabindex="-1"></a>graph_2</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-243-1.png" width="672" /></p>
-<p>種を無視して検討したところ，がくの長さとがくの幅の間には関係がないようにみえたが，種ごとに分けてみると「がくの長さが大きくなるほど，がくの幅が大きくなる」関係にあるように見える。</p>
-<p>このあやめのデータのように，いくつかのデータが同じグループに属している構造の場合，グループの影響を統制しないと誤った結論を招いてしまう恐れがある。それらのデータ間には，<strong>統計的独立性が保証されていない</strong>ためである。つまり，同じ種同士のものは似た傾向にある可能性が高い（データ間で相関が存在する）。</p>
-<p><strong>独立(independence)</strong>とは，各データが他のデータに影響されないという意味である。これまで学んできた確率分布では，<strong>独立同分布(independent and identically distributed: i.i.d.)</strong>が前提とされている。例えば，コインを数回投げて表が出る回数は二項分布に従うが，表が出るかどうかは前の試行に影響されることはない（前回表が出たら，次も表が出やすいということはありえないという前提を置く）。</p>
-<p>しかし，現実のデータでは，データ間の相関などにより，事象の独立性が保たれていないケースもありえる。その場合，統計的独立性を前提とした解析を行うと，上の例のように誤った結論を導いてしまう恐れがある。</p>
-<p>この例に限らず，<strong>階層構造を持つデータや繰り返し測定データ</strong>にも，同じことがいえる。例えば，学校ごとに学力テストを行った場合，同じ学校の生徒たちは成績が似通っている可能性がある（上位校の生徒は他の学校と比べて成績が良いなど）。同一参加者に複数の実験条件に参加してもらった場合，その参加者のデータは似たような傾向になる可能性も考えられる。</p>
-<p>このようなデータに対して，<strong>個人や集団の影響を考慮した</strong>統計モデルとして，<strong>マルチレベルモデル(multilevel model)</strong>が提案されている。</p>
-<hr />
-<p>マルチレベルモデルは，「階層モデル(hierarchical model)」，「混合モデル(mixied model)」など，色々な呼ばれ方がされている。</p>
-<hr />
-</div>
-<div id="マルチレベルモデルの概要" class="section level2" number="13.3">
-<h2><span class="header-section-number">13.3</span> マルチレベルモデルの概要</h2>
-<p>マルチレベルモデルでは，予測変数が応答変数に及ぼす効果だけではなく，個人や集団の効果を扱う。予測変数そのものの効果は<strong>固定効果（fixed effect）</strong>と呼ばれ，個人や集団ごとの効果は<strong>ランダム効果（random effect）</strong>と呼ばれて区別される。前章まで扱ってきた，一般化線形モデルは固定効果のみを含むモデルである。</p>
-<p>例として， <strong>繰り返し測定されたデータ</strong>を扱う。以下のプログラムを実行して，サンプルデータ<code>example</code>を作ろう。</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="12-glmm.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb437-2"><a href="12-glmm.html#cb437-2" aria-hidden="true" tabindex="-1"></a>example <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">j =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">6</span>), <span class="dv">2</span>), <span class="at">x =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),<span class="dv">3</span>) )</span>
-<span id="cb437-3"><a href="12-glmm.html#cb437-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb437-4"><a href="12-glmm.html#cb437-4" aria-hidden="true" tabindex="-1"></a>example</span></code></pre></div>
-<pre><code>##   i j     y x
-## 1 1 1 -0.63 0
-## 2 2 1  0.18 1
-## 3 3 2 -0.84 0
-## 4 4 2  1.60 1
-## 5 5 3  0.33 0
-## 6 6 3 -0.82 1</code></pre>
-<p><span class="math inline">\(i\)</span>がデータを意味する番号（何行目か），<span class="math inline">\(j\)</span>を個人もしくはグループを意味する番号とする。例えば，個人<span class="math inline">\(j\)</span>が<span class="math inline">\(x=0\)</span>の場合と<span class="math inline">\(x=1\)</span>の場合の2回<span class="math inline">\(y\)</span>を測定している，あるいは同じ集団<span class="math inline">\(j\)</span>から2人が選ばれてそれぞれの人について<span class="math inline">\(y\)</span>が測定された，といったケースが当てはまる。</p>
-<p>一般化線形モデルの線形予測子は，以下のような数式で表現できた。</p>
-<p><span class="math display">\[
-\hat{y_{i}} = \alpha + \beta x_{i} \tag{1}\\
-y_{i} \sim Normal(\hat{y_{i}}, \sigma)
-\]</span></p>
-<p><span class="math inline">\(\alpha\)</span>が切片，<span class="math inline">\(\beta\)</span>が予測変数<span class="math inline">\(x\)</span>に係る傾きであった。</p>
-<p>これに対し，マルチレベルモデルでは，以下のように線形予測子に<span class="math inline">\(\alpha_{j}\)</span>が加わる。</p>
-<p><span class="math display">\[
-y_{i} = \alpha_{0} + \beta x_{i} + \alpha_{j} \tag{2} \\
-\alpha_{j} \sim Normal(0, \sigma_{\alpha})\\
-y_{i} \sim Normal(\hat{y_{i}}, \sigma)
-\]</span></p>
-<p>すべての個人に共通して影響する切片<span class="math inline">\(\alpha_{0}\)</span>に加え，個人ないしはグループごとに異なる切片<span class="math inline">\(\alpha_{j}\)</span>を考慮する。<br />
-更に，<span class="math inline">\(\alpha_{j} \sim Normal(0, \sigma_{\alpha})\)</span>にあるように，個人ごとの切片<span class="math inline">\(\alpha_{j}\)</span>が「平均をゼロ，<span class="math inline">\(\sigma_{\alpha}\)</span>を標準偏差とする正規分布から生成される」という仮定を置く。<br />
-これにより，同じグループに属するデータ（例えば<span class="math inline">\(j=1\)</span>）には同じ効果（<span class="math inline">\(\alpha_{1}\)</span>）が共通して係ることを表現できる。</p>
-<hr />
-<p>傾きを<span class="math inline">\(\beta_{ j}\)</span>にする，すなわち個人ごとに予測変数に係る効果が異なるという前提を置くこともできる。しかし，実際に傾きをランダム効果としたモデルは複雑で推定するのは困難であるため（最尤推定法では解が求まらない場合がある），多くの場合，個人差の影響（ランダム効果）は切片のみを考慮したモデルで表現されることが多い。ランダム傾きを含むマルチレベルモデルを扱う際には，ベイズ統計の手法が必要になる。</p>
-<hr />
-</div>
-<div id="rでのマルチレベルモデル" class="section level2" number="13.4">
-<h2><span class="header-section-number">13.4</span> Rでのマルチレベルモデル</h2>
-<p>Rでマルチレベルモデルで解析を行うためには，外部パッケージが必要になる。様々なパッケージがあるが，<code>lme4</code>パッケージが扱いやすい。以下では，<code>lme4</code>パッケージに含まれる<code>glmer()</code>を使った解析の例を示す。</p>
-<p>基本的に，<code>lm()</code>関数と似た表記で使うことができる。ランダム切片は，<code>(1|グループを意味する変数名)</code>のかたちで線形予測子に入れる。</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="12-glmm.html#cb439-1" aria-hidden="true" tabindex="-1"></a>model_lmm <span class="ot">=</span> <span class="fu">lmer</span>(<span class="at">data=</span> iris, Sepal.Length <span class="sc">~</span> Sepal.Width <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Species)) <span class="co">#(1|Species)を加える</span></span>
-<span id="cb439-2"><a href="12-glmm.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_lmm)</span></code></pre></div>
-<pre><code>## Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
-## lmerModLmerTest]
-## Formula: Sepal.Length ~ Sepal.Width + (1 | Species)
-##    Data: iris
-## 
-## REML criterion at convergence: 194.6
-## 
-## Scaled residuals: 
-##     Min      1Q  Median      3Q     Max 
-## -2.9846 -0.5842 -0.1182  0.4422  3.2267 
-## 
-## Random effects:
-##  Groups   Name        Variance Std.Dev.
-##  Species  (Intercept) 1.0198   1.010   
-##  Residual             0.1918   0.438   
-## Number of obs: 150, groups:  Species, 3
-## 
-## Fixed effects:
-##             Estimate Std. Error       df t value Pr(&gt;|t|)    
-## (Intercept)   3.4062     0.6683   3.4050   5.097   0.0107 *  
-## Sepal.Width   0.7972     0.1062 146.6648   7.506 5.45e-12 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Correlation of Fixed Effects:
-##             (Intr)
-## Sepal.Width -0.486</code></pre>
-<p>出力結果を見てみると，<code>Fixed effects</code>という部分がある。ここに，固定効果の推定結果が表示される。見方は一般化線形モデルのときと同じである。切片(intercept)と予測変数に係る傾きの係数の推定結果が表示されている（個体差にかかわらず，すべての個体共通に係る予測変数の効果）。</p>
-<p>がくの幅（<code>Sepal.Width</code>)の回帰係数（Estimate）を見ると，<code>lm()</code>での推定結果とは逆に，プラスになっている。やはり，グループの違いを統制すると，実際にはがくの幅が大きくなるほど，がくの長さも大きくなる関係にあることが，<code>lmer()</code>による推定結果からわかる。</p>
-<hr />
-<p><code>lmer()</code>では，デフォルトで係数のp値は表示されない。p値も出したいならば，<code>lmerTest()</code>パッケージをインストールしておく必要がある。</p>
-<hr />
-</div>
-<div id="正規分布以外を扱う例" class="section level2" number="13.5">
-<h2><span class="header-section-number">13.5</span> 正規分布以外を扱う例</h2>
-<div id="ロジスティック回帰-1" class="section level3" number="13.5.1">
-<h3><span class="header-section-number">13.5.1</span> ロジスティック回帰</h3>
-<p>応答変数が正規分布以外に従う場合のマルチレベルモデルについても見ていこう。<br />
-<code>lme4</code>パッケージの<code>glmer()</code>で，正規分布以外の確率分布を指定したマルチレベルモデルの解析を行うことができる。以下では，ランダム効果を加えたロジスティック回帰分析の例を示す。</p>
-<p>まず，以下のプログラムを実行してサンプルデータ<code>data_sample</code>を作ろう。</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="12-glmm.html#cb441-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">4.2</span>, <span class="fl">5.1</span>, <span class="fl">3.1</span>, <span class="fl">4.2</span>, <span class="fl">5.0</span>, <span class="fl">6.1</span>, <span class="fl">7.0</span>, <span class="fl">5.3</span>, <span class="fl">6.0</span>, <span class="fl">7.0</span>, <span class="fl">8.1</span>, <span class="fl">9.0</span>)</span>
-<span id="cb441-2"><a href="12-glmm.html#cb441-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb441-3"><a href="12-glmm.html#cb441-3" aria-hidden="true" tabindex="-1"></a>ID <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">&quot;b&quot;</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">&quot;c&quot;</span>,<span class="dv">5</span>))</span>
-<span id="cb441-4"><a href="12-glmm.html#cb441-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(ID, x1, y1)</span>
-<span id="cb441-5"><a href="12-glmm.html#cb441-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_sample)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    15 obs. of  3 variables:
-##  $ ID: chr  &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; ...
-##  $ x1: num  1 2 3 4.2 5.1 3.1 4.2 5 6.1 7 ...
-##  $ y1: num  0 0 1 1 1 0 0 0 0 1 ...</code></pre>
-<p><code>x1</code>を予測変数（量的変数），<code>y1</code>を応答変数（0か1のいずれかを取る），<code>ID</code>が個体を示す変数とする。1つの個体から<code>x1</code>を変えて5回，<code>y1</code>が計測がされた実験をイメージしてほしい。</p>
-<p>予測変数と応答変数の関係に，個体特有の効果を加えたモデルは以下となる。</p>
-<p><span class="math display">\[
-q = \frac{\exp(\alpha_{0} + \beta x + \alpha_{j})}{1+\exp(\alpha_{0} + \beta x + \alpha_{j})} \tag{3} \\
-\alpha_{j} \sim Normal(0, \sigma_{\alpha})\\
-y \sim Bernoulli(q)
-\]</span></p>
-<p>線形予測子をロジット（逆ロジット）変換して，<span class="math inline">\(y=1\)</span>が生じる確率<span class="math inline">\(q\)</span>を求める。応答変数<span class="math inline">\(y\)</span>は，<span class="math inline">\(q\)</span>をパラメータとするベルヌーイ分布から生成される。これらの点は，一般化線形モデルで学んだ。<br />
-更に，線形予測子に，ランダム切片<span class="math inline">\(\alpha_{j}\)</span>を加えた。<span class="math inline">\(\alpha_{j}\)</span>は，平均ゼロ，標準偏差<span class="math inline">\(\sigma_{\alpha}\)</span>の正規分布に従って生成されるとする。</p>
-<p>正規分布以外の確率分布を扱うマルチレベルは，Rでは<code>lme4</code>パッケージの<code>glmer()</code>で扱うことができる。さっきの<code>lmer()</code>と同じ要領で，線形予測子に個体を識別する変数（<code>ID</code>）を加える。以下のように，<code>(1|ID)</code>というかたちで入れる。</p>
-<p>あとは，確率分布とリンク関数を指定する。指定の仕方は，<code>glm()</code>のときと同じ要領である。確率分布は<code>binomial</code>，リンク関数は<code>logit</code>を指定する。</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="12-glmm.html#cb443-1" aria-hidden="true" tabindex="-1"></a>model_logistic_glmm <span class="ot">=</span> <span class="fu">glmer</span>(<span class="at">data =</span> data_sample, y1 <span class="sc">~</span> x1 <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb443-2"><a href="12-glmm.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_logistic_glmm)</span></code></pre></div>
-<pre><code>## Generalized linear mixed model fit by maximum likelihood (Laplace
-##   Approximation) [glmerMod]
-##  Family: binomial  ( logit )
-## Formula: y1 ~ x1 + (1 | ID)
-##    Data: data_sample
-## 
-##      AIC      BIC   logLik deviance df.resid 
-##     14.3     16.4     -4.2      8.3       12 
-## 
-## Scaled residuals: 
-##      Min       1Q   Median       3Q      Max 
-## -0.01928  0.00000  0.00000  0.00000  0.04031 
-## 
-## Random effects:
-##  Groups Name        Variance Std.Dev.
-##  ID     (Intercept) 67795    260.4   
-## Number of obs: 15, groups:  ID, 3
-## 
-## Fixed effects:
-##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept) -220.575     27.154  -8.123 4.54e-16 ***
-## x1            38.996      4.804   8.117 4.78e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Correlation of Fixed Effects:
-##    (Intr)
-## x1 -0.987</code></pre>
-</div>
-</div>
-<div id="確認問題-9" class="section level2 unnumbered">
-<h2>確認問題</h2>
-<div id="問１-8" class="section level3 unnumbered">
-<h3>問１</h3>
-<p><code>car</code>パッケージに入っているカナダにおける職業の威信度に関する調査データ<code>Prestige</code>を使う。102業種に関する調査結果が入っている。</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="12-glmm.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb445-2"><a href="12-glmm.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Prestige)</span></code></pre></div>
-<pre><code>##                     education income women prestige census type
-## gov.administrators      13.11  12351 11.16     68.8   1113 prof
-## general.managers        12.26  25879  4.02     69.1   1130 prof
-## accountants             12.77   9271 15.70     63.4   1171 prof
-## purchasing.officers     11.42   8865  9.11     56.8   1175 prof
-## chemists                14.62   8403 11.68     73.5   2111 prof
-## physicists              15.64  11030  5.13     77.6   2113 prof</code></pre>
-<p><code>prestige</code>を応答変数，<code>education</code>, <code>income</code>及び <code>women</code>を予測変数，<code>type</code>をランダム効果（切片）としたマルチレベルモデルで解析せよ。応答変数が従う確率分布は，正規分布を用いるものとする。</p>
-<p>各予測変数が応答変数に及ぼす効果について述べよ（その予測変数が1単位変化すると，応答変数がどう変化するか）。</p>
-<p>なお，変数の意味は以下の通りである。<br />
-<code>prestige</code>：職業威信度（値が高いほど威信度が高い）<br />
-<code>education</code>：在職者の平均教育年数<br />
-<code>income</code>：平均所得（単位はドル）<br />
-<code>women</code>：女性の割合<br />
-<code>type</code>：職業のカテゴリ（bc=ブルーカラー，wc=ホワイトカラー，prof=専門職）</p>
-<p>ヒント：正規分布を扱うマルチレベルの場合は，<code>lme4</code>パッケージの<code>lmer()</code>を使えば良い。なお，出力時にメッセージが出ても無視して良い（中心化せよという命令だが，無視して良い）。</p>
-
-</div>
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="11-glm2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="13-Bayese.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

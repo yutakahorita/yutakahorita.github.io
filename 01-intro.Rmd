@@ -533,7 +533,7 @@ dat #データの中身がコンソールに出力される
 
 
 `tidyverse`パッケージをロードした上で，`read_excel()`を使う。  
-＊`readxl::read_excel`は，`readxl`パッケージに入っている`read_csv`という関数を使うということを意味する（第4章で，また説明する）。
+＊`readxl::read_excel`は，`readxl`パッケージに入っている`read_excel`という関数を使うということを意味する（第4章で，また説明する）。
 
 
 ```{r, eval=FALSE}

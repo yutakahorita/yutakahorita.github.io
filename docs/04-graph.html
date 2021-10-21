@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-10-14" />
+<meta name="date" content="2021-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -579,7 +579,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ggplot2の基本" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> ggplot2の基本</h2>
 <p>早速，<code>ggplot2</code>を使ってグラフを作ってみよう。以下のプログラムを実行してみよう。</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="04-graph.html#cb165-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="04-graph.html#cb165-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb165-2"><a href="04-graph.html#cb165-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
 <span id="cb165-3"><a href="04-graph.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Length of sepal&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Length of petal&quot;</span>) </span>
 <span id="cb165-4"><a href="04-graph.html#cb165-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
@@ -703,8 +703,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.4.1</span> ファセット（Facet）</h3>
 <p>グループごとにグラフを分けたい場合は，ファセット（facet）を利用すると良い。<code>facet_wrap()</code>を使う。</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="04-graph.html#cb180-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb180-2"><a href="04-graph.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Species)) </span>
-<span id="cb180-3"><a href="04-graph.html#cb180-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<span id="cb180-2"><a href="04-graph.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb180-3"><a href="04-graph.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Species)) </span>
+<span id="cb180-4"><a href="04-graph.html#cb180-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 </div>
 <div id="ラベルlabs" class="section level3" number="5.4.2">

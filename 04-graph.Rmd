@@ -52,7 +52,7 @@ boxplot(iris$Sepal.Length) #箱ひげ図を作成する
 
 ```{r}
 
-p = ggplot() + 
+p = ggplot2::ggplot() + 
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + 
   labs(x = "Length of sepal", y = "Length of petal") 
 p
@@ -219,7 +219,8 @@ p2
 
 ```{r, message=FALSE, warning=FALSE}
 p = ggplot2::ggplot() +
-  geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + facet_wrap(vars(Species)) 
+  geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + 
+  facet_wrap(vars(Species)) 
 p
 
 ```

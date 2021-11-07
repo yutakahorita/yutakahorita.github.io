@@ -5,6 +5,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(nnet)
 library(MASS)
+library(ordinal)
 library(pscl)
 library(knitr)
 ```
@@ -19,13 +20,16 @@ library(knitr)
 
 ## 準備
 
-`tidyverse`パッケージに加え，`MASS`，`nnet`パッケージを使う。  
-`MASS`パッケージは負の二項分布を用いたモデルのときに，`nnet`パッケージは多項ロジスティック回帰のときに必要になる。初めて使う際には，事前にインストールが必要なので注意。
+`tidyverse`パッケージに加え，`MASS`，`ordinal`，`nnet`パッケージを使う。  
+`MASS`パッケージは負の二項分布を用いたモデルのときに，`ordinal`パッケージは順序ロジスティック回帰のときに，`nnet`パッケージは多項ロジスティック回帰のときに必要になる。初めて使う際には，事前にインストールが必要なので注意。
 
 
 ```{r, eval=FALSE}
 
-library(tidyverse, MASS, nnet)
+library(tidyverse)
+library(MASS)
+library(ordinal)
+library(nnet)
 
 ```
 
@@ -102,7 +106,7 @@ $$
 
 
 ```{r}
-model_poisson = glm(data = d, breaks ~ A, family = poisson(link = "log"))
+model_poisson = glm(data = d, breaks ~ 1 + A, family = poisson(link = "log"))
 summary(model_poisson)
 
 mean(d$breaks)
@@ -114,7 +118,8 @@ var(d$breaks)
 
 ```{r, include = FALSE}
 
-model_poisson$deviance/model_poisson$df.residual
+library(performance)
+performance::check_overdispersion(model_poisson)
 
 ```
   
@@ -131,7 +136,7 @@ $$
 
 ```{r}
 
-model_nb = MASS::glm.nb(data = d, breaks ~ A) #lm関数と同じ要領で，線形の式を入力する。確率分布はオプションで指定しないで良い。
+model_nb = MASS::glm.nb(data = d, breaks ~ 1 + A) #lm関数と同じ要領で，線形の式を入力する。確率分布はオプションで指定しないで良い。
 summary(model_nb)
 
 ```
@@ -233,12 +238,19 @@ sample_ordered$Score = ordered(sample_ordered$Score, levels = c("1", "2", "3", "
 
 ### 解析 {-}
 
-応答変数を順序付きの因子型変数に変更したら，`MASS`パッケージに含まれている`polr()`で解析する。`lm()`と同じ要領で，応答変数~予測変数のモデルを書けば結果を出力してくれる。
+応答変数を順序付きの因子型変数に変更したら，`ordinal`パッケージに含まれている`clm()`で解析する。`lm()`と同じ要領で，応答変数~予測変数のモデルを書けば結果を出力してくれる。
+
+```{r, eval = TRUE, include=FALSE}
+
+model_polr = MASS::polr(data = sample_ordered, Score ~ 1 + Sleep, Hess = TRUE)
+summary(model_polr)
+
+```
 
 ```{r}
 
-model_polr = MASS::polr(data = sample_ordered, Score ~ Sleep, Hess = TRUE)
-summary(model_polr)
+model_ordinal = ordinal::clm(data = sample_ordered, Score ~ 1 + Sleep)
+summary(model_ordinal)
 
 ```
 
@@ -248,18 +260,20 @@ summary(model_polr)
 
 
 
-***
-`polr()`ではp値を出力してくれないので，求めたい場合は自分で計算する必要がある。t値を元に，以下のプログラムで計算する。
+```{r, include=FALSE, eval = FALSE}
 
-```{r}
+#***
+#`polr()`ではp値を出力してくれないので，求めたい場合は自分で計算する必要がある。t値を元に，以下のプログラムで計算する。
 
 coef_table = coef(summary(model_polr))
 p = pnorm(abs(coef_table[,"t value"]), lower.tail = FALSE)*2
 (cbind(coef_table, "p value" = p))
 
+#***
+
 ```
 
-***
+
 
 ## 多項ロジスティック回帰
 
@@ -302,10 +316,12 @@ Rには多項ロジスティック回帰を行うための関数として，`nne
 
 ```{r, message=FALSE, warning=FALSE}
 
-result_mnl = nnet::multinom(data = sample_mnl, Faculty ~ Male + Grade)
+result_mnl = nnet::multinom(data = sample_mnl, Faculty ~ 1 + Male + Grade)
 summary(result_mnl)
 
 ```
+
+
 
 `Coeffficients`の部分に，係数の推定結果が出力される。このモデルでは`Economics`が基準カテゴリとなっている（デフォルトで，アルファベット順で一番はじめに出てくるカテゴリが基準となる）。`Literature`の部分に出力されるのが上の式でいう$\alpha_{1}$, $\beta_{1, 1}$, $\beta_{2, 1}$に，`Physical`の部分に出力されるのが$\alpha_{2}$, $\beta_{1, 2}$, $\beta_{2, 2}$に相当する。  
   
@@ -344,6 +360,7 @@ p
 #サンプルデータの作成
 
 
+
 ### ゼロ過剰ポアソンモデルの詳細
 
 #ゼロ過剰ポアソンモデルでは，観測値でゼロが生じる過程として，2つの過程を想定する。
@@ -375,15 +392,22 @@ summary(model_zeroinfl)
 ```
 
 
+## 確認問題{-}
 
+`MASS`パッケージに入っているサンプルデータ，`housing`を使って練習をする。
+
+```{r}
+
+d = housing #dという名前で保存する
+d$ID = 1:nrow(d)
+
+head(d)
+
+```
+
+(1)Freqを応答変数，Contを予測変数としたポアソン回帰と，(2)同じくFreqを応答変数，Contを予測変数とした負の二項回帰を行い，結果を比較せよ。
 
 ```{r, include=FALSE, eval=FALSE}
-
-#確認問題
-#MASSのhousingを使う
-str(housing)
-d = housing
-d$ID = 1:nrow(d)
 
 mean(d$Freq)
 var(d$Freq)
@@ -391,8 +415,11 @@ var(d$Freq)
 ggplot() + 
   geom_histogram(data = d, aes(x = Freq), binwidth = 1)
 
-summary(glm(data = d, Freq ~ Cont, family = poisson(link = "log")))
-summary(glm.nb(data = d, Freq ~ Cont))
-summary(glmer(data = d, Freq ~ Cont + (1|ID), family=poisson))
+model_poisson = glm(data = d, Freq ~ 1 + Cont, family = poisson(link = "log"))
+summary(model_poisson)
+performance::check_overdispersion(model_poisson)
+
+model_nb = MASS::glm.nb(data = d, Freq ~ 1 + Cont)
+summary(model_nb)
 
 ```

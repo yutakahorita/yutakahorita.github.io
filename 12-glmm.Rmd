@@ -53,7 +53,7 @@ graph_1
 
 
 ```{r}
-iris_lm = lm(data = iris, Sepal.Width ~ Sepal.Length)
+iris_lm = lm(data = iris, Sepal.Width ~ 1 + Sepal.Length)
 summary(iris_lm)
 ```
 
@@ -64,7 +64,7 @@ summary(iris_lm)
 
 graph_lm = ggplot()+
   geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width), size = 3)  +
-  geom_smooth(data = iris, aes(x = Sepal.Length, y = Sepal.Width), formula = y~x, method = "lm", se = FALSE)
+  geom_smooth(data = iris, aes(x = Sepal.Length, y = Sepal.Width), formula = y~ 1 + x, method = "lm", se = FALSE)
 graph_lm
 
 ```
@@ -157,7 +157,7 @@ Rでマルチレベルモデルで解析を行うためには，外部パッケ�
 
 ```{r, message=FALSE, warning=FALSE}
 
-model_lmm = lmer(data= iris, Sepal.Length ~ Sepal.Width + (1|Species)) #(1|Species)を加える
+model_lmm = lmer(data= iris, Sepal.Length ~ 1 + Sepal.Width + (1|Species)) #(1|Species)を加える
 summary(model_lmm)
 
 ```
@@ -210,20 +210,24 @@ $$
 
 正規分布以外の確率分布を扱うマルチレベルは，Rでは`lme4`パッケージの`glmer()`で扱うことができる。さっきの`lmer()`と同じ要領で，線形予測子に個体を識別する変数（`ID`）を加える。以下のように，`(1|ID)`というかたちで入れる。  
   
-あとは，確率分布とリンク関数を指定する。指定の仕方は，`glm()`のときと同じ要領である。確率分布は`binomial`，リンク関数は`logit`を指定する。
+あとは，確率分布とリンク関数を指定する。指定の仕方は，`glm()`のときと同じ要領である。確率分布は`binomial`（二項分布），リンク関数は`logit`（ロジット関数）を指定する。リンク関数の指定は省略しても構わない（二項分布を指定すれば，デフォルトでロジット関数を選択してくれる）。
 
 
 ```{r, echo=TRUE}
 
-model_logistic_glmm = glmer(data = data_sample, y1 ~ x1 + (1|ID), family = binomial(link="logit"))
+model_logistic_glmm = glmer(data = data_sample, y1 ~ 1 + x1 + (1|ID), family = binomial(link="logit"))
 summary(model_logistic_glmm)
 
 ```
 
 
-
-```{r, eval = FALSE, echo = FALSE}
 ### ポアソン回帰
+
+
+同じく，`lme4`パッケージの`glmer()`を使う。確率分布は`poisson`（ポアソン分布），リンク関数は`log`（対数）を指定する。リンク関数の指定は省略しても構わない（ポアソン分布を指定すれば，デフォルトで対数関数を選択してくれる）。
+
+
+```{r}
 
 set.seed(1)
 alpha = 0.5
@@ -248,20 +252,57 @@ dat = data.frame(y = c(y_1, y_2, y_3, y_4, y_5),
            ID = sort(rep(1:5, 10)))
 dat$x_std = dat$x - mean(dat$x)
 
-summary(glmer(data = dat, y ~ x_std + (1|ID), family = poisson))
-summary(glm(data = dat, y ~ x_std, family = poisson))
-
-
 ggplot() + 
   geom_point(data = dat, aes(x = x, y = y)) +
   facet_wrap(vars(factor(ID)))
-
 
 ```
 
 
 
+```{r}
+result = glmer(data = dat, y ~ 1 + x_std + (1|ID), family = poisson(link="log"))
+summary(result)
+```
 
+
+### マルチレベルモデルによる過分散への対処
+
+ポアソン分布の理論的な分散よりも実際のデータの分散が大きい「過分散」がある場合には，ポアソン回帰の結果が信頼できなくなる問題があった。
+
+```{r}
+
+#サンプルデータの作成
+set.seed(1)
+N= 50
+x = rnorm(n=N, mean = 2, sd=1)
+lambda = exp(0.01+ 0.6*x + rnorm(n=N, mean=0, sd=1))
+y = rpois(n=N, lambda = lambda)
+dat = data.frame(y=y, x=x, ID = 1:50)
+
+result_poisson = glm(data = dat, y ~ 1 + x, family = poisson(link = "log"))
+summary(result_poisson)
+
+performance::check_overdispersion(result_poisson) #過分散のチェック
+
+```
+
+
+マルチレベルモデルでは，過分散の問題にも対処することができる。
+
+$$
+\lambda_{i} = \alpha_{0} + \beta x_{i} + \alpha_{i} \tag{2} \\
+\alpha_{i} \sim Normal(0, \sigma_{\alpha})\\
+y_{i} \sim Poisson(\lambda_{i})
+$$
+観測値ごとのランダム切片（$\alpha_{i}$）を加えて，余分な分散を別のパラメータ（$\sigma_{\alpha}$）で表現する。
+
+```{r}
+
+result_poisson_glmm = glmer(data = dat, y ~ 1 + x + (1|ID), family = poisson(link = "log"))
+summary(result_poisson_glmm)
+
+```
 
 ## 確認問題{-}
 
@@ -294,7 +335,7 @@ head(Prestige)
 
 ```{r, eval=FALSE, include=FALSE}
 
-result = lmer(data = Prestige, prestige ~ education + income + women + (1|type))
+result = lmer(data = Prestige, prestige ~ 1 + education + income + women + (1|type))
 summary(result)
 
 ```

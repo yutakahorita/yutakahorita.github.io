@@ -200,7 +200,7 @@ $$
 Rには，一般化線形モデルを扱うための関数`glm()`が用意されている。線形モデルを扱う`lm()`と同じ要領でプログラムを書けばよいが，確率分布とリンク関数のオプションを自分で指定する必要がある。先程のサンプルデータ`dat`で，`glm()`関数を使ってロジスティック回帰をやってみよう。
 
 ```{r, echo=TRUE}
-result_glm = glm(data = dat, y ~ x, family = binomial(link="logit"))
+result_glm = glm(data = dat, y ~ 1 + x, family = binomial(link="logit"))
 ```
 
 `glm`で設定すること：  
@@ -405,7 +405,7 @@ Rでポアソン回帰をやってみよう。一般化線形モデルを扱う�
 
 ```{r}
 
-result_poisson = glm(data = dat, y ~ x, family = poisson(link = "log"))
+result_poisson = glm(data = dat, y ~ 1 + x, family = poisson(link = "log"))
 summary(result_poisson)
 
 ```
@@ -432,6 +432,18 @@ ggplot() +
 
 ポアソン分布のパラメータ$\lambda$は，平均と分散の両方を意味するパラメータであった。つまり，ポアソン分布は平均と分散が等しい分布である。しかし，現実のデータでは平均と分散が等しいケースは少ない。逆に，分散が平均よりもかなり大きいケースがよく見られる。分散が平均よりも大きいときにポアソン回帰を使うと，分散を実際よりも小さいと判断して分析してしまい，予測変数が平均に与える効果を過大に評価してしまう恐れがある（p値を過剰に小さく判断してしまい，第一種の過誤を犯しやすくなる）。この問題は，**過分散(overdispersion)**と呼ばれる。  
   
+#### 過分散の確認方法
+
+`performance`パッケージの`check_collinearity()`関数で過分散の有無を確認することができる。
+
+```{r}
+
+library(performance)
+performance::check_overdispersion(result_poisson)
+
+```
+  
+
 ポアソン回帰で過分散が疑われる場合，対処法としては以下がある。  
 1. 応答変数が従う確率分布として，負の二項分布を用いたモデルで分析する。  
 2. 一般化線形混合モデルで，個体差を意味するパラメータを追加したモデルを用いる（分散を個体差パラメータに吸収させる）。  
@@ -470,7 +482,7 @@ Disease = c(0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0,  1, 0, 1, 0, 1, 1, 1, 1, 1
 data_q01 = data.frame(Disease = Disease, BMI = BMI, Exercise = Exercise, Sleep = Sleep)
 
 
-model3 = glm(data = data_q01, Disease ~ BMI + Exercise + Sleep, family=binomial(link="logit"))
+model3 = glm(data = data_q01, Disease ~ 1 + BMI + Exercise + Sleep, family=binomial(link="logit"))
 summary(model3)
 
 ```

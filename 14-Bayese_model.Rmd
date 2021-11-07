@@ -62,7 +62,7 @@ options(mc.cores = parallel::detectCores())
 第9章で，`iris`データを用いて以下の回帰分析を行った。
 
 ```{r}
-result = lm(data = iris, Petal.Length ~ Sepal.Length) 
+result = lm(data = iris, Petal.Length ~ 1 + Sepal.Length) 
 summary(result)
 ```
 
@@ -73,7 +73,7 @@ summary(result)
 
 ```{r, message = FALSE, warning=FALSE, results='hide'}
 result_brms_lm = brms::brm(data = iris, 
-                        Petal.Length ~ Sepal.Length, 
+                        Petal.Length ~ 1 + Sepal.Length, 
                         family = gaussian(link="identity"),
                         seed = 1 
                         )
@@ -124,7 +124,7 @@ plot(result_brms_lm)
 ```{r}
 
 brms::get_prior(data= iris, 
-                Sepal.Length ~ Sepal.Width,
+                Sepal.Length ~ 1 + Sepal.Width,
                 family = gaussian(link="identity")) 
 
 ```
@@ -135,7 +135,7 @@ brms::get_prior(data= iris,
 ```{r, eval = FALSE}
 
 result_brm_lm = brms::brm(data= iris, 
-                          Sepal.Length ~ Sepal.Width,
+                          Sepal.Length ~ 1 + Sepal.Width,
                           family = gaussian(link="identity"),
                           prior = c(set_prior("normal(0,10)", class = "b"),
                                     #傾きbの事前分布を平均0, 標準偏差10の正規分布に設定
@@ -155,7 +155,7 @@ brms::prior_summary(result_brm_lm) #prior_summaryに結果を入れると，設�
 
 ```{r, eval = FALSE}
 result_brms = brms::brm(data = iris, 
-                        Petal.Length ~ Sepal.Length, 
+                        Petal.Length ~ 1 + Sepal.Length, 
                         iter = 2000,
                         warmup = 1000,
                         chains = 4,
@@ -260,7 +260,7 @@ dat$x = dat$V1 #V1という変数をxという名前に変える
 
 ```{r, message = FALSE}
 
-result_glm = glm(data = dat, y ~ x, family = binomial(link="logit"))
+result_glm = glm(data = dat, y ~ 1 + x, family = binomial(link="logit"))
 summary(result_glm)
 
 ```
@@ -270,7 +270,7 @@ summary(result_glm)
 ```{r, message = FALSE, warning=FALSE, results='hide'}
 
 result_brms_logistic = brms::brm(data = dat, 
-          y ~ x, 
+          y ~ 1 + x, 
           family = binomial(link="logit") #確率分布にbinomial，linkにlogitを指定
           )
 
@@ -301,7 +301,7 @@ dat = data.frame(y=y, x=x)
 `glm()`で推定した結果が以下である。
 
 ```{r, message = FALSE}
-result_poisson = glm(data = dat, y ~ x, family = poisson(link = "log"))
+result_poisson = glm(data = dat, y ~ 1 + x, family = poisson(link = "log"))
 summary(result_poisson)
 ```
 
@@ -310,7 +310,7 @@ summary(result_poisson)
 ```{r, message = FALSE, warning=FALSE, results='hide'}
 
 result_brms_poisson = brms::brm(data = dat, 
-                                 y ~ x, 
+                                 y ~ 1 + x, 
                                  family = poisson(link="log")) #確率分布にpoisson，リンク関数にlogを指定する
 
 ```
@@ -334,7 +334,7 @@ summary(result_brms_poisson)
 
 ```{r, message = FALSE, warning=FALSE, results='hide'}
 model_brm_lmm = brms::brm(data= iris, 
-                          Sepal.Length ~ Sepal.Width + (1|Species),#(1|Species)をランダム切片として加える
+                          Sepal.Length ~ 1 + Sepal.Width + (1|Species),#(1|Species)をランダム切片として加える
                           family = gaussian(link="identity"),
                           seed = 1
                           )
@@ -354,7 +354,7 @@ summary(model_brm_lmm)
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 model_brm_lmm_2 = brms::brm(data= iris, 
-                          Sepal.Length ~ Sepal.Width + (Sepal.Width|Species),
+                          Sepal.Length ~ 1 + Sepal.Width + (Sepal.Width|Species),
                           #(Sepal.Width|Species)を加える。Speciesごとに異なる切片とSepal.Widthに係る傾きを想定する。
                           family = gaussian(link="identity"),
                           seed = 1

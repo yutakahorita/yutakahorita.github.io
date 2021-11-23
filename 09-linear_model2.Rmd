@@ -710,7 +710,7 @@ ggplot() +
 ```
 
 
-breaksを応答変数，wool, tension, woolとtensionの交互作用項を予測変数とした線形モデルを行い，切片，woolの傾き，tensionの傾き，交互作用項の推定値を報告せよ。  
+breaksを応答変数，wool, tension, wool及びtensionの交互作用項を予測変数とした線形モデルを行い，切片，woolの傾き，tensionの傾き，交互作用項の推定値を報告せよ。  
 
 ```{r eval=FALSE, include=FALSE}
 
@@ -733,7 +733,7 @@ head(prac_dat_3)
 
 #### 3-1 {-}
 
-`Ozone`を応答変数，`Solar.R`, `Wind`, `Temp`を予測変数とした線形モデルを行う。そして，切片及び傾きの推定値を報告せよ。
+`Ozone`を応答変数，`Solar.R`, `Wind`, `Temp`の3つを予測変数とした線形モデルを行う。そして，切片及び傾きの推定値を報告せよ。
 
 ```{r eval=FALSE, include=FALSE}
 
@@ -748,8 +748,8 @@ summary(lm(data = prac_dat_3, Ozone ~ 1 + Solar.R + Wind + Temp))
 #### 3-3 {-}
 
 以下の3種類の線形モデルの解析を行い，  
-モデル1: `Ozone`を応答変数，`Solar.R`, `Wind`, `Temp`を予測変数とした線形モデル  
-モデル2: `Ozone`を応答変数，`Solar.R`,  `Temp`を予測変数とした線形モデル  
+モデル1: `Ozone`を応答変数，`Solar.R`, `Wind`, `Temp`の3つを予測変数とした線形モデル  
+モデル2: `Ozone`を応答変数，`Solar.R`,  `Temp`の2つを予測変数とした線形モデル  
 モデル3: `Ozone`を応答変数，`Temp`を予測変数とした線形モデル  
   
 それぞれのモデルのAICを報告するとともに，3つのモデルのうち予測力が高いと考えられるものはどれかを報告せよ。

@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-11-07" />
+<meta name="date" content="2021-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -420,6 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#確認問題-8"><i class="fa fa-check"></i>確認問題</a>
 <ul>
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問１-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問２-6"><i class="fa fa-check"></i>問２</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="11-glm2.html"><a href="11-glm2.html"><i class="fa fa-check"></i><b>12</b> 一般化線形モデルの応用</a>
@@ -568,10 +569,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.1</span> 準備</h2>
 <p><code>tidyverse</code>パッケージに加え，<code>MASS</code>，<code>ordinal</code>，<code>nnet</code>パッケージを使う。<br />
 <code>MASS</code>パッケージは負の二項分布を用いたモデルのときに，<code>ordinal</code>パッケージは順序ロジスティック回帰のときに，<code>nnet</code>パッケージは多項ロジスティック回帰のときに必要になる。初めて使う際には，事前にインストールが必要なので注意。</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="11-glm2.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb397-2"><a href="11-glm2.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb397-3"><a href="11-glm2.html#cb397-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ordinal)</span>
-<span id="cb397-4"><a href="11-glm2.html#cb397-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="11-glm2.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb398-2"><a href="11-glm2.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb398-3"><a href="11-glm2.html#cb398-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ordinal)</span>
+<span id="cb398-4"><a href="11-glm2.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span></code></pre></div>
 </div>
 <div id="負の二項回帰" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> 負の二項回帰</h2>
@@ -580,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="負の二項分布" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">12.2.1</span> 負の二項分布</h3>
 <p>例えばコインを投げて表が出る確率を0.5として，表が3回出るまで投げると決めたとする。8回投げたところで表が3回出た場合，表が3回出る確率は以下から求めることができる。</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="11-glm2.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">8-1</span>, <span class="dv">3-1</span>)<span class="sc">*</span><span class="fl">0.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)<span class="sc">^</span>(<span class="dv">8-3</span>)<span class="sc">*</span><span class="fl">0.5</span> <span class="co">#つまり，7回中表が2回，裏が5回出て，最後の１回で表が出る確率を求める。</span></span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="11-glm2.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">8-1</span>, <span class="dv">3-1</span>)<span class="sc">*</span><span class="fl">0.5</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)<span class="sc">^</span>(<span class="dv">8-3</span>)<span class="sc">*</span><span class="fl">0.5</span> <span class="co">#つまり，7回中表が2回，裏が5回出て，最後の１回で表が出る確率を求める。</span></span></code></pre></div>
 <pre><code>## [1] 0.08203125</code></pre>
 <p>これを一般化した式が以下である。成功確率を<span class="math inline">\(q\)</span>として，<span class="math inline">\(r\)</span>回成功するまでに試行が<span class="math inline">\(x\)</span>回かかる確率を表した確率分布が，負の二項分布である。</p>
 <p><span class="math display">\[
@@ -591,23 +592,23 @@ P(x) = {}_{x-1}\mathrm{C}_{r-1} q^{r}(1-q)^{x-r}
 P(y) = {}_{y+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{y}
 \]</span></p>
 <p>Rでも<code>nbinom</code>で負の二項分布の確率を計算することができる。</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="11-glm2.html#cb400-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb400-2"><a href="11-glm2.html#cb400-2" aria-hidden="true" tabindex="-1"></a>p_y <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">10</span> <span class="sc">-</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
-<span id="cb400-3"><a href="11-glm2.html#cb400-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb400-4"><a href="11-glm2.html#cb400-4" aria-hidden="true" tabindex="-1"></a>d_plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">p_y =</span> p_y)</span>
-<span id="cb400-5"><a href="11-glm2.html#cb400-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb400-6"><a href="11-glm2.html#cb400-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb400-7"><a href="11-glm2.html#cb400-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> d_plot, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p_y), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb400-8"><a href="11-glm2.html#cb400-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;number of trials&quot;</span>, <span class="at">y =</span> <span class="st">&quot;probability&quot;</span>, <span class="at">title =</span> <span class="st">&quot;number of success = 3&quot;</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="11-glm2.html#cb401-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb401-2"><a href="11-glm2.html#cb401-2" aria-hidden="true" tabindex="-1"></a>p_y <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">10</span> <span class="sc">-</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb401-3"><a href="11-glm2.html#cb401-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-4"><a href="11-glm2.html#cb401-4" aria-hidden="true" tabindex="-1"></a>d_plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">p_y =</span> p_y)</span>
+<span id="cb401-5"><a href="11-glm2.html#cb401-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-6"><a href="11-glm2.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb401-7"><a href="11-glm2.html#cb401-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> d_plot, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p_y), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb401-8"><a href="11-glm2.html#cb401-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;number of trials&quot;</span>, <span class="at">y =</span> <span class="st">&quot;probability&quot;</span>, <span class="at">title =</span> <span class="st">&quot;number of success = 3&quot;</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
 <p>負の二項分布の期待値を<span class="math inline">\(E(x)=\mu\)</span>とすると，分散は<span class="math inline">\(Var(x)=\mu + \mu^{2}/r\)</span>で，分散が期待値（平均）よりも<span class="math inline">\(\mu^{2}/r\)</span>大きい。負の二項分布によって，分散が平均よりも大きい分布を扱うことができる。</p>
 </div>
 <div id="rでの負の二項回帰" class="section level3" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> Rでの負の二項回帰</h3>
 <p>Rでは，<code>MASS</code>パッケージに含まれている<code>glm.nb()</code>関数で，負の二項回帰を扱うことができる。Rに入っている<code>warpbreaks</code>をサンプルデータとして，ポアソン回帰と負の二項回帰の結果を比較してみよう。</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="11-glm2.html#cb401-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> warpbreaks <span class="co">#別の名前(d)で保存する</span></span>
-<span id="cb401-2"><a href="11-glm2.html#cb401-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>A <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(d<span class="sc">$</span>wool <span class="sc">==</span> <span class="st">&quot;A&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#Aなら1, Bなら0のダミー</span></span>
-<span id="cb401-3"><a href="11-glm2.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="11-glm2.html#cb402-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> warpbreaks <span class="co">#別の名前(d)で保存する</span></span>
+<span id="cb402-2"><a href="11-glm2.html#cb402-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>A <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(d<span class="sc">$</span>wool <span class="sc">==</span> <span class="st">&quot;A&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#Aなら1, Bなら0のダミー</span></span>
+<span id="cb402-3"><a href="11-glm2.html#cb402-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 <pre><code>##   breaks wool tension A
 ## 1     26    A       L 1
 ## 2     30    A       L 1
@@ -615,16 +616,16 @@ P(y) = {}_{y+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{y}
 ## 4     25    A       L 1
 ## 5     70    A       L 1
 ## 6     52    A       L 1</code></pre>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="11-glm2.html#cb403-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb403-2"><a href="11-glm2.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> breaks, <span class="at">fill =</span> wool), <span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="11-glm2.html#cb404-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb404-2"><a href="11-glm2.html#cb404-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> breaks, <span class="at">fill =</span> wool), <span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
 <p><code>breaks</code>に対する<code>wool</code>(A or B)の効果を検討する。まずは，ポアソン回帰の結果を見てみる。<code>breaks</code>を<span class="math inline">\(y\)</span>，<code>A</code>を<span class="math inline">\(x\)</span>とすると，モデルは以下のように表現できる。</p>
 <p><span class="math display">\[
 \lambda = \alpha + \beta x\\
 y \sim Poisson(\lambda)
 \]</span></p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="11-glm2.html#cb404-1" aria-hidden="true" tabindex="-1"></a>model_poisson <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> d, breaks <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> A, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
-<span id="cb404-2"><a href="11-glm2.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_poisson)</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="11-glm2.html#cb405-1" aria-hidden="true" tabindex="-1"></a>model_poisson <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> d, breaks <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> A, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
+<span id="cb405-2"><a href="11-glm2.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_poisson)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = breaks ~ 1 + A, family = poisson(link = &quot;log&quot;), 
@@ -648,9 +649,9 @@ y \sim Poisson(\lambda)
 ## AIC: 560
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="11-glm2.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>breaks)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="11-glm2.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>breaks)</span></code></pre></div>
 <pre><code>## [1] 28.14815</code></pre>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="11-glm2.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(d<span class="sc">$</span>breaks)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="11-glm2.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(d<span class="sc">$</span>breaks)</span></code></pre></div>
 <pre><code>## [1] 174.2041</code></pre>
 <p><code>A</code>に係る傾きの推定値について，かなり小さいp値が推定されている。</p>
 <p>次に，負の二項回帰の結果と比較してみよう。</p>
@@ -659,8 +660,8 @@ y \sim Poisson(\lambda)
 y \sim NegativeBinom(\mu, r)
 \]</span></p>
 <p><code>MASS</code>パッケージの<code>glm.nb()</code>を使う。</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="11-glm2.html#cb410-1" aria-hidden="true" tabindex="-1"></a>model_nb <span class="ot">=</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(<span class="at">data =</span> d, breaks <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> A) <span class="co">#lm関数と同じ要領で，線形の式を入力する。確率分布はオプションで指定しないで良い。</span></span>
-<span id="cb410-2"><a href="11-glm2.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_nb)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="11-glm2.html#cb411-1" aria-hidden="true" tabindex="-1"></a>model_nb <span class="ot">=</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(<span class="at">data =</span> d, breaks <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> A) <span class="co">#lm関数と同じ要領で，線形の式を入力する。確率分布はオプションで指定しないで良い。</span></span>
+<span id="cb411-2"><a href="11-glm2.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_nb)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## MASS::glm.nb(formula = breaks ~ 1 + A, data = d, init.theta = 6.960797279, 
@@ -700,11 +701,11 @@ y \sim NegativeBinom(\mu, r)
 <div id="例題" class="section level3" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> 例題</h3>
 <p>例えば，<code>Score</code>を試験の成績を意味する順序尺度として「1=不可，2=可，3=良，4=優，5=秀」の値を取るとする。この成績<code>Score</code>に対して，試験前日の睡眠時間<code>Sleep</code>が及ぼす影響を検討するとしよう。</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="11-glm2.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="do">###サンプルデータの作成</span></span>
-<span id="cb412-2"><a href="11-glm2.html#cb412-2" aria-hidden="true" tabindex="-1"></a>Sleep <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
-<span id="cb412-3"><a href="11-glm2.html#cb412-3" aria-hidden="true" tabindex="-1"></a>Score <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb412-4"><a href="11-glm2.html#cb412-4" aria-hidden="true" tabindex="-1"></a>sample_ordered <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Score =</span> Score, <span class="at">Sleep =</span> Sleep)</span>
-<span id="cb412-5"><a href="11-glm2.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_ordered)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="11-glm2.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="do">###サンプルデータの作成</span></span>
+<span id="cb413-2"><a href="11-glm2.html#cb413-2" aria-hidden="true" tabindex="-1"></a>Sleep <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
+<span id="cb413-3"><a href="11-glm2.html#cb413-3" aria-hidden="true" tabindex="-1"></a>Score <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb413-4"><a href="11-glm2.html#cb413-4" aria-hidden="true" tabindex="-1"></a>sample_ordered <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Score =</span> Score, <span class="at">Sleep =</span> Sleep)</span>
+<span id="cb413-5"><a href="11-glm2.html#cb413-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_ordered)</span></code></pre></div>
 <pre><code>##   Score Sleep
 ## 1     3     6
 ## 2     3     1
@@ -712,9 +713,9 @@ y \sim NegativeBinom(\mu, r)
 ## 4     2     2
 ## 5     3     5
 ## 6     3     6</code></pre>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="11-glm2.html#cb414-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb414-2"><a href="11-glm2.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">data =</span> sample_ordered, <span class="fu">aes</span>(<span class="at">x =</span> Sleep, <span class="at">y =</span> Score))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="11-glm2.html#cb415-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb415-2"><a href="11-glm2.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">data =</span> sample_ordered, <span class="fu">aes</span>(<span class="at">x =</span> Sleep, <span class="at">y =</span> Score))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 </div>
 <div id="順序ロジスティック回帰モデルの詳細" class="section level3" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> 順序ロジスティック回帰モデルの詳細</h3>
@@ -754,17 +755,17 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 <div id="準備-5" class="section level3 unnumbered">
 <h3>準備</h3>
 <p>解析の前に，Rで順序尺度を扱う場合は，変数を順序付きの因子型(factor)変数にする必要がある。<code>factor()</code>もしくは<code>ordered()</code>のいずれかの方法で作成する。</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="11-glm2.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co">#以下のいずれかの方法で因子型に変換する</span></span>
-<span id="cb415-2"><a href="11-glm2.html#cb415-2" aria-hidden="true" tabindex="-1"></a>sample_ordered<span class="sc">$</span>Score <span class="ot">=</span> <span class="fu">factor</span>(sample_ordered<span class="sc">$</span>Score, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb415-3"><a href="11-glm2.html#cb415-3" aria-hidden="true" tabindex="-1"></a>sample_ordered<span class="sc">$</span>Score <span class="ot">=</span> <span class="fu">ordered</span>(sample_ordered<span class="sc">$</span>Score, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>))</span>
-<span id="cb415-4"><a href="11-glm2.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="co">#levelsで，水準の順序を指定する</span></span>
-<span id="cb415-5"><a href="11-glm2.html#cb415-5" aria-hidden="true" tabindex="-1"></a><span class="co">#factor()では，オプションoredered=TRUEを加える</span></span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="11-glm2.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co">#以下のいずれかの方法で因子型に変換する</span></span>
+<span id="cb416-2"><a href="11-glm2.html#cb416-2" aria-hidden="true" tabindex="-1"></a>sample_ordered<span class="sc">$</span>Score <span class="ot">=</span> <span class="fu">factor</span>(sample_ordered<span class="sc">$</span>Score, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb416-3"><a href="11-glm2.html#cb416-3" aria-hidden="true" tabindex="-1"></a>sample_ordered<span class="sc">$</span>Score <span class="ot">=</span> <span class="fu">ordered</span>(sample_ordered<span class="sc">$</span>Score, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>))</span>
+<span id="cb416-4"><a href="11-glm2.html#cb416-4" aria-hidden="true" tabindex="-1"></a><span class="co">#levelsで，水準の順序を指定する</span></span>
+<span id="cb416-5"><a href="11-glm2.html#cb416-5" aria-hidden="true" tabindex="-1"></a><span class="co">#factor()では，オプションoredered=TRUEを加える</span></span></code></pre></div>
 </div>
 <div id="解析" class="section level3 unnumbered">
 <h3>解析</h3>
 <p>応答変数を順序付きの因子型変数に変更したら，<code>ordinal</code>パッケージに含まれている<code>clm()</code>で解析する。<code>lm()</code>と同じ要領で，応答変数~予測変数のモデルを書けば結果を出力してくれる。</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="11-glm2.html#cb416-1" aria-hidden="true" tabindex="-1"></a>model_ordinal <span class="ot">=</span> ordinal<span class="sc">::</span><span class="fu">clm</span>(<span class="at">data =</span> sample_ordered, Score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sleep)</span>
-<span id="cb416-2"><a href="11-glm2.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_ordinal)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="11-glm2.html#cb417-1" aria-hidden="true" tabindex="-1"></a>model_ordinal <span class="ot">=</span> ordinal<span class="sc">::</span><span class="fu">clm</span>(<span class="at">data =</span> sample_ordered, Score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sleep)</span>
+<span id="cb417-2"><a href="11-glm2.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_ordinal)</span></code></pre></div>
 <pre><code>## formula: Score ~ 1 + Sleep
 ## data:    sample_ordered
 ## 
@@ -796,13 +797,13 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 <div id="例題-1" class="section level3 unnumbered">
 <h3>例題</h3>
 <p>高校生が進学先（大学の学部）を選択する場合を例として考える。学部の種類（文学部，経済学部，理学部など）には順序関係はないので，学部の種類は名義尺度である。性別，高校のときの成績が学科選択に及ぼす影響を検討する。</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="11-glm2.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="do">###サンプルデータの作成</span></span>
-<span id="cb418-2"><a href="11-glm2.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb418-3"><a href="11-glm2.html#cb418-3" aria-hidden="true" tabindex="-1"></a>Male <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">25</span>))</span>
-<span id="cb418-4"><a href="11-glm2.html#cb418-4" aria-hidden="true" tabindex="-1"></a>Grade <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">2</span>)</span>
-<span id="cb418-5"><a href="11-glm2.html#cb418-5" aria-hidden="true" tabindex="-1"></a>Faculty <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Literature&quot;</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;Economics&quot;</span>, <span class="dv">20</span>), <span class="fu">rep</span>(<span class="st">&quot;Physical&quot;</span>, <span class="dv">15</span>))</span>
-<span id="cb418-6"><a href="11-glm2.html#cb418-6" aria-hidden="true" tabindex="-1"></a>sample_mnl <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Faculty =</span> Faculty, <span class="at">Male =</span> Male, <span class="at">Grade =</span> Grade)</span>
-<span id="cb418-7"><a href="11-glm2.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_mnl)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="11-glm2.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="do">###サンプルデータの作成</span></span>
+<span id="cb419-2"><a href="11-glm2.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb419-3"><a href="11-glm2.html#cb419-3" aria-hidden="true" tabindex="-1"></a>Male <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">25</span>))</span>
+<span id="cb419-4"><a href="11-glm2.html#cb419-4" aria-hidden="true" tabindex="-1"></a>Grade <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">2</span>)</span>
+<span id="cb419-5"><a href="11-glm2.html#cb419-5" aria-hidden="true" tabindex="-1"></a>Faculty <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Literature&quot;</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;Economics&quot;</span>, <span class="dv">20</span>), <span class="fu">rep</span>(<span class="st">&quot;Physical&quot;</span>, <span class="dv">15</span>))</span>
+<span id="cb419-6"><a href="11-glm2.html#cb419-6" aria-hidden="true" tabindex="-1"></a>sample_mnl <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Faculty =</span> Faculty, <span class="at">Male =</span> Male, <span class="at">Grade =</span> Grade)</span>
+<span id="cb419-7"><a href="11-glm2.html#cb419-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_mnl)</span></code></pre></div>
 <pre><code>##      Faculty Male    Grade
 ## 1 Literature    0 3.747092
 ## 2 Literature    1 5.367287
@@ -825,12 +826,12 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 <div id="rでの多項ロジスティック回帰" class="section level3" number="12.4.2">
 <h3><span class="header-section-number">12.4.2</span> Rでの多項ロジスティック回帰</h3>
 <p>Rには多項ロジスティック回帰を行うための関数として，<code>nnet</code>パッケージの<code>multinom()</code>関数がある。<code>lm()</code>と同じ要領でモデルを記述すると，推定結果を出力してくれる。先ほど作ったサンプルデータ<code>sample_mnl</code>で，多項ロジスティック回帰を行ってみる。</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="11-glm2.html#cb420-1" aria-hidden="true" tabindex="-1"></a>result_mnl <span class="ot">=</span> nnet<span class="sc">::</span><span class="fu">multinom</span>(<span class="at">data =</span> sample_mnl, Faculty <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Male <span class="sc">+</span> Grade)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="11-glm2.html#cb421-1" aria-hidden="true" tabindex="-1"></a>result_mnl <span class="ot">=</span> nnet<span class="sc">::</span><span class="fu">multinom</span>(<span class="at">data =</span> sample_mnl, Faculty <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Male <span class="sc">+</span> Grade)</span></code></pre></div>
 <pre><code>## # weights:  12 (6 variable)
 ## initial  value 54.930614 
 ## final  value 54.309165 
 ## converged</code></pre>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="11-glm2.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_mnl)</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="11-glm2.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_mnl)</span></code></pre></div>
 <pre><code>## Call:
 ## nnet::multinom(formula = Faculty ~ 1 + Male + Grade, data = sample_mnl)
 ## 
@@ -851,10 +852,10 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 <p>このように，多項ロジスティック回帰の係数はある基準カテゴリと比較した上での効果を意味するため，解釈は複雑になる。</p>
 <hr />
 <p><code>multinom()</code>ではp値を出力してくれないので，求めたい場合は自分で計算する必要がある。以下には，z scoreを元に計算する方法を示す。</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="11-glm2.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co">#p値の出力</span></span>
-<span id="cb424-2"><a href="11-glm2.html#cb424-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">summary</span>(result_mnl)<span class="sc">$</span>coefficients<span class="sc">/</span><span class="fu">summary</span>(result_mnl)<span class="sc">$</span>standard.errors</span>
-<span id="cb424-3"><a href="11-glm2.html#cb424-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb424-4"><a href="11-glm2.html#cb424-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="11-glm2.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co">#p値の出力</span></span>
+<span id="cb425-2"><a href="11-glm2.html#cb425-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">summary</span>(result_mnl)<span class="sc">$</span>coefficients<span class="sc">/</span><span class="fu">summary</span>(result_mnl)<span class="sc">$</span>standard.errors</span>
+<span id="cb425-3"><a href="11-glm2.html#cb425-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb425-4"><a href="11-glm2.html#cb425-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <pre><code>##            (Intercept)      Male     Grade
 ## Literature   0.7644787 0.8585197 0.8998131
 ## Physical     0.5323786 0.8132228 0.7123104</code></pre>
@@ -864,10 +865,10 @@ Pr(y ≤ k) = \frac{\exp(\alpha_{k} - \eta)}{1+\exp(\alpha_{k} - \eta)}
 <div id="確認問題-9" class="section level2 unnumbered">
 <h2>確認問題</h2>
 <p><code>MASS</code>パッケージに入っているサンプルデータ，<code>housing</code>を使って練習をする。</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="11-glm2.html#cb426-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> housing <span class="co">#dという名前で保存する</span></span>
-<span id="cb426-2"><a href="11-glm2.html#cb426-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>ID <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(d)</span>
-<span id="cb426-3"><a href="11-glm2.html#cb426-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-4"><a href="11-glm2.html#cb426-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="11-glm2.html#cb427-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> housing <span class="co">#dという名前で保存する</span></span>
+<span id="cb427-2"><a href="11-glm2.html#cb427-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>ID <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(d)</span>
+<span id="cb427-3"><a href="11-glm2.html#cb427-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-4"><a href="11-glm2.html#cb427-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
 <pre><code>##      Sat   Infl  Type Cont Freq ID
 ## 1    Low    Low Tower  Low   21  1
 ## 2 Medium    Low Tower  Low   21  2

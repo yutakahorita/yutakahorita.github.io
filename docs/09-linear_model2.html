@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-11-07" />
+<meta name="date" content="2021-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -420,6 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#確認問題-8"><i class="fa fa-check"></i>確認問題</a>
 <ul>
 <li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問１-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問２-6"><i class="fa fa-check"></i>問２</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="11-glm2.html"><a href="11-glm2.html"><i class="fa fa-check"></i><b>12</b> 一般化線形モデルの応用</a>
@@ -1297,7 +1298,7 @@ AIC = -2 \log L + 2k \tag{11}\\
 <div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="09-linear_model2.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb369-2"><a href="09-linear_model2.html#cb369-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_2, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks, <span class="at">fill =</span> tension))</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
-<p>breaksを応答変数，wool, tension, woolとtensionの交互作用項を予測変数とした線形モデルを行い，切片，woolの傾き，tensionの傾き，交互作用項の推定値を報告せよ。</p>
+<p>breaksを応答変数，wool, tension, wool及びtensionの交互作用項を予測変数とした線形モデルを行い，切片，woolの傾き，tensionの傾き，交互作用項の推定値を報告せよ。</p>
 </div>
 <div id="問3" class="section level3 unnumbered">
 <h3>問3</h3>
@@ -1314,7 +1315,7 @@ AIC = -2 \log L + 2k \tag{11}\\
 ## 8    19      99 13.8   59     5   8</code></pre>
 <div id="section-3" class="section level4 unnumbered">
 <h4>3-1</h4>
-<p><code>Ozone</code>を応答変数，<code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>を予測変数とした線形モデルを行う。そして，切片及び傾きの推定値を報告せよ。</p>
+<p><code>Ozone</code>を応答変数，<code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>の3つを予測変数とした線形モデルを行う。そして，切片及び傾きの推定値を報告せよ。</p>
 </div>
 <div id="section-4" class="section level4 unnumbered">
 <h4>3-2</h4>
@@ -1323,8 +1324,8 @@ AIC = -2 \log L + 2k \tag{11}\\
 <div id="section-5" class="section level4 unnumbered">
 <h4>3-3</h4>
 <p>以下の3種類の線形モデルの解析を行い，<br />
-モデル1: <code>Ozone</code>を応答変数，<code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>を予測変数とした線形モデル<br />
-モデル2: <code>Ozone</code>を応答変数，<code>Solar.R</code>, <code>Temp</code>を予測変数とした線形モデル<br />
+モデル1: <code>Ozone</code>を応答変数，<code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>の3つを予測変数とした線形モデル<br />
+モデル2: <code>Ozone</code>を応答変数，<code>Solar.R</code>, <code>Temp</code>の2つを予測変数とした線形モデル<br />
 モデル3: <code>Ozone</code>を応答変数，<code>Temp</code>を予測変数とした線形モデル</p>
 <p>それぞれのモデルのAICを報告するとともに，3つのモデルのうち予測力が高いと考えられるものはどれかを報告せよ。</p>
 

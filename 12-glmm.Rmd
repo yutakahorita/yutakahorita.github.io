@@ -275,15 +275,17 @@ summary(result)
 #サンプルデータの作成
 set.seed(1)
 N= 50
-x = rnorm(n=N, mean = 2, sd=1)
-lambda = exp(0.01+ 0.6*x + rnorm(n=N, mean=0, sd=1))
+x = rnorm(n=N, mean = 2, sd = 1)
+e = rnorm(n=N, mean = 0, sd = 1)
+lambda = exp(0.01 + 0.1*x + e)
 y = rpois(n=N, lambda = lambda)
-dat = data.frame(y=y, x=x, ID = 1:50)
+dat_dis = data.frame(y=y, x=x)
 
-result_poisson = glm(data = dat, y ~ 1 + x, family = poisson(link = "log"))
-summary(result_poisson)
+result_dis = glm(data = dat_dis, y ~ 1 + x, family = poisson(link = "log"))
+summary(result_dis)
 
-performance::check_overdispersion(result_poisson) #過分散のチェック
+library(performance)
+performance::check_overdispersion(result_dis) #過分散のチェック
 
 ```
 
@@ -299,10 +301,15 @@ $$
 
 ```{r}
 
-result_poisson_glmm = glmer(data = dat, y ~ 1 + x + (1|ID), family = poisson(link = "log"))
+dat_dis$ID = 1:nrow(dat_dis) #観測値ごとに番号を割り振る（1からデータ数までの数値の連続）
+head(dat_dis)
+
+result_poisson_glmm = glmer(data = dat_dis, y ~ 1 + x + (1|ID), family = poisson(link = "log"))
 summary(result_poisson_glmm)
 
 ```
+
+ランダム切片を入れない通常のポアソン回帰では予測変数`x`は`y`に対して有意な効果を有していたが，観測値ごとのランダム切片を加えたマルチレベルモデルでは，`x`の係数が小さくなり有意な効果も見られなくなった。通常のポアソン回帰では過分散の影響で`x`の効果を過剰に評価していたことが伺える。余計な分散をランダム切片に吸収させることで，予測変数が持つ効果を推定することができた。
 
 ## 確認問題{-}
 

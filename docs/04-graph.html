@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-11-25" />
+<meta name="date" content="2021-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -510,19 +510,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
 <li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a></li>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.5</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.5.1</b> ポアソン回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.6</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.6.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.6.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
+<li class="chapter" data-level="15.7" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.7</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.7.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.7.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.7.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.7.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
@@ -741,7 +742,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="図の保存" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> 図の保存</h2>
-<p><code>ggsave()</code>を使う。<code>plot</code>に保存した図を，<code>filename</code>にファイル名を指定すると，ワーキングディレクトリに作成した図が保存される。</p>
+<p><code>ggplot2</code>パッケージの<code>ggsave()</code>で保存できる。<code>plot</code>に保存した図を，<code>filename</code>にファイル名を指定すると，ワーキングディレクトリに作成した図が保存される。</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="04-graph.html#cb187-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb187-2"><a href="04-graph.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
 <span id="cb187-3"><a href="04-graph.html#cb187-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sepal Length&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Petal Length&quot;</span>) <span class="sc">+</span> </span>
@@ -750,6 +751,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb187-6"><a href="04-graph.html#cb187-6" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> p, <span class="at">filename =</span> <span class="st">&quot;plot.png&quot;</span>) <span class="co">#ファイル名を指定する。拡張子も忘れずにつける。</span></span>
 <span id="cb187-7"><a href="04-graph.html#cb187-7" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> p, <span class="at">filename =</span> <span class="st">&quot;plot_2.png&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>) <span class="co">#解像度（dpi）を指定可能。</span></span>
 <span id="cb187-8"><a href="04-graph.html#cb187-8" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> p, <span class="at">filename =</span> <span class="st">&quot;plot_3.png&quot;</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>) <span class="co">#幅(width)や高さ(height)を指定可能（単位はインチ）。</span></span></code></pre></div>
+<p>Rに標準で入っている関数でも図をファイルで保存することも可能。</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="04-graph.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co">#png形式で保存する場合</span></span>
+<span id="cb188-2"><a href="04-graph.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;plot.png&quot;</span>)  <span class="co">#描画デバイスを開く（ファイル名を指定する）</span></span>
+<span id="cb188-3"><a href="04-graph.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Petal.Length) <span class="co">#グラフを作る</span></span>
+<span id="cb188-4"><a href="04-graph.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()    <span class="co">#描画デバイスを閉じる</span></span></code></pre></div>
+<p>RStudioならば，plotsウィンドウの「Export」を選んで保存することも可能。</p>
 </div>
 <div id="その他の機能" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> その他の機能</h2>

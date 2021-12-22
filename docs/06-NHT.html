@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-11-25" />
+<meta name="date" content="2021-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -510,19 +510,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
 <li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a></li>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.5</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.5.1</b> ポアソン回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.6</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.6.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.6.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
+<li class="chapter" data-level="15.7" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.7</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.7.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.7.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.7.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.7.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
@@ -566,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="準備" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> 準備</h2>
 <p>この章でも，tidyverseパッケージを使う。予めロードしておく。</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="06-NHT.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="06-NHT.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
 <div id="統計的仮説検定の考え方" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> 統計的仮説検定の考え方</h2>
@@ -578,11 +579,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}\\
 x \sim Binomial(n, q)
 \]</span></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="06-NHT.html#cb236-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
-<span id="cb236-2"><a href="06-NHT.html#cb236-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb236-3"><a href="06-NHT.html#cb236-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb236-4"><a href="06-NHT.html#cb236-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb236-5"><a href="06-NHT.html#cb236-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="06-NHT.html#cb237-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
+<span id="cb237-2"><a href="06-NHT.html#cb237-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb237-3"><a href="06-NHT.html#cb237-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb237-4"><a href="06-NHT.html#cb237-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb237-5"><a href="06-NHT.html#cb237-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/dbinom_2_plot-1.png" width="672" /></p>
 </div>
 <div id="統計的仮説検定-1" class="section level3" number="7.2.2">
@@ -592,8 +593,8 @@ x \sim Binomial(n, q)
 <p>これを検討するために，表と裏それぞれが出る確率の等しいコインを投げる場合（すなわち，<span class="math inline">\(q=0.5\)</span>の場合）との比較を行い，今回の実験結果がどれくらいまれな事象と言えるのかを比較する。<br />
 このとき，研究者が検証したい仮説を<strong>対立仮説（alternative hypothesis）</strong>，対立仮説を検証するために比較の対象とする「偏りを仮定しない」仮説のことを<strong>帰無仮説(null hypothesis)</strong>と呼ぶ。</p>
 <p>では，今回の帰無仮説となる二項分布（2つのパラメータが，<span class="math inline">\(n=10, q=0.5\)</span>の場合)の分布を見てみよう。理論的には，表が<span class="math inline">\(x\)</span>回出る確率<span class="math inline">\(P(x)\)</span>は，<span class="math inline">\(x\)</span>それぞれについて以下のようになる。</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="06-NHT.html#cb237-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p_x =</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
-<span id="cb237-2"><a href="06-NHT.html#cb237-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="06-NHT.html#cb238-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p_x =</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
+<span id="cb238-2"><a href="06-NHT.html#cb238-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>##     x          p_x
 ## 1   0 0.0009765625
 ## 2   1 0.0097656250
@@ -607,7 +608,7 @@ x \sim Binomial(n, q)
 ## 10  9 0.0097656250
 ## 11 10 0.0009765625</code></pre>
 <p>表もしくは裏が出る回数が2回以下の場合の確率を計算すると，</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="06-NHT.html#cb239-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>p_x[<span class="dv">1</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">2</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">3</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">9</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">10</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">11</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="06-NHT.html#cb240-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>p_x[<span class="dv">1</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">2</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">3</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">9</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">10</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">11</span>]</span></code></pre></div>
 <pre><code>## [1] 0.109375</code></pre>
 <p>となる。つまり，もし歪みのないコインならば，片一方の面だけが出る回数が2回以下の確率はおおよそ0.11ということになる。</p>
 <p>この例で求めた確率0.11のように，「帰無仮説の前提のもとで，特定の実験結果が得られる確率」を<strong>p値</strong>と呼ぶ。</p>
@@ -633,7 +634,7 @@ x \sim Binomial(n, q)
 <p>Rにも，二項検定を行うための関数<code>binom.test()</code>が用意されている。</p>
 <p><code>binom.test()</code>に二項分布のパラメータ（<span class="math inline">\(n\)</span>と<span class="math inline">\(q\)</span>にあたる数値）と実験結果を入れると，p値を求めてくれる。</p>
 <p>上の例について，<code>binom.test()</code>でp値を求めてみよう。</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="06-NHT.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>) <span class="co">#出てくる結果はデフォルトで両側検定になる。</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="06-NHT.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>) <span class="co">#出てくる結果はデフォルトで両側検定になる。</span></span></code></pre></div>
 <pre><code>## 
 ##  Exact binomial test
 ## 
@@ -652,19 +653,19 @@ x \sim Binomial(n, q)
 <p>t検定の考え方も，基本的に上と同じである。2つの集団の間で平均値に差がないと仮定したときの理論分布（t分布）と比べて，実際に得られた値がどれくらい珍しいのかを検討する。</p>
 <p>Rにも，t検定を行うための関数<code>t.test()</code>が標準で入っている。</p>
 <p>まず，以下のプログラムを実行して，サンプルデータを作る。</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="06-NHT.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb243-2"><a href="06-NHT.html#cb243-2" aria-hidden="true" tabindex="-1"></a>Value <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
-<span id="cb243-3"><a href="06-NHT.html#cb243-3" aria-hidden="true" tabindex="-1"></a>Treatment <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;X&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;Y&quot;</span>, <span class="dv">10</span>))</span>
-<span id="cb243-4"><a href="06-NHT.html#cb243-4" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Treatment =</span> Treatment, <span class="at">Value =</span> Value)</span>
-<span id="cb243-5"><a href="06-NHT.html#cb243-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-6"><a href="06-NHT.html#cb243-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sample_data)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="06-NHT.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb244-2"><a href="06-NHT.html#cb244-2" aria-hidden="true" tabindex="-1"></a>Value <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>))</span>
+<span id="cb244-3"><a href="06-NHT.html#cb244-3" aria-hidden="true" tabindex="-1"></a>Treatment <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;X&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;Y&quot;</span>, <span class="dv">10</span>))</span>
+<span id="cb244-4"><a href="06-NHT.html#cb244-4" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Treatment =</span> Treatment, <span class="at">Value =</span> Value)</span>
+<span id="cb244-5"><a href="06-NHT.html#cb244-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb244-6"><a href="06-NHT.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sample_data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  2 variables:
 ##  $ Treatment: chr  &quot;X&quot; &quot;X&quot; &quot;X&quot; &quot;X&quot; ...
 ##  $ Value    : num  -0.626 0.184 -0.836 1.595 0.33 ...</code></pre>
 <p>実験でXとYの２つの条件(<code>Treatment</code>)を設定し，ある値（<code>Value</code>）を測定したとする。<br />
 まず，2つの条件別に<code>Value</code>の平均値や標準偏差を求める。</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="06-NHT.html#cb245-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb245-2"><a href="06-NHT.html#cb245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(Value), <span class="at">SD =</span> <span class="fu">sd</span>(Value), <span class="at">N =</span> <span class="fu">length</span>(Value))</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="06-NHT.html#cb246-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb246-2"><a href="06-NHT.html#cb246-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(Value), <span class="at">SD =</span> <span class="fu">sd</span>(Value), <span class="at">N =</span> <span class="fu">length</span>(Value))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 4
 ##   Treatment  Mean    SD     N
 ##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
@@ -679,7 +680,7 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <p>XとYが同じ正規分布<span class="math inline">\(Normal(\mu, \sigma^2)\)</span>から抽出される場合，t値は自由度<span class="math inline">\(n_{X}+n_{Y}-2\)</span>のt分布に従う。<br />
 つまり，同じ平均値を持つ母集団からXとYが抽出された（つまり，<span class="math inline">\(\bar{X} = \bar{Y}\)</span>のとき）と仮定した上でp値を求め，今回のデータが得られる確率がどのくらいまれであるかを検討する。</p>
 <p>Rの<code>t.test()</code>関数を使って実験データの情報を入力すれば，p値を求めてくれる。</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="06-NHT.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> sample_data, Value <span class="sc">~</span> Treatment) <span class="co">#dataにデータの名前，比較の対象となる変数~グループを意味する変数とうかたちで入力すると結果が出力される。</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="06-NHT.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> sample_data, Value <span class="sc">~</span> Treatment) <span class="co">#dataにデータの名前，比較の対象となる変数~グループを意味する変数とうかたちで入力すると結果が出力される。</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -717,7 +718,7 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <p>p値は標本数に依存する。標本数が多くなるほどp値は小さくなる。</p>
 <p>再び，コイン投げの例に戻る。先程の例では，コインを10回投げて2回表が出たケースについて二項検定で評価をしたが，今度は100回コインを投げて20回表が出た場合についても二項検定をしてみよう。どちらのケースも，表が出る割合は0.2で等しい。</p>
 <p><code>binom.test()</code>関数で，「フェアなコインの場合と比べてこのコインはゆがんでいるか」を検討してみよう。</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="06-NHT.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>)  <span class="co">#表が出る確率0.5のコインを10回(n=10)なげて，2回(x=2)表が出た</span></span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="06-NHT.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>)  <span class="co">#表が出る確率0.5のコインを10回(n=10)なげて，2回(x=2)表が出た</span></span></code></pre></div>
 <pre><code>## 
 ##  Exact binomial test
 ## 
@@ -729,7 +730,7 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 ## sample estimates:
 ## probability of success 
 ##                    0.2</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="06-NHT.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">20</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">p =</span> <span class="fl">0.5</span>)<span class="co">#表が出る確率0.5のコインを100回(n=100)なげて，20回(x=20)表が出た</span></span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="06-NHT.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">20</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">p =</span> <span class="fl">0.5</span>)<span class="co">#表が出る確率0.5のコインを100回(n=100)なげて，20回(x=20)表が出た</span></span></code></pre></div>
 <pre><code>## 
 ##  Exact binomial test
 ## 
@@ -743,19 +744,19 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 ##                    0.2</code></pre>
 <p>100回コインを投げたケースについては，p値が1.1159089^{-9}と非常に小さい値となった。</p>
 <p>二項分布<span class="math inline">\(Binomial(n = 100, q = 0.5)\)</span>のグラフも確認してみよう。<span class="math inline">\(x &lt; 20\)</span>が非常に小さい確率であることがグラフからもわかる。</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="06-NHT.html#cb253-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
-<span id="cb253-2"><a href="06-NHT.html#cb253-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-3"><a href="06-NHT.html#cb253-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb253-4"><a href="06-NHT.html#cb253-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb253-5"><a href="06-NHT.html#cb253-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb253-6"><a href="06-NHT.html#cb253-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="06-NHT.html#cb254-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">100</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
+<span id="cb254-2"><a href="06-NHT.html#cb254-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb254-3"><a href="06-NHT.html#cb254-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb254-4"><a href="06-NHT.html#cb254-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb254-5"><a href="06-NHT.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb254-6"><a href="06-NHT.html#cb254-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 <p>「有意ではない（<span class="math inline">\(p &gt; 0.05\)</span>）」というのは，<strong>「差がない」ということを意味しているわけではない</strong>。差自体は常に存在する（今回の実験結果0.2とフェアなコインの結果0.5の間には，0.3という差が存在する）。統計的仮説検定で評価するのは，その差が意味のある差かどうかである。</p>
 <p>少ない標本数では，珍しい結果が生じることもありえる。10回投げた程度では，その差が意味のある差かどうかが，標本数が少なすぎて判断できない。</p>
 <p>逆に，実質意味のない差であっても，標本数が多ければ統計的に有意な差（<span class="math inline">\(p &lt; .05\)</span>）が得られてしまう。もっと極端に，10,000回コインを投げて，表が出た回数が4,900回だった場合（つまり表が出る割合は0.49）を考えてみよう。このコインがフェアなコインよりも歪んでいるかを検定してみると，有意（<span class="math inline">\(p &lt; .05\)</span>）な結果が得られる。</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="06-NHT.html#cb254-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb254-2"><a href="06-NHT.html#cb254-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fl">0.49</span> <span class="sc">*</span> n</span>
-<span id="cb254-3"><a href="06-NHT.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> x, <span class="at">n =</span> n, <span class="at">p =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="06-NHT.html#cb255-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb255-2"><a href="06-NHT.html#cb255-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fl">0.49</span> <span class="sc">*</span> n</span>
+<span id="cb255-3"><a href="06-NHT.html#cb255-3" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> x, <span class="at">n =</span> n, <span class="at">p =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Exact binomial test
 ## 
@@ -778,7 +779,7 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <h3><span class="header-section-number">7.5.2</span> 多重比較の問題</h3>
 <p>統計的仮説検定を繰り返すほど，差がなくても差があると評価してしまう確率（第1種の過誤を犯す確率）は増える。
 例えば，5%水準で10回検定を行えば，少なくとも1回は帰無仮説を誤って棄却してしまう確率が0.4 になる。</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="06-NHT.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)<span class="sc">^</span><span class="dv">10</span> <span class="co">#全ての確率から，「10回検定を行って全て正しい判断を行う」確率を差し引いたものが，「少なくとも1回は誤った判断をしてしまう確率」</span></span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="06-NHT.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)<span class="sc">^</span><span class="dv">10</span> <span class="co">#全ての確率から，「10回検定を行って全て正しい判断を行う」確率を差し引いたものが，「少なくとも1回は誤った判断をしてしまう確率」</span></span></code></pre></div>
 <pre><code>## [1] 0.4012631</code></pre>
 <p>このように複数回検定を行うことを<strong>多重比較</strong>という。分散分析で3つ以上の条件間で平均値を比較するときなど，検定を複数行う場合は多重比較の補正が必要とされる（8章で触れる）。</p>
 </div>
@@ -789,13 +790,13 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <h3>問１</h3>
 <p>以下のプログラムを読み込む。</p>
 <p>ある教授法に児童の学力向上の効果があるかを検討した。学校Bにはその教授法を実施し，学校Aには何もしなかった。その後，学校Aと学校Bそれぞれ10人の生徒に学力テストを行った。A，Bそれぞれが学校A，Bそれぞれの生徒の成績である（架空のデータである）。</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="06-NHT.html#cb258-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">27</span>, <span class="dv">54</span>, <span class="dv">55</span>, <span class="dv">44</span>, <span class="dv">45</span>, <span class="dv">44</span>, <span class="dv">41</span>)</span>
-<span id="cb258-2"><a href="06-NHT.html#cb258-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">40</span>, <span class="dv">43</span>, <span class="dv">56</span>, <span class="dv">69</span>, <span class="dv">53</span>, <span class="dv">47</span>, <span class="dv">41</span>, <span class="dv">42</span>, <span class="dv">91</span>)</span>
-<span id="cb258-3"><a href="06-NHT.html#cb258-3" aria-hidden="true" tabindex="-1"></a>Value <span class="ot">=</span> <span class="fu">c</span>(A, B)</span>
-<span id="cb258-4"><a href="06-NHT.html#cb258-4" aria-hidden="true" tabindex="-1"></a>Treatment <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">10</span>))</span>
-<span id="cb258-5"><a href="06-NHT.html#cb258-5" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Treatment =</span> Treatment, <span class="at">Value =</span> Value)</span>
-<span id="cb258-6"><a href="06-NHT.html#cb258-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-7"><a href="06-NHT.html#cb258-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sample)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="06-NHT.html#cb259-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">27</span>, <span class="dv">54</span>, <span class="dv">55</span>, <span class="dv">44</span>, <span class="dv">45</span>, <span class="dv">44</span>, <span class="dv">41</span>)</span>
+<span id="cb259-2"><a href="06-NHT.html#cb259-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">40</span>, <span class="dv">43</span>, <span class="dv">56</span>, <span class="dv">69</span>, <span class="dv">53</span>, <span class="dv">47</span>, <span class="dv">41</span>, <span class="dv">42</span>, <span class="dv">91</span>)</span>
+<span id="cb259-3"><a href="06-NHT.html#cb259-3" aria-hidden="true" tabindex="-1"></a>Value <span class="ot">=</span> <span class="fu">c</span>(A, B)</span>
+<span id="cb259-4"><a href="06-NHT.html#cb259-4" aria-hidden="true" tabindex="-1"></a>Treatment <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">10</span>))</span>
+<span id="cb259-5"><a href="06-NHT.html#cb259-5" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Treatment =</span> Treatment, <span class="at">Value =</span> Value)</span>
+<span id="cb259-6"><a href="06-NHT.html#cb259-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-7"><a href="06-NHT.html#cb259-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sample)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  2 variables:
 ##  $ Treatment: chr  &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; ...
 ##  $ Value    : num  38 53 61 27 54 55 44 45 44 41 ...</code></pre>

@@ -269,7 +269,7 @@ p + theme_classic()
 
 ## 図の保存
 
-`ggsave()`を使う。`plot`に保存した図を，`filename`にファイル名を指定すると，ワーキングディレクトリに作成した図が保存される。
+`ggplot2`パッケージの`ggsave()`で保存できる。`plot`に保存した図を，`filename`にファイル名を指定すると，ワーキングディレクトリに作成した図が保存される。
 
 ```{r, eval=FALSE}
 
@@ -283,6 +283,21 @@ ggplot2::ggsave(plot = p, filename = "plot_2.png", dpi = 300) #解像度（dpi�
 ggplot2::ggsave(plot = p, filename = "plot_3.png", width = 8, height = 5) #幅(width)や高さ(height)を指定可能（単位はインチ）。
 
 ```
+
+Rに標準で入っている関数でも図をファイルで保存することも可能。
+
+```{r, eval=FALSE}
+
+#png形式で保存する場合
+png("plot.png")  #描画デバイスを開く（ファイル名を指定する）
+plot(iris$Sepal.Length, iris$Petal.Length) #グラフを作る
+dev.off()    #描画デバイスを閉じる
+
+
+```
+
+
+RStudioならば，plotsウィンドウの「Export」を選んで保存することも可能。
 
 ## その他の機能
 

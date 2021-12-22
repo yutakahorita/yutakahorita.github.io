@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-11-25" />
+<meta name="date" content="2021-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -510,19 +510,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
 <li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a></li>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.5</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.5.1</b> ポアソン回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.6</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.6.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.6.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
+<li class="chapter" data-level="15.7" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.7</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.7.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.7.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.7.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.7.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
@@ -559,7 +560,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 8</span> 様々な解析法</h1>
 <p>この章では，t検定，χ二乗検定，分散分析，ノンパラメトリック検定など，心理学の基礎統計で学んだ手法について，Rでの解析方法を見ながらおさらいしていく。</p>
 <p>まず，準備として<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="07-analysis.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="07-analysis.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="t検定-1" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> t検定</h2>
 <p>「分析の対象が量的変数で，２つのグループの間でその変数の平均値を比較する」ときには，t検定を使う。更に，t検定には2つのグループに対応があるかないかで，「対応のあるt検定」と「対応のないt検定」で区別される。</p>
@@ -568,9 +569,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.1.1</span> 対応のないt検定</h3>
 <p>Rに標準で入っている<code>sleep</code>データを使って，Rでt検定をやってみよう。</p>
 <p>以下のプログラムを読み込み，サンプルデータを作る。</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="07-analysis.html#cb261-1" aria-hidden="true" tabindex="-1"></a>ttest_sample <span class="ot">=</span> sleep <span class="co">#ttest_sampleという名前保存する。</span></span>
-<span id="cb261-2"><a href="07-analysis.html#cb261-2" aria-hidden="true" tabindex="-1"></a>ttest_sample<span class="sc">$</span>ID <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(ttest_sample)</span>
-<span id="cb261-3"><a href="07-analysis.html#cb261-3" aria-hidden="true" tabindex="-1"></a>ttest_sample</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="07-analysis.html#cb262-1" aria-hidden="true" tabindex="-1"></a>ttest_sample <span class="ot">=</span> sleep <span class="co">#ttest_sampleという名前保存する。</span></span>
+<span id="cb262-2"><a href="07-analysis.html#cb262-2" aria-hidden="true" tabindex="-1"></a>ttest_sample<span class="sc">$</span>ID <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(ttest_sample)</span>
+<span id="cb262-3"><a href="07-analysis.html#cb262-3" aria-hidden="true" tabindex="-1"></a>ttest_sample</span></code></pre></div>
 <pre><code>##    extra group ID
 ## 1    0.7     1  1
 ## 2   -1.6     1  2
@@ -595,7 +596,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>IDは参加者を意味する番号で，1から20までの人がグループ1かグループ2のどれかに属し，変数<code>extra</code>を測定したとする。グループの間で<code>extra</code>に違いがあるかどうかを検討したい。</p>
 <p>このように参加者が２つのグループのうちどれか一つに属しているケースが「対応のない場合」で，この場合は対応のないt検定で検討する。</p>
 <p>前の章で見たように，<code>t.test()</code>関数で以下のように入力すれば結果が出力される。</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="07-analysis.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> ttest_sample, extra<span class="sc">~</span>group)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="07-analysis.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> ttest_sample, extra<span class="sc">~</span>group)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -612,8 +613,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">8.1.2</span> 対応のあるt検定</h3>
 <p>同じく，<code>sleep</code>データを使って対応のある場合について解析をしてみる。</p>
 <p>以下のプログラムを読み込み，サンプルデータを作る。</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="07-analysis.html#cb265-1" aria-hidden="true" tabindex="-1"></a>ttest_sample2 <span class="ot">=</span> sleep <span class="co">#ttest_sampleという名前保存する。</span></span>
-<span id="cb265-2"><a href="07-analysis.html#cb265-2" aria-hidden="true" tabindex="-1"></a>ttest_sample2</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="07-analysis.html#cb266-1" aria-hidden="true" tabindex="-1"></a>ttest_sample2 <span class="ot">=</span> sleep <span class="co">#ttest_sampleという名前保存する。</span></span>
+<span id="cb266-2"><a href="07-analysis.html#cb266-2" aria-hidden="true" tabindex="-1"></a>ttest_sample2</span></code></pre></div>
 <pre><code>##    extra group ID
 ## 1    0.7     1  1
 ## 2   -1.6     1  2
@@ -638,7 +639,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>今度は20名の参加者が，グループ1とグループ2の両方に属して，それぞれで変数<code>extra</code>を測定したとする。</p>
 <p>このように同じ参加者が２つのグループのr兵法に属しているケースが「対応のある場合」である。</p>
 <p><code>t.test()</code>関数でオプション<code>paired = TRUE</code>を入れれば，対応のあるt検定を実施できる。</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="07-analysis.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> ttest_sample2, extra<span class="sc">~</span>group, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="07-analysis.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> ttest_sample2, extra<span class="sc">~</span>group, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -657,8 +658,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>t検定で比較できるのは2つのグループの間の平均値である。3グループ以上の間で平均値の比較を行いたい場合は，分散分析（ANOVA）を行う。</p>
 <p>ここでは，一要因３水準の分散分析（単純に3つのグループの間で平均値を比較する）を例として，Rでの解析法について説明する。</p>
 <p>Rでは，一要因の分散分析をするための関数<code>aov()</code>が標準で入っている。同じくRで標準で入っている<code>PlantGrowth</code>データを使って解析をしてみよう。</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="07-analysis.html#cb269-1" aria-hidden="true" tabindex="-1"></a>anova_sample <span class="ot">=</span> PlantGrowth <span class="co">#PlantGrowthをanova_sampleという名前で保存する</span></span>
-<span id="cb269-2"><a href="07-analysis.html#cb269-2" aria-hidden="true" tabindex="-1"></a>anova_sample</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="07-analysis.html#cb270-1" aria-hidden="true" tabindex="-1"></a>anova_sample <span class="ot">=</span> PlantGrowth <span class="co">#PlantGrowthをanova_sampleという名前で保存する</span></span>
+<span id="cb270-2"><a href="07-analysis.html#cb270-2" aria-hidden="true" tabindex="-1"></a>anova_sample</span></code></pre></div>
 <pre><code>##    weight group
 ## 1    4.17  ctrl
 ## 2    5.58  ctrl
@@ -692,8 +693,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 30   5.26  trt2</code></pre>
 <p>植物の生長を3つの条件で調べたデータである。</p>
 <p>まず，３つのグループごとに平均値や標準を確認しよう。</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="07-analysis.html#cb271-1" aria-hidden="true" tabindex="-1"></a>anova_sample <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
-<span id="cb271-2"><a href="07-analysis.html#cb271-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(weight), <span class="at">SD =</span> <span class="fu">sd</span>(weight), <span class="at">N =</span> <span class="fu">length</span>(weight))</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="07-analysis.html#cb272-1" aria-hidden="true" tabindex="-1"></a>anova_sample <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-2"><a href="07-analysis.html#cb272-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(weight), <span class="at">SD =</span> <span class="fu">sd</span>(weight), <span class="at">N =</span> <span class="fu">length</span>(weight))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ##   group  Mean    SD     N
 ##   &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
@@ -701,8 +702,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 trt1   4.66 0.794    10
 ## 3 trt2   5.53 0.443    10</code></pre>
 <p><code>ctrl</code>，<code>trt1</code>，<code>trt2</code>の間で平均値に下がるかを一要因の分散分析で検討する。以下のようにプログラムを書く。</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="07-analysis.html#cb273-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">aov</span>(<span class="at">data =</span> anova_sample, weight <span class="sc">~</span> group)</span>
-<span id="cb273-2"><a href="07-analysis.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="07-analysis.html#cb274-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">aov</span>(<span class="at">data =</span> anova_sample, weight <span class="sc">~</span> group)</span>
+<span id="cb274-2"><a href="07-analysis.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## group        2  3.766  1.8832   4.846 0.0159 *
 ## Residuals   27 10.492  0.3886                 
@@ -713,7 +714,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>前の章でも触れたように，検定を繰り返すことは第１種の過誤を犯す確率を高めてしまう。そこで，検定を行う回数に応じてp値を厳し目に見積もるペナルティを課すことで，第１種の過誤を犯す確率を低くする工夫がなされる。この工夫が，「<strong>多重比較補正</strong>」と呼ばれるものである。</p>
 <p>多重比較の補正を行うときは，<code>pairwise.t.test</code>関数を使う。各群間の比較について，補正後のp値が出力される。</p>
 <p>Rでは，多重比較補正を行うための関数として，<code>pairwise.t.test()</code>がある。</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="07-analysis.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(anova_sample<span class="sc">$</span>weight, <span class="at">g =</span> anova_sample<span class="sc">$</span>group) <span class="co">#gにグループを意味する変数，p.adjust.methodに補正方法を指定する。</span></span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="07-analysis.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(anova_sample<span class="sc">$</span>weight, <span class="at">g =</span> anova_sample<span class="sc">$</span>group) <span class="co">#gにグループを意味する変数，p.adjust.methodに補正方法を指定する。</span></span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -742,8 +743,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>2群間で値を比較するノンパラメトリック検定である。データを順位データに変換し，2群間でデータの大きさを比較する検定である。<br />
 「マン・ホイットニーのU検定」という名前でも知られる。<br />
 Rでは<code>wilcox.test()</code>が用意されている。</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="07-analysis.html#cb277-1" aria-hidden="true" tabindex="-1"></a>wilcox_sample <span class="ot">=</span> airquality <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Month <span class="sc">&gt;=</span> <span class="dv">8</span>) <span class="co">#Rに入っているサンプルデータairqualityから2群だけ取り出したデータで試してみる</span></span>
-<span id="cb277-2"><a href="07-analysis.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">data =</span> wilcox_sample, Ozone <span class="sc">~</span> Month)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="07-analysis.html#cb278-1" aria-hidden="true" tabindex="-1"></a>wilcox_sample <span class="ot">=</span> airquality <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Month <span class="sc">&gt;=</span> <span class="dv">8</span>) <span class="co">#Rに入っているサンプルデータairqualityから2群だけ取り出したデータで試してみる</span></span>
+<span id="cb278-2"><a href="07-analysis.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">data =</span> wilcox_sample, Ozone <span class="sc">~</span> Month)</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -755,8 +756,8 @@ Rでは<code>wilcox.test()</code>が用意されている。</p>
 <h3><span class="header-section-number">8.3.2</span> クラスカル・ウォリスの検定</h3>
 <p>3群以上で値を比較するノンパラメトリック検定である。同じく，データを順位データに変換して比較を行う。<br />
 Rでは<code>kruskal.test()</code>が用意されている。</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="07-analysis.html#cb279-1" aria-hidden="true" tabindex="-1"></a>kruskal_sample <span class="ot">=</span> airquality <span class="co">#Rに入っているサンプルデータairqualityで試してみる</span></span>
-<span id="cb279-2"><a href="07-analysis.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(<span class="at">data =</span> kruskal_sample, Ozone <span class="sc">~</span> Month)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="07-analysis.html#cb280-1" aria-hidden="true" tabindex="-1"></a>kruskal_sample <span class="ot">=</span> airquality <span class="co">#Rに入っているサンプルデータairqualityで試してみる</span></span>
+<span id="cb280-2"><a href="07-analysis.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(<span class="at">data =</span> kruskal_sample, Ozone <span class="sc">~</span> Month)</span></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
@@ -767,9 +768,9 @@ Rでは<code>kruskal.test()</code>が用意されている。</p>
 <h3><span class="header-section-number">8.3.3</span> カイ二乗検定</h3>
 <p>解析の対象の変数が質的変数で，頻度に偏りがあるかを比較したい場合は，カイ二乗検定が使われる。</p>
 <p>Rには，カイ二乗検定を行うための<code>chisq.test()</code>がある。</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="07-analysis.html#cb281-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">16</span>), <span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#表を作成する</span></span>
-<span id="cb281-2"><a href="07-analysis.html#cb281-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb281-3"><a href="07-analysis.html#cb281-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab) <span class="co">#chisq.testの中に表を入れる</span></span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="07-analysis.html#cb282-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">16</span>), <span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#表を作成する</span></span>
+<span id="cb282-2"><a href="07-analysis.html#cb282-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-3"><a href="07-analysis.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tab) <span class="co">#chisq.testの中に表を入れる</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 

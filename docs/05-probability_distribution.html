@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-11-25" />
+<meta name="date" content="2021-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -510,19 +510,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
 <li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a></li>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.5</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.5.1</b> ポアソン回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.6</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.6.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.6.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
+<li class="chapter" data-level="15.7" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.7</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.7.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.7.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.7.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.7.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
@@ -572,9 +573,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>準備として，以下のプログラムを実行しよう。
 この章でも<code>tidyverse</code>パッケージを使うので，ロードしておく。</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="05-probability_distribution.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="05-probability_distribution.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>更に，乱数の種を指定する。<code>set.seed(1)</code>と入力して実行する。このプログラムを実行しておくと，このテキストに書かれているプログラムの結果と同じ結果を再現できる。</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="05-probability_distribution.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="05-probability_distribution.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span></code></pre></div>
 <div id="確率変数と確率分布" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> 確率変数と確率分布</h2>
 <p>まず，サイコロを例として，確率分布とは何かについて理解する。</p>
@@ -596,27 +597,27 @@ P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}
 <p><span class="math inline">\(x\)</span>を確率変数とした場合，上記の式の確率に従う確率分布を<strong>二項分布(binomial distribution)</strong>という。</p>
 <p>つまり二項分布は，<strong>2つのカテゴリで表現されるある事象が何回生じるか</strong>の確率を表している。コイン（表か裏）を何回か投げたときに表が出る回数，学生の中から何人か選んだときの男の人数など。これらのような事象が生じる確率は，理論的には二項分布に従う。</p>
 <p>例えば，コインの表が出る確率<span class="math inline">\(q\)</span>を0.5とする。10回投げたときに表が6回出る確率を計算してみよう。Rならば，<code>dbinom()</code>関数を使えば計算できる（この関数の意味については，また後で説明する）。</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="05-probability_distribution.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xは確率変数（コインの例でいうと表が出た回数），sizeは試行回数（コインの例でいうとコインを投げた回数），</span></span>
-<span id="cb190-2"><a href="05-probability_distribution.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="05-probability_distribution.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co">#xは確率変数（コインの例でいうと表が出た回数），sizeは試行回数（コインの例でいうとコインを投げた回数），</span></span>
+<span id="cb191-2"><a href="05-probability_distribution.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2050781</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="05-probability_distribution.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co">#上の式n, x, pに実際に値を入れて計算する。dbinom()関数を使った場合と結果が一致することを確認しよう。</span></span>
-<span id="cb192-2"><a href="05-probability_distribution.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">10</span>, <span class="dv">6</span>) <span class="sc">*</span> <span class="fl">0.5</span><span class="sc">^</span><span class="dv">6</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">^</span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="05-probability_distribution.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co">#上の式n, x, pに実際に値を入れて計算する。dbinom()関数を使った場合と結果が一致することを確認しよう。</span></span>
+<span id="cb193-2"><a href="05-probability_distribution.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">10</span>, <span class="dv">6</span>) <span class="sc">*</span> <span class="fl">0.5</span><span class="sc">^</span><span class="dv">6</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">^</span><span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] 0.2050781</code></pre>
 <div id="二項分布の期待値と分散" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> 二項分布の期待値と分散</h3>
 <p>表が出る回数<span class="math inline">\(x\)</span>が0〜10の全てについて，それぞれが生じる確率を計算すると以下のようになる。</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="05-probability_distribution.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="05-probability_distribution.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>##  [1] 0.0009765625 0.0097656250 0.0439453125 0.1171875000 0.2050781250
 ##  [6] 0.2460937500 0.2050781250 0.1171875000 0.0439453125 0.0097656250
 ## [11] 0.0009765625</code></pre>
 <p>グラフにすると以下のようになる。横軸をx, 縦軸をP(x)とする。</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="05-probability_distribution.html#cb196-1" aria-hidden="true" tabindex="-1"></a>d_plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
-<span id="cb196-2"><a href="05-probability_distribution.html#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-3"><a href="05-probability_distribution.html#cb196-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb196-4"><a href="05-probability_distribution.html#cb196-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> d_plot, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb196-5"><a href="05-probability_distribution.html#cb196-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;x&quot;</span>)</span>
-<span id="cb196-6"><a href="05-probability_distribution.html#cb196-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="05-probability_distribution.html#cb197-1" aria-hidden="true" tabindex="-1"></a>d_plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
+<span id="cb197-2"><a href="05-probability_distribution.html#cb197-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb197-3"><a href="05-probability_distribution.html#cb197-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb197-4"><a href="05-probability_distribution.html#cb197-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> d_plot, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb197-5"><a href="05-probability_distribution.html#cb197-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;x&quot;</span>)</span>
+<span id="cb197-6"><a href="05-probability_distribution.html#cb197-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <p>グラフからもわかるように，表が出る確率が0.5のコインを10回投げたときに，最も出やすいのは10回中5回であることがわかる。10回中8回以上はほとんどまれであることがわかる。<br />
 この図からも，確率分布には最も出やすい変数（平均値。確率分布の場合は「期待値」と呼ぶ）と分散が存在することがわかる。</p>
 <p>二項分布の期待値<span class="math inline">\(E(x)\)</span>と分散<span class="math inline">\(Var(x)\)</span>は，以下の式から計算できる。</p>
@@ -625,11 +626,11 @@ E(x) = nq\\
 Var(x) = nq(1-q)
 \]</span></p>
 <p>この式から，表が出る確率が0.5（つまり，<span class="math inline">\(q=0.5\)</span>）として，10回投げた場合(つまり, <span class="math inline">\(n=10\)</span>)における，表が出る回数の期待値と分散を計算してみよう。</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="05-probability_distribution.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co">#E(x) = nq</span></span>
-<span id="cb197-2"><a href="05-probability_distribution.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="fl">0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="05-probability_distribution.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co">#E(x) = nq</span></span>
+<span id="cb198-2"><a href="05-probability_distribution.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="fl">0.5</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="05-probability_distribution.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Var(x) = nq(1-q)</span></span>
-<span id="cb199-2"><a href="05-probability_distribution.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="05-probability_distribution.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Var(x) = nq(1-q)</span></span>
+<span id="cb200-2"><a href="05-probability_distribution.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 2.5</code></pre>
 </div>
 <div id="ベルヌーイ分布" class="section level3" number="6.3.2">
@@ -642,9 +643,9 @@ P(x=0) = 1 - q\\
 <p>例：
 コインを一回だけ投げたときに，表が出るあるいは裏が出る確率。
 サイコロを一回だけ振ったときに，1が出るあるいは1以外が出る確率。</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="05-probability_distribution.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>) <span class="co">#表が出る確率0.5のコインを投げた時に，表が出ない時の確率と表が出る時の確率が出力される。</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="05-probability_distribution.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>) <span class="co">#表が出る確率0.5のコインを投げた時に，表が出ない時の確率と表が出る時の確率が出力される。</span></span></code></pre></div>
 <pre><code>## [1] 0.5 0.5</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="05-probability_distribution.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)<span class="co">#ある目が出る確率1/6のサイコロを振った時に，その目以外が出る確率とその目が出る確率が出力される。</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="05-probability_distribution.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)<span class="co">#ある目が出る確率1/6のサイコロを振った時に，その目以外が出る確率とその目が出る確率が出力される。</span></span></code></pre></div>
 <pre><code>## [1] 0.8333333 0.1666667</code></pre>
 </div>
 </div>
@@ -661,49 +662,49 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 <p>正規分布の式を覚える必要はない。式の中に平均<span class="math inline">\(\mu\)</span>と標準偏差<span class="math inline">\(\sigma\)</span>が含まれていることだけ覚えておこう。また，正規分布は<strong>ガウス分布（gaussian distribution）</strong>と呼ばれることもある。</p>
 <hr />
 <p>試しに，平均0，標準偏差1の正規分布のグラフを作ってみよう。以下のプログラムでは<code>dnorm()</code>という新しく出てきた関数もあるが，使い方については後で解説する。</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="05-probability_distribution.html#cb205-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.05</span>) <span class="co"># -3から3まで0.05刻みで数字の連続を作る</span></span>
-<span id="cb205-2"><a href="05-probability_distribution.html#cb205-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>) <span class="co">#平均0，標準偏差1の正規分布の確率を算出する</span></span>
-<span id="cb205-3"><a href="05-probability_distribution.html#cb205-3" aria-hidden="true" tabindex="-1"></a>dat_norm <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb205-4"><a href="05-probability_distribution.html#cb205-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb205-5"><a href="05-probability_distribution.html#cb205-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb205-6"><a href="05-probability_distribution.html#cb205-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span>
-<span id="cb205-7"><a href="05-probability_distribution.html#cb205-7" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="05-probability_distribution.html#cb206-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.05</span>) <span class="co"># -3から3まで0.05刻みで数字の連続を作る</span></span>
+<span id="cb206-2"><a href="05-probability_distribution.html#cb206-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>) <span class="co">#平均0，標準偏差1の正規分布の確率を算出する</span></span>
+<span id="cb206-3"><a href="05-probability_distribution.html#cb206-3" aria-hidden="true" tabindex="-1"></a>dat_norm <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb206-4"><a href="05-probability_distribution.html#cb206-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb206-5"><a href="05-probability_distribution.html#cb206-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb206-6"><a href="05-probability_distribution.html#cb206-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span>
+<span id="cb206-7"><a href="05-probability_distribution.html#cb206-7" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 </div>
 <div id="確率密度関数" class="section level3" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> 確率密度関数</h3>
 <p>正規分布のグラフは確率分布を表しているのではなく，<strong>確率密度関数</strong>であることにも注意してほしい。先程の二項分布では，縦軸は，横軸の値（確率変数）が生じる「確率」そのものを意味していた。しかし，正規分布のグラフの縦軸は，横軸の値が生じる確率を意味しない。確率密度関数は，<strong>グラフの面積</strong>が確率を表す。</p>
 <p>例えば，x = 0のときのyの値を確認しよう。</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="05-probability_distribution.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 </span></span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="05-probability_distribution.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 </span></span></code></pre></div>
 <pre><code>## [1] 0.3989423</code></pre>
 <p><code>dnorm()</code>は，確率密度関数の縦軸の値を出力する。<code>x = 0</code>のときの縦軸の値は0.4であり，先程のグラフからもわかるように，縦軸の値と一致している。しかし，<code>x = 0</code>が生じる確率は0.4ではない。確率密度関数の場合，縦軸の値そのものは何の意味も持たない。</p>
 <hr />
 <p>二項分布のような離散型の変数である場合に対して，正規分布のように変数が連続型（小数点を含む値）であるものは，特定の値の確率を定義することができない。例えば，身長が170.5cmである確率を求めるにしても，170cmから171cmまでの間に,170.001cm, 170.002cmと無限の値が広がっている。170.5cmぴったりである確率を求めることはできず，連続型の変数において特定の値が生じる確率はゼロということになる。したがって，連続型の変数の確率については，個々の確率を求めるのではなく，確率密度関数によって区間の確率を求める方法が取られる。</p>
 <hr />
 <p>x &lt; 0の範囲の面積を求めよう。正規分布の左半分なので，確率は0.5である。</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="05-probability_distribution.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co">#-∞からqの値までの範囲を求めてくれる。</span></span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="05-probability_distribution.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co">#-∞からqの値までの範囲を求めてくれる。</span></span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
 </div>
 <div id="正規分布の平均値と標準偏差" class="section level3" number="6.4.3">
 <h3><span class="header-section-number">6.4.3</span> 正規分布の平均値と標準偏差</h3>
 <p>以下が，平均<span class="math inline">\(\mu\)</span>と標準偏差<span class="math inline">\(\sigma\)</span>の値をそれぞれ変えた場合の正規分布である。赤が平均0で標準偏差1，青が平均1で標準偏差1, 黒が平均0で標準偏差2である。平均と標準偏差によって，正規分布の形状が変化することを理解しよう。</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="05-probability_distribution.html#cb210-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.05</span>)</span>
-<span id="cb210-2"><a href="05-probability_distribution.html#cb210-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-3"><a href="05-probability_distribution.html#cb210-3" aria-hidden="true" tabindex="-1"></a>y_1 <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>) </span>
-<span id="cb210-4"><a href="05-probability_distribution.html#cb210-4" aria-hidden="true" tabindex="-1"></a>y_2 <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">1</span>, <span class="at">sd=</span><span class="dv">1</span>) </span>
-<span id="cb210-5"><a href="05-probability_distribution.html#cb210-5" aria-hidden="true" tabindex="-1"></a>y_3 <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">2</span>) </span>
-<span id="cb210-6"><a href="05-probability_distribution.html#cb210-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-7"><a href="05-probability_distribution.html#cb210-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-8"><a href="05-probability_distribution.html#cb210-8" aria-hidden="true" tabindex="-1"></a>dat_norm_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_1)</span>
-<span id="cb210-9"><a href="05-probability_distribution.html#cb210-9" aria-hidden="true" tabindex="-1"></a>dat_norm_2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_2)</span>
-<span id="cb210-10"><a href="05-probability_distribution.html#cb210-10" aria-hidden="true" tabindex="-1"></a>dat_norm_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_3)</span>
-<span id="cb210-11"><a href="05-probability_distribution.html#cb210-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-12"><a href="05-probability_distribution.html#cb210-12" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb210-13"><a href="05-probability_distribution.html#cb210-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
-<span id="cb210-14"><a href="05-probability_distribution.html#cb210-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span> <span class="st">&quot;blue&quot;</span>)<span class="sc">+</span></span>
-<span id="cb210-15"><a href="05-probability_distribution.html#cb210-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb210-16"><a href="05-probability_distribution.html#cb210-16" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="05-probability_distribution.html#cb211-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.05</span>)</span>
+<span id="cb211-2"><a href="05-probability_distribution.html#cb211-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-3"><a href="05-probability_distribution.html#cb211-3" aria-hidden="true" tabindex="-1"></a>y_1 <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>) </span>
+<span id="cb211-4"><a href="05-probability_distribution.html#cb211-4" aria-hidden="true" tabindex="-1"></a>y_2 <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">1</span>, <span class="at">sd=</span><span class="dv">1</span>) </span>
+<span id="cb211-5"><a href="05-probability_distribution.html#cb211-5" aria-hidden="true" tabindex="-1"></a>y_3 <span class="ot">=</span> <span class="fu">dnorm</span>(<span class="at">x=</span>x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">2</span>) </span>
+<span id="cb211-6"><a href="05-probability_distribution.html#cb211-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-7"><a href="05-probability_distribution.html#cb211-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-8"><a href="05-probability_distribution.html#cb211-8" aria-hidden="true" tabindex="-1"></a>dat_norm_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_1)</span>
+<span id="cb211-9"><a href="05-probability_distribution.html#cb211-9" aria-hidden="true" tabindex="-1"></a>dat_norm_2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_2)</span>
+<span id="cb211-10"><a href="05-probability_distribution.html#cb211-10" aria-hidden="true" tabindex="-1"></a>dat_norm_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y_3)</span>
+<span id="cb211-11"><a href="05-probability_distribution.html#cb211-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-12"><a href="05-probability_distribution.html#cb211-12" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb211-13"><a href="05-probability_distribution.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb211-14"><a href="05-probability_distribution.html#cb211-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span> <span class="st">&quot;blue&quot;</span>)<span class="sc">+</span></span>
+<span id="cb211-15"><a href="05-probability_distribution.html#cb211-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb211-16"><a href="05-probability_distribution.html#cb211-16" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 </div>
 </div>
 <div id="rで使える確率分布関数" class="section level2" number="6.5">
@@ -712,22 +713,22 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 <p>Rには確率分布から乱数を生成したり，確率変数の確率を求めることができる関数が実装されている。関数は，確率分布それぞれに<code>rXXXX</code>, <code>qXXXX</code>, <code>pXXXX</code>, <code>dXXXX</code>といった4種類の関数が用意されている（
 XXXXには確率分布の種類が入る）。</p>
 <p><code>rXXXX</code>は，乱数(random number)を出力する。</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="05-probability_distribution.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co">#平均0，標準偏差1に従う正規分布から乱数を10個生成する</span></span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="05-probability_distribution.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co">#平均0，標準偏差1に従う正規分布から乱数を10個生成する</span></span></code></pre></div>
 <pre><code>##  [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
 ##  [7]  0.4874291  0.7383247  0.5757814 -0.3053884</code></pre>
 <p><code>dXXXX</code>は，確率変数xが生じる確率密度（確率密度関数の縦軸の値）を出力する。</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="05-probability_distribution.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 で，x=0.5のときの確率密度を求める（確率密度の値であって，確率そのものではないので注意）</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="05-probability_distribution.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 で，x=0.5のときの確率密度を求める（確率密度の値であって，確率そのものではないので注意）</span></span></code></pre></div>
 <pre><code>## [1] 0.3520653</code></pre>
 <p><code>qXXXX</code>は，確率点(quantile)を出力する。ある確率を取る時のx軸の値を出力してくれる。</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="05-probability_distribution.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 で，p ≤ 0.5の確率となるときの確率変数の値を求める</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="05-probability_distribution.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 で，p ≤ 0.5の確率となるときの確率変数の値を求める</span></span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p><code>pXXXX</code>は，累積確率を出力する。</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="05-probability_distribution.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 で，x ≤ 1の確率を求める</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="05-probability_distribution.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)  <span class="co"># 平均0，標準偏差1に従う正規分布 で，x ≤ 1の確率を求める</span></span></code></pre></div>
 <pre><code>## [1] 0.8413447</code></pre>
 <p>他の確率分布についても同様に，4種類の関数が用意されている。</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="05-probability_distribution.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="co">#乱数を作る関数</span></span>
-<span id="cb219-2"><a href="05-probability_distribution.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>) <span class="co">#一様分布からの乱数</span></span>
-<span id="cb219-3"><a href="05-probability_distribution.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>) <span class="co">#二項分布からの乱数</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="05-probability_distribution.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co">#乱数を作る関数</span></span>
+<span id="cb220-2"><a href="05-probability_distribution.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>) <span class="co">#一様分布からの乱数</span></span>
+<span id="cb220-3"><a href="05-probability_distribution.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>) <span class="co">#二項分布からの乱数</span></span></code></pre></div>
 </div>
 <div id="なぜ正規分布はよく使われるのか" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> なぜ正規分布はよく使われるのか？</h2>
@@ -739,23 +740,23 @@ XXXXには確率分布の種類が入る）。</p>
 <p><strong>中心極限定理</strong>とは，「母集団が平均及び標準偏差を持つ確率分布であるならば，たとえ母集団が正規分布でなくても，母集団から標本を無作為抽出して平均値を計算することを何回も繰り返すとその分布は正規分布に近づく」という定理である。</p>
 <p>シミュレーションで中心極限定理を実感してみよう。6面のサイコロを100回振る実験を行うとする。</p>
 <p>以下のプログラムを実行してみよう。<code>runif()</code>は一様分布から乱数を生成する関数である。<code>round()</code>は値を丸める関数で，以下では小数点以下の値を丸めて整数の値を出力するようにしている。</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="05-probability_distribution.html#cb220-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">6</span>),<span class="dv">0</span>)</span>
-<span id="cb220-2"><a href="05-probability_distribution.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="05-probability_distribution.html#cb221-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">6</span>),<span class="dv">0</span>)</span>
+<span id="cb221-2"><a href="05-probability_distribution.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code></pre></div>
 <pre><code>## [1] 3.5</code></pre>
 <p>それぞれの目が出る確率は1/6で一定である。すなわち，サイコロが出る目は一様分布に従う（つまり，元の分布は正規分布ではない）。一様分布の平均値は，最大値をa, 最小値をbとすると，(a+b)/2。つまり，サイコロの例の場合の平均値は理論的には(1+6)/2=3.5となる。</p>
 <p>サイコロを100回振って平均値を求める。この平均値を求めるのを，1,000回繰り返す。求めた平均値1,000個の分布を見てみよう。</p>
 <p>以下のプログラムで，シミュレーションとグラフの作成を行う。<code>sapply</code>は，ある処理を繰り返し行う関数である。詳細な説明は省くが，以下のプログラムでは，100回サイコロを振って平均値を求める処理<code>mean(round(runif(n = 100,min=1,max=6),0))</code>を1,000回行ってその結果を保存して，<code>sample.means</code>という名前のベクトルで保存している。</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="05-probability_distribution.html#cb222-1" aria-hidden="true" tabindex="-1"></a>sample.means <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), <span class="cf">function</span>(x) {<span class="fu">mean</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )</span>
-<span id="cb222-2"><a href="05-probability_distribution.html#cb222-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-3"><a href="05-probability_distribution.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.means)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
-<p>ヒストグラムは正規分布に似ている。もっと回数を増やすと，より正規分布っぽいかたちになる。</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="05-probability_distribution.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サイコロを7回振ってその合計を求める。これを10,000回行ったときの出目の合計値の分布</span></span>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="05-probability_distribution.html#cb223-1" aria-hidden="true" tabindex="-1"></a>sample.means <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), <span class="cf">function</span>(x) {<span class="fu">mean</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )</span>
 <span id="cb223-2"><a href="05-probability_distribution.html#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-3"><a href="05-probability_distribution.html#cb223-3" aria-hidden="true" tabindex="-1"></a>sample.sum <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>), <span class="cf">function</span>(x) {<span class="fu">sum</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">7</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )<span class="co">#sum()はカッコ内のベクトルの要素を足し合わせる関数</span></span>
-<span id="cb223-4"><a href="05-probability_distribution.html#cb223-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-5"><a href="05-probability_distribution.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.sum)</span></code></pre></div>
+<span id="cb223-3"><a href="05-probability_distribution.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.means)</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p>ヒストグラムは正規分布に似ている。もっと回数を増やすと，より正規分布っぽいかたちになる。</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="05-probability_distribution.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サイコロを7回振ってその合計を求める。これを10,000回行ったときの出目の合計値の分布</span></span>
+<span id="cb224-2"><a href="05-probability_distribution.html#cb224-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-3"><a href="05-probability_distribution.html#cb224-3" aria-hidden="true" tabindex="-1"></a>sample.sum <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>), <span class="cf">function</span>(x) {<span class="fu">sum</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">7</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )<span class="co">#sum()はカッコ内のベクトルの要素を足し合わせる関数</span></span>
+<span id="cb224-4"><a href="05-probability_distribution.html#cb224-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-5"><a href="05-probability_distribution.html#cb224-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.sum)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p>このように，元の母集団の分布がたとえ正規分布でなくても（この例の場合は一様分布），その標本平均は正規分布に近似する。平均値を計算しなくても，単に値を足し合わせるだけでも同じある。</p>
 <p>中心極限定理により，たとえ元の変数が正規分布に従っていなくても，変数を加算したものは正規分布に近似する。なので，心理学で行われる様々なデータ分析も，以下のような処理を行うことで変数が正規分布に従うという前提を置いて分析が行われる。</p>
 <ul>
@@ -801,15 +802,15 @@ x \sim Poisson(\lambda)\\
 <p>xは0以上の整数（0, 1, 2, 3, …）とする。<br />
 <strong>ポアソン分布 (poisson distribution)</strong>のパラメータは<span class="math inline">\(\lambda\)</span>だけである。期待値（平均）は<span class="math inline">\(\lambda\)</span>，分散は<span class="math inline">\(\lambda\)</span>である。つまり，ポアソン分布は平均と分散が等しい分布である。
 以下に，パラメータ<span class="math inline">\(\lambda\)</span>をそれぞれ変えた場合のポアソン分布を示す。</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="05-probability_distribution.html#cb224-1" aria-hidden="true" tabindex="-1"></a>pois_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">p=</span><span class="fu">dpois</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">lambda=</span><span class="dv">1</span>), <span class="at">lambda=</span><span class="dv">1</span>)</span>
-<span id="cb224-2"><a href="05-probability_distribution.html#cb224-2" aria-hidden="true" tabindex="-1"></a>pois_2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">p=</span><span class="fu">dpois</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">lambda=</span><span class="dv">2</span>), <span class="at">lambda=</span><span class="dv">2</span>)</span>
-<span id="cb224-3"><a href="05-probability_distribution.html#cb224-3" aria-hidden="true" tabindex="-1"></a>pois_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">p=</span><span class="fu">dpois</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">lambda=</span><span class="dv">3</span>), <span class="at">lambda=</span><span class="dv">3</span>)</span>
-<span id="cb224-4"><a href="05-probability_distribution.html#cb224-4" aria-hidden="true" tabindex="-1"></a>pois <span class="ot">=</span> <span class="fu">rbind</span>(pois_1, pois_2, pois_3)</span>
-<span id="cb224-5"><a href="05-probability_distribution.html#cb224-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb224-6"><a href="05-probability_distribution.html#cb224-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb224-7"><a href="05-probability_distribution.html#cb224-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> pois, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p, <span class="at">fill=</span><span class="fu">factor</span>(lambda)), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb224-8"><a href="05-probability_distribution.html#cb224-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="05-probability_distribution.html#cb225-1" aria-hidden="true" tabindex="-1"></a>pois_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">p=</span><span class="fu">dpois</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">lambda=</span><span class="dv">1</span>), <span class="at">lambda=</span><span class="dv">1</span>)</span>
+<span id="cb225-2"><a href="05-probability_distribution.html#cb225-2" aria-hidden="true" tabindex="-1"></a>pois_2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">p=</span><span class="fu">dpois</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">lambda=</span><span class="dv">2</span>), <span class="at">lambda=</span><span class="dv">2</span>)</span>
+<span id="cb225-3"><a href="05-probability_distribution.html#cb225-3" aria-hidden="true" tabindex="-1"></a>pois_3 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">p=</span><span class="fu">dpois</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">lambda=</span><span class="dv">3</span>), <span class="at">lambda=</span><span class="dv">3</span>)</span>
+<span id="cb225-4"><a href="05-probability_distribution.html#cb225-4" aria-hidden="true" tabindex="-1"></a>pois <span class="ot">=</span> <span class="fu">rbind</span>(pois_1, pois_2, pois_3)</span>
+<span id="cb225-5"><a href="05-probability_distribution.html#cb225-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb225-6"><a href="05-probability_distribution.html#cb225-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb225-7"><a href="05-probability_distribution.html#cb225-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> pois, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p, <span class="at">fill=</span><span class="fu">factor</span>(lambda)), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb225-8"><a href="05-probability_distribution.html#cb225-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>一定の期間中にランダムで生じる事象はポアソン分布に従う。具体的な例としては，1日の間に届くメールの件数，営業時間中に来る客の数など。</p>
 <p>二項分布<span class="math inline">\(Binomial(n, q)\)</span>の<span class="math inline">\(n\)</span>が十分大きく，かつ<span class="math inline">\(q\)</span>が小さい場合は平均を<span class="math inline">\(np\)</span>とするポアソン分布に近似する。つまり，<em>めったに起こらない事象</em>はポアソン分布に従う。例えば，1年間の間に生じる交通事故の件数など（365日それぞれの日に0.1%で生じる場合など）。歴史的に有名な例として，「ドイツ軍で1年間で馬に蹴られて死亡した兵士の数」がポアソン分布に従うといったものがある。</p>
 <p>二項分布と同じく，<em>ポアソン分布の確率変数は離散値である</em>。離散値は，1個，2個，3個と数える個数のような整数の値をいう（1.1個といった小数の値が存在しないもの）。それに対し，正規分布の確率変数は連続量である。</p>
@@ -825,7 +826,7 @@ x \sim Poisson(\lambda)\\
 f(x) = \lambda \exp(-\lambda x)\\
 x \sim Exponential(\lambda)\\
 \]</span></p>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 <p>ある一定期間の間に平均して<span class="math inline">\(\lambda\)</span>回生じるイベントの時間間隔は，指数分布に従う。災害が生じてから次の災害が生じるまでの期間，店に客が来てから次の客が来るまでの期間などは指数分布に従う。</p>
 </div>
 <div id="対数正規分布" class="section level4 unnumbered">
@@ -835,19 +836,19 @@ x \sim Exponential(\lambda)\\
 f(x) = \frac{1}{\sqrt{2\pi\sigma}x}\exp\left(-\frac{(\ln x-\mu)^2}{2\sigma^2}\right)\\
 x \sim logNorma(\mu, \sigma)\\
 \]</span></p>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 <p>対数正規分布は，右の方に長い裾を描く分布である。対数正規分布に従うものとしては，年収の分布などが知られている。</p>
 <p>ランダムな変数を足し合わせた物が正規分布に従うのに対し，ランダムな変数をかけ合わせたものは対数正規分布に従う。</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="05-probability_distribution.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サイコロを7回振って，それぞれの値で掛け算をする。これを10,000回行ったときの出目の合計値の分布</span></span>
-<span id="cb225-2"><a href="05-probability_distribution.html#cb225-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-3"><a href="05-probability_distribution.html#cb225-3" aria-hidden="true" tabindex="-1"></a>sample.prod <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>), <span class="cf">function</span>(x) {<span class="fu">prod</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">7</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} ) <span class="co">#prod()はカッコ内のベクトルの要素をかけ合わせる関数</span></span>
-<span id="cb225-4"><a href="05-probability_distribution.html#cb225-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-5"><a href="05-probability_distribution.html#cb225-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.prod)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
-<p>「ランダムな変数をかけ合わせたもの」の対数を取ってその分布を確認すると，正規分布のかたちになることがわかる。</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="05-probability_distribution.html#cb226-1" aria-hidden="true" tabindex="-1"></a>sample.prod_2 <span class="ot">=</span> <span class="fu">log</span>(sample.prod)</span>
-<span id="cb226-2"><a href="05-probability_distribution.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.prod_2)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="05-probability_distribution.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サイコロを7回振って，それぞれの値で掛け算をする。これを10,000回行ったときの出目の合計値の分布</span></span>
+<span id="cb226-2"><a href="05-probability_distribution.html#cb226-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-3"><a href="05-probability_distribution.html#cb226-3" aria-hidden="true" tabindex="-1"></a>sample.prod <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>), <span class="cf">function</span>(x) {<span class="fu">prod</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">7</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} ) <span class="co">#prod()はカッコ内のベクトルの要素をかけ合わせる関数</span></span>
+<span id="cb226-4"><a href="05-probability_distribution.html#cb226-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-5"><a href="05-probability_distribution.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.prod)</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<p>「ランダムな変数をかけ合わせたもの」の対数を取ってその分布を確認すると，正規分布のかたちになることがわかる。</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="05-probability_distribution.html#cb227-1" aria-hidden="true" tabindex="-1"></a>sample.prod_2 <span class="ot">=</span> <span class="fu">log</span>(sample.prod)</span>
+<span id="cb227-2"><a href="05-probability_distribution.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample.prod_2)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
 <p>掛け算の対数を取るということは，足し算に直すことと同じである。つまり，対数を取ることで「ランダムな変数をかけ合わせたもの」が「ランダムな変数を足し合わせたもの」に変換される。「ランダムな変数を足し合わせたもの」は，中心極限定理により正規分布に従う。 したがって，対数正規分布の対数を取ったものは正規分布になる。</p>
 </div>
 </div>
@@ -886,37 +887,37 @@ x \sim logNorma(\mu, \sigma)\\
 <h3><span class="header-section-number">6.9.1</span> 中心極限定理の例外</h3>
 <p>中心極限定理より，元がどのような分布でも足し合わせると正規分布に近似するが，例外もある。例えば，<strong>コーシー分布（Cauchy distribution）</strong>と呼ばれる確率分布は，中心極限定理を適用できない。</p>
 <p>コーシー分布は形状が正規分布に似ているが，裾が広いことが特徴である。つまり，極端な値が出る確率が正規分布よりも大きい。パラメータは，locationとscaleの2つである。以下に，locationが0，scaleパラメータが1と3の分布の例を示す。</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="05-probability_distribution.html#cb227-1" aria-hidden="true" tabindex="-1"></a>dat_cauchy_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), </span>
-<span id="cb227-2"><a href="05-probability_distribution.html#cb227-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y=</span> <span class="fu">dcauchy</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>), </span>
-<span id="cb227-3"><a href="05-probability_distribution.html#cb227-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="st">&quot;1&quot;</span>)</span>
-<span id="cb227-4"><a href="05-probability_distribution.html#cb227-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-5"><a href="05-probability_distribution.html#cb227-5" aria-hidden="true" tabindex="-1"></a>dat_cauchy2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), </span>
-<span id="cb227-6"><a href="05-probability_distribution.html#cb227-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y=</span> <span class="fu">dcauchy</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">3</span>), </span>
-<span id="cb227-7"><a href="05-probability_distribution.html#cb227-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="st">&quot;3&quot;</span>)</span>
-<span id="cb227-8"><a href="05-probability_distribution.html#cb227-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-9"><a href="05-probability_distribution.html#cb227-9" aria-hidden="true" tabindex="-1"></a>dat_cauchy <span class="ot">=</span> <span class="fu">rbind</span>(dat_cauchy_1, dat_cauchy2)</span>
-<span id="cb227-10"><a href="05-probability_distribution.html#cb227-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-11"><a href="05-probability_distribution.html#cb227-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb227-12"><a href="05-probability_distribution.html#cb227-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_cauchy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">linetype =</span> scale)) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;y&quot;</span>, <span class="at">y =</span> <span class="st">&quot;density&quot;</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="05-probability_distribution.html#cb228-1" aria-hidden="true" tabindex="-1"></a>dat_cauchy_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), </span>
+<span id="cb228-2"><a href="05-probability_distribution.html#cb228-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y=</span> <span class="fu">dcauchy</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>), </span>
+<span id="cb228-3"><a href="05-probability_distribution.html#cb228-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="st">&quot;1&quot;</span>)</span>
+<span id="cb228-4"><a href="05-probability_distribution.html#cb228-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-5"><a href="05-probability_distribution.html#cb228-5" aria-hidden="true" tabindex="-1"></a>dat_cauchy2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), </span>
+<span id="cb228-6"><a href="05-probability_distribution.html#cb228-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y=</span> <span class="fu">dcauchy</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="fl">0.01</span>), <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">3</span>), </span>
+<span id="cb228-7"><a href="05-probability_distribution.html#cb228-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="st">&quot;3&quot;</span>)</span>
+<span id="cb228-8"><a href="05-probability_distribution.html#cb228-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-9"><a href="05-probability_distribution.html#cb228-9" aria-hidden="true" tabindex="-1"></a>dat_cauchy <span class="ot">=</span> <span class="fu">rbind</span>(dat_cauchy_1, dat_cauchy2)</span>
+<span id="cb228-10"><a href="05-probability_distribution.html#cb228-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-11"><a href="05-probability_distribution.html#cb228-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb228-12"><a href="05-probability_distribution.html#cb228-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_cauchy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">linetype =</span> scale)) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;y&quot;</span>, <span class="at">y =</span> <span class="st">&quot;density&quot;</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <p>コーシー分布は，極端な値が存在することにより，その分布の特徴を平均や標準偏差などで捉えることができない。</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="05-probability_distribution.html#cb228-1" aria-hidden="true" tabindex="-1"></a>d_cauchy <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="co">#location = 0, scale = 1のコーシー分布から乱数を100個生成する</span></span>
-<span id="cb228-2"><a href="05-probability_distribution.html#cb228-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-3"><a href="05-probability_distribution.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d_cauchy)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="05-probability_distribution.html#cb229-1" aria-hidden="true" tabindex="-1"></a>d_cauchy <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="co">#location = 0, scale = 1のコーシー分布から乱数を100個生成する</span></span>
+<span id="cb229-2"><a href="05-probability_distribution.html#cb229-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-3"><a href="05-probability_distribution.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d_cauchy)</span></code></pre></div>
 <pre><code>## [1] -1.812771</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="05-probability_distribution.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(d_cauchy)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="05-probability_distribution.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(d_cauchy)</span></code></pre></div>
 <pre><code>## [1] -0.01332628</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="05-probability_distribution.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(d_cauchy)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="05-probability_distribution.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(d_cauchy)</span></code></pre></div>
 <pre><code>## [1] 13.17875</code></pre>
 <p>コーシー分布から乱数を100個作って足し合わせることを5回やり，分布を確認する。足し合わせても，正規分布に近似しない。</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="05-probability_distribution.html#cb234-1" aria-hidden="true" tabindex="-1"></a>d_cauchy <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb234-2"><a href="05-probability_distribution.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb234-3"><a href="05-probability_distribution.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb234-4"><a href="05-probability_distribution.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb234-5"><a href="05-probability_distribution.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) </span>
-<span id="cb234-6"><a href="05-probability_distribution.html#cb234-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb234-7"><a href="05-probability_distribution.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(d_cauchy)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="05-probability_distribution.html#cb235-1" aria-hidden="true" tabindex="-1"></a>d_cauchy <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb235-2"><a href="05-probability_distribution.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb235-3"><a href="05-probability_distribution.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb235-4"><a href="05-probability_distribution.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb235-5"><a href="05-probability_distribution.html#cb235-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) </span>
+<span id="cb235-6"><a href="05-probability_distribution.html#cb235-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-7"><a href="05-probability_distribution.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(d_cauchy)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 
 </div>
 </div>

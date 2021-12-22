@@ -21,7 +21,8 @@ tidyverseパッケージに加え，新たに`lme4`及び`lmerTest`というパ�
 library(tidyverse)
 
 install.packages("lme4", "lmerTest")
-library(lme4, lmerTest)
+library(lme4)
+library(lmerTest)
 ```
 
 

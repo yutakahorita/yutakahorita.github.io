@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-12-22" />
+<meta name="date" content="2022-01-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="07-analysis.html"/>
 <link rel="next" href="09-linear_model2.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
-<li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
+<li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="03-data.html"><a href="03-data.html#必要な列のみを取り出すselect"><i class="fa fa-check"></i><b>4.3.1</b> 必要な列のみを取り出す（select）</a></li>
 <li class="chapter" data-level="4.3.2" data-path="03-data.html"><a href="03-data.html#条件に合う行を取り出すfilter"><i class="fa fa-check"></i><b>4.3.2</b> 条件に合う行を取り出す（filter）</a></li>
@@ -321,7 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定が抱える問題"><i class="fa fa-check"></i><b>7.5</b> 統計的仮説検定が抱える問題</a>
 <ul>
 <li class="chapter" data-level="7.5.1" data-path="06-NHT.html"><a href="06-NHT.html#p値と標本数の関係"><i class="fa fa-check"></i><b>7.5.1</b> p値と標本数の関係</a></li>
-<li class="chapter" data-level="7.5.2" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.5.2</b> 多重比較の問題</a></li>
+<li class="chapter" data-level="7.5.2" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤"><i class="fa fa-check"></i><b>7.5.2</b> 第1種の過誤</a></li>
+<li class="chapter" data-level="7.5.3" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.5.3</b> 多重比較の問題</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#確認問題-5"><i class="fa fa-check"></i>確認問題</a>
 <ul>
@@ -373,25 +374,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#準備-2"><i class="fa fa-check"></i><b>10.1</b> 準備</a></li>
 <li class="chapter" data-level="10.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の標準化"><i class="fa fa-check"></i><b>10.2</b> 変数の標準化</a></li>
-<li class="chapter" data-level="10.3" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数がカテゴリカル変数の場合"><i class="fa fa-check"></i><b>10.3</b> 予測変数がカテゴリカル変数の場合</a></li>
-<li class="chapter" data-level="10.4" data-path="09-linear_model2.html"><a href="09-linear_model2.html#グループが複数ある場合"><i class="fa fa-check"></i><b>10.4</b> グループが複数ある場合</a>
+<li class="chapter" data-level="10.3" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルに含まれる統計解析"><i class="fa fa-check"></i><b>10.3</b> 線形モデルに含まれる統計解析</a></li>
+<li class="chapter" data-level="10.4" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数がカテゴリカル変数の場合"><i class="fa fa-check"></i><b>10.4</b> 予測変数がカテゴリカル変数の場合</a></li>
+<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#グループが複数ある場合"><i class="fa fa-check"></i><b>10.5</b> グループが複数ある場合</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#基準となるグループと比較する"><i class="fa fa-check"></i><b>10.4.1</b> 基準となるグループと比較する</a></li>
+<li class="chapter" data-level="10.5.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#基準となるグループと比較する"><i class="fa fa-check"></i><b>10.5.1</b> 基準となるグループと比較する</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数が複数ある場合"><i class="fa fa-check"></i><b>10.5</b> 予測変数が複数ある場合</a>
+<li class="chapter" data-level="10.6" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数が複数ある場合"><i class="fa fa-check"></i><b>10.6</b> 予測変数が複数ある場合</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の効果の統制"><i class="fa fa-check"></i><b>10.5.1</b> 変数の効果の統制</a></li>
-<li class="chapter" data-level="10.5.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#交互作用"><i class="fa fa-check"></i><b>10.5.2</b> 交互作用</a></li>
+<li class="chapter" data-level="10.6.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の効果の統制"><i class="fa fa-check"></i><b>10.6.1</b> 変数の効果の統制</a></li>
+<li class="chapter" data-level="10.6.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#交互作用"><i class="fa fa-check"></i><b>10.6.2</b> 交互作用</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルを扱う上での問題"><i class="fa fa-check"></i><b>10.6</b> 線形モデルを扱う上での問題</a>
+<li class="chapter" data-level="10.7" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルを扱う上での問題"><i class="fa fa-check"></i><b>10.7</b> 線形モデルを扱う上での問題</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#多重共線性"><i class="fa fa-check"></i><b>10.6.1</b> 多重共線性</a></li>
-<li class="chapter" data-level="10.6.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#過学習"><i class="fa fa-check"></i><b>10.6.2</b> 過学習</a></li>
+<li class="chapter" data-level="10.7.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#多重共線性"><i class="fa fa-check"></i><b>10.7.1</b> 多重共線性</a></li>
+<li class="chapter" data-level="10.7.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#過学習"><i class="fa fa-check"></i><b>10.7.2</b> 過学習</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="09-linear_model2.html"><a href="09-linear_model2.html#モデルの予測力の評価"><i class="fa fa-check"></i><b>10.7</b> モデルの予測力の評価</a>
+<li class="chapter" data-level="10.8" data-path="09-linear_model2.html"><a href="09-linear_model2.html#モデルの予測力の評価"><i class="fa fa-check"></i><b>10.8</b> モデルの予測力の評価</a>
 <ul>
-<li class="chapter" data-level="10.7.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#決定係数"><i class="fa fa-check"></i><b>10.7.1</b> 決定係数</a></li>
-<li class="chapter" data-level="10.7.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>10.7.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="10.8.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#決定係数"><i class="fa fa-check"></i><b>10.8.1</b> 決定係数</a></li>
+<li class="chapter" data-level="10.8.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>10.8.2</b> 赤池情報量基準（AIC）</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#確認問題-7"><i class="fa fa-check"></i>確認問題</a>
 <ul>
@@ -406,13 +408,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデル-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデル</a></li>
 <li class="chapter" data-level="11.3" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>11.3</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#ここまでのまとめ"><i class="fa fa-check"></i><b>11.3.1</b> ここまでのまとめ</a></li>
-<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>11.3.2</b> Rでのロジスティック回帰</a></li>
+<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#応答変数が従う確率分布"><i class="fa fa-check"></i><b>11.3.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#リンク関数"><i class="fa fa-check"></i><b>11.3.2</b> リンク関数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="10-glm.html"><a href="10-glm.html#ここまでのまとめ"><i class="fa fa-check"></i><b>11.3.3</b> ここまでのまとめ</a></li>
+<li class="chapter" data-level="11.3.4" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>11.3.4</b> Rでのロジスティック回帰</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>11.4</b> ポアソン回帰</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布-1"><i class="fa fa-check"></i><b>11.4.1</b> ポアソン分布</a></li>
-<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰のリンク関数"><i class="fa fa-check"></i><b>11.4.2</b> ポアソン回帰のリンク関数</a></li>
+<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#応答変数が従う確率分布-1"><i class="fa fa-check"></i><b>11.4.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#リンク関数-1"><i class="fa fa-check"></i><b>11.4.2</b> リンク関数</a></li>
 <li class="chapter" data-level="11.4.3" data-path="10-glm.html"><a href="10-glm.html#rでのポアソン回帰"><i class="fa fa-check"></i><b>11.4.3</b> Rでのポアソン回帰</a></li>
 <li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰の注意点過分散"><i class="fa fa-check"></i><b>11.4.4</b> ポアソン回帰の注意点：過分散</a></li>
 </ul></li>
@@ -471,7 +475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズの定理"><i class="fa fa-check"></i><b>14.2</b> ベイズの定理</a>
 <ul>
 <li class="chapter" data-level="14.2.1" data-path="13-Bayese.html"><a href="13-Bayese.html#例題-2"><i class="fa fa-check"></i><b>14.2.1</b> 例題</a></li>
-<li class="chapter" data-level="14.2.2" data-path="13-Bayese.html"><a href="13-Bayese.html#事前確率事後確率"><i class="fa fa-check"></i><b>14.2.2</b> 事前確率，事後確率</a></li>
+<li class="chapter" data-level="14.2.2" data-path="13-Bayese.html"><a href="13-Bayese.html#事前確率事後確率"><i class="fa fa-check"></i><b>14.2.2</b> 事前確率、事後確率</a></li>
 <li class="chapter" data-level="14.2.3" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズ統計-1"><i class="fa fa-check"></i><b>14.2.3</b> ベイズ統計</a></li>
 </ul></li>
 <li class="chapter" data-level="14.3" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズ推定の例"><i class="fa fa-check"></i><b>14.3</b> ベイズ推定の例</a>
@@ -510,20 +514,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
 <li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.5</b> ロジスティック回帰</a>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.5.1</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="15.4.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.2</b> ポアソン回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.6</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.6.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.6.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.7</b> その他</a>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.7.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.7.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.7.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
@@ -533,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="A.1.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#統計学の解説書"><i class="fa fa-check"></i><b>A.1.1</b> 統計学の解説書</a></li>
 <li class="chapter" data-level="A.1.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#rを用いた統計解析の解説書"><i class="fa fa-check"></i><b>A.1.2</b> Rを用いた統計解析の解説書</a></li>
-<li class="chapter" data-level="A.1.3" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#一般化線形モデルマルチレベルモデルなどの解説書"><i class="fa fa-check"></i><b>A.1.3</b> 一般化線形モデル，マルチレベルモデルなどの解説書</a></li>
+<li class="chapter" data-level="A.1.3" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#一般化線形モデルマルチレベルモデルなどの解説書"><i class="fa fa-check"></i><b>A.1.3</b> 一般化線形モデル、マルチレベルモデルなどの解説書</a></li>
 <li class="chapter" data-level="A.1.4" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#ベイズ統計モデリングの解説書"><i class="fa fa-check"></i><b>A.1.4</b> ベイズ統計モデリングの解説書</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#webサイト"><i class="fa fa-check"></i><b>A.2</b> Webサイト</a></li>
@@ -558,65 +562,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="線形モデル" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> 線形モデル</h1>
-<p>これまで学んできた様々な統計手法（t検定，分散分析など）を，「線形モデル」という一つの枠組みで捉えていく。</p>
-<p>この章のタイトルは「線形モデル」であるが，扱う内容は心理統計でも学んだ<strong>回帰分析</strong>である。</p>
+<p>これまで学んできた様々な統計手法（t検定、分散分析など）を、「線形モデル」という一つの枠組みで捉えていく。</p>
+<p>この章のタイトルは「線形モデル」であるが、扱う内容は心理統計でも学んだ<strong>回帰分析</strong>である。</p>
 <div id="準備-1" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> 準備</h2>
-<p>いつもどおり，<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="08-linear_model.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>いつもどおり、<code>tidyverse</code>パッケージをロードしよう。</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="08-linear_model.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
 <div id="線形モデルの概要" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> 線形モデルの概要</h2>
-<p>まず，線形モデルの表現の仕方を理解する。以下の式は，変数<span class="math inline">\(x\)</span>から，変数<span class="math inline">\(y\)</span>を予測するプロセスを記述したものである。変数<span class="math inline">\(x\)</span>は<strong>予測変数</strong>（predictor variable），変数<span class="math inline">\(y\)</span>は<strong>応答変数</strong>（response variable）と呼ばれる。このように，応答変数と予測変数との関係を式で表現したものを<strong>モデル</strong>と呼ぶ。</p>
+<p>まず、線形モデルの表現の仕方を理解する。以下の式は、変数<span class="math inline">\(x\)</span>から、変数<span class="math inline">\(y\)</span>を予測するプロセスを記述したものである。変数<span class="math inline">\(x\)</span>は<strong>予測変数</strong>（predictor variable）、変数<span class="math inline">\(y\)</span>は<strong>応答変数</strong>（response variable）と呼ばれる。このように、応答変数と予測変数との関係を式で表現したものを<strong>モデル</strong>と呼ぶ。</p>
 <hr />
-<p>予測変数は，「独立変数」や「説明変数」とも呼ばれる。応答変数は，「従属変数」や「被説明変数」とも呼ばれる。</p>
+<p>予測変数は、「独立変数」や「説明変数」とも呼ばれる。応答変数は、「従属変数」や「被説明変数」とも呼ばれる。</p>
 <hr />
 <p><span class="math display">\[
 \begin{equation}
   \hat{y} = \alpha + \beta x  \tag{1}\\
-  y \sim Normal(\hat{y}, \sigma)
+  y \sim \text{Normal}(\hat{y}, \sigma)
 \end{equation}
 \]</span></p>
-<p>1番目の式の右側に<span class="math inline">\(\alpha + \beta x\)</span>という線形の式がある。この式は，<strong>線形予測子(linear predictor)</strong>と呼ばれる。変数<span class="math inline">\(x\)</span>に係る<span class="math inline">\(\beta\)</span>は予測変数に係る<strong>傾き(slope)</strong>，<span class="math inline">\(\alpha\)</span>は<strong>切片(intercept)</strong>である。1番目の式は，変数<span class="math inline">\(x\)</span>の持つ効果（傾き）及びそれ以外の効果（切片）と変数<span class="math inline">\(y\)</span>の予測値（<span class="math inline">\(\hat{y}\)</span>）との関係を示している。</p>
+<p>1番目の式の右側に<span class="math inline">\(\alpha + \beta x\)</span>という線形の式がある。この式は、<strong>線形予測子(linear predictor)</strong>と呼ばれる。変数<span class="math inline">\(x\)</span>に係る<span class="math inline">\(\beta\)</span>は予測変数に係る<strong>傾き(slope)</strong>、<span class="math inline">\(\alpha\)</span>は<strong>切片(intercept)</strong>である。1番目の式は、変数<span class="math inline">\(x\)</span>の持つ効果（傾き）及びそれ以外の効果（切片）と変数<span class="math inline">\(y\)</span>の予測値（<span class="math inline">\(\hat{y}\)</span>）との関係を示している。</p>
 <hr />
-<p>予測変数は2個以上でも構わない。予測変数の個数を<span class="math inline">\(K\)</span>とすると，(1)の1番目の式は以下のように表現できる。</p>
+<p>予測変数は2個以上でも構わない。予測変数の個数を<span class="math inline">\(K\)</span>とすると、(1)の1番目の式は以下のように表現できる。</p>
 <p><span class="math display">\[
 \begin{equation}
   \hat{y} = \alpha + \sum_{k=1}^{K} \beta_{k} x_{k} \\ \tag{2}
 \end{equation}
 \]</span></p>
 <hr />
-<p><span class="math inline">\(y \sim Normal(\hat{y}, \sigma)\)</span>は，「応答変数<span class="math inline">\(y\)</span>が，予測値<span class="math inline">\(\hat{y}\)</span>を平均，<span class="math inline">\(\sigma\)</span>を標準偏差とする正規分布に従う」ことを示している。つまり，線形予測子から予測された値<span class="math inline">\(\hat{y}\)</span>と誤差<span class="math inline">\(\sigma\)</span>から，実際の値<span class="math inline">\(y\)</span>が推定されるプロセスを表現している。</p>
-<p>応答変数が正規分布に従うという前提をおいたモデルのことを，一般的に<strong>線形モデル(linear model)</strong>と呼ぶ。</p>
-<p>線形モデルは，基本的に心理統計でも学んだ「<strong>回帰分析(regression analysis)</strong>」と同じである。</p>
-<p>応答変数<span class="math inline">\(y\)</span>を決定づける変数，<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>，及び <span class="math inline">\(\sigma\)</span>は<strong>パラメータ(parameter)</strong>と呼ばれる。このパラメータを，既知の変数である<span class="math inline">\(x\)</span>と<span class="math inline">\(y\)</span>から推定する。</p>
+<p><span class="math inline">\(y \sim \text{Normal}(\hat{y}, \sigma)\)</span>は、「応答変数<span class="math inline">\(y\)</span>が、予測値<span class="math inline">\(\hat{y}\)</span>を平均、<span class="math inline">\(\sigma\)</span>を標準偏差とする正規分布に従う」ことを示している。つまり、線形予測子から予測された値<span class="math inline">\(\hat{y}\)</span>と誤差<span class="math inline">\(\sigma\)</span>から、実際の値<span class="math inline">\(y\)</span>が推定されるプロセスを表現している。</p>
+<p>応答変数が正規分布に従うという前提をおいたモデルのことを、一般的に<strong>線形モデル(linear model)</strong>と呼ぶ。</p>
+<p>線形モデルは、基本的に心理統計でも学んだ「<strong>回帰分析(regression analysis)</strong>」と同じである。</p>
+<p>応答変数<span class="math inline">\(y\)</span>を決定づける変数、<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>、及び <span class="math inline">\(\sigma\)</span>は<strong>パラメータ(parameter)</strong>と呼ばれる。このパラメータを、既知の変数である<span class="math inline">\(x\)</span>と<span class="math inline">\(y\)</span>から推定する。</p>
 <div id="まとめ" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> まとめ</h3>
-<p>まずは，「応答変数」，「予測変数」，「（応答変数が従う）確率分布」，「線形予測子」，「傾き」，「切片」など，線形モデルを構成するキーワードを覚えよう。</p>
+<p>まずは、「応答変数」、「予測変数」、「（応答変数が従う）確率分布」、「線形予測子」、「傾き」、「切片」など、線形モデルを構成するキーワードを覚えよう。</p>
 <ul>
-<li>線形モデルは，応答変数と予測変数の関係を線形の式で表したモデルである。<br />
+<li>線形モデルは、応答変数と予測変数の関係を線形の式で表したモデルである。<br />
 </li>
-<li>線形予測子の傾き，切片及び誤差（正規分布の標準偏差）を推定する。<br />
+<li>線形予測子の傾き、切片及び誤差（正規分布の標準偏差）を推定する。<br />
 </li>
-<li>予測変数が応答変数に及ぼす効果を推定することが，線形モデルの目的である。</li>
+<li>予測変数が応答変数に及ぼす効果を推定することが、線形モデルの目的である。</li>
 </ul>
 </div>
 </div>
 <div id="線形モデルによる解析" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> 線形モデルによる解析</h2>
-<p>実際に，Rで線形モデルの解析をしてみよう。</p>
+<p>実際に、Rで線形モデルの解析をしてみよう。</p>
 <p>Rには線形モデルを扱える関数<code>lm()</code>がある。<code>iris</code>データを使って解析をしてみよう。</p>
 <p><code>Sepal.Length</code>と<code>Petal.Length</code>の関係を散布図で確認する。</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="08-linear_model.html#cb285-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb285-2"><a href="08-linear_model.html#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length))</span>
-<span id="cb285-3"><a href="08-linear_model.html#cb285-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
-<p><code>Sepal.Length</code>が大きいほど<code>Petal.Length</code>が大きいという関係（正の相関）がありそうである。そこで，<code>Sepal.Length</code>の大きさから，<code>Petal.Length</code>の大きさを予測することを試みる。</p>
-<p><code>lm()</code>関数に，「応答変数~ 1 + 予測変数」のかたちで入力する。以下のプログラムを実行してみよう。<br />
-＊<code>1 +</code>の部分は省略しても構わない。<code>1 +</code>は線形予測子の切片の部分を表している。省略しても，<code>lm()</code>は自動で切片の値を求めてくれる。</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="08-linear_model.html#cb286-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span></code></pre></div>
-<p>結果を<code>result</code>という名前でいったん保存した（名前は<code>result</code>以外でも構わない）。<code>summary()</code>関数の中に，<code>result</code>を入れて実行すると詳細な結果が出力される。</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="08-linear_model.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="08-linear_model.html#cb309-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb309-2"><a href="08-linear_model.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length))</span>
+<span id="cb309-3"><a href="08-linear_model.html#cb309-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
+<p><code>Sepal.Length</code>が大きいほど<code>Petal.Length</code>が大きいという関係（正の相関）がありそうである。そこで、<code>Sepal.Length</code>の大きさから、<code>Petal.Length</code>の大きさを予測することを試みる。</p>
+<p><code>lm()</code>関数に、「応答変数~ 1 + 予測変数」のかたちで入力する。以下のプログラムを実行してみよう。<br />
+＊<code>1 +</code>の部分は省略しても構わない。<code>1 +</code>は線形予測子の切片の部分を表している。省略しても、<code>lm()</code>は自動で切片の値を求めてくれる。</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="08-linear_model.html#cb310-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span></code></pre></div>
+<p>結果を<code>result</code>という名前でいったん保存した（名前は<code>result</code>以外でも構わない）。<code>summary()</code>関数の中に、<code>result</code>を入れて実行すると詳細な結果が出力される。</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="08-linear_model.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Petal.Length ~ 1 + Sepal.Length, data = iris)
@@ -635,7 +639,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.8678 on 148 degrees of freedom
 ## Multiple R-squared:   0.76,  Adjusted R-squared:  0.7583 
 ## F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>色んな情報が出力されるが，まずは<strong>係数（Coefficients）</strong>の部分を見てみよう。ここでは，データから推定された切片や予測変数の傾きの結果が出力されている。</p>
+<p>色んな情報が出力されるが、まずは<strong>係数（Coefficients）</strong>の部分を見てみよう。ここでは、データから推定された切片や予測変数の傾きの結果が出力されている。</p>
 <ul>
 <li>Interceptの部分が切片の推定結果である。各変数の名前の部分（ここではSepal.Length）が予測変数の傾きの推定結果を示している。<br />
 </li>
@@ -643,104 +647,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Std.Errorは推定された係数の標準誤差である。</li>
 </ul>
-<p>予測変数が応答変数に対して影響力を持っているか？ それは傾きの係数の推定結果からわかる。係数の値は，<strong>予測変数が1単位増えたら応答変数がどう変化するか</strong>を意味している。</p>
+<p>予測変数が応答変数に対して影響力を持っているか？ それは傾きの係数の推定結果からわかる。係数の値は、<strong>予測変数が1単位増えたら応答変数がどう変化するか</strong>を意味している。</p>
 <ul>
-<li><p>係数がプラスならば，予測変数の値が増えると応答変数の値が増加する関係にあることを意味する。</p></li>
-<li><p>係数がマイナスならば，予測変数の値が増えると応答変数が減少する関係にあることを意味する。</p></li>
-<li><p>t value及びPrは係数の有意性検定の結果を示している（それぞれt値，p値）。ここでは，「係数がゼロである」という帰無仮説を検定している。p値が極端に低い場合は，「求めた係数の値は有意にゼロから離れている」と結論付けることができる。</p></li>
+<li><p>係数がプラスならば、予測変数の値が増えると応答変数の値が増加する関係にあることを意味する。</p></li>
+<li><p>係数がマイナスならば、予測変数の値が増えると応答変数が減少する関係にあることを意味する。</p></li>
+<li><p>t value及びPrは係数の有意性検定の結果を示している（それぞれt値、p値）。ここでは、「係数がゼロである」という帰無仮説を検定している。p値が極端に低い場合は、「求めた係数の値は有意にゼロから離れている」と結論付けることができる。</p></li>
 </ul>
-<p>この例の場合は，<code>Sepal.Lenght</code>が1単位増えると，<code>Petal.Length</code>が1.86だけ上昇することを示している。<br />
-切片の値は-7.1となっているが，<code>Sepal.Lenght</code>の値がゼロのときの<code>Petal.Length</code>の予測値を意味している（この例ではアヤメのがくの長さとしてありえない負の値になっているが，これは変数の標準化等を行っていないためである）。</p>
-<p><code>Sepal.Lenght</code>と<code>Petal.Length</code>の散布図に，線形モデルから推定された切片と傾きの値を持つ以下の直線を引いてみよう。</p>
+<p>この例の場合は、<code>Sepal.Lenght</code>が1単位増えると、<code>Petal.Length</code>が1.86だけ上昇することを示している。<br />
+切片の値は-7.1となっているが、<code>Sepal.Lenght</code>の値がゼロのときの<code>Petal.Length</code>の予測値を意味している（この例ではアヤメのがくの長さとしてありえない負の値になっているが、これは変数の標準化等を行っていないためである）。</p>
+<p><code>Sepal.Lenght</code>と<code>Petal.Length</code>の散布図に、線形モデルから推定された切片と傾きの値を持つ以下の直線を引いてみよう。</p>
 <p><span class="math display">\[
 \begin{equation}
   Petal.Length =  -7.10 + 1.86 Sepal.Length\\ \tag{3}
 \end{equation}
 \]</span></p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="08-linear_model.html#cb289-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb289-2"><a href="08-linear_model.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
-<span id="cb289-3"><a href="08-linear_model.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length), <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb289-4"><a href="08-linear_model.html#cb289-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
-<p>線形モデルでは，直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような，直線の式を推定する（予測値と実測値とのズレが最小になるのが，最も良い予測である）。</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="08-linear_model.html#cb313-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb313-2"><a href="08-linear_model.html#cb313-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb313-3"><a href="08-linear_model.html#cb313-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length), <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb313-4"><a href="08-linear_model.html#cb313-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<p>線形モデルでは、直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような、直線の式を推定する（予測値と実測値とのズレが最小になるのが、最も良い予測である）。</p>
 </div>
 <div id="最尤法" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> 最尤法</h2>
-<p>では，どうやって実測値と予測値とのずれが最小になるように傾きと切片の値を求めるのか？<br />
-線形モデル（及び一般化線形モデル）では，パラメータの推定に<strong>最尤法（maximum likelihood method）</strong>という最適化手法が用いられる。</p>
+<p>では、どうやって実測値と予測値とのずれが最小になるように傾きと切片の値を求めるのか？<br />
+線形モデル（及び一般化線形モデル）では、パラメータの推定に<strong>最尤法（maximum likelihood method）</strong>という最適化手法が用いられる。</p>
 <div id="最尤法によるパラメータ推定" class="section level3" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> 最尤法によるパラメータ推定</h3>
 <p>ここにコインが1枚ある。コインの表が出るかを決定づけるパラメータ（つまりコインを投げて表が出る確率）を<span class="math inline">\(\theta\)</span>（シータ）とする。この<span class="math inline">\(\theta\)</span>の値を何回かコインを投げる実験を通して推定する。</p>
-<p>1回目は，表が出た。この時点で，この実験結果が生じる確率は<span class="math inline">\(\theta\)</span>である。<br />
-2回目は，裏が出た。1回目と2回目までの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\)</span>である。<br />
-3回目は，表が出た。ここまでの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\theta\)</span>である。</p>
-<p>その後，4回目は裏，5回目は裏だったとする。5回目で実験をストップすることにする。この実験結果が生じる確率<span class="math inline">\(L\)</span>は以下のように表すことができる。</p>
+<p>1回目は、表が出た。この時点で、この実験結果が生じる確率は<span class="math inline">\(\theta\)</span>である。<br />
+2回目は、裏が出た。1回目と2回目までの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\)</span>である。<br />
+3回目は、表が出た。ここまでの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\theta\)</span>である。</p>
+<p>その後、4回目は裏、5回目は裏だったとする。5回目で実験をストップすることにする。この実験結果が生じる確率<span class="math inline">\(L\)</span>は以下のように表すことができる。</p>
 <p><span class="math display">\[
 L = (1-\theta)^3 \theta^2 \tag{4}
 \]</span></p>
 <p><span class="math inline">\(L\)</span>のことを<strong>尤度</strong>(likelihood)と呼ぶ（”ゆうど”と読む）。</p>
-<p>尤度とは「もっともらしさ」を示す概念である。イメージとしては，「今回の観測結果が得られる確率」である。今回の観測データに対して最も当てはまりが良くなる，すなわち尤度が最も高くなるときのパラメータを求めるのが，最尤法 (maximum likelihood method)と呼ばれる手法である。</p>
-<p>掛け算を扱う尤度は計算が困難なので，実際のパラメータ推定の際には対数化して足し算を扱う。対数化した尤度を<strong>対数尤度(log-likelihood)</strong>と呼ぶ。対数尤度が最大となるパラメータ<span class="math inline">\(\theta\)</span>を求める。</p>
+<p>尤度とは「もっともらしさ」を示す概念である。イメージとしては、「今回の観測結果が得られる確率」である。今回の観測データに対して最も当てはまりが良くなる、すなわち尤度が最も高くなるときのパラメータを求めるのが、最尤法 (maximum likelihood method)と呼ばれる手法である。</p>
+<p>掛け算を扱う尤度は計算が困難なので、実際のパラメータ推定の際には対数化して足し算を扱う。対数化した尤度を<strong>対数尤度(log-likelihood)</strong>と呼ぶ。対数尤度が最大となるパラメータ<span class="math inline">\(\theta\)</span>を求める。</p>
 <p><span class="math display">\[
 \log L = \log(1-\theta)+\log(1-\theta)+\log(1-\theta)+\log(\theta)+\log(\theta) \tag{5}
 \]</span></p>
-<p>以下のプログラムで，上のコイン投げの例で最も対数尤度が高くなるときの<span class="math inline">\(\theta\)</span>を求めている。maximumが対数尤度が最も高くなるパラメータの値で，objectiveがそのときの対数尤度である。（プログラムの意味については理解しなくて良い）</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="08-linear_model.html#cb290-1" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>) <span class="co">#観測データのベクトル：1=表，0=裏とする</span></span>
-<span id="cb290-2"><a href="08-linear_model.html#cb290-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-3"><a href="08-linear_model.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="co">#対数尤度を求める関数</span></span>
-<span id="cb290-4"><a href="08-linear_model.html#cb290-4" aria-hidden="true" tabindex="-1"></a>LogLikelihood <span class="ot">=</span> <span class="cf">function</span>(x){</span>
-<span id="cb290-5"><a href="08-linear_model.html#cb290-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cf">function</span>(theta){</span>
-<span id="cb290-6"><a href="08-linear_model.html#cb290-6" aria-hidden="true" tabindex="-1"></a>    L <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb290-7"><a href="08-linear_model.html#cb290-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){</span>
-<span id="cb290-8"><a href="08-linear_model.html#cb290-8" aria-hidden="true" tabindex="-1"></a>      L <span class="ot">=</span> L <span class="sc">*</span> theta<span class="sc">^</span>(x[i]) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>theta)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">-</span>x[i])</span>
-<span id="cb290-9"><a href="08-linear_model.html#cb290-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb290-10"><a href="08-linear_model.html#cb290-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">log</span>(L))</span>
-<span id="cb290-11"><a href="08-linear_model.html#cb290-11" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb290-12"><a href="08-linear_model.html#cb290-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb290-13"><a href="08-linear_model.html#cb290-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-14"><a href="08-linear_model.html#cb290-14" aria-hidden="true" tabindex="-1"></a><span class="co">#optimize関数で，対数尤度が最も高くなるパラメータthetaを推定する</span></span>
-<span id="cb290-15"><a href="08-linear_model.html#cb290-15" aria-hidden="true" tabindex="-1"></a>result_mlm <span class="ot">=</span> <span class="fu">optimize</span>(<span class="at">f =</span> <span class="fu">LogLikelihood</span>(D), <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">maximum=</span><span class="cn">TRUE</span>) </span>
-<span id="cb290-16"><a href="08-linear_model.html#cb290-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-17"><a href="08-linear_model.html#cb290-17" aria-hidden="true" tabindex="-1"></a>result_mlm</span></code></pre></div>
+<p>以下のプログラムで、上のコイン投げの例で最も対数尤度が高くなるときの<span class="math inline">\(\theta\)</span>を求めている。maximumが対数尤度が最も高くなるパラメータの値で、objectiveがそのときの対数尤度である。（プログラムの意味については理解しなくて良い）</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="08-linear_model.html#cb314-1" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>) <span class="co">#観測データのベクトル：1=表、0=裏とする</span></span>
+<span id="cb314-2"><a href="08-linear_model.html#cb314-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-3"><a href="08-linear_model.html#cb314-3" aria-hidden="true" tabindex="-1"></a><span class="co">#対数尤度を求める関数</span></span>
+<span id="cb314-4"><a href="08-linear_model.html#cb314-4" aria-hidden="true" tabindex="-1"></a>LogLikelihood <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb314-5"><a href="08-linear_model.html#cb314-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cf">function</span>(theta){</span>
+<span id="cb314-6"><a href="08-linear_model.html#cb314-6" aria-hidden="true" tabindex="-1"></a>    L <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb314-7"><a href="08-linear_model.html#cb314-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){</span>
+<span id="cb314-8"><a href="08-linear_model.html#cb314-8" aria-hidden="true" tabindex="-1"></a>      L <span class="ot">=</span> L <span class="sc">*</span> theta<span class="sc">^</span>(x[i]) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>theta)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">-</span>x[i])</span>
+<span id="cb314-9"><a href="08-linear_model.html#cb314-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb314-10"><a href="08-linear_model.html#cb314-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">log</span>(L))</span>
+<span id="cb314-11"><a href="08-linear_model.html#cb314-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb314-12"><a href="08-linear_model.html#cb314-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb314-13"><a href="08-linear_model.html#cb314-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-14"><a href="08-linear_model.html#cb314-14" aria-hidden="true" tabindex="-1"></a><span class="co">#optimize関数で、対数尤度が最も高くなるパラメータthetaを推定する</span></span>
+<span id="cb314-15"><a href="08-linear_model.html#cb314-15" aria-hidden="true" tabindex="-1"></a>result_mlm <span class="ot">=</span> <span class="fu">optimize</span>(<span class="at">f =</span> <span class="fu">LogLikelihood</span>(D), <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">maximum=</span><span class="cn">TRUE</span>) </span>
+<span id="cb314-16"><a href="08-linear_model.html#cb314-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-17"><a href="08-linear_model.html#cb314-17" aria-hidden="true" tabindex="-1"></a>result_mlm</span></code></pre></div>
 <pre><code>## $maximum
 ## [1] 0.4000015
 ## 
 ## $objective
 ## [1] -3.365058</code></pre>
 <p>パラメータ<span class="math inline">\(\theta\)</span>と対数尤度<span class="math inline">\(\log L\)</span>との関係を以下に示す。</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="08-linear_model.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co">#図示する</span></span>
-<span id="cb292-2"><a href="08-linear_model.html#cb292-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="fl">0.01</span>)</span>
-<span id="cb292-3"><a href="08-linear_model.html#cb292-3" aria-hidden="true" tabindex="-1"></a>logL <span class="ot">=</span> <span class="fu">log</span>(theta)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>theta)<span class="sc">+</span><span class="fu">log</span>(theta)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>theta) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>theta)</span>
-<span id="cb292-4"><a href="08-linear_model.html#cb292-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb292-5"><a href="08-linear_model.html#cb292-5" aria-hidden="true" tabindex="-1"></a>data_mlm <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span>theta, <span class="at">y=</span>logL)</span>
-<span id="cb292-6"><a href="08-linear_model.html#cb292-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb292-7"><a href="08-linear_model.html#cb292-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb292-8"><a href="08-linear_model.html#cb292-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data_mlm, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span> y), <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb292-9"><a href="08-linear_model.html#cb292-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> result_mlm<span class="sc">$</span>maximum, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb292-10"><a href="08-linear_model.html#cb292-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;theta&quot;</span>, <span class="at">y=</span> <span class="st">&quot;log L&quot;</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
-<p>対数尤度が最も大きくなるのは，<span class="math inline">\(\theta=\)</span> 0.4のときである（表が出た割合である2/5と一致）。</p>
-<p>ここではわかりやすくパラメータを1つのみ使って説明しているが，線形モデルの傾きや切片の推定も同じである。上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする。</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="08-linear_model.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="co">#図示する</span></span>
+<span id="cb316-2"><a href="08-linear_model.html#cb316-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="fl">0.01</span>)</span>
+<span id="cb316-3"><a href="08-linear_model.html#cb316-3" aria-hidden="true" tabindex="-1"></a>logL <span class="ot">=</span> <span class="fu">log</span>(theta)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>theta)<span class="sc">+</span><span class="fu">log</span>(theta)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>theta) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>theta)</span>
+<span id="cb316-4"><a href="08-linear_model.html#cb316-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb316-5"><a href="08-linear_model.html#cb316-5" aria-hidden="true" tabindex="-1"></a>data_mlm <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span>theta, <span class="at">y=</span>logL)</span>
+<span id="cb316-6"><a href="08-linear_model.html#cb316-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb316-7"><a href="08-linear_model.html#cb316-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb316-8"><a href="08-linear_model.html#cb316-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data_mlm, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span> y), <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb316-9"><a href="08-linear_model.html#cb316-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> result_mlm<span class="sc">$</span>maximum, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb316-10"><a href="08-linear_model.html#cb316-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;theta&quot;</span>, <span class="at">y=</span> <span class="st">&quot;log L&quot;</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p>対数尤度が最も大きくなるのは、<span class="math inline">\(\theta=\)</span> 0.4のときである（表が出た割合である2/5と一致）。</p>
+<p>ここではわかりやすくパラメータを1つのみ使って説明しているが、線形モデルの傾きや切片の推定も同じである。上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする。</p>
 <hr />
-<p>線形モデルのときのパラメータ推定には，<strong>最小二乗法</strong>と呼ばれる別の推定方法もある。ただし，最小二乗法を使っても最尤法を使っても，線形モデルの傾きや切片の推定結果は同じになる。</p>
+<p>線形モデルのときのパラメータ推定には、<strong>最小二乗法</strong>と呼ばれる別の推定方法もある。ただし、最小二乗法を使っても最尤法を使っても、線形モデルの傾きや切片の推定結果は同じになる。</p>
 <hr />
 </div>
 </div>
 <div id="信頼区間と予測区間" class="section level2" number="9.5">
 <h2><span class="header-section-number">9.5</span> 信頼区間と予測区間</h2>
-<p>モデルでパラメータの推定を行ったあとは，そのモデルがデータを上手く予測できているかを確認することも重要である。</p>
-<p>具体的には，パラメータの<strong>信頼区間(confidence interval)</strong>とデータの<strong>予測区間 (predictive interval)</strong>をチェックする。</p>
-<p>信頼区間とは，パラメータが分布する区間のことをいう。今回得られた標本を用いて係数を推定したが，標本の元となる母集団の係数の値はどのくらいか？その母集団の係数の予想の範囲が，信頼区間である。</p>
-<p>予測区間とは，標本がどの範囲に分布するかを予測する範囲のことをいう。新たな標本を取ったときに，そのデータがどの範囲に分布するか。その予想の範囲が予測区間である。</p>
-<p>Rには，線形モデルの推定結果から信頼区間と予測区間を算出してくれる<code>predict()</code>関数が用意されている。先ほどの線形モデルの解析結果を使って，信頼区間と予測区間を求めてみよう。</p>
+<p>モデルでパラメータの推定を行ったあとは、そのモデルがデータを上手く予測できているかを確認することも重要である。</p>
+<p>具体的には、パラメータの<strong>信頼区間(confidence interval)</strong>とデータの<strong>予測区間 (predictive interval)</strong>をチェックする。</p>
+<p>信頼区間とは、パラメータが分布する区間のことをいう。今回得られた標本を用いて係数を推定したが、標本の元となる母集団の係数の値はどのくらいか？その母集団の係数の予想の範囲が、信頼区間である。</p>
+<p>予測区間とは、標本がどの範囲に分布するかを予測する範囲のことをいう。新たな標本を取ったときに、そのデータがどの範囲に分布するか。その予想の範囲が予測区間である。</p>
+<p>Rには、線形モデルの推定結果から信頼区間と予測区間を算出してくれる<code>predict()</code>関数が用意されている。先ほどの線形モデルの解析結果を使って、信頼区間と予測区間を求めてみよう。</p>
 <div id="信頼区間" class="section level3" number="9.5.1">
 <h3><span class="header-section-number">9.5.1</span> 信頼区間</h3>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="08-linear_model.html#cb293-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
-<span id="cb293-2"><a href="08-linear_model.html#cb293-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb293-3"><a href="08-linear_model.html#cb293-3" aria-hidden="true" tabindex="-1"></a>result_conf <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
-<p><code>interval = "confidence"</code>とすると，信頼区間を求めてくれる。
-<code>level =</code> に信頼区間の幅を入力する（デフォルトで0.95だが，幅を変えたい場合は指定する）。</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="08-linear_model.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_conf)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="08-linear_model.html#cb317-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
+<span id="cb317-2"><a href="08-linear_model.html#cb317-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb317-3"><a href="08-linear_model.html#cb317-3" aria-hidden="true" tabindex="-1"></a>result_conf <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<p><code>interval = "confidence"</code>とすると、信頼区間を求めてくれる。
+<code>level =</code> に信頼区間の幅を入力する（デフォルトで0.95だが、幅を変えたい場合は指定する）。</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="08-linear_model.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_conf)</span></code></pre></div>
 <pre><code>##        fit      lwr      upr
 ## 1 2.376565 2.188121 2.565009
 ## 2 2.004878 1.792226 2.217531
@@ -748,25 +752,25 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 4 1.447348 1.194160 1.700536
 ## 5 2.190722 1.990526 2.390917
 ## 6 2.934095 2.775149 3.093040</code></pre>
-<p>uprが95%信頼区間の上限，lwrが95%信頼区間の下限に当たる。</p>
+<p>uprが95%信頼区間の上限、lwrが95%信頼区間の下限に当たる。</p>
 <p>求めた信頼区間を図示してみよう</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="08-linear_model.html#cb296-1" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></span>
-<span id="cb296-2"><a href="08-linear_model.html#cb296-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb296-3"><a href="08-linear_model.html#cb296-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb296-4"><a href="08-linear_model.html#cb296-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb296-5"><a href="08-linear_model.html#cb296-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb296-6"><a href="08-linear_model.html#cb296-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="08-linear_model.html#cb320-1" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></span>
+<span id="cb320-2"><a href="08-linear_model.html#cb320-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-3"><a href="08-linear_model.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb320-4"><a href="08-linear_model.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb320-5"><a href="08-linear_model.html#cb320-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb320-6"><a href="08-linear_model.html#cb320-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 </div>
 <div id="予測区間" class="section level3" number="9.5.2">
 <h3><span class="header-section-number">9.5.2</span> 予測区間</h3>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="08-linear_model.html#cb297-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
-<span id="cb297-2"><a href="08-linear_model.html#cb297-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-3"><a href="08-linear_model.html#cb297-3" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>)) <span class="co">#0.1刻みで4から8まで範囲の数値ベクトルを入れたデータを仮に作る</span></span>
-<span id="cb297-4"><a href="08-linear_model.html#cb297-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-5"><a href="08-linear_model.html#cb297-5" aria-hidden="true" tabindex="-1"></a>result_pred <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#newdataに先ほど作成した仮のデータを入れる。</span></span>
-<span id="cb297-6"><a href="08-linear_model.html#cb297-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-7"><a href="08-linear_model.html#cb297-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_pred) <span class="co">#仮データの数値に対応する予測区間が求められる</span></span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="08-linear_model.html#cb321-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
+<span id="cb321-2"><a href="08-linear_model.html#cb321-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-3"><a href="08-linear_model.html#cb321-3" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>)) <span class="co">#0.1刻みで4から8まで範囲の数値ベクトルを入れたデータを仮に作る</span></span>
+<span id="cb321-4"><a href="08-linear_model.html#cb321-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-5"><a href="08-linear_model.html#cb321-5" aria-hidden="true" tabindex="-1"></a>result_pred <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#newdataに先ほど作成した仮のデータを入れる。</span></span>
+<span id="cb321-6"><a href="08-linear_model.html#cb321-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-7"><a href="08-linear_model.html#cb321-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_pred) <span class="co">#仮データの数値に対応する予測区間が求められる</span></span></code></pre></div>
 <pre><code>##         fit        lwr      upr
 ## 1 0.3322885 -1.4165179 2.081095
 ## 2 0.5181318 -1.2277203 2.263984
@@ -776,24 +780,24 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 6 1.2615050 -0.4741389 2.997149</code></pre>
 <p><code>interval = "prediction"</code>と入力する。</p>
 <p>予測区間を図示してみよう。</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="08-linear_model.html#cb299-1" aria-hidden="true" tabindex="-1"></a>plot_pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred) <span class="co">#予測区間のデータを作成する</span></span>
-<span id="cb299-2"><a href="08-linear_model.html#cb299-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb299-3"><a href="08-linear_model.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb299-4"><a href="08-linear_model.html#cb299-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb299-5"><a href="08-linear_model.html#cb299-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb299-6"><a href="08-linear_model.html#cb299-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
-<p>実際のデータが予測区間の範囲に収まっているならば，そのモデルは概ねよくデータを予測できていることを示している。</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="08-linear_model.html#cb323-1" aria-hidden="true" tabindex="-1"></a>plot_pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred) <span class="co">#予測区間のデータを作成する</span></span>
+<span id="cb323-2"><a href="08-linear_model.html#cb323-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-3"><a href="08-linear_model.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb323-4"><a href="08-linear_model.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb323-5"><a href="08-linear_model.html#cb323-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb323-6"><a href="08-linear_model.html#cb323-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<p>実際のデータが予測区間の範囲に収まっているならば、そのモデルは概ねよくデータを予測できていることを示している。</p>
 </div>
 </div>
 <div id="まとめ-1" class="section level2" number="9.6">
 <h2><span class="header-section-number">9.6</span> まとめ</h2>
-<p>この章では，線形モデルの概念について学んできた。次章では，線形モデルを扱う上で注意すべき点について見ていく。</p>
+<p>この章では、線形モデルの概念について学んできた。次章では、線形モデルを扱う上で注意すべき点について見ていく。</p>
 </div>
 <div id="確認問題-6" class="section level2 unnumbered">
 <h2>確認問題</h2>
-<p>Rに入っているサンプルデータ<code>trees</code>を使って，線形モデルの結果の解釈の仕方と<code>lm()</code>関数の扱い方を復習をする。</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="08-linear_model.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
+<p>Rに入っているサンプルデータ<code>trees</code>を使って、線形モデルの結果の解釈の仕方と<code>lm()</code>関数の扱い方を復習をする。</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="08-linear_model.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
 <pre><code>##   Girth Height Volume
 ## 1   8.3     70   10.3
 ## 2   8.6     65   10.3
@@ -803,15 +807,15 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 6  10.8     83   19.7</code></pre>
 <div id="問１-6" class="section level3 unnumbered">
 <h3>問１</h3>
-<p>Heightを応答変数，Girthを予測変数として，切片と傾きの推定値を求めよ。</p>
+<p>Heightを応答変数、Girthを予測変数として、切片と傾きの推定値を求めよ。</p>
 </div>
 <div id="問２-5" class="section level3 unnumbered">
 <h3>問２</h3>
-<p>Heightを応答変数，Volumeを予測変数として，切片と傾きの推定値を求めよ。</p>
+<p>Heightを応答変数、Volumeを予測変数として、切片と傾きの推定値を求めよ。</p>
 </div>
 <div id="問３-4" class="section level3 unnumbered">
 <h3>問３</h3>
-<p>問2の推定結果から，Volumeが1単位増えるとHeightがどう変化するかを説明せよ。</p>
+<p>問2の推定結果から、Volumeが1単位増えるとHeightがどう変化するかを説明せよ。</p>
 
 </div>
 </div>

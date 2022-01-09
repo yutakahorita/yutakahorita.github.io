@@ -24,7 +24,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2021-12-22" />
+<meta name="date" content="2022-01-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="01-intro.html"/>
 <link rel="next" href="03-data.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
-<li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
+<li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="03-data.html"><a href="03-data.html#必要な列のみを取り出すselect"><i class="fa fa-check"></i><b>4.3.1</b> 必要な列のみを取り出す（select）</a></li>
 <li class="chapter" data-level="4.3.2" data-path="03-data.html"><a href="03-data.html#条件に合う行を取り出すfilter"><i class="fa fa-check"></i><b>4.3.2</b> 条件に合う行を取り出す（filter）</a></li>
@@ -321,7 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定が抱える問題"><i class="fa fa-check"></i><b>7.5</b> 統計的仮説検定が抱える問題</a>
 <ul>
 <li class="chapter" data-level="7.5.1" data-path="06-NHT.html"><a href="06-NHT.html#p値と標本数の関係"><i class="fa fa-check"></i><b>7.5.1</b> p値と標本数の関係</a></li>
-<li class="chapter" data-level="7.5.2" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.5.2</b> 多重比較の問題</a></li>
+<li class="chapter" data-level="7.5.2" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤"><i class="fa fa-check"></i><b>7.5.2</b> 第1種の過誤</a></li>
+<li class="chapter" data-level="7.5.3" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.5.3</b> 多重比較の問題</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#確認問題-5"><i class="fa fa-check"></i>確認問題</a>
 <ul>
@@ -373,25 +374,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#準備-2"><i class="fa fa-check"></i><b>10.1</b> 準備</a></li>
 <li class="chapter" data-level="10.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の標準化"><i class="fa fa-check"></i><b>10.2</b> 変数の標準化</a></li>
-<li class="chapter" data-level="10.3" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数がカテゴリカル変数の場合"><i class="fa fa-check"></i><b>10.3</b> 予測変数がカテゴリカル変数の場合</a></li>
-<li class="chapter" data-level="10.4" data-path="09-linear_model2.html"><a href="09-linear_model2.html#グループが複数ある場合"><i class="fa fa-check"></i><b>10.4</b> グループが複数ある場合</a>
+<li class="chapter" data-level="10.3" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルに含まれる統計解析"><i class="fa fa-check"></i><b>10.3</b> 線形モデルに含まれる統計解析</a></li>
+<li class="chapter" data-level="10.4" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数がカテゴリカル変数の場合"><i class="fa fa-check"></i><b>10.4</b> 予測変数がカテゴリカル変数の場合</a></li>
+<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#グループが複数ある場合"><i class="fa fa-check"></i><b>10.5</b> グループが複数ある場合</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#基準となるグループと比較する"><i class="fa fa-check"></i><b>10.4.1</b> 基準となるグループと比較する</a></li>
+<li class="chapter" data-level="10.5.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#基準となるグループと比較する"><i class="fa fa-check"></i><b>10.5.1</b> 基準となるグループと比較する</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数が複数ある場合"><i class="fa fa-check"></i><b>10.5</b> 予測変数が複数ある場合</a>
+<li class="chapter" data-level="10.6" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数が複数ある場合"><i class="fa fa-check"></i><b>10.6</b> 予測変数が複数ある場合</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の効果の統制"><i class="fa fa-check"></i><b>10.5.1</b> 変数の効果の統制</a></li>
-<li class="chapter" data-level="10.5.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#交互作用"><i class="fa fa-check"></i><b>10.5.2</b> 交互作用</a></li>
+<li class="chapter" data-level="10.6.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の効果の統制"><i class="fa fa-check"></i><b>10.6.1</b> 変数の効果の統制</a></li>
+<li class="chapter" data-level="10.6.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#交互作用"><i class="fa fa-check"></i><b>10.6.2</b> 交互作用</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルを扱う上での問題"><i class="fa fa-check"></i><b>10.6</b> 線形モデルを扱う上での問題</a>
+<li class="chapter" data-level="10.7" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルを扱う上での問題"><i class="fa fa-check"></i><b>10.7</b> 線形モデルを扱う上での問題</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#多重共線性"><i class="fa fa-check"></i><b>10.6.1</b> 多重共線性</a></li>
-<li class="chapter" data-level="10.6.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#過学習"><i class="fa fa-check"></i><b>10.6.2</b> 過学習</a></li>
+<li class="chapter" data-level="10.7.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#多重共線性"><i class="fa fa-check"></i><b>10.7.1</b> 多重共線性</a></li>
+<li class="chapter" data-level="10.7.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#過学習"><i class="fa fa-check"></i><b>10.7.2</b> 過学習</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="09-linear_model2.html"><a href="09-linear_model2.html#モデルの予測力の評価"><i class="fa fa-check"></i><b>10.7</b> モデルの予測力の評価</a>
+<li class="chapter" data-level="10.8" data-path="09-linear_model2.html"><a href="09-linear_model2.html#モデルの予測力の評価"><i class="fa fa-check"></i><b>10.8</b> モデルの予測力の評価</a>
 <ul>
-<li class="chapter" data-level="10.7.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#決定係数"><i class="fa fa-check"></i><b>10.7.1</b> 決定係数</a></li>
-<li class="chapter" data-level="10.7.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>10.7.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="10.8.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#決定係数"><i class="fa fa-check"></i><b>10.8.1</b> 決定係数</a></li>
+<li class="chapter" data-level="10.8.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>10.8.2</b> 赤池情報量基準（AIC）</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#確認問題-7"><i class="fa fa-check"></i>確認問題</a>
 <ul>
@@ -406,13 +408,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデル-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデル</a></li>
 <li class="chapter" data-level="11.3" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>11.3</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#ここまでのまとめ"><i class="fa fa-check"></i><b>11.3.1</b> ここまでのまとめ</a></li>
-<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>11.3.2</b> Rでのロジスティック回帰</a></li>
+<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#応答変数が従う確率分布"><i class="fa fa-check"></i><b>11.3.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#リンク関数"><i class="fa fa-check"></i><b>11.3.2</b> リンク関数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="10-glm.html"><a href="10-glm.html#ここまでのまとめ"><i class="fa fa-check"></i><b>11.3.3</b> ここまでのまとめ</a></li>
+<li class="chapter" data-level="11.3.4" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>11.3.4</b> Rでのロジスティック回帰</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>11.4</b> ポアソン回帰</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#ポアソン分布-1"><i class="fa fa-check"></i><b>11.4.1</b> ポアソン分布</a></li>
-<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰のリンク関数"><i class="fa fa-check"></i><b>11.4.2</b> ポアソン回帰のリンク関数</a></li>
+<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#応答変数が従う確率分布-1"><i class="fa fa-check"></i><b>11.4.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#リンク関数-1"><i class="fa fa-check"></i><b>11.4.2</b> リンク関数</a></li>
 <li class="chapter" data-level="11.4.3" data-path="10-glm.html"><a href="10-glm.html#rでのポアソン回帰"><i class="fa fa-check"></i><b>11.4.3</b> Rでのポアソン回帰</a></li>
 <li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰の注意点過分散"><i class="fa fa-check"></i><b>11.4.4</b> ポアソン回帰の注意点：過分散</a></li>
 </ul></li>
@@ -471,7 +475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズの定理"><i class="fa fa-check"></i><b>14.2</b> ベイズの定理</a>
 <ul>
 <li class="chapter" data-level="14.2.1" data-path="13-Bayese.html"><a href="13-Bayese.html#例題-2"><i class="fa fa-check"></i><b>14.2.1</b> 例題</a></li>
-<li class="chapter" data-level="14.2.2" data-path="13-Bayese.html"><a href="13-Bayese.html#事前確率事後確率"><i class="fa fa-check"></i><b>14.2.2</b> 事前確率，事後確率</a></li>
+<li class="chapter" data-level="14.2.2" data-path="13-Bayese.html"><a href="13-Bayese.html#事前確率事後確率"><i class="fa fa-check"></i><b>14.2.2</b> 事前確率、事後確率</a></li>
 <li class="chapter" data-level="14.2.3" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズ統計-1"><i class="fa fa-check"></i><b>14.2.3</b> ベイズ統計</a></li>
 </ul></li>
 <li class="chapter" data-level="14.3" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズ推定の例"><i class="fa fa-check"></i><b>14.3</b> ベイズ推定の例</a>
@@ -510,20 +514,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
 <li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.5</b> ロジスティック回帰</a>
+<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.5.1</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="15.4.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.2</b> ポアソン回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.6</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.6.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.6.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.7</b> その他</a>
+<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.7.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.7.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.7.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.7.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
@@ -533,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="A.1.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#統計学の解説書"><i class="fa fa-check"></i><b>A.1.1</b> 統計学の解説書</a></li>
 <li class="chapter" data-level="A.1.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#rを用いた統計解析の解説書"><i class="fa fa-check"></i><b>A.1.2</b> Rを用いた統計解析の解説書</a></li>
-<li class="chapter" data-level="A.1.3" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#一般化線形モデルマルチレベルモデルなどの解説書"><i class="fa fa-check"></i><b>A.1.3</b> 一般化線形モデル，マルチレベルモデルなどの解説書</a></li>
+<li class="chapter" data-level="A.1.3" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#一般化線形モデルマルチレベルモデルなどの解説書"><i class="fa fa-check"></i><b>A.1.3</b> 一般化線形モデル、マルチレベルモデルなどの解説書</a></li>
 <li class="chapter" data-level="A.1.4" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#ベイズ統計モデリングの解説書"><i class="fa fa-check"></i><b>A.1.4</b> ベイズ統計モデリングの解説書</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#webサイト"><i class="fa fa-check"></i><b>A.2</b> Webサイト</a></li>
@@ -558,65 +562,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="統計学の基礎の復習" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> 統計学の基礎の復習</h1>
-<p>平均値の計算など，心理統計の基礎を復習する。また，Rで平均値などの基礎統計量を計算する方法についても解説する。</p>
+<p>平均値の計算など、心理統計の基礎を復習する。また、Rで平均値などの基礎統計量を計算する方法についても解説する。</p>
 <ul>
 <li>変数の区別<br />
 </li>
 <li>基本統計
 <ul>
-<li>代表値（平均，中央値）<br />
+<li>代表値（平均、中央値）<br />
 </li>
-<li>散布度（分散，標準偏差，分位数）<br />
+<li>散布度（分散、標準偏差、分位数）<br />
 </li>
-<li>共分散，相関</li>
+<li>共分散、相関</li>
 </ul></li>
 </ul>
 <div id="尺度水準" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 尺度水準</h2>
-<p>まず，統計学における変数の種類の区別について確認する。変数の種類は大きく分けて，数値である<strong>量的変数</strong>とカテゴリーを意味する<strong>カテゴリカル変数（質的変数）</strong>の2つに区別できる。</p>
+<p>まず、統計学における変数の種類の区別について確認する。変数の種類は大きく分けて、数値である<strong>量的変数</strong>とカテゴリーを意味する<strong>カテゴリカル変数（質的変数）</strong>の2つに区別できる。</p>
 <div id="量的変数" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> 量的変数</h3>
-<p>数値として扱う変数。計算することができる。量的変数は更に，<strong>間隔尺度</strong>と<strong>比率尺度</strong>に区別される。</p>
+<p>数値として扱う変数。計算することができる。量的変数は更に、<strong>間隔尺度</strong>と<strong>比率尺度</strong>に区別される。</p>
 <div id="間隔尺度" class="section level4 unnumbered">
 <h4>間隔尺度</h4>
-<p>データの間隔に意味があるもの。ゼロが何もない状態を意味するものでないもの。例えば，摂氏温度など（0℃以下も-1℃があるように，ゼロは何もない状態を意味しない）。差には意味があるが，比率については意味を持たない。例えば，「10℃と20℃の差は10℃である」とはいえるが，「20℃は10℃の2倍の熱さである」とは言えない。</p>
+<p>データの間隔に意味があるもの。ゼロが何もない状態を意味するものでないもの。例えば、摂氏温度など（0℃以下も-1℃があるように、ゼロは何もない状態を意味しない）。差には意味があるが、比率については意味を持たない。例えば、「10℃と20℃の差は10℃である」とはいえるが、「20℃は10℃の2倍の熱さである」とは言えない。</p>
 </div>
 <div id="比率尺度" class="section level4 unnumbered">
 <h4>比率尺度</h4>
-<p>データの間隔に意味があるもの。ゼロがなにもない状態を意味するもの。例えば，身長，体重，絶対温度など。間隔を比率で表現できる。例えば，「体重100キロの人は体重50キロの人より2倍重い」といえる。</p>
-<p>また，量的変数は<strong>離散値</strong>か<strong>連続値</strong>かでも区別できる。</p>
+<p>データの間隔に意味があるもの。ゼロがなにもない状態を意味するもの。例えば、身長、体重、絶対温度など。間隔を比率で表現できる。例えば、「体重100キロの人は体重50キロの人より2倍重い」といえる。</p>
+<p>また、量的変数は<strong>離散値</strong>か<strong>連続値</strong>かでも区別できる。</p>
 </div>
 <div id="離散値" class="section level4 unnumbered">
 <h4>離散値</h4>
-<p>離散値とは，小数の間隔を持たない数値のこと。例えば個数。1個, 2個，3個と数えるが，1.1個, 1.2個などは存在しない。</p>
+<p>離散値とは、小数の間隔を持たない数値のこと。例えば個数。1個, 2個、3個と数えるが、1.1個, 1.2個などは存在しない。</p>
 </div>
 <div id="連続値" class="section level4 unnumbered">
 <h4>連続値</h4>
-<p>連続値とは，小数の間隔を持つ数値のこと。例えば身長。150cmから151cmの間には小数で表現できる数値が連続的に並んでいる。</p>
+<p>連続値とは、小数の間隔を持つ数値のこと。例えば身長。150cmから151cmの間には小数で表現できる数値が連続的に並んでいる。</p>
 </div>
 </div>
 <div id="カテゴリカル変数質的変数" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> カテゴリカル変数（質的変数）</h3>
 <p>分類や種類などを意味するデータ。数量化して計算することはできない。<br />
-カテゴリカル変数も更に，いくつかに分類される。ここでは，<strong>名義尺度</strong>と<strong>順序尺度</strong>の区別を挙げる。</p>
+カテゴリカル変数も更に、いくつかに分類される。ここでは、<strong>名義尺度</strong>と<strong>順序尺度</strong>の区別を挙げる。</p>
 <div id="名義尺度" class="section level4 unnumbered">
 <h4>名義尺度</h4>
-<p>性別（男，女），血液型，出身地など。順序関係がないのが特徴である（男性&lt;女性といった関係はない）。</p>
+<p>性別（男、女）、血液型、出身地など。順序関係がないのが特徴である（男性&lt;女性といった関係はない）。</p>
 </div>
 <div id="順序尺度" class="section level4 unnumbered">
 <h4>順序尺度</h4>
-<p>「優，良，可，不可」といった成績，「1. 賛成，2. どちらでもない，3. 反対」といった尺度など。心理学ではよくリッカート尺度（＊）で態度などを測定するが，これも順序尺度である。</p>
-<p>＊「1:そう思わない，2: 思わない，3: どちらでもない, 4: そう思う，5: 強くそう思う」といったように，自分の態度に当てはまる数字を選ばせて態度の強さを測定する方法。</p>
-<p>順序尺度には順序関係があるが，間隔は定義されない。例えば，成績には優 &gt; 良 &gt; 可という順序関係があるが，優と良の間と良と可の間の幅は等しいといった定義はできない。また，良+可=優といった計算もできない。つまり，順序尺度は順序関係はあるがカテゴリカル変数である。</p>
+<p>「優、良、可、不可」といった成績、「1. 賛成、2. どちらでもない、3. 反対」といった尺度など。心理学ではよくリッカート尺度（＊）で態度などを測定するが、これも順序尺度である。</p>
+<p>＊「1:そう思わない、2: 思わない、3: どちらでもない, 4: そう思う、5: 強くそう思う」といったように、自分の態度に当てはまる数字を選ばせて態度の強さを測定する方法。</p>
+<p>順序尺度には順序関係があるが、間隔は定義されない。例えば、成績には優 &gt; 良 &gt; 可という順序関係があるが、優と良の間と良と可の間の幅は等しいといった定義はできない。また、良+可=優といった計算もできない。つまり、順序尺度は順序関係はあるがカテゴリカル変数である。</p>
 </div>
 </div>
 </div>
 <div id="基本統計量" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> 基本統計量</h2>
-<p>以下では，Rにもともと入っている<code>iris</code>データをサンプルデータとして使いながら，平均値や中央値などの<strong>代表値</strong>や分散や標準偏差などの<strong>散布度</strong>について復習する。</p>
+<p>以下では、Rにもともと入っている<code>iris</code>データをサンプルデータとして使いながら、平均値や中央値などの<strong>代表値</strong>や分散や標準偏差などの<strong>散布度</strong>について復習する。</p>
 <hr />
-<p><code>iris</code>と入力して実行すると，データの中身を確認できるが，これだとデータ全てが出力されて見やすくない。<code>head()</code>を使うとデータの変数を含めた上部数行を表示してくれる。また，<code>str()</code>を使うと，簡略化したデータの構成を表示してくれる。これらの関数は今後もよく出てくるのでここで覚えておこう。</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="02-summary.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<p><code>iris</code>と入力して実行すると、データの中身を確認できるが、これだとデータ全てが出力されて見やすくない。<code>head()</code>を使うとデータの変数を含めた上部数行を表示してくれる。また、<code>str()</code>を使うと、簡略化したデータの構成を表示してくれる。これらの関数は今後もよく出てくるのでここで覚えておこう。</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="02-summary.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -624,7 +628,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="02-summary.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris) </span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="02-summary.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris) </span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -637,84 +641,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>データの代表となる値のこと。平均や中央値などがよく用いられる。</p>
 <div id="平均値mean" class="section level4 unnumbered">
 <h4>平均値(mean)</h4>
-<p><span class="math inline">\(n\)</span>個の数値<span class="math inline">\(X_{1}, X_{2}, \cdots, X_{n}\)</span>からなるデータの平均値<span class="math inline">\(\bar{X}\)</span>は，以下の数式で求める。</p>
+<p><span class="math inline">\(n\)</span>個の数値<span class="math inline">\(X_{1}, X_{2}, \cdots, X_{n}\)</span>からなるデータの平均値<span class="math inline">\(\bar{X}\)</span>は、以下の数式で求める。</p>
 <p><span class="math display">\[
 \bar{X} = \frac{1}{n}\sum_{k=1}^{n}X_{k}\\  
 \]</span></p>
-<p>Rで平均値を求めるには，<code>mean()</code>関数を使う。カッコの中に，平均値を求めたいデータをベクトルの形式で入れる。</p>
-<p>データフレームの場合は，「<strong>データ名$変数名</strong>」でベクトルを指定する。これはよく使う表記なので覚えておこう。</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="02-summary.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p>Rで平均値を求めるには、<code>mean()</code>関数を使う。カッコの中に、平均値を求めたいデータをベクトルの形式で入れる。</p>
+<p>データフレームの場合は、「<strong>データ名$変数名</strong>」でベクトルを指定する。これはよく使う表記なので覚えておこう。</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="02-summary.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 5.843333</code></pre>
 <hr />
-<p>データに欠損値が含まれている場合は，計算できない。オプションとして<code>na.rm = TRUE</code>を指定すれば，欠損値を除いて平均値を算出してくれる。</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="02-summary.html#cb93-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb93-2"><a href="02-summary.html#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-3"><a href="02-summary.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a)</span></code></pre></div>
+<p>データに欠損値が含まれている場合は、計算できない。オプションとして<code>na.rm = TRUE</code>を指定すれば、欠損値を除いて平均値を算出してくれる。</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="02-summary.html#cb113-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb113-2"><a href="02-summary.html#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-3"><a href="02-summary.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="02-summary.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="02-summary.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <hr />
 </div>
 <div id="中央値median" class="section level4 unnumbered">
 <h4>中央値(median)</h4>
-<p>データを小さい順から並べた場合，つまり，<span class="math inline">\(X_{1} \le X_{2} \le ... \le X_{n}\)</span>と並べた場合に，中央に位置する値を中央値という。
-データの個数を<span class="math inline">\(n\)</span>とした場合，<span class="math inline">\(n\)</span>が奇数の場合は<span class="math inline">\(X_{(n+1)/2}\)</span>，<span class="math inline">\(n\)</span>が偶数の場合は<span class="math inline">\((X_{n/2}+X_{n/2+1})/2\)</span>が中央値となる。</p>
-<p>Rで中央値を求めたい場合は，<code>median()</code>関数が使える。<code>mean()</code>と同じく，カッコ内にデータをベクトルの形式で入れる。</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="02-summary.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p>データを小さい順から並べた場合、つまり、<span class="math inline">\(X_{1} \le X_{2} \le ... \le X_{n}\)</span>と並べた場合に、中央に位置する値を中央値という。
+データの個数を<span class="math inline">\(n\)</span>とした場合、<span class="math inline">\(n\)</span>が奇数の場合は<span class="math inline">\(X_{(n+1)/2}\)</span>、<span class="math inline">\(n\)</span>が偶数の場合は<span class="math inline">\((X_{n/2}+X_{n/2+1})/2\)</span>が中央値となる。</p>
+<p>Rで中央値を求めたい場合は、<code>median()</code>関数が使える。<code>mean()</code>と同じく、カッコ内にデータをベクトルの形式で入れる。</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="02-summary.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 5.8</code></pre>
 </div>
 </div>
 <div id="散布度" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> 散布度</h3>
-<p>データの散らばり具合を示す値のこと。分散，標準偏差などが知られる。</p>
+<p>データの散らばり具合を示す値のこと。分散、標準偏差などが知られる。</p>
 <div id="分散variance" class="section level4 unnumbered">
 <h4>分散(variance)</h4>
-<p>分散（<span class="math inline">\(\sigma^2\)</span>）は，以下の式で定義される。すなわち，各変数が平均値から離れている程度を表現したものである。</p>
+<p>分散（<span class="math inline">\(\sigma^2\)</span>）は、以下の式で定義される。すなわち、各変数が平均値から離れている程度を表現したものである。</p>
 <p><span class="math display">\[
 \sigma^2 = \frac{1}{n-1}\sum_{k=1}^{n}(X_{k}-\bar{X})^2\\  
 \]</span></p>
-<p>Rで分散を求める際には，<code>var()</code>関数を使う。</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="02-summary.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p>Rで分散を求める際には、<code>var()</code>関数を使う。</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="02-summary.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 0.6856935</code></pre>
 </div>
 <div id="標準偏差standard-deviation" class="section level4 unnumbered">
 <h4>標準偏差(standard deviation)</h4>
 <p>分散の平方根が標準偏差（<span class="math inline">\(\sigma\)</span>）である。</p>
-<p>Rで標準偏差を求める際には，<code>sd()</code>関数を使う。</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="02-summary.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p>Rで標準偏差を求める際には、<code>sd()</code>関数を使う。</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="02-summary.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 0.8280661</code></pre>
 </div>
 <div id="分位数quantile" class="section level4 unnumbered">
 <h4>分位数(quantile)</h4>
-<p>データを小さい順から大きい順に並べ替えたときに，データを分割する値を分位数という。一般的に，四分位数（25%点，50%点[中央値]，75%点で分割した値）が報告によく使われる。</p>
-<p>Rでは，<code>quantile()</code>で分位数を求められる。</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="02-summary.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length) <span class="co">#デフォルトだと，0%, 25%, 50%, 75%, 100%が表示される） </span></span></code></pre></div>
+<p>データを小さい順から大きい順に並べ替えたときに、データを分割する値を分位数という。一般的に、四分位数（25%点、50%点[中央値]、75%点で分割した値）が報告によく使われる。</p>
+<p>Rでは、<code>quantile()</code>で分位数を求められる。</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="02-summary.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length) <span class="co">#デフォルトだと、0%, 25%, 50%, 75%, 100%が表示される） </span></span></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##  4.3  5.1  5.8  6.4  7.9</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="02-summary.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.0</span>)) <span class="co">#オプションのprobsで，分割する点を任意に指定することができる。</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="02-summary.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.0</span>)) <span class="co">#オプションのprobsで、分割する点を任意に指定することができる。</span></span></code></pre></div>
 <pre><code>##  10%  30%  50%  80% 100% 
 ## 4.80 5.27 5.80 6.52 7.90</code></pre>
 </div>
 </div>
 <div id="要約統計量" class="section level3" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> 要約統計量</h3>
-<p>以上のように，Rには代表値や散布度を求めるための関数が標準で入っているが，これらをまとめて計算してくれる<code>summary()</code>もある。</p>
-<p><code>summary()</code>に変数を入れると，最小値，最大値，平均，四分位数をまとめて算出してくれる。</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="02-summary.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<p>以上のように、Rには代表値や散布度を求めるための関数が標準で入っているが、これらをまとめて計算してくれる<code>summary()</code>もある。</p>
+<p><code>summary()</code>に変数を入れると、最小値、最大値、平均、四分位数をまとめて算出してくれる。</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="02-summary.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   4.300   5.100   5.800   5.843   6.400   7.900</code></pre>
 </div>
 <div id="表の作り方" class="section level3" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> 表の作り方</h3>
-<p>カテゴリカル変数の場合，データ全体を把握するために頻度やパーセンテージを知りたいときが多い。</p>
-<p><code>table()</code>関数を使うと，頻度を集計して表にしてくれる。</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="02-summary.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
+<p>カテゴリカル変数の場合、データ全体を把握するために頻度やパーセンテージを知りたいときが多い。</p>
+<p><code>table()</code>関数を使うと、頻度を集計して表にしてくれる。</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="02-summary.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##         50         50         50</code></pre>
-<p><code>prop.table()</code>を使うと，パーセンテージを求めてくれる。</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="02-summary.html#cb111-1" aria-hidden="true" tabindex="-1"></a>tab_iris <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>Species) <span class="co">#まず表を別の名前で保存する</span></span>
-<span id="cb111-2"><a href="02-summary.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tab_iris) <span class="co">#カッコの中に，表を入れる</span></span></code></pre></div>
+<p><code>prop.table()</code>を使うと、パーセンテージを求めてくれる。</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="02-summary.html#cb131-1" aria-hidden="true" tabindex="-1"></a>tab_iris <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>Species) <span class="co">#まず表を別の名前で保存する</span></span>
+<span id="cb131-2"><a href="02-summary.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tab_iris) <span class="co">#カッコの中に、表を入れる</span></span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##  0.3333333  0.3333333  0.3333333</code></pre>
@@ -723,16 +727,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="相関correlation" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> 相関(correlation)</h2>
 <p>2変数間の関連のことを相関という。相関の強さは相関係数で示される。</p>
-<p>変数<span class="math inline">\(x\)</span>と変数<span class="math inline">\(y\)</span>の相関係数（<span class="math inline">\(r\)</span>）は，以下の式で求められる。</p>
+<p>変数<span class="math inline">\(x\)</span>と変数<span class="math inline">\(y\)</span>の相関係数（<span class="math inline">\(r\)</span>）は、以下の式で求められる。</p>
 <p><span class="math display">\[
 r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 \]</span></p>
-<p><span class="math inline">\(\sigma_{xy}\)</span>はxとyの共分散(covariance)で，<span class="math inline">\(\sigma_{xy} = \sum^n_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})\)</span>である（<span class="math inline">\(\bar{x}\)</span>はxの平均）。<span class="math inline">\(\sigma_{x}\)</span>と<span class="math inline">\(\sigma_{y}\)</span>はxとyそれぞれの標準偏差である。</p>
-<p>相関係数は<span class="math inline">\(-1\)</span>から<span class="math inline">\(1\)</span>までの範囲をとり得る。相関係数の絶対値が大きいほど，相関関係が強いことを意味する。相関係数<span class="math inline">\(r\)</span>が <span class="math inline">\(r &gt; 0\)</span>のときは「正の相関」，つまり一方の変数の量が増えればもう一方の変数も増える関係にあることを意味する。<span class="math inline">\(r &lt; 0\)</span>のときは「負の相関」，つまり一方が増えればもう一方が減るという関係にあることを意味する。</p>
-<p>Rで相関係数を求めるには，<code>cor()</code>が使える。カッコの中に，相関係数を求めたい2つの変数を入れれば良い。また，<code>cor.test()</code>を使うと，相関係数の検定などより詳細な結果を示してくれる。</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="02-summary.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
+<p><span class="math inline">\(\sigma_{xy}\)</span>はxとyの共分散(covariance)で、<span class="math inline">\(\sigma_{xy} = \sum^n_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})\)</span>である（<span class="math inline">\(\bar{x}\)</span>はxの平均）。<span class="math inline">\(\sigma_{x}\)</span>と<span class="math inline">\(\sigma_{y}\)</span>はxとyそれぞれの標準偏差である。</p>
+<p>相関係数は<span class="math inline">\(-1\)</span>から<span class="math inline">\(1\)</span>までの範囲をとり得る。相関係数の絶対値が大きいほど、相関関係が強いことを意味する。相関係数<span class="math inline">\(r\)</span>が <span class="math inline">\(r &gt; 0\)</span>のときは「正の相関」、つまり一方の変数の量が増えればもう一方の変数も増える関係にあることを意味する。<span class="math inline">\(r &lt; 0\)</span>のときは「負の相関」、つまり一方が増えればもう一方が減るという関係にあることを意味する。</p>
+<p>Rで相関係数を求めるには、<code>cor()</code>が使える。カッコの中に、相関係数を求めたい2つの変数を入れれば良い。また、<code>cor.test()</code>を使うと、相関係数の検定などより詳細な結果を示してくれる。</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="02-summary.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <pre><code>## [1] -0.1175698</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="02-summary.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="02-summary.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -744,22 +748,22 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 ## sample estimates:
 ##        cor 
 ## -0.1175698</code></pre>
-<p>なお，共分散は<code>cov()</code>で求められる。</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="02-summary.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
+<p>なお、共分散は<code>cov()</code>で求められる。</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="02-summary.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <pre><code>## [1] -0.042434</code></pre>
 <hr />
 <p>補足:</p>
-<p>単に「相関係数」というと，一般的には「ピアソンの積率相関係数」のことを指す場合が多い。上で示した例も，ピアソンの積率相関係数を求めている。以降の章でも，特に断りがない限り「相関係数」は積率相関係数を指すものとする。</p>
-<p>相関係数にもいくつか種類があり，他にも例えばスピアマンの順位相関係数などがある。順位相関係数は，変数を順位に変換した上で（大きい順から1, 2, …と順位を振る）その順位を使って相関係数を求めたものである。データに極端な値（外れ値）がある場合やデータ数が少ない場合は，外れ値を調整してくれる順位相関係数の方が望ましい。</p>
-<p><code>cor()</code>及び<code>cor.test()</code>のオプションで，<code>method =</code>で相関係数の算出法を指定することができる。</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="02-summary.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<p>単に「相関係数」というと、一般的には「ピアソンの積率相関係数」のことを指す場合が多い。上で示した例も、ピアソンの積率相関係数を求めている。以降の章でも、特に断りがない限り「相関係数」は積率相関係数を指すものとする。</p>
+<p>相関係数にもいくつか種類があり、他にも例えばスピアマンの順位相関係数などがある。順位相関係数は、変数を順位に変換した上で（大きい順から1, 2, …と順位を振る）その順位を使って相関係数を求めたものである。データに極端な値（外れ値）がある場合やデータ数が少ない場合は、外れ値を調整してくれる順位相関係数の方が望ましい。</p>
+<p><code>cor()</code>及び<code>cor.test()</code>のオプションで、<code>method =</code>で相関係数の算出法を指定することができる。</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="02-summary.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
 <pre><code>## [1] -0.1667777</code></pre>
-<p>何も指定しなければ，デフォルトでピアソンの積率相関係数を計算してくれる。</p>
+<p>何も指定しなければ、デフォルトでピアソンの積率相関係数を計算してくれる。</p>
 <hr />
 </div>
 <div id="確認問題-1" class="section level2 unnumbered">
 <h2>確認問題</h2>
-<p><code>iris</code>データを使って，代表値，散布度，相関係数の求め方を復習する。</p>
+<p><code>iris</code>データを使って、代表値、散布度、相関係数の求め方を復習する。</p>
 <div id="問１-1" class="section level3 unnumbered">
 <h3>問１</h3>
 <p><code>Petal.Length</code>と<code>Petal.Width</code>それぞれの平均値と標準偏差を求めよう。</p>
@@ -771,9 +775,9 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 </div>
 <div id="問３-1" class="section level3 unnumbered">
 <h3>問３</h3>
-<p>問1で求めた標準偏差と，問2で求めた共分散を使って，2変数の間の相関係数を求めよう。<br />
-また，<code>cor()</code>でも<code>Petal.Length</code>と<code>Petal.Width</code>の相関係数を求め，値が一致することを確かめよう。</p>
-<p>ヒント：相関係数の式を確認して，相関係数を求める。</p>
+<p>問1で求めた標準偏差と、問2で求めた共分散を使って、2変数の間の相関係数を求めよう。<br />
+また、<code>cor()</code>でも<code>Petal.Length</code>と<code>Petal.Width</code>の相関係数を求め、値が一致することを確かめよう。</p>
+<p>ヒント：相関係数の式を確認して、相関係数を求める。</p>
 
 </div>
 </div>

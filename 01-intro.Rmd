@@ -23,7 +23,10 @@ Rのインストールから使い方までを解説する。
 
 インストールは、[https://cran.r-project.org](https://cran.r-project.org)から可能。自分のOSにあったインストーラを選ぶ。  
 
-![](images/image01_R.png)
+```{r, echo=FALSE}
+knitr::include_graphics("./images/image01_R.png")
+```
+
 
 インストーラを実行したら、あとは指示に従ってインストールをすすめる。  
   
@@ -35,14 +38,23 @@ RStudioとは、Rの使いやすさを向上させる目的で開発されてい
   
 インストールは、[https://rstudio.com/products/rstudio/#rstudio-desktop](https://rstudio.com/products/rstudio/#rstudio-desktop)からできる。
   
-![](images/image01_RStudio.png)
+  
+```{r, echo=FALSE}
+knitr::include_graphics("./images/image01_RStudio.png")
+```
+
 
 「DOWNLOAD RSTUDIO DESKTOP」を選択（無料版で良い）。  
   
   
 RとRstudioの両方をインストールできたら、RStudioの方を開く。  
-以下のような画面が表示される。    
-![](image01_RStudio_ex.png)
+以下のような画面が表示される。
+
+```{r, echo=FALSE}
+knitr::include_graphics("./images/image01_RStudio_ex.png")
+```
+
+
 
 ***
 注意:  
@@ -87,6 +99,7 @@ Rの画面構成について確認する。
 * 「File」から「New Script」を選ぶ。何も書かれていないファイル（R Editor）が開かれる。  
 * 名前をつけて保存する。「File」から「Save as..」を選び、名前をつけて保存する。拡張子が「.R」のファイルとして保存される。  
   
+  
 ![](images/image01_Script1.png)
 
 スクリプトに、試しに以下のプログラムを入力してみよう。  
@@ -98,8 +111,12 @@ Rの画面構成について確認する。
 
 プログラムを選択し、CtrlとEnterを同時に押して実行する（「Run line or selection」を選んでも可）。すると、「R Console」にプログラムの結果が出力される。  
 
-![](images/image01_Script2.png)
-  
+```{r, echo=FALSE}
+knitr::include_graphics("./images/image01_Script2.png")
+```
+
+
+
 
 スクリプトファイルを開きたいときは、RStudioを立ち上げて、「File」から「Open File」を選び、スクリプトのファイルを選ぶ。  
 
@@ -113,7 +130,9 @@ Rの画面構成について確認する。
 1 + 
 ```
 
-![](images/image01_Error1.png)
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("./images/image01_Error1.png")
+```
 
 
 何も表示されないし、冒頭が`>`ではなく`+`が表示される。Enterを押しても元に戻らない。  
@@ -489,7 +508,10 @@ library("tidyverse")
 ***
 マシンにインストールされているパッケージの情報は、RStudioの右下の「Packages」というタブから確認することができる。  
 
-![](images/image01_RStudio_packages.png)
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("./images/image01_RStudio_packages.png")
+```
+
 
 パッケージは世界中で開発され、アップデートもなされている。RStudioならば同じく「Packages」の「Update」を選ぶことでアップデートすることができる。
 
@@ -498,17 +520,31 @@ library("tidyverse")
 
 ## データの読み込み
 
-大抵の場合、データはExcelファイルなどに入力して使うことが多い。RでExcelなどの外部ファイルを読み込んで解析するには、以下の手順を踏む必要がある。
+大抵の場合、データはExcelファイルなどに入力して使うことが多い。RでExcelなどの外部ファイルを読み込む方法として、以下の手順がある。
 
-1. ワーキングディレクトリを指定する（データのある場所をRに教える）。  
-2. データを読み込む
+### 1: RStudioの機能を使って読み込む
 
-読み込みたいデータをデスクトップに置いた場合を例として、外部データの読み込み方について確認していこう。
+RStudioの場合、右上にある「Import Dataset」でデータの読み込みを行うことができる。
+
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("./images/image01_ReadData_1.png")
+```
+
+「From Text (base)」を選び、読み込むCSVファイルを選ぶ。
 
 
-### ワーキングディレクトリを指定する。
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("./images/image01_ReadData_2.png")
+```
 
-**ワーキングディレクトリ**とは、「現在居る場所」のことである。  
+Nameには「dat」と入力、ファイルの1行目に変数名を入力している場合はHeadingは「Yes」を選ぶ。設定ができたら、「Import」を選ぶ。  
+
+
+### 2: プログラムを書いてデータを読み込む。
+
+読み込みたいデータをデスクトップに置いた場合を例として、外部データの読み込み方について確認していく。  
+  
+まず、**ワーキングディレクトリ**を指定する必要がある（Rにデータのある場所を教える作業）。ワーキングディレクトリとは、「現在居る場所」のことである。  
 試しに、現在のワーキングディレクトリを確認しよう。以下のプログラムをコンソールに入力して実行する。
 
 ```{r, eval=FALSE}
@@ -519,13 +555,10 @@ getwd()
 
 
 出力された場所が、現在のワーキングディレクトリである。Rはワーキングディレクトリを起点として読み込むファイルを探す。**読み込むファイルは、ワーキングディレクトリに置くことにしよう**。  
+  
+以下に、ワーキングディレクトリにデスクトップを指定する方法を例として説明する。  
 
-
-#### ワーキングディレクトリの指定{-}
-
-以下に、ワーキングディレクトリとしてデスクトップを指定する方法を例として説明する。  
-
-##### 方法１{-}
+##### プログラムから指定する
 
 コンソールに以下のプログラムを直接書き込んで実行する。 
 
@@ -542,21 +575,21 @@ getwd()
 
 ```
 
-##### 方法２{-}
+##### RStudioの機能を使う
 
 * RStudioならば、右の方にある「File」からデスクトップを表示し、「Set As Working Directory」を選ぶ。  
 
-![](images/image02_Working.png)
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("./images/image02_Working.png")
+```
 
+他にも、メニューバーの「Session」から「Set Working Directory」、「Choose Working Directory」で指定することもできる。  
 
-##### 方法３{-}
+```{r, echo=FALSE, out.width="50%"}
+knitr::include_graphics("./images/image02_Working2.png")
+```
 
-* RStudioならば、「Session」から「Set Working Directory」、「Choose Working Directory」を選び、デスクトップを選ぶ。  
-
-![](images/image02_Working2.png)
-
-
-### データを読み込む
+ワーキングディレクトリの指定ができたら、プログラムを書いてデータを読み込む。
   
 #### csvファイルの場合{-}
 

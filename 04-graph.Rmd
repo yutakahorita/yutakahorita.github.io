@@ -26,27 +26,167 @@ library(tidyverse)
 例えばデータに極端に高い値があったりする場合は、代表値として平均値を使うのは適切でないことがわかったりする。データが正規分布と違うかたちをしているか、データの中に外れ値はないかなど、分布の形状をデータ解析の前に確認しておくことは重要である。
 
 
-## Rのグラフィック
+## Rのグラフィック関数
 
 Rには標準でグラフを作成するための関数がいくつか用意されている。  
-`hist()`はヒストグラム、`plot()`は散布図、`boxplot()`は箱ひげ図を作成するための関数である。
-  
+
+### plot
+
+`plot`はグラフを作る基本となる関数である。
+
+
 ```{r}
 
-hist(iris$Sepal.Length) #ヒストグラムを作成する
-plot(iris$Sepal.Length, iris$Sepal.Width) #散布図を作成する
-boxplot(iris$Sepal.Length) #箱ひげ図を作成する
+#サンプルデータをつくる
+sample = data.frame(
+  x = 1:5,
+  y = c(2, 5, 7, 11, 9)
+)
+sample
+
+plot(x = sample$x, y = sample$y)
 
 ```
 
-手っ取り早くデータの分布や相関を確認したい場合は、これらの関数を使えば十分である。
-  
-しかし、標準で入っている関数は出力されるグラフがきれいではなかったり（論文やレポートなどで報告するには不十分）、自分の好みに合わせてグラフの体裁を変えることもできるがオプションの指定方法が複雑といったデメリットもある。作成できるグラフの種類も限られている。  
-  
-これに対し、グラフを作る機能に特化したパッケージとして`ggplot2`というパッケージが開発されている。以降では、`ggplot2`の基本的な使い方を解説する。  
-  
-## ggplot2の基本
+`plot()`にx軸とy軸にプロットするデータをベクトルのかたちで入れると、図を作成してくれる。 
+更に、`plot()`関数では、自分の好みに合わせてグラフの体裁を変えることもできるオプションも用意されている。  
 
+#### オプションの指定
+
+以下に例として、様々なオプションを変更したグラフを示す。
+
+```{r}
+
+plot(x = sample$x, y = sample$y, 
+     type = "b", #type: グラフの種類
+     pch = 2, #点の種類
+     cex = 1.5, #点の大きさ
+     lty = "dotted", #線の種類
+     lwd = 2, #線の太さ
+     col = "blue", #色
+     xlim = c(0,6), #x軸の範囲（最小値, 最大値）
+     ylim = c(0,15), #y軸の範囲（最小値, 最大値）
+     las = 1, #軸の文字の配置
+     main = "Graph", #グラフのタイトル
+     xlab = "x value", #x軸のラベル
+     ylab = "y value" #y軸のラベル
+     )
+
+```
+
+`type`: グラフの種類を変える（"p" = 点（デフォルト）、 "l" = 線、 "b" = 点と線の両方、"n" = 何も描画しない、など）。  
+`pch`: 点の種類を指定（0 = 四角、1 = 丸（デフォルト）、2 = 三角、など）。  
+`cex`: 点の大きさを指定。数値を入力する。  
+`lty`: 線の種類を指定（"solid" = 実線（デフォルト）、"dotted" = ドット、"dashed" = ダッシュ、など）  
+`lwd`: 線の太さの指定。数値を入力する。  
+`col`: 色を変更する。"red", "blue"など色の名前を指定する。  
+`xlim`, `ylim`: それぞれx軸とy軸の最小値と最大値を指定。  
+`las`: 軸の文字の配置を指定（1 = x軸もy軸も水平方向）。  
+`main`, `xlab`, `ylab`: それぞれグラフのラベルを指定。  
+  
+他にもどのようなオプションを指定できるか確認したい場合は、ヘルプを参照。`?pars`と入力するとヘルプが表示される。
+
+
+
+### その他のグラフ
+
+以下では、Rで標準でに入っているサンプルデータ`iris`で様々なグラフを作ってみよう。
+
+```{r}
+head(iris) #データの上数行を表示して中身を確認する。
+```
+
+
+
+#### 散布図
+
+`plot()`で作成する。
+
+```{r}
+
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width) 
+
+```
+
+#### ヒストグラム
+
+`hist()`で作成する。
+
+```{r}
+
+hist(iris$Sepal.Length, 
+     breaks = 20, #breaksでビン（棒）の数を指定できる
+     col = "red",
+     main = "Histgram", xlab = "Sepal Length", ylab = "Frequency") #その他のオプションも指定可能
+
+```
+
+#### 箱ひげ図
+
+
+`boxplot()`で作成する。
+
+```{r}
+
+boxplot(x = iris$Sepal.Length,
+     main = "Boxplot", xlab = "Sepal Length") #その他のオプションも指定可能
+```
+
+
+### グラフを重ねる
+
+同じグラフの中でグループ別にデータを表示したい場合は、例えば以下のようにグラフを重ねて描画していくかたちで表現することができる。  
+  
+以下に例として、`iris`データの`Species`ごとに色や点の形を変えて散布図を示してみる。  
+まず、グラフの領域を作成して、その上にグループ別に`point`や`lines`などで点や線を重ねていくかたちで描画していく。
+
+```{r, eval = FALSE}
+
+#該当する部分を取り出してベクトルに格納する。
+Sepal.Length_setosa <- iris$Sepal.Length[iris$Species == "setosa"]
+Sepal.Width_setosa <- iris$Sepal.Width[iris$Species == "setosa"]
+
+Sepal.Length_versicolor <- iris$Sepal.Length[iris$Species == "versicolor"]
+Sepal.Width_versicolor <- iris$Sepal.Width[iris$Species == "versicolor"]
+
+Sepal.Length_virginica <- iris$Sepal.Length[iris$Species == "virginica"]
+Sepal.Width_virginica <- iris$Sepal.Width[iris$Species == "virginica"]
+
+plot(0, 0, type = "n", xlim = c(3.5, 8.5), ylim=c(0, 6), xlab = "Sepal Length", ylab = "Sepal Width")#まず、空のプロットを作る（軸の範囲やラベルを指定する）
+points(x = Sepal.Length_setosa, y = Sepal.Width_setosa, col = "red", pch = 0)
+points(x = Sepal.Length_versicolor, y = Sepal.Width_versicolor, col = "blue", pch = 1) 
+points(x = Sepal.Length_virginica, y = Sepal.Width_virginica, col = "orange", pch = 2) 
+legend("topleft", legend = c("setosa", "versicolor", "virginica"), pch = c(0, 1, 2), col = c("red", "blue", "orange")) #legendで凡例を重ねることもできる。
+
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("./images/image05_sample.png")
+```
+
+
+### 図の保存
+
+
+```{r, eval=FALSE}
+
+#png形式で保存する場合
+png("plot.png", height = 400, width = 400)  #ファイル名を指定する。画像サイズも任意に指定できる（特に指定しなくても出力してくれる）。
+plot(x = iris$Sepal.Length, y = iris$Petal.Length) #グラフを作る
+dev.off()    #描画デバイスを閉じる
+
+```
+
+
+RStudioならば、plotsウィンドウの「Export」を選んで保存することも可能。
+
+  
+## ggplot2パッケージ
+
+手っ取り早くデータの分布や相関を確認したい場合は、`plot`などの関数を使えば十分である。`plot`などでもオプションを駆使すれば研究報告向きのグラフを作れないこともないが、プログラムやオプションの指定の方法も複雑で、作成できるグラフの種類も少ない。  
+  
+これに対し、様々なグラフを作る機能に特化した`ggplot2`というパッケージがある。以降で、`ggplot2`の基本的な使い方について解説する。  
+  
 早速、`ggplot2`を使ってグラフを作ってみよう。以下のプログラムを実行してみよう。
 
 
@@ -284,25 +424,74 @@ ggplot2::ggsave(plot = p, filename = "plot_3.png", width = 8, height = 5) #幅(w
 
 ```
 
-Rに標準で入っている関数でも図をファイルで保存することも可能。
 
-```{r, eval=FALSE}
+## 応用的なグラフ
 
-#png形式で保存する場合
-png("plot.png")  #描画デバイスを開く（ファイル名を指定する）
-plot(iris$Sepal.Length, iris$Petal.Length) #グラフを作る
-dev.off()    #描画デバイスを閉じる
+### Rain-cloud plot
 
+箱ひげ図、密度曲線、ドットプロットをあわせて表示したもの。データの分布がよりわかりやすい。  
+  
+以下は、`ggplot2`と`ggdist`パッケージを使って作図した例である。
+
+```{r, message = FALSE}
+
+library(ggdist)
+
+ggplot2::ggplot()+
+  ggdist::stat_halfeye(data = iris, aes(x = Species, y = Sepal.Length, fill = Species), width = 0.5,.width = 0, point_colour = NA, position = position_nudge(x = 0.2)) +
+  geom_boxplot(data = iris, aes(x = Species, y = Sepal.Length, fill = Species), width=0.2, outlier.color = NA, position = position_nudge(x = 0)) +
+  geom_jitter(data = iris, aes(x = Species, y = Sepal.Length), width = 0.05,alpha = 0.5) + 
+  coord_flip() +
+  labs(y = "Sepal Length", x = "Species") + 
+    theme_bw() 
+```
+
+### Ridge plot
+
+密度曲線をグループ別に示したもの。  
+    
+以下は、`ggplot2`と`ggridges`パッケージを使って作図した例である。
+
+```{r, message=FALSE, warning=FALSE}
+
+library(ggridges)
+
+ggplot2::ggplot()+
+  ggridges::geom_density_ridges(data = iris, aes(x = Sepal.Length, y = Species, fill = Species), alpha = 0.5, scale = 1)  +
+  labs(x = "Sepal Length", y = "Species") + 
+  theme_bw()
 
 ```
 
 
-RStudioならば、plotsウィンドウの「Export」を選んで保存することも可能。
+
+### Alluvial plot
+
+複数のカテゴリの分類をフローの形式で表現したグラフ。`ggalluvial`パッケージを使って作図する。
+
+```{r, message=FALSE, warning=FALSE}
+
+library(ggalluvial)
+
+UCBAdmissions_2 = data.frame(UCBAdmissions) #サンプルデータUCBAdmissionsを使ってみる。データフレーム形式に修正する。
+head(UCBAdmissions_2) #カテゴリ別に頻度を集計したデータフレームを用意する。
+
+ggplot2::ggplot(data = UCBAdmissions_2, aes(axis1 = Gender, axis2 = Dept, axis3 = Admit, y = Freq)) +
+  ggalluvial::geom_alluvium(aes(fill = Admit))  +
+  ggalluvial::geom_stratum() + 
+  ggplot2::geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("Gender", "Dept", "Admit")) +
+  labs(x = "", y = "Frequency") + 
+  theme_bw()
+
+```
+
 
 ## その他の機能
 
 `ggplot2`の機能はまだまだある。このテキストで説明しきれていないことについては、関数のヘルプやRStudioのサイトにある`ggplot2`のCheat sheetを見てみよう（日本語訳もある）。  
 [https://rstudio.com/resources/cheatsheets/](https://rstudio.com/resources/cheatsheets/)
+
 
 ## 確認問題{-}
 

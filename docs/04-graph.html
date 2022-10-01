@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 グラフ | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 5 グラフ | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 グラフ | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="03-data.html"/>
 <link rel="next" href="05-probability_distribution.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,22 +571,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="グラフ" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> グラフ</h1>
+<div id="グラフ" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> グラフ<a href="04-graph.html#グラフ" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>データをグラフで表現する方法について学ぶ。</p>
 <p>データの傾向をグラフによって表現することを<strong>可視化(visualization)</strong>という。この章では、<code>ggplot2</code>パッケージを使って、データを可視化する方法について学んでいく。</p>
-<p><code>ggplot2</code>も<code>tidyverse</code>パッケージに含まれている。まずは、<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="04-graph.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span></code></pre></div>
-<div id="なぜ可視化が重要か" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> なぜ可視化が重要か？</h2>
+<p>まずは、<code>ggplot2</code>パッケージをロードする。</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="04-graph.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span></code></pre></div>
+<div id="なぜ可視化が重要か" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> なぜ可視化が重要か？<a href="04-graph.html#なぜ可視化が重要か" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>データを解析する際には、単に平均値など数値を確認するだけではなく、必ず<strong>データの分布を確認する</strong>習慣を身に着けよう。</p>
 <p>例えばデータに極端に高い値があったりする場合は、代表値として平均値を使うのは適切でないことがわかったりする。データが正規分布と違うかたちをしているか、データの中に外れ値はないかなど、分布の形状をデータ解析の前に確認しておくことは重要である。</p>
 </div>
-<div id="rのグラフィック関数" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Rのグラフィック関数</h2>
+<div id="rのグラフィック関数" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Rのグラフィック関数<a href="04-graph.html#rのグラフィック関数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rには標準でグラフを作成するための関数がいくつか用意されている。</p>
-<div id="plot" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> plot</h3>
+<div id="plot" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> plot<a href="04-graph.html#plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>plot</code>はグラフを作る基本となる関数である。</p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="04-graph.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サンプルデータをつくる</span></span>
 <span id="cb182-2"><a href="04-graph.html#cb182-2" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
@@ -605,8 +604,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 <p><code>plot()</code>にx軸とy軸にプロットするデータをベクトルのかたちで入れると、図を作成してくれる。
 更に、<code>plot()</code>関数では、自分の好みに合わせてグラフの体裁を変えることもできるオプションも用意されている。</p>
-<div id="オプションの指定" class="section level4" number="5.2.1.1">
-<h4><span class="header-section-number">5.2.1.1</span> オプションの指定</h4>
+<div id="オプションの指定" class="section level4 hasAnchor" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> オプションの指定<a href="04-graph.html#オプションの指定" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>以下に例として、様々なオプションを変更したグラフを示す。</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="04-graph.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> sample<span class="sc">$</span>x, <span class="at">y =</span> sample<span class="sc">$</span>y, </span>
 <span id="cb185-2"><a href="04-graph.html#cb185-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="co">#type: グラフの種類</span></span>
@@ -635,8 +634,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>他にもどのようなオプションを指定できるか確認したい場合は、ヘルプを参照。<code>?pars</code>と入力するとヘルプが表示される。</p>
 </div>
 </div>
-<div id="その他のグラフ" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> その他のグラフ</h3>
+<div id="その他のグラフ" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> その他のグラフ<a href="04-graph.html#その他のグラフ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>以下では、Rで標準でに入っているサンプルデータ<code>iris</code>で様々なグラフを作ってみよう。</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="04-graph.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris) <span class="co">#データの上数行を表示して中身を確認する。</span></span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -646,14 +645,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div id="散布図" class="section level4" number="5.2.2.1">
-<h4><span class="header-section-number">5.2.2.1</span> 散布図</h4>
+<div id="散布図" class="section level4 hasAnchor" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> 散布図<a href="04-graph.html#散布図" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>plot()</code>で作成する。</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="04-graph.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Length, <span class="at">y =</span> iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
 </div>
-<div id="ヒストグラム" class="section level4" number="5.2.2.2">
-<h4><span class="header-section-number">5.2.2.2</span> ヒストグラム</h4>
+<div id="ヒストグラム" class="section level4 hasAnchor" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> ヒストグラム<a href="04-graph.html#ヒストグラム" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>hist()</code>で作成する。</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="04-graph.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(iris<span class="sc">$</span>Sepal.Length, </span>
 <span id="cb189-2"><a href="04-graph.html#cb189-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>, <span class="co">#breaksでビン（棒）の数を指定できる</span></span>
@@ -661,16 +660,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb189-4"><a href="04-graph.html#cb189-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histgram&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Sepal Length&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="co">#その他のオプションも指定可能</span></span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 </div>
-<div id="箱ひげ図" class="section level4" number="5.2.2.3">
-<h4><span class="header-section-number">5.2.2.3</span> 箱ひげ図</h4>
+<div id="箱ひげ図" class="section level4 hasAnchor" number="5.2.2.3">
+<h4><span class="header-section-number">5.2.2.3</span> 箱ひげ図<a href="04-graph.html#箱ひげ図" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>boxplot()</code>で作成する。</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="04-graph.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Length,</span>
 <span id="cb190-2"><a href="04-graph.html#cb190-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Sepal Length&quot;</span>) <span class="co">#その他のオプションも指定可能</span></span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 </div>
 </div>
-<div id="グラフを重ねる" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> グラフを重ねる</h3>
+<div id="グラフを重ねる" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> グラフを重ねる<a href="04-graph.html#グラフを重ねる" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>同じグラフの中でグループ別にデータを表示したい場合は、例えば以下のようにグラフを重ねて描画していくかたちで表現することができる。</p>
 <p>以下に例として、<code>iris</code>データの<code>Species</code>ごとに色や点の形を変えて散布図を示してみる。<br />
 まず、グラフの領域を作成して、その上にグループ別に<code>point</code>や<code>lines</code>などで点や線を重ねていくかたちで描画していく。</p>
@@ -691,8 +690,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb191-15"><a href="04-graph.html#cb191-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;virginica&quot;</span>), <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>)) <span class="co">#legendで凡例を重ねることもできる。</span></span></code></pre></div>
 <p><img src="images/image05_sample.png" /><!-- --></p>
 </div>
-<div id="図の保存" class="section level3" number="5.2.4">
-<h3><span class="header-section-number">5.2.4</span> 図の保存</h3>
+<div id="図の保存" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> 図の保存<a href="04-graph.html#図の保存" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="04-graph.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co">#png形式で保存する場合</span></span>
 <span id="cb192-2"><a href="04-graph.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="at">height =</span> <span class="dv">400</span>, <span class="at">width =</span> <span class="dv">400</span>)  <span class="co">#ファイル名を指定する。画像サイズも任意に指定できる（特に指定しなくても出力してくれる）。</span></span>
 <span id="cb192-3"><a href="04-graph.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Length, <span class="at">y =</span> iris<span class="sc">$</span>Petal.Length) <span class="co">#グラフを作る</span></span>
@@ -700,8 +699,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>RStudioならば、plotsウィンドウの「Export」を選んで保存することも可能。</p>
 </div>
 </div>
-<div id="ggplot2パッケージ" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> ggplot2パッケージ</h2>
+<div id="ggplot2パッケージ" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> ggplot2パッケージ<a href="04-graph.html#ggplot2パッケージ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>手っ取り早くデータの分布や相関を確認したい場合は、<code>plot</code>などの関数を使えば十分である。<code>plot</code>などでもオプションを駆使すれば研究報告向きのグラフを作れないこともないが、プログラムやオプションの指定の方法も複雑で、作成できるグラフの種類も少ない。</p>
 <p>これに対し、様々なグラフを作る機能に特化した<code>ggplot2</code>というパッケージがある。以降で、<code>ggplot2</code>の基本的な使い方について解説する。</p>
 <p>早速、<code>ggplot2</code>を使ってグラフを作ってみよう。以下のプログラムを実行してみよう。</p>
@@ -717,8 +716,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 更に、<code>aes()</code>のカッコの中に描画に必要な要素を指定する。<code>x=</code>と<code>y=</code>でそれぞれ、 x軸とy軸に指定したい変数を指定する。点の大きさ、色、線の種類など、グラフの種類によって指定できる要素がある。</p>
 <p>オプション：上での例では、<code>labs()</code>でx軸やy軸のラベルを指定している。他にも、軸の値の範囲、軸のラベル、グラフの色の設定などをオプションで指定することができる。オプションを加えなくてもグラフは出力される。</p>
 <p>とりあえず、これらだけ知っておけば<code>ggplot2</code>でグラフを作れる。</p>
-<div id="散布図-1" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> 散布図</h3>
+<div id="散布図-1" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> 散布図<a href="04-graph.html#散布図-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>geom_point</code>で作成できる。</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="04-graph.html#cb194-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb194-2"><a href="04-graph.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty, <span class="at">y=</span>hwy, <span class="at">shape =</span> fl)) </span>
@@ -731,8 +730,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb195-3"><a href="04-graph.html#cb195-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 </div>
-<div id="ヒストグラム-1" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> ヒストグラム</h3>
+<div id="ヒストグラム-1" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> ヒストグラム<a href="04-graph.html#ヒストグラム-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>geom_histogram</code>で作成する。</p>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="04-graph.html#cb196-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb196-2"><a href="04-graph.html#cb196-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length))  <span class="co">#xに、横軸にしたい変数を入れる。</span></span>
@@ -747,8 +746,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb198-3"><a href="04-graph.html#cb198-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-101-3.png" width="672" /></p>
 </div>
-<div id="箱ひげ図-1" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> 箱ひげ図</h3>
+<div id="箱ひげ図-1" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> 箱ひげ図<a href="04-graph.html#箱ひげ図-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>geom_boxplot</code>で作成する。</p>
 <p>最小値、第一分位点、中央値、第三分位点、最大値を示す（外れ値は点で示される）。</p>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="04-graph.html#cb199-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
@@ -760,8 +759,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb200-3"><a href="04-graph.html#cb200-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
 </div>
-<div id="バイオリンプロット" class="section level3" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> バイオリンプロット</h3>
+<div id="バイオリンプロット" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> バイオリンプロット<a href="04-graph.html#バイオリンプロット" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>データの分布を表現したグラフ。
 <code>geom_violin</code>で作成する。</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="04-graph.html#cb201-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
@@ -773,8 +772,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb202-3"><a href="04-graph.html#cb202-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-103-2.png" width="672" /></p>
 </div>
-<div id="折れ線グラフ" class="section level3" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> 折れ線グラフ</h3>
+<div id="折れ線グラフ" class="section level3 hasAnchor" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> 折れ線グラフ<a href="04-graph.html#折れ線グラフ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>geom_line()</code>を使う。<code>geom_line()</code>だけだと線のみだが、<code>geom_point()</code>で作ったグラフを重ねることで、点もつけることができる。このように、<em>複数のグラフを重ねて描画することもできる</em>。</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="04-graph.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サンプルデータをつくる: 10日間の気温の変化</span></span>
 <span id="cb203-2"><a href="04-graph.html#cb203-2" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
@@ -799,8 +798,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb205-4"><a href="04-graph.html#cb205-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
 </div>
-<div id="エラーバーつきのグラフ" class="section level3" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> エラーバーつきのグラフ</h3>
+<div id="エラーバーつきのグラフ" class="section level3 hasAnchor" number="5.3.6">
+<h3><span class="header-section-number">5.3.6</span> エラーバーつきのグラフ<a href="04-graph.html#エラーバーつきのグラフ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>geom_errorbar()</code>でエラーバーをつけることができる。
 あるいは、<code>geom_pointrange()</code>でも作れる。</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="04-graph.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サンプルデータをつくる</span></span>
@@ -823,10 +822,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
 </div>
 </div>
-<div id="オプション" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> オプション</h2>
-<div id="ファセットfacet" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> ファセット（Facet）</h3>
+<div id="オプション" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> オプション<a href="04-graph.html#オプション" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ファセットfacet" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> ファセット（Facet）<a href="04-graph.html#ファセットfacet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>グループごとにグラフを分けたい場合は、ファセット（facet）を利用すると良い。<code>facet_wrap()</code>を使う。</p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="04-graph.html#cb208-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb208-2"><a href="04-graph.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
@@ -834,15 +833,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb208-4"><a href="04-graph.html#cb208-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 </div>
-<div id="ラベルlabs" class="section level3" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> ラベル（labs）</h3>
+<div id="ラベルlabs" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> ラベル（labs）<a href="04-graph.html#ラベルlabs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>x軸やy軸のラベルを変えたいときは、<code>labs</code>を使うと良い。</p>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="04-graph.html#cb209-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb209-2"><a href="04-graph.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
 <span id="cb209-3"><a href="04-graph.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Length of sepal&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Length of petal&quot;</span>)</span></code></pre></div>
 </div>
-<div id="テーマtheme" class="section level3" number="5.4.3">
-<h3><span class="header-section-number">5.4.3</span> テーマ（Theme）</h3>
+<div id="テーマtheme" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> テーマ（Theme）<a href="04-graph.html#テーマtheme" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>theme()</code>で、フォントの大きさや色などグラフのテーマも細かく変えることができる。具体的にどの部分を変えられるかは、<code>theme()</code>のヘルプで確認してほしい。</p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="04-graph.html#cb210-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb210-2"><a href="04-graph.html#cb210-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) </span>
@@ -861,8 +860,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-109-3.png" width="672" /></p>
 </div>
 </div>
-<div id="図の保存-1" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> 図の保存</h2>
+<div id="図の保存-1" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> 図の保存<a href="04-graph.html#図の保存-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>ggplot2</code>パッケージの<code>ggsave()</code>で保存できる。<code>plot</code>に保存した図を、<code>filename</code>にファイル名を指定すると、ワーキングディレクトリに作成した図が保存される。</p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="04-graph.html#cb215-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb215-2"><a href="04-graph.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Petal.Length)) <span class="sc">+</span> </span>
@@ -873,10 +872,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb215-7"><a href="04-graph.html#cb215-7" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> p, <span class="at">filename =</span> <span class="st">&quot;plot_2.png&quot;</span>, <span class="at">dpi =</span> <span class="dv">300</span>) <span class="co">#解像度（dpi）を指定可能。</span></span>
 <span id="cb215-8"><a href="04-graph.html#cb215-8" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> p, <span class="at">filename =</span> <span class="st">&quot;plot_3.png&quot;</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>) <span class="co">#幅(width)や高さ(height)を指定可能（単位はインチ）。</span></span></code></pre></div>
 </div>
-<div id="応用的なグラフ" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> 応用的なグラフ</h2>
-<div id="rain-cloud-plot" class="section level3" number="5.6.1">
-<h3><span class="header-section-number">5.6.1</span> Rain-cloud plot</h3>
+<div id="応用的なグラフ" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> 応用的なグラフ<a href="04-graph.html#応用的なグラフ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rain-cloud-plot" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Rain-cloud plot<a href="04-graph.html#rain-cloud-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>箱ひげ図、密度曲線、ドットプロットをあわせて表示したもの。データの分布がよりわかりやすい。</p>
 <p>以下は、<code>ggplot2</code>と<code>ggdist</code>パッケージを使って作図した例である。</p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="04-graph.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
@@ -890,8 +889,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb216-9"><a href="04-graph.html#cb216-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() </span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 </div>
-<div id="ridge-plot" class="section level3" number="5.6.2">
-<h3><span class="header-section-number">5.6.2</span> Ridge plot</h3>
+<div id="ridge-plot" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Ridge plot<a href="04-graph.html#ridge-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>密度曲線をグループ別に示したもの。</p>
 <p>以下は、<code>ggplot2</code>と<code>ggridges</code>パッケージを使って作図した例である。</p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="04-graph.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
@@ -902,8 +901,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb217-6"><a href="04-graph.html#cb217-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 </div>
-<div id="alluvial-plot" class="section level3" number="5.6.3">
-<h3><span class="header-section-number">5.6.3</span> Alluvial plot</h3>
+<div id="alluvial-plot" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Alluvial plot<a href="04-graph.html#alluvial-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>複数のカテゴリの分類をフローの形式で表現したグラフ。<code>ggalluvial</code>パッケージを使って作図する。</p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="04-graph.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span>
 <span id="cb218-2"><a href="04-graph.html#cb218-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -926,24 +925,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 </div>
 </div>
-<div id="その他の機能" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> その他の機能</h2>
+<div id="その他の機能" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> その他の機能<a href="04-graph.html#その他の機能" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>ggplot2</code>の機能はまだまだある。このテキストで説明しきれていないことについては、関数のヘルプやRStudioのサイトにある<code>ggplot2</code>のCheat sheetを見てみよう（日本語訳もある）。<br />
 <a href="https://rstudio.com/resources/cheatsheets/">https://rstudio.com/resources/cheatsheets/</a></p>
 </div>
-<div id="確認問題-3" class="section level2 unnumbered">
-<h2>確認問題</h2>
+<div id="確認問題-3" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="04-graph.html#確認問題-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rに標準で入っている<code>mtcars</code>データを使って、グラフを作成しよう。</p>
-<div id="問１-3" class="section level3 unnumbered">
-<h3>問１</h3>
+<div id="問１-3" class="section level3 unnumbered hasAnchor">
+<h3>問１<a href="04-graph.html#問１-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rで標準で入っている<code>hist()</code>を使って、変数<code>mpg</code>のヒストグラムを作ろう。</p>
 </div>
-<div id="問２-3" class="section level3 unnumbered">
-<h3>問２</h3>
+<div id="問２-3" class="section level3 unnumbered hasAnchor">
+<h3>問２<a href="04-graph.html#問２-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rで標準で入っている<code>plot()</code>を使って、変数<code>mpg</code>と変数<code>wt</code>の散布図を作ろう。</p>
 </div>
-<div id="問３-3" class="section level3 unnumbered">
-<h3>問３</h3>
+<div id="問３-3" class="section level3 unnumbered hasAnchor">
+<h3>問３<a href="04-graph.html#問３-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>ggplot()</code>で、変数<code>mpg</code>と変数<code>wt</code>の散布図を作ろう。グラフには以下の点を反映させること。</p>
 <ul>
 <li>x軸をmpg、y軸をwtとする。<br />
@@ -1031,7 +1030,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

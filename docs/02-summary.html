@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 統計学の基礎の復習 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 3 統計学の基礎の復習 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 統計学の基礎の復習 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="01-intro.html"/>
 <link rel="next" href="03-data.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,8 +571,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="統計学の基礎の復習" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> 統計学の基礎の復習</h1>
+<div id="統計学の基礎の復習" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 統計学の基礎の復習<a href="02-summary.html#統計学の基礎の復習" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>平均値の計算など、心理統計の基礎を復習する。また、Rで平均値などの基礎統計量を計算する方法についても解説する。</p>
 <ul>
 <li>変数の区別<br />
@@ -587,48 +586,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>共分散、相関</li>
 </ul></li>
 </ul>
-<div id="尺度水準" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> 尺度水準</h2>
+<div id="尺度水準" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> 尺度水準<a href="02-summary.html#尺度水準" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>まず、統計学における変数の種類の区別について確認する。変数の種類は大きく分けて、数値である<strong>量的変数</strong>とカテゴリーを意味する<strong>カテゴリカル変数（質的変数）</strong>の2つに区別できる。</p>
-<div id="量的変数" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> 量的変数</h3>
+<div id="量的変数" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> 量的変数<a href="02-summary.html#量的変数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>数値として扱う変数。計算することができる。量的変数は更に、<strong>間隔尺度</strong>と<strong>比率尺度</strong>に区別される。</p>
-<div id="間隔尺度" class="section level4 unnumbered">
-<h4>間隔尺度</h4>
+<div id="間隔尺度" class="section level4 unnumbered hasAnchor">
+<h4>間隔尺度<a href="02-summary.html#間隔尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データの間隔に意味があるもの。ゼロが何もない状態を意味するものでないもの。例えば、摂氏温度など（0℃以下も-1℃があるように、ゼロは何もない状態を意味しない）。差には意味があるが、比率については意味を持たない。例えば、「10℃と20℃の差は10℃である」とはいえるが、「20℃は10℃の2倍の熱さである」とは言えない。</p>
 </div>
-<div id="比率尺度" class="section level4 unnumbered">
-<h4>比率尺度</h4>
+<div id="比率尺度" class="section level4 unnumbered hasAnchor">
+<h4>比率尺度<a href="02-summary.html#比率尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データの間隔に意味があるもの。ゼロがなにもない状態を意味するもの。例えば、身長、体重、絶対温度など。間隔を比率で表現できる。例えば、「体重100キロの人は体重50キロの人より2倍重い」といえる。</p>
 <p>また、量的変数は<strong>離散値</strong>か<strong>連続値</strong>かでも区別できる。</p>
 </div>
-<div id="離散値" class="section level4 unnumbered">
-<h4>離散値</h4>
+<div id="離散値" class="section level4 unnumbered hasAnchor">
+<h4>離散値<a href="02-summary.html#離散値" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>離散値とは、小数の間隔を持たない数値のこと。例えば個数。1個, 2個、3個と数えるが、1.1個, 1.2個などは存在しない。</p>
 </div>
-<div id="連続値" class="section level4 unnumbered">
-<h4>連続値</h4>
+<div id="連続値" class="section level4 unnumbered hasAnchor">
+<h4>連続値<a href="02-summary.html#連続値" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>連続値とは、小数の間隔を持つ数値のこと。例えば身長。150cmから151cmの間には小数で表現できる数値が連続的に並んでいる。</p>
 </div>
 </div>
-<div id="カテゴリカル変数質的変数" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> カテゴリカル変数（質的変数）</h3>
+<div id="カテゴリカル変数質的変数" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> カテゴリカル変数（質的変数）<a href="02-summary.html#カテゴリカル変数質的変数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>分類や種類などを意味するデータ。数量化して計算することはできない。<br />
 カテゴリカル変数も更に、いくつかに分類される。ここでは、<strong>名義尺度</strong>と<strong>順序尺度</strong>の区別を挙げる。</p>
-<div id="名義尺度" class="section level4 unnumbered">
-<h4>名義尺度</h4>
+<div id="名義尺度" class="section level4 unnumbered hasAnchor">
+<h4>名義尺度<a href="02-summary.html#名義尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>性別（男、女）、血液型、出身地など。順序関係がないのが特徴である（男性&lt;女性といった関係はない）。</p>
 </div>
-<div id="順序尺度" class="section level4 unnumbered">
-<h4>順序尺度</h4>
+<div id="順序尺度" class="section level4 unnumbered hasAnchor">
+<h4>順序尺度<a href="02-summary.html#順序尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>「優、良、可、不可」といった成績、「1. 賛成、2. どちらでもない、3. 反対」といった尺度など。心理学ではよくリッカート尺度（＊）で態度などを測定するが、これも順序尺度である。</p>
 <p>＊「1:そう思わない、2: 思わない、3: どちらでもない, 4: そう思う、5: 強くそう思う」といったように、自分の態度に当てはまる数字を選ばせて態度の強さを測定する方法。</p>
 <p>順序尺度には順序関係があるが、間隔は定義されない。例えば、成績には優 &gt; 良 &gt; 可という順序関係があるが、優と良の間と良と可の間の幅は等しいといった定義はできない。また、良+可=優といった計算もできない。つまり、順序尺度は順序関係はあるがカテゴリカル変数である。</p>
 </div>
 </div>
 </div>
-<div id="基本統計量" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> 基本統計量</h2>
+<div id="基本統計量" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> 基本統計量<a href="02-summary.html#基本統計量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>以下では、Rにもともと入っている<code>iris</code>データをサンプルデータとして使いながら、平均値や中央値などの<strong>代表値</strong>や分散や標準偏差などの<strong>散布度</strong>について復習する。</p>
 <hr />
 <p><code>iris</code>と入力して実行すると、データの中身を確認できるが、これだとデータ全てが出力されて見やすくない。<code>head()</code>を使うとデータの変数を含めた上部数行を表示してくれる。また、<code>str()</code>を使うと、簡略化したデータの構成を表示してくれる。これらの関数は今後もよく出てくるのでここで覚えておこう。</p>
@@ -648,11 +647,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <hr />
-<div id="代表値" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> 代表値</h3>
+<div id="代表値" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> 代表値<a href="02-summary.html#代表値" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>データの代表となる値のこと。平均や中央値などがよく用いられる。</p>
-<div id="平均値mean" class="section level4 unnumbered">
-<h4>平均値(mean)</h4>
+<div id="平均値mean" class="section level4 unnumbered hasAnchor">
+<h4>平均値(mean)<a href="02-summary.html#平均値mean" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span class="math inline">\(n\)</span>個の数値<span class="math inline">\(X_{1}, X_{2}, \cdots, X_{n}\)</span>からなるデータの平均値<span class="math inline">\(\bar{X}\)</span>は、以下の数式で求める。</p>
 <p><span class="math display">\[
 \bar{X} = \frac{1}{n}\sum_{k=1}^{n}X_{k}\\  
@@ -671,8 +670,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 3</code></pre>
 <hr />
 </div>
-<div id="中央値median" class="section level4 unnumbered">
-<h4>中央値(median)</h4>
+<div id="中央値median" class="section level4 unnumbered hasAnchor">
+<h4>中央値(median)<a href="02-summary.html#中央値median" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データを小さい順から並べた場合、つまり、<span class="math inline">\(X_{1} \le X_{2} \le ... \le X_{n}\)</span>と並べた場合に、中央に位置する値を中央値という。
 データの個数を<span class="math inline">\(n\)</span>とした場合、<span class="math inline">\(n\)</span>が奇数の場合は<span class="math inline">\(X_{(n+1)/2}\)</span>、<span class="math inline">\(n\)</span>が偶数の場合は<span class="math inline">\((X_{n/2}+X_{n/2+1})/2\)</span>が中央値となる。</p>
 <p>Rで中央値を求めたい場合は、<code>median()</code>関数が使える。<code>mean()</code>と同じく、カッコ内にデータをベクトルの形式で入れる。</p>
@@ -680,11 +679,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 5.8</code></pre>
 </div>
 </div>
-<div id="散布度" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> 散布度</h3>
+<div id="散布度" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> 散布度<a href="02-summary.html#散布度" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>データの散らばり具合を示す値のこと。分散、標準偏差などが知られる。</p>
-<div id="分散variance" class="section level4 unnumbered">
-<h4>分散(variance)</h4>
+<div id="分散variance" class="section level4 unnumbered hasAnchor">
+<h4>分散(variance)<a href="02-summary.html#分散variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>分散（<span class="math inline">\(\sigma^2\)</span>）は、以下の式で定義される。すなわち、各変数が平均値から離れている程度を表現したものである。</p>
 <p><span class="math display">\[
 \sigma^2 = \frac{1}{n-1}\sum_{k=1}^{n}(X_{k}-\bar{X})^2\\  
@@ -693,15 +692,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="02-summary.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 0.6856935</code></pre>
 </div>
-<div id="標準偏差standard-deviation" class="section level4 unnumbered">
-<h4>標準偏差(standard deviation)</h4>
+<div id="標準偏差standard-deviation" class="section level4 unnumbered hasAnchor">
+<h4>標準偏差(standard deviation)<a href="02-summary.html#標準偏差standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>分散の平方根が標準偏差（<span class="math inline">\(\sigma\)</span>）である。</p>
 <p>Rで標準偏差を求める際には、<code>sd()</code>関数を使う。</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="02-summary.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 0.8280661</code></pre>
 </div>
-<div id="分位数quantile" class="section level4 unnumbered">
-<h4>分位数(quantile)</h4>
+<div id="分位数quantile" class="section level4 unnumbered hasAnchor">
+<h4>分位数(quantile)<a href="02-summary.html#分位数quantile" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データを小さい順から大きい順に並べ替えたときに、データを分割する値を分位数という。一般的に、四分位数（25%点、50%点[中央値]、75%点で分割した値）が報告によく使われる。</p>
 <p>Rでは、<code>quantile()</code>で分位数を求められる。</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="02-summary.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length) <span class="co">#デフォルトだと、0%, 25%, 50%, 75%, 100%が表示される） </span></span></code></pre></div>
@@ -712,16 +711,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4.80 5.27 5.80 6.52 7.90</code></pre>
 </div>
 </div>
-<div id="要約統計量" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> 要約統計量</h3>
+<div id="要約統計量" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> 要約統計量<a href="02-summary.html#要約統計量" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>以上のように、Rには代表値や散布度を求めるための関数が標準で入っているが、これらをまとめて計算してくれる<code>summary()</code>もある。</p>
 <p><code>summary()</code>に変数を入れると、最小値、最大値、平均、四分位数をまとめて算出してくれる。</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="02-summary.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   4.300   5.100   5.800   5.843   6.400   7.900</code></pre>
 </div>
-<div id="表の作り方" class="section level3" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> 表の作り方</h3>
+<div id="表の作り方" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> 表の作り方<a href="02-summary.html#表の作り方" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>カテゴリカル変数の場合、データ全体を把握するために頻度やパーセンテージを知りたいときが多い。</p>
 <p><code>table()</code>関数を使うと、頻度を集計して表にしてくれる。</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="02-summary.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
@@ -736,8 +735,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  0.3333333  0.3333333  0.3333333</code></pre>
 </div>
 </div>
-<div id="相関correlation" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> 相関(correlation)</h2>
+<div id="相関correlation" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 相関(correlation)<a href="02-summary.html#相関correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>2変数間の関連のことを相関という。相関の強さは相関係数で示される。</p>
 <p>変数<span class="math inline">\(x\)</span>と変数<span class="math inline">\(y\)</span>の相関係数（<span class="math inline">\(r\)</span>）は、以下の式で求められる。</p>
 <p><span class="math display">\[
@@ -773,20 +772,20 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 <p>何も指定しなければ、デフォルトでピアソンの積率相関係数を計算してくれる。</p>
 <hr />
 </div>
-<div id="確認問題-1" class="section level2 unnumbered">
-<h2>確認問題</h2>
+<div id="確認問題-1" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="02-summary.html#確認問題-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>iris</code>データを使って、代表値、散布度、相関係数の求め方を復習する。</p>
-<div id="問１-1" class="section level3 unnumbered">
-<h3>問１</h3>
+<div id="問１-1" class="section level3 unnumbered hasAnchor">
+<h3>問１<a href="02-summary.html#問１-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>Petal.Length</code>と<code>Petal.Width</code>それぞれの平均値と標準偏差を求めよう。</p>
 </div>
-<div id="問２-1" class="section level3 unnumbered">
-<h3>問２</h3>
+<div id="問２-1" class="section level3 unnumbered hasAnchor">
+<h3>問２<a href="02-summary.html#問２-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>Petal.Length</code>と<code>Petal.Width</code>の共分散を求めよう。</p>
 <p>ヒント：<code>cov()</code>で2つの変数を入れると求まる。</p>
 </div>
-<div id="問３-1" class="section level3 unnumbered">
-<h3>問３</h3>
+<div id="問３-1" class="section level3 unnumbered hasAnchor">
+<h3>問３<a href="02-summary.html#問３-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>問1で求めた標準偏差と、問2で求めた共分散を使って、2変数の間の相関係数を求めよう。<br />
 また、<code>cor()</code>でも<code>Petal.Length</code>と<code>Petal.Width</code>の相関係数を求め、値が一致することを確かめよう。</p>
 <p>ヒント：相関係数の式を確認して、相関係数を求める。</p>
@@ -869,7 +868,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

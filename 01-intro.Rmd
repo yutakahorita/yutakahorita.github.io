@@ -1,7 +1,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 ```
 
 # Rの使い方
@@ -484,11 +484,11 @@ mean(dat$x_4, na.rm = TRUE)
 
 パッケージをインストールする。`install.packages()`で、インストールしたいパッケージを入力する。  
   
-ここでは`tidyverse`というパッケージをインストールするのを例として、パッケージのインストール方法について示す。
+ここでは`ggplot2`というパッケージをインストールするのを例として、パッケージのインストール方法について示す。
 
 ```{r, eval=FALSE}
 
-install.packages("tidyverse")
+install.packages("ggplot2")
 
 ```
 
@@ -499,7 +499,7 @@ install.packages("tidyverse")
 インストールしただけではパッケージを使うことができない。使う前にロードする必要がある。`library()`で、括弧内に使いたいパッケージ名を入力する。  
 
 ```{r, eval=FALSE}
-library("tidyverse")
+library(ggplot2)
 ```
 
 
@@ -606,7 +606,7 @@ dat #データの中身がコンソールに出力される
 #### Excelファイルの場合{-}
 
 
-`tidyverse`パッケージをロードした上で、`read_excel()`を使う。  
+`readxl`パッケージをインストール及びロードした上で、`read_excel()`を使う。  
 ＊`readxl::read_excel`は、`readxl`パッケージに入っている`read_excel`という関数を使うということを意味する（第4章で、また説明する）。
 
 

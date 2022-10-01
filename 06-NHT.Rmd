@@ -1,7 +1,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 library(knitr)
 set.seed(1234)
 ```
@@ -16,10 +16,10 @@ set.seed(1234)
 
 ## 準備
 
-この章でも、tidyverseパッケージを使う。予めロードしておく。
+この章でも、`ggplot2`を使う。
 
 ```{r, echo=TRUE, eval = FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
+library(ggplot2)
 ```
 
 ## 統計的仮説検定の考え方
@@ -40,7 +40,7 @@ $$
 plot = data.frame(x=0:10, p=dbinom(x=0:10, size=10, prob=0.5))
 
 ggplot2::ggplot() + 
-  geom_bar(data=plot, aes(x=factor(x), y=p), stat="identity") + 
+  ggplot2::geom_bar(data=plot, aes(x=factor(x), y=p), stat="identity") + 
   labs(y = "P(x)", x ="x")
 ```
 
@@ -174,9 +174,9 @@ dat_t20 = data.frame(df = 20,x = x, y = y_t20)
 dat_t = rbind(dat_t2, dat_t5, dat_t20)
 
 p = ggplot2::ggplot() + 
-  geom_line(data = dat_t, aes(x = x, y = y, color = factor(df))) + 
-  labs(x = "t", y = "value", color = "Degree of freedom") +
-  theme_bw()
+  ggplot2::geom_line(data = dat_t, aes(x = x, y = y, color = factor(df))) + 
+  ggplot2::labs(x = "t", y = "value", color = "Degree of freedom") +
+  ggplot2::theme_bw()
 p
 
 ```
@@ -243,8 +243,8 @@ dat_norm_2 = data.frame(group = "B", x = x, y = y_2)
 d_pop = rbind(dat_norm_1, dat_norm_2)
 
 p = ggplot2::ggplot() + 
-  geom_line(data = d_pop, aes(x = x, y = y, color = group)) + 
-  labs(y = "value", x = "", color = "population")
+  ggplot2::geom_line(data = d_pop, aes(x = x, y = y, color = group)) + 
+  ggplot2::labs(y = "value", x = "", color = "population")
 p
 
 
@@ -356,9 +356,9 @@ table(d_sim$significant)
 ```{r}
 
 ggplot2::ggplot() + 
-  geom_point(data = d_sim, aes(x = s, y = p)) + 
-  geom_hline(yintercept = 0.05, linetype = "dotted", color= "red") +
-  labs(x = "Simulation", y = "p")
+  ggplot2::geom_point(data = d_sim, aes(x = s, y = p)) + 
+  ggplot2::geom_hline(yintercept = 0.05, linetype = "dotted", color= "red") +
+  ggplot2::labs(x = "Simulation", y = "p")
 
 ```
 
@@ -407,8 +407,3 @@ str(sample)
   
 ※`t.test()`関数を使う。等分散を仮定しない検定の場合は、特にオプションをしていしないでもよい。 
 
-
-```{r, eval = FALSE, include = FALSE}
-
-
-```

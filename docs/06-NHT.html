@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 統計的仮説検定 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 7 統計的仮説検定 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 統計的仮説検定 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="05-probability_distribution.html"/>
 <link rel="next" href="07-analysis.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,23 +571,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="統計的仮説検定" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> 統計的仮説検定</h1>
+<div id="統計的仮説検定" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> 統計的仮説検定<a href="06-NHT.html#統計的仮説検定" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>統計的仮説検定の考え方とそれが抱える問題について理解する。</p>
 <ul>
 <li>統計的仮説検定の考え方（p値とは何か？）</li>
 <li>統計的仮説検定が抱える問題</li>
 </ul>
-<div id="準備" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> 準備</h2>
-<p>この章でも、tidyverseパッケージを使う。予めロードしておく。</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="06-NHT.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="準備" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 準備<a href="06-NHT.html#準備" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>この章でも、<code>ggplot2</code>を使う。</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="06-NHT.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
-<div id="統計的仮説検定の考え方" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> 統計的仮説検定の考え方</h2>
+<div id="統計的仮説検定の考え方" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 統計的仮説検定の考え方<a href="06-NHT.html#統計的仮説検定の考え方" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>前の章で学んだ二項分布を用いて、統計的仮説検定の考え方について学ぶ。p値とは何なのかを理解する。</p>
-<div id="二項分布の復習" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> 二項分布の復習</h3>
+<div id="二項分布の復習" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> 二項分布の復習<a href="06-NHT.html#二項分布の復習" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>コインを10回投げて表が出た回数<span class="math inline">\(x\)</span>をカウントしていく。”理論的”には、表が<span class="math inline">\(x\)</span>回出る確率<span class="math inline">\(P(x)\)</span>は、コインを投げる回数<span class="math inline">\(n\)</span>と表が出る確率<span class="math inline">\(q\)</span>をパラメータとする二項分布に従う。</p>
 <p><span class="math display">\[
 P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}\\
@@ -597,12 +596,12 @@ x \sim Binomial(n, q)
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="06-NHT.html#cb269-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
 <span id="cb269-2"><a href="06-NHT.html#cb269-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb269-3"><a href="06-NHT.html#cb269-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb269-4"><a href="06-NHT.html#cb269-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb269-4"><a href="06-NHT.html#cb269-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb269-5"><a href="06-NHT.html#cb269-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/dbinom_2_plot-1.png" width="672" /></p>
 </div>
-<div id="統計的仮説検定-1" class="section level3" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> 統計的仮説検定</h3>
+<div id="統計的仮説検定-1" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> 統計的仮説検定<a href="06-NHT.html#統計的仮説検定-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>”理論的には”、表が出る回数<span class="math inline">\(x\)</span>が生じる確率は上の図のようになる（平均は<span class="math inline">\(nq = 10*0.5 = 5\)</span>）。</p>
 <p>では、実際にコインを10回投げてみて表が出た回数を数えてみたところ、表が2回しか出なかったとする。この結果から、「このコインには歪みがあって、片一方の面だけが出やすい」と言ってもよいのか？</p>
 <p>これを検討するために、表と裏それぞれが出る確率の等しいコインを投げる場合（すなわち、<span class="math inline">\(q=0.5\)</span>の場合）との比較を行い、今回の実験結果がどれくらいまれな事象と言えるのかを比較する。<br />
@@ -641,10 +640,10 @@ x \sim Binomial(n, q)
 ***</p>
 </div>
 </div>
-<div id="統計的仮説検定の種類" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> 統計的仮説検定の種類</h2>
-<div id="二項検定" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> 二項検定</h3>
+<div id="統計的仮説検定の種類" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 統計的仮説検定の種類<a href="06-NHT.html#統計的仮説検定の種類" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="二項検定" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> 二項検定<a href="06-NHT.html#二項検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>コイン投げの例は、二項分布に従う事象である。二項分布に従う事象の統計的仮説検定は、<strong>二項検定</strong>と呼ばれる。</p>
 <p>Rにも、二項検定を行うための関数<code>binom.test()</code>が用意されている。</p>
 <p><code>binom.test()</code>に二項分布のパラメータ（<span class="math inline">\(n\)</span>と<span class="math inline">\(q\)</span>にあたる数値）と実験結果を入れると、p値を求めてくれる。</p>
@@ -662,8 +661,8 @@ x \sim Binomial(n, q)
 ## probability of success 
 ##                    0.2</code></pre>
 </div>
-<div id="t検定" class="section level3" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> t検定</h3>
+<div id="t検定" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> t検定<a href="06-NHT.html#t検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>2つのグループの間で平均値に差があるかどうかの統計的仮説検定として、t検定を使うことが多い。連続量の変数を扱う検定の場合は、t検定がよく使われる。</p>
 <p>t検定の考え方も、基本的に上と同じである。2つの集団の間で平均値に差がないと仮定したときの理論分布（t分布）と比べて、実際に得られた差の値がどれくらい珍しいのかを検討する。</p>
 <p>例えば、母集団Aと母集団Bの平均値をそれぞれ<span class="math inline">\(\mu_{A}\)</span>、<span class="math inline">\(\mu_{B}\)</span>とする。帰無仮説は「<span class="math inline">\(\mu_{A} - \mu_{B} = 0\)</span>」、対立仮説は「<span class="math inline">\(\mu_{A} - \mu_{B} \neq 0\)</span>」である。</p>
@@ -712,9 +711,9 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <span id="cb280-10"><a href="06-NHT.html#cb280-10" aria-hidden="true" tabindex="-1"></a>dat_t <span class="ot">=</span> <span class="fu">rbind</span>(dat_t2, dat_t5, dat_t20)</span>
 <span id="cb280-11"><a href="06-NHT.html#cb280-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb280-12"><a href="06-NHT.html#cb280-12" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb280-13"><a href="06-NHT.html#cb280-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_t, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="fu">factor</span>(df))) <span class="sc">+</span> </span>
-<span id="cb280-14"><a href="06-NHT.html#cb280-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;t&quot;</span>, <span class="at">y =</span> <span class="st">&quot;value&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Degree of freedom&quot;</span>) <span class="sc">+</span></span>
-<span id="cb280-15"><a href="06-NHT.html#cb280-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb280-13"><a href="06-NHT.html#cb280-13" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_t, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="fu">factor</span>(df))) <span class="sc">+</span> </span>
+<span id="cb280-14"><a href="06-NHT.html#cb280-14" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;t&quot;</span>, <span class="at">y =</span> <span class="st">&quot;value&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Degree of freedom&quot;</span>) <span class="sc">+</span></span>
+<span id="cb280-15"><a href="06-NHT.html#cb280-15" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>()</span>
 <span id="cb280-16"><a href="06-NHT.html#cb280-16" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p>標本から得た差の値が理論分布のどこに位置するかを検討する。</p>
@@ -737,10 +736,10 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <hr />
 </div>
 </div>
-<div id="統計的仮説検定で重要な概念" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> 統計的仮説検定で重要な概念</h2>
-<div id="第1種の過誤と第2種の過誤" class="section level3" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> 第1種の過誤と第2種の過誤</h3>
+<div id="統計的仮説検定で重要な概念" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> 統計的仮説検定で重要な概念<a href="06-NHT.html#統計的仮説検定で重要な概念" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="第1種の過誤と第2種の過誤" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> 第1種の過誤と第2種の過誤<a href="06-NHT.html#第1種の過誤と第2種の過誤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>「帰無仮説が真なのに、帰無仮説を棄却してしまう誤り」のことを、<strong>第1種の過誤（type Ⅰ error）</strong>という。つまり、「本当は差がないのに、”差がある”と判断してしまう誤り」のことである。<br />
 これに対し、「帰無仮説が偽なのに、帰無仮説を採択してしまう」誤りのことを、<strong>第2種の過誤（type Ⅱ error）</strong>という。つまり、「本当は差があるのに、”差がない”と判断してしまう誤り」のことである。</p>
 <p>第1種の過誤を犯す確率<span class="math inline">\(\alpha\)</span>は、要は有意水準の値そのものである（<span class="math inline">\(\alpha=0.05\)</span>）。有意水準を高くする、すなわち「差があると判断する基準をゆるく」してしまうと、誤った仮説を採用してしまう恐れが増えてしまう。</p>
@@ -749,11 +748,11 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <p>第1種の過誤と第2種の過誤はトレード・オフの関係にある。第1種の過誤を避けようとして有意水準を小さくすれば（例えば<span class="math inline">\(\alpha=0.001\)</span>とする）帰無仮説の棄却が厳しくなり、逆に第2種のエラーを犯してしまう確率も高くなる（帰無仮説が偽であるにもかかわらず、棄却しない）。</p>
 </div>
 </div>
-<div id="統計的仮説検定が抱える問題" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> 統計的仮説検定が抱える問題</h2>
+<div id="統計的仮説検定が抱える問題" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> 統計的仮説検定が抱える問題<a href="06-NHT.html#統計的仮説検定が抱える問題" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>以下に、統計的仮説検定を行う上で留意すべき問題をいくつか示す。</p>
-<div id="p値と標本数の関係" class="section level3" number="7.5.1">
-<h3><span class="header-section-number">7.5.1</span> p値と標本数の関係</h3>
+<div id="p値と標本数の関係" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> p値と標本数の関係<a href="06-NHT.html#p値と標本数の関係" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>p値は標本数に依存する。標本数が多くなるほどp値は小さくなる。</p>
 <p>例えば、平均0, 標準偏差1の正規分布に従う母集団Aと平均0.1, 標準偏差1の正規分布に従う母集団Bからそれぞれ標本を抽出し、AとBの間で平均値に差があるかを検討する。帰無仮説は<span class="math inline">\(\mu_{A} = \mu_{B}\)</span>である（母集団Aと母集団Bの平均値は等しい）。t検定でこの帰無仮説が棄却されるかを検定する。<br />
 実際の母集団の平均値の差は<span class="math inline">\(|0-0.1|=0.1\)</span>である。</p>
@@ -806,8 +805,8 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <p>効果の大きさそのものを表す指標として、<strong>効果量（Effect size）</strong>というものも提案されている。詳細については別の文献を参照してほしいが、例えば、相関係数<span class="math inline">\(r\)</span>も効果の大きさ（2変数の関連の強さ）を示す効果量の一つである。</p>
 <hr />
 </div>
-<div id="第1種の過誤" class="section level3" number="7.5.2">
-<h3><span class="header-section-number">7.5.2</span> 第1種の過誤</h3>
+<div id="第1種の過誤" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> 第1種の過誤<a href="06-NHT.html#第1種の過誤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>今度は、同じ平均0、標準偏差1の正規分布に従う母集団AとBから20個ずつ標本を抽出しグループAとBの間で平均値に差があるかをt検定で検定する。帰無仮説は<span class="math inline">\(\mu_{A} = \mu_{B}\)</span>である。</p>
 <p>すなわち、<em>帰無仮説が正しい前提のもとで抽出された標本</em>について、検定の結果正しい結論（帰無仮説を棄却せずに採用する）が導かれるかを検討する。</p>
 <p>有意差があるかどうかを判断する基準である有意水準は、5%（0.05）とする。</p>
@@ -854,15 +853,15 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 ##            94             6</code></pre>
 <p>実際には帰無仮説が正しい（母集団の間で差がない）にも関わらず、標本抽出してt検定をするのを100回行うと、<span class="math inline">\(p&lt;.05\)</span>となって帰無仮説を誤って棄却する結果が100回中6回確認された。</p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="06-NHT.html#cb292-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb292-2"><a href="06-NHT.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> d_sim, <span class="fu">aes</span>(<span class="at">x =</span> s, <span class="at">y =</span> p)) <span class="sc">+</span> </span>
-<span id="cb292-3"><a href="06-NHT.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.05</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="at">color=</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb292-4"><a href="06-NHT.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Simulation&quot;</span>, <span class="at">y =</span> <span class="st">&quot;p&quot;</span>)</span></code></pre></div>
+<span id="cb292-2"><a href="06-NHT.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d_sim, <span class="fu">aes</span>(<span class="at">x =</span> s, <span class="at">y =</span> p)) <span class="sc">+</span> </span>
+<span id="cb292-3"><a href="06-NHT.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.05</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="at">color=</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb292-4"><a href="06-NHT.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Simulation&quot;</span>, <span class="at">y =</span> <span class="st">&quot;p&quot;</span>)</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <p>有意水準を0.05と設定してしまうと、100回中5回は「帰無仮説が正しいにもかかわらず誤って帰無仮説を棄却してしまう誤り（第1種の過誤）」を許容することになる。<br />
 有意水準は慣例的に0.05と設定されているが、上記のシミュレーションのようにたまたま有意な結果が得られて間違った結論を導いてしまう恐れが存在する。</p>
 </div>
-<div id="多重比較の問題" class="section level3" number="7.5.3">
-<h3><span class="header-section-number">7.5.3</span> 多重比較の問題</h3>
+<div id="多重比較の問題" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> 多重比較の問題<a href="06-NHT.html#多重比較の問題" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>統計的仮説検定を繰り返すほど、差がなくても差があると評価してしまう確率（第1種の過誤を犯す確率）は増える。
 例えば、5%水準で10回検定を行えば、少なくとも1回は帰無仮説を誤って棄却してしまう確率が0.4 になる。</p>
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="06-NHT.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)<span class="sc">^</span><span class="dv">10</span> <span class="co">#全ての確率から、「10回検定を行って全て正しい判断を行う」確率を差し引いたものが、「少なくとも1回は誤った判断をしてしまう確率」</span></span></code></pre></div>
@@ -870,10 +869,10 @@ t = \frac{\bar{X} - \bar{Y}}{\sqrt{\sigma^2_{X}/n_{X}+\sigma^2_{Y}/n_{Y}))}}
 <p>このように複数回検定を行うことを<strong>多重比較</strong>という。分散分析で3つ以上の条件間で平均値を比較するときなど、検定を複数行う場合は多重比較の補正が必要とされる（8章で触れる）。</p>
 </div>
 </div>
-<div id="確認問題-5" class="section level2 unnumbered">
-<h2>確認問題</h2>
-<div id="問１-5" class="section level3 unnumbered">
-<h3>問１</h3>
+<div id="確認問題-5" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="06-NHT.html#確認問題-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="問１-5" class="section level3 unnumbered hasAnchor">
+<h3>問１<a href="06-NHT.html#問１-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>以下のプログラムを読み込む。</p>
 <p>ある教授法に児童の学力向上の効果があるかを検討した。学校Bにはその教授法を実施し、学校Aには何もしなかった。その後、学校Aと学校Bそれぞれ10人の生徒に学力テストを行った。A、Bそれぞれが学校A、Bそれぞれの生徒の成績である（架空のデータである）。</p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="06-NHT.html#cb295-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">27</span>, <span class="dv">54</span>, <span class="dv">55</span>, <span class="dv">44</span>, <span class="dv">45</span>, <span class="dv">44</span>, <span class="dv">41</span>)</span>
@@ -968,7 +967,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

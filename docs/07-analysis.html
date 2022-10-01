@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 様々な解析法 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 8 様々な解析法 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 様々な解析法 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="06-NHT.html"/>
 <link rel="next" href="08-linear_model.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,17 +571,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="様々な解析法" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> 様々な解析法</h1>
+<div id="様々な解析法" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 様々な解析法<a href="07-analysis.html#様々な解析法" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>この章では、t検定、χ二乗検定、分散分析、ノンパラメトリック検定など、心理学の基礎統計で学んだ手法について、Rでの解析方法を見ながらおさらいしていく。</p>
-<p>まず、準備として<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="07-analysis.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div id="t検定-1" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> t検定</h2>
+<p>まず、この章で使うパッケージをロードする。</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="07-analysis.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div id="t検定-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> t検定<a href="07-analysis.html#t検定-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>「分析の対象が量的変数で、２つのグループの間でその変数の平均値を比較する」ときには、t検定を使う。更に、t検定には2つのグループに対応があるかないかで、「対応のあるt検定」と「対応のないt検定」で区別される。</p>
 <p>前の章でもみてきたように、Rにはt検定を行うための<code>t.test()</code>関数が用意されている。</p>
-<div id="対応のないt検定" class="section level3" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> 対応のないt検定</h3>
+<div id="対応のないt検定" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> 対応のないt検定<a href="07-analysis.html#対応のないt検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rに標準で入っている<code>sleep</code>データを使って、Rでt検定をやってみよう。</p>
 <p>以下のプログラムを読み込み、サンプルデータを作る。</p>
 <div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="07-analysis.html#cb298-1" aria-hidden="true" tabindex="-1"></a>ttest_sample <span class="ot">=</span> sleep <span class="co">#ttest_sampleという名前保存する。</span></span>
@@ -625,8 +624,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean in group 1 mean in group 2 
 ##            0.75            2.33</code></pre>
 </div>
-<div id="対応のあるt検定" class="section level3" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> 対応のあるt検定</h3>
+<div id="対応のあるt検定" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> 対応のあるt検定<a href="07-analysis.html#対応のあるt検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>同じく、<code>sleep</code>データを使って対応のある場合について解析をしてみる。</p>
 <p>以下のプログラムを読み込み、サンプルデータを作る。</p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="07-analysis.html#cb302-1" aria-hidden="true" tabindex="-1"></a>ttest_sample2 <span class="ot">=</span> sleep <span class="co">#ttest_sampleという名前保存する。</span></span>
@@ -661,16 +660,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## data:  extra by group
 ## t = -4.0621, df = 9, p-value = 0.002833
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
 ##  -2.4598858 -0.7001142
 ## sample estimates:
-## mean of the differences 
-##                   -1.58</code></pre>
+## mean difference 
+##           -1.58</code></pre>
 </div>
 </div>
-<div id="分散分析" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> 分散分析</h2>
+<div id="分散分析" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 分散分析<a href="07-analysis.html#分散分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>t検定で比較できるのは2つのグループの間の平均値である。3グループ以上の間で平均値の比較を行いたい場合は、分散分析（ANOVA）を行う。</p>
 <p>ここでは、一要因３水準の分散分析（単純に3つのグループの間で平均値を比較する）を例として、Rでの解析法について説明する。</p>
 <p>Rでは、一要因の分散分析をするための関数<code>aov()</code>が標準で入っている。同じくRで標準で入っている<code>PlantGrowth</code>データを使って解析をしてみよう。</p>
@@ -749,13 +748,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>このように複雑な分散分析であるが、統計モデルという考え方を導入すれば、解析のデザインを組みやすくなる。詳しくは次章以降でみていく。</p>
 <hr />
 </div>
-<div id="ノンパラメトリック検定" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> ノンパラメトリック検定</h2>
+<div id="ノンパラメトリック検定" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> ノンパラメトリック検定<a href="07-analysis.html#ノンパラメトリック検定" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>以上のt検定や分散分析は、分析の対象の変数が「正規分布に従う」を前提とする解析手法である。変数が正規分布に従わない変数、例えば質的変数（人数の比率、順序尺度など）の場合には、t検定や分散分析を用いるのは適切でなく、「<strong>ノンパラメトリック検定</strong>」を使うべきだと指摘されている。</p>
 <p>ノンパラメトリック検定とは「変数が正規分布に従うという前提を置かない解析手法」の総称であり、様々な種類が提案されている。</p>
 <p>以下では、ウィルコクソンの順位和検定、クラスカル・ウォリスの検定、カイ二乗検定について触れる。</p>
-<div id="ウィルコクソンの順位和検定" class="section level3" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> ウィルコクソンの順位和検定</h3>
+<div id="ウィルコクソンの順位和検定" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> ウィルコクソンの順位和検定<a href="07-analysis.html#ウィルコクソンの順位和検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>2群間で値を比較するノンパラメトリック検定である。データを順位データに変換し、2群間でデータの大きさを比較する検定である。<br />
 「マン・ホイットニーのU検定」という名前でも知られる。<br />
 Rでは<code>wilcox.test()</code>が用意されている。</p>
@@ -768,8 +767,8 @@ Rでは<code>wilcox.test()</code>が用意されている。</p>
 ## W = 552, p-value = 0.003248
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
-<div id="クラスカルウォリスの検定" class="section level3" number="8.3.2">
-<h3><span class="header-section-number">8.3.2</span> クラスカル・ウォリスの検定</h3>
+<div id="クラスカルウォリスの検定" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> クラスカル・ウォリスの検定<a href="07-analysis.html#クラスカルウォリスの検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>3群以上で値を比較するノンパラメトリック検定である。同じく、データを順位データに変換して比較を行う。<br />
 Rでは<code>kruskal.test()</code>が用意されている。</p>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="07-analysis.html#cb316-1" aria-hidden="true" tabindex="-1"></a>kruskal_sample <span class="ot">=</span> airquality <span class="co">#Rに入っているサンプルデータairqualityで試してみる</span></span>
@@ -780,8 +779,8 @@ Rでは<code>kruskal.test()</code>が用意されている。</p>
 ## data:  Ozone by Month
 ## Kruskal-Wallis chi-squared = 29.267, df = 4, p-value = 6.901e-06</code></pre>
 </div>
-<div id="カイ二乗検定" class="section level3" number="8.3.3">
-<h3><span class="header-section-number">8.3.3</span> カイ二乗検定</h3>
+<div id="カイ二乗検定" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> カイ二乗検定<a href="07-analysis.html#カイ二乗検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>解析の対象の変数が質的変数で、頻度に偏りがあるかを比較したい場合は、カイ二乗検定が使われる。</p>
 <p>Rには、カイ二乗検定を行うための<code>chisq.test()</code>がある。</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="07-analysis.html#cb318-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">16</span>), <span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#表を作成する</span></span>
@@ -795,8 +794,8 @@ Rでは<code>kruskal.test()</code>が用意されている。</p>
 <p>カイ二乗検定は比率に偏りがあるかを検定してくれるが、どこに偏りがあるかは研究者自身が表を見て判断するしかない。</p>
 </div>
 </div>
-<div id="統計モデルとの関係" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> 「統計モデル」との関係</h2>
+<div id="統計モデルとの関係" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> 「統計モデル」との関係<a href="07-analysis.html#統計モデルとの関係" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>この章では、心理統計で学んできた代表的な分析手法をRで行う方法について解説してきた。
 一般的に心理統計では、「変数が正規分布に従う連続型でグループが２つならばt検定」、「変数が正規分布に従う連続型でグループが3つ以上ならば分散分析」、「変数がカテゴリカル変数ならばカイ二乗検定」といったように、変数のタイプや研究デザインに応じて行う解析を選ぶ方法が提案されている。</p>
 <p>しかし、上に挙げた条件に当てはまらないデータの場合、当てはまる解析手法はあるだろうか？</p>
@@ -879,7 +878,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

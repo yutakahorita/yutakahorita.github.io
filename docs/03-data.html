@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 データ・ハンドリング | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 4 データ・ハンドリング | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 データ・ハンドリング | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="02-summary.html"/>
 <link rel="next" href="04-graph.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,8 +571,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="データハンドリング" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> データ・ハンドリング</h1>
+<div id="データハンドリング" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> データ・ハンドリング<a href="03-data.html#データハンドリング" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>データに新しく変数を加えたり、データの形式を変えるなど、より高度で複雑なデータの操作について学んでいく。<br />
 この章では、<code>tidyverse</code>というパッケージに入っている関数を解説する。</p>
 <ul>
@@ -591,22 +590,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>データの読み込み</li>
 </ul>
-<div id="tidyverseパッケージのロード" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> tidyverseパッケージのロード</h2>
-<p>まず、<code>tidyverse</code>パッケージを使うためにパッケージのロードをしよう。初めて使う場合は、マシンに予めパッケージをインストールする必要がある。パッケージのインストール及びロードについては、第2章で解説している。</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="03-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) </span>
-<span id="cb141-2"><a href="03-data.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span></code></pre></div>
-<p><code>tidyverse</code>は、様々なパッケージを含んだパッケージのセットである。Rを使いやすくするための便利なパッケージがまとめて入っている。例えば、以下のパッケージが含まれている。</p>
-<ul>
-<li>ggplot2: グラフを作るのに特化したパッケージ<br />
-</li>
-<li>readr: ファイルの読み込みに特化したパッケージ<br />
-</li>
-<li>dplyr: データの整理に特化したパッケージ<br />
-など</li>
-</ul>
-<p>このテキストでは、以降の章の解析で必要なパッケージ及び関数のみに絞って解説する。その他の詳細は<code>tidyverse</code>の公式ページを参照のこと。<br />
-<a href="https://www.tidyverse.org">https://www.tidyverse.org</a></p>
+<div id="パッケージのロード-1" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> パッケージのロード<a href="03-data.html#パッケージのロード-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>まず、この章で使うパッケージのロードをする（初めて使う場合は、マシンに予めパッケージをインストールする必要がある）。パッケージのインストール及びロードについては、第2章で解説している。</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="03-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb141-2"><a href="03-data.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb141-3"><a href="03-data.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb141-4"><a href="03-data.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb141-5"><a href="03-data.html#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
 <hr />
 <p>注意：<br />
 以降のプログラムでは、関数を「<code>XXXX::YYYY</code>」と表現しているが、これらは「<code>XXXX</code>パッケージに入っている<code>YYYY</code>という名前の関数を使う」ということを意味している。<code>XXXX::</code>の部分は基本的に省略しても問題ないが、例えば<code>tidyverse</code>パッケージ以外もロードしていて、同じ名前の関数が別のパッケージに含まれている場合には、思った通りの結果が表示されない場合もある。外部パッケージの関数を使う場合は、できる限り<code>XXXX::</code>を付けた方が無難である。</p>
@@ -614,8 +605,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>以降では、Rに標準で入っている<code>iris</code>データを例として、ファイル操作の練習を行う。以下のプログラムを実行し、<code>iris</code>データを<code>dat</code>という名前に置き換えて使っていこう。</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="03-data.html#cb142-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> iris </span></code></pre></div>
 </div>
-<div id="変数の作成" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> 変数の作成</h2>
+<div id="変数の作成" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 変数の作成<a href="03-data.html#変数の作成" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>dplyr</code>パッケージに入っている<code>mutate()</code>を使うと、新たに変数を追加することができる。
 <code>mutate()</code>に、<em>データの名前、新しい変数</em>の順番で入力すると、データの右端に新しい変数を追加してくれる。</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="03-data.html#cb143-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(dat, </span>
@@ -631,11 +622,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6          5.4         3.9          1.7         0.4  setosa     7.1    1</code></pre>
 <p>上の例では、<code>Sepal.Length</code>と<code>Petal.Length</code>を足した<code>new_var</code>という名前の新しい変数を作っている。更に、「<code>Sepecies</code>が”<code>setosa</code>“ならば1, そうでなければ0とする」という条件で新たに<code>hoge</code>という変数を作っている。</p>
 </div>
-<div id="データの抽出-1" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> データの抽出</h2>
+<div id="データの抽出-1" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> データの抽出<a href="03-data.html#データの抽出-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>dplyr</code>パッケージに入っている<code>select</code>や <code>filter</code>関数を使うと、データの中から必要な部分のみを取り出すことができる。</p>
-<div id="必要な列のみを取り出すselect" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> 必要な列のみを取り出す（select）</h3>
+<div id="必要な列のみを取り出すselect" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> 必要な列のみを取り出す（select）<a href="03-data.html#必要な列のみを取り出すselect" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>select()</code>で、<em>データの名前、取り出したい変数名（複数選択可）</em>の順番で入力すると、指定した変数の列のみを取り出してくれる。</p>
 <p>以下には、<code>iris</code>データから<code>Sepal.Length</code>と<code>Petal.Length</code>のみを取り出す場合のプログラム例を示す。</p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="03-data.html#cb145-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">select</span>(dat, Sepal.Length, Petal.Length) </span>
@@ -650,8 +641,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6          5.4          1.7</code></pre>
 <p>上の例では、データの中から<code>Sepal.Length</code>と<code>Petal.Length</code>の列を取り出している。</p>
 </div>
-<div id="条件に合う行を取り出すfilter" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> 条件に合う行を取り出す（filter）</h3>
+<div id="条件に合う行を取り出すfilter" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> 条件に合う行を取り出す（filter）<a href="03-data.html#条件に合う行を取り出すfilter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ある条件に合う行のみを取り出したい場合（例えばデータの中から男性のみを取り出したいなど）、<code>filter()</code>で、<em>データの名前、条件式</em>の順番で入力すると、データの中から条件に合う行のみを取り出してくれる。</p>
 <p>以下には、<code>iris</code>データから、あやめの種類（<code>"Species"</code>）のうち<code>"versicolor"</code>のみを取り出す場合のプログラム例を示す。</p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="03-data.html#cb147-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(dat, Species <span class="sc">==</span> <span class="st">&quot;versicolor&quot;</span>) </span>
@@ -669,8 +660,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 </div>
 </div>
-<div id="パイプ" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> パイプ</h2>
+<div id="パイプ" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> パイプ<a href="03-data.html#パイプ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>複数のプログラムをつなげることを<em>パイプ処理</em>という。<code>purrr</code>パッケージで（<code>tidyverse</code>パッケージをロードすれば自動で使える）、Rでパイプ処理をすることができる。</p>
 <p>例えば、<code>iris</code>データで「あやめの種類のうち<code>"setosa"</code>のみの行を取り出して、更に<code>Species</code>、<code>Sepal.Length</code>, <code>Petal.Length</code>のみの列を取り出したい」という複数の処理をする場合を例として考える。<br />
 先程まで学んだ内容で、以下のように複数のプラグラムを段階的に書けばできなくはないが、プログラムが非常に長くなる（プログラムを分けて書くと途中でミスも生じやすくなる）。</p>
@@ -707,8 +698,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="03-data.html#cb153-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">=</span> dat <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb153-2"><a href="03-data.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  dply<span class="sc">::</span><span class="fu">select</span>(Species, Sepal.Length, Petal.Length)</span></code></pre></div>
 </div>
-<div id="グルーピング" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> グルーピング</h2>
+<div id="グルーピング" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> グルーピング<a href="03-data.html#グルーピング" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>パイプを利用することで、グループごとに統計量（平均値や標準偏差など）を算出することができる。</p>
 <p><code>iris</code>データを例として、グループごとに平均や標準偏差を計算する方法を覚えよう。</p>
 <p>あやめの種類ごとに、がくの長さの平均値と標準偏差を算出してみる。<br />
@@ -730,11 +721,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>group_by()</code>はグループ変数を作成する関数である。データの中でグループとして使いたい変数を括弧内に指定する。<br />
 <code>summarise()</code>は、複数の関数を実行させる関数である。この例では、<code>mean()</code>、<code>sd()</code>, <code>length()</code>の3つの関数を実行し、それぞれの結果をMean, SD, Nという別の名前で保存している。</p>
 </div>
-<div id="データの変換" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> データの変換</h2>
+<div id="データの変換" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> データの変換<a href="03-data.html#データの変換" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>tidyr</code>パッケージに入っている<code>gather()</code>と<code>spread()</code>を使うと、データの並び替えなどをすることができる。</p>
-<div id="wide型とlong型の区別" class="section level3" number="4.6.1">
-<h3><span class="header-section-number">4.6.1</span> wide型とlong型の区別</h3>
+<div id="wide型とlong型の区別" class="section level3 hasAnchor" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> wide型とlong型の区別<a href="03-data.html#wide型とlong型の区別" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>まず、データのレイアウトには、<em>wide型</em>と<em>long型</em>の二種類があることを理解しよう。</p>
 <p>以下のデータを例として説明する。A, B, Cの3人の参加者が、X, Y, Z条件の３つの条件で実験課題を行ったとする。<br />
 それぞれの条件での課題の成績（数値）、参加者の性別、年齢をデータとして入力する。</p>
@@ -769,14 +760,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8       C         Y     4      F  20
 ## 9       C         Z     7      F  20</code></pre>
 <p><strong>実験成績ごとに１行ずつ</strong>でデータが作られている。すなわち、同じ参加者1人につき3行のデータがある。このようなデータの方をlong型と呼ぶ。</p>
-<div id="どのデータ型にすべきか" class="section level4 unnumbered">
-<h4>どのデータ型にすべきか？</h4>
+<div id="どのデータ型にすべきか" class="section level4 unnumbered hasAnchor">
+<h4>どのデータ型にすべきか？<a href="03-data.html#どのデータ型にすべきか" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Rでデータ解析に用いる関数のほとんどは、「<strong>1つの観測値（observation）につき1行</strong>」が原則、つまりlong型でデータが入っていることを前提として作られている。このテキストで学ぶデータ解析も、基本的に分析で使うデータはlong型を前提とする。</p>
 <p>その一方、データを入力するときなど、実務的にはwide型が扱いやすいということもあるだろう。データ入力は研究者の都合に応じてやりやすい方法で用意するとして、解析をする際に適切なデータ形式に変換するすべを身に着けておこう。</p>
 </div>
 </div>
-<div id="wide型からlong型に変換" class="section level3" number="4.6.2">
-<h3><span class="header-section-number">4.6.2</span> wide型からlong型に変換</h3>
+<div id="wide型からlong型に変換" class="section level3 hasAnchor" number="4.6.2">
+<h3><span class="header-section-number">4.6.2</span> wide型からlong型に変換<a href="03-data.html#wide型からlong型に変換" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>tidyrパッケージの<code>gather()</code>を使う。</p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="03-data.html#cb160-1" aria-hidden="true" tabindex="-1"></a>dat_long2 <span class="ot">=</span> dat_wide <span class="sc">%&gt;%</span> tidyr<span class="sc">::</span><span class="fu">gather</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Z&quot;</span>, </span>
 <span id="cb160-2"><a href="03-data.html#cb160-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">key =</span> Condition, <span class="at">value =</span> Score) </span>
@@ -793,8 +784,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9       C      F  20         Z     7</code></pre>
 <p><code>gather()</code>で、並べ替える変数を指定する。そして、<code>key=</code>でkey変数、<code>value=</code>でvalue変数として新たにつけたい名前を指定する。</p>
 </div>
-<div id="long型からwide型に変換" class="section level3" number="4.6.3">
-<h3><span class="header-section-number">4.6.3</span> long型からwide型に変換</h3>
+<div id="long型からwide型に変換" class="section level3 hasAnchor" number="4.6.3">
+<h3><span class="header-section-number">4.6.3</span> long型からwide型に変換<a href="03-data.html#long型からwide型に変換" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>tidyrパッケージの<code>spread()</code>を使う。</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="03-data.html#cb162-1" aria-hidden="true" tabindex="-1"></a>dat_wide2 <span class="ot">=</span> dat_long <span class="sc">%&gt;%</span> tidyr<span class="sc">::</span><span class="fu">spread</span>(<span class="at">key =</span> Condition, <span class="at">value =</span> Score) </span>
 <span id="cb162-2"><a href="03-data.html#cb162-2" aria-hidden="true" tabindex="-1"></a>dat_wide2</span></code></pre></div>
@@ -805,8 +796,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>spread()</code>で、<code>key=</code>でkey変数、<code>value=</code>でvalue変数とする変数を指定する。</p>
 </div>
 </div>
-<div id="データの結合" class="section level2" number="4.7">
-<h2><span class="header-section-number">4.7</span> データの結合</h2>
+<div id="データの結合" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> データの結合<a href="03-data.html#データの結合" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>複数のデータを結合したい場合は、<code>dplyr</code>パッケージの<code>join</code>関数を使うとよい。<code>join</code>関数には、<code>left_join</code>, <code>full_join</code>など、いくつかの種類が用意されている。</p>
 <p>サンプルデータを使いながら、手順について説明する。まず、以下のプログラムを実行して、サンプルデータを作ろう。</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="03-data.html#cb164-1" aria-hidden="true" tabindex="-1"></a>dat_sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Subject =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), </span>
@@ -847,11 +838,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1       A 8 6 9 7      M  18
 ## 2       B 3 2 3 5      F  19</code></pre>
 </div>
-<div id="データの読み込み-1" class="section level2" number="4.8">
-<h2><span class="header-section-number">4.8</span> データの読み込み</h2>
+<div id="データの読み込み-1" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> データの読み込み<a href="03-data.html#データの読み込み-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rにもともと入っている<code>read.csv()</code>を使えばcsvファイルを読み込むことができるが、<code>readr</code>パッケージの関数を使うと大量のデータが含まれるファイルも高速で読み込んでくれる。また、<code>readxl</code>パッケージの関数を使えば、Excelファイルも読み込んでくれる。</p>
-<div id="readr" class="section level3" number="4.8.1">
-<h3><span class="header-section-number">4.8.1</span> readr</h3>
+<div id="readr" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> readr<a href="03-data.html#readr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>様々な形式のファイルを高速で読み書きことを目標としたパッケージ。</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="03-data.html#cb172-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;./sample_data/0_sample.csv&quot;</span>)</span>
 <span id="cb172-2"><a href="03-data.html#cb172-2" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
@@ -877,8 +868,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ファイルを書き出すための関数も用意されている。<br />
 ここでは<code>write_excel_csv()</code> を使っているが、単に<code>write_csv()</code>でも可。</p>
 <p>また、<code>read_csv()</code>で読み込んだファイルは、データフレームではなく、<em>tibble</em>という形式になる。</p>
-<div id="tibble" class="section level4 unnumbered">
-<h4>tibble</h4>
+<div id="tibble" class="section level4 unnumbered hasAnchor">
+<h4>tibble<a href="03-data.html#tibble" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>tibbleとは、Rのデータ形式の一つである。</p>
 <p>データフレームの可読性を向上させたものが、tibbleである。コンソールにはデータ全てではなく、最初の10行程度のみ、列も画面に入る範囲のみが表示される。</p>
 <p><code>as_tibble()</code>でデータフレームをtibble形式にすることもできる。</p>
@@ -902,27 +893,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="03-data.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dat)</span></code></pre></div>
 </div>
 </div>
-<div id="readxl" class="section level3" number="4.8.2">
-<h3><span class="header-section-number">4.8.2</span> readxl</h3>
+<div id="readxl" class="section level3 hasAnchor" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> readxl<a href="03-data.html#readxl" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>readxl</code>パッケージで、エクセル形式（xlsx）のファイルを読み込むことができる。</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="03-data.html#cb180-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;./sample/0_sample.xlsx&quot;</span>) </span>
 <span id="cb180-2"><a href="03-data.html#cb180-2" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
 <p>特にオプションを指定しなければ、1番目に保存されているシートの中身をtibble形式で読み込んでくれる。読み込みたいシートや読み込む範囲を指定したい場合など、細かい点については<code>read_excel</code>のヘルプを参照してほしい。</p>
 </div>
 </div>
-<div id="確認問題-2" class="section level2 unnumbered">
-<h2>確認問題</h2>
-<div id="問１-2" class="section level3 unnumbered">
-<h3>問１</h3>
+<div id="確認問題-2" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="03-data.html#確認問題-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="問１-2" class="section level3 unnumbered hasAnchor">
+<h3>問１<a href="03-data.html#問１-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>iris</code>データから、1)<code>Species</code>が<code>versicolor</code>である行を選び、2) <code>Species</code>, <code>Petal.Length</code>及び<code>Petal.Width</code>の列を取り出し、3) <code>Petal.Length</code>と<code>Petal.Width</code>を足し合わせた変数<code>hoge</code>を作るという一連の処理を、パイプ処理を使ってプログラム1行でやってみよう。</p>
 </div>
-<div id="問２-2" class="section level3 unnumbered">
-<h3>問２</h3>
+<div id="問２-2" class="section level3 unnumbered hasAnchor">
+<h3>問２<a href="03-data.html#問２-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>iris</code>データから、1)<code>Species</code>が<code>virginica</code>以外の行を選び、2) <code>Species</code>, <code>Petal.Length</code>及び<code>Petal.Width</code>の列を取り出す処理を、パイプ処理を使ってプログラム1行でやってみよう。</p>
 <p>ヒント：Rでは、<code>!=</code>が「○○ではない」を意味する論理式である（第2章参照）。</p>
 </div>
-<div id="問３-2" class="section level3 unnumbered">
-<h3>問３</h3>
+<div id="問３-2" class="section level3 unnumbered hasAnchor">
+<h3>問３<a href="03-data.html#問３-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>iris</code>データで、<code>Species</code>別に<code>Petal.Length</code>の平均値、標準偏差を求めよう。</p>
 <p>ヒント：<code>group_by()</code>と<code>summarise()</code>の使い方をおさらいする。</p>
 
@@ -1004,7 +995,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 library(lme4)
 library(lmerTest)
 library(knitr)
@@ -14,11 +14,11 @@ library(knitr)
 
 ## 準備
 
-tidyverseパッケージに加え、新たに`lme4`及び`lmerTest`というパッケージを使う。`lme4`と`lmerTest`は初めて使うので、インストールした上でロードしよう。
+`ggplot2`パッケージに加え、新たに`lme4`及び`lmerTest`というパッケージを使う。`lme4`と`lmerTest`は初めて使うので、インストールした上でロードしよう。
 
 
 ```{r, eval=FALSE}
-library(tidyverse)
+library(ggplot2)
 
 install.packages("lme4", "lmerTest")
 library(lme4)
@@ -43,8 +43,8 @@ head(iris) #irisデータの上数行を表示
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 
-graph_1 = ggplot() +
-  geom_point(data=iris, aes(x=Sepal.Length, y=Sepal.Width),size = 3)
+graph_1 = ggplot2::ggplot() +
+  ggplot2::geom_point(data=iris, aes(x=Sepal.Length, y=Sepal.Width),size = 3)
 graph_1
 
 ```
@@ -63,9 +63,9 @@ summary(iris_lm)
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 
-graph_lm = ggplot()+
-  geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width), size = 3)  +
-  geom_smooth(data = iris, aes(x = Sepal.Length, y = Sepal.Width), formula = y~ 1 + x, method = "lm", se = FALSE)
+graph_lm = ggplot2::ggplot()+
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width), size = 3)  +
+  ggplot2::geom_smooth(data = iris, aes(x = Sepal.Length, y = Sepal.Width), formula = y~ 1 + x, method = "lm", se = FALSE)
 graph_lm
 
 ```
@@ -77,8 +77,8 @@ graph_lm
 
 ```{r}
 
-graph_2 = ggplot() +
-  geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species), size = 3) 
+graph_2 = ggplot2::ggplot() +
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species), size = 3) 
 graph_2
 
 ```
@@ -158,7 +158,7 @@ Rでマルチレベルモデルで解析を行うためには、外部パッケ�
 
 ```{r, message=FALSE, warning=FALSE}
 
-model_lmm = lmer(data= iris, Sepal.Length ~ 1 + Sepal.Width + (1|Species)) #(1|Species)を加える
+model_lmm = lme4::lmer(data= iris, Sepal.Length ~ 1 + Sepal.Width + (1|Species)) #(1|Species)を加える
 summary(model_lmm)
 
 ```
@@ -172,6 +172,14 @@ summary(model_lmm)
 *** 
 
 `lmer()`では、デフォルトで係数のp値は表示されない。p値も出したいならば、`lmerTest()`パッケージをインストールしておく必要がある。
+
+```{r, message=FALSE, warning=FALSE}
+
+model_lmm = lmer(data= iris, Sepal.Length ~ 1 + Sepal.Width + (1|Species)) 
+summary(model_lmm)
+
+```
+
 
 *** 
 
@@ -192,7 +200,7 @@ x1 = c(1.0, 2.0, 3.0, 4.2, 5.1, 3.1, 4.2, 5.0, 6.1, 7.0, 5.3, 6.0, 7.0, 8.1, 9.0
 y1 = c(0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1)
 ID = c(rep("a",5),rep("b",5),rep("c",5))
 data_sample = data.frame(ID, x1, y1)
-str(data_sample)
+head(data_sample)
 ```
 
 `x1`を予測変数（量的変数）、`y1`を応答変数（0か1のいずれかを取る）、`ID`が個体を示す変数とする。1つの個体から`x1`を変えて5回、`y1`が計測がされた実験をイメージしてほしい。  
@@ -216,7 +224,7 @@ $$
 
 ```{r, echo=TRUE}
 
-model_logistic_glmm = glmer(data = data_sample, y1 ~ 1 + x1 + (1|ID), family = binomial(link="logit"))
+model_logistic_glmm = lme4::glmer(data = data_sample, y1 ~ 1 + x1 + (1|ID), family = binomial(link="logit"))
 summary(model_logistic_glmm)
 
 ```
@@ -253,16 +261,16 @@ dat = data.frame(y = c(y_1, y_2, y_3, y_4, y_5),
            ID = sort(rep(1:5, 10)))
 dat$x_std = dat$x - mean(dat$x)
 
-ggplot() + 
-  geom_point(data = dat, aes(x = x, y = y)) +
-  facet_wrap(vars(factor(ID)))
+ggplot2::ggplot() + 
+  ggplot2::geom_point(data = dat, aes(x = x, y = y)) +
+  ggplot2::facet_wrap(vars(factor(ID)))
 
 ```
 
 
 
 ```{r}
-result = glmer(data = dat, y ~ 1 + x_std + (1|ID), family = poisson(link="log"))
+result = lme4::glmer(data = dat, y ~ 1 + x_std + (1|ID), family = poisson(link="log"))
 summary(result)
 ```
 
@@ -305,7 +313,7 @@ $$
 dat_dis$ID = 1:nrow(dat_dis) #観測値ごとに番号を割り振る（1からデータ数までの数値の連続）
 head(dat_dis)
 
-result_poisson_glmm = glmer(data = dat_dis, y ~ 1 + x + (1|ID), family = poisson(link = "log"))
+result_poisson_glmm = lme4::glmer(data = dat_dis, y ~ 1 + x + (1|ID), family = poisson(link = "log"))
 summary(result_poisson_glmm)
 
 ```

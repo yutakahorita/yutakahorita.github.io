@@ -3,7 +3,7 @@
 
 knitr::opts_chunk$set(echo = TRUE)
 set.seed(1)
-library(tidyverse)
+library(ggplot2)
 ```
 
 # 確率分布
@@ -18,10 +18,10 @@ library(tidyverse)
 * その他の確率分布  
   
 準備として、以下のプログラムを実行しよう。
-この章でも`tidyverse`パッケージを使うので、ロードしておく。  
+この章でも`ggplot2`パッケージを使うので、ロードしておく。  
 
 ```{r, eval = FALSE}
-library(tidyverse)
+library(ggplot2)
 ```
 
 更に、乱数の種を指定する。`set.seed(1)`と入力して実行する。このプログラムを実行しておくと、このテキストに書かれているプログラムの結果と同じ結果を再現できる。
@@ -92,7 +92,7 @@ dbinom(x=0:10, size=10, prob=0.5)
 d_plot = data.frame(x=0:10, p=dbinom(x=0:10, size=10, prob=0.5))
 
 p = ggplot2::ggplot() + 
-  geom_bar(data = d_plot, aes(x = factor(x), y = p), stat="identity") + 
+  ggplot2::geom_bar(data = d_plot, aes(x = factor(x), y = p), stat="identity") + 
   labs(y= "P(x)", x= "x")
 p
 ```
@@ -171,7 +171,7 @@ y = dnorm(x=x, mean=0, sd=1) #平均0、標準偏差1の正規分布の確率を
 dat_norm = data.frame(x = x, y = y)
 
 p = ggplot2::ggplot() + 
-  geom_line(data = dat_norm, aes(x = x, y = y))
+  ggplot2::geom_line(data = dat_norm, aes(x = x, y = y))
 p
 
 ```
@@ -225,9 +225,9 @@ dat_norm_2 = data.frame(x = x, y = y_2)
 dat_norm_3 = data.frame(x = x, y = y_3)
 
 p = ggplot2::ggplot() + 
-  geom_line(data = dat_norm_1, aes(x = x, y = y), color="red")+
-  geom_line(data = dat_norm_2, aes(x = x, y = y), color= "blue")+
-  geom_line(data = dat_norm_3, aes(x = x, y = y), color="black")
+  ggplot2::geom_line(data = dat_norm_1, aes(x = x, y = y), color="red")+
+  ggplot2::geom_line(data = dat_norm_2, aes(x = x, y = y), color= "blue")+
+  ggplot2::geom_line(data = dat_norm_3, aes(x = x, y = y), color="black")
 p
 
 
@@ -401,7 +401,7 @@ pois_3 = data.frame(x=seq(0,10), p=dpois(seq(0,10), lambda=3), lambda=3)
 pois = rbind(pois_1, pois_2, pois_3)
 
 ggplot() +
-  geom_bar(data = pois, aes(x=factor(x), y=p, fill=factor(lambda)), stat="identity", color = "black", position = "dodge") + 
+  ggplot2::geom_bar(data = pois, aes(x=factor(x), y=p, fill=factor(lambda)), stat="identity", color = "black", position = "dodge") + 
   labs(y= "P(x)", x = "x", fill = "lambda")
 ```
 
@@ -432,7 +432,7 @@ exp_3 = data.frame(x=seq(0,3, 0.1), p=dexp(seq(0,3, 0.1), rate=2), rate=2)
 exp = rbind(exp_1, exp_2, exp_3)
 
 ggplot() +
-  geom_line(data = exp, aes(x=x, y=p, colour=factor(rate), linetype=factor(rate))) + 
+  ggplot2::geom_line(data = exp, aes(x=x, y=p, colour=factor(rate), linetype=factor(rate))) + 
   labs(y= "f(x)", x = "x", colour = "rate", linetype = "rate")
 ```
 
@@ -457,7 +457,7 @@ lnorm_3 = data.frame(x=seq(0,5, 0.1), p=dlnorm(seq(0, 5, 0.1), meanlog=0, sdlog=
 lnorm = rbind(lnorm_1, lnorm_2, lnorm_3)
 
 ggplot() +
-  geom_line(data = lnorm, aes(x=x, y=p, colour=factor(par), linetype=factor(par))) + 
+  ggplot2::geom_line(data = lnorm, aes(x=x, y=p, colour=factor(par), linetype=factor(par))) + 
   labs(y= "f(x)", x = "x", colour = "par", linetype = "par")
 ```
 

@@ -1,8 +1,8 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse) 
-library(MASS) 
+library(ggplot2)
+library(knitr)
 ```
 
 # グラフ
@@ -11,10 +11,10 @@ library(MASS)
   
 データの傾向をグラフによって表現することを**可視化(visualization)**という。この章では、`ggplot2`パッケージを使って、データを可視化する方法について学んでいく。  
   
-`ggplot2`も`tidyverse`パッケージに含まれている。まずは、`tidyverse`パッケージをロードしよう。
+まずは、`ggplot2`パッケージをロードする。
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
-library(tidyverse) 
+library(ggplot2) 
 ```
 
 

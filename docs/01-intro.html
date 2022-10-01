@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Rの使い方 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 2 Rの使い方 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Rの使い方 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="02-summary.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,8 +571,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rの使い方" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Rの使い方</h1>
+<div id="rの使い方" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Rの使い方<a href="01-intro.html#rの使い方" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Rのインストールから使い方までを解説する。</p>
 <ul>
 <li><p>R及びRStudioのインストール<br />
@@ -590,14 +589,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p></li>
 <li><p>データの読み込み</p></li>
 </ul>
-<div id="rのインストール" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Rのインストール</h2>
+<div id="rのインストール" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Rのインストール<a href="01-intro.html#rのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>インストールは、<a href="https://cran.r-project.org">https://cran.r-project.org</a>から可能。自分のOSにあったインストーラを選ぶ。</p>
 <p><img src="images/image01_R.png" /><!-- --></p>
 <p>インストーラを実行したら、あとは指示に従ってインストールをすすめる。</p>
 </div>
-<div id="rstudioのインストール" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> RStudioのインストール</h2>
+<div id="rstudioのインストール" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> RStudioのインストール<a href="01-intro.html#rstudioのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>RStudioとは、Rの使いやすさを向上させる目的で開発されているアプリケーションである。Rをインストールしたら、RStudioもインストールしておくこともすすめる。このテキストでも、RStudioを使って解析することを前提に説明する。</p>
 <p>インストールは、<a href="https://rstudio.com/products/rstudio/#rstudio-desktop">https://rstudio.com/products/rstudio/#rstudio-desktop</a>からできる。</p>
 <p><img src="images/image01_RStudio.png" /><!-- --></p>
@@ -615,11 +614,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <hr />
 </div>
-<div id="プログラムの書き方" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> プログラムの書き方</h2>
+<div id="プログラムの書き方" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> プログラムの書き方<a href="01-intro.html#プログラムの書き方" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rの画面構成について確認する。</p>
-<div id="コンソールconsole" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> コンソール（Console）</h3>
+<div id="コンソールconsole" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> コンソール（Console）<a href="01-intro.html#コンソールconsole" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>コンソール（Console）</strong>という部分にプログラムを入力すると、結果が出力される。
 ためしに、コンソールの<code>&gt;</code>の部分に、以下のプログラムを入力して、Enterを押してみよう。</p>
 <ul>
@@ -630,8 +629,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>同じコンソールに、答えである2が出力されたはずである。
 このように、コンソールに直接プログラムを入力すると、結果を返してくれる。</p>
 </div>
-<div id="スクリプト" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> スクリプト</h3>
+<div id="スクリプト" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> スクリプト<a href="01-intro.html#スクリプト" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>コンソールに入力したプログラムや出力結果は、Rを閉じると消えてしまう。これでは復習できないので、プログラムは別のファイルに残しておいた方が良い。</p>
 <p>プログラムを書き込んだテキストのことを「<strong>スクリプト</strong>」と呼ぶ。プログラムはなるべく、スクリプトに残しておく習慣をつけよう。</p>
 <ul>
@@ -657,8 +656,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>他にも、エラーが生じた場合は、エラーメッセージを読んで、<strong>プログラムの書き方に間違いがないかを確認しよう</strong>。たいてい、入力間違いなど大したことのないミスが原因である。ちょっとプログラムを間違えたくらいでRが壊れるということは決してないので、冷静に対処しよう。</p>
 </div>
 </div>
-<div id="単純な演算" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> 単純な演算</h2>
+<div id="単純な演算" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 単純な演算<a href="01-intro.html#単純な演算" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>四則演算（足し算・引き算・割り算・掛け算）をしてみよう。それぞれ、<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>を使う。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="01-intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb5-2"><a href="01-intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -671,15 +670,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="01-intro.html#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span>)<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
 <p>累乗は<code>^</code>で計算できる。</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="01-intro.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
-<div id="コメント文" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> コメント文</h3>
+<div id="コメント文" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> コメント文<a href="01-intro.html#コメント文" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>行頭に#を挿入すると、#から改行まではコメント文として理解され、プログラムが実行されない。スクリプトにメモを残しておきたいときに便利なので覚えておこう。</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="01-intro.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#1 + 1 </span></span>
 <span id="cb8-2"><a href="01-intro.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#この部分は実行されない</span></span></code></pre></div>
 </div>
 </div>
-<div id="変数" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> 変数</h2>
+<div id="変数" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> 変数<a href="01-intro.html#変数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>数値を変数に代入して扱うことができる。</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="01-intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">8</span> </span>
 <span id="cb9-2"><a href="01-intro.html#cb9-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
@@ -691,8 +690,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="01-intro.html#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">8</span></span>
 <span id="cb13-2"><a href="01-intro.html#cb13-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
-<div id="変数の使い方の注意" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> 変数の使い方の注意</h3>
+<div id="変数の使い方の注意" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> 変数の使い方の注意<a href="01-intro.html#変数の使い方の注意" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Rは小文字と大文字を区別する</strong>。たとえば、<code>a</code>（小文字）と入力して実行すると結果が出力されるが、<code>A</code>（大文字）では出力されない。</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="01-intro.html#cb15-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span> <span class="co">#aに2を代入する。</span></span>
 <span id="cb15-2"><a href="01-intro.html#cb15-2" aria-hidden="true" tabindex="-1"></a>a <span class="sc">-</span> <span class="dv">2</span> <span class="co">#ゼロが出力されるはず。</span></span>
@@ -701,11 +700,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="01-intro.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">2</span> <span class="co">#半角の2</span></span>
 <span id="cb16-2"><a href="01-intro.html#cb16-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> ２ <span class="co">#全角の２</span></span></code></pre></div>
 </div>
-<div id="変数の型" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> 変数の型</h3>
+<div id="変数の型" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> 変数の型<a href="01-intro.html#変数の型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rでは変数の種類として、<em>数値型</em>、<em>文字列</em>、<em>日付</em>、<em>論理型</em>の区別をする。</p>
-<div id="数値型numeric" class="section level4 unnumbered">
-<h4>数値型(numeric)</h4>
+<div id="数値型numeric" class="section level4 unnumbered hasAnchor">
+<h4>数値型(numeric)<a href="01-intro.html#数値型numeric" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>数値型として格納した変数は、数値として扱うことができる。数値型の変数同士で、演算（足し算・引き算・掛け算・割り算）を行うことができる。</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="01-intro.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x_num <span class="ot">=</span> <span class="dv">5</span></span>
 <span id="cb17-2"><a href="01-intro.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_num) <span class="co">#class()でその変数の型を確認することができる</span></span></code></pre></div>
@@ -716,8 +715,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="01-intro.html#cb21-1" aria-hidden="true" tabindex="-1"></a>x_num <span class="sc">+</span> y_num <span class="co">#数値型同士は演算することができる</span></span></code></pre></div>
 <pre><code>## [1] 6.2</code></pre>
 </div>
-<div id="文字列character" class="section level4 unnumbered">
-<h4>文字列(character)</h4>
+<div id="文字列character" class="section level4 unnumbered hasAnchor">
+<h4>文字列(character)<a href="01-intro.html#文字列character" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>文字として扱われる。文字列同士は演算をすることができない。
 文字を変数として代入したい場合は、文字をクオテーションマーク<code>("")</code>で囲む。</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="01-intro.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x_char <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
@@ -727,8 +726,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb25-2"><a href="01-intro.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y_char) <span class="co">#数値でもクオテーションで囲めば文字列として扱われる。</span></span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
-<div id="日付date" class="section level4 unnumbered">
-<h4>日付(date)</h4>
+<div id="日付date" class="section level4 unnumbered hasAnchor">
+<h4>日付(date)<a href="01-intro.html#日付date" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Dateは日付のみを保存し、POSIXctは日付と時間を保存する。
 日付型同士で日数や秒数などの演算をすることができる。</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="01-intro.html#cb27-1" aria-hidden="true" tabindex="-1"></a>x_date <span class="ot">=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2020-06-15&quot;</span>)</span>
@@ -741,8 +740,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb31-2"><a href="01-intro.html#cb31-2" aria-hidden="true" tabindex="-1"></a>x_date_2<span class="sc">-</span> x_date_1</span></code></pre></div>
 <pre><code>## Time difference of 1 days</code></pre>
 </div>
-<div id="論理型logical" class="section level4 unnumbered">
-<h4>論理型(logical)</h4>
+<div id="論理型logical" class="section level4 unnumbered hasAnchor">
+<h4>論理型(logical)<a href="01-intro.html#論理型logical" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>TRUE</code>か<code>FALSE</code>の2つの値のどちらかを取る変数の型である。</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="01-intro.html#cb33-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="cn">TRUE</span></span>
 <span id="cb33-2"><a href="01-intro.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a) <span class="co">#class()でその変数の型を確認することができる</span></span></code></pre></div>
@@ -750,8 +749,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="01-intro.html#cb35-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="cn">FALSE</span></span>
 <span id="cb35-2"><a href="01-intro.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(b) <span class="co">#class()でその変数の型を確認することができる</span></span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div id="論理式" class="section level5 unnumbered">
-<h5>論理式</h5>
+<div id="論理式" class="section level5 unnumbered hasAnchor">
+<h5>論理式<a href="01-intro.html#論理式" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>数値の大小関係などを扱うときに用いる。</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="01-intro.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span> <span class="co">#2 と 1 は同じか？</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
@@ -769,11 +768,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="データ構造" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> データ構造</h2>
+<div id="データ構造" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> データ構造<a href="01-intro.html#データ構造" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>複数の数値などをまとめたものをデータと呼ぶ。Rには、データを扱うための形式がいくつか用意されている。</p>
-<div id="ベクトル" class="section level3" number="2.6.1">
-<h3><span class="header-section-number">2.6.1</span> ベクトル</h3>
+<div id="ベクトル" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> ベクトル<a href="01-intro.html#ベクトル" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>同じ型の要素を集めたもの。Rでは、<code>c()</code>関数でベクトルを作成することができる。</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="01-intro.html#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb49-2"><a href="01-intro.html#cb49-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
@@ -800,8 +799,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb65-2"><a href="01-intro.html#cb65-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> x_2 <span class="co">#（ベクトルに格納されている変数の数が同じならば、ベクトル同士で演算ができる）</span></span></code></pre></div>
 <pre><code>## [1]  7  9 11 13 15</code></pre>
 </div>
-<div id="データフレーム" class="section level3" number="2.6.2">
-<h3><span class="header-section-number">2.6.2</span> データフレーム</h3>
+<div id="データフレーム" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> データフレーム<a href="01-intro.html#データフレーム" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>複数のベクトルを行列でまとめたデータ構造を、Rでは<strong>データフレーム</strong>と呼ぶ。データフレームは頻繁に使うので、構造を覚えよう。</p>
 <p>まず、2つのベクトルを作成する。</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="01-intro.html#cb67-1" aria-hidden="true" tabindex="-1"></a>x_vec <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
@@ -816,8 +815,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 3 c
 ## 4 4 d
 ## 5 5 e</code></pre>
-<div id="変数の扱い" class="section level4" number="2.6.2.1">
-<h4><span class="header-section-number">2.6.2.1</span> 変数の扱い</h4>
+<div id="変数の扱い" class="section level4 hasAnchor" number="2.6.2.1">
+<h4><span class="header-section-number">2.6.2.1</span> 変数の扱い<a href="01-intro.html#変数の扱い" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>以下のように、<strong>データフレーム$変数名</strong>で、データフレームの変数をベクトルとして取り出すができる。</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="01-intro.html#cb70-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
@@ -840,8 +839,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 5 e  10  15</code></pre>
 <p><strong>データフレーム$変数名</strong>でデータ内の変数にアクセスする方法は、今後もよく使うので覚えておこう。</p>
 </div>
-<div id="データの抽出" class="section level4" number="2.6.2.2">
-<h4><span class="header-section-number">2.6.2.2</span> データの抽出</h4>
+<div id="データの抽出" class="section level4 hasAnchor" number="2.6.2.2">
+<h4><span class="header-section-number">2.6.2.2</span> データの抽出<a href="01-intro.html#データの抽出" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>データフレーム[行数,列数]</code>のかたちで指定することで、データフレームの行列を取り出すことができる。</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="01-intro.html#cb76-1" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co">#1行目, 2列目に該当する部分を抽出</span></span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;</code></pre>
@@ -873,8 +872,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="欠損値" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> 欠損値</h2>
+<div id="欠損値" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> 欠損値<a href="01-intro.html#欠損値" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>心理学ならば一部の質問への無回答など、データが取得できなかったケースも生じ得る。そのような場合には、データの一部を<strong>欠損値</strong>として扱う。</p>
 <p>Rでは、欠損値は<code>NA</code>で扱う。</p>
 <p>先程の例で作ったデータフレーム<code>dat</code>に、欠損値を含むベクトル<code>x_4</code>を入れてみよう。</p>
@@ -895,20 +894,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="01-intro.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>x_4, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="パッケージのインストールとロード" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> パッケージのインストールとロード</h2>
+<div id="パッケージのインストールとロード" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> パッケージのインストールとロード<a href="01-intro.html#パッケージのインストールとロード" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>パッケージとは、Rの機能を拡張するためにインターネットからインストールして使うものである。</p>
-<div id="パッケージのインストール" class="section level3" number="2.8.1">
-<h3><span class="header-section-number">2.8.1</span> パッケージのインストール</h3>
+<div id="パッケージのインストール" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> パッケージのインストール<a href="01-intro.html#パッケージのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>パッケージをインストールする。<code>install.packages()</code>で、インストールしたいパッケージを入力する。</p>
-<p>ここでは<code>tidyverse</code>というパッケージをインストールするのを例として、パッケージのインストール方法について示す。</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="01-intro.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>ここでは<code>ggplot2</code>というパッケージをインストールするのを例として、パッケージのインストール方法について示す。</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="01-intro.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
 <p>もし「Please select a CRAN mirror …」というのが表示されたら、Japan (Tokyo)を選んで「OK」を押す。</p>
 </div>
-<div id="パッケージのロード" class="section level3" number="2.8.2">
-<h3><span class="header-section-number">2.8.2</span> パッケージのロード</h3>
+<div id="パッケージのロード" class="section level3 hasAnchor" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> パッケージのロード<a href="01-intro.html#パッケージのロード" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>インストールしただけではパッケージを使うことができない。使う前にロードする必要がある。<code>library()</code>で、括弧内に使いたいパッケージ名を入力する。</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="01-intro.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="01-intro.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p>一度インストールしておけば、今後は最初に<code>library()</code>でロードするだけで使うことができる。毎回インストールする必要はない。</p>
 <hr />
 <p>マシンにインストールされているパッケージの情報は、RStudioの右下の「Packages」というタブから確認することができる。</p>
@@ -917,27 +916,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 </div>
 </div>
-<div id="データの読み込み" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> データの読み込み</h2>
+<div id="データの読み込み" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> データの読み込み<a href="01-intro.html#データの読み込み" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>大抵の場合、データはExcelファイルなどに入力して使うことが多い。RでExcelなどの外部ファイルを読み込む方法として、以下の手順がある。</p>
-<div id="rstudioの機能を使って読み込む" class="section level3" number="2.9.1">
-<h3><span class="header-section-number">2.9.1</span> 1: RStudioの機能を使って読み込む</h3>
+<div id="rstudioの機能を使って読み込む" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> 1: RStudioの機能を使って読み込む<a href="01-intro.html#rstudioの機能を使って読み込む" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>RStudioの場合、右上にある「Import Dataset」でデータの読み込みを行うことができる。</p>
 <p><img src="images/image01_ReadData_1.png" width="50%" /></p>
 <p>「From Text (base)」を選び、読み込むCSVファイルを選ぶ。</p>
 <p><img src="images/image01_ReadData_2.png" width="50%" /></p>
 <p>Nameには「dat」と入力、ファイルの1行目に変数名を入力している場合はHeadingは「Yes」を選ぶ。設定ができたら、「Import」を選ぶ。</p>
 </div>
-<div id="プログラムを書いてデータを読み込む" class="section level3" number="2.9.2">
-<h3><span class="header-section-number">2.9.2</span> 2: プログラムを書いてデータを読み込む。</h3>
+<div id="プログラムを書いてデータを読み込む" class="section level3 hasAnchor" number="2.9.2">
+<h3><span class="header-section-number">2.9.2</span> 2: プログラムを書いてデータを読み込む。<a href="01-intro.html#プログラムを書いてデータを読み込む" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>読み込みたいデータをデスクトップに置いた場合を例として、外部データの読み込み方について確認していく。</p>
 <p>まず、<strong>ワーキングディレクトリ</strong>を指定する必要がある（Rにデータのある場所を教える作業）。ワーキングディレクトリとは、「現在居る場所」のことである。<br />
 試しに、現在のワーキングディレクトリを確認しよう。以下のプログラムをコンソールに入力して実行する。</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="01-intro.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 <p>出力された場所が、現在のワーキングディレクトリである。Rはワーキングディレクトリを起点として読み込むファイルを探す。<strong>読み込むファイルは、ワーキングディレクトリに置くことにしよう</strong>。</p>
 <p>以下に、ワーキングディレクトリにデスクトップを指定する方法を例として説明する。</p>
-<div id="プログラムから指定する" class="section level5" number="2.9.2.0.1">
-<h5><span class="header-section-number">2.9.2.0.1</span> プログラムから指定する</h5>
+<div id="プログラムから指定する" class="section level5 hasAnchor" number="2.9.2.0.1">
+<h5><span class="header-section-number">2.9.2.0.1</span> プログラムから指定する<a href="01-intro.html#プログラムから指定する" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>コンソールに以下のプログラムを直接書き込んで実行する。</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="01-intro.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Windowsの場合</span></span>
 <span id="cb101-2"><a href="01-intro.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Users/ユーザー名/Desktop&quot;</span>) <span class="co">#ユーザー名には設定しているアカウント名を入れる。</span></span>
@@ -948,8 +947,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb101-7"><a href="01-intro.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co">#正しく設定されたかを確認する</span></span>
 <span id="cb101-8"><a href="01-intro.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() </span></code></pre></div>
 </div>
-<div id="rstudioの機能を使う" class="section level5" number="2.9.2.0.2">
-<h5><span class="header-section-number">2.9.2.0.2</span> RStudioの機能を使う</h5>
+<div id="rstudioの機能を使う" class="section level5 hasAnchor" number="2.9.2.0.2">
+<h5><span class="header-section-number">2.9.2.0.2</span> RStudioの機能を使う<a href="01-intro.html#rstudioの機能を使う" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
 <li>RStudioならば、右の方にある「File」からデスクトップを表示し、「Set As Working Directory」を選ぶ。</li>
 </ul>
@@ -958,22 +957,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="images/image02_Working2.png" width="50%" /></p>
 <p>ワーキングディレクトリの指定ができたら、プログラムを書いてデータを読み込む。</p>
 </div>
-<div id="csvファイルの場合" class="section level4 unnumbered">
-<h4>csvファイルの場合</h4>
+<div id="csvファイルの場合" class="section level4 unnumbered hasAnchor">
+<h4>csvファイルの場合<a href="01-intro.html#csvファイルの場合" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>read.csv()</code>関数で読み込むことが出来る。</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="01-intro.html#cb102-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>) <span class="co">#ファイル名をクオテーションで囲んで入れる。ここでは読み込んだデータを「dat」という名前で保存した。</span></span>
 <span id="cb102-2"><a href="01-intro.html#cb102-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb102-3"><a href="01-intro.html#cb102-3" aria-hidden="true" tabindex="-1"></a>dat <span class="co">#データの中身がコンソールに出力される</span></span></code></pre></div>
 </div>
-<div id="excelファイルの場合" class="section level4 unnumbered">
-<h4>Excelファイルの場合</h4>
-<p><code>tidyverse</code>パッケージをロードした上で、<code>read_excel()</code>を使う。<br />
+<div id="excelファイルの場合" class="section level4 unnumbered hasAnchor">
+<h4>Excelファイルの場合<a href="01-intro.html#excelファイルの場合" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>readxl</code>パッケージをインストール及びロードした上で、<code>read_excel()</code>を使う。<br />
 ＊<code>readxl::read_excel</code>は、<code>readxl</code>パッケージに入っている<code>read_excel</code>という関数を使うということを意味する（第4章で、また説明する）。</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="01-intro.html#cb103-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data.xlsx&quot;</span>)</span>
 <span id="cb103-2"><a href="01-intro.html#cb103-2" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
 </div>
-<div id="相対パス" class="section level4 unnumbered">
-<h4>相対パス</h4>
+<div id="相対パス" class="section level4 unnumbered hasAnchor">
+<h4>相対パス<a href="01-intro.html#相対パス" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>ワーキングディレクトリを起点として指定されるファイルの場所のことを<strong>相対パス</strong>という。</p>
 <p>上記の例では、デスクトップ上に読み込みたいファイルを保存し、デスクトップをワーキングディレクトリに指定してデータを読み込んだ。しかし、例えばデスクトップにあるフォルダの中にデータを保存してあってそのファイルを読み込みたい場合、いちいちワーキングディレクトリを設定し直すのは面倒である。</p>
 <p>このような場合、相対パスでファイルを指定するのが便利である。
@@ -989,8 +988,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>.</code>（ピリオド）は、ワーキングディレクトリを意味する。<code>/</code>（スラッシュ）でフォルダの階層を区切り、ファイルを指定する。</p>
 </div>
 </div>
-<div id="サンプルデータ" class="section level3" number="2.9.3">
-<h3><span class="header-section-number">2.9.3</span> サンプルデータ</h3>
+<div id="サンプルデータ" class="section level3 hasAnchor" number="2.9.3">
+<h3><span class="header-section-number">2.9.3</span> サンプルデータ<a href="01-intro.html#サンプルデータ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rには予めサンプルデータがいくつか用意されている。このテキストでもところどころで、Rに入っているサンプルデータを使って解析の練習を行う。</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="01-intro.html#cb105-1" aria-hidden="true" tabindex="-1"></a>iris <span class="co">#有名なフィッシャーのあやめデータ</span></span>
 <span id="cb105-2"><a href="01-intro.html#cb105-2" aria-hidden="true" tabindex="-1"></a>cars <span class="co">#自動車の速度と停止距離との関係</span></span>
@@ -998,36 +997,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb105-4"><a href="01-intro.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>() <span class="co">#data()で、入っているデータを確認できる</span></span></code></pre></div>
 </div>
 </div>
-<div id="ヘルプ" class="section level2" number="2.10">
-<h2><span class="header-section-number">2.10</span> ヘルプ</h2>
+<div id="ヘルプ" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> ヘルプ<a href="01-intro.html#ヘルプ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rの関数など、使い方がわからない場合は<code>help()</code>でヘルプを参照することができる（英語）。RStudioならば、画面右の「Help」にヘルプが出力される。ヘルプにはプログラムの例も記されている。</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="01-intro.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span>
 <span id="cb106-2"><a href="01-intro.html#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-3"><a href="01-intro.html#cb106-3" aria-hidden="true" tabindex="-1"></a>?mean <span class="co">#?でもヘルプを表示させることができる。</span></span>
 <span id="cb106-4"><a href="01-intro.html#cb106-4" aria-hidden="true" tabindex="-1"></a>?iris</span></code></pre></div>
 </div>
-<div id="rを終わらせる" class="section level2" number="2.11">
-<h2><span class="header-section-number">2.11</span> Rを終わらせる</h2>
+<div id="rを終わらせる" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Rを終わらせる<a href="01-intro.html#rを終わらせる" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>そのまま閉じてよい。</p>
 <p>「Save workspace image?（作業スペースを保存しますか？）」が表示されるが、「いいえ」で良い。</p>
 </div>
-<div id="確認問題" class="section level2 unnumbered">
-<h2>確認問題</h2>
+<div id="確認問題" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="01-intro.html#確認問題" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rでのプログラムの書き方、データフレームの使い方、外部データの読み込み方について復習しよう。</p>
-<div id="問１" class="section level3 unnumbered">
-<h3>問１</h3>
+<div id="問１" class="section level3 unnumbered hasAnchor">
+<h3>問１<a href="01-intro.html#問１" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rを使って以下のa, bを計算し、aとbの式どちらの方が答えが大きいかを確認せよ。</p>
 <p>a: 1 × 1 × 2 × 2 × 3 × 4 × 5 × 9 × 8 × 7 × 6</p>
 <p>b: 9 × 8 × 7 × 6 × 1 × 7 × 5 × 1 × 3 × 2 × 1</p>
 </div>
-<div id="問２" class="section level3 unnumbered">
-<h3>問２</h3>
+<div id="問２" class="section level3 unnumbered hasAnchor">
+<h3>問２<a href="01-intro.html#問２" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ある細菌が、1分後に2個に分裂して増殖するとする。つまり、1個の細菌が1分後には2個に、2分後にはその2個が分裂して合計4個に、3分後にはその4個が分裂して合計8個になる。<br />
 1個の細菌は、30分後には何個になっているだろうか？</p>
 <p>ヒント：aのx乗は^を使って求める（a^x）</p>
 </div>
-<div id="問３" class="section level3 unnumbered">
-<h3>問３</h3>
+<div id="問３" class="section level3 unnumbered hasAnchor">
+<h3>問３<a href="01-intro.html#問３" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>サンプルデータ「1_sample.csv」をデータフレームとして読み込もう。更に、データフレーム上の変数X, Yを用いて、Z = X - 3Y の新しい変数Zをデータフレームに追加しよう。</p>
 
 </div>
@@ -1108,7 +1107,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

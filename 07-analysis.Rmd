@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(dplyr)
 library(car)
 set.seed(1234)
 ```
@@ -13,10 +13,10 @@ set.seed(1234)
 
 この章では、t検定、χ二乗検定、分散分析、ノンパラメトリック検定など、心理学の基礎統計で学んだ手法について、Rでの解析方法を見ながらおさらいしていく。  
   
-まず、準備として`tidyverse`パッケージをロードしよう。
+まず、この章で使うパッケージをロードする。
 
 ```{r, eval=FALSE}
-library(tidyverse)
+library(dplyr)
 ```
 
 

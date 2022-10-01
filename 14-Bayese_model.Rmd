@@ -1,7 +1,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 
 library(rstan)
 library(brms)
@@ -265,13 +265,13 @@ summary(result_glm)
 
 ```
 
-`brm()`で同様の解析を行い、パラメータの爾後分布の推定をしよう。確率分布（family）とリンク関数（link）を適切なものに指定する。
+`brm()`で同様の解析を行い、パラメータの事後分布の推定をしよう。確率分布（family）とリンク関数（link）を適切なものに指定する。
 
 ```{r, message = FALSE, warning=FALSE, results='hide'}
 
 result_brms_logistic = brms::brm(data = dat, 
           y ~ 1 + x, 
-          family = binomial(link="logit") #確率分布にbinomial、linkにlogitを指定
+          family = bernoulli(link="logit") #確率分布にbernoulli（ベルヌーイ分部）、linkにlogitを指定
           )
 
 ```

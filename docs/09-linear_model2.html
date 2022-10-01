@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 線形モデルの注意点 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 10 線形モデルの注意点 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 線形モデルの注意点 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="08-linear_model.html"/>
 <link rel="next" href="10-glm.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,17 +571,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="線形モデルの注意点" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> 線形モデルの注意点</h1>
+<div id="線形モデルの注意点" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> 線形モデルの注意点<a href="09-linear_model2.html#線形モデルの注意点" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>前の章で、線形モデルの全体像を見てきた。<br />
 次に、線形モデルを扱う上で注意すべき点について見ていく。</p>
-<div id="準備-2" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> 準備</h2>
-<p>いつもどおり、<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="09-linear_model2.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="準備-2" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> 準備<a href="09-linear_model2.html#準備-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>データの可視化のために、<code>ggplot2</code>パッケージをロードする。</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="09-linear_model2.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
-<div id="変数の標準化" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> 変数の標準化</h2>
+<div id="変数の標準化" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> 変数の標準化<a href="09-linear_model2.html#変数の標準化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>応答変数ないしは予測変数が量的変数のときは、事前に<strong>標準化(standardizing)</strong>をしておいた方が結果の解釈がしやすくなる。標準化とは、元の値を「ゼロが平均値、1が標準偏差」になるように値を変換する処理のことをいう。</p>
 <p>例えば、前の章で<code>iris</code>データを使って以下の線形モデルの解析を行った。</p>
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="09-linear_model2.html#cb339-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> iris <span class="co">#irisをdatという別の名前で保存</span></span>
@@ -633,12 +632,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>係数の値が、変わっている。切片は0、<code>Sepal.Length</code>の効果は0.87である。切片の値は、<code>Sepal.Length_std</code>がゼロのとき（つまり<code>Sepal.Length</code>が平均値と等しいとき）、<code>Petal.Length_std</code>はほぼゼロの値を取る（つまり<code>Petal.Length</code>の平均値）ことを意味している。また、<code>Sepal.Length_std</code>の傾きは、<code>Sepal.Length_std</code>が1のとき（つまり<code>Sepal.Length</code>が1標準偏差分増加したとき）、<code>Petal.Length_std</code>が0.87増えることを意味する。</p>
 </div>
-<div id="線形モデルに含まれる統計解析" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> 線形モデルに含まれる統計解析</h2>
+<div id="線形モデルに含まれる統計解析" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> 線形モデルに含まれる統計解析<a href="09-linear_model2.html#線形モデルに含まれる統計解析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>線形モデルとは特定の解析を指すものではなく、正規分布を扱う様々な統計解析を包括的に扱う統計モデルである。例えば、基礎の統計学でも学んできたt検定や分散分析も線形モデルの中に含まれる。予測変数の種類や個数の違いによって、線形モデルは以下のそれぞれの統計解析と一致する。</p>
 </div>
-<div id="予測変数がカテゴリカル変数の場合" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> 予測変数がカテゴリカル変数の場合</h2>
+<div id="予測変数がカテゴリカル変数の場合" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> 予測変数がカテゴリカル変数の場合<a href="09-linear_model2.html#予測変数がカテゴリカル変数の場合" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>前の章では、予測変数が量的変数の場合を例として扱ったが、予測変数はカテゴリカル変数（質的変数）でも構わない。ただし、予測変数がカテゴリカル変数の場合は、予測変数を0か1のどちらかの値を取る<strong>ダミー変数</strong>(dummy variable)に変換する必要がある。</p>
 <p>Rに入っている<code>sleep</code>データを少し変えたもの使って、カテゴリカル変数を予測変数に含む線形モデルの解析をしてみよう。</p>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="09-linear_model2.html#cb343-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> sleep <span class="co">#データを別の名前datに保存し直す</span></span>
@@ -705,8 +704,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>lm()</code>の傾きの検定は、「傾きがゼロである」という帰無仮説を検定している。傾きの係数が意味することは、予測変数<span class="math inline">\(x_{1}\)</span>が1単位増えたときの応答変数<span class="math inline">\(y\)</span>の変化量であった。傾きの検定は、「<span class="math inline">\(x_{1}=0\)</span> から <span class="math inline">\(x_{1}=1\)</span> に変化することによって、 <span class="math inline">\(y\)</span> が上昇（下降）するか（傾きがゼロではないか）」を検定している。要は、「<span class="math inline">\(x_{1}=0\)</span>と<span class="math inline">\(x_{1}=1\)</span>の間で<span class="math inline">\(y\)</span>の値に差があるか」を検定しているのと論理的に同じである。</p>
 <p>このように、<em>予測変数が1つで、予測変数が二値（0もしくは1）であるときの線形モデルは、t検定に対応する</em>。</p>
 </div>
-<div id="グループが複数ある場合" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> グループが複数ある場合</h2>
+<div id="グループが複数ある場合" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> グループが複数ある場合<a href="09-linear_model2.html#グループが複数ある場合" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>先ほどの例は、統制群と実験群の二つのグループの場合であった。例えば実験で統制群、実験群1、実験群2といったように三つ以上のグループを設定した場合は、どうダミー変数を作成すればよいのか？</p>
 <p>Rに入っている<code>PlantGrowth</code>を例として見ていこう。例えばやり方としては、以下の方法がある。</p>
 <div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="09-linear_model2.html#cb351-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> PlantGrowth</span>
@@ -786,9 +785,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>図でも条件別に<code>y_2</code>の分布を確認してみよう。分布を見ても同様の傾向があるが、線形モデルの解析の結果その効果が有意であることが確認できた。</p>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="09-linear_model2.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb355-2"><a href="09-linear_model2.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> y_2))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-198-1.png" width="672" /></p>
-<div id="基準となるグループと比較する" class="section level3" number="10.5.1">
-<h3><span class="header-section-number">10.5.1</span> 基準となるグループと比較する</h3>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-197-1.png" width="672" /></p>
+<div id="基準となるグループと比較する" class="section level3 hasAnchor" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> 基準となるグループと比較する<a href="09-linear_model2.html#基準となるグループと比較する" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>もう一つの方法は、グループの数が<span class="math inline">\(K\)</span>個あるのならば、基準となるグループを定めてダミー変数を<span class="math inline">\(K-1\)</span>個作る方法である。</p>
 <p>以下のプログラムを実行して、データを作り直そう。</p>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="09-linear_model2.html#cb356-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> PlantGrowth</span>
@@ -864,11 +863,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>このように、モデルを組み直すことにより、係数が意味することも変化してくる。モデル（式）を確認しながら、係数が何を意味しているのかを常に意識するようにしよう。</p>
 </div>
 </div>
-<div id="予測変数が複数ある場合" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> 予測変数が複数ある場合</h2>
+<div id="予測変数が複数ある場合" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> 予測変数が複数ある場合<a href="09-linear_model2.html#予測変数が複数ある場合" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>前の章でも述べたように、予測変数は2つ以上入れても良い。予測変数が複数ある場合の注意点を見ていく。</p>
-<div id="変数の効果の統制" class="section level3" number="10.6.1">
-<h3><span class="header-section-number">10.6.1</span> 変数の効果の統制</h3>
+<div id="変数の効果の統制" class="section level3 hasAnchor" number="10.6.1">
+<h3><span class="header-section-number">10.6.1</span> 変数の効果の統制<a href="09-linear_model2.html#変数の効果の統制" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>予測変数を複数加えた線形モデルの解析のメリットは、ある予測変数について他の予測変数の効果を<strong>統制(control)</strong>したときの効果を検討できることにある。</p>
 <p>Rで標準で入っている<code>attitude</code>データを使って、予測変数が複数ある場合の線形モデルの解析の結果を確認してみよう。</p>
 <div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="09-linear_model2.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(attitude)</span></code></pre></div>
@@ -908,8 +907,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>各係数の値は「他の変数の値がゼロであるときの効果」を意味している。先程の<code>complaints</code>の係数0.69は、その他の予測変数<code>privileges</code>, <code>learning</code>, <code>raises</code>がゼロのときの、<code>complaints</code>が<code>rating</code>に与えるそのものの効果を示している。</p>
 <p>このように複数の予測変数を入れたモデルで推定される係数は、他の予測変数の効果を統制した上での予測変数が応答変数に及ぼす効果を意味する。</p>
 </div>
-<div id="交互作用" class="section level3" number="10.6.2">
-<h3><span class="header-section-number">10.6.2</span> 交互作用</h3>
+<div id="交互作用" class="section level3 hasAnchor" number="10.6.2">
+<h3><span class="header-section-number">10.6.2</span> 交互作用<a href="09-linear_model2.html#交互作用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>以下のプログラムを実行して、サンプルデータ<code>d</code>を作ろう。</p>
 <div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="09-linear_model2.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb364-2"><a href="09-linear_model2.html#cb364-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>),<span class="dv">0</span>) </span>
@@ -960,16 +959,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb368-2"><a href="09-linear_model2.html#cb368-2" aria-hidden="true" tabindex="-1"></a>result_conf <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">new =</span> newdat, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span>
 <span id="cb368-3"><a href="09-linear_model2.html#cb368-3" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="fl">0.1</span>), result_conf)</span>
 <span id="cb368-4"><a href="09-linear_model2.html#cb368-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb368-5"><a href="09-linear_model2.html#cb368-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb368-6"><a href="09-linear_model2.html#cb368-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb368-7"><a href="09-linear_model2.html#cb368-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb368-8"><a href="09-linear_model2.html#cb368-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
+<span id="cb368-5"><a href="09-linear_model2.html#cb368-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb368-6"><a href="09-linear_model2.html#cb368-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb368-7"><a href="09-linear_model2.html#cb368-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb368-8"><a href="09-linear_model2.html#cb368-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-203-1.png" width="672" /></p>
 <p>予測変数<code>x</code>の傾きはほぼフラットで、<code>y</code>に対してあまり効果がないようにみえる。</p>
 <p>しかし、このデータ<code>d</code>にはもう一つ性別を意味する<code>gender</code>という変数が含まれていた。<code>gender</code>を区別して、また<code>x</code>と<code>y</code>の散布図を見てみよう。</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="09-linear_model2.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb369-2"><a href="09-linear_model2.html#cb369-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> gender, <span class="at">color=</span>gender), <span class="at">size =</span> <span class="dv">3</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-205-1.png" width="672" /></p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="09-linear_model2.html#cb369-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb369-2"><a href="09-linear_model2.html#cb369-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> gender, <span class="at">color=</span>gender), <span class="at">size =</span> <span class="dv">3</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
 <p>性別が女性（F）か男性（M）かで、<code>x</code>と<code>y</code>の関係が違うようである。<br />
 このように、別の変数との組み合わせにより、変数間の関係が変化することを<strong>交互作用(interaction)</strong>という。このデータでも、応答変数<code>y</code>に対して性別<code>gender</code>と<code>x</code>の交互作用がありそうである。</p>
 <p>交互作用のあるモデルは、以下のように表現する。</p>
@@ -1016,18 +1015,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb372-4"><a href="09-linear_model2.html#cb372-4" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">data.frame</span>(newdat, result_conf)</span>
 <span id="cb372-5"><a href="09-linear_model2.html#cb372-5" aria-hidden="true" tabindex="-1"></a>plot_conf<span class="sc">$</span>gender <span class="ot">=</span> <span class="fu">ifelse</span>(plot_conf<span class="sc">$</span>M <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>)</span>
 <span id="cb372-6"><a href="09-linear_model2.html#cb372-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb372-7"><a href="09-linear_model2.html#cb372-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb372-8"><a href="09-linear_model2.html#cb372-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> gender, <span class="at">color=</span>gender), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb372-9"><a href="09-linear_model2.html#cb372-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit, <span class="at">color=</span>gender)) <span class="sc">+</span> </span>
-<span id="cb372-10"><a href="09-linear_model2.html#cb372-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr, <span class="at">color =</span>gender), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-207-1.png" width="672" /></p>
+<span id="cb372-7"><a href="09-linear_model2.html#cb372-7" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb372-8"><a href="09-linear_model2.html#cb372-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> gender, <span class="at">color=</span>gender), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb372-9"><a href="09-linear_model2.html#cb372-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit, <span class="at">color=</span>gender)) <span class="sc">+</span> </span>
+<span id="cb372-10"><a href="09-linear_model2.html#cb372-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr, <span class="at">color =</span>gender), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
 </div>
 </div>
-<div id="線形モデルを扱う上での問題" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> 線形モデルを扱う上での問題</h2>
+<div id="線形モデルを扱う上での問題" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> 線形モデルを扱う上での問題<a href="09-linear_model2.html#線形モデルを扱う上での問題" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>予測変数を増やせば、他の予測変数を統制することによって、その予測変数が応答変数に及ぼすそのものの効果を検討することができる。ただし、予測変数を加えることで生じる問題もある。以降では、<strong>多重共線性</strong>と<strong>過学習</strong>の問題について触れる。</p>
-<div id="多重共線性" class="section level3" number="10.7.1">
-<h3><span class="header-section-number">10.7.1</span> 多重共線性</h3>
+<div id="多重共線性" class="section level3 hasAnchor" number="10.7.1">
+<h3><span class="header-section-number">10.7.1</span> 多重共線性<a href="09-linear_model2.html#多重共線性" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>予測変数同士が非常に強く相関しあっている場合、予測変数の係数の推定結果が信頼できなくなる恐れがある。この問題は、<strong>多重共線性(multicollinearity)</strong>と呼ばれる。</p>
 <p>サンプルデータを使って確認してみよう。Rには多重共線性の例として<code>longley</code>というサンプルデータがある。</p>
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="09-linear_model2.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div>
@@ -1134,8 +1133,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}
 \]</span></p>
 <p><span class="math inline">\((\beta_{1} + \beta_{2})\)</span>について、パラメータ<span class="math inline">\(\beta_{1}\)</span>と<span class="math inline">\(\beta_{2}\)</span>の組み合わせは無限に考えられる。このように、強く相関する予測変数を入れると２つの予測変数のパラメータについて推定することが難しくなってしまう（パラメータの信頼区間が大きくなってしまう）。</p>
-<div id="多重共線性への対処" class="section level4 unnumbered">
-<h4>多重共線性への対処</h4>
+<div id="多重共線性への対処" class="section level4 unnumbered hasAnchor">
+<h4>多重共線性への対処<a href="09-linear_model2.html#多重共線性への対処" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>多重共線性の対策として、<strong>VIF(variance inflation factor)</strong>という指標がよく用いられる。一般的に、<span class="math inline">\(VIF &gt; 10\)</span>の場合は、多重共線性を疑った方が良いといわれている。VIFの高い変数同士のうちどちらか一方を予測変数から除くといった対処をして、解析し直してみるのが良い。</p>
 <p><code>performance</code>パッケージの<code>check_collinearity()</code>関数を使えば、VIFを確認することができる。</p>
 <div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="09-linear_model2.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
@@ -1144,13 +1143,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## High Correlation
 ## 
-##          Term   VIF Increased SE Tolerance
-##  GNP.deflator 59.70         7.73      0.02
-##           GNP 59.70         7.73      0.02</code></pre>
+##          Term   VIF      VIF 95% CI Increased SE Tolerance Tolerance 95% CI
+##  GNP.deflator 59.70 [30.69, 117.04]         7.73      0.02     [0.01, 0.03]
+##           GNP 59.70 [30.69, 117.04]         7.73      0.02     [0.01, 0.03]</code></pre>
 </div>
 </div>
-<div id="過学習" class="section level3" number="10.7.2">
-<h3><span class="header-section-number">10.7.2</span> 過学習</h3>
+<div id="過学習" class="section level3 hasAnchor" number="10.7.2">
+<h3><span class="header-section-number">10.7.2</span> 過学習<a href="09-linear_model2.html#過学習" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>以下のプログラムを実行して、サンプルデータ<code>d</code>を作成しよう。</p>
 <div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="09-linear_model2.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
 <span id="cb385-2"><a href="09-linear_model2.html#cb385-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1163,8 +1162,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ x: num  1 2 3 4 5 6 7 8 9 10
 ##  $ y: num  3.03 2.23 2.71 3.77 1.34 ...</code></pre>
 <div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="09-linear_model2.html#cb387-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb387-2"><a href="09-linear_model2.html#cb387-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span>d, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y =</span> y))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
+<span id="cb387-2"><a href="09-linear_model2.html#cb387-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span>d, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y =</span> y))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
 <p>このデータについて、以下の線形モデルを当てはめ、パラメータを推定しよう。図に線形モデルの直線及び信頼区間を図示するところまでやってみる。</p>
 <p><span class="math display">\[
 \begin{equation}
@@ -1179,10 +1178,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb388-6"><a href="09-linear_model2.html#cb388-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb388-7"><a href="09-linear_model2.html#cb388-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb388-8"><a href="09-linear_model2.html#cb388-8" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb388-9"><a href="09-linear_model2.html#cb388-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
-<span id="cb388-10"><a href="09-linear_model2.html#cb388-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span></span>
-<span id="cb388-11"><a href="09-linear_model2.html#cb388-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
+<span id="cb388-9"><a href="09-linear_model2.html#cb388-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
+<span id="cb388-10"><a href="09-linear_model2.html#cb388-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span></span>
+<span id="cb388-11"><a href="09-linear_model2.html#cb388-11" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
 <p>直線はほとんど観測値から外れており、当てはまりが悪いようである。</p>
 <p>そこで、予測変数を増やして検討してみる。<code>lm()</code>では、予測変数<span class="math inline">\(x\)</span>のn乗を含む多項式のモデルを考慮することも可能である。例えば、以下は3次の多項式の例である。</p>
 <p><span class="math display">\[
@@ -1200,10 +1199,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb390-4"><a href="09-linear_model2.html#cb390-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb390-5"><a href="09-linear_model2.html#cb390-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb390-6"><a href="09-linear_model2.html#cb390-6" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb390-7"><a href="09-linear_model2.html#cb390-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
-<span id="cb390-8"><a href="09-linear_model2.html#cb390-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb390-9"><a href="09-linear_model2.html#cb390-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
+<span id="cb390-7"><a href="09-linear_model2.html#cb390-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
+<span id="cb390-8"><a href="09-linear_model2.html#cb390-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb390-9"><a href="09-linear_model2.html#cb390-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
 <p>9次の式でも推定してみよう。</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="09-linear_model2.html#cb391-1" aria-hidden="true" tabindex="-1"></a>result_9 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> d, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">5</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">6</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">7</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">9</span>))</span>
 <span id="cb391-2"><a href="09-linear_model2.html#cb391-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1214,21 +1213,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb391-7"><a href="09-linear_model2.html#cb391-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb391-8"><a href="09-linear_model2.html#cb391-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb391-9"><a href="09-linear_model2.html#cb391-9" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb391-10"><a href="09-linear_model2.html#cb391-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
-<span id="cb391-11"><a href="09-linear_model2.html#cb391-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb391-12"><a href="09-linear_model2.html#cb391-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
+<span id="cb391-10"><a href="09-linear_model2.html#cb391-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
+<span id="cb391-11"><a href="09-linear_model2.html#cb391-11" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb391-12"><a href="09-linear_model2.html#cb391-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
 <p>線は全てのデータ点を通っている。当然ながら、データの観測値の分だけパラメータがあれば、そのモデルはデータ点を全て通る線を引くことができる。現在のデータ点全てを予測することができる。</p>
 <p>しかし、そのモデルは現在のデータを全て当てられても、<em>将来得られる未知のデータを当てられるとは限らない</em>。予測変数を多くすると現在のデータには当てはまるが、当てはまりすぎて未知のデータの予測力が低下してしまうことを、<strong>過学習(overfitting)</strong>という。</p>
 <p>複雑なモデルが現在のデータによく当てはまるのは、ある意味当然である（単なる偶然で生じた誤差も無駄に説明してしまっている）。しかし、複雑なモデルは現在のデータに当てはまっても、未知のデータにもうまく当てはまるとは限らない。</p>
 <p>理想的なモデルは、「<strong>予測力が高く、かつ予測変数ができるだけ少なくてシンプルなモデル</strong>」となる。</p>
 </div>
 </div>
-<div id="モデルの予測力の評価" class="section level2" number="10.8">
-<h2><span class="header-section-number">10.8</span> モデルの予測力の評価</h2>
+<div id="モデルの予測力の評価" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> モデルの予測力の評価<a href="09-linear_model2.html#モデルの予測力の評価" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>モデルの予測力を評価するために使われる指標について説明する。</p>
-<div id="決定係数" class="section level3" number="10.8.1">
-<h3><span class="header-section-number">10.8.1</span> 決定係数</h3>
+<div id="決定係数" class="section level3 hasAnchor" number="10.8.1">
+<h3><span class="header-section-number">10.8.1</span> 決定係数<a href="09-linear_model2.html#決定係数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>線形モデルでは、データに対する回帰分析のモデルの予測力を表す指標として、<strong>決定係数</strong>（R-squared）がある。</p>
 <p>サンプルデータ<code>attitude</code>を例に見てみよう。</p>
 <div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="09-linear_model2.html#cb392-1" aria-hidden="true" tabindex="-1"></a>model_01 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data=</span>attitude, rating <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> complaints <span class="sc">+</span> learning)</span>
@@ -1246,8 +1245,8 @@ R^2 = \sum_{i=1}^{n} \frac {(y_{i}-\mu_{i})^2}{(y_{i}-\bar{y})^2} \tag{10}
 <p>応答変数に影響を及ぼさない変数を含めても、決定係数は上昇してしまう。</p>
 <p>決定係数は、「予測力が高く、シンプルなモデル」を探すには常に適切な指標であるとは言えない。</p>
 </div>
-<div id="赤池情報量基準aic" class="section level3" number="10.8.2">
-<h3><span class="header-section-number">10.8.2</span> 赤池情報量基準（AIC）</h3>
+<div id="赤池情報量基準aic" class="section level3 hasAnchor" number="10.8.2">
+<h3><span class="header-section-number">10.8.2</span> 赤池情報量基準（AIC）<a href="09-linear_model2.html#赤池情報量基準aic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>モデルのシンプルさ（予測変数の少なさ）とモデルの予測力とのバランスを取った指標の一つとして、<strong>赤池情報量基準(Akaike inoformation criteria: AIC)</strong>がよく知られている。AICは以下の式で計算される。</p>
 <p><span class="math display">\[
 AIC = -2 \log L + 2k \tag{11}\\
@@ -1263,10 +1262,10 @@ AIC = -2 \log L + 2k \tag{11}\\
 <p><code>model_full</code>よりも<code>model_01</code>のAICが低く、<code>model_01</code>の予想力の方が高いことを示している。</p>
 </div>
 </div>
-<div id="確認問題-7" class="section level2 unnumbered">
-<h2>確認問題</h2>
-<div id="問1" class="section level3 unnumbered">
-<h3>問1</h3>
+<div id="確認問題-7" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="09-linear_model2.html#確認問題-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="問1" class="section level3 unnumbered hasAnchor">
+<h3>問1<a href="09-linear_model2.html#問1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rで標準で入っているデータ<code>warpbreaks</code>を使って練習をする。</p>
 <div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="09-linear_model2.html#cb400-1" aria-hidden="true" tabindex="-1"></a>prac_dat_1 <span class="ot">=</span> warpbreaks <span class="co">#別の名前で保存する</span></span>
 <span id="cb400-2"><a href="09-linear_model2.html#cb400-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1278,37 +1277,45 @@ AIC = -2 \log L + 2k \tag{11}\\
 ## 4     25    A       L
 ## 5     70    A       L
 ## 6     52    A       L</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="09-linear_model2.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb402-2"><a href="09-linear_model2.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_1, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="09-linear_model2.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb403-2"><a href="09-linear_model2.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_1, <span class="fu">aes</span>(<span class="at">x =</span> tension, <span class="at">y =</span> breaks))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-221-2.png" width="672" /></p>
-<div id="section" class="section level4 unnumbered">
-<h4>1-1</h4>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="09-linear_model2.html#cb402-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb402-2"><a href="09-linear_model2.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_1, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="09-linear_model2.html#cb403-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb403-2"><a href="09-linear_model2.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_1, <span class="fu">aes</span>(<span class="at">x =</span> tension, <span class="at">y =</span> breaks))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-220-2.png" width="672" /></p>
+<div id="section" class="section level4 unnumbered hasAnchor">
+<h4>1-1<a href="09-linear_model2.html#section" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>変数<code>wool</code>について, 「<code>A</code>を1, それ以外を0」としたダミー変数を作成し、そのダミー変数を予測変数、<code>breaks</code>を応答変数として線形モデルを行い、切片及びダミー変数に係る傾きの推定値を報告せよ。</p>
 <p>また、ダミー変数の傾きの推定値からどのような結論が導かれるかを述べよ。</p>
 </div>
-<div id="section-1" class="section level4 unnumbered">
-<h4>1-2</h4>
+<div id="section-1" class="section level4 unnumbered hasAnchor">
+<h4>1-2<a href="09-linear_model2.html#section-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>変数<code>tension</code>について, 「<code>L</code>を1, それ以外を0」、「<code>M</code>を1, それ以外を0」とした2種類のダミー変数を作成し、それら2つのダミー変数を予測変数、<code>breaks</code>を応答変数として線形モデルを行い、切片及び各ダミー変数に係る傾きの推定値を報告せよ。<br />
 更に、そのときの切片及び各ダミー変数の係数が意味することを説明せよ。</p>
 </div>
-<div id="section-2" class="section level4 unnumbered">
-<h4>1-3</h4>
+<div id="section-2" class="section level4 unnumbered hasAnchor">
+<h4>1-3<a href="09-linear_model2.html#section-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>1-2で作ったダミー変数に加え、更に「<code>H</code>を1, それ以外を0」としたダミー変数を追加で作成する。<br />
 更に、<code>breaks</code>から全体の<code>breaks</code>の平均を引いた変数<code>breaks_2</code>を作成する。</p>
 <p>それら3つのダミー変数を予測変数、<code>breaks_2</code>を応答変数として線形モデルを行い、各ダミー変数に係る傾きの推定値を報告せよ。ただし、モデルには切片の項は加えないものとする。</p>
 <p>更に、そのときの各ダミー変数の係数が意味することを説明せよ。</p>
 </div>
 </div>
-<div id="問2" class="section level3 unnumbered">
-<h3>問2</h3>
+<div id="問2" class="section level3 unnumbered hasAnchor">
+<h3>問2<a href="09-linear_model2.html#問2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>問1に引き続き、Rで標準で入っているデータ<code>warpbreaks</code>を使って練習をする。ただし、<code>tension</code>が<code>H</code>の部分を除いたデータを用いる。</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="09-linear_model2.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb404-2"><a href="09-linear_model2.html#cb404-2" aria-hidden="true" tabindex="-1"></a>prac_dat_2 <span class="ot">=</span> warpbreaks <span class="sc">%&gt;%</span> <span class="fu">filter</span>(tension <span class="sc">!=</span> <span class="st">&quot;H&quot;</span>) <span class="co">#tension == Hは除き、別の名前で保存する</span></span>
-<span id="cb404-3"><a href="09-linear_model2.html#cb404-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-4"><a href="09-linear_model2.html#cb404-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prac_dat_2)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="09-linear_model2.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✔ purrr   0.3.4     ✔ forcats 0.5.1
+## ✔ stringr 1.4.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ✖ car::recode()   masks dplyr::recode()
+## ✖ purrr::some()   masks car::some()</code></pre>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="09-linear_model2.html#cb408-1" aria-hidden="true" tabindex="-1"></a>prac_dat_2 <span class="ot">=</span> warpbreaks <span class="sc">%&gt;%</span> <span class="fu">filter</span>(tension <span class="sc">!=</span> <span class="st">&quot;H&quot;</span>) <span class="co">#tension == Hは除き、別の名前で保存する</span></span>
+<span id="cb408-2"><a href="09-linear_model2.html#cb408-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-3"><a href="09-linear_model2.html#cb408-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prac_dat_2)</span></code></pre></div>
 <pre><code>##   breaks wool tension
 ## 1     26    A       L
 ## 2     30    A       L
@@ -1316,17 +1323,17 @@ AIC = -2 \log L + 2k \tag{11}\\
 ## 4     25    A       L
 ## 5     70    A       L
 ## 6     52    A       L</code></pre>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="09-linear_model2.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb406-2"><a href="09-linear_model2.html#cb406-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_2, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks, <span class="at">fill =</span> tension))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="09-linear_model2.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb410-2"><a href="09-linear_model2.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_2, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks, <span class="at">fill =</span> tension))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 <p>breaksを応答変数、wool, tension, wool及びtensionの交互作用項を予測変数とした線形モデルを行い、切片、woolの傾き、tensionの傾き、交互作用項の推定値を報告せよ。</p>
 </div>
-<div id="問3" class="section level3 unnumbered">
-<h3>問3</h3>
+<div id="問3" class="section level3 unnumbered hasAnchor">
+<h3>問3<a href="09-linear_model2.html#問3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rで標準で入っている<code>airquality</code>を使う。</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="09-linear_model2.html#cb407-1" aria-hidden="true" tabindex="-1"></a>prac_dat_3 <span class="ot">=</span> airquality <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="co">#欠損値を除き、別の名前で保存する</span></span>
-<span id="cb407-2"><a href="09-linear_model2.html#cb407-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb407-3"><a href="09-linear_model2.html#cb407-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prac_dat_3)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="09-linear_model2.html#cb411-1" aria-hidden="true" tabindex="-1"></a>prac_dat_3 <span class="ot">=</span> airquality <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="co">#欠損値を除き、別の名前で保存する</span></span>
+<span id="cb411-2"><a href="09-linear_model2.html#cb411-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-3"><a href="09-linear_model2.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prac_dat_3)</span></code></pre></div>
 <pre><code>##   Ozone Solar.R Wind Temp Month Day
 ## 1    41     190  7.4   67     5   1
 ## 2    36     118  8.0   72     5   2
@@ -1334,16 +1341,16 @@ AIC = -2 \log L + 2k \tag{11}\\
 ## 4    18     313 11.5   62     5   4
 ## 7    23     299  8.6   65     5   7
 ## 8    19      99 13.8   59     5   8</code></pre>
-<div id="section-3" class="section level4 unnumbered">
-<h4>3-1</h4>
+<div id="section-3" class="section level4 unnumbered hasAnchor">
+<h4>3-1<a href="09-linear_model2.html#section-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>Ozone</code>を応答変数、<code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>の3つを予測変数とした線形モデルを行う。そして、切片及び傾きの推定値を報告せよ。</p>
 </div>
-<div id="section-4" class="section level4 unnumbered">
-<h4>3-2</h4>
+<div id="section-4" class="section level4 unnumbered hasAnchor">
+<h4>3-2<a href="09-linear_model2.html#section-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>3-1で行った線形モデルについて、決定係数を報告せよ（Multiple R-squared）。</p>
 </div>
-<div id="section-5" class="section level4 unnumbered">
-<h4>3-3</h4>
+<div id="section-5" class="section level4 unnumbered hasAnchor">
+<h4>3-3<a href="09-linear_model2.html#section-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>以下の3種類の線形モデルの解析を行い、<br />
 モデル1: <code>Ozone</code>を応答変数、<code>Solar.R</code>, <code>Wind</code>, <code>Temp</code>の3つを予測変数とした線形モデル<br />
 モデル2: <code>Ozone</code>を応答変数、<code>Solar.R</code>, <code>Temp</code>の2つを予測変数とした線形モデル<br />
@@ -1429,7 +1436,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

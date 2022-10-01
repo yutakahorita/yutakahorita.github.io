@@ -1,7 +1,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 
 library(rstan)
 
@@ -167,10 +167,10 @@ theta_prior = rep(1, length(theta_seq))
 ```
 
 ```{r, echo=FALSE}
-ggplot() + 
-  geom_line(data = d_Bayese, aes(x = theta, y = prior)) + 
-  labs(x = "theta", y = "value", title = "prior") +
-  theme_classic()
+ggplot2::ggplot() + 
+  ggplot2::geom_line(data = d_Bayese, aes(x = theta, y = prior)) + 
+  ggplot2::labs(x = "theta", y = "value", title = "prior") +
+  ggplot2::theme_classic()
 ```
 
 
@@ -199,10 +199,10 @@ theta_likelihood = dbinom(x=6, size=10, prob = theta_seq)
 
 ```{r, echo=FALSE}
 
-ggplot() + 
-  geom_line(data = d_Bayese, aes(x = theta, y = likelihood)) + 
-  labs(x = "theta", y = "value", title = "likelihood") +
-  theme_classic()
+ggplot2::ggplot() + 
+  ggplot2::geom_line(data = d_Bayese, aes(x = theta, y = likelihood)) + 
+  ggplot2::labs(x = "theta", y = "value", title = "likelihood") +
+  ggplot2::theme_classic()
 
 ```
 
@@ -226,10 +226,10 @@ theta_posterior_std = theta_posterior/sum(theta_posterior)
 
 
 ```{r, echo=FALSE}
-ggplot() + 
-  geom_line(data = d_Bayese, aes(x = theta, y = theta_posterior_std)) + 
-  labs(x = "theta", y = "value", title = "posterior") +
-  theme_classic()
+ggplot2::ggplot() + 
+  ggplot2::geom_line(data = d_Bayese, aes(x = theta, y = theta_posterior_std)) + 
+  ggplot2::labs(x = "theta", y = "value", title = "posterior") +
+  ggplot2::theme_classic()
 ```
 
 

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 線形モデル | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 9 線形モデル | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 線形モデル | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="07-analysis.html"/>
 <link rel="next" href="09-linear_model2.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -209,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#tidyverseパッケージのロード"><i class="fa fa-check"></i><b>4.1</b> tidyverseパッケージのロード</a></li>
+<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
 <li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
 <li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
 <ul>
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rtanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rtanのインストール</a></li>
 <li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-1"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
 <li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
@@ -572,17 +571,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="線形モデル" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> 線形モデル</h1>
+<div id="線形モデル" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> 線形モデル<a href="08-linear_model.html#線形モデル" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>これまで学んできた様々な統計手法（t検定、分散分析など）を、「線形モデル」という一つの枠組みで捉えていく。</p>
 <p>この章のタイトルは「線形モデル」であるが、扱う内容は心理統計でも学んだ<strong>回帰分析</strong>である。</p>
-<div id="準備-1" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> 準備</h2>
-<p>いつもどおり、<code>tidyverse</code>パッケージをロードしよう。</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="08-linear_model.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="準備-1" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> 準備<a href="08-linear_model.html#準備-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>データの可視化のために、<code>ggplot2</code>パッケージをロードする。</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="08-linear_model.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
-<div id="線形モデルの概要" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> 線形モデルの概要</h2>
+<div id="線形モデルの概要" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> 線形モデルの概要<a href="08-linear_model.html#線形モデルの概要" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>まず、線形モデルの表現の仕方を理解する。以下の式は、変数<span class="math inline">\(x\)</span>から、変数<span class="math inline">\(y\)</span>を予測するプロセスを記述したものである。変数<span class="math inline">\(x\)</span>は<strong>予測変数</strong>（predictor variable）、変数<span class="math inline">\(y\)</span>は<strong>応答変数</strong>（response variable）と呼ばれる。このように、応答変数と予測変数との関係を式で表現したものを<strong>モデル</strong>と呼ぶ。</p>
 <hr />
 <p>予測変数は、「独立変数」や「説明変数」とも呼ばれる。応答変数は、「従属変数」や「被説明変数」とも呼ばれる。</p>
@@ -606,8 +605,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>応答変数が正規分布に従うという前提をおいたモデルのことを、一般的に<strong>線形モデル(linear model)</strong>と呼ぶ。</p>
 <p>線形モデルは、基本的に心理統計でも学んだ「<strong>回帰分析(regression analysis)</strong>」と同じである。</p>
 <p>応答変数<span class="math inline">\(y\)</span>を決定づける変数、<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>、及び <span class="math inline">\(\sigma\)</span>は<strong>パラメータ(parameter)</strong>と呼ばれる。このパラメータを、既知の変数である<span class="math inline">\(x\)</span>と<span class="math inline">\(y\)</span>から推定する。</p>
-<div id="まとめ" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> まとめ</h3>
+<div id="まとめ" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> まとめ<a href="08-linear_model.html#まとめ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>まずは、「応答変数」、「予測変数」、「（応答変数が従う）確率分布」、「線形予測子」、「傾き」、「切片」など、線形モデルを構成するキーワードを覚えよう。</p>
 <ul>
 <li>線形モデルは、応答変数と予測変数の関係を線形の式で表したモデルである。<br />
@@ -618,15 +617,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="線形モデルによる解析" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> 線形モデルによる解析</h2>
+<div id="線形モデルによる解析" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> 線形モデルによる解析<a href="08-linear_model.html#線形モデルによる解析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>実際に、Rで線形モデルの解析をしてみよう。</p>
 <p>Rには線形モデルを扱える関数<code>lm()</code>がある。<code>iris</code>データを使って解析をしてみよう。</p>
 <p><code>Sepal.Length</code>と<code>Petal.Length</code>の関係を散布図で確認する。</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="08-linear_model.html#cb321-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb321-2"><a href="08-linear_model.html#cb321-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length))</span>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="08-linear_model.html#cb321-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb321-2"><a href="08-linear_model.html#cb321-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length))</span>
 <span id="cb321-3"><a href="08-linear_model.html#cb321-3" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 <p><code>Sepal.Length</code>が大きいほど<code>Petal.Length</code>が大きいという関係（正の相関）がありそうである。そこで、<code>Sepal.Length</code>の大きさから、<code>Petal.Length</code>の大きさを予測することを試みる。</p>
 <p><code>lm()</code>関数に、「応答変数~ 1 + 予測変数」のかたちで入力する。以下のプログラムを実行してみよう。<br />
 ＊<code>1 +</code>の部分は省略しても構わない。<code>1 +</code>は線形予測子の切片の部分を表している。省略しても、<code>lm()</code>は自動で切片の値を求めてくれる。</p>
@@ -673,19 +672,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   Petal.Length =  -7.10 + 1.86 Sepal.Length\\ \tag{3}
 \end{equation}
 \]</span></p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="08-linear_model.html#cb325-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb325-2"><a href="08-linear_model.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
-<span id="cb325-3"><a href="08-linear_model.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length), <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="08-linear_model.html#cb325-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb325-2"><a href="08-linear_model.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb325-3"><a href="08-linear_model.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length), <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb325-4"><a href="08-linear_model.html#cb325-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
 <p>線形モデルでは、直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような、直線の式を推定する（予測値と実測値とのズレが最小になるのが、最も良い予測である）。</p>
 </div>
-<div id="最尤法" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> 最尤法</h2>
+<div id="最尤法" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> 最尤法<a href="08-linear_model.html#最尤法" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>では、どうやって実測値と予測値とのずれが最小になるように傾きと切片の値を求めるのか？<br />
 線形モデル（及び一般化線形モデル）では、パラメータの推定に<strong>最尤法（maximum likelihood method）</strong>という最適化手法が用いられる。</p>
-<div id="最尤法によるパラメータ推定" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> 最尤法によるパラメータ推定</h3>
+<div id="最尤法によるパラメータ推定" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> 最尤法によるパラメータ推定<a href="08-linear_model.html#最尤法によるパラメータ推定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ここにコインが1枚ある。コインの表が出るかを決定づけるパラメータ（つまりコインを投げて表が出る確率）を<span class="math inline">\(\theta\)</span>（シータ）とする。この<span class="math inline">\(\theta\)</span>の値を何回かコインを投げる実験を通して推定する。</p>
 <p>1回目は、表が出た。この時点で、この実験結果が生じる確率は<span class="math inline">\(\theta\)</span>である。<br />
 2回目は、裏が出た。1回目と2回目までの実験結果が生じる確率は<span class="math inline">\(\theta(1-\theta)\)</span>である。<br />
@@ -730,11 +729,11 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <span id="cb328-4"><a href="08-linear_model.html#cb328-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb328-5"><a href="08-linear_model.html#cb328-5" aria-hidden="true" tabindex="-1"></a>data_mlm <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span>theta, <span class="at">y=</span>logL)</span>
 <span id="cb328-6"><a href="08-linear_model.html#cb328-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-7"><a href="08-linear_model.html#cb328-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb328-8"><a href="08-linear_model.html#cb328-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>data_mlm, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span> y), <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb328-9"><a href="08-linear_model.html#cb328-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> result_mlm<span class="sc">$</span>maximum, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb328-10"><a href="08-linear_model.html#cb328-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;theta&quot;</span>, <span class="at">y=</span> <span class="st">&quot;log L&quot;</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<span id="cb328-7"><a href="08-linear_model.html#cb328-7" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb328-8"><a href="08-linear_model.html#cb328-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data=</span>data_mlm, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span> y), <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb328-9"><a href="08-linear_model.html#cb328-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> result_mlm<span class="sc">$</span>maximum, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb328-10"><a href="08-linear_model.html#cb328-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;theta&quot;</span>, <span class="at">y=</span> <span class="st">&quot;log L&quot;</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 <p>対数尤度が最も大きくなるのは、<span class="math inline">\(\theta=\)</span> 0.4のときである（表が出た割合である2/5と一致）。</p>
 <p>ここではわかりやすくパラメータを1つのみ使って説明しているが、線形モデルの傾きや切片の推定も同じである。上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする。</p>
 <hr />
@@ -742,15 +741,15 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <hr />
 </div>
 </div>
-<div id="信頼区間と予測区間" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> 信頼区間と予測区間</h2>
+<div id="信頼区間と予測区間" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> 信頼区間と予測区間<a href="08-linear_model.html#信頼区間と予測区間" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>モデルでパラメータの推定を行ったあとは、そのモデルがデータを上手く予測できているかを確認することも重要である。</p>
 <p>具体的には、パラメータの<strong>信頼区間(confidence interval)</strong>とデータの<strong>予測区間 (predictive interval)</strong>をチェックする。</p>
 <p>信頼区間とは、パラメータが分布する区間のことをいう。今回得られた標本を用いて係数を推定したが、標本の元となる母集団の係数の値はどのくらいか？その母集団の係数の予想の範囲が、信頼区間である。</p>
 <p>予測区間とは、標本がどの範囲に分布するかを予測する範囲のことをいう。新たな標本を取ったときに、そのデータがどの範囲に分布するか。その予想の範囲が予測区間である。</p>
 <p>Rには、線形モデルの推定結果から信頼区間と予測区間を算出してくれる<code>predict()</code>関数が用意されている。先ほどの線形モデルの解析結果を使って、信頼区間と予測区間を求めてみよう。</p>
-<div id="信頼区間" class="section level3" number="9.5.1">
-<h3><span class="header-section-number">9.5.1</span> 信頼区間</h3>
+<div id="信頼区間" class="section level3 hasAnchor" number="9.5.1">
+<h3><span class="header-section-number">9.5.1</span> 信頼区間<a href="08-linear_model.html#信頼区間" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="08-linear_model.html#cb329-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
 <span id="cb329-2"><a href="08-linear_model.html#cb329-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb329-3"><a href="08-linear_model.html#cb329-3" aria-hidden="true" tabindex="-1"></a>result_conf <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
@@ -768,14 +767,14 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <p>求めた信頼区間を図示してみよう</p>
 <div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="08-linear_model.html#cb332-1" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></span>
 <span id="cb332-2"><a href="08-linear_model.html#cb332-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb332-3"><a href="08-linear_model.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb332-4"><a href="08-linear_model.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb332-5"><a href="08-linear_model.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb332-6"><a href="08-linear_model.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<span id="cb332-3"><a href="08-linear_model.html#cb332-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb332-4"><a href="08-linear_model.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb332-5"><a href="08-linear_model.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb332-6"><a href="08-linear_model.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
 </div>
-<div id="予測区間" class="section level3" number="9.5.2">
-<h3><span class="header-section-number">9.5.2</span> 予測区間</h3>
+<div id="予測区間" class="section level3 hasAnchor" number="9.5.2">
+<h3><span class="header-section-number">9.5.2</span> 予測区間<a href="08-linear_model.html#予測区間" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="08-linear_model.html#cb333-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
 <span id="cb333-2"><a href="08-linear_model.html#cb333-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb333-3"><a href="08-linear_model.html#cb333-3" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>)) <span class="co">#0.1刻みで4から8まで範囲の数値ベクトルを入れたデータを仮に作る</span></span>
@@ -794,20 +793,20 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <p>予測区間を図示してみよう。</p>
 <div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="08-linear_model.html#cb335-1" aria-hidden="true" tabindex="-1"></a>plot_pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred) <span class="co">#予測区間のデータを作成する</span></span>
 <span id="cb335-2"><a href="08-linear_model.html#cb335-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb335-3"><a href="08-linear_model.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb335-4"><a href="08-linear_model.html#cb335-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb335-5"><a href="08-linear_model.html#cb335-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb335-6"><a href="08-linear_model.html#cb335-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
+<span id="cb335-3"><a href="08-linear_model.html#cb335-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb335-4"><a href="08-linear_model.html#cb335-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb335-5"><a href="08-linear_model.html#cb335-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb335-6"><a href="08-linear_model.html#cb335-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 <p>実際のデータが予測区間の範囲に収まっているならば、そのモデルは概ねよくデータを予測できていることを示している。</p>
 </div>
 </div>
-<div id="まとめ-1" class="section level2" number="9.6">
-<h2><span class="header-section-number">9.6</span> まとめ</h2>
+<div id="まとめ-1" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> まとめ<a href="08-linear_model.html#まとめ-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>この章では、線形モデルの概念について学んできた。次章では、線形モデルを扱う上で注意すべき点について見ていく。</p>
 </div>
-<div id="確認問題-6" class="section level2 unnumbered">
-<h2>確認問題</h2>
+<div id="確認問題-6" class="section level2 unnumbered hasAnchor">
+<h2>確認問題<a href="08-linear_model.html#確認問題-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rに入っているサンプルデータ<code>trees</code>を使って、線形モデルの結果の解釈の仕方と<code>lm()</code>関数の扱い方を復習をする。</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="08-linear_model.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
 <pre><code>##   Girth Height Volume
@@ -817,16 +816,16 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 4  10.5     72   16.4
 ## 5  10.7     81   18.8
 ## 6  10.8     83   19.7</code></pre>
-<div id="問１-6" class="section level3 unnumbered">
-<h3>問１</h3>
+<div id="問１-6" class="section level3 unnumbered hasAnchor">
+<h3>問１<a href="08-linear_model.html#問１-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Heightを応答変数、Girthを予測変数として、切片と傾きの推定値を求めよ。</p>
 </div>
-<div id="問２-5" class="section level3 unnumbered">
-<h3>問２</h3>
+<div id="問２-5" class="section level3 unnumbered hasAnchor">
+<h3>問２<a href="08-linear_model.html#問２-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Heightを応答変数、Volumeを予測変数として、切片と傾きの推定値を求めよ。</p>
 </div>
-<div id="問３-4" class="section level3 unnumbered">
-<h3>問３</h3>
+<div id="問３-4" class="section level3 unnumbered hasAnchor">
+<h3>問３<a href="08-linear_model.html#問３-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>問2の推定結果から、Volumeが1単位増えるとHeightがどう変化するかを説明せよ。</p>
 
 </div>
@@ -907,7 +906,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

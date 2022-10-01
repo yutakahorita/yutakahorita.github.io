@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 library(nnet)
 library(MASS)
 library(ordinal)
@@ -20,13 +20,13 @@ library(knitr)
 
 ## 準備
 
-`tidyverse`パッケージに加え、`MASS`、`ordinal`、`nnet`パッケージを使う。  
+可視化のための`ggplot2`パッケージに加え、`MASS`、`ordinal`、`nnet`パッケージを使う。  
 `MASS`パッケージは負の二項分布を用いたモデルのときに、`ordinal`パッケージは順序ロジスティック回帰のときに、`nnet`パッケージは多項ロジスティック回帰のときに必要になる。初めて使う際には、事前にインストールが必要なので注意。
 
 
 ```{r, eval=FALSE}
 
-library(tidyverse)
+library(ggplot2)
 library(MASS)
 library(ordinal)
 library(nnet)
@@ -71,9 +71,9 @@ p_y = dbinom(x = x, size = 10 - 3, prob = 0.5)
 
 d_plot = data.frame(x = x, p_y = p_y)
 
-ggplot() + 
-  geom_bar(data = d_plot, aes(x = x, y = p_y), stat = "identity") + 
-  labs(x = "number of trials", y = "probability", title = "number of success = 3")
+ggplot2::ggplot() + 
+  ggplot2::geom_bar(data = d_plot, aes(x = x, y = p_y), stat = "identity") + 
+  ggplot2::labs(x = "number of trials", y = "probability", title = "number of success = 3")
 
 ```
 
@@ -93,7 +93,7 @@ d$A <- ifelse(d$wool == "A", 1, 0) #Aなら1, Bなら0のダミー
 head(d)
 
 ggplot2::ggplot() + 
-  geom_histogram(data = d, aes(x = breaks, fill = wool), binwidth = 1)
+  ggplot2::geom_histogram(data = d, aes(x = breaks, fill = wool), binwidth = 1)
 
 ```
 
@@ -168,7 +168,7 @@ head(sample_ordered)
 ```{r}
 
 ggplot2::ggplot() + 
-  geom_jitter(data = sample_ordered, aes(x = Sleep, y = Score))
+  ggplot2::geom_jitter(data = sample_ordered, aes(x = Sleep, y = Score))
 
 ```
 
@@ -376,8 +376,8 @@ p
 
 head(bioChemists)
 
-ggplot() + 
-  geom_histogram(data = bioChemists, aes(x=art), binwidth = 1, fill="white", color="black")
+ggplot2::ggplot() + 
+  ggplot2::geom_histogram(data = bioChemists, aes(x=art), binwidth = 1, fill="white", color="black")
 table(bioChemists$art)
 
 

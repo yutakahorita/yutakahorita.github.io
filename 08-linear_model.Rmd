@@ -2,7 +2,7 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 set.seed(1)
 ```
 
@@ -16,10 +16,10 @@ set.seed(1)
 
 ## 準備
   
-いつもどおり、`tidyverse`パッケージをロードしよう。
+データの可視化のために、`ggplot2`パッケージをロードする。
 
 ```{r, eval=FALSE}
-library(tidyverse)
+library(ggplot2)
 ```
 
 
@@ -83,8 +83,8 @@ Rには線形モデルを扱える関数`lm()`がある。`iris`データを使�
 `Sepal.Length`と`Petal.Length`の関係を散布図で確認する。
 
 ```{r}
-p = ggplot() + 
-  geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length))
+p = ggplot2::ggplot() + 
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length))
 p
 ```
 
@@ -132,9 +132,9 @@ $$
 
 
 ```{r}
-p = ggplot() + 
-  geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length)) +
-  geom_smooth(data = iris, aes(x = Sepal.Length, y = Petal.Length), formula = y~x, method = "lm", se = FALSE)
+p = ggplot2::ggplot() + 
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length)) +
+  ggplot2::geom_smooth(data = iris, aes(x = Sepal.Length, y = Petal.Length), formula = y~x, method = "lm", se = FALSE)
 p
 
 ```
@@ -207,10 +207,10 @@ logL = log(theta)+log(1-theta)+log(theta)+log(1-theta) + log(1-theta)
 
 data_mlm = data.frame(x=theta, y=logL)
 
-ggplot() +
-  geom_line(data=data_mlm, aes(x=x, y= y), size=1) + 
-  geom_vline(xintercept = result_mlm$maximum, linetype="dashed", colour="red", size=1) +
-  labs(x ="theta", y= "log L") 
+ggplot2::ggplot() +
+  ggplot2::geom_line(data=data_mlm, aes(x=x, y= y), size=1) + 
+  ggplot2::geom_vline(xintercept = result_mlm$maximum, linetype="dashed", colour="red", size=1) +
+  ggplot2::labs(x ="theta", y= "log L") 
 
 ```
 
@@ -265,10 +265,10 @@ uprが95%信頼区間の上限、lwrが95%信頼区間の下限に当たる。
 
 plot_conf = cbind(iris, result_conf) #実測値のデータと予測値のデータを結合する。
 
-ggplot() + 
-  geom_point(data = plot_conf, aes(x = Sepal.Length, y = Petal.Length)) + 
-  geom_line(data = plot_conf, aes(x = Sepal.Length, y = fit)) + 
-  geom_ribbon(data = plot_conf, aes(x = Sepal.Length, ymax = upr, ymin = lwr), alpha = 0.4) 
+ggplot2::ggplot() + 
+  ggplot2::geom_point(data = plot_conf, aes(x = Sepal.Length, y = Petal.Length)) + 
+  ggplot2::geom_line(data = plot_conf, aes(x = Sepal.Length, y = fit)) + 
+  ggplot2::geom_ribbon(data = plot_conf, aes(x = Sepal.Length, ymax = upr, ymin = lwr), alpha = 0.4) 
 ```
 
 
@@ -295,10 +295,10 @@ head(result_pred) #仮データの数値に対応する予測区間が求めら�
 
 plot_pred = data.frame(Sepal.Length = seq(4, 8, 0.1), result_pred) #予測区間のデータを作成する
 
-ggplot() + 
-  geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length)) + 
-  geom_line(data = plot_pred, aes(x = Sepal.Length, y = fit)) + 
-  geom_ribbon(data = plot_pred, aes(x = Sepal.Length, ymax = upr, ymin = lwr), alpha = 0.4) 
+ggplot2::ggplot() + 
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Petal.Length)) + 
+  ggplot2::geom_line(data = plot_pred, aes(x = Sepal.Length, y = fit)) + 
+  ggplot2::geom_ribbon(data = plot_pred, aes(x = Sepal.Length, ymax = upr, ymin = lwr), alpha = 0.4) 
 ```
 
 実際のデータが予測区間の範囲に収まっているならば、そのモデルは概ねよくデータを予測できていることを示している。

@@ -1,8 +1,11 @@
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse) 
-library(MASS) 
+library(dplyr) 
+library(tidyr)
+library(readr)
+library(tibble)
+library(readxl)
 ```
 
 # データ・ハンドリング
@@ -19,27 +22,20 @@ library(MASS)
 * データの読み込み  
 
 
-## tidyverseパッケージのロード
+## パッケージのロード
   
 
-まず、`tidyverse`パッケージを使うためにパッケージのロードをしよう。初めて使う場合は、マシンに予めパッケージをインストールする必要がある。パッケージのインストール及びロードについては、第2章で解説している。
+まず、この章で使うパッケージのロードをする（初めて使う場合は、マシンに予めパッケージをインストールする必要がある）。パッケージのインストール及びロードについては、第2章で解説している。
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
 
-install.packages("tidyverse") 
-library(tidyverse) 
+library(dplyr) 
+library(tidyr)
+library(readr)
+library(tibble)
+library(readxl)
 
 ```
-
-`tidyverse`は、様々なパッケージを含んだパッケージのセットである。Rを使いやすくするための便利なパッケージがまとめて入っている。例えば、以下のパッケージが含まれている。  
-  
-* ggplot2: グラフを作るのに特化したパッケージ  
-* readr: ファイルの読み込みに特化したパッケージ  
-* dplyr: データの整理に特化したパッケージ  
-など
-
-このテキストでは、以降の章の解析で必要なパッケージ及び関数のみに絞って解説する。その他の詳細は`tidyverse`の公式ページを参照のこと。  
-[https://www.tidyverse.org](https://www.tidyverse.org)
 
 ***
 

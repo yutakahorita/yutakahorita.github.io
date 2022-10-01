@@ -1,6 +1,6 @@
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
+library(ggplot2)
 library(knitr)
 set.seed(1)
 ```
@@ -14,10 +14,10 @@ set.seed(1)
 
 ## 準備
   
-いつもどおり、`tidyverse`パッケージをロードしよう。
+データの可視化のために、`ggplot2`パッケージをロードする。
 
 ```{r, eval=FALSE}
-library(tidyverse)
+library(ggplot2)
 ```
 
 
@@ -307,10 +307,10 @@ newdat = data.frame(x = seq(1,10,0.1))
 result_conf = predict(result, new = newdat, interval = "confidence", level = 0.95)
 plot_conf = data.frame(x = seq(1,10,0.1), result_conf)
 
-ggplot() + 
-  geom_point(data = d, aes(x = x, y = y), size = 3) + 
-  geom_line(data = plot_conf, aes(x = x, y = fit)) + 
-  geom_ribbon(data = plot_conf, aes(x = x, ymax = upr, ymin = lwr), alpha = 0.4) 
+ggplot2::ggplot() + 
+  ggplot2::geom_point(data = d, aes(x = x, y = y), size = 3) + 
+  ggplot2::geom_line(data = plot_conf, aes(x = x, y = fit)) + 
+  ggplot2::geom_ribbon(data = plot_conf, aes(x = x, ymax = upr, ymin = lwr), alpha = 0.4) 
   
 
 ```
@@ -320,8 +320,8 @@ ggplot() +
 しかし、このデータ`d`にはもう一つ性別を意味する`gender`という変数が含まれていた。`gender`を区別して、また`x`と`y`の散布図を見てみよう。
 
 ```{r}
-ggplot() + 
-  geom_point(data = d, aes(x = x, y = y, shape = gender, color=gender), size = 3) 
+ggplot2::ggplot() + 
+  ggplot2::geom_point(data = d, aes(x = x, y = y, shape = gender, color=gender), size = 3) 
 
 ```
 
@@ -369,10 +369,10 @@ result_conf = predict(result, new = newdat, interval = "confidence", level = 0.9
 plot_conf = data.frame(newdat, result_conf)
 plot_conf$gender = ifelse(plot_conf$M == 1, "M", "F")
 
-ggplot() + 
-  geom_point(data = d, aes(x = x, y = y, shape = gender, color=gender), size = 3) + 
-  geom_line(data = plot_conf, aes(x = x, y = fit, color=gender)) + 
-  geom_ribbon(data = plot_conf, aes(x = x, ymax = upr, ymin = lwr, color =gender), alpha = 0.4) 
+ggplot2::ggplot() + 
+  ggplot2::geom_point(data = d, aes(x = x, y = y, shape = gender, color=gender), size = 3) + 
+  ggplot2::geom_line(data = plot_conf, aes(x = x, y = fit, color=gender)) + 
+  ggplot2::geom_ribbon(data = plot_conf, aes(x = x, ymax = upr, ymin = lwr, color =gender), alpha = 0.4) 
 
 ```
 
@@ -475,7 +475,7 @@ d = data.frame(x = x, y = y)
 str(d)
 
 ggplot2::ggplot() + 
-  geom_point(data =d, aes(x=x, y = y))
+  ggplot2::geom_point(data =d, aes(x=x, y = y))
 
 ```
 
@@ -497,9 +497,9 @@ conf_dat = data.frame(d, newdat, conf.int_1)
 
 
 ggplot2::ggplot() + 
-  geom_point(data = conf_dat, aes(x = x, y = y))+
-  geom_line(data = conf_dat, aes(x = x, y = fit)) +
-  geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
+  ggplot2::geom_point(data = conf_dat, aes(x = x, y = y))+
+  ggplot2::geom_line(data = conf_dat, aes(x = x, y = fit)) +
+  ggplot2::geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
 
 ```
 
@@ -533,9 +533,9 @@ conf_dat = data.frame(d, newdat, conf.int_3)
 
 
 ggplot2::ggplot() + 
-  geom_point(data = conf_dat, aes(x = x, y = y))+
-  geom_line(data = conf_dat, aes(x = x, y = fit)) + 
-  geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
+  ggplot2::geom_point(data = conf_dat, aes(x = x, y = y))+
+  ggplot2::geom_line(data = conf_dat, aes(x = x, y = fit)) + 
+  ggplot2::geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
 
 ```
 
@@ -553,9 +553,9 @@ conf_dat = data.frame(d, newdat, conf.int_9)
 
 
 ggplot2::ggplot() + 
-  geom_point(data = conf_dat, aes(x = x, y = y))+
-  geom_line(data = conf_dat, aes(x = x, y = fit)) + 
-  geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
+  ggplot2::geom_point(data = conf_dat, aes(x = x, y = y))+
+  ggplot2::geom_line(data = conf_dat, aes(x = x, y = fit)) + 
+  ggplot2::geom_ribbon(data = conf_dat, aes(x = x, ymin = lwr, ymax = upr), alpha =0.2)
 
 ```
 
@@ -644,10 +644,10 @@ Rで標準で入っているデータ`warpbreaks`を使って練習をする。
 prac_dat_1 = warpbreaks #別の名前で保存する
 
 head(prac_dat_1)
-ggplot() + 
-  geom_boxplot(data = prac_dat_1, aes(x = wool, y = breaks))
-ggplot() + 
-  geom_boxplot(data = prac_dat_1, aes(x = tension, y = breaks))
+ggplot2::ggplot() + 
+  ggplot2::geom_boxplot(data = prac_dat_1, aes(x = wool, y = breaks))
+ggplot2::ggplot() + 
+  ggplot2::geom_boxplot(data = prac_dat_1, aes(x = tension, y = breaks))
 
 ```
 

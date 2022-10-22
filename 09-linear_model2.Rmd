@@ -21,38 +21,6 @@ library(ggplot2)
 ```
 
 
-## 変数の標準化
-
-応答変数ないしは予測変数が量的変数のときは、事前に**標準化(standardizing)**をしておいた方が結果の解釈がしやすくなる。標準化とは、元の値を「ゼロが平均値、1が標準偏差」になるように値を変換する処理のことをいう。  
-  
-例えば、前の章で`iris`データを使って以下の線形モデルの解析を行った。
-
-```{r}
-
-dat = iris #irisをdatという別の名前で保存
-result = lm(data = dat, Petal.Length ~ 1 + Sepal.Length)
-summary(result)
-
-```
-
-切片の値は`Sepal.Length`がゼロのときの`Petal.Length`の予測値である。しかし、アヤメの額の長さがマイナスやゼロの値を取るというのはありえないので、この結果はどのように解釈すればよいのか困る。  
-  
-標準化した変数を使って同じ解析をしたときの結果と比較してみる。具体的には、元の得点から**平均値を引いて**差の得点を求め、その差の得点を**標準偏差で割る**。
-
-
-```{r}
-
-dat$Petal.Length_std = (dat$Petal.Length - mean(dat$Petal.Length, na.rm = TRUE)) / sd(dat$Petal.Length, na.rm = TRUE)
-dat$Sepal.Length_std = (dat$Sepal.Length - mean(dat$Sepal.Length, na.rm = TRUE)) / sd(dat$Sepal.Length, na.rm = TRUE)
-
-result_std = lm(data = dat, Petal.Length_std ~ 1 + Sepal.Length_std)
-summary(result_std)
-
-```
-
-
-係数の値が、変わっている。切片は`r as.numeric(round(result_std$coefficients[1],2))`、`Sepal.Length`の効果は`r as.numeric(round(result_std$coefficients[2],2))`である。切片の値は、`Sepal.Length_std`がゼロのとき（つまり`Sepal.Length`が平均値と等しいとき）、`Petal.Length_std`はほぼゼロの値を取る（つまり`Petal.Length`の平均値）ことを意味している。また、`Sepal.Length_std`の傾きは、`Sepal.Length_std`が1のとき（つまり`Sepal.Length`が1標準偏差分増加したとき）、`Petal.Length_std`が`r as.numeric(round(result_std$coefficients[2],2))`増えることを意味する。  
-  
   
 ## 線形モデルに含まれる統計解析  
   
@@ -80,8 +48,8 @@ dat = sleep #データを別の名前datに保存し直す
 #変数の名前を変える
 dat$x = ifelse(dat$group == 1, "control", "treatment") 
 dat$y = dat$extra 
-dat = dat %>% dplyr::select(y, x)
-str(dat) #datの構成を確認する
+dat = dat[,c("y", "x")]
+head(dat) #datの中身を確認する
 
 ```
 
@@ -89,7 +57,7 @@ str(dat) #datの構成を確認する
 
 ```{r}
 dat$x_1 = ifelse(dat$x == "treatment", 1, 0)
-str(dat)
+head(dat)
 ```
 
 `ifelse()`関数は、`ifelse(XXX, A, B)`と表記することで、「XXXの条件に当てはまればA、当てはまらなければB」という処理をしてくれる。ここでは、予測変数のベクトル`x`について、`treatment`ならば1, それ以外なら0に変換し、0か1を取る変数$x_{1}$を新たに作った。  
@@ -231,7 +199,7 @@ summary(result)
 
 ## 予測変数が複数ある場合
 
-前の章でも述べたように、予測変数は2つ以上入れても良い。予測変数が複数ある場合の注意点を見ていく。  
+先の例や前の章でも見たように、予測変数は2つ以上入れても良い。予測変数が複数ある場合の注意点を見ていく。  
   
 ### 変数の効果の統制
 
@@ -279,13 +247,13 @@ d_F = data.frame(x = x, y = y, gender = "F")
 
 d = rbind(d_M, d_F)
 
-str(d)
+head(d)
 
 
 ```
 
 
-このデータ`d`には、`x`, `y`, `gender`の3つの変数が含まれている。`gender`は性別を意味する変数としよう。M（男性）かF（女性）のいずれかである。男女別に、実験で2つの変数を測定したとしよう。
+このデータ`d`には、`x`, `y`, `gender`の3つの変数が含まれている。`gender`は性別を意味する変数とする。M（男性）かF（女性）のいずれかである。男女別に、実験で2つの変数を測定したとしよう。
 
 応答変数を`y`、予測変数を`x`として線形モデルで切片及び`x`の傾きのパラメータを推定する。モデルは以下のようになる。
 
@@ -355,7 +323,7 @@ summary(result)
   
 男性(M = 1)の予測値は、線形モデルの式に推定された傾きと切片及び$M=1$を代入して、(`r as.numeric(round(result$coefficients[1],2))` + `r as.numeric(round(result$coefficients[3],2))`) + (`r as.numeric(round(result$coefficients[2],2))` +  `r as.numeric(round(result$coefficients[4],2))`) $x$ となる。女性(M = 0)の場合は、`r as.numeric(round(result$coefficients[1],2))` `r as.numeric(round(result$coefficients[2],2))` $x$ となる。  
   
-`x`と`M`の傾きの推定値は、`x`や`M`そのものの効果（いわゆる主効果）を反映しなくなる。  
+`x`と`M`の傾きの推定値は、`x`や`M`の全体としての効果、いわゆる**主効果を必ずしも反映しない**。  
   
 交互作用効果が見られた場合は、解釈は慎重に行う必要がある。  
   
@@ -378,6 +346,93 @@ ggplot2::ggplot() +
 
 
 
+## 変数の標準化
+
+先述のように、交互作用を含むモデルの場合は、交互作用以外の項の解釈が複雑になる。  
+  
+これへの対処として、解析に使う予測変数及び応答変数を事前に***標準化(standardizing)**しておくという手がある。標準化とは、元の値を「ゼロが平均値、1が標準偏差」になるように値を変換する処理のことをいう。  
+  
+変数を標準化しておくと、回帰分析の係数の解釈が直感的に理解しやすくなる。  
+  
+例えば、前の章で`iris`データを使って以下の線形モデルの解析を行った。
+
+```{r}
+
+dat = iris #irisをdatという別の名前で保存
+result = lm(data = dat, Petal.Length ~ 1 + Sepal.Length)
+summary(result)
+
+```
+
+切片の値は`Sepal.Length`がゼロのときの`Petal.Length`の予測値である。しかし、アヤメの額の長さがマイナスやゼロの値を取るというのはありえないので、この結果はどのように解釈すればよいのか困る。  
+  
+標準化した変数を使って同じ解析をしたときの結果と比較してみる。具体的には、元の得点から**平均値を引いて**差の得点を求め、その差の得点を**標準偏差で割る**。
+
+
+```{r}
+
+dat$Petal.Length_std = (dat$Petal.Length - mean(dat$Petal.Length, na.rm = TRUE)) / sd(dat$Petal.Length, na.rm = TRUE)
+dat$Sepal.Length_std = (dat$Sepal.Length - mean(dat$Sepal.Length, na.rm = TRUE)) / sd(dat$Sepal.Length, na.rm = TRUE)
+
+result_std = lm(data = dat, Petal.Length_std ~ 1 + Sepal.Length_std)
+summary(result_std)
+
+```
+
+
+係数の値が、変わっている。切片は`r as.numeric(round(result_std$coefficients[1],2))`、`Sepal.Length`の効果は`r as.numeric(round(result_std$coefficients[2],2))`である。切片の値は、`Sepal.Length_std`がゼロのとき（つまり`Sepal.Length`が平均値と等しいとき）、`Petal.Length_std`はほぼゼロの値を取る（つまり`Petal.Length`の平均値）ことを意味している。また、`Sepal.Length_std`の傾きは、`Sepal.Length_std`が1のとき（つまり`Sepal.Length`が1標準偏差分増加したとき）、`Petal.Length_std`が`r as.numeric(round(result_std$coefficients[2],2))`増えることを意味する。  
+  
+
+交互作用を含むモデルの場合、変数を標準化しておくと結果がどう変化するかを確認する。  
+
+```{r}
+
+#データを再度作成する。
+set.seed(1)
+x = round(runif(n = 20, min = 1, max = 10),0) 
+mu = 0.1 + 0.4 * x
+y = rnorm(n = 20, mean = mu, sd = 1)
+d_M = data.frame(x = x, y = y, gender = "M")
+
+x = round(runif(n = 20, min = 1, max = 10),0) 
+mu = 0.3 + -0.6 * x
+y = rnorm(n = 20, mean = mu, sd = 1)
+d_F = data.frame(x = x, y = y, gender = "F")
+
+d = rbind(d_M, d_F)
+d$M = ifelse(d$gender == "M", 1, 0) #genderがMならば1, Fならば1のダミー変数を作る
+
+head(d)
+
+```
+
+```{r}
+
+#標準化する前の結果
+result = lm(data = d, y ~ 1 + x*M)
+summary(result)
+
+```
+
+応答変数と予測変数を標準化する。ダミー変数も標準化する。
+
+```{r}
+
+#変数を標準化
+d$y_s = (d$y - mean(d$y, na.rm = TRUE))/sd(d$y, na.rm = TRUE)
+d$x_s = (d$x - mean(d$x, na.rm = TRUE))/sd(d$x, na.rm = TRUE)
+d$M_s = (d$M - mean(d$M, na.rm = TRUE))/sd(d$M, na.rm = TRUE)
+result = lm(data = d, y_s ~ 1 + x_s*M_s)
+summary(result)
+
+```
+
+それぞれの係数とp値が変わった。それぞれの係数の値は、他の変数がゼロのときの応答変数の増減分を意味する、すなわち全ての他変数が平均（=0）であるときのその変数そのものの効果を意味することになる。  
+    
+変数を標準化する前のモデルでは、男性の場合（M=1）のyの予測値は、「Mの係数+ xとMの交互作用項の係数」であり、Mの係数そのものは性別そのものの効果を意味するものではなかった。  
+これに対し、標準化した後のモデルでは、Mの係数そのものを「性別の平均的効果=主効果」として捉えることができる。Mの係数が意味することは、「他の変数がゼロのとき、つまり平均であるときに、Mがプラスに変化したとき（男性であるとき）の応答変数の変化量」を意味しており、性別そのものの効果として直感的に解釈することができる。  
+交互作用項の係数も、他の変数の効果が一定の場合、Mまたはsが1単位変化したときの応答変数の増分として理解できる。  
+  
 ## 線形モデルを扱う上での問題
 
 予測変数を増やせば、他の予測変数を統制することによって、その予測変数が応答変数に及ぼすそのものの効果を検討することができる。ただし、予測変数を加えることで生じる問題もある。以降では、**多重共線性**と**過学習**の問題について触れる。

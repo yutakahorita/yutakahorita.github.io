@@ -195,6 +195,20 @@ summary(iris$Sepal.Length)
 ```
 
 
+### グループごとの集計
+
+グループごとに統計量を集計する場合は、`tapply`関数を使う。`tapply()`に、最初に統計量を求めたい変数のベクトル、グループを意味するベクトル、求めたい統計量を入れる。  
+  
+例えば、サンプルデータの`iris`には、種を意味する`Species`が入っている。種ごとに平均や標準偏差などを求める場合には、以下のようにプログラムを書く。 
+
+```{r}
+
+tapply(iris$Sepal.Length, iris$Species, mean) #平均
+tapply(iris$Sepal.Length, iris$Species, median) #中央値
+tapply(iris$Sepal.Length, iris$Species, sd) #標準偏差
+tapply(iris$Sepal.Length, iris$Species, length) #サンプル数
+
+```
 
 ### 表の作り方
 

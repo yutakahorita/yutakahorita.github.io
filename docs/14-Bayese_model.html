@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-10-22" />
+<meta name="date" content="2022-11-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -587,25 +587,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.1.2</span> brmsパッケージのインストール<a href="14-Bayese_model.html#brmsパッケージのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>rstan</code>をインストールできたら、<code>brms</code>パッケージもインストールする。<br />
 Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で解析用のコードを書く必要があるが、<code>brms</code>パッケージを使えばユーザーがコードを書く必要なく、線形のモデルやオプションを指定するだけで自動でStanコードを生成してMCMCを行ってくれる。</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="14-Bayese_model.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;brms&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="14-Bayese_model.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;brms&quot;</span>)</span></code></pre></div>
 </div>
 <div id="パッケージのロード-2" class="section level3 hasAnchor" number="15.1.3">
 <h3><span class="header-section-number">15.1.3</span> パッケージのロード<a href="14-Bayese_model.html#パッケージのロード-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>rstan</code>と<code>brms</code>をロードする。</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="14-Bayese_model.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
-<span id="cb544-2"><a href="14-Bayese_model.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="14-Bayese_model.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb540-2"><a href="14-Bayese_model.html#cb540-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span></code></pre></div>
 <p>また、計算の高速化のために、以下のプログラムも実行しておく。</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="14-Bayese_model.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co">#計算を高速化するオプション</span></span>
-<span id="cb545-2"><a href="14-Bayese_model.html#cb545-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb545-3"><a href="14-Bayese_model.html#cb545-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="14-Bayese_model.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co">#計算を高速化するオプション</span></span>
+<span id="cb541-2"><a href="14-Bayese_model.html#cb541-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb541-3"><a href="14-Bayese_model.html#cb541-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span></code></pre></div>
 </div>
 </div>
 <div id="rによるベイズ統計モデリング" class="section level2 hasAnchor" number="15.2">
 <h2><span class="header-section-number">15.2</span> Rによるベイズ統計モデリング<a href="14-Bayese_model.html#rによるベイズ統計モデリング" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>回帰分析のパラメータ（傾きと切片）のベイズ推定を例として、<code>brms</code>パッケージを使った解析の手順について確認していく。</p>
 <p>第9章で、<code>iris</code>データを用いて以下の回帰分析を行った。</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="14-Bayese_model.html#cb546-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
-<span id="cb546-2"><a href="14-Bayese_model.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="14-Bayese_model.html#cb542-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
+<span id="cb542-2"><a href="14-Bayese_model.html#cb542-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Petal.Length ~ 1 + Sepal.Length, data = iris)
@@ -626,12 +626,12 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 ## F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>同じデータについて<code>brms</code>パッケージの<code>brm()</code>を使って、MCMCでパラメータの事後分布を推定してみよう。<code>glm()</code>と同じ書き方で、線形予測子、確率分布、リンク関数を指定すれば良い。回帰分析なので、確率分布は正規分布(gaussian)、リンク関数は恒等リンク(identity)とする。</p>
 <p>また、オプションの<code>seed</code>には常に一定の値を指定すること（ここでは1と指定した）。MCMCは乱数を使ったシミュレーションであるので、やり直すたびに微妙に異なる結果が得られる可能性にある。しかし、<code>seed</code>に同じ値を設定すれば、やり直しても同じ結果を再現することできる。</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="14-Bayese_model.html#cb548-1" aria-hidden="true" tabindex="-1"></a>result_brms_lm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> iris, </span>
-<span id="cb548-2"><a href="14-Bayese_model.html#cb548-2" aria-hidden="true" tabindex="-1"></a>                        Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length, </span>
-<span id="cb548-3"><a href="14-Bayese_model.html#cb548-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
-<span id="cb548-4"><a href="14-Bayese_model.html#cb548-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">seed =</span> <span class="dv">1</span> </span>
-<span id="cb548-5"><a href="14-Bayese_model.html#cb548-5" aria-hidden="true" tabindex="-1"></a>                        )</span></code></pre></div>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="14-Bayese_model.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="14-Bayese_model.html#cb544-1" aria-hidden="true" tabindex="-1"></a>result_brms_lm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> iris, </span>
+<span id="cb544-2"><a href="14-Bayese_model.html#cb544-2" aria-hidden="true" tabindex="-1"></a>                        Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length, </span>
+<span id="cb544-3"><a href="14-Bayese_model.html#cb544-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb544-4"><a href="14-Bayese_model.html#cb544-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">seed =</span> <span class="dv">1</span> </span>
+<span id="cb544-5"><a href="14-Bayese_model.html#cb544-5" aria-hidden="true" tabindex="-1"></a>                        )</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="14-Bayese_model.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_lm)</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: Petal.Length ~ 1 + Sepal.Length 
@@ -654,8 +654,8 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <p>最初に、応答変数が従う確率分布(Family)、リンク関数(Links)、線形予測子(Formula)、データ(Data)の情報が出力される。更に、Samplesの部分にMCMCの設定が表記されているが、これらの意味については後ほど説明する。</p>
 <p><code>lm()</code>の出力と同様に、Population-Level Effectsという部分に各パラメータ（切片と傾き）の推定結果が出力されている。Estimateが係数の事後分布の期待値を示している。<code>lm()</code>で解析したときとほぼ同じ値が推定されている。<br />
 他にも、l-95% CIとu-95% CIといった数値が出力されているが、これらの意味を理解するにはパラメータの事後分布を図示するとよい。<code>plot()</code>に出力結果を入れると、MCMCの結果を図で示してくれる。</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="14-Bayese_model.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-318-1.png" width="672" /></p>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="14-Bayese_model.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-319-1.png" width="672" /></p>
 <p>左側に表示されているのが、パラメータの事後分布（MCMCでサンプリングされた事後分布に従う乱数の分布）である。右側は、<strong>トレースプロット(traceplot)</strong>と呼ばれるものである。トレースプロットの下の軸はMCMCの試行数を示しており、MCMCのサンプリング結果の推移を示している。</p>
 <p>もう一度<code>brm()</code>の出力のl-95% CIとu-95% CIの値を確認し、図との関係を確認しよう。l-95% CIとu-95%は、パラメータの事後分布の下位5%点と上位95%点の値を示しており、この下位5%から上位95%の範囲は95% <strong>信用区間(credible intervals)</strong>と呼ばれる。95%信用区間とは、95%の確率で真のパラメータの値が含まれる範囲を意味する。</p>
 <p>例えば、切片（<code>intercept</code>）の事後分布のプロットを確認すると、だいたい-7が分布の中央に位置しており、推定された切片の事後分布の期待値（Estimate）と概ね一致しているのがわかる。また、-8から-6の範囲に事後分布の大部分が締めており、これも95%信用区間の推定結果と概ね一致している。</p>
@@ -672,9 +672,9 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <p>パラメータの事後分布を推定するためには、まずパラメータ（切片と傾き）の事前分布を設定する必要がある。何か仮説があって事前にパラメータの範囲を設けることに正当な理由があるのならば、任意の範囲を設定しても構わない。例えば、身長を予測するならば切片の事前分布として0cm - 300cmの一様分布を設定するというのは妥当であろう。それに対し、特に仮説がない、パラメータの事前分布について確信がない場合は、<strong>無情報事前分布(non-informative prior)</strong>を設定する。</p>
 <p>特に仮説がなければ、<code>brm()</code>では何も設定する必要はない。自動で事前分布を無情報事前分布としてくれる（例えば傾きなどをフラットな一様分布に設定してくれる）。</p>
 <p><code>get_prior()</code>に、モデル、確率分布、リンク関数を指定すれば、設定される事前分布を推定の前に確認することができる。</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="14-Bayese_model.html#cb552-1" aria-hidden="true" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">get_prior</span>(<span class="at">data=</span> iris, </span>
-<span id="cb552-2"><a href="14-Bayese_model.html#cb552-2" aria-hidden="true" tabindex="-1"></a>                Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width,</span>
-<span id="cb552-3"><a href="14-Bayese_model.html#cb552-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="14-Bayese_model.html#cb548-1" aria-hidden="true" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">get_prior</span>(<span class="at">data=</span> iris, </span>
+<span id="cb548-2"><a href="14-Bayese_model.html#cb548-2" aria-hidden="true" tabindex="-1"></a>                Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width,</span>
+<span id="cb548-3"><a href="14-Bayese_model.html#cb548-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>)) </span></code></pre></div>
 <pre><code>##                   prior     class        coef group resp dpar nlpar lb ub
 ##                  (flat)         b                                        
 ##                  (flat)         b Sepal.Width                            
@@ -686,27 +686,27 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 ##       default
 ##       default</code></pre>
 <p>事前分布を任意に指定したい場合は、<code>brm()</code>のオプションとして<code>set_prior()</code>で設定することができる。以下に、プログラムの例を示す。</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="14-Bayese_model.html#cb554-1" aria-hidden="true" tabindex="-1"></a>result_brm_lm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
-<span id="cb554-2"><a href="14-Bayese_model.html#cb554-2" aria-hidden="true" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width,</span>
-<span id="cb554-3"><a href="14-Bayese_model.html#cb554-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
-<span id="cb554-4"><a href="14-Bayese_model.html#cb554-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="st">&quot;normal(0,10)&quot;</span>, <span class="at">class =</span> <span class="st">&quot;b&quot;</span>),</span>
-<span id="cb554-5"><a href="14-Bayese_model.html#cb554-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="co">#傾きbの事前分布を平均0, 標準偏差10の正規分布に設定</span></span>
-<span id="cb554-6"><a href="14-Bayese_model.html#cb554-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">set_prior</span>(<span class="st">&quot;cauchy(0,5)&quot;</span>, <span class="at">class =</span> <span class="st">&quot;sigma&quot;</span>)</span>
-<span id="cb554-7"><a href="14-Bayese_model.html#cb554-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="co">#正規分布の分散の事前分布を半コーシー分布に設定</span></span>
-<span id="cb554-8"><a href="14-Bayese_model.html#cb554-8" aria-hidden="true" tabindex="-1"></a>                                    ),</span>
-<span id="cb554-9"><a href="14-Bayese_model.html#cb554-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
-<span id="cb554-10"><a href="14-Bayese_model.html#cb554-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb554-11"><a href="14-Bayese_model.html#cb554-11" aria-hidden="true" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">prior_summary</span>(result_brm_lm) <span class="co">#prior_summaryに結果を入れると、設定した事前分布を確認することができる</span></span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="14-Bayese_model.html#cb550-1" aria-hidden="true" tabindex="-1"></a>result_brm_lm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
+<span id="cb550-2"><a href="14-Bayese_model.html#cb550-2" aria-hidden="true" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width,</span>
+<span id="cb550-3"><a href="14-Bayese_model.html#cb550-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb550-4"><a href="14-Bayese_model.html#cb550-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="st">&quot;normal(0,10)&quot;</span>, <span class="at">class =</span> <span class="st">&quot;b&quot;</span>),</span>
+<span id="cb550-5"><a href="14-Bayese_model.html#cb550-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="co">#傾きbの事前分布を平均0, 標準偏差10の正規分布に設定</span></span>
+<span id="cb550-6"><a href="14-Bayese_model.html#cb550-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">set_prior</span>(<span class="st">&quot;cauchy(0,5)&quot;</span>, <span class="at">class =</span> <span class="st">&quot;sigma&quot;</span>)</span>
+<span id="cb550-7"><a href="14-Bayese_model.html#cb550-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="co">#正規分布の分散の事前分布を半コーシー分布に設定</span></span>
+<span id="cb550-8"><a href="14-Bayese_model.html#cb550-8" aria-hidden="true" tabindex="-1"></a>                                    ),</span>
+<span id="cb550-9"><a href="14-Bayese_model.html#cb550-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
+<span id="cb550-10"><a href="14-Bayese_model.html#cb550-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb550-11"><a href="14-Bayese_model.html#cb550-11" aria-hidden="true" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">prior_summary</span>(result_brm_lm) <span class="co">#prior_summaryに結果を入れると、設定した事前分布を確認することができる</span></span></code></pre></div>
 </div>
 <div id="mcmcの設定" class="section level3 hasAnchor" number="15.3.2">
 <h3><span class="header-section-number">15.3.2</span> MCMCの設定<a href="14-Bayese_model.html#mcmcの設定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>brm()</code>のオプションで、MCMCシミュレーションの設定を指定することができる。</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="14-Bayese_model.html#cb555-1" aria-hidden="true" tabindex="-1"></a>result_brms <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> iris, </span>
-<span id="cb555-2"><a href="14-Bayese_model.html#cb555-2" aria-hidden="true" tabindex="-1"></a>                        Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length, </span>
-<span id="cb555-3"><a href="14-Bayese_model.html#cb555-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">iter =</span> <span class="dv">2000</span>,</span>
-<span id="cb555-4"><a href="14-Bayese_model.html#cb555-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
-<span id="cb555-5"><a href="14-Bayese_model.html#cb555-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb555-6"><a href="14-Bayese_model.html#cb555-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">seed =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="14-Bayese_model.html#cb551-1" aria-hidden="true" tabindex="-1"></a>result_brms <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> iris, </span>
+<span id="cb551-2"><a href="14-Bayese_model.html#cb551-2" aria-hidden="true" tabindex="-1"></a>                        Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length, </span>
+<span id="cb551-3"><a href="14-Bayese_model.html#cb551-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">iter =</span> <span class="dv">2000</span>,</span>
+<span id="cb551-4"><a href="14-Bayese_model.html#cb551-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
+<span id="cb551-5"><a href="14-Bayese_model.html#cb551-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb551-6"><a href="14-Bayese_model.html#cb551-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">seed =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><code>iter</code>で乱数生成の試行数、<code>warmup</code>でwarmup期間の数、<code>chains</code>でマルコフ連鎖の数を指定する。前の章の内容をおさらいすると、MCMCではパラメータの事後分布に従う乱数を生成するシミュレーションを繰り返し、全シミュレーションの結果から作られた分布をパラメータの事後分布として採用する。<code>iter</code>で、乱数生成の繰り返し数を設定する（この例では、2,000試行に設定）。また、MCMCシミュレーションの最初の部分は、乱数の初期値による影響を大きく受けていて最終的に事後分布を作成する上で使い物にならない。そのため、最初の試行は切り捨てられる。<code>warmup</code>で、その切り捨てる期間を指定する（この例では、最初の1,000試行を切り捨てるように設定）。MCMCでは一般的に乱数生成を1からやり直して何セットか行い、事後分布を評価する。<code>chain</code>で、このセット数を設定する（この例では、4セットに設定）。最終的に得られるMCMCサンプル（シミュレーションの結果）は、(iter - warmup)*chains個になる。</p>
 <p><code>iter</code>, <code>warmup</code>, <code>chains</code>の指定をしなければ、デフォルトで設定されている値(<code>iter = 2000, warmup = 1000, chains = 4</code>)でMCMCが実行される。</p>
 </div>
@@ -714,33 +714,33 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <h3><span class="header-section-number">15.3.3</span> 事後分布の評価<a href="14-Bayese_model.html#事後分布の評価" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>事前分布、MCMCの設定ができたら、<code>brm()</code>を実行してMCMCを行う。</p>
 <p>シミュレーションが終わったら、結果を確認する。先ほど示したように、<code>summary()</code>で事後分布の期待値などの要約を確認するのももちろん、図でも確認する。<code>plot()</code>で簡単な図を作成することができる。</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="14-Bayese_model.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_lm)</span>
-<span id="cb556-2"><a href="14-Bayese_model.html#cb556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="14-Bayese_model.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_lm)</span>
+<span id="cb552-2"><a href="14-Bayese_model.html#cb552-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
 <p>他にも、MCMCの結果を図示するためのパッケージとして、<code>bayesplot</code>パッケージがある（<code>brms</code>パッケージをインストールすると一緒にインストールされる）。</p>
 <p>以下に、事後分布を図示する例をいくつか示す（<code>pars</code>で出力したいパラメータの値を任意に指定することも可能）。</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="14-Bayese_model.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
-<span id="cb557-2"><a href="14-Bayese_model.html#cb557-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb557-3"><a href="14-Bayese_model.html#cb557-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_trace</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#トレースプロット</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-1.png" width="672" /></p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="14-Bayese_model.html#cb558-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_hist</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（ヒストグラム）</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-2.png" width="672" /></p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="14-Bayese_model.html#cb559-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_dens</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（密度曲線）</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-3.png" width="672" /></p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="14-Bayese_model.html#cb560-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_intervals</span>(result_brms_lm, </span>
-<span id="cb560-2"><a href="14-Bayese_model.html#cb560-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
-<span id="cb560-3"><a href="14-Bayese_model.html#cb560-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#太い線が意味する範囲（89%区間とした）</span></span>
-<span id="cb560-4"><a href="14-Bayese_model.html#cb560-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
-<span id="cb560-5"><a href="14-Bayese_model.html#cb560-5" aria-hidden="true" tabindex="-1"></a>                          ) <span class="co">#パラメータの分布を線で示したグラフ</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-4.png" width="672" /></p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="14-Bayese_model.html#cb561-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_areas</span>(result_brms_lm, </span>
-<span id="cb561-2"><a href="14-Bayese_model.html#cb561-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
-<span id="cb561-3"><a href="14-Bayese_model.html#cb561-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#色が塗られた部分（89%区間とした）</span></span>
-<span id="cb561-4"><a href="14-Bayese_model.html#cb561-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
-<span id="cb561-5"><a href="14-Bayese_model.html#cb561-5" aria-hidden="true" tabindex="-1"></a>) <span class="co">#分布も一緒に示したグラフ</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-5.png" width="672" /></p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="14-Bayese_model.html#cb562-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_combo</span>(result_brms_lm, <span class="at">combo =</span> <span class="fu">c</span>(<span class="st">&quot;hist&quot;</span>, <span class="st">&quot;dens&quot;</span>), </span>
-<span id="cb562-2"><a href="14-Bayese_model.html#cb562-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>))<span class="co">#mcmc_comboで、出力する図を複数指定することができる。</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-6.png" width="672" /></p>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="14-Bayese_model.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
+<span id="cb553-2"><a href="14-Bayese_model.html#cb553-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb553-3"><a href="14-Bayese_model.html#cb553-3" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_trace</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#トレースプロット</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-1.png" width="672" /></p>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="14-Bayese_model.html#cb554-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_hist</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（ヒストグラム）</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-2.png" width="672" /></p>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="14-Bayese_model.html#cb555-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_dens</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（密度曲線）</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-3.png" width="672" /></p>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="14-Bayese_model.html#cb556-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_intervals</span>(result_brms_lm, </span>
+<span id="cb556-2"><a href="14-Bayese_model.html#cb556-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
+<span id="cb556-3"><a href="14-Bayese_model.html#cb556-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#太い線が意味する範囲（89%区間とした）</span></span>
+<span id="cb556-4"><a href="14-Bayese_model.html#cb556-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
+<span id="cb556-5"><a href="14-Bayese_model.html#cb556-5" aria-hidden="true" tabindex="-1"></a>                          ) <span class="co">#パラメータの分布を線で示したグラフ</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-4.png" width="672" /></p>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="14-Bayese_model.html#cb557-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_areas</span>(result_brms_lm, </span>
+<span id="cb557-2"><a href="14-Bayese_model.html#cb557-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
+<span id="cb557-3"><a href="14-Bayese_model.html#cb557-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#色が塗られた部分（89%区間とした）</span></span>
+<span id="cb557-4"><a href="14-Bayese_model.html#cb557-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
+<span id="cb557-5"><a href="14-Bayese_model.html#cb557-5" aria-hidden="true" tabindex="-1"></a>) <span class="co">#分布も一緒に示したグラフ</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-5.png" width="672" /></p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="14-Bayese_model.html#cb558-1" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_combo</span>(result_brms_lm, <span class="at">combo =</span> <span class="fu">c</span>(<span class="st">&quot;hist&quot;</span>, <span class="st">&quot;dens&quot;</span>), </span>
+<span id="cb558-2"><a href="14-Bayese_model.html#cb558-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>))<span class="co">#mcmc_comboで、出力する図を複数指定することができる。</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-6.png" width="672" /></p>
 </div>
 <div id="収束の評価" class="section level3 hasAnchor" number="15.3.4">
 <h3><span class="header-section-number">15.3.4</span> 収束の評価<a href="14-Bayese_model.html#収束の評価" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -749,16 +749,16 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div id="モデルの予測評価" class="section level3 hasAnchor" number="15.3.5">
 <h3><span class="header-section-number">15.3.5</span> モデルの予測評価<a href="14-Bayese_model.html#モデルの予測評価" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>推定結果が、実際のデータをうまく予測できているかを評価する。ここでは、回帰直線の信用区間や予測区間を図示して確認する方法を示す。</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="14-Bayese_model.html#cb563-1" aria-hidden="true" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
-<span id="cb563-2"><a href="14-Bayese_model.html#cb563-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_epred&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%信用区間を表示 </span></span>
-<span id="cb563-3"><a href="14-Bayese_model.html#cb563-3" aria-hidden="true" tabindex="-1"></a>                                      )</span>
-<span id="cb563-4"><a href="14-Bayese_model.html#cb563-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#points=TRUEで点と一緒に示す</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-1.png" width="672" /></p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="14-Bayese_model.html#cb564-1" aria-hidden="true" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
-<span id="cb564-2"><a href="14-Bayese_model.html#cb564-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_predict&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%予測区間を表示 </span></span>
-<span id="cb564-3"><a href="14-Bayese_model.html#cb564-3" aria-hidden="true" tabindex="-1"></a>                                      )</span>
-<span id="cb564-4"><a href="14-Bayese_model.html#cb564-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#pointsで点と一緒に示す</span></span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-324-2.png" width="672" /></p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="14-Bayese_model.html#cb559-1" aria-hidden="true" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
+<span id="cb559-2"><a href="14-Bayese_model.html#cb559-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_epred&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%信用区間を表示 </span></span>
+<span id="cb559-3"><a href="14-Bayese_model.html#cb559-3" aria-hidden="true" tabindex="-1"></a>                                      )</span>
+<span id="cb559-4"><a href="14-Bayese_model.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#points=TRUEで点と一緒に示す</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-325-1.png" width="672" /></p>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="14-Bayese_model.html#cb560-1" aria-hidden="true" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
+<span id="cb560-2"><a href="14-Bayese_model.html#cb560-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_predict&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%予測区間を表示 </span></span>
+<span id="cb560-3"><a href="14-Bayese_model.html#cb560-3" aria-hidden="true" tabindex="-1"></a>                                      )</span>
+<span id="cb560-4"><a href="14-Bayese_model.html#cb560-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#pointsで点と一緒に示す</span></span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-325-2.png" width="672" /></p>
 </div>
 </div>
 <div id="brmsパッケージでの一般化線形モデル" class="section level2 hasAnchor" number="15.4">
@@ -767,14 +767,14 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div id="ロジスティック回帰-2" class="section level3 hasAnchor" number="15.4.1">
 <h3><span class="header-section-number">15.4.1</span> ロジスティック回帰<a href="14-Bayese_model.html#ロジスティック回帰-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>第12章でロジスティック回帰の練習に使ったサンプルデータを使って、パラメータの事後分布の推定を行ってみよう。以下に第12章に示したサンプルデータの作成プログラムを再掲する。</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="14-Bayese_model.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb565-2"><a href="14-Bayese_model.html#cb565-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb565-3"><a href="14-Bayese_model.html#cb565-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> biopsy</span>
-<span id="cb565-4"><a href="14-Bayese_model.html#cb565-4" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>y <span class="ot">=</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>class <span class="sc">==</span> <span class="st">&quot;malignant&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#classがbenignならばゼロ、それ以外なら1という変数yを作る</span></span>
-<span id="cb565-5"><a href="14-Bayese_model.html#cb565-5" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x <span class="ot">=</span> dat<span class="sc">$</span>V1 <span class="co">#V1という変数をxという名前に変える</span></span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="14-Bayese_model.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb561-2"><a href="14-Bayese_model.html#cb561-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb561-3"><a href="14-Bayese_model.html#cb561-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> biopsy</span>
+<span id="cb561-4"><a href="14-Bayese_model.html#cb561-4" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>y <span class="ot">=</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>class <span class="sc">==</span> <span class="st">&quot;malignant&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#classがbenignならばゼロ、それ以外なら1という変数yを作る</span></span>
+<span id="cb561-5"><a href="14-Bayese_model.html#cb561-5" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x <span class="ot">=</span> dat<span class="sc">$</span>V1 <span class="co">#V1という変数をxという名前に変える</span></span></code></pre></div>
 <p><code>glm()</code>を使ったパラメータの推定結果は以下である。</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="14-Bayese_model.html#cb566-1" aria-hidden="true" tabindex="-1"></a>result_glm <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb566-2"><a href="14-Bayese_model.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="14-Bayese_model.html#cb562-1" aria-hidden="true" tabindex="-1"></a>result_glm <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb562-2"><a href="14-Bayese_model.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y ~ 1 + x, family = binomial(link = &quot;logit&quot;), data = dat)
@@ -798,11 +798,11 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
 <p><code>brm()</code>で同様の解析を行い、パラメータの事後分布の推定をしよう。確率分布（family）とリンク関数（link）を適切なものに指定する。</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="14-Bayese_model.html#cb568-1" aria-hidden="true" tabindex="-1"></a>result_brms_logistic <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> dat, </span>
-<span id="cb568-2"><a href="14-Bayese_model.html#cb568-2" aria-hidden="true" tabindex="-1"></a>          y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, </span>
-<span id="cb568-3"><a href="14-Bayese_model.html#cb568-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">bernoulli</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>) <span class="co">#確率分布にbernoulli（ベルヌーイ分部）、linkにlogitを指定</span></span>
-<span id="cb568-4"><a href="14-Bayese_model.html#cb568-4" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="14-Bayese_model.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_logistic)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="14-Bayese_model.html#cb564-1" aria-hidden="true" tabindex="-1"></a>result_brms_logistic <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> dat, </span>
+<span id="cb564-2"><a href="14-Bayese_model.html#cb564-2" aria-hidden="true" tabindex="-1"></a>          y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, </span>
+<span id="cb564-3"><a href="14-Bayese_model.html#cb564-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">bernoulli</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>) <span class="co">#確率分布にbernoulli（ベルヌーイ分部）、linkにlogitを指定</span></span>
+<span id="cb564-4"><a href="14-Bayese_model.html#cb564-4" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="14-Bayese_model.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_logistic)</span></code></pre></div>
 <pre><code>##  Family: bernoulli 
 ##   Links: mu = logit 
 ## Formula: y ~ 1 + x 
@@ -812,8 +812,8 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept    -5.21      0.38    -5.98    -4.48 1.00     2163     2446
-## x             0.95      0.07     0.80     1.09 1.00     2484     2588
+## Intercept    -5.22      0.38    -5.98    -4.51 1.00     2097     2236
+## x             0.95      0.07     0.81     1.10 1.00     2325     2103
 ## 
 ## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 ## and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -822,15 +822,15 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div id="ポアソン回帰-2" class="section level3 hasAnchor" number="15.4.2">
 <h3><span class="header-section-number">15.4.2</span> ポアソン回帰<a href="14-Bayese_model.html#ポアソン回帰-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>同じく、第12章のサンプルデータを使って、<code>brm()</code>でポアソン回帰を行ってみる。</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="14-Bayese_model.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb571-2"><a href="14-Bayese_model.html#cb571-2" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
-<span id="cb571-3"><a href="14-Bayese_model.html#cb571-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
-<span id="cb571-4"><a href="14-Bayese_model.html#cb571-4" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span><span class="sc">+</span> <span class="fl">0.6</span><span class="sc">*</span>x)</span>
-<span id="cb571-5"><a href="14-Bayese_model.html#cb571-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
-<span id="cb571-6"><a href="14-Bayese_model.html#cb571-6" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="14-Bayese_model.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb567-2"><a href="14-Bayese_model.html#cb567-2" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb567-3"><a href="14-Bayese_model.html#cb567-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb567-4"><a href="14-Bayese_model.html#cb567-4" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span><span class="sc">+</span> <span class="fl">0.6</span><span class="sc">*</span>x)</span>
+<span id="cb567-5"><a href="14-Bayese_model.html#cb567-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
+<span id="cb567-6"><a href="14-Bayese_model.html#cb567-6" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span></code></pre></div>
 <p><code>glm()</code>で推定した結果が以下である。</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="14-Bayese_model.html#cb572-1" aria-hidden="true" tabindex="-1"></a>result_poisson <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
-<span id="cb572-2"><a href="14-Bayese_model.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_poisson)</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="14-Bayese_model.html#cb568-1" aria-hidden="true" tabindex="-1"></a>result_poisson <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
+<span id="cb568-2"><a href="14-Bayese_model.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_poisson)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y ~ 1 + x, family = poisson(link = &quot;log&quot;), data = dat)
@@ -854,10 +854,10 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p><code>brm()</code>でも同様に、確率分布（family）とリンク関数（link）を指定する。</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="14-Bayese_model.html#cb574-1" aria-hidden="true" tabindex="-1"></a>result_brms_poisson <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> dat, </span>
-<span id="cb574-2"><a href="14-Bayese_model.html#cb574-2" aria-hidden="true" tabindex="-1"></a>                                 y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, </span>
-<span id="cb574-3"><a href="14-Bayese_model.html#cb574-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>)) <span class="co">#確率分布にpoisson、リンク関数にlogを指定する</span></span></code></pre></div>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="14-Bayese_model.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_poisson)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="14-Bayese_model.html#cb570-1" aria-hidden="true" tabindex="-1"></a>result_brms_poisson <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> dat, </span>
+<span id="cb570-2"><a href="14-Bayese_model.html#cb570-2" aria-hidden="true" tabindex="-1"></a>                                 y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, </span>
+<span id="cb570-3"><a href="14-Bayese_model.html#cb570-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>)) <span class="co">#確率分布にpoisson、リンク関数にlogを指定する</span></span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="14-Bayese_model.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_brms_poisson)</span></code></pre></div>
 <pre><code>##  Family: poisson 
 ##   Links: mu = log 
 ## Formula: y ~ 1 + x 
@@ -867,8 +867,8 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 ## 
 ## Population-Level Effects: 
 ##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-## Intercept    -0.69      0.28    -1.26    -0.16 1.00     1309     1779
-## x             0.90      0.11     0.70     1.11 1.00     1492     1964
+## Intercept    -0.70      0.28    -1.27    -0.17 1.00     1103     1485
+## x             0.90      0.11     0.70     1.11 1.00     1264     1798
 ## 
 ## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
 ## and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -883,12 +883,12 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div id="ランダム切片" class="section level3 hasAnchor" number="15.5.1">
 <h3><span class="header-section-number">15.5.1</span> ランダム切片<a href="14-Bayese_model.html#ランダム切片" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>グループごとに異なる切片（ランダム切片）を考慮する場合、式の中に<code>(1|グループを意味する変数)</code>というかたちでランダム切片を加える。</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="14-Bayese_model.html#cb577-1" aria-hidden="true" tabindex="-1"></a>model_brm_lmm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
-<span id="cb577-2"><a href="14-Bayese_model.html#cb577-2" aria-hidden="true" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Species),<span class="co">#(1|Species)をランダム切片として加える</span></span>
-<span id="cb577-3"><a href="14-Bayese_model.html#cb577-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
-<span id="cb577-4"><a href="14-Bayese_model.html#cb577-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
-<span id="cb577-5"><a href="14-Bayese_model.html#cb577-5" aria-hidden="true" tabindex="-1"></a>                          )</span></code></pre></div>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="14-Bayese_model.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_brm_lmm)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="14-Bayese_model.html#cb573-1" aria-hidden="true" tabindex="-1"></a>model_brm_lmm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
+<span id="cb573-2"><a href="14-Bayese_model.html#cb573-2" aria-hidden="true" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Species),<span class="co">#(1|Species)をランダム切片として加える</span></span>
+<span id="cb573-3"><a href="14-Bayese_model.html#cb573-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb573-4"><a href="14-Bayese_model.html#cb573-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
+<span id="cb573-5"><a href="14-Bayese_model.html#cb573-5" aria-hidden="true" tabindex="-1"></a>                          )</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="14-Bayese_model.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_brm_lmm)</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: Sepal.Length ~ 1 + Sepal.Width + (1 | Species) 
@@ -918,13 +918,13 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div id="ランダム傾き" class="section level3 hasAnchor" number="15.5.2">
 <h3><span class="header-section-number">15.5.2</span> ランダム傾き<a href="14-Bayese_model.html#ランダム傾き" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>グループごとに異なる傾き、すなわちランダム傾きをモデルに入れることもできる。式の中に<code>(予測変数|グループを意味する変数)</code>というかたちで加える。</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="14-Bayese_model.html#cb580-1" aria-hidden="true" tabindex="-1"></a>model_brm_lmm_2 <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
-<span id="cb580-2"><a href="14-Bayese_model.html#cb580-2" aria-hidden="true" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (Sepal.Width<span class="sc">|</span>Species),</span>
-<span id="cb580-3"><a href="14-Bayese_model.html#cb580-3" aria-hidden="true" tabindex="-1"></a>                          <span class="co">#(Sepal.Width|Species)を加える。Speciesごとに異なる切片とSepal.Widthに係る傾きを想定する。</span></span>
-<span id="cb580-4"><a href="14-Bayese_model.html#cb580-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
-<span id="cb580-5"><a href="14-Bayese_model.html#cb580-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
-<span id="cb580-6"><a href="14-Bayese_model.html#cb580-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="14-Bayese_model.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_brm_lmm_2)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="14-Bayese_model.html#cb576-1" aria-hidden="true" tabindex="-1"></a>model_brm_lmm_2 <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
+<span id="cb576-2"><a href="14-Bayese_model.html#cb576-2" aria-hidden="true" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (Sepal.Width<span class="sc">|</span>Species),</span>
+<span id="cb576-3"><a href="14-Bayese_model.html#cb576-3" aria-hidden="true" tabindex="-1"></a>                          <span class="co">#(Sepal.Width|Species)を加える。Speciesごとに異なる切片とSepal.Widthに係る傾きを想定する。</span></span>
+<span id="cb576-4"><a href="14-Bayese_model.html#cb576-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb576-5"><a href="14-Bayese_model.html#cb576-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
+<span id="cb576-6"><a href="14-Bayese_model.html#cb576-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="14-Bayese_model.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_brm_lmm_2)</span></code></pre></div>
 <pre><code>##  Family: gaussian 
 ##   Links: mu = identity; sigma = identity 
 ## Formula: Sepal.Length ~ 1 + Sepal.Width + (Sepal.Width | Species) 
@@ -964,9 +964,9 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div id="stanコードの出力" class="section level3 hasAnchor" number="15.6.1">
 <h3><span class="header-section-number">15.6.1</span> Stanコードの出力<a href="14-Bayese_model.html#stanコードの出力" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>make_stancode()</code>で、モデルのStanコードを出力することができる。モデルに直接修正を加えたいときに使える。</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="14-Bayese_model.html#cb583-1" aria-hidden="true" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">make_stancode</span>(<span class="at">data =</span> iris, </span>
-<span id="cb583-2"><a href="14-Bayese_model.html#cb583-2" aria-hidden="true" tabindex="-1"></a>                    Petal.Length <span class="sc">~</span> Sepal.Length, </span>
-<span id="cb583-3"><a href="14-Bayese_model.html#cb583-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="14-Bayese_model.html#cb579-1" aria-hidden="true" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">make_stancode</span>(<span class="at">data =</span> iris, </span>
+<span id="cb579-2"><a href="14-Bayese_model.html#cb579-2" aria-hidden="true" tabindex="-1"></a>                    Petal.Length <span class="sc">~</span> Sepal.Length, </span>
+<span id="cb579-3"><a href="14-Bayese_model.html#cb579-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>))</span></code></pre></div>
 <pre><code>## // generated with brms 2.17.0
 ## functions {
 ## }

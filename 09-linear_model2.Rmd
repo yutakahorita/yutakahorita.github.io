@@ -26,7 +26,7 @@ library(ggplot2)
   
 線形モデルとは特定の解析を指すものではなく、正規分布を扱う様々な統計解析を包括的に扱う統計モデルである。例えば、基礎の統計学でも学んできたt検定や分散分析も線形モデルの中に含まれる。予測変数の種類や個数の違いによって、線形モデルは以下のそれぞれの統計解析と一致する。
   
-```{r, include=FALSE}
+```{r, echo=FALSE}
 
 knitr::kable(data.frame(分析 = c("t検定", "分散分析", "共分散分析", "回帰分析"),
                           予測変数 = c("二値(0 or 1)", "二値", "二値及び連続量", "連続量（二値を含んでも可）"),
@@ -769,12 +769,15 @@ summary(lm(data = prac_dat_1, breaks_2 ~ 1 + dummy_1 + dummy_2 + dummy_3 - 1))
 
 ```{r}
 
-library(tidyverse)
-prac_dat_2 = warpbreaks %>% filter(tension != "H") #tension == Hは除き、別の名前で保存する
+prac_dat_2 = subset(warpbreaks, tension != "H") #tension == Hは除き、別の名前で保存する
 
 head(prac_dat_2)
-ggplot() + 
-  geom_boxplot(data = prac_dat_2, aes(x = wool, y = breaks, fill = tension))
+
+```
+
+```{r}
+ggplot2::ggplot() + 
+  ggplot2::geom_boxplot(data = prac_dat_2, aes(x = wool, y = breaks, fill = tension))
 
 ```
 
@@ -793,7 +796,7 @@ Rで標準で入っている`airquality`を使う。
 
 ```{r}
 
-prac_dat_3 = airquality %>% na.omit() #欠損値を除き、別の名前で保存する
+prac_dat_3 =  na.omit(airquality) #欠損値を除き、別の名前で保存する
 
 head(prac_dat_3)
 

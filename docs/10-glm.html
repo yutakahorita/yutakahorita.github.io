@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-10-22" />
+<meta name="date" content="2022-11-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -583,10 +583,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.1</span> 準備<a href="10-glm.html#準備-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>データの可視化のために、<code>ggplot2</code>パッケージをロードする。<br />
 更に、<code>MASS</code>パッケージを使うので、インストールとロードを行う。</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="10-glm.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb429-2"><a href="10-glm.html#cb429-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-3"><a href="10-glm.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span>
-<span id="cb429-4"><a href="10-glm.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="10-glm.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb425-2"><a href="10-glm.html#cb425-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb425-3"><a href="10-glm.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span>
+<span id="cb425-4"><a href="10-glm.html#cb425-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
 </div>
 <div id="一般化線形モデル-1" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> 一般化線形モデル<a href="10-glm.html#一般化線形モデル-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -606,12 +606,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>前の章までは応答変数が量的変数の例を扱ってきた。では、応答変数がカテゴリカル変数である場合は、どのような解析をすればよいのだろうか。</p>
 <p>応答変数が<em>二値のカテゴリカル変数</em>の場合を例として見ていく。</p>
 <p><code>MASS</code>パッケージに入っているサンプルデータ<code>biopsy</code>を使いながら検討していこう。まず、以下のプログラムを実行して、練習用のデータ<code>dat</code>を作成する。</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="10-glm.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
-<span id="cb430-2"><a href="10-glm.html#cb430-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-3"><a href="10-glm.html#cb430-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> biopsy</span>
-<span id="cb430-4"><a href="10-glm.html#cb430-4" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>y <span class="ot">=</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>class <span class="sc">==</span> <span class="st">&quot;malignant&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#classがbenignならばゼロ、それ以外なら1という変数yを作る</span></span>
-<span id="cb430-5"><a href="10-glm.html#cb430-5" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x <span class="ot">=</span> dat<span class="sc">$</span>V1 <span class="co">#V1という変数をxという名前に変える</span></span>
-<span id="cb430-6"><a href="10-glm.html#cb430-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="10-glm.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb426-2"><a href="10-glm.html#cb426-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-3"><a href="10-glm.html#cb426-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> biopsy</span>
+<span id="cb426-4"><a href="10-glm.html#cb426-4" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>y <span class="ot">=</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>class <span class="sc">==</span> <span class="st">&quot;malignant&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#classがbenignならばゼロ、それ以外なら1という変数yを作る</span></span>
+<span id="cb426-5"><a href="10-glm.html#cb426-5" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x <span class="ot">=</span> dat<span class="sc">$</span>V1 <span class="co">#V1という変数をxという名前に変える</span></span>
+<span id="cb426-6"><a href="10-glm.html#cb426-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
 <pre><code>##        ID V1 V2 V3 V4 V5 V6 V7 V8 V9     class y x
 ## 1 1000025  5  1  1  1  2  1  3  1  1    benign 0 5
 ## 2 1002945  5  4  4  5  7 10  3  2  1    benign 0 5
@@ -623,10 +623,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>まず、<code>x</code>と<code>y</code>との関係を図で確認してみる。<br />
 <code>ggplot2</code>パッケージで、<code>x</code>をx軸、<code>y</code>をy軸にしてプロットしてみよう。</p>
 <p>普通に<code>geom_point</code>で散布図を作っても点が重なって見にくいので、<code>geom_jitter</code>を使って描画する。<code>geom_jitter</code>は、ランダムで点をずらして描画してくれる。</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="10-glm.html#cb432-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb432-2"><a href="10-glm.html#cb432-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
-<span id="cb432-3"><a href="10-glm.html#cb432-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="10-glm.html#cb428-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb428-2"><a href="10-glm.html#cb428-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
+<span id="cb428-3"><a href="10-glm.html#cb428-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p>では、前章までで学んだとおりに、<code>x</code>を予測変数、<code>y</code>を応答変数とした線形モデルで<code>x</code>の効果を検討しよう。</p>
 <p><span class="math display">\[
 \begin{equation}
@@ -634,8 +634,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   y \sim \text{Normal}(\mu, \sigma)
 \end{equation}
 \]</span></p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="10-glm.html#cb433-1" aria-hidden="true" tabindex="-1"></a>result_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x)</span>
-<span id="cb433-2"><a href="10-glm.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_lm)</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="10-glm.html#cb429-1" aria-hidden="true" tabindex="-1"></a>result_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x)</span>
+<span id="cb429-2"><a href="10-glm.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ 1 + x, data = dat)
@@ -656,15 +656,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## F-statistic: 733.2 on 1 and 697 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><code>x</code>に係る傾きの推定値を数値通りに解釈すると、「<code>x</code>が1単位増えると、<code>y</code>が0.12増える」ことを示している。<br />
 では、求めた傾きと切片から直線を先程の<code>x</code>と<code>y</code>との関係の図に引いてみよう。</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="10-glm.html#cb435-1" aria-hidden="true" tabindex="-1"></a>predict_lm <span class="ot">=</span> <span class="fu">predict</span>(result_lm, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#直線の95%信頼区間を求める</span></span>
-<span id="cb435-2"><a href="10-glm.html#cb435-2" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">cbind</span>(dat, predict_lm)</span>
-<span id="cb435-3"><a href="10-glm.html#cb435-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb435-4"><a href="10-glm.html#cb435-4" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb435-5"><a href="10-glm.html#cb435-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
-<span id="cb435-6"><a href="10-glm.html#cb435-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb435-7"><a href="10-glm.html#cb435-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb435-8"><a href="10-glm.html#cb435-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="10-glm.html#cb431-1" aria-hidden="true" tabindex="-1"></a>predict_lm <span class="ot">=</span> <span class="fu">predict</span>(result_lm, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#直線の95%信頼区間を求める</span></span>
+<span id="cb431-2"><a href="10-glm.html#cb431-2" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">cbind</span>(dat, predict_lm)</span>
+<span id="cb431-3"><a href="10-glm.html#cb431-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-4"><a href="10-glm.html#cb431-4" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb431-5"><a href="10-glm.html#cb431-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
+<span id="cb431-6"><a href="10-glm.html#cb431-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb431-7"><a href="10-glm.html#cb431-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb431-8"><a href="10-glm.html#cb431-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
 <p>線形モデルから推定された直線は、「<code>x</code>が増えるほど<code>y</code>が増える」関係を表しているように見える。</p>
 <p>しかし、この線形モデルの結果は、<code>y</code>を予測する上で問題がある。</p>
 <p>解析の目的は、<span class="math inline">\(y = 1\)</span>の確率、つまりがんにかかる確率を推定することであるが、例えば<span class="math inline">\(x\)</span>が10を超えると、応答変数の予測値は1以上の値を取る。また、<span class="math inline">\(x\)</span>が2.5を下回ったときも、0未満の数値が推定されてしまう。応答変数は0か1しか取らないのに、それぞれを超える値が予測されてしまう。これは確率の推定としては不都合である。</p>
@@ -687,22 +687,22 @@ y \sim \text{Binomial}(1, q)
 \]</span></p>
 <p>これは、応答変数<span class="math inline">\(y\)</span>が試行回数1回、成功確率<span class="math inline">\(q\)</span>の二項分布に従うということを示している。</p>
 <p>例として、二項分布から乱数を作る<code>rbinom()</code>関数を使って、試行回数1回、成功確率<span class="math inline">\(q\)</span>を0.5とした二項分布から乱数を20個を生成してみる。</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="10-glm.html#cb436-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.5</span></span>
-<span id="cb436-2"><a href="10-glm.html#cb436-2" aria-hidden="true" tabindex="-1"></a>rand <span class="ot">=</span> <span class="fu">rbinom</span>(<span class="at">n =</span><span class="dv">20</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> q)</span>
-<span id="cb436-3"><a href="10-glm.html#cb436-3" aria-hidden="true" tabindex="-1"></a>rand</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="10-glm.html#cb432-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.5</span></span>
+<span id="cb432-2"><a href="10-glm.html#cb432-2" aria-hidden="true" tabindex="-1"></a>rand <span class="ot">=</span> <span class="fu">rbinom</span>(<span class="at">n =</span><span class="dv">20</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> q)</span>
+<span id="cb432-3"><a href="10-glm.html#cb432-3" aria-hidden="true" tabindex="-1"></a>rand</span></code></pre></div>
 <pre><code>##  [1] 0 1 1 1 1 0 0 0 1 0 1 0 1 1 0 1 1 0 1 0</code></pre>
 <p>このように、0か1が生成される。</p>
 </div>
 <div id="リンク関数" class="section level3 hasAnchor" number="11.3.2">
 <h3><span class="header-section-number">11.3.2</span> リンク関数<a href="10-glm.html#リンク関数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>式(3)の1つ目は何を意味しているのか？以下の式について、<span class="math inline">\(z = \alpha + \beta x\)</span>として、<span class="math inline">\(z\)</span>を変化させると<span class="math inline">\(q\)</span>がどう変化するか図で見てみよう。</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="10-glm.html#cb438-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.1</span>) <span class="co">#-10から10まで0.1刻みのベクトルzを作成</span></span>
-<span id="cb438-2"><a href="10-glm.html#cb438-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">exp</span>(z)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(z)) <span class="co">#上の式にzを代入して、qを求める</span></span>
-<span id="cb438-3"><a href="10-glm.html#cb438-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">z =</span> z, <span class="at">q =</span> q) <span class="co">#グラフを作るために、データフレームを作る</span></span>
-<span id="cb438-4"><a href="10-glm.html#cb438-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-5"><a href="10-glm.html#cb438-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb438-6"><a href="10-glm.html#cb438-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>z, <span class="at">y=</span>q))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="10-glm.html#cb434-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.1</span>) <span class="co">#-10から10まで0.1刻みのベクトルzを作成</span></span>
+<span id="cb434-2"><a href="10-glm.html#cb434-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">exp</span>(z)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(z)) <span class="co">#上の式にzを代入して、qを求める</span></span>
+<span id="cb434-3"><a href="10-glm.html#cb434-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">z =</span> z, <span class="at">q =</span> q) <span class="co">#グラフを作るために、データフレームを作る</span></span>
+<span id="cb434-4"><a href="10-glm.html#cb434-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb434-5"><a href="10-glm.html#cb434-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb434-6"><a href="10-glm.html#cb434-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>z, <span class="at">y=</span>q))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 <p><span class="math inline">\(z\)</span>は<span class="math inline">\(-\infty\)</span>から<span class="math inline">\(\infty\)</span>の範囲を取るが、<span class="math inline">\(z\)</span>がどのような値をとっても、<span class="math inline">\(0&lt;q&lt;1\)</span>となる（限りなく0もしくは1に近づく）。<span class="math inline">\(q\)</span>は確率なので、この0から1の範囲に収まるようになる変換は都合が良い。</p>
 <p>また、式(3)の一つ目は、
 <span class="math display">\[
@@ -723,7 +723,7 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 <div id="rでのロジスティック回帰" class="section level3 hasAnchor" number="11.3.4">
 <h3><span class="header-section-number">11.3.4</span> Rでのロジスティック回帰<a href="10-glm.html#rでのロジスティック回帰" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rには、一般化線形モデルを扱うための関数<code>glm()</code>が用意されている。線形モデルを扱う<code>lm()</code>と同じ要領でプログラムを書けばよいが、確率分布とリンク関数のオプションを自分で指定する必要がある。先程のサンプルデータ<code>dat</code>で、<code>glm()</code>関数を使ってロジスティック回帰をやってみよう。</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="10-glm.html#cb439-1" aria-hidden="true" tabindex="-1"></a>result_glm <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="10-glm.html#cb435-1" aria-hidden="true" tabindex="-1"></a>result_glm <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span></code></pre></div>
 <p><code>glm</code>で設定すること：</p>
 <p>「線形予測子」、「応答変数が従う確率分布」、「リンク関数」を指定する。</p>
 <p><code>family</code>で、応答変数が従う確率分布を指定する。<br />
@@ -731,7 +731,7 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 <p><code>(link=)</code>で、リンク関数を指定する。ロジット関数(logit)を指定しよう。<br />
 ちなみに、<code>(link="logit")</code>は省略してもかまわない。<code>family=binomial</code>とすると、デフォルトでリンク関数を<code>logit</code>としてくれる。</p>
 <p>では、出力結果を見てみよう。</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="10-glm.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_glm)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="10-glm.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_glm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y ~ 1 + x, family = binomial(link = &quot;logit&quot;), data = dat)
@@ -766,25 +766,25 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 \]</span>
 右辺を線形の式とすると、左辺は対数オッズとなる。つまり、<span class="math inline">\(x\)</span>に係る傾き<span class="math inline">\(\beta\)</span>は、「<span class="math inline">\(x\)</span>が1増えた時の<span class="math inline">\(q\)</span>の対数オッズの変化量」を意味しており、確率<span class="math inline">\(q\)</span>そのものの変化量ではない。このように、正規分布以外の確率分布を用いた一般化線形モデルでは、係数そのものの値を解釈するのが難しくなる点に注意が必要である。</p>
 <p>対数オッズと確率<span class="math inline">\(q\)</span>との関係を図で見てみよう。x軸を<span class="math inline">\(\log(q/[1-q])\)</span>、y軸を<span class="math inline">\(q\)</span>とした図を示す。</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="10-glm.html#cb442-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)</span>
-<span id="cb442-2"><a href="10-glm.html#cb442-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">=</span> <span class="fu">log</span>(q<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>q))</span>
-<span id="cb442-3"><a href="10-glm.html#cb442-3" aria-hidden="true" tabindex="-1"></a>sample_dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">q =</span> q, <span class="at">logit =</span> logit)</span>
-<span id="cb442-4"><a href="10-glm.html#cb442-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb442-5"><a href="10-glm.html#cb442-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb442-6"><a href="10-glm.html#cb442-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> sample_dat, <span class="fu">aes</span>(<span class="at">x =</span> logit, <span class="at">y =</span> q))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-243-1.png" width="672" /></p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="10-glm.html#cb438-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)</span>
+<span id="cb438-2"><a href="10-glm.html#cb438-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">=</span> <span class="fu">log</span>(q<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>q))</span>
+<span id="cb438-3"><a href="10-glm.html#cb438-3" aria-hidden="true" tabindex="-1"></a>sample_dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">q =</span> q, <span class="at">logit =</span> logit)</span>
+<span id="cb438-4"><a href="10-glm.html#cb438-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-5"><a href="10-glm.html#cb438-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb438-6"><a href="10-glm.html#cb438-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> sample_dat, <span class="fu">aes</span>(<span class="at">x =</span> logit, <span class="at">y =</span> q))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
 <p>つまり、対数オッズがプラスだと確率<span class="math inline">\(q\)</span>は0.5より大きくなり、対数オッズがマイナスだと確率<span class="math inline">\(q\)</span>は0.5より小さくなる関係にある。要は、対数オッズがプラスだと<span class="math inline">\(y = 1\)</span>が起こりやすくなり、マイナスだと起こりにくくなることを意味している。</p>
 <hr />
 <p>求めた係数の推定値を元に、確率を予測する線を引いてみよう。</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="10-glm.html#cb443-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="fl">0.1</span>))</span>
-<span id="cb443-2"><a href="10-glm.html#cb443-2" aria-hidden="true" tabindex="-1"></a>predict_glm <span class="ot">=</span> <span class="fu">predict</span>(result_glm, <span class="at">newdata =</span> new, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>) </span>
-<span id="cb443-3"><a href="10-glm.html#cb443-3" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">data.frame</span>(new, <span class="at">y =</span> predict_glm)</span>
-<span id="cb443-4"><a href="10-glm.html#cb443-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb443-5"><a href="10-glm.html#cb443-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb443-6"><a href="10-glm.html#cb443-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
-<span id="cb443-7"><a href="10-glm.html#cb443-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
-<span id="cb443-8"><a href="10-glm.html#cb443-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="10-glm.html#cb439-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="fl">0.1</span>))</span>
+<span id="cb439-2"><a href="10-glm.html#cb439-2" aria-hidden="true" tabindex="-1"></a>predict_glm <span class="ot">=</span> <span class="fu">predict</span>(result_glm, <span class="at">newdata =</span> new, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>) </span>
+<span id="cb439-3"><a href="10-glm.html#cb439-3" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">data.frame</span>(new, <span class="at">y =</span> predict_glm)</span>
+<span id="cb439-4"><a href="10-glm.html#cb439-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-5"><a href="10-glm.html#cb439-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb439-6"><a href="10-glm.html#cb439-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
+<span id="cb439-7"><a href="10-glm.html#cb439-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
+<span id="cb439-8"><a href="10-glm.html#cb439-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 <p>予測線は0から1の範囲に収まっており、線形予測子から確率の予測ができている。</p>
 </div>
 </div>
@@ -793,20 +793,20 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 <p>応答変数が正規分布以外に従う場合の例として、先程は応答変数が0か1の二値の場合を扱った。同じく応答変数の範囲に制約がある場合の例として、次は<strong>応答変数が正の値の整数しか取らない場合</strong>（0を含む）を扱う。</p>
 <p>具体的には、応答変数が<strong>カウントデータ</strong>の場合である（非負の整数。0個、1個、2個,3個といった個数など）。この場合は、<strong>ポアソン回帰</strong>と呼ばれる一般化線形モデルを扱うのが適切とされている。</p>
 <p>サンプルデータを用いながら、ポアソン回帰について学んでいこう。以下のプログラムを実行して、サンプルデータ<code>dat_poisson</code>を作成しよう。</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="10-glm.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb444-2"><a href="10-glm.html#cb444-2" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
-<span id="cb444-3"><a href="10-glm.html#cb444-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
-<span id="cb444-4"><a href="10-glm.html#cb444-4" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span><span class="sc">+</span> <span class="fl">0.6</span><span class="sc">*</span>x)</span>
-<span id="cb444-5"><a href="10-glm.html#cb444-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
-<span id="cb444-6"><a href="10-glm.html#cb444-6" aria-hidden="true" tabindex="-1"></a>dat_poisson <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="10-glm.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb440-2"><a href="10-glm.html#cb440-2" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb440-3"><a href="10-glm.html#cb440-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb440-4"><a href="10-glm.html#cb440-4" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span><span class="sc">+</span> <span class="fl">0.6</span><span class="sc">*</span>x)</span>
+<span id="cb440-5"><a href="10-glm.html#cb440-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
+<span id="cb440-6"><a href="10-glm.html#cb440-6" aria-hidden="true" tabindex="-1"></a>dat_poisson <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span></code></pre></div>
 <p>xとyの関係を散布図で確認してみる。</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="10-glm.html#cb445-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb445-2"><a href="10-glm.html#cb445-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="10-glm.html#cb441-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb441-2"><a href="10-glm.html#cb441-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
 <p>xが大きいほど、yが大きいという関係がありそうである。<span class="math inline">\(x\)</span>から、<span class="math inline">\(y\)</span>を予測する。</p>
 <p>まずは、線形モデルを当てはめてみよう。</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="10-glm.html#cb446-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> dat_poisson, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x)</span>
-<span id="cb446-2"><a href="10-glm.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="10-glm.html#cb442-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> dat_poisson, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x)</span>
+<span id="cb442-2"><a href="10-glm.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ 1 + x, data = dat_poisson)
@@ -826,15 +826,15 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 ## Multiple R-squared:  0.4853, Adjusted R-squared:  0.4746 
 ## F-statistic: 45.26 on 1 and 48 DF,  p-value: 1.924e-08</code></pre>
 <p>求めた傾きと切片をもとに、<code>y</code>を予測する直線を引いてみよう。</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="10-glm.html#cb448-1" aria-hidden="true" tabindex="-1"></a>predict_lm <span class="ot">=</span> <span class="fu">predict</span>(model, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#直線の95%信頼区間を求める</span></span>
-<span id="cb448-2"><a href="10-glm.html#cb448-2" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">cbind</span>(dat_poisson, predict_lm)</span>
-<span id="cb448-3"><a href="10-glm.html#cb448-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-4"><a href="10-glm.html#cb448-4" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb448-5"><a href="10-glm.html#cb448-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span>  </span>
-<span id="cb448-6"><a href="10-glm.html#cb448-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb448-7"><a href="10-glm.html#cb448-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb448-8"><a href="10-glm.html#cb448-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="10-glm.html#cb444-1" aria-hidden="true" tabindex="-1"></a>predict_lm <span class="ot">=</span> <span class="fu">predict</span>(model, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#直線の95%信頼区間を求める</span></span>
+<span id="cb444-2"><a href="10-glm.html#cb444-2" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">cbind</span>(dat_poisson, predict_lm)</span>
+<span id="cb444-3"><a href="10-glm.html#cb444-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-4"><a href="10-glm.html#cb444-4" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb444-5"><a href="10-glm.html#cb444-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span>  </span>
+<span id="cb444-6"><a href="10-glm.html#cb444-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb444-7"><a href="10-glm.html#cb444-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb444-8"><a href="10-glm.html#cb444-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
 <p>直線の左側が、0より下にはみ出てしまっている。<span class="math inline">\(y\)</span>は正の値を取る離散値（整数）である。しかし、線形モデルで求めた直線の式ではマイナスの値も予測されてしまう。</p>
 <p>ポアソン回帰は、この問題を解消してくれる。ポアソン回帰を数式で表すと、以下のようになる。</p>
 <p><span class="math display">\[
@@ -851,9 +851,9 @@ y \sim \text{Poisson}(\lambda)
 \]</span></p>
 <p><span class="math inline">\(\lambda\)</span>をパラメータとするポアソン分布から、応答変数<span class="math inline">\(y\)</span>が生成されることを示している。</p>
 <p>例えば、以下にポアソン分布から乱数を生成する<code>rpois()</code>関数を使って、<span class="math inline">\(\lambda\)</span>が3のポアソン分布から乱数を20個作ってみよう。</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="10-glm.html#cb449-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb449-2"><a href="10-glm.html#cb449-2" aria-hidden="true" tabindex="-1"></a>rand <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">lambda =</span> lambda)</span>
-<span id="cb449-3"><a href="10-glm.html#cb449-3" aria-hidden="true" tabindex="-1"></a>rand</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="10-glm.html#cb445-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb445-2"><a href="10-glm.html#cb445-2" aria-hidden="true" tabindex="-1"></a>rand <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">lambda =</span> lambda)</span>
+<span id="cb445-3"><a href="10-glm.html#cb445-3" aria-hidden="true" tabindex="-1"></a>rand</span></code></pre></div>
 <pre><code>##  [1] 3 3 2 3 3 1 3 1 2 2 2 5 3 4 5 2 1 2 4 2</code></pre>
 <p>正の離散値（整数）が生成される。</p>
 <hr />
@@ -863,22 +863,22 @@ P(y) = \frac{\lambda^y\exp(-\lambda)}{y!} \\
 \]</span></p>
 <p><span class="math inline">\(y\)</span>は0以上の整数（0, 1, 2, 3, …）、<span class="math inline">\(P(y)\)</span>は<span class="math inline">\(y\)</span>が生じる確率とする。<br />
 ポアソン分布のかたちを決定づけるパラメータは、<span class="math inline">\(\lambda\)</span>のみである。<span class="math inline">\(\lambda\)</span>は、ポアソン分布の期待値（平均）と分散の両方を意味する。つまり、ポアソン分布は平均と分散が等しい分布である。</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="10-glm.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb451-2"><a href="10-glm.html#cb451-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">lambda =</span> <span class="dv">2</span>) <span class="co">#ポアソン分布から乱数を生成する関数 lambda =2のポアソン分布から30個乱数を生成</span></span>
-<span id="cb451-3"><a href="10-glm.html#cb451-3" aria-hidden="true" tabindex="-1"></a>x <span class="co">#整数が生成される</span></span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="10-glm.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb447-2"><a href="10-glm.html#cb447-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">30</span>, <span class="at">lambda =</span> <span class="dv">2</span>) <span class="co">#ポアソン分布から乱数を生成する関数 lambda =2のポアソン分布から30個乱数を生成</span></span>
+<span id="cb447-3"><a href="10-glm.html#cb447-3" aria-hidden="true" tabindex="-1"></a>x <span class="co">#整数が生成される</span></span></code></pre></div>
 <pre><code>##  [1] 1 1 2 4 1 4 4 2 2 0 1 1 3 1 3 2 3 6 1 3 4 1 2 0 1 1 0 1 4 1</code></pre>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="10-glm.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="10-glm.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="10-glm.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="10-glm.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2.206897</code></pre>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="10-glm.html#cb457-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x)</span>
-<span id="cb457-2"><a href="10-glm.html#cb457-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb457-3"><a href="10-glm.html#cb457-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb457-4"><a href="10-glm.html#cb457-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>x)) </span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="10-glm.html#cb453-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x)</span>
+<span id="cb453-2"><a href="10-glm.html#cb453-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb453-3"><a href="10-glm.html#cb453-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb453-4"><a href="10-glm.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>x)) </span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
-<p>以下に、パラメータ<span class="math inline">\(\lambda = 1\)</span>, <span class="math inline">\(\lambda = 2\)</span>, <span class="math inline">\(\lambda = 3\)</span>それぞれの場合のポアソン分布を図で示す。</p>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
+<p>以下に、パラメータ<span class="math inline">\(\lambda = 1\)</span>, <span class="math inline">\(\lambda = 2\)</span>, <span class="math inline">\(\lambda = 3\)</span>それぞれの場合のポアソン分布を図で示す。</p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-252-1.png" width="672" /></p>
 <p>ポアソン分布は、二項分布とも関連している。</p>
 <p>二項分布のパラメータは、試行回数<span class="math inline">\(n\)</span>と成功確率<span class="math inline">\(p\)</span>であった。二項分布の期待値（平均）は<span class="math inline">\(np\)</span>、分散は<span class="math inline">\(np(1-p)\)</span>である。</p>
 <p><span class="math display">\[
@@ -898,13 +898,13 @@ Var(y) = np(1-p)\\
 \end{equation}
 \]</span></p>
 <p>なぜ指数関数（<span class="math inline">\(\exp()\)</span>）を用いるのか？<span class="math inline">\(z=\alpha + \beta x\)</span>として、<span class="math inline">\(\lambda=\exp(z)\)</span>との関係を図で見てみよう。</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="10-glm.html#cb459-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">0.1</span>) <span class="co">#-10から10まで0.1刻みのベクトルzを作成</span></span>
-<span id="cb459-2"><a href="10-glm.html#cb459-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(z) <span class="co">#上の式にzを代入して、lambdaを求める</span></span>
-<span id="cb459-3"><a href="10-glm.html#cb459-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">z =</span> z, <span class="at">q =</span> lambda) <span class="co">#グラフを作るために、データフレームを作る</span></span>
-<span id="cb459-4"><a href="10-glm.html#cb459-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb459-5"><a href="10-glm.html#cb459-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb459-6"><a href="10-glm.html#cb459-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>z, <span class="at">y=</span>lambda))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-252-1.png" width="672" /></p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="10-glm.html#cb455-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">0.1</span>) <span class="co">#-10から10まで0.1刻みのベクトルzを作成</span></span>
+<span id="cb455-2"><a href="10-glm.html#cb455-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(z) <span class="co">#上の式にzを代入して、lambdaを求める</span></span>
+<span id="cb455-3"><a href="10-glm.html#cb455-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">z =</span> z, <span class="at">q =</span> lambda) <span class="co">#グラフを作るために、データフレームを作る</span></span>
+<span id="cb455-4"><a href="10-glm.html#cb455-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb455-5"><a href="10-glm.html#cb455-5" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb455-6"><a href="10-glm.html#cb455-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>z, <span class="at">y=</span>lambda))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
 <p>図からもわかるように、<span class="math inline">\(z\)</span>の値に関わらず、<span class="math inline">\(\lambda\)</span>は常に正の値を取る。ポアソン分布のパラメータ<span class="math inline">\(\lambda\)</span>は<span class="math inline">\(\lambda&gt;0\)</span>という制約があるため、このような変換をする必要がある。</p>
 <p>また、式の右辺を線形予測子にして整理すると、以下の式になる。</p>
 <p><span class="math display">\[
@@ -916,8 +916,8 @@ Var(y) = np(1-p)\\
 <h3><span class="header-section-number">11.4.3</span> Rでのポアソン回帰<a href="10-glm.html#rでのポアソン回帰" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rでポアソン回帰をやってみよう。一般化線形モデルを扱う関数<code>glm()</code>で、以下のように確率分布にポアソン分布、リンク関数に対数を指定する。<br />
 なお、<code>(link = "log")</code>は省略しても構わない。<code>family = poisson</code>で確率分布をポアソン分布に指定すれば、自動でリンク関数を対数にしてくれる。</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="10-glm.html#cb460-1" aria-hidden="true" tabindex="-1"></a>result_poisson <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat_poisson, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
-<span id="cb460-2"><a href="10-glm.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_poisson)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="10-glm.html#cb456-1" aria-hidden="true" tabindex="-1"></a>result_poisson <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat_poisson, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
+<span id="cb456-2"><a href="10-glm.html#cb456-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_poisson)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y ~ 1 + x, family = poisson(link = &quot;log&quot;), data = dat_poisson)
@@ -941,15 +941,15 @@ Var(y) = np(1-p)\\
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>推定された式が<span class="math inline">\(y\)</span>をうまく予測できているか、図で確認してみよう。</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="10-glm.html#cb462-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="fl">0.1</span>))</span>
-<span id="cb462-2"><a href="10-glm.html#cb462-2" aria-hidden="true" tabindex="-1"></a>predict_glm <span class="ot">=</span> <span class="fu">predict</span>(result_poisson, <span class="at">newdata =</span> new, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>) </span>
-<span id="cb462-3"><a href="10-glm.html#cb462-3" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">data.frame</span>(new, <span class="at">y =</span> predict_glm)</span>
-<span id="cb462-4"><a href="10-glm.html#cb462-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb462-5"><a href="10-glm.html#cb462-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb462-6"><a href="10-glm.html#cb462-6" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb462-7"><a href="10-glm.html#cb462-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
-<span id="cb462-8"><a href="10-glm.html#cb462-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) </span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="10-glm.html#cb458-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="fl">0.1</span>))</span>
+<span id="cb458-2"><a href="10-glm.html#cb458-2" aria-hidden="true" tabindex="-1"></a>predict_glm <span class="ot">=</span> <span class="fu">predict</span>(result_poisson, <span class="at">newdata =</span> new, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>) </span>
+<span id="cb458-3"><a href="10-glm.html#cb458-3" aria-hidden="true" tabindex="-1"></a>dat_predict <span class="ot">=</span> <span class="fu">data.frame</span>(new, <span class="at">y =</span> predict_glm)</span>
+<span id="cb458-4"><a href="10-glm.html#cb458-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb458-5"><a href="10-glm.html#cb458-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb458-6"><a href="10-glm.html#cb458-6" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb458-7"><a href="10-glm.html#cb458-7" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb458-8"><a href="10-glm.html#cb458-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) </span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 <p>ゼロよりも大きい値が予測されており、予測線も各データ（点）の近くに位置している。</p>
 <hr />
 <p>ロジスティック回帰のときと同様に、ポアソン回帰の予測変数の傾きの値も単純に「予測変数が1単位増えたときの応答変数の変化量」を意味するわけではない点に注意が必要である。式(10)をもう一度確認すると、</p>
@@ -970,16 +970,16 @@ Var(y) = np(1-p)\\
 <div id="ポアソン回帰の注意点過分散" class="section level3 hasAnchor" number="11.4.4">
 <h3><span class="header-section-number">11.4.4</span> ポアソン回帰の注意点：過分散<a href="10-glm.html#ポアソン回帰の注意点過分散" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>次のプログラムを実行して、サンプルデータ<code>dat_dis</code>を作成する。</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="10-glm.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb463-2"><a href="10-glm.html#cb463-2" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
-<span id="cb463-3"><a href="10-glm.html#cb463-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb463-4"><a href="10-glm.html#cb463-4" aria-hidden="true" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb463-5"><a href="10-glm.html#cb463-5" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span> <span class="sc">+</span> <span class="fl">0.1</span><span class="sc">*</span>x <span class="sc">+</span> e)</span>
-<span id="cb463-6"><a href="10-glm.html#cb463-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
-<span id="cb463-7"><a href="10-glm.html#cb463-7" aria-hidden="true" tabindex="-1"></a>dat_dis <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="10-glm.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb459-2"><a href="10-glm.html#cb459-2" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb459-3"><a href="10-glm.html#cb459-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb459-4"><a href="10-glm.html#cb459-4" aria-hidden="true" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb459-5"><a href="10-glm.html#cb459-5" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span> <span class="sc">+</span> <span class="fl">0.1</span><span class="sc">*</span>x <span class="sc">+</span> e)</span>
+<span id="cb459-6"><a href="10-glm.html#cb459-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
+<span id="cb459-7"><a href="10-glm.html#cb459-7" aria-hidden="true" tabindex="-1"></a>dat_dis <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span></code></pre></div>
 <p>先ほどと同様に、このデータの変数<code>x</code>と<code>y</code>を用いて、<code>x</code>から<code>y</code>を予測するポアソン回帰をやってみる。</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="10-glm.html#cb464-1" aria-hidden="true" tabindex="-1"></a>result_dis <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat_dis, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
-<span id="cb464-2"><a href="10-glm.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_dis)</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="10-glm.html#cb460-1" aria-hidden="true" tabindex="-1"></a>result_dis <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat_dis, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
+<span id="cb460-2"><a href="10-glm.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_dis)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y ~ 1 + x, family = poisson(link = &quot;log&quot;), data = dat_dis)
@@ -1003,13 +1003,13 @@ Var(y) = np(1-p)\\
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
 <p><code>x</code>は<code>y</code>を予測する上で、かなり強い効果を有しているように見える。しかし、単純にそのような結論を出すことはできない。このデータでは、分散が平均よりも過剰に大きい<strong>過分散</strong>が生じているためである。</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="10-glm.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_dis<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="10-glm.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_dis<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 2.32</code></pre>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="10-glm.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(dat_dis<span class="sc">$</span>y)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="10-glm.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(dat_dis<span class="sc">$</span>y)</span></code></pre></div>
 <pre><code>## [1] 12.8751</code></pre>
 <div id="過分散とは" class="section level4 hasAnchor" number="11.4.4.1">
 <h4><span class="header-section-number">11.4.4.1</span> 過分散とは？<a href="10-glm.html#過分散とは" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-258-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-259-1.png" width="672" /></p>
 <p>（<code>y</code>のヒストグラム。白いバーが実際の<code>y</code>の分布、薄い赤のバーはパラメータ<span class="math inline">\(\lambda\)</span>が<code>y</code>の実際の平均と等しい場合のポアソン分布）</p>
 <p>ポアソン分布は、平均と分散が等しい分布である。しかし、現実にはデータの平均と分散が等しいケースは少ない。逆に、分散が平均よりもかなり大きいケースがよく見られる。</p>
 <p>分散が平均よりも大きいときにポアソン回帰を使うと、分散を実際よりも小さいと推定してしまい、予測変数が平均に与える効果を過大に評価してしまう恐れがある（p値を過剰に小さく判断してしまい、第一種の過誤を犯しやすくなる。ポアソン回帰を行うとかなり低いp値が出ることが多いのは、このためである）。この問題は、<strong>過分散(overdispersion)</strong>と呼ばれる。</p>
@@ -1017,8 +1017,8 @@ Var(y) = np(1-p)\\
 <div id="過分散の確認方法" class="section level4 hasAnchor" number="11.4.4.2">
 <h4><span class="header-section-number">11.4.4.2</span> 過分散の確認方法<a href="10-glm.html#過分散の確認方法" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>performance</code>パッケージの<code>check_overdispersion()</code>関数で過分散の有無を確認することができる。</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="10-glm.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
-<span id="cb470-2"><a href="10-glm.html#cb470-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_overdispersion</span>(result_dis)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="10-glm.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb466-2"><a href="10-glm.html#cb466-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_overdispersion</span>(result_dis)</span></code></pre></div>
 <pre><code>## # Overdispersion test
 ## 
 ##        dispersion ratio =   4.048
@@ -1058,15 +1058,15 @@ Var(y) = np(1-p)\\
 BMI: BMI（肥満度を表す指標）<br />
 Exercise: 1週間あたりの運動時間（単位：時間）<br />
 Sleep: 1日の睡眠時間（単位：時間）</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="10-glm.html#cb473-1" aria-hidden="true" tabindex="-1"></a>Disease <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb473-2"><a href="10-glm.html#cb473-2" aria-hidden="true" tabindex="-1"></a>BMI <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">33</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">41</span>, <span class="dv">43</span>, <span class="dv">43</span>)</span>
-<span id="cb473-3"><a href="10-glm.html#cb473-3" aria-hidden="true" tabindex="-1"></a>Exercise <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
-<span id="cb473-4"><a href="10-glm.html#cb473-4" aria-hidden="true" tabindex="-1"></a>Sleep <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
-<span id="cb473-5"><a href="10-glm.html#cb473-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb473-6"><a href="10-glm.html#cb473-6" aria-hidden="true" tabindex="-1"></a>data_q01 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Disease =</span> Disease, </span>
-<span id="cb473-7"><a href="10-glm.html#cb473-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">BMI =</span> BMI, </span>
-<span id="cb473-8"><a href="10-glm.html#cb473-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Exercise =</span> Exercise, </span>
-<span id="cb473-9"><a href="10-glm.html#cb473-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Sleep =</span> Sleep)</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="10-glm.html#cb469-1" aria-hidden="true" tabindex="-1"></a>Disease <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb469-2"><a href="10-glm.html#cb469-2" aria-hidden="true" tabindex="-1"></a>BMI <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">23</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">33</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="dv">35</span>, <span class="dv">36</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">41</span>, <span class="dv">43</span>, <span class="dv">43</span>)</span>
+<span id="cb469-3"><a href="10-glm.html#cb469-3" aria-hidden="true" tabindex="-1"></a>Exercise <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb469-4"><a href="10-glm.html#cb469-4" aria-hidden="true" tabindex="-1"></a>Sleep <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb469-5"><a href="10-glm.html#cb469-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb469-6"><a href="10-glm.html#cb469-6" aria-hidden="true" tabindex="-1"></a>data_q01 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Disease =</span> Disease, </span>
+<span id="cb469-7"><a href="10-glm.html#cb469-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">BMI =</span> BMI, </span>
+<span id="cb469-8"><a href="10-glm.html#cb469-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Exercise =</span> Exercise, </span>
+<span id="cb469-9"><a href="10-glm.html#cb469-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Sleep =</span> Sleep)</span></code></pre></div>
 <p>Diseaseを応答変数、BMI、Exercise、Sleepの3つを予測変数としたロジスティック回帰を行い、それぞれの予測変数の係数について報告せよ。また、5%水準で有意な効果を持っていた予測変数を報告せよ。</p>
 </div>
 <div id="問２-6" class="section level3 unnumbered hasAnchor">
@@ -1077,19 +1077,19 @@ Sleep: 1日の睡眠時間（単位：時間）</p>
 Temp: 気温（摂氏）<br />
 Cloud: 天気（0 = 晴れ, 1 = くもり）<br />
 Humid: 湿度（%）</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="10-glm.html#cb474-1" aria-hidden="true" tabindex="-1"></a>Birds <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">13</span>)</span>
-<span id="cb474-2"><a href="10-glm.html#cb474-2" aria-hidden="true" tabindex="-1"></a>Temp <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">23.8</span>, <span class="fl">25.3</span>, <span class="fl">26.1</span>, <span class="fl">22.7</span>, <span class="fl">25.4</span>, <span class="fl">25.5</span>, <span class="fl">24.4</span>, <span class="fl">24.5</span>, </span>
-<span id="cb474-3"><a href="10-glm.html#cb474-3" aria-hidden="true" tabindex="-1"></a>                  <span class="fl">24.4</span>, <span class="fl">24.1</span>, <span class="fl">24.5</span>, <span class="fl">24.0</span>, <span class="fl">24.2</span>, <span class="fl">25.1</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>,</span>
-<span id="cb474-4"><a href="10-glm.html#cb474-4" aria-hidden="true" tabindex="-1"></a>                  <span class="fl">24.5</span>, <span class="fl">24.1</span>, <span class="fl">24.2</span>, <span class="fl">27.4</span>)</span>
-<span id="cb474-5"><a href="10-glm.html#cb474-5" aria-hidden="true" tabindex="-1"></a>Cloud <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb474-6"><a href="10-glm.html#cb474-6" aria-hidden="true" tabindex="-1"></a>Humid <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">50.3</span>, <span class="fl">49.0</span>, <span class="fl">49.1</span>, <span class="fl">50.9</span>, <span class="fl">48.6</span>, <span class="fl">47.1</span>, <span class="fl">51.1</span>, <span class="fl">48.0</span>, <span class="fl">50.0</span>, </span>
-<span id="cb474-7"><a href="10-glm.html#cb474-7" aria-hidden="true" tabindex="-1"></a>                   <span class="fl">48.1</span>, <span class="fl">52.2</span>, <span class="fl">49.0</span>, <span class="fl">48.6</span>, <span class="fl">49.0</span>, <span class="fl">46.7</span>, <span class="fl">47.7</span>, <span class="fl">45.6</span>, <span class="fl">47.3</span>, </span>
-<span id="cb474-8"><a href="10-glm.html#cb474-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fl">49.4</span>, <span class="fl">49.1</span>)</span>
-<span id="cb474-9"><a href="10-glm.html#cb474-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb474-10"><a href="10-glm.html#cb474-10" aria-hidden="true" tabindex="-1"></a>data_q02 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Birds =</span> Birds, </span>
-<span id="cb474-11"><a href="10-glm.html#cb474-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Temp =</span> Temp, </span>
-<span id="cb474-12"><a href="10-glm.html#cb474-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Cloud =</span> Cloud, </span>
-<span id="cb474-13"><a href="10-glm.html#cb474-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Humid =</span> Humid)</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="10-glm.html#cb470-1" aria-hidden="true" tabindex="-1"></a>Birds <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">13</span>)</span>
+<span id="cb470-2"><a href="10-glm.html#cb470-2" aria-hidden="true" tabindex="-1"></a>Temp <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">23.8</span>, <span class="fl">25.3</span>, <span class="fl">26.1</span>, <span class="fl">22.7</span>, <span class="fl">25.4</span>, <span class="fl">25.5</span>, <span class="fl">24.4</span>, <span class="fl">24.5</span>, </span>
+<span id="cb470-3"><a href="10-glm.html#cb470-3" aria-hidden="true" tabindex="-1"></a>                  <span class="fl">24.4</span>, <span class="fl">24.1</span>, <span class="fl">24.5</span>, <span class="fl">24.0</span>, <span class="fl">24.2</span>, <span class="fl">25.1</span>, <span class="fl">26.0</span>, <span class="fl">24.9</span>,</span>
+<span id="cb470-4"><a href="10-glm.html#cb470-4" aria-hidden="true" tabindex="-1"></a>                  <span class="fl">24.5</span>, <span class="fl">24.1</span>, <span class="fl">24.2</span>, <span class="fl">27.4</span>)</span>
+<span id="cb470-5"><a href="10-glm.html#cb470-5" aria-hidden="true" tabindex="-1"></a>Cloud <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb470-6"><a href="10-glm.html#cb470-6" aria-hidden="true" tabindex="-1"></a>Humid <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">50.3</span>, <span class="fl">49.0</span>, <span class="fl">49.1</span>, <span class="fl">50.9</span>, <span class="fl">48.6</span>, <span class="fl">47.1</span>, <span class="fl">51.1</span>, <span class="fl">48.0</span>, <span class="fl">50.0</span>, </span>
+<span id="cb470-7"><a href="10-glm.html#cb470-7" aria-hidden="true" tabindex="-1"></a>                   <span class="fl">48.1</span>, <span class="fl">52.2</span>, <span class="fl">49.0</span>, <span class="fl">48.6</span>, <span class="fl">49.0</span>, <span class="fl">46.7</span>, <span class="fl">47.7</span>, <span class="fl">45.6</span>, <span class="fl">47.3</span>, </span>
+<span id="cb470-8"><a href="10-glm.html#cb470-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fl">49.4</span>, <span class="fl">49.1</span>)</span>
+<span id="cb470-9"><a href="10-glm.html#cb470-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-10"><a href="10-glm.html#cb470-10" aria-hidden="true" tabindex="-1"></a>data_q02 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Birds =</span> Birds, </span>
+<span id="cb470-11"><a href="10-glm.html#cb470-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Temp =</span> Temp, </span>
+<span id="cb470-12"><a href="10-glm.html#cb470-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Cloud =</span> Cloud, </span>
+<span id="cb470-13"><a href="10-glm.html#cb470-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Humid =</span> Humid)</span></code></pre></div>
 <p>Birdsを応答変数、Temp、Cloud、Humidの3つを予測変数としたポアソン回帰を行い、それぞれの予測変数の係数について報告せよ。また、5%水準で有意な効果を持っていた予測変数を報告せよ。</p>
 
 </div>

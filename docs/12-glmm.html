@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-11-27" />
+<meta name="date" content="2022-12-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -600,40 +600,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb505-2"><a href="12-glmm.html#cb505-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data=</span>iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width),<span class="at">size =</span> <span class="dv">3</span>)</span>
 <span id="cb505-3"><a href="12-glmm.html#cb505-3" aria-hidden="true" tabindex="-1"></a>graph_1</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
-<p>まず、<code>lm()</code>を使って、がくの幅を応答変数、がくの長さを予測変数とした線形モデルで係数を推定する。</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="12-glmm.html#cb506-1" aria-hidden="true" tabindex="-1"></a>iris_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Sepal.Width <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length)</span>
+<p>まず、<code>lm()</code>を使って、がくの長さを応答変数、がくの幅を予測変数とした線形モデルで係数を推定する。</p>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="12-glmm.html#cb506-1" aria-hidden="true" tabindex="-1"></a>iris_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width)</span>
 <span id="cb506-2"><a href="12-glmm.html#cb506-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris_lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Sepal.Width ~ 1 + Sepal.Length, data = iris)
+## lm(formula = Sepal.Length ~ 1 + Sepal.Width, data = iris)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -1.1095 -0.2454 -0.0167  0.2763  1.3338 
+## -1.5561 -0.6333 -0.1120  0.5579  2.2226 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   3.41895    0.25356   13.48   &lt;2e-16 ***
-## Sepal.Length -0.06188    0.04297   -1.44    0.152    
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   6.5262     0.4789   13.63   &lt;2e-16 ***
+## Sepal.Width  -0.2234     0.1551   -1.44    0.152    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.4343 on 148 degrees of freedom
+## Residual standard error: 0.8251 on 148 degrees of freedom
 ## Multiple R-squared:  0.01382,    Adjusted R-squared:  0.007159 
 ## F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519</code></pre>
 <p>推定された切片及び傾きの値から予測直線を引くと、以下のようになる。</p>
 <div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="12-glmm.html#cb508-1" aria-hidden="true" tabindex="-1"></a>graph_lm <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb508-2"><a href="12-glmm.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width), <span class="at">size =</span> <span class="dv">3</span>)  <span class="sc">+</span></span>
-<span id="cb508-3"><a href="12-glmm.html#cb508-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width), <span class="at">formula =</span> y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb508-2"><a href="12-glmm.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length), <span class="at">size =</span> <span class="dv">3</span>)  <span class="sc">+</span></span>
+<span id="cb508-3"><a href="12-glmm.html#cb508-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length), <span class="at">formula =</span> y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb508-4"><a href="12-glmm.html#cb508-4" aria-hidden="true" tabindex="-1"></a>graph_lm</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
-<p>がくの長さ（<code>Sepal.Length</code>）は、がくの幅に対してあまり影響を持っていない可能性にあることがうかがえる。</p>
+<p>がくの幅（<code>Sepal.Width</code>）は、がくの長さに対して負の影響を持っているように見える。</p>
 <p>では、この散布図を種（<code>Species</code>）ごとに色わけして示してみる。</p>
 <div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="12-glmm.html#cb509-1" aria-hidden="true" tabindex="-1"></a>graph_2 <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb509-2"><a href="12-glmm.html#cb509-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">color =</span> Species, <span class="at">shape =</span> Species), <span class="at">size =</span> <span class="dv">3</span>) </span>
+<span id="cb509-2"><a href="12-glmm.html#cb509-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length, <span class="at">color =</span> Species, <span class="at">shape =</span> Species), <span class="at">size =</span> <span class="dv">3</span>) </span>
 <span id="cb509-3"><a href="12-glmm.html#cb509-3" aria-hidden="true" tabindex="-1"></a>graph_2</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
-<p>種を無視して検討したところ、がくの長さとがくの幅の間には関係がないようにみえたが、種ごとに分けてみると「がくの長さが大きくなるほど、がくの幅が大きくなる」関係にあるように見える。</p>
+<p>種を無視して検討したところ、がくの幅と長さの間には負の関係があるようにみえたが、種ごとに分けてみると「がくの長さが大きくなるほど、がくの幅が大きくなる」関係にあるように見える。</p>
 <p>このあやめのデータのように、いくつかのデータが同じグループに属している構造の場合、グループの影響を統制しないと誤った結論を招いてしまう恐れがある。それらのデータ間には、<strong>統計的独立性が保証されていない</strong>ためである。つまり、同じ種同士のものは似た傾向にある可能性が高い（データ間で相関が存在する）。</p>
 <p><strong>独立(independence)</strong>とは、各データが他のデータに影響されないという意味である。これまで学んできた確率分布では、<strong>独立同分布(independent and identically distributed: i.i.d.)</strong>が前提とされている。例えば、コインを数回投げて表が出る回数は二項分布に従うが、表が出るかどうかは前の試行に影響されることはない（前回表が出たら、次も表が出やすいということはありえないという前提を置く）。</p>
 <p>しかし、現実のデータでは、データ間の相関などにより、事象の独立性が保たれていないケースもありえる。その場合、統計的独立性を前提とした解析を行うと、上の例のように誤った結論を導いてしまう恐れがある。</p>
@@ -741,6 +741,14 @@ y_{i} \sim \text{Normal}(\mu_{i}, \sigma)
 ## Correlation of Fixed Effects:
 ##             (Intr)
 ## Sepal.Width -0.486</code></pre>
+<p>他には、直接p値を計算する方法ではないが、信頼区間を算出して有意かどうか（信頼区間にゼロが含まれていないか）を判断するという手もある。</p>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="12-glmm.html#cb516-1" aria-hidden="true" tabindex="-1"></a>model_lmm <span class="ot">=</span> <span class="fu">lmer</span>(<span class="at">data=</span> iris, Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Species)) </span>
+<span id="cb516-2"><a href="12-glmm.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model_lmm, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#confintで信頼区間を計算する。デフォルトで95%信頼区間が出力される（levelで範囲を指定可能）。</span></span></code></pre></div>
+<pre><code>##                 2.5 %    97.5 %
+## .sig01      0.4320405 2.4380677
+## .sigma      0.3909640 0.4915558
+## (Intercept) 1.9780097 4.8131087
+## Sepal.Width 0.5844733 1.0030191</code></pre>
 <hr />
 </div>
 <div id="正規分布以外を扱う例" class="section level2 hasAnchor" number="13.5">
@@ -750,11 +758,11 @@ y_{i} \sim \text{Normal}(\mu_{i}, \sigma)
 <p>応答変数が正規分布以外に従う場合のマルチレベルモデルについても見ていこう。<br />
 <code>lme4</code>パッケージの<code>glmer()</code>で、正規分布以外の確率分布を指定したマルチレベルモデルの解析を行うことができる。以下では、ランダム効果を加えたロジスティック回帰分析の例を示す。</p>
 <p>まず、以下のプログラムを実行してサンプルデータ<code>data_sample</code>を作ろう。</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="12-glmm.html#cb516-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">4.2</span>, <span class="fl">5.1</span>, <span class="fl">3.1</span>, <span class="fl">4.2</span>, <span class="fl">5.0</span>, <span class="fl">6.1</span>, <span class="fl">7.0</span>, <span class="fl">5.3</span>, <span class="fl">6.0</span>, <span class="fl">7.0</span>, <span class="fl">8.1</span>, <span class="fl">9.0</span>)</span>
-<span id="cb516-2"><a href="12-glmm.html#cb516-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb516-3"><a href="12-glmm.html#cb516-3" aria-hidden="true" tabindex="-1"></a>ID <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">&quot;b&quot;</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">&quot;c&quot;</span>,<span class="dv">5</span>))</span>
-<span id="cb516-4"><a href="12-glmm.html#cb516-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(ID, x1, y1)</span>
-<span id="cb516-5"><a href="12-glmm.html#cb516-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_sample)</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="12-glmm.html#cb518-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>, <span class="fl">4.2</span>, <span class="fl">5.1</span>, <span class="fl">3.1</span>, <span class="fl">4.2</span>, <span class="fl">5.0</span>, <span class="fl">6.1</span>, <span class="fl">7.0</span>, <span class="fl">5.3</span>, <span class="fl">6.0</span>, <span class="fl">7.0</span>, <span class="fl">8.1</span>, <span class="fl">9.0</span>)</span>
+<span id="cb518-2"><a href="12-glmm.html#cb518-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb518-3"><a href="12-glmm.html#cb518-3" aria-hidden="true" tabindex="-1"></a>ID <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">&quot;b&quot;</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="st">&quot;c&quot;</span>,<span class="dv">5</span>))</span>
+<span id="cb518-4"><a href="12-glmm.html#cb518-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(ID, x1, y1)</span>
+<span id="cb518-5"><a href="12-glmm.html#cb518-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_sample)</span></code></pre></div>
 <pre><code>##   ID  x1 y1
 ## 1  a 1.0  0
 ## 2  a 2.0  0
@@ -773,8 +781,8 @@ y \sim \text{Binomial}(1, q)
 更に、線形予測子に、ランダム切片<span class="math inline">\(\alpha_{j}\)</span>を加えた。<span class="math inline">\(\alpha_{j}\)</span>は、平均ゼロ、標準偏差<span class="math inline">\(\sigma_{\alpha}\)</span>の正規分布に従って生成されるとする。</p>
 <p>正規分布以外の確率分布を扱うマルチレベルは、Rでは<code>lme4</code>パッケージの<code>glmer()</code>で扱うことができる。さっきの<code>lmer()</code>と同じ要領で、線形予測子に個体を識別する変数（<code>ID</code>）を加える。以下のように、<code>(1|ID)</code>というかたちで入れる。</p>
 <p>あとは、確率分布とリンク関数を指定する。指定の仕方は、<code>glm()</code>のときと同じ要領である。確率分布は<code>binomial</code>（二項分布）、リンク関数は<code>logit</code>（ロジット関数）を指定する。リンク関数の指定は省略しても構わない（二項分布を指定すれば、デフォルトでロジット関数を選択してくれる）。</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="12-glmm.html#cb518-1" aria-hidden="true" tabindex="-1"></a>model_logistic_glmm <span class="ot">=</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> data_sample, y1 <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x1 <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb518-2"><a href="12-glmm.html#cb518-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_logistic_glmm)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="12-glmm.html#cb520-1" aria-hidden="true" tabindex="-1"></a>model_logistic_glmm <span class="ot">=</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> data_sample, y1 <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x1 <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb520-2"><a href="12-glmm.html#cb520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_logistic_glmm)</span></code></pre></div>
 <pre><code>## Generalized linear mixed model fit by maximum likelihood (Laplace
 ##   Approximation) [glmerMod]
 ##  Family: binomial  ( logit )
@@ -807,36 +815,36 @@ y \sim \text{Binomial}(1, q)
 <div id="ポアソン回帰-1" class="section level3 hasAnchor" number="13.5.2">
 <h3><span class="header-section-number">13.5.2</span> ポアソン回帰<a href="12-glmm.html#ポアソン回帰-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>同じく、<code>lme4</code>パッケージの<code>glmer()</code>を使う。確率分布は<code>poisson</code>（ポアソン分布）、リンク関数は<code>log</code>（対数）を指定する。リンク関数の指定は省略しても構わない（ポアソン分布を指定すれば、デフォルトで対数関数を選択してくれる）。</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="12-glmm.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb520-2"><a href="12-glmm.html#cb520-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.5</span></span>
-<span id="cb520-3"><a href="12-glmm.html#cb520-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="fl">0.2</span></span>
-<span id="cb520-4"><a href="12-glmm.html#cb520-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb520-5"><a href="12-glmm.html#cb520-5" aria-hidden="true" tabindex="-1"></a>alpha_0 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.2</span>)</span>
-<span id="cb520-6"><a href="12-glmm.html#cb520-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-7"><a href="12-glmm.html#cb520-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-8"><a href="12-glmm.html#cb520-8" aria-hidden="true" tabindex="-1"></a>lambda_1 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="sc">+</span> alpha_0[<span class="dv">1</span>])</span>
-<span id="cb520-9"><a href="12-glmm.html#cb520-9" aria-hidden="true" tabindex="-1"></a>lambda_2 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>] <span class="sc">+</span> alpha_0[<span class="dv">2</span>])</span>
-<span id="cb520-10"><a href="12-glmm.html#cb520-10" aria-hidden="true" tabindex="-1"></a>lambda_3 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>] <span class="sc">+</span> alpha_0[<span class="dv">3</span>])</span>
-<span id="cb520-11"><a href="12-glmm.html#cb520-11" aria-hidden="true" tabindex="-1"></a>lambda_4 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>] <span class="sc">+</span> alpha_0[<span class="dv">4</span>])</span>
-<span id="cb520-12"><a href="12-glmm.html#cb520-12" aria-hidden="true" tabindex="-1"></a>lambda_5 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>] <span class="sc">+</span> alpha_0[<span class="dv">5</span>])</span>
-<span id="cb520-13"><a href="12-glmm.html#cb520-13" aria-hidden="true" tabindex="-1"></a>y_1 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_1)</span>
-<span id="cb520-14"><a href="12-glmm.html#cb520-14" aria-hidden="true" tabindex="-1"></a>y_2 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_2)</span>
-<span id="cb520-15"><a href="12-glmm.html#cb520-15" aria-hidden="true" tabindex="-1"></a>y_3 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_3)</span>
-<span id="cb520-16"><a href="12-glmm.html#cb520-16" aria-hidden="true" tabindex="-1"></a>y_4 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_4)</span>
-<span id="cb520-17"><a href="12-glmm.html#cb520-17" aria-hidden="true" tabindex="-1"></a>y_5 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_5)</span>
-<span id="cb520-18"><a href="12-glmm.html#cb520-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-19"><a href="12-glmm.html#cb520-19" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">c</span>(y_1, y_2, y_3, y_4, y_5), </span>
-<span id="cb520-20"><a href="12-glmm.html#cb520-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> x <span class="sc">+</span> <span class="dv">20</span>,</span>
-<span id="cb520-21"><a href="12-glmm.html#cb520-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">ID =</span> <span class="fu">sort</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">10</span>)))</span>
-<span id="cb520-22"><a href="12-glmm.html#cb520-22" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x_std <span class="ot">=</span> dat<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>x)</span>
-<span id="cb520-23"><a href="12-glmm.html#cb520-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-24"><a href="12-glmm.html#cb520-24" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb520-25"><a href="12-glmm.html#cb520-25" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb520-26"><a href="12-glmm.html#cb520-26" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="fu">factor</span>(ID)))</span></code></pre></div>
-<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="12-glmm.html#cb521-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x_std <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="12-glmm.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb522-2"><a href="12-glmm.html#cb522-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.5</span></span>
+<span id="cb522-3"><a href="12-glmm.html#cb522-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="fl">0.2</span></span>
+<span id="cb522-4"><a href="12-glmm.html#cb522-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb522-5"><a href="12-glmm.html#cb522-5" aria-hidden="true" tabindex="-1"></a>alpha_0 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.2</span>)</span>
+<span id="cb522-6"><a href="12-glmm.html#cb522-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb522-7"><a href="12-glmm.html#cb522-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb522-8"><a href="12-glmm.html#cb522-8" aria-hidden="true" tabindex="-1"></a>lambda_1 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="sc">+</span> alpha_0[<span class="dv">1</span>])</span>
+<span id="cb522-9"><a href="12-glmm.html#cb522-9" aria-hidden="true" tabindex="-1"></a>lambda_2 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>] <span class="sc">+</span> alpha_0[<span class="dv">2</span>])</span>
+<span id="cb522-10"><a href="12-glmm.html#cb522-10" aria-hidden="true" tabindex="-1"></a>lambda_3 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>] <span class="sc">+</span> alpha_0[<span class="dv">3</span>])</span>
+<span id="cb522-11"><a href="12-glmm.html#cb522-11" aria-hidden="true" tabindex="-1"></a>lambda_4 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">31</span><span class="sc">:</span><span class="dv">40</span>] <span class="sc">+</span> alpha_0[<span class="dv">4</span>])</span>
+<span id="cb522-12"><a href="12-glmm.html#cb522-12" aria-hidden="true" tabindex="-1"></a>lambda_5 <span class="ot">=</span> <span class="fu">exp</span>(alpha <span class="sc">+</span> beta <span class="sc">*</span> x[<span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>] <span class="sc">+</span> alpha_0[<span class="dv">5</span>])</span>
+<span id="cb522-13"><a href="12-glmm.html#cb522-13" aria-hidden="true" tabindex="-1"></a>y_1 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_1)</span>
+<span id="cb522-14"><a href="12-glmm.html#cb522-14" aria-hidden="true" tabindex="-1"></a>y_2 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_2)</span>
+<span id="cb522-15"><a href="12-glmm.html#cb522-15" aria-hidden="true" tabindex="-1"></a>y_3 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_3)</span>
+<span id="cb522-16"><a href="12-glmm.html#cb522-16" aria-hidden="true" tabindex="-1"></a>y_4 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_4)</span>
+<span id="cb522-17"><a href="12-glmm.html#cb522-17" aria-hidden="true" tabindex="-1"></a>y_5 <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">10</span>, lambda_5)</span>
+<span id="cb522-18"><a href="12-glmm.html#cb522-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb522-19"><a href="12-glmm.html#cb522-19" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">c</span>(y_1, y_2, y_3, y_4, y_5), </span>
+<span id="cb522-20"><a href="12-glmm.html#cb522-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> x <span class="sc">+</span> <span class="dv">20</span>,</span>
+<span id="cb522-21"><a href="12-glmm.html#cb522-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">ID =</span> <span class="fu">sort</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">10</span>)))</span>
+<span id="cb522-22"><a href="12-glmm.html#cb522-22" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>x_std <span class="ot">=</span> dat<span class="sc">$</span>x <span class="sc">-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>x)</span>
+<span id="cb522-23"><a href="12-glmm.html#cb522-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb522-24"><a href="12-glmm.html#cb522-24" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb522-25"><a href="12-glmm.html#cb522-25" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb522-26"><a href="12-glmm.html#cb522-26" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="fu">factor</span>(ID)))</span></code></pre></div>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-299-1.png" width="672" /></p>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="12-glmm.html#cb523-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> dat, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x_std <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>))</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="12-glmm.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="12-glmm.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
 <pre><code>## Generalized linear mixed model fit by maximum likelihood (Laplace
 ##   Approximation) [glmerMod]
 ##  Family: poisson  ( log )
@@ -871,17 +879,17 @@ y \sim \text{Binomial}(1, q)
 <div id="マルチレベルモデルによる過分散への対処" class="section level3 hasAnchor" number="13.5.3">
 <h3><span class="header-section-number">13.5.3</span> マルチレベルモデルによる過分散への対処<a href="12-glmm.html#マルチレベルモデルによる過分散への対処" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ポアソン分布の理論的な分散よりも実際のデータの分散が大きい「過分散」がある場合には、ポアソン回帰の結果が信頼できなくなる問題があった。</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="12-glmm.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サンプルデータの作成</span></span>
-<span id="cb525-2"><a href="12-glmm.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb525-3"><a href="12-glmm.html#cb525-3" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
-<span id="cb525-4"><a href="12-glmm.html#cb525-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb525-5"><a href="12-glmm.html#cb525-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb525-6"><a href="12-glmm.html#cb525-6" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span> <span class="sc">+</span> <span class="fl">0.1</span><span class="sc">*</span>x <span class="sc">+</span> e)</span>
-<span id="cb525-7"><a href="12-glmm.html#cb525-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
-<span id="cb525-8"><a href="12-glmm.html#cb525-8" aria-hidden="true" tabindex="-1"></a>dat_dis <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span>
-<span id="cb525-9"><a href="12-glmm.html#cb525-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb525-10"><a href="12-glmm.html#cb525-10" aria-hidden="true" tabindex="-1"></a>result_dis <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat_dis, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
-<span id="cb525-11"><a href="12-glmm.html#cb525-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_dis)</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="12-glmm.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="co">#サンプルデータの作成</span></span>
+<span id="cb527-2"><a href="12-glmm.html#cb527-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb527-3"><a href="12-glmm.html#cb527-3" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb527-4"><a href="12-glmm.html#cb527-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb527-5"><a href="12-glmm.html#cb527-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb527-6"><a href="12-glmm.html#cb527-6" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span> <span class="sc">+</span> <span class="fl">0.1</span><span class="sc">*</span>x <span class="sc">+</span> e)</span>
+<span id="cb527-7"><a href="12-glmm.html#cb527-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
+<span id="cb527-8"><a href="12-glmm.html#cb527-8" aria-hidden="true" tabindex="-1"></a>dat_dis <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span>
+<span id="cb527-9"><a href="12-glmm.html#cb527-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-10"><a href="12-glmm.html#cb527-10" aria-hidden="true" tabindex="-1"></a>result_dis <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">data =</span> dat_dis, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
+<span id="cb527-11"><a href="12-glmm.html#cb527-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_dis)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y ~ 1 + x, family = poisson(link = &quot;log&quot;), data = dat_dis)
@@ -904,8 +912,8 @@ y \sim \text{Binomial}(1, q)
 ## AIC: 260.41
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="12-glmm.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
-<span id="cb527-2"><a href="12-glmm.html#cb527-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_overdispersion</span>(result_dis) <span class="co">#過分散のチェック</span></span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="12-glmm.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb529-2"><a href="12-glmm.html#cb529-2" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_overdispersion</span>(result_dis) <span class="co">#過分散のチェック</span></span></code></pre></div>
 <pre><code>## # Overdispersion test
 ## 
 ##        dispersion ratio =   4.048
@@ -919,8 +927,8 @@ y \sim \text{Binomial}(1, q)
 y_{i} \sim \text{Poisson}(\lambda_{i})
 \]</span>
 観測値ごとのランダム切片（<span class="math inline">\(\alpha_{i}\)</span>）を加えて、余分な分散を別のパラメータ（<span class="math inline">\(\sigma_{\alpha}\)</span>）で表現する。</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="12-glmm.html#cb530-1" aria-hidden="true" tabindex="-1"></a>dat_dis<span class="sc">$</span>ID <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat_dis) <span class="co">#観測値ごとに番号を割り振る（1からデータ数までの数値の連続）</span></span>
-<span id="cb530-2"><a href="12-glmm.html#cb530-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_dis)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="12-glmm.html#cb532-1" aria-hidden="true" tabindex="-1"></a>dat_dis<span class="sc">$</span>ID <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat_dis) <span class="co">#観測値ごとに番号を割り振る（1からデータ数までの数値の連続）</span></span>
+<span id="cb532-2"><a href="12-glmm.html#cb532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_dis)</span></code></pre></div>
 <pre><code>##   y        x ID
 ## 1 1 1.373546  1
 ## 2 0 2.183643  2
@@ -928,8 +936,8 @@ y_{i} \sim \text{Poisson}(\lambda_{i})
 ## 4 0 3.595281  4
 ## 5 3 2.329508  5
 ## 6 8 1.179532  6</code></pre>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="12-glmm.html#cb532-1" aria-hidden="true" tabindex="-1"></a>result_poisson_glmm <span class="ot">=</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> dat_dis, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
-<span id="cb532-2"><a href="12-glmm.html#cb532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_poisson_glmm)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="12-glmm.html#cb534-1" aria-hidden="true" tabindex="-1"></a>result_poisson_glmm <span class="ot">=</span> lme4<span class="sc">::</span><span class="fu">glmer</span>(<span class="at">data =</span> dat_dis, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>ID), <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>))</span>
+<span id="cb534-2"><a href="12-glmm.html#cb534-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(result_poisson_glmm)</span></code></pre></div>
 <pre><code>## Generalized linear mixed model fit by maximum likelihood (Laplace
 ##   Approximation) [glmerMod]
 ##  Family: poisson  ( log )
@@ -964,8 +972,8 @@ y_{i} \sim \text{Poisson}(\lambda_{i})
 <div id="問１-8" class="section level3 unnumbered hasAnchor">
 <h3>問１<a href="12-glmm.html#問１-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>car</code>パッケージに入っているカナダにおける職業の威信度に関する調査データ<code>Prestige</code>を使う。102業種に関する調査結果が入っている。</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="12-glmm.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb534-2"><a href="12-glmm.html#cb534-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Prestige)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="12-glmm.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb536-2"><a href="12-glmm.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Prestige)</span></code></pre></div>
 <pre><code>##                     education income women prestige census type
 ## gov.administrators      13.11  12351 11.16     68.8   1113 prof
 ## general.managers        12.26  25879  4.02     69.1   1130 prof

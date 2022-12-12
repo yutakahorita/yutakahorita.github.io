@@ -50,11 +50,11 @@ graph_1
 ```
 
 
-まず、`lm()`を使って、がくの幅を応答変数、がくの長さを予測変数とした線形モデルで係数を推定する。
+まず、`lm()`を使って、がくの長さを応答変数、がくの幅を予測変数とした線形モデルで係数を推定する。
 
 
 ```{r}
-iris_lm = lm(data = iris, Sepal.Width ~ 1 + Sepal.Length)
+iris_lm = lm(data = iris, Sepal.Length ~ 1 + Sepal.Width)
 summary(iris_lm)
 ```
 
@@ -64,13 +64,13 @@ summary(iris_lm)
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 
 graph_lm = ggplot2::ggplot()+
-  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width), size = 3)  +
-  ggplot2::geom_smooth(data = iris, aes(x = Sepal.Length, y = Sepal.Width), formula = y~ 1 + x, method = "lm", se = FALSE)
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Width, y = Sepal.Length), size = 3)  +
+  ggplot2::geom_smooth(data = iris, aes(x = Sepal.Width, y = Sepal.Length), formula = y~ 1 + x, method = "lm", se = FALSE)
 graph_lm
 
 ```
 
-がくの長さ（`Sepal.Length`）は、がくの幅に対してあまり影響を持っていない可能性にあることがうかがえる。  
+がくの幅（`Sepal.Width`）は、がくの長さに対して負の影響を持っているように見える。  
   
   
 では、この散布図を種（`Species`）ごとに色わけして示してみる。
@@ -78,13 +78,13 @@ graph_lm
 ```{r}
 
 graph_2 = ggplot2::ggplot() +
-  ggplot2::geom_point(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species), size = 3) 
+  ggplot2::geom_point(data = iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species, shape = Species), size = 3) 
 graph_2
 
 ```
 
 
-種を無視して検討したところ、がくの長さとがくの幅の間には関係がないようにみえたが、種ごとに分けてみると「がくの長さが大きくなるほど、がくの幅が大きくなる」関係にあるように見える。  
+種を無視して検討したところ、がくの幅と長さの間には負の関係があるようにみえたが、種ごとに分けてみると「がくの長さが大きくなるほど、がくの幅が大きくなる」関係にあるように見える。  
   
 このあやめのデータのように、いくつかのデータが同じグループに属している構造の場合、グループの影響を統制しないと誤った結論を招いてしまう恐れがある。それらのデータ間には、**統計的独立性が保証されていない**ためである。つまり、同じ種同士のものは似た傾向にある可能性が高い（データ間で相関が存在する）。  
     
@@ -177,6 +177,15 @@ summary(model_lmm)
 
 model_lmm = lmer(data= iris, Sepal.Length ~ 1 + Sepal.Width + (1|Species)) 
 summary(model_lmm)
+
+```
+
+他には、直接p値を計算する方法ではないが、信頼区間を算出して有意かどうか（信頼区間にゼロが含まれていないか）を判断するという手もある。
+
+```{r, message=FALSE, warning=FALSE}
+
+model_lmm = lmer(data= iris, Sepal.Length ~ 1 + Sepal.Width + (1|Species)) 
+confint(model_lmm, level = 0.95) #confintで信頼区間を計算する。デフォルトで95%信頼区間が出力される（levelで範囲を指定可能）。
 
 ```
 

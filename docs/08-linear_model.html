@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 線形モデル | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 9 線形モデル | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 線形モデル | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-12-12" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -734,6 +734,11 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <span id="cb338-8"><a href="08-linear_model.html#cb338-8" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data=</span>data_mlm, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span> y), <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb338-9"><a href="08-linear_model.html#cb338-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> result_mlm<span class="sc">$</span>maximum, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb338-10"><a href="08-linear_model.html#cb338-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;theta&quot;</span>, <span class="at">y=</span> <span class="st">&quot;log L&quot;</span>) </span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
 <p>対数尤度が最も大きくなるのは、<span class="math inline">\(\theta=\)</span> 0.4のときである（表が出た割合である2/5と一致）。</p>
 <p>ここではわかりやすくパラメータを1つのみ使って説明しているが、線形モデルの傾きや切片の推定も同じである。上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする。</p>
@@ -751,12 +756,12 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <p>Rには、線形モデルの推定結果から信頼区間と予測区間を算出してくれる<code>predict()</code>関数が用意されている。先ほどの線形モデルの解析結果を使って、信頼区間と予測区間を求めてみよう。</p>
 <div id="信頼区間" class="section level3 hasAnchor" number="9.5.1">
 <h3><span class="header-section-number">9.5.1</span> 信頼区間<a href="08-linear_model.html#信頼区間" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="08-linear_model.html#cb339-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
-<span id="cb339-2"><a href="08-linear_model.html#cb339-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-3"><a href="08-linear_model.html#cb339-3" aria-hidden="true" tabindex="-1"></a>result_conf <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="08-linear_model.html#cb340-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
+<span id="cb340-2"><a href="08-linear_model.html#cb340-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb340-3"><a href="08-linear_model.html#cb340-3" aria-hidden="true" tabindex="-1"></a>result_conf <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
 <p><code>interval = "confidence"</code>とすると、信頼区間を求めてくれる。
 <code>level =</code> に信頼区間の幅を入力する（デフォルトで0.95だが、幅を変えたい場合は指定する）。</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="08-linear_model.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_conf)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="08-linear_model.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_conf)</span></code></pre></div>
 <pre><code>##        fit      lwr      upr
 ## 1 2.376565 2.188121 2.565009
 ## 2 2.004878 1.792226 2.217531
@@ -766,23 +771,23 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 6 2.934095 2.775149 3.093040</code></pre>
 <p>uprが95%信頼区間の上限、lwrが95%信頼区間の下限に当たる。</p>
 <p>求めた信頼区間を図示してみよう</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="08-linear_model.html#cb342-1" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></span>
-<span id="cb342-2"><a href="08-linear_model.html#cb342-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb342-3"><a href="08-linear_model.html#cb342-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb342-4"><a href="08-linear_model.html#cb342-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb342-5"><a href="08-linear_model.html#cb342-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb342-6"><a href="08-linear_model.html#cb342-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="08-linear_model.html#cb343-1" aria-hidden="true" tabindex="-1"></a>plot_conf <span class="ot">=</span> <span class="fu">cbind</span>(iris, result_conf) <span class="co">#実測値のデータと予測値のデータを結合する。</span></span>
+<span id="cb343-2"><a href="08-linear_model.html#cb343-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-3"><a href="08-linear_model.html#cb343-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb343-4"><a href="08-linear_model.html#cb343-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb343-5"><a href="08-linear_model.html#cb343-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb343-6"><a href="08-linear_model.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
 </div>
 <div id="予測区間" class="section level3 hasAnchor" number="9.5.2">
 <h3><span class="header-section-number">9.5.2</span> 予測区間<a href="08-linear_model.html#予測区間" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="08-linear_model.html#cb343-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
-<span id="cb343-2"><a href="08-linear_model.html#cb343-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-3"><a href="08-linear_model.html#cb343-3" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>)) <span class="co">#0.1刻みで4から8まで範囲の数値ベクトルを入れたデータを仮に作る</span></span>
-<span id="cb343-4"><a href="08-linear_model.html#cb343-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-5"><a href="08-linear_model.html#cb343-5" aria-hidden="true" tabindex="-1"></a>result_pred <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#newdataに先ほど作成した仮のデータを入れる。</span></span>
-<span id="cb343-6"><a href="08-linear_model.html#cb343-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-7"><a href="08-linear_model.html#cb343-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_pred) <span class="co">#仮データの数値に対応する予測区間が求められる</span></span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="08-linear_model.html#cb344-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
+<span id="cb344-2"><a href="08-linear_model.html#cb344-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="08-linear_model.html#cb344-3" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>)) <span class="co">#0.1刻みで4から8まで範囲の数値ベクトルを入れたデータを仮に作る</span></span>
+<span id="cb344-4"><a href="08-linear_model.html#cb344-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-5"><a href="08-linear_model.html#cb344-5" aria-hidden="true" tabindex="-1"></a>result_pred <span class="ot">=</span> <span class="fu">predict</span>(result, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>) <span class="co">#newdataに先ほど作成した仮のデータを入れる。</span></span>
+<span id="cb344-6"><a href="08-linear_model.html#cb344-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-7"><a href="08-linear_model.html#cb344-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_pred) <span class="co">#仮データの数値に対応する予測区間が求められる</span></span></code></pre></div>
 <pre><code>##         fit        lwr      upr
 ## 1 0.3322885 -1.4165179 2.081095
 ## 2 0.5181318 -1.2277203 2.263984
@@ -792,12 +797,12 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 ## 6 1.2615050 -0.4741389 2.997149</code></pre>
 <p><code>interval = "prediction"</code>と入力する。</p>
 <p>予測区間を図示してみよう。</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="08-linear_model.html#cb345-1" aria-hidden="true" tabindex="-1"></a>plot_pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred) <span class="co">#予測区間のデータを作成する</span></span>
-<span id="cb345-2"><a href="08-linear_model.html#cb345-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-3"><a href="08-linear_model.html#cb345-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb345-4"><a href="08-linear_model.html#cb345-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
-<span id="cb345-5"><a href="08-linear_model.html#cb345-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
-<span id="cb345-6"><a href="08-linear_model.html#cb345-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="08-linear_model.html#cb346-1" aria-hidden="true" tabindex="-1"></a>plot_pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="fl">0.1</span>), result_pred) <span class="co">#予測区間のデータを作成する</span></span>
+<span id="cb346-2"><a href="08-linear_model.html#cb346-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-3"><a href="08-linear_model.html#cb346-3" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb346-4"><a href="08-linear_model.html#cb346-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb346-5"><a href="08-linear_model.html#cb346-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
+<span id="cb346-6"><a href="08-linear_model.html#cb346-6" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
 <p>実際のデータが予測区間の範囲に収まっているならば、そのモデルは概ねよくデータを予測できていることを示している。</p>
 </div>
@@ -809,7 +814,7 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <div id="確認問題-6" class="section level2 unnumbered hasAnchor">
 <h2>確認問題<a href="08-linear_model.html#確認問題-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Rに入っているサンプルデータ<code>trees</code>を使って、線形モデルの結果の解釈の仕方と<code>lm()</code>関数の扱い方を復習をする。</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="08-linear_model.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="08-linear_model.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span></code></pre></div>
 <pre><code>##   Girth Height Volume
 ## 1   8.3     70   10.3
 ## 2   8.6     65   10.3

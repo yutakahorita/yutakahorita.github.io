@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 ベイズ統計 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 14 ベイズ統計 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 ベイズ統計 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-12-12" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -660,8 +660,8 @@ Pr(\theta|x) \propto Pr(x|\theta) Pr(\theta)
 <p><span class="math display">\[
 Pr(\theta) = 1
 \]</span></p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="13-Bayese.html#cb538-1" aria-hidden="true" tabindex="-1"></a>theta_seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>) <span class="co">#0から1までの範囲で0.01刻みでベクトルを作る</span></span>
-<span id="cb538-2"><a href="13-Bayese.html#cb538-2" aria-hidden="true" tabindex="-1"></a>theta_prior <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(theta_seq))</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="13-Bayese.html#cb539-1" aria-hidden="true" tabindex="-1"></a>theta_seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>) <span class="co">#0から1までの範囲で0.01刻みでベクトルを作る</span></span>
+<span id="cb539-2"><a href="13-Bayese.html#cb539-2" aria-hidden="true" tabindex="-1"></a>theta_prior <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(theta_seq))</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-308-1.png" width="672" /></p>
 <hr />
 <p>もちろん事前確率について仮説がある場合は、範囲を定めた一様分布あるいは別の確率分布を事前確率を設定しても良い。例えば、身長の分布を推定するときは、0cm ~ 250cmの範囲の一様分布を事前分布として設定するのは妥当であるといえる。</p>
@@ -673,7 +673,7 @@ Pr(\theta) = 1
 <p><span class="math display">\[
 Pr(x|\theta) = {}_n\mathrm{C}_h\theta^{h}(1-\theta)^{(n-h)}
 \]</span></p>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="13-Bayese.html#cb539-1" aria-hidden="true" tabindex="-1"></a>theta_likelihood <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob =</span> theta_seq)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="13-Bayese.html#cb540-1" aria-hidden="true" tabindex="-1"></a>theta_likelihood <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob =</span> theta_seq)</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
 </div>
 <div id="事後分布" class="section level3 hasAnchor" number="14.3.3">
@@ -683,8 +683,8 @@ Pr(x|\theta) = {}_n\mathrm{C}_h\theta^{h}(1-\theta)^{(n-h)}
 Pr(\theta|x) \propto Pr(x|\theta) Pr(\theta)
 \]</span></p>
 <p>尤度と事前分布をかけて事後分布を求める（正確には、更に基準化定数<span class="math inline">\(Pr(x)\)</span>で割る）。</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="13-Bayese.html#cb540-1" aria-hidden="true" tabindex="-1"></a>theta_posterior <span class="ot">=</span> theta_likelihood <span class="sc">*</span> theta_prior</span>
-<span id="cb540-2"><a href="13-Bayese.html#cb540-2" aria-hidden="true" tabindex="-1"></a>theta_posterior_std <span class="ot">=</span> theta_posterior<span class="sc">/</span><span class="fu">sum</span>(theta_posterior) </span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="13-Bayese.html#cb541-1" aria-hidden="true" tabindex="-1"></a>theta_posterior <span class="ot">=</span> theta_likelihood <span class="sc">*</span> theta_prior</span>
+<span id="cb541-2"><a href="13-Bayese.html#cb541-2" aria-hidden="true" tabindex="-1"></a>theta_posterior_std <span class="ot">=</span> theta_posterior<span class="sc">/</span><span class="fu">sum</span>(theta_posterior) </span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-312-1.png" width="672" /></p>
 </div>
 </div>

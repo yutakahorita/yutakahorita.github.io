@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 データ・ハンドリング | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 4 データ・ハンドリング | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 データ・ハンドリング | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2022-12-12" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -769,32 +769,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="wide型からlong型に変換" class="section level3 hasAnchor" number="4.6.2">
 <h3><span class="header-section-number">4.6.2</span> wide型からlong型に変換<a href="03-data.html#wide型からlong型に変換" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>tidyrパッケージの<code>gather()</code>を使う。</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="03-data.html#cb168-1" aria-hidden="true" tabindex="-1"></a>dat_long2 <span class="ot">=</span> dat_wide <span class="sc">%&gt;%</span> tidyr<span class="sc">::</span><span class="fu">gather</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Z&quot;</span>, </span>
-<span id="cb168-2"><a href="03-data.html#cb168-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">key =</span> Condition, <span class="at">value =</span> Score) </span>
-<span id="cb168-3"><a href="03-data.html#cb168-3" aria-hidden="true" tabindex="-1"></a>dat_long2</span></code></pre></div>
-<pre><code>##   Subject Gender Age Condition Score
-## 1       A      M  18         X     6
-## 2       B      F  19         X     2
-## 3       C      F  20         X     7
-## 4       A      M  18         Y     9
-## 5       B      F  19         Y     3
-## 6       C      F  20         Y     4
-## 7       A      M  18         Z     7
-## 8       B      F  19         Z     5
-## 9       C      F  20         Z     7</code></pre>
-<p><code>gather()</code>で、並べ替える変数を指定する。そして、<code>key=</code>でkey変数、<code>value=</code>でvalue変数として新たにつけたい名前を指定する。</p>
+<p><code>tidyr</code>パッケージの<code>pivot_longer()</code>を使う。</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="03-data.html#cb168-1" aria-hidden="true" tabindex="-1"></a>dat_long2 <span class="ot">=</span> dat_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb168-2"><a href="03-data.html#cb168-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Z&quot;</span>),</span>
+<span id="cb168-3"><a href="03-data.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="st">&quot;Condition&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb168-4"><a href="03-data.html#cb168-4" aria-hidden="true" tabindex="-1"></a>dat_long2</span></code></pre></div>
+<pre><code>## # A tibble: 9 × 5
+##   Subject Gender   Age Condition Score
+##   &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1 A       M         18 X             6
+## 2 A       M         18 Y             9
+## 3 A       M         18 Z             7
+## 4 B       F         19 X             2
+## 5 B       F         19 Y             3
+## 6 B       F         19 Z             5
+## 7 C       F         20 X             7
+## 8 C       F         20 Y             4
+## 9 C       F         20 Z             7</code></pre>
+<p><code>cols =</code>で、並べ替える変数を指定する。そして、<code>names_to =</code>で新しい列の名前、<code>values_to =</code>で値の名前を指定する。</p>
 </div>
 <div id="long型からwide型に変換" class="section level3 hasAnchor" number="4.6.3">
 <h3><span class="header-section-number">4.6.3</span> long型からwide型に変換<a href="03-data.html#long型からwide型に変換" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>tidyrパッケージの<code>spread()</code>を使う。</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="03-data.html#cb170-1" aria-hidden="true" tabindex="-1"></a>dat_wide2 <span class="ot">=</span> dat_long <span class="sc">%&gt;%</span> tidyr<span class="sc">::</span><span class="fu">spread</span>(<span class="at">key =</span> Condition, <span class="at">value =</span> Score) </span>
-<span id="cb170-2"><a href="03-data.html#cb170-2" aria-hidden="true" tabindex="-1"></a>dat_wide2</span></code></pre></div>
-<pre><code>##   Subject Gender Age X Y Z
-## 1       A      M  18 6 9 7
-## 2       B      F  19 2 3 5
-## 3       C      F  20 7 4 7</code></pre>
-<p><code>spread()</code>で、<code>key=</code>でkey変数、<code>value=</code>でvalue変数とする変数を指定する。</p>
+<p><code>tidyr</code>パッケージの<code>pivot_wider()</code>を使う。</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="03-data.html#cb170-1" aria-hidden="true" tabindex="-1"></a>dat_wide2 <span class="ot">=</span> dat_long <span class="sc">%&gt;%</span> </span>
+<span id="cb170-2"><a href="03-data.html#cb170-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Condition, <span class="at">values_from =</span> Score) </span>
+<span id="cb170-3"><a href="03-data.html#cb170-3" aria-hidden="true" tabindex="-1"></a>dat_wide2</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 6
+##   Subject Gender   Age     X     Y     Z
+##   &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A       M         18     6     9     7
+## 2 B       F         19     2     3     5
+## 3 C       F         20     7     4     7</code></pre>
+<p><code>names_from =</code>で横並びにしたときの値のラベル名、<code>values_from =</code>で横並びの対象となる値を指定する。</p>
 </div>
 </div>
 <div id="データの結合" class="section level2 hasAnchor" number="4.7">
@@ -889,7 +895,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8          5           3.4          1.5         0.2 setosa 
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
-## # … with 140 more rows</code></pre>
+## # ℹ 140 more rows</code></pre>
 <p>tibbleだとデータをすべて閲覧することはできないが、すべて閲覧したい場合は<code>View()</code>を使えばよい。</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="03-data.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dat)</span></code></pre></div>
 </div>

@@ -236,32 +236,34 @@ Rでデータ解析に用いる関数のほとんどは、「**1つの観測値�
   
 ### wide型からlong型に変換
 
-tidyrパッケージの`gather()`を使う。
+`tidyr`パッケージの`pivot_longer()`を使う。
 
 
 ```{r}
 
-dat_long2 = dat_wide %>% tidyr::gather("X", "Y", "Z", 
-                                       key = Condition, value = Score) 
+dat_long2 = dat_wide %>% 
+  tidyr::pivot_longer(cols = c("X", "Y", "Z"),
+names_to = "Condition", values_to = "Score")
 dat_long2
 
 ```
 
-`gather()`で、並べ替える変数を指定する。そして、`key=`でkey変数、`value=`でvalue変数として新たにつけたい名前を指定する。  
+`cols =`で、並べ替える変数を指定する。そして、`names_to =`で新しい列の名前、`values_to =`で値の名前を指定する。  
 
 ### long型からwide型に変換
 
-tidyrパッケージの`spread()`を使う。
+`tidyr`パッケージの`pivot_wider()`を使う。
 
 
 ```{r}
 
-dat_wide2 = dat_long %>% tidyr::spread(key = Condition, value = Score) 
+dat_wide2 = dat_long %>% 
+  tidyr::pivot_wider(names_from = Condition, values_from = Score) 
 dat_wide2
 
 ```
 
-`spread()`で、`key=`でkey変数、`value=`でvalue変数とする変数を指定する。
+`names_from = `で横並びにしたときの値のラベル名、`values_from =`で横並びの対象となる値を指定する。
 
 
 ## データの結合

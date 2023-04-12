@@ -724,7 +724,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="データの変換" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> データの変換<a href="03-data.html#データの変換" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><code>tidyr</code>パッケージに入っている<code>gather()</code>と<code>spread()</code>を使うと、データの並び替えなどをすることができる。</p>
+<p><code>tidyr</code>パッケージに入っている<code>pivot_longer()</code>と<code>pivot_wider()</code>を使うと、データの並び替えなどをすることができる。</p>
 <div id="wide型とlong型の区別" class="section level3 hasAnchor" number="4.6.1">
 <h3><span class="header-section-number">4.6.1</span> wide型とlong型の区別<a href="03-data.html#wide型とlong型の区別" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>まず、データのレイアウトには、<em>wide型</em>と<em>long型</em>の二種類があることを理解しよう。</p>
@@ -786,7 +786,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7 C       F         20 X             7
 ## 8 C       F         20 Y             4
 ## 9 C       F         20 Z             7</code></pre>
-<p><code>cols =</code>で、並べ替える変数を指定する。そして、<code>names_to =</code>で新しい列の名前、<code>values_to =</code>で値の名前を指定する。</p>
+<p><code>cols =</code>で、並べ替える変数を指定する。<code>names_to =</code>で新しく作られるグループを意味する列の名前、<code>values_to =</code>で値を意味する列の名前を指定する。</p>
 </div>
 <div id="long型からwide型に変換" class="section level3 hasAnchor" number="4.6.3">
 <h3><span class="header-section-number">4.6.3</span> long型からwide型に変換<a href="03-data.html#long型からwide型に変換" class="anchor-section" aria-label="Anchor link to header"></a></h3>

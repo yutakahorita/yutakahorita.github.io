@@ -129,7 +129,18 @@ hist(iris$Sepal.Length,
 ```{r}
 
 boxplot(x = iris$Sepal.Length,
-     main = "Boxplot", xlab = "Sepal Length") #その他のオプションも指定可能
+     main = "Boxplot", 
+     col = "red",
+     xlab = "Sepal Length") #その他のオプションも指定可能
+```
+
+
+```{r}
+
+boxplot(data = iris, Sepal.Length ~ Species, 
+        main = "Boxplot", 
+        col = c("red", "blue", "green"),
+        xlab = "Sepal Length") #グループごとに示す場合
 ```
 
 
@@ -178,7 +189,7 @@ dev.off()    #描画デバイスを閉じる
 ```
 
 
-RStudioならば、plotsウィンドウの「Export」を選んで保存することも可能。
+RStudio ならば、右下の「Plots」ウィンドウの「Export」から保存することも可能。
 
   
 ## ggplot2パッケージ
@@ -374,6 +385,7 @@ x軸やy軸のラベルを変えたいときは、`labs`を使うと良い。
 p = ggplot2::ggplot() +
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) + 
   labs(x = "Length of sepal", y = "Length of petal")
+p
 
 ```
 
@@ -402,7 +414,7 @@ p = ggplot2::ggplot() +
   geom_point(data = iris, aes(x=Sepal.Length, y=Petal.Length)) 
 p + theme_bw()
 p + theme_gray()
-p + theme_classic()
+p + theme_classic(base_size = 20) #base_sizeで軸や軸ラベルなどのバランスを考慮した上でフォントサイズを整えることができる
 
 ```
 
@@ -426,6 +438,8 @@ ggplot2::ggsave(plot = p, filename = "plot_3.png", width = 8, height = 5) #幅(w
 
 
 ## 応用的なグラフ
+
+その他のパッケージとの併用で、更に応用的なグラフの作成も可能である。
 
 ### Rain-cloud plot
 

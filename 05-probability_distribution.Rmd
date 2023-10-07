@@ -13,8 +13,10 @@ library(ggplot2)
 * 確率変数と確率分布
 * 一様分布  
 * 二項分布  
-* 正規分布と中心極限定理  
+* 正規分布  
+* ポアソン分布  
 * Rの確率分布関数  
+* 中心極限定理  
 * その他の確率分布  
   
 準備として、以下のプログラムを実行しよう。
@@ -42,11 +44,35 @@ set.seed(1)
   
 このとき、Xを**確率変数**と呼ぶ。確率変数とは、その値と対応する確率が存在する変数のことをいう。表のように、確率変数とその変数が取り得る確率の分布を**確率分布**という。  
   
-確率分布には様々な種類がある。まず、**一様分布**、**二項分布**（ベルヌーイ分布）、**正規分布**、**ポアソン分布**について理解する。
+確率分布は大きく分けて、確率変数が離散値である**離散型分布**と連続値である**連続型分布**に分かれる。  
 
-## 一様分布
+### 離散型分布
 
-1個のサイコロを振ったとき、それぞれの目が出る確率はどれも1/6で等しい。このように、どの確率変数$X$についても常に一定の値の確率を取る確率分布は、**一様分布(uniform distribution)**と呼ばれる。  
+確率変数が**離散値**（小数の値を取らないもの）である場合の確率分布である。例えば、以下のようなものがある。  
+  
+* （離散型）一様分布  
+* 二項分布  
+* ベルヌーイ分布  
+* ポアソン分布  
+* 負の二項分布  
+* 多項分布  
+  
+
+### 連続型分布
+
+確率変数が**連続値**（小数の値が存在するもの）である確率分布である。例えば、以下のようなものがある。  
+
+* （連続型）一様分布  
+* 正規分布  
+* 指数分布  
+* 対数正規分布  
+* t分布  
+* χ二乗分布  
+* コーシー分布  
+* ガンマ分布  
+
+  
+今後の章でも扱う確率分布として、**二項分布**（ベルヌーイ分布）、**正規分布**、**ポアソン分布**について学んでいく。
 
 
 
@@ -252,7 +278,7 @@ $$
 P(x) = \frac{\lambda^x\exp(-\lambda)}{x!}\\
 $$
 
-**ポアソン分布 (poisson distribution)**の期待値（平均）は$\lambda$、分散は$\lambda$である。つまり、ポアソン分布は平均と分散が等しい分布である。
+**ポアソン分布 (Poisson distribution)**の期待値（平均）は$\lambda$、分散は$\lambda$である。つまり、ポアソン分布は平均と分散が等しい分布である。
 以下に、$\lambda$をそれぞれ変えた場合のポアソン分布を示す。
 
 ```{r}
@@ -341,7 +367,7 @@ rbinom(n=100, size=10, prob=0.5) #二項分布からの乱数
     
 シミュレーションで中心極限定理を実感してみよう。6面のサイコロを100回振る実験を行うとする。  
   
-以下のプログラムを実行してみよう。`runif()`は一様分布から乱数を生成する関数である。`round()`は値を丸める関数で、以下では小数点以下の値を丸めて整数の値を出力するようにしている。
+以下のプログラムを実行してみよう。`runif()`は一様分布から乱数を生成する関数である（一様分布の詳細については、以降の「その他の確率分布」を参照）。`round()`は値を丸める関数で、以下では小数点以下の値を丸めて整数の値を出力するようにしている。
 
 
 ```{r}
@@ -423,41 +449,36 @@ $$
 ## その他の確率分布
 
 
-ここまで、確率分布として一様分布、二項分布、ベルヌーイ分布、正規分布、ポアソン分布を学んできた。他にも、確率分布はたくさんある。  
+他にも、確率分布はたくさんある。  
   
-確率分布は大きく分けて、確率変数が離散値である**離散型分布**と連続値である**連続型分布**に分かれる。
+### 一様分布{-}
 
-### 離散型分布
+冒頭の確率分布の説明の際に挙げた「1個のサイコロを振ったとき、それぞれの目が出る確率」は、どれも1/6で等しい。このように、どの確率変数$X$についても常に一定の値の確率を取る確率分布は、**一様分布(uniform distribution)**という。  
 
-確率変数が離散値（小数の値を取らないもの）である場合の確率分布である。例えば既に見てきたものも含め、以下のようなものがある。  
-  
-* （離散型）一様分布  
-* 二項分布  
-* ベルヌーイ分布  
-* ポアソン分布  
-* 負の二項分布  
-* 多項分布  
-  
-負の二項分布については、第12章で説明する。
+一様分布は確率変数が離散値の場合もあれば、連続値の場合もある。サイコロの例は、離散型一様分布である。  
+一様分布を扱うRの関数(`dunif`, `runif`など)は連続型一様分布を扱う関数である。  
+連続型一様分布を式で表すと以下のようになる（$min$は取りうる値の最小値、$max$は最大値を意味する。
 
-### 連続型分布
+$$
+f(x) = \frac{1}{max - min}\\
+x \sim \text{Uniform}(min, max)\\
+$$
 
-確率変数が連続値（小数の値が存在するもの）である確率分布である。既に見てきたものも含め、以下のようなものがある。  
+例えば、以下は最小値が1、最大値が6の連続型一様分布である。以下のグラフは確率密度を示してあり、ある範囲の面積の合計がその範囲の値が生じる確率を意味する。
 
-* （連続型）一様分布  
-* 正規分布  
-* 指数分布  
-* 対数正規分布  
-* t分布  
-* χ二乗分布  
-* コーシー分布  
-* ガンマ分布  
+```{r, echo=FALSE}
+unif = data.frame(x=seq(1, 6, 0.1), f = dunif(seq(1, 6, 0.1), min = 1, max = 6))
 
-ここでは、指数分布と対数正規分布について挙げる（この章の補足で、コーシー分布についても挙げている）。
+ggplot() +
+  ggplot2::geom_line(data = unif, aes(x = x, y = f)) + 
+  scale_x_continuous(breaks = 1:6) +
+  labs(y= "f(x)", x = "x")
+```
 
-#### 指数分布{-}
 
-**指数分布(exponential distribution)**のパラメータは、$\lambda$である。指数分布の確率変数は、ゼロ以上の正の値のみを取りうる。
+### 指数分布{-}
+
+**指数分布(exponential distribution)**は連続型確率分布であり、パラメータは$\lambda$である。指数分布の確率変数は、ゼロ以上の正の値のみを取りうる。
 
 
 $$
@@ -466,23 +487,23 @@ x \sim \text{Exponential}(\lambda)\\
 $$
 
 ```{r, echo=FALSE}
-exp_1 = data.frame(x=seq(0,3, 0.1), p=dexp(seq(0,3, 0.1), rate=0.5), rate=0.5)
-exp_2 = data.frame(x=seq(0,3, 0.1), p=dexp(seq(0,3, 0.1), rate=1), rate=1)
-exp_3 = data.frame(x=seq(0,3, 0.1), p=dexp(seq(0,3, 0.1), rate=2), rate=2)
+exp_1 = data.frame(x = seq(0,3, 0.1), f = dexp(seq(0,3, 0.1), rate = 0.5), rate = 0.5)
+exp_2 = data.frame(x = seq(0,3, 0.1), f = dexp(seq(0,3, 0.1), rate = 1), rate = 1)
+exp_3 = data.frame(x = seq(0,3, 0.1), f = dexp(seq(0,3, 0.1), rate = 2), rate = 2)
 exp = rbind(exp_1, exp_2, exp_3)
 
 ggplot() +
-  ggplot2::geom_line(data = exp, aes(x=x, y=p, colour=factor(rate), linetype=factor(rate))) + 
-  labs(y= "f(x)", x = "x", colour = "rate", linetype = "rate")
+  ggplot2::geom_line(data = exp, aes(x = x, y = f, colour = factor(rate), linetype = factor(rate))) + 
+  labs(y = "f(x)", x = "x", colour = "rate", linetype = "rate")
 ```
 
 ある一定期間の間に平均して$\lambda$回生じるイベントの時間間隔は、指数分布に従う。災害が生じてから次の災害が生じるまでの期間、店に客が来てから次の客が来るまでの期間などは指数分布に従う。  
 
 
 
-#### 対数正規分布{-}
+### 対数正規分布{-}
 
-**対数正規分布(log-normal distribution)**は、正規分布と同様に平均$\mu$と標準偏差$\sigma$の２つのパラメータを持つ分布で、名前の通り正規分布とは深い関係にある。
+**対数正規分布(log-normal distribution)**は連続型確率分布であり、正規分布と同様に平均$\mu$と標準偏差$\sigma$の２つのパラメータを持つ分布である。名前の通り、正規分布とは深い関係にある。
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi\sigma}x}\exp\left(-\frac{(\ln x-\mu)^2}{2\sigma^2}\right)\\
@@ -491,14 +512,14 @@ $$
 
 
 ```{r, echo=FALSE}
-lnorm_1 = data.frame(x=seq(0,5, 0.1), p=dlnorm(seq(0, 5, 0.1), meanlog=0, sdlog=1), par = "mean=0, sd = 1")
-lnorm_2 = data.frame(x=seq(0,5, 0.1), p=dlnorm(seq(0, 5, 0.1), meanlog=0.5, sdlog=1), par = "mean=0.5, sd = 1")
-lnorm_3 = data.frame(x=seq(0,5, 0.1), p=dlnorm(seq(0, 5, 0.1), meanlog=0, sdlog=2), par = "mean=0, sd = 2")
+lnorm_1 = data.frame(x=seq(0,5, 0.1), f = dlnorm(seq(0, 5, 0.1), meanlog = 0, sdlog = 1), par = "mean=0, sd = 1")
+lnorm_2 = data.frame(x=seq(0,5, 0.1), f = dlnorm(seq(0, 5, 0.1), meanlog = 0.5, sdlog = 1), par = "mean=0.5, sd = 1")
+lnorm_3 = data.frame(x=seq(0,5, 0.1), f = dlnorm(seq(0, 5, 0.1), meanlog = 0, sdlog = 2), par = "mean=0, sd = 2")
 lnorm = rbind(lnorm_1, lnorm_2, lnorm_3)
 
 ggplot() +
-  ggplot2::geom_line(data = lnorm, aes(x=x, y=p, colour=factor(par), linetype=factor(par))) + 
-  labs(y= "f(x)", x = "x", colour = "par", linetype = "par")
+  ggplot2::geom_line(data = lnorm, aes(x = x, y = f, colour = factor(par), linetype = factor(par))) + 
+  labs(y = "f(x)", x = "x", colour = "par", linetype = "par")
 ```
 
 対数正規分布は、右の方に長い裾を描く分布である。対数正規分布に従うものとしては、年収の分布などが知られている。  
@@ -509,7 +530,7 @@ ggplot() +
 ```{r, message=FALSE, warning=FALSE}
 #サイコロを7回振って、それぞれの値で掛け算をする。これを10,000回行ったときの出目の合計値の分布
 
-sample.prod = sapply(c(1:10000), function(x) {prod(round(runif(n = 7,min=1,max=6),0))} ) #prod()はカッコ内のベクトルの要素をかけ合わせる関数
+sample.prod = sapply(c(1:10000), function(x) {prod(round(runif(n = 7,min = 1,max = 6),0))} ) #prod()はカッコ内のベクトルの要素をかけ合わせる関数
 
 hist(sample.prod)
 
@@ -525,6 +546,58 @@ hist(sample.prod_2)
 ```
 
 掛け算の対数を取るということは、足し算に直すことと同じである。つまり、対数を取ることで「ランダムな変数をかけ合わせたもの」が「ランダムな変数を足し合わせたもの」に変換される。「ランダムな変数を足し合わせたもの」は、中心極限定理により正規分布に従う。  したがって、対数正規分布の対数を取ったものは正規分布になる。
+
+
+### 負の二項分布{-}
+
+**負の二項分布(negative binomial distribution)**は離散型確率分布である。ある事象が生じる確率（成功確率）を$q$, 成功回数を$r$としたとき、 失敗回数$x$を確率変数とした場合に$x$が従う確率分布である。パラメータは、成功確率$q$と成功回数$r$である。  
+
+$$
+p(x) = {}_{x+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{x}\\
+x \sim \text{Negative Binomial}(r, q)
+$$
+
+例えば、コインを何回か投げて３回表が出たら投げるのをやめるとした場合、３回表が出るまでに裏が出る回数の確率は負の二項分布に従う。  
+以下は、成功回数$r = 3$とし、$q=0.2$, $q=0.5$, $q=0.6$としたときの負の二項分布である。
+
+
+```{r, echo=FALSE}
+nbinom_1 = data.frame(x = 0:10, p = dnbinom(0:10, size = 3, prob = 0.2), q = 0.2)
+nbinom_2 = data.frame(x = 0:10, p = dnbinom(0:10, size = 3, prob = 0.5), q = 0.5)
+nbinom_3 = data.frame(x = 0:10, p = dnbinom(0:10, size = 3, prob = 0.6), q = 0.6)
+nbinom = rbind(nbinom_1, nbinom_2, nbinom_3)
+
+ggplot() +
+  ggplot2::geom_bar(data = nbinom, aes(x = factor(x), y = p, fill = factor(q)), color = "black", stat = "identity", position = "dodge") + 
+  labs(y = "p(x)", x = "number of failure", fill = "q", title = "number of success = 3")
+```
+
+
+負の二項分布は第12章でも扱う。
+
+### 幾何分布{-}
+
+**幾何分布 (geometric distribution)**は離散型確率分布である。ある事象が生じる確率を$q$としたとき、何回か繰り返した時に初めて生じるときの回数$x$が従う確率分布が幾何分布である（例えば、コインを何回か投げたときに初めて表が出るときの確率）。  
+
+
+$$
+p(x) = q(1-q)^{x}\\
+x \sim \text{Geometric}(p)\\
+$$
+
+以下は、$q=0.2$, $q=0.5$, $q=0.6$の幾何分布である。
+
+```{r, echo=FALSE}
+geom_1 = data.frame(x = 0:10, p = dgeom(0:10, prob = 0.2), q = 0.2)
+geom_2 = data.frame(x = 0:10, p = dgeom(0:10, prob = 0.5), q = 0.5)
+geom_3 = data.frame(x = 0:10, p = dgeom(0:10, prob = 0.6), q = 0.6)
+geom = rbind(geom_1, geom_2, geom_3)
+
+ggplot() +
+  ggplot2::geom_bar(data = geom, aes(x = factor(x), y = p, fill = factor(q)), color = "black", stat = "identity", position = "dodge") + 
+  labs(y = "p(x)", x = "x", fill = "q")
+```
+
 
 ## 確認問題{-}
 

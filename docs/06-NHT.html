@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2023-10-08" />
+<meta name="date" content="2023-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -329,14 +329,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="06-NHT.html"><a href="06-NHT.html#準備"><i class="fa fa-check"></i><b>7.1</b> 準備</a></li>
 <li class="chapter" data-level="7.2" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定の考え方"><i class="fa fa-check"></i><b>7.2</b> 統計的仮説検定の考え方</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="06-NHT.html"><a href="06-NHT.html#二項分布の復習"><i class="fa fa-check"></i><b>7.2.1</b> 二項分布の復習</a></li>
-<li class="chapter" data-level="7.2.2" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定-1"><i class="fa fa-check"></i><b>7.2.2</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.2.1" data-path="06-NHT.html"><a href="06-NHT.html#二項検定"><i class="fa fa-check"></i><b>7.2.1</b> 二項検定</a></li>
+<li class="chapter" data-level="7.2.2" data-path="06-NHT.html"><a href="06-NHT.html#二標本の検定"><i class="fa fa-check"></i><b>7.2.2</b> 二標本の検定</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定の種類"><i class="fa fa-check"></i><b>7.3</b> 統計的仮説検定の種類</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="06-NHT.html"><a href="06-NHT.html#二項検定"><i class="fa fa-check"></i><b>7.3.1</b> 二項検定</a></li>
-<li class="chapter" data-level="7.3.2" data-path="06-NHT.html"><a href="06-NHT.html#t検定"><i class="fa fa-check"></i><b>7.3.2</b> t検定</a></li>
-</ul></li>
+<li class="chapter" data-level="7.3" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定のまとめ"><i class="fa fa-check"></i><b>7.3</b> 統計的仮説検定のまとめ</a></li>
 <li class="chapter" data-level="7.4" data-path="06-NHT.html"><a href="06-NHT.html#p値とサンプルサイズの関係"><i class="fa fa-check"></i><b>7.4</b> p値とサンプルサイズの関係</a></li>
 <li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#効果量"><i class="fa fa-check"></i><b>7.5</b> 効果量</a></li>
 <li class="chapter" data-level="7.6" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤と第2種の過誤"><i class="fa fa-check"></i><b>7.6</b> 第1種の過誤と第2種の過誤</a></li>
@@ -358,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="07-analysis.html"><a href="07-analysis.html"><i class="fa fa-check"></i><b>8</b> 様々な解析法</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="07-analysis.html"><a href="07-analysis.html#t検定-1"><i class="fa fa-check"></i><b>8.1</b> t検定</a>
+<li class="chapter" data-level="8.1" data-path="07-analysis.html"><a href="07-analysis.html#t検定"><i class="fa fa-check"></i><b>8.1</b> t検定</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="07-analysis.html"><a href="07-analysis.html#対応のないt検定"><i class="fa fa-check"></i><b>8.1.1</b> 対応のないt検定</a></li>
 <li class="chapter" data-level="8.1.2" data-path="07-analysis.html"><a href="07-analysis.html#対応のあるt検定"><i class="fa fa-check"></i><b>8.1.2</b> 対応のあるt検定</a></li>
@@ -602,14 +598,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="統計的仮説検定の考え方" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> 統計的仮説検定の考え方<a href="06-NHT.html#統計的仮説検定の考え方" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>前の章で学んだ二項分布を用いて、統計的仮説検定の考え方について学ぶ。p値とは何なのかを理解する。</p>
-<div id="二項分布の復習" class="section level3 hasAnchor" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> 二項分布の復習<a href="06-NHT.html#二項分布の復習" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>コインを10回投げて表が出た回数<span class="math inline">\(x\)</span>をカウントしていく。理論的には、表が<span class="math inline">\(x\)</span>回出る確率<span class="math inline">\(P(x)\)</span>は、コインを投げる回数<span class="math inline">\(n\)</span>と表が出る確率<span class="math inline">\(q\)</span>をパラメータとする二項分布に従う。</p>
+<div id="二項検定" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> 二項検定<a href="06-NHT.html#二項検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>まずは、あるカテゴリーの割合が特定の値と等しいかあるいは異なるかを検定する<strong>二項検定（binomial test）</strong>を例として、統計的仮説検定の基礎となる「帰無仮説」、「対立仮説」及び「p値」の意味について理解していく。</p>
+<p>ここでは、コインの表と裏が出る確率に偏りがないかを検討する実験を例として見ていく。コインを10回投げて表が出た回数<span class="math inline">\(x\)</span>をカウントしていく。理論的には、表が<span class="math inline">\(x\)</span>回出る確率<span class="math inline">\(P(x)\)</span>は、コインを投げる回数<span class="math inline">\(n\)</span>と表が出る確率<span class="math inline">\(q\)</span>をパラメータとする二項分布に従う。</p>
 <p><span class="math display">\[
 P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}\\
 x \sim Binomial(n, q)
 \]</span></p>
+<p>コインにゆがみがない、すなわち表と裏が出る確率に偏りがないならば、10回投げて表が<span class="math inline">\(x\)</span>回出る確率は、<span class="math inline">\(n=10\)</span>, <span class="math inline">\(q=0.5\)</span>をパラメータとする二項分布に従うはずである。図にすると以下の通りである。</p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="06-NHT.html#cb279-1" tabindex="-1"></a>plot <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p=</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
 <span id="cb279-2"><a href="06-NHT.html#cb279-2" tabindex="-1"></a></span>
 <span id="cb279-3"><a href="06-NHT.html#cb279-3" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
@@ -617,13 +614,9 @@ x \sim Binomial(n, q)
 <span id="cb279-5"><a href="06-NHT.html#cb279-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb279-6"><a href="06-NHT.html#cb279-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/dbinom_2_plot-1.png" width="672" /></p>
-</div>
-<div id="統計的仮説検定-1" class="section level3 hasAnchor" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> 統計的仮説検定<a href="06-NHT.html#統計的仮説検定-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>理論的には、表が出る回数<span class="math inline">\(x\)</span>が生じる確率は上の図のようになる（平均は<span class="math inline">\(nq = 10*0.5 = 5\)</span>）。</p>
-<p>では、実際にコインを10回投げてみて表が出た回数を数えてみたところ、表が2回しか出なかったとする。この結果から、「このコインには歪みがあって、片一方の面だけが出やすい」と言ってもよいのか？</p>
+<p>では、実際にコインを10回投げてみて表が出た回数を数えてみたところ、表が2回しか出なかったとする。この結果から、「このコインにはゆがみがあって、片一方の面だけが出やすい」と言ってもよいのか？</p>
 <p>これを検討するために、表と裏それぞれが出る確率の等しいコインを投げる場合（すなわち、<span class="math inline">\(q=0.5\)</span>の場合）との比較を行い、今回の実験結果がどれくらいまれな事象と言えるのかを比較する。<br />
-このとき、研究者が検証したい仮説を<strong>対立仮説（alternative hypothesis）</strong>、対立仮説を検証するために比較の対象とする「偏りを仮定しない」仮説のことを<strong>帰無仮説(null hypothesis)</strong>と呼ぶ。</p>
+このとき、「コインの表が出る確率は0.5である」といった仮説のことを<strong>帰無仮説(null hypothesis)</strong>といい、「コインの表が出る確率は0.5ではない」といった帰無仮説に対する仮説のことを<strong>対立仮説（alternative hypothesis）</strong>と呼ぶ。帰無仮説は<span class="math inline">\(H_{0}\)</span>、対立仮説は<span class="math inline">\(H_{1}\)</span>と表すこともある。つまり、この例での帰無仮説は「<span class="math inline">\(H_{0}:q=0.5\)</span>」、対立仮説は「<span class="math inline">\(H_{1}:q \neq 0.5\)</span>」となる。</p>
 <p>では、今回の帰無仮説となる二項分布（2つのパラメータが、<span class="math inline">\(n=10, q=0.5\)</span>の場合)の分布を見てみよう。理論的には、表が<span class="math inline">\(x\)</span>回出る確率<span class="math inline">\(P(x)\)</span>は、<span class="math inline">\(x\)</span>それぞれについて以下のようになる。</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="06-NHT.html#cb280-1" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">p_x =</span><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span>
 <span id="cb280-2"><a href="06-NHT.html#cb280-2" tabindex="-1"></a>d</span></code></pre></div>
@@ -642,30 +635,16 @@ x \sim Binomial(n, q)
 <p>表もしくは裏が出る回数が2回以下の場合の確率を計算すると、</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="06-NHT.html#cb282-1" tabindex="-1"></a>d<span class="sc">$</span>p_x[<span class="dv">1</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">2</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">3</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">9</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">10</span>] <span class="sc">+</span> d<span class="sc">$</span>p_x[<span class="dv">11</span>]</span></code></pre></div>
 <pre><code>## [1] 0.109375</code></pre>
-<p>となる。つまり、もし歪みのないコインならば、片一方の面だけが出る回数が2回以下の確率はおおよそ0.11ということになる。</p>
-<p>この例で求めた確率0.11のように、「帰無仮説の前提のもとで、特定の実験結果よりもまれな結果が得られる確率」を<strong>p値</strong>と呼ぶ。</p>
-<p>p = 0.11 は小さい確率のように思える。なので、「歪みのないコインならば、一方の面が2回出る確率は本来0.11である。本来だったらあまり起こり得ない実験結果が得られたので、このコインは歪みのないコインであると結論づけるのは自然ではない。ゆえに、このコインには歪みがあって片一方の面が出やすい」という結論を出すのが妥当なように思える。</p>
+<p>となる。つまり、もしゆがみのないコインならば、片一方の面だけが出る回数が2回以下の確率はおおよそ0.11ということになる。</p>
+<p>この例で求めた確率0.11のように、「帰無仮説の前提のもとで、特定の結果よりもまれな結果が得られる確率」を<strong>p値</strong>と呼ぶ。</p>
+<p>p = 0.11 は小さい確率のように思える。なので、「ゆがみのないコインならば、一方の面が2回出る確率は本来0.11である。本来だったらあまり起こり得ない実験結果が得られたので、このコインはゆがみのないコインである（<span class="math inline">\(H_{0}: q = 0.5\)</span>）とは考えにくい。ゆえに、このコインにはゆがみがないという帰無仮説（<span class="math inline">\(H_{0}: q = 0.5\)</span>）を棄て、ゆがみがあって片一方の面が出やすいコインであるとする対立仮説（<span class="math inline">\(H_{1}: q \neq 0.5\)</span>）を採択する」という結論は妥当なようにも思える。</p>
 <p>しかし、人によって0.11を小さいと評価しても良いのか、基準が分かれる。そこで、研究者の間でどこまでの数値を小さいと評価するかの基準が決まっている。この基準となる確率が、<strong>有意水準 (significance level)</strong>である。<br />
-一般的に有意水準には0.05（5%）ニ設定されることが多い。なぜ5％を判断基準とするのかについては、特に明確な理由はない（みんなから合意されているからという以上の理由はない）。</p>
-<p>つまり、「帰無仮説（歪みのないコインを投げる）の前提のもとでは、表が出る回数が2回以下の確率は0.11 であった。これは小さい確率のように思えるが、判断基準の5％よりかは大きい。すなわち、このコインはゆがんでいると結論付ける訳にはいかない」ことになる。</p>
-<p>以上が、<strong>統計的仮説検定</strong>の考え方である。まとめると、<br />
-1)ある特定の理論分布（帰無仮説）のもとで今回の実験結果よりも珍しい結果が生じる確率（p値）を求め、<br />
-2)その確率が小さいかを評価し、<br />
-3)小さい場合は帰無仮説を棄却する<br />
-というのが、統計的仮説検定のプロセスである。</p>
+一般的に有意水準には0.05（5%）に設定されることが多い。なぜ5％を判断基準とするのかについては、特に明確な理由はない（みんなから合意されているからという以上の理由はない）。</p>
+<p>つまり、「帰無仮説（ゆがみのないコインを投げる）の前提のもとでは、表が出る回数が2回以下の確率は0.11 であった。これは小さい確率のように思えるが、判断基準の5％よりかは大きい。すなわち、このコインはゆがみがない（<span class="math inline">\(H_{0}:q = 0.5\)</span>）という仮説を棄てるわけにはいかない」ことになる。</p>
 <hr />
-<p>今回のように「コインが表か裏かに関わらず、一方の面だけが出やすい」という対立仮説を検討する場合の検定は、<strong>両側検定</strong>という。仮に、今回の仮説で表と裏を区別するとして「表が出にくい」つまり「表が出る回数が2回以下の確率」を対象とする場合、このような検定を<strong>片側検定</strong>という。二項分布は左右対称の分布なので、両側p値は片側p値の2倍の値である(厳密には左右対称ではないのであくまで近似値)。多くの場合、両側検定を使うのが一般的である。</p>
+<p>この例のように「コインが表か裏かに関わらず、一方の面だけが出やすい」という対立仮説を検討する場合の検定は、<strong>両側検定</strong>という。仮に、今回の仮説で表と裏を区別するとして「表が出にくい」つまり「表が出る回数が2回以下の確率」を対象とする場合、このような検定を<strong>片側検定</strong>という。二項分布は左右対称の分布なので、両側p値は片側p値の2倍の値である(厳密には左右対称ではないのであくまで近似値)。多くの場合、両側検定を使うのが一般的である。</p>
 <hr />
-</div>
-</div>
-<div id="統計的仮説検定の種類" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> 統計的仮説検定の種類<a href="06-NHT.html#統計的仮説検定の種類" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="二項検定" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> 二項検定<a href="06-NHT.html#二項検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>コイン投げの例は、二項分布に従う事象である。二項分布に従う事象の統計的仮説検定は、<strong>二項検定</strong>と呼ばれる。</p>
-<p>Rにも、二項検定を行うための関数<code>binom.test()</code>が用意されている。</p>
-<p><code>binom.test()</code>に二項分布のパラメータ（<span class="math inline">\(n\)</span>と<span class="math inline">\(q\)</span>にあたる数値）と実験結果を入れると、p値を求めてくれる。</p>
-<p>上の例について、<code>binom.test()</code>でp値を求めてみよう。</p>
+<p>Rには、二項検定を行うための関数<code>binom.test()</code>が用意されている。<code>binom.test()</code>に二項分布のパラメータ（<span class="math inline">\(n\)</span>と<span class="math inline">\(q\)</span>にあたる数値）と実験結果を入れると、p値を求めてくれる。上の例について、<code>binom.test()</code>でp値を求めてみよう。</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="06-NHT.html#cb284-1" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>) <span class="co">#出てくる結果はデフォルトで両側検定になる。</span></span></code></pre></div>
 <pre><code>## 
 ##  Exact binomial test
@@ -679,10 +658,10 @@ x \sim Binomial(n, q)
 ## probability of success 
 ##                    0.2</code></pre>
 </div>
-<div id="t検定" class="section level3 hasAnchor" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> t検定<a href="06-NHT.html#t検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>2つのグループの間で平均値に差があるかどうかの統計的仮説検定として、t検定を使うことが多い。</p>
-<p>t検定の考え方も、基本的に同じである。2つの集団の間で平均値に差がないと仮定したときの理論分布（t分布）と比べて、実際に得られた差の値がどれくらい珍しいのかを検討する。</p>
+<div id="二標本の検定" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> 二標本の検定<a href="06-NHT.html#二標本の検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>先ほどの例では「<span class="math inline">\(H_{0}:q=0.5\)</span>」という帰無仮説を設定し、ある値が特定の値と等しいか異なるかを検定した。統計的仮説検定は、「2つの母集団の間である値に差があるかどうか」を検定するのに使われることも多い。 代表的な例としては、「2つの母集団の平均値の間に差があるか」を検討する<strong>二標本のt検定</strong>がある。</p>
+<p>t検定の考え方も、基本的に同じである。2つの集団の間で平均値に差がないとする帰無仮説の理論分布（t分布）と比べて、実際に得られた差の値がどれくらい珍しいのかを検討する。</p>
 <p>例えば、母集団Aと母集団Bの平均値をそれぞれ<span class="math inline">\(\mu_{A}\)</span>、<span class="math inline">\(\mu_{B}\)</span>とする。帰無仮説は「<span class="math inline">\(H_{0}:\mu_{A} - \mu_{B} = 0\)</span>」、対立仮説は「<span class="math inline">\(H_{1}: \mu_{A} - \mu_{B} \neq 0\)</span>」である。</p>
 <p>2つの集団の標本平均の差が帰無仮説のもとの理論分布（t分布）と比べて珍しいかを検討する。</p>
 <p>以下のサンプルデータを使って、平均値の差の検定をしてみよう。まず、以下のプログラムを実行する。</p>
@@ -746,11 +725,35 @@ t = \frac{\bar{x_{A}} - \bar{x_{B}}}{\sqrt{s^2_{A}/n_{A}+s^2_{B}/n_{B}))}}
 ## sample estimates:
 ## mean in group A mean in group B 
 ##       0.1322028       1.2488450</code></pre>
-<p>p値は0.02であった。これは5%よりも小さいので、「今回の結果が生じる確率はまれであり、AとBの母集団の平均値は等しいとする帰無仮説を棄却し、AとBの母集団の平均値は異なる」と結論づける。</p>
+<p>p値は0.02であった。これは5%よりも小さいので、今回の結果が生じる確率はまれであり、AとBの母集団の平均値の間に差はないとする帰無仮説（<span class="math inline">\(H_{0}:\mu_{A}-\mu_{B}=0\)</span>）を棄却し、AとBの母集団の平均値は異なる（<span class="math inline">\(H_{1}:\mu_{A}-\mu_{B}\neq0\)</span>）という対立仮説を採用することとなる。対立仮説が採択されたことで母集団AとBの平均値の間には大きな差があることが示され、このような結果は「<strong>有意差(statistically significant difference)がある」</strong>と表現されることが多い。</p>
 <hr />
 <p>t検定には、2つの標本の母集団の分散が等しいと仮定するかしないかで二種類の検定がある。母集団の分散が等しいと<em>仮定しない</em>場合の検定はウェルチの検定(Welch’s t-test)と呼ばれ、Rの<code>t.test()</code>関数でデフォルトで出る検定結果はこのウェルチの検定による結果である。一般的に2つの標本の母分散は不明であるので、それらが等しいかどうかも不明である。なので、等分散を仮定しないt検定をしておくほうが保守的である。</p>
 <hr />
 </div>
+</div>
+<div id="統計的仮説検定のまとめ" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 統計的仮説検定のまとめ<a href="06-NHT.html#統計的仮説検定のまとめ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>まとめると、</p>
+<ol style="list-style-type: decimal">
+<li><p>「差がない（あるいは偏りがない）」とする帰無仮説と「差がある（あるいは偏りがある）」とする対立仮説を立てる。</p></li>
+<li><p>帰無仮説を前提とする理論分布のもとで、今回の結果よりも珍しい結果が生じる確率（p値）を求め、</p></li>
+<li><p>その確率（p値）が有意水準よりも小さいかを評価し、</p></li>
+<li><p>p値が有意水準よりも小さい場合は、帰無仮説を棄却して対立仮説を採択し、</p></li>
+<li><p>p値が有意水準以上の場合は、帰無仮説を棄却しない</p></li>
+</ol>
+<p>というのが、統計的仮説検定のプロセスである。</p>
+<hr />
+<p>p値が有意水準以上の場合、「帰無仮説を支持する、帰無仮説が正しいと結論づける」のではなく、「帰無仮説を棄却しない」という表現であることに注意。</p>
+<p>統計的仮説検定では、背理法と同様の考え方が取られている。</p>
+<ol style="list-style-type: decimal">
+<li><p>帰無仮説が棄却されるか（帰無仮説が正しくなく、対立仮説が正しいか）を検討したい。</p></li>
+<li><p>「帰無仮説が正しい」という前提のもとで今回の結果が得られるかを検討する。</p></li>
+<li><p>「帰無仮説が正しい」という前提では矛盾が生じる（帰無仮説の前提のもとでは今回の結果はほとんど生じ得ない）。</p></li>
+<li><p>「帰無仮説は正しい」を棄却し、「対立仮説が正しい」という結論を導く。</p></li>
+</ol>
+<p>しかし、3)の段階で矛盾が生じなかったとしても、「帰無仮説が正しい」ことを積極的に示すことにはならない。統計的仮説検定では「帰無仮説が棄却できるか」を検討しているのであって、棄却されないからといって帰無仮説を正しいという結論を導くことはできない。p値が有意水準以上だった場合には、「帰無仮説が正しいか誤っているかの結論は今回の検定の結果からは出せないので、判断を保留する」という結論になる。</p>
+<p>また、後述の第1種の過誤の説明にもあるように、p値が有意水準未満であっても、必ずしも「対立仮説が正しい」とも限らない。</p>
+<hr />
 </div>
 <div id="p値とサンプルサイズの関係" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> p値とサンプルサイズの関係<a href="06-NHT.html#p値とサンプルサイズの関係" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -821,14 +824,14 @@ H_{0}: \mu_{A} - \mu_{B}=0\\
 H_{1}: \mu_{A} - \mu_{B}\neq0\\
 \]</span></p>
 <p>「帰無仮説が真なのに、帰無仮説を棄却してしまう（本当は差がないのに、“差がある”と判断してしまう）」の誤りのことを、<strong>第1種の過誤（type Ⅰ error）</strong>と呼ぶ。<br />
-これに対し、「帰無仮説が偽なのに、帰無仮説を採択してしまう（本当は差があるのに、“差がない”と判断してしまう）」誤りのことを、<strong>第2種の過誤（type Ⅱ error）</strong>と呼ぶ。</p>
+これに対し、「帰無仮説が偽なのに、帰無仮説を棄却しない（本当は差があるのに、“差がない”と判断してしまう）」誤りのことを、<strong>第2種の過誤（type Ⅱ error）</strong>と呼ぶ。</p>
 <p>第1種の過誤を犯す確率<span class="math inline">\(\alpha\)</span>は、要は有意水準として設定した値そのものである（<span class="math inline">\(\alpha=0.05\)</span>）。有意水準を高くする、すなわち「差があると判断する基準をゆるく」してしまうとより帰無仮説を棄却しやすくなってしまう。それは同時に、「帰無仮説を誤って棄却してしまう」可能性を高めてしまう。</p>
 <p>第2種の過誤を犯す確率は、<span class="math inline">\(\beta\)</span>と表現される。</p>
 <p>それぞれの関係をまとめると、以下のように表現できる。</p>
 <p><img src="05_table01.png" /></p>
 <p>例えば、以下に帰無仮説と対立仮説との関係のイメージを図で示している。２つの集団の母集団の平均値の差の効果量を<span class="math inline">\(d\)</span>とし、帰無仮説<span class="math inline">\(H_{0}: d = 0\)</span>と対立仮説<span class="math inline">\(H_{1}: d &gt; 0\)</span>とした場合の分布を示している（単純化のため片側検定とする）。</p>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
-<p>差<span class="math inline">\(d\)</span>が赤い部分に当てはまるときは、帰無仮説を棄却することとなる。同時に、赤い部分は第1種の過誤を犯す確率<span class="math inline">\(\alpha\)</span>を意味する。逆に、差<span class="math inline">\(d\)</span>が青い部分に含まれるときは、対立仮説の分布にも含まれているにも関わらず帰無仮説を採択することを意味する。すなわち、青い部分が第２種の過誤を犯す確率<span class="math inline">\(\beta\)</span>を意味する。</p>
+<p>差<span class="math inline">\(d\)</span>が赤い部分に当てはまるときは、帰無仮説を棄却することとなる。同時に、赤い部分は第1種の過誤を犯す確率<span class="math inline">\(\alpha\)</span>を意味する。逆に、差<span class="math inline">\(d\)</span>が青い部分に含まれるときは、対立仮説の分布にも含まれているにも関わらず帰無仮説を棄却しないことを意味する。すなわち、青い部分が第２種の過誤を犯す確率<span class="math inline">\(\beta\)</span>を意味する。</p>
 <p>第1種の過誤と第2種の過誤はトレード・オフの関係にある。第1種の過誤を避けようとして有意水準を小さくすれば帰無仮説の棄却が厳しくなり、逆に第2種のエラーを犯してしまう確率も高くなる（帰無仮説が偽であるにもかかわらず、棄却しない）。<br />
 例えば、以下の左図が<span class="math inline">\(\alpha = 0.05\)</span>のとき、右図が<span class="math inline">\(\alpha = 0.01\)</span>の場合である。右図は左図と比べて赤い部分（<span class="math inline">\(alpha\)</span>）が小さくなった一方、青い部分（<span class="math inline">\(\beta\)</span>）が大きくなっているのがわかる。</p>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
@@ -897,7 +900,7 @@ H_{1}: \mu_{A} - \mu_{B}\neq0\\
 <div id="第1種の過誤" class="section level3 hasAnchor" number="7.9.1">
 <h3><span class="header-section-number">7.9.1</span> 第1種の過誤<a href="06-NHT.html#第1種の過誤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>今度は、同じ平均0、標準偏差1の正規分布に従う母集団AとBから20個ずつ標本を抽出しグループAとBの間で平均値に差があるかをt検定で検定する。帰無仮説は<span class="math inline">\(H_{0}:\mu_{A} = \mu_{B}\)</span>である。</p>
-<p>すなわち、<em>帰無仮説が正しい前提のもとで抽出された標本</em>について、正しい結論（帰無仮説を棄却せずに採用する）を統計的仮説検定によって導くことができるかを検討する。有意水準は、5%（0.05）とする。</p>
+<p>すなわち、<em>帰無仮説が正しい前提のもとで抽出された標本</em>について、正しい結論（帰無仮説を棄却しない）を統計的仮説検定によって導くことができるかを検討する。有意水準は、5%（0.05）とする。</p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="06-NHT.html#cb303-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb303-2"><a href="06-NHT.html#cb303-2" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">20</span></span>
 <span id="cb303-3"><a href="06-NHT.html#cb303-3" tabindex="-1"></a>g_A <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>

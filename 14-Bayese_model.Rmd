@@ -11,6 +11,18 @@ library(lme4)
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
 
+#fit
+result_brms_lm = readRDS("./brms_model/result_brms_lm.rds")
+result_brms_logistic = readRDS("./brms_model/result_brms_logistic.rds")
+result_brms_poisson = readRDS("./brms_model/result_brms_poisson.rds")
+result_brms_negbin = readRDS("./brms_model/result_brms_negbin.rds")
+result_brms_cum = readRDS("./brms_model/result_brms_cum.rds")
+result_brms_mnl = readRDS("./brms_model/result_brms_mnl.rds")
+result_brms_zip = readRDS("./brms_model/result_brms_zip.rds")
+model_brm_lmm = readRDS("./brms_model/model_brm_lmm.rds")
+model_brm_lmm_2 = readRDS("./brms_model/model_brm_lmm_2.rds")
+
+
 ```
 
 
@@ -71,7 +83,7 @@ summary(result)
 また、オプションの`seed`には常に一定の値を指定すること（ここでは1と指定した）。MCMCは乱数を使ったシミュレーションであるので、やり直すたびに微妙に異なる結果が得られる可能性にある。しかし、`seed`に同じ値を設定すれば、やり直しても同じ結果を再現することできる。  
   
 
-```{r, message = FALSE, warning=FALSE, results='hide'}
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
 result_brms_lm = brms::brm(data = iris, 
                         Petal.Length ~ 1 + Sepal.Length, 
                         family = gaussian(link="identity"),
@@ -106,7 +118,6 @@ plot(result_brms_lm)
   
 ベイズ推定による一般化線形モデルで係数の効果に意味があるかを議論したいのならば、パラメータの信用区間について注目する。`brm()`の出力結果で係数の信用区間にゼロが含まれているかどうかが、`lm()`のp値が示す結果（係数がゼロから有意に離れているか）と対応している。  
 
-***
 
 
 ## ベイズ統計モデリングのプロセス
@@ -239,7 +250,9 @@ plot(pred_line, points=TRUE)　#pointsで点と一緒に示す
 
 ## brmsパッケージでの一般化線形モデル
 
-`brm()`で確率分布やリンク関数を変更すれば、ロジスティック回帰やポアソン回帰のベイズ推定も行うことができる。プログラムの書き方は`glm()`とほぼ同じである。
+`brm()`で確率分布やリンク関数を変更すれば、ロジスティック回帰やポアソン回帰のベイズ推定も行うことができる。プログラムの書き方は`glm()`とほぼ同じである。  
+  
+以下のプログラムの例ではリンク関数の指定も記述しているが、省略しても構わない（デフォルトでその確率分布に対して適切なリンク関数が設定されている）。
 
 
 ### ロジスティック回帰
@@ -249,30 +262,21 @@ plot(pred_line, points=TRUE)　#pointsで点と一緒に示す
 ```{r, message = FALSE}
 
 library(MASS) 
-
 dat = biopsy
 dat$y = ifelse(dat$class == "malignant", 1, 0) #classがbenignならばゼロ、それ以外なら1という変数yを作る
 dat$x = dat$V1 #V1という変数をxという名前に変える
+head(dat)
 
 ```
 
-`glm()`を使ったパラメータの推定結果は以下である。
+確率分布（family）にはベルヌーイ分布(`bernoulli`)、リンク関数（link）には`logit`を指定する。
 
-```{r, message = FALSE}
-
-result_glm = glm(data = dat, y ~ 1 + x, family = binomial(link="logit"))
-summary(result_glm)
-
-```
-
-`brm()`で同様の解析を行い、パラメータの事後分布の推定をしよう。確率分布（family）とリンク関数（link）を適切なものに指定する。
-
-```{r, message = FALSE, warning=FALSE, results='hide'}
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
 
 result_brms_logistic = brms::brm(data = dat, 
           y ~ 1 + x, 
-          family = bernoulli(link="logit") #確率分布にbernoulli（ベルヌーイ分部）、linkにlogitを指定
-          )
+          family = bernoulli(link="logit"), 
+          seed = 1)
 
 ```
 
@@ -287,7 +291,7 @@ summary(result_brms_logistic)
 
 ### ポアソン回帰
 
-同じく、第12章のサンプルデータを使って、`brm()`でポアソン回帰を行ってみる。
+第12章のサンプルデータを使って、`brm()`でポアソン回帰を行ってみる。
 
 ```{r, message = FALSE}
 set.seed(1)
@@ -296,28 +300,174 @@ x = rnorm(n=N, mean = 2, sd=1)
 lambda = exp(0.01+ 0.6*x)
 y = rpois(n=N, lambda = lambda)
 dat = data.frame(y=y, x=x)
+head(dat)
 ```
 
-`glm()`で推定した結果が以下である。
 
-```{r, message = FALSE}
-result_poisson = glm(data = dat, y ~ 1 + x, family = poisson(link = "log"))
-summary(result_poisson)
-```
+確率分布（family）にはポアソン分布(`poisson`)、リンク関数（link）には`log`を指定する。
 
-`brm()`でも同様に、確率分布（family）とリンク関数（link）を指定する。
-
-```{r, message = FALSE, warning=FALSE, results='hide'}
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
 
 result_brms_poisson = brms::brm(data = dat, 
                                  y ~ 1 + x, 
-                                 family = poisson(link="log")) #確率分布にpoisson、リンク関数にlogを指定する
-
+                                 family = poisson(link="log"),
+                                seed = 1) 
 ```
 
 ```{r, message = FALSE, warning=FALSE}
 
 summary(result_brms_poisson)
+
+```
+
+
+### 負の二項回帰
+
+第13章のサンプルデータを使って、`brm()`で負の二項回帰を行ってみる。
+
+```{r}
+
+d = warpbreaks #別の名前(d)で保存する
+d$A <- ifelse(d$wool == "A", 1, 0) #Aなら1, Bなら0のダミー
+head(d)
+
+```
+
+確率分布（family）には負の二項分布(`negbinomial`)、リンク関数（link）には`log`を指定する。
+
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
+
+result_brms_negbin = brms::brm(data = d, 
+                                 breaks ~ 1 + A, 
+                                 family = negbinomial(link = "log"),
+                               seed = 1) 
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(result_brms_negbin)
+
+```
+
+
+### 順序ロジスティック回帰
+
+第13章のサンプルデータを使って、`brm()`で順序ロジスティック回帰を行ってみる。
+
+```{r}
+
+###サンプルデータの作成
+Sleep = c(6,1,5,2,5,6,2,6,2,5,6,2,5,3,5,3,3,7,2,7,6,1,2,1,7,1,1,7,5,3)
+Score = c(3,3,3,2,3,3,5,5,2,2,2,3,4,1,3,2,3,5,1,4,4,3,3,3,4,1,3,3,3,2)
+Score = factor(Score, levels = c("1", "2", "3", "4", "5"), ordered = TRUE)
+
+sample_ordered = data.frame(Score = Score, Sleep = Sleep)
+head(sample_ordered)
+
+```
+
+
+確率分布（family）に`cumulative`、リンク関数（link）には`logit`を指定する。
+
+
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
+
+result_brms_cum = brms::brm(data = sample_ordered,
+                            Score ~ 1 + Sleep,
+                            family = cumulative(link = "logit"),
+                            seed = 1) 
+
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(result_brms_cum)
+
+```
+
+### 多項ロジスティック回帰
+
+第13章のサンプルデータを使って、`brm()`で多項ロジスティック回帰を行ってみる。
+
+```{r}
+
+###サンプルデータの作成
+set.seed(1)
+Male = c(rep(0:1, 25))
+Grade = rnorm(n=50, 5, 2)
+Faculty = c(rep("Literature", 15), rep("Economics", 20), rep("Physical", 15))
+sample_mnl = data.frame(Faculty = Faculty, Male = Male, Grade = Grade)
+head(sample_mnl)
+
+```
+
+
+確率分布（family）としてカテゴリカル分布（`categorical`）、`logit`を指定する。
+
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
+
+result_brms_mnl = brms::brm(data = sample_mnl, 
+                            Faculty ~ 1 + Male + Grade, 
+                            family = categorical(link = "logit"),
+                            seed = 1) 
+
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(result_brms_mnl)
+
+```
+
+### ゼロ過剰ポアソンモデル
+
+第13章のサンプルデータを使って、`brm()`でゼロ過剰ポアソンモデルを当てはめてみる。
+
+```{r}
+
+y = c(1, 2, 0, 0, 2, 0, 0, 0, 0, 0, 
+      0, 3, 0, 4, 4, 0, 0, 0, 3, 0, 
+      1, 1, 7, 0, 0, 5, 1, 4, 0, 2)
+Rain = c(0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 
+         0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 
+         1, 0, 1, 0, 0, 0, 0, 0, 1, 0)
+Humidity = c(50, 50, 59, 58, 56, 59, 58, 51, 30, 56, 
+             49, 48, 35, 45, 54, 64, 49, 54, 49, 36, 
+             46, 46, 49, 61, 58, 48, 47, 57, 56, 43)
+Temperature = c(29, 30, 31, 30, 31, 30, 29, 30, 29, 31,
+                32, 30, 29, 31, 30, 32, 30, 31, 30, 29,
+                30, 28, 31, 30, 32, 30, 29, 31, 29, 29)
+d_zip = data.frame(y = y, Rain = Rain, Humidity = Humidity, Temperature = Temperature)
+head(d_zip)
+
+```
+
+
+`brm()`では、ゼロ過剰ポアソンモデルを扱うための`zero_inflated_poisson`という確率分布のfamilyが用意されている。`bf()`で、カウントデータを予測する線形予測子と、ゼロ過剰(`zi`)を予測する線形予測子のそれぞれを分けて入力する。リンク関数は、カウントデータの推定(`link`)には`log`、ゼロの推定（`link_zi`）には`logit`を指定する。  
+
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
+
+result_brms_zip = brms::brm(data = d_zip,
+                            bf(y ~ 1 + Humidity + Temperature, zi ~ 1 + Rain),
+                            family = zero_inflated_poisson(link = "log", link_zi = "logit"),
+                            seed = 1) 
+
+```
+
+```{r, message = FALSE, warning=FALSE}
+
+summary(result_brms_zip)
+
+```
+
+カウントデータの予測にポアソン分布ではなく負の二項分布を扱う場合には、`zero_inflated_negbinomial`が用意されている。
+
+```{r, eval = FALSE, message = FALSE}
+
+brms::brm(data = d_zip,
+          bf(y ~ 1 + Humidity + Temperature, zi ~ 1 + Rain),
+          family = zero_inflated_negbinomial(link = "log", link_zi = "logit"),
+          seed = 1)
 
 ```
 
@@ -332,7 +482,7 @@ summary(result_brms_poisson)
 
 グループごとに異なる切片（ランダム切片）を考慮する場合、式の中に`(1|グループを意味する変数)`というかたちでランダム切片を加える。
 
-```{r, message = FALSE, warning=FALSE, results='hide'}
+```{r, eval = FALSE, message = FALSE, warning=FALSE, results='hide'}
 model_brm_lmm = brms::brm(data= iris, 
                           Sepal.Length ~ 1 + Sepal.Width + (1|Species),#(1|Species)をランダム切片として加える
                           family = gaussian(link="identity"),
@@ -352,7 +502,7 @@ summary(model_brm_lmm)
 
 グループごとに異なる傾き、すなわちランダム傾きをモデルに入れることもできる。式の中に`(予測変数|グループを意味する変数)`というかたちで加える。
 
-```{r, message=FALSE, warning=FALSE, results='hide'}
+```{r, eval = FALSE, message=FALSE, warning=FALSE, results='hide'}
 model_brm_lmm_2 = brms::brm(data= iris, 
                           Sepal.Length ~ 1 + Sepal.Width + (Sepal.Width|Species),
                           #(Sepal.Width|Species)を加える。Speciesごとに異なる切片とSepal.Widthに係る傾きを想定する。
@@ -389,7 +539,7 @@ brms::make_stancode(data = iris,
 
 ### より深く学ぶには
 
-このように、`brm()`を使えばStanに関するプログラミングの知識が特になくても、簡単にMCMCで一般化線形モデルのパラメータ推定を行うことができる。ただし、この章の内容は、あくまでMCMCの練習に過ぎない。特にマルチレベルモデルのような複雑なモデルの推定は、推定結果が収束しないなど、うまく行かないケースに直面することも多い（実際に上で示した例でも出力で警告メッセージが生じされており、対策が必要となる）。  
+このように、`brm()`を使えばStanに関するプログラミングの知識が特になくても、簡単にMCMCで一般化線形モデルのパラメータ推定を行うことができる。ただし、この章の内容は、あくまでMCMCの練習に過ぎない。特にマルチレベルモデルのような複雑なモデルの推定は、推定結果が収束しないなど、うまく行かないケースに直面することも多い。  
   
 本格的にMCMCによる一般化線形モデルのベイズ推定を行うとなると、事前分布やMCMCの設定についてもっと深い知識が必要になる。より深く学ぶには、StanのWebサイトあるいはRとStanの使い方に関する解説書などを参照してほしい（付録の参考文献リストに示している）。  
   

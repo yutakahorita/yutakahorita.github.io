@@ -249,7 +249,7 @@ pnorm(q = 0, mean = 0, sd = 1) #-∞からqの値までの範囲を求めてく�
 
 ```{r}
 
-x = seq(-3, 3, 0.05)
+x = seq(-4, 4, 0.05)
 
 y_1 = dnorm(x=x, mean=0, sd=1) 
 y_2 = dnorm(x=x, mean=1, sd=1) 
@@ -407,8 +407,11 @@ hist(sample.sum)
 * 複数の質問項目（順序尺度）をまとめて平均化した心理尺度を分析に使う。  
 * 選挙への投票（「した」もしくは「しなかった」の二値）者の割合を県ごとに算出して、県を単位として分析に使う。  
 
-中心極限定理は簡単に言うと、「**どのような確率分布に従う変数でも、足し合わせると正規分布に近づく**」ということである（ただし、この章の補足でも述べているように例外もある）。
+中心極限定理は簡単に言うと、「**どのような確率分布に従う変数でも、足し合わせると正規分布に近づく**」ということである。
 
+***
+
+ただし、中心極限定理が成り立たない（足し合わせても正規分布に近似しない）確率分布もある。詳しくは、付録の「確率分布」の「コーシー分布」の解説を参照のこと。
 
 
 ## 確率分布の表現の仕方
@@ -449,7 +452,7 @@ $$
 ## その他の確率分布
 
 
-他にも、確率分布はたくさんある。  
+他にも、確率分布はたくさんある。ここでは、この章でも挙げている一様分布について解説する。その他、統計分析でよく使う確率分布については付録を参照のこと。  
   
 ### 一様分布{-}
 
@@ -475,128 +478,6 @@ ggplot() +
   labs(y= "f(x)", x = "x")
 ```
 
-
-### 指数分布{-}
-
-**指数分布(exponential distribution)**は連続型確率分布であり、パラメータは$\lambda$である。指数分布の確率変数は、ゼロ以上の正の値のみを取りうる。
-
-
-$$
-f(x) = \lambda \exp(-\lambda x)\\
-x \sim \text{Exponential}(\lambda)\\
-$$
-
-```{r, echo=FALSE}
-exp_1 = data.frame(x = seq(0,3, 0.1), f = dexp(seq(0,3, 0.1), rate = 0.5), rate = 0.5)
-exp_2 = data.frame(x = seq(0,3, 0.1), f = dexp(seq(0,3, 0.1), rate = 1), rate = 1)
-exp_3 = data.frame(x = seq(0,3, 0.1), f = dexp(seq(0,3, 0.1), rate = 2), rate = 2)
-exp = rbind(exp_1, exp_2, exp_3)
-
-ggplot() +
-  ggplot2::geom_line(data = exp, aes(x = x, y = f, colour = factor(rate), linetype = factor(rate))) + 
-  labs(y = "f(x)", x = "x", colour = "rate", linetype = "rate")
-```
-
-ある一定期間の間に平均して$\lambda$回生じるイベントの時間間隔は、指数分布に従う。災害が生じてから次の災害が生じるまでの期間、店に客が来てから次の客が来るまでの期間などは指数分布に従う。  
-
-
-
-### 対数正規分布{-}
-
-**対数正規分布(log-normal distribution)**は連続型確率分布であり、正規分布と同様に平均$\mu$と標準偏差$\sigma$の２つのパラメータを持つ分布である。名前の通り、正規分布とは深い関係にある。
-
-$$
-f(x) = \frac{1}{\sqrt{2\pi\sigma}x}\exp\left(-\frac{(\ln x-\mu)^2}{2\sigma^2}\right)\\
-x \sim \text{logNormal}(\mu, \sigma)\\
-$$
-
-
-```{r, echo=FALSE}
-lnorm_1 = data.frame(x=seq(0,5, 0.1), f = dlnorm(seq(0, 5, 0.1), meanlog = 0, sdlog = 1), par = "mean=0, sd = 1")
-lnorm_2 = data.frame(x=seq(0,5, 0.1), f = dlnorm(seq(0, 5, 0.1), meanlog = 0.5, sdlog = 1), par = "mean=0.5, sd = 1")
-lnorm_3 = data.frame(x=seq(0,5, 0.1), f = dlnorm(seq(0, 5, 0.1), meanlog = 0, sdlog = 2), par = "mean=0, sd = 2")
-lnorm = rbind(lnorm_1, lnorm_2, lnorm_3)
-
-ggplot() +
-  ggplot2::geom_line(data = lnorm, aes(x = x, y = f, colour = factor(par), linetype = factor(par))) + 
-  labs(y = "f(x)", x = "x", colour = "par", linetype = "par")
-```
-
-対数正規分布は、右の方に長い裾を描く分布である。対数正規分布に従うものとしては、年収の分布などが知られている。  
-  
-  
-ランダムな変数を足し合わせた物が正規分布に従うのに対し、ランダムな変数をかけ合わせたものは対数正規分布に従う。
-
-```{r, message=FALSE, warning=FALSE}
-#サイコロを7回振って、それぞれの値で掛け算をする。これを10,000回行ったときの出目の合計値の分布
-
-sample.prod = sapply(c(1:10000), function(x) {prod(round(runif(n = 7,min = 1,max = 6),0))} ) #prod()はカッコ内のベクトルの要素をかけ合わせる関数
-
-hist(sample.prod)
-
-```
-
-
-「ランダムな変数をかけ合わせたもの」の対数を取ってその分布を確認すると、正規分布のかたちになることがわかる。
-
-```{r, message=FALSE, warning=FALSE}
-sample.prod_2 = log(sample.prod)
-hist(sample.prod_2)
-
-```
-
-掛け算の対数を取るということは、足し算に直すことと同じである。つまり、対数を取ることで「ランダムな変数をかけ合わせたもの」が「ランダムな変数を足し合わせたもの」に変換される。「ランダムな変数を足し合わせたもの」は、中心極限定理により正規分布に従う。  したがって、対数正規分布の対数を取ったものは正規分布になる。
-
-
-### 負の二項分布{-}
-
-**負の二項分布(negative binomial distribution)**は離散型確率分布である。ある事象が生じる確率（成功確率）を$q$, 成功回数を$r$としたとき、 失敗回数$x$を確率変数とした場合に$x$が従う確率分布である。パラメータは、成功確率$q$と成功回数$r$である。  
-
-$$
-p(x) = {}_{x+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{x}\\
-x \sim \text{Negative Binomial}(r, q)
-$$
-
-例えば、コインを何回か投げて３回表が出たら投げるのをやめるとした場合、３回表が出るまでに裏が出る回数の確率は負の二項分布に従う。  
-以下は、成功回数$r = 3$とし、$q=0.2$, $q=0.5$, $q=0.6$としたときの負の二項分布である。
-
-
-```{r, echo=FALSE}
-nbinom_1 = data.frame(x = 0:10, p = dnbinom(0:10, size = 3, prob = 0.2), q = 0.2)
-nbinom_2 = data.frame(x = 0:10, p = dnbinom(0:10, size = 3, prob = 0.5), q = 0.5)
-nbinom_3 = data.frame(x = 0:10, p = dnbinom(0:10, size = 3, prob = 0.6), q = 0.6)
-nbinom = rbind(nbinom_1, nbinom_2, nbinom_3)
-
-ggplot() +
-  ggplot2::geom_bar(data = nbinom, aes(x = factor(x), y = p, fill = factor(q)), color = "black", stat = "identity", position = "dodge") + 
-  labs(y = "p(x)", x = "number of failure", fill = "q", title = "number of success = 3")
-```
-
-
-負の二項分布は第12章でも扱う。
-
-### 幾何分布{-}
-
-**幾何分布 (geometric distribution)**は離散型確率分布である。ある事象が生じる確率を$q$としたとき、何回か繰り返した時に初めて生じるときの回数$x$が従う確率分布が幾何分布である（例えば、コインを何回か投げたときに初めて表が出るときの確率）。  
-
-
-$$
-p(x) = q(1-q)^{x}\\
-x \sim \text{Geometric}(p)\\
-$$
-
-以下は、$q=0.2$, $q=0.5$, $q=0.6$の幾何分布である。
-
-```{r, echo=FALSE}
-geom_1 = data.frame(x = 0:10, p = dgeom(0:10, prob = 0.2), q = 0.2)
-geom_2 = data.frame(x = 0:10, p = dgeom(0:10, prob = 0.5), q = 0.5)
-geom_3 = data.frame(x = 0:10, p = dgeom(0:10, prob = 0.6), q = 0.6)
-geom = rbind(geom_1, geom_2, geom_3)
-
-ggplot() +
-  ggplot2::geom_bar(data = geom, aes(x = factor(x), y = p, fill = factor(q)), color = "black", stat = "identity", position = "dodge") + 
-  labs(y = "p(x)", x = "x", fill = "q")
-```
 
 
 ## 確認問題{-}
@@ -628,62 +509,6 @@ ggplot() +
 * 身長158 cmを超える児童の割合はいくらか。  
 
 ヒント：同じく、pnorm()を使う。なお、全ての範囲の確率の合計は1である。
-
-
-## 補足
-
-
-### 中心極限定理の例外
-
-中心極限定理より、元がどのような分布でも足し合わせると正規分布に近似するが、例外もある。例えば、**コーシー分布（Cauchy distribution）**と呼ばれる確率分布は、中心極限定理を適用できない。  
-  
-コーシー分布は形状が正規分布に似ているが、裾が広いことが特徴である。つまり、極端な値が出る確率が正規分布よりも大きい。パラメータは、locationとscaleの2つである。以下に、locationが0、scaleパラメータが1と3の分布の例を示す。
-
-```{r}
-
-dat_cauchy_1 = data.frame(x = seq(-6, 6, 0.01), 
-                        y= dcauchy(x = seq(-6, 6, 0.01), location = 0, scale = 1), 
-                        scale = "1")
-
-dat_cauchy2 = data.frame(x = seq(-6, 6, 0.01), 
-                        y= dcauchy(x = seq(-6, 6, 0.01), location = 0, scale = 3), 
-                        scale = "3")
-
-dat_cauchy = rbind(dat_cauchy_1, dat_cauchy2)
-
-ggplot() + 
-  geom_line(data = dat_cauchy, aes(x = x, y = y, linetype = scale)) + xlim(-6,6) + labs(x = "y", y = "density") 
-
-
-```
-
-コーシー分布は、極端な値が存在することにより、その分布の特徴を平均や標準偏差などで捉えることができない。
-
-```{r}
-
-d_cauchy = rcauchy(n = 100, location = 0, scale = 1) #location = 0, scale = 1のコーシー分布から乱数を100個生成する
-
-mean(d_cauchy)
-median(d_cauchy)
-sd(d_cauchy)
-
-```
-
-
-
-コーシー分布から乱数を100個作って足し合わせることを5回やり、分布を確認する。足し合わせても、正規分布に近似しない。
-
-```{r}
-
-d_cauchy = rcauchy(n = 100, location = 0, scale = 1) + 
-rcauchy(n = 100, location = 0, scale = 1) + 
-rcauchy(n = 100, location = 0, scale = 1) + 
-rcauchy(n = 100, location = 0, scale = 1) + 
-rcauchy(n = 100, location = 0, scale = 1) 
-
-hist(d_cauchy)
-
-```
 
 
 

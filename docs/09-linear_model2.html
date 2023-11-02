@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2023-10-29" />
+<meta name="date" content="2023-11-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -806,7 +806,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.2641, Adjusted R-squared:  0.1824 
 ## F-statistic: 3.231 on 3 and 27 DF,  p-value: 0.03793</code></pre>
 <p>それぞれのダミー変数に係る傾きの係数、すなわち式(2)における<span class="math inline">\(\beta_{c}\)</span>、<span class="math inline">\(\beta_{t1}\)</span>、<span class="math inline">\(\beta_{t2}\)</span>の推定結果が出力される。それぞれ、<code>ctrl</code>、<code>trt1</code>, <code>trt2</code>における応答変数(<code>y</code>)の推定値を意味している。</p>
-<p>x_t1の係数は負でp値は<span class="math inline">\(p&lt;.05\)</span>に、x_t2の係数は正でp値は<span class="math inline">\(p&lt;.05\)</span>となった。これらが意味していることは、「<code>x_t1</code> = 1のときに、<code>y_2</code>の値は有意に-0.41下がる」と「<code>x_t2</code> = 1のときに、<code>y_2</code>の値は有意に0.45上がる」ということである。言い換えれば、「実験条件1では全体の平均よりも植物の重量の値が低く」、「実験条件2では全体の平均よりも植物の重量の値が高い」傾向にあることを示している。</p>
+<p>x_t1の係数は負でp値は<span class="math inline">\(p&lt;.05\)</span>に、x_t2の係数は正でp値は<span class="math inline">\(p&lt;.05\)</span>となった。これらが意味していることは、「<code>x_t1</code> = 1のときに、<code>y_2</code>の値は有意に0.59下がる」と「<code>x_t2</code> = 1のときに、<code>y_2</code>の値は有意にに0.65上がる」ということである。言い換えれば、「実験条件1では全体の平均よりも植物の重量の値が低く」、「実験条件2では全体の平均よりも植物の重量の値が高い」傾向にあることを示している。</p>
 <p>図でも条件別に<code>y_2</code>の分布を確認してみよう。分布を見ても同様の傾向があるが、線形モデルの解析の結果その効果が有意であることが確認できた。</p>
 <div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="09-linear_model2.html#cb363-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb363-2"><a href="09-linear_model2.html#cb363-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> y_2))</span></code></pre></div>
@@ -883,7 +883,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.889 on 27 degrees of freedom
 ## Multiple R-squared:  0.2641, Adjusted R-squared:  0.2096 
 ## F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
-<p>式（3）より、切片の推定値は<span class="math inline">\(x_{t1}=0\)</span>かつ<span class="math inline">\(x_{t2}=0\)</span>のときの<span class="math inline">\(\mu\)</span>、つまり統制群(ctrl)のときの応答変数<span class="math inline">\(y\)</span>の推定値を意味している。各ダミー変数の係数（傾き）は、切片に加わる各条件の効果を意味している。例えば、<code>x_t2</code>の係数は0.49であるが、これは<span class="math inline">\(x_{t2}=1\)</span>のとき（つまりtrt2のとき）の応答変数の予測値は、 5.03 + 0.49 = 5.52となることを示している。</p>
+<p>式（3）より、切片の推定値は<span class="math inline">\(x_{t1}=0\)</span>かつ<span class="math inline">\(x_{t2}=0\)</span>のときの<span class="math inline">\(\mu\)</span>、つまり統制群(ctrl)のときの応答変数<span class="math inline">\(y\)</span>の推定値を意味している。各ダミー変数の係数（傾き）は、切片に加わる各条件の効果を意味している。例えば、<code>x_t2</code>の係数は0.7であるが、これは<span class="math inline">\(x_{t2}=1\)</span>のとき（つまりtrt2のとき）の応答変数の予測値は、 0.65(= 切片 + <code>x_t2</code>の傾き)となることを示している。</p>
 <p>このように、グループが<span class="math inline">\(K\)</span>個ある場合（<span class="math inline">\(K &gt; 2\)</span>）、<span class="math inline">\(K-1\)</span>個のダミー変数を作って推定する方法もある。係数の意味することは、基準となるグループ（どのダミー変数も0となるグループ）と比べての効果ということになる。</p>
 <p>このように、モデルを組み直すことにより、係数が意味することも変化してくる。モデル（式）を確認しながら、係数が何を意味しているのかを常に意識するようにしよう。</p>
 </div>
@@ -1053,7 +1053,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="変数の標準化" class="section level2 hasAnchor" number="10.6">
 <h2><span class="header-section-number">10.6</span> 変数の標準化<a href="09-linear_model2.html#変数の標準化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>先述のように、交互作用を含むモデルの場合は、交互作用以外の項の解釈が複雑になる。</p>
-<p>これへの対処として、解析に使う予測変数及び応答変数を事前に*<strong>標準化(standardizing)</strong>しておくという手がある。標準化とは、元の値を「ゼロが平均値、1が標準偏差」になるように値を変換する処理のことをいう。</p>
+<p>これへの対処として、解析に使う予測変数及び応答変数を事前に<strong>標準化(standardizing)</strong>しておくという手がある。標準化とは、元の値を「ゼロが平均値、1が標準偏差」になるように値を変換する処理のことをいう。</p>
 <p>変数を標準化しておくと、回帰分析の係数の解釈が直感的に理解しやすくなる。</p>
 <p>例えば、前の章で<code>iris</code>データを使って以下の線形モデルの解析を行った。</p>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="09-linear_model2.html#cb381-1" tabindex="-1"></a>dat <span class="ot">=</span> iris <span class="co">#irisをdatという別の名前で保存</span></span>

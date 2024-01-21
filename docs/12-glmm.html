@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 マルチレベルモデル | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 13 マルチレベルモデル | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 マルチレベルモデル | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2023-11-02" />
+<meta name="date" content="2024-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8" data-path="09-linear_model2.html"><a href="09-linear_model2.html#モデルの予測力の評価"><i class="fa fa-check"></i><b>10.8</b> モデルの予測力の評価</a>
 <ul>
 <li class="chapter" data-level="10.8.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#決定係数"><i class="fa fa-check"></i><b>10.8.1</b> 決定係数</a></li>
-<li class="chapter" data-level="10.8.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量基準aic"><i class="fa fa-check"></i><b>10.8.2</b> 赤池情報量基準（AIC）</a></li>
+<li class="chapter" data-level="10.8.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量規準aic"><i class="fa fa-check"></i><b>10.8.2</b> 赤池情報量規準（AIC）</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#確認問題-7"><i class="fa fa-check"></i>確認問題</a>
 <ul>
@@ -631,7 +631,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <p>まず、がくの長さ（<code>Sepal.Length</code>）とがくの幅（<code>Sepal.Width</code>）の関係を散布図で示してみよう。</p>
 <div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="12-glmm.html#cb520-1" tabindex="-1"></a>graph_1 <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb520-2"><a href="12-glmm.html#cb520-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data=</span>iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width),<span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb520-2"><a href="12-glmm.html#cb520-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data=</span>iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width, <span class="at">y=</span>Sepal.Length),<span class="at">size =</span> <span class="dv">3</span>)</span>
 <span id="cb520-3"><a href="12-glmm.html#cb520-3" tabindex="-1"></a>graph_1</span></code></pre></div>
 <p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-300-1.png" width="672" /></p>
 <p>まず、<code>lm()</code>を使って、がくの長さを応答変数、がくの幅を予測変数とした線形モデルで係数を推定する。</p>
@@ -704,12 +704,13 @@ y_{i} \sim \text{Normal}(\mu_{i}, \sigma)
 \mu_{i} = \alpha_{0} + \beta x_{i} + \alpha_{j} \tag{2} \\
 \alpha_{j} \sim \text{Normal}(0, \sigma_{\alpha})\\
 y_{i} \sim \text{Normal}(\mu_{i}, \sigma)
-\]</span></p>
-<p>すべての個人に共通して影響する切片<span class="math inline">\(\alpha_{0}\)</span>に加え、個人ないしはグループごとに異なる切片<span class="math inline">\(\alpha_{j}\)</span>を考慮する。<br />
-更に、<span class="math inline">\(\alpha_{j} \sim \text{Normal}(0, \sigma_{\alpha})\)</span>にあるように、個人ごとの切片<span class="math inline">\(\alpha_{j}\)</span>が「平均をゼロ、<span class="math inline">\(\sigma_{\alpha}\)</span>を標準偏差とする正規分布から生成される」という仮定を置く。<br />
-これにより、同じグループに属するデータ（例えば<span class="math inline">\(j=1\)</span>）には同じ効果（<span class="math inline">\(\alpha_{1}\)</span>）が共通して係ることを表現できる。</p>
+\]</span>
+線形予測子には、これまでと同様に切片（<span class="math inline">\(\alpha\)</span>）と傾き （<span class="math inline">\(\beta\)</span>）が含まれている。これは全てのグループに共通する効果であり、<strong>固定効果（Fixed effect）</strong>と表現する。</p>
+<p>更に、モデルにはグループごとに異なる切片<span class="math inline">\(\alpha_{j}\)</span>が加わっている。このようにグループごとに追加で加わる効果を<strong>ランダム効果（random effect）</strong>と表現する。ここではランダム効果を切片で表しており、<strong>ランダム切片(random intercept)</strong>とも呼ばれる。<br />
+また、<span class="math inline">\(\alpha_{j} \sim \text{Normal}(0, \sigma_{\alpha})\)</span>とあるように、「グループごとに異なる切片<span class="math inline">\(\alpha_{j}\)</span>は、平均をゼロ、<span class="math inline">\(\sigma_{\alpha}\)</span>を標準偏差とする正規分布から生成される」という仮定を置く。</p>
+<p>このように線形予測子にランダム切片を加えることで、グループ全体に共通する効果とは別に、グループごとの差をモデルで表現できる。</p>
 <hr />
-<p>傾きを<span class="math inline">\(\beta_{ j}\)</span>にする、すなわち個人ごとに予測変数に係る効果が異なるという前提を置くこともできる。しかし、実際に傾きをランダム効果としたモデルは複雑で推定するのは困難であるため（最尤推定法では解が求まらない場合がある）、多くの場合、個人差の影響（ランダム効果）は切片のみを考慮したモデルで表現されることが多い。ランダム傾きを含むマルチレベルモデルを扱う際には、ベイズ統計の手法が必要になる。</p>
+<p>傾きを<span class="math inline">\(\beta_{ j}\)</span>にする、すなわち個人ごとに予測変数に係る効果が異なるという前提を置くこともできる。これは、<strong>ランダム傾き（random slope）</strong>と呼ばれる。しかし、実際にはランダム傾きを推定するのは困難であり（最尤推定法では解が求まらない場合がある）、グループ差はランダム切片で表現するのが一般的である。ランダム傾きを含むマルチレベルモデルを扱う際には、ベイズ統計の手法が必要になる。</p>
 <hr />
 </div>
 <div id="rでのマルチレベルモデル" class="section level2 hasAnchor" number="13.4">

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 一般化線形モデルの応用 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2024-01-21" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -995,22 +995,22 @@ Pr(y|q,\lambda) = (1-q)\frac{\lambda^y\exp(-\lambda)}{y!}\
 ## 
 ## Pearson residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -1.3358 -0.4763 -0.3775  0.3633  3.0021 
+## -1.3357 -0.4763 -0.3775  0.3633  3.0017 
 ## 
 ## Count model coefficients (poisson with log link):
 ##              Estimate Std. Error z value Pr(&gt;|z|)   
-## (Intercept) -15.13397    6.88252  -2.199  0.02789 * 
-## Humidity     -0.04126    0.05113  -0.807  0.41970   
-## Temperature   0.60349    0.23265   2.594  0.00949 **
+## (Intercept) -15.13389    6.88209  -2.199  0.02788 * 
+## Humidity     -0.04123    0.05112  -0.806  0.41996   
+## Temperature   0.60345    0.23266   2.594  0.00949 **
 ## 
 ## Zero-inflation model coefficients (binomial with logit link):
 ##             Estimate Std. Error z value Pr(&gt;|z|)  
-## (Intercept)  -0.9199     0.5989  -1.536   0.1245  
-## Rain          2.0316     0.9017   2.253   0.0243 *
+## (Intercept)  -0.9197     0.5988  -1.536   0.1246  
+## Rain          2.0315     0.9017   2.253   0.0243 *
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 
 ## 
-## Number of iterations in BFGS optimization: 12 
+## Number of iterations in BFGS optimization: 23 
 ## Log-likelihood: -39.5 on 5 Df</code></pre>
 <p>ベルヌーイ分布からゼロを予測するモデル（Zero-inflation
 model）とポアソン回帰からカウントデータを予測するモデル（Count
@@ -1026,24 +1026,24 @@ model）の2種類の推定結果が出力される。</p>
 ## 
 ## Pearson residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -1.3356 -0.4763 -0.3776  0.3636  3.0014 
+## -1.3357 -0.4763 -0.3775  0.3633  3.0018 
 ## 
 ## Count model coefficients (negbin with log link):
 ##              Estimate Std. Error z value Pr(&gt;|z|)   
-## (Intercept) -15.14049    6.88239  -2.200  0.02781 * 
-## Humidity     -0.04123    0.05112  -0.807  0.41994   
-## Temperature   0.60366    0.23267   2.594  0.00947 **
-## Log(theta)   10.74847   88.23911   0.122  0.90305   
+## (Intercept) -15.13409    6.88214  -2.199  0.02788 * 
+## Humidity     -0.04123    0.05112  -0.806  0.41996   
+## Temperature   0.60345    0.23266   2.594  0.00949 **
+## Log(theta)   12.83152  273.28934   0.047  0.96255   
 ## 
 ## Zero-inflation model coefficients (binomial with logit link):
 ##             Estimate Std. Error z value Pr(&gt;|z|)  
-## (Intercept)  -0.9196     0.5988  -1.536   0.1246  
-## Rain          2.0310     0.9017   2.253   0.0243 *
+## (Intercept)  -0.9197     0.5988  -1.536   0.1246  
+## Rain          2.0315     0.9017   2.253   0.0243 *
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 
 ## 
-## Theta = 46558.6825 
-## Number of iterations in BFGS optimization: 53 
+## Theta = 373816.6121 
+## Number of iterations in BFGS optimization: 26 
 ## Log-likelihood: -39.5 on 6 Df</code></pre>
 <p>ゼロ過剰ポアソンモデルはベルヌーイ分布からだけではなくポアソン分布からもゼロが予測されるが、ゼロが生成されるモデルと1以上の正の整数が生成されるモデルを分けた<strong>ハードルモデル(Hurdle
 model)</strong>というものもある。</p>

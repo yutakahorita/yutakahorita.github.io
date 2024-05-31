@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 線形モデルの注意点 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 10 線形モデルの注意点 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 線形モデルの注意点 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2024-01-21" />
+<meta name="date" content="2024-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1180,7 +1180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>それぞれの係数とp値が変わった。それぞれの係数の値は、他の変数がゼロのときの応答変数の増減分を意味する、すなわち全ての他変数が平均（=0）であるときのその変数そのものの効果を意味することになる。</p>
 <p>変数を標準化する前のモデルでは、男性の場合（M=1）のyの予測値は、「Mの係数+ xとMの交互作用項の係数」であり、Mの係数そのものは性別そのものの効果を意味するものではなかった。<br />
 これに対し、標準化した後のモデルでは、Mの係数そのものを「性別の平均的効果=主効果」として捉えることができる。Mの係数が意味することは、「他の変数がゼロのとき、つまり平均であるときに、Mがプラスに変化したとき（男性であるとき）の応答変数の変化量」を意味しており、性別そのものの平均的効果として直感的に解釈することができる。<br />
-交互作用項の係数も、他の変数の効果が一定の場合、Mまたはsが1単位変化したときの応答変数の増分として理解できる。</p>
+交互作用項の係数も、他の変数の効果が一定の場合、Mまたはxが1単位変化したときの応答変数の増分として理解できる。</p>
 </div>
 <div id="線形モデルを扱う上での問題" class="section level2 hasAnchor" number="10.7">
 <h2><span class="header-section-number">10.7</span> 線形モデルを扱う上での問題<a href="09-linear_model2.html#線形モデルを扱う上での問題" class="anchor-section" aria-label="Anchor link to header"></a></h2>

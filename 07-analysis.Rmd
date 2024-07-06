@@ -35,9 +35,8 @@ Rに標準で入っている`sleep`データを使って、Rでt検定をやっ�
 
 ```{r}
 
-ttest_sample = sleep #ttest_sampleという名前保存する。
-ttest_sample$ID = 1:nrow(ttest_sample)
-ttest_sample
+sleep_1 = sleep %>% dplyr::select(-ID) %>% dplyr::mutate(ID = 1:nrow(.))
+head(sleep_1)
 
 ```
 
@@ -49,7 +48,7 @@ IDは参加者を意味する番号で、1から20までの人がグループ1�
 
 ```{r}
 
-t.test(data = ttest_sample, extra~group)
+t.test(data = sleep_1, extra~group)
 
 ```
 
@@ -62,20 +61,24 @@ t.test(data = ttest_sample, extra~group)
 
 ```{r}
 
-ttest_sample2 = sleep #ttest_sampleという名前保存する。
-ttest_sample2
+sleep_2 = sleep
+sleep_2
 
 ```
 
-今度は20名の参加者が、グループ1とグループ2の両方に属して、それぞれで変数`extra`を測定したとする。
+今度は10名の参加者が、グループ1とグループ2の両方に属して、それぞれで変数`extra`を測定したとする。
 
 このように同じ参加者が２つのグループの両方に属しているケースが「対応のある場合」である。  
   
-`t.test()`関数でオプション`paired = TRUE`を入れれば、対応のあるt検定を実施できる。
+データを横並び（wide型）にしてから、`t.test()`関数で以下のようにプログラムを書けば、対応のあるt検定を実施できる。オプションに`paired = TRUE`を指定する。
 
 ```{r}
 
-t.test(data = ttest_sample2, extra~group, paired = TRUE)
+sleep_2_2 = sleep_2 %>% tidyr::pivot_wider(names_from = group, values_from = extra) %>%   dplyr::rename(group_1 = `1`, group_2 = `2`)
+
+head(sleep_2_2)  
+
+t.test(sleep_2_2$group_1, sleep_2_2$group_2, paired = TRUE)
 
 ```
 

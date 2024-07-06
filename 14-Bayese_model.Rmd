@@ -34,11 +34,11 @@ model_brm_lmm_2 = readRDS("./brms_model/model_brm_lmm_2.rds")
 
 ## 準備
 
-### Rtanのインストール
+### Rstanのインストール
 
 MCMCを行うために、Stanと呼ばれるプラットフォームが必要にある。RStanはRからStanを使うために開発されたインターフェースである。この章の内容の解析を行うためには、RStanパッケージのインストールが事前に必要となる。  
   
-Rstan（`rstan`）のインストール方法については、「Rstan Getting Started (Japanese)」[https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese))のページを参照のこと。「Rtool」、「C++コンパイラ（MacならばXCode）」のインストールも必要になる。  
+RStan（`rstan`）のインストール方法については、「RStan Getting Started (Japanese)」[https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese))のページを参照のこと。「Rtool」、「C++コンパイラ（MacならばXCode）」のインストールも必要になる。  
 
 
 ### brmsパッケージのインストール

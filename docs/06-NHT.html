@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2024-10-24" />
+<meta name="date" content="2024-10-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -940,7 +940,7 @@ H_{1}: \mu_{A} - \mu_{B}\neq0\\
 ## sample estimates:
 ## mean in group A mean in group B 
 ##     0.190523876    -0.006471519</code></pre>
-<p><span class="math inline">\(p&lt;.05\)</span>であり、帰無仮説は棄却されない。</p>
+<p><span class="math inline">\(p \geq .05\)</span>であり、帰無仮説は棄却されない。</p>
 <p>では、グループA・Bそれぞれ20個ずつ標本を抽出して平均値の差があるかをt検定で検定することを100回やってみる。以下が、そのシミュレーションのプログラムである。</p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="06-NHT.html#cb295-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb295-2"><a href="06-NHT.html#cb295-2" tabindex="-1"></a>d_sim <span class="ot">=</span> <span class="fu">data.frame</span>()</span>

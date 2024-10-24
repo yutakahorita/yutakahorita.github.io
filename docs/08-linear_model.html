@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2024-07-06" />
+<meta name="date" content="2024-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -699,9 +699,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>係数がマイナスならば、予測変数の値が増えると応答変数が減少する関係にあることを意味する。</p></li>
 <li><p>t value及びPrは係数の有意性検定の結果を示している（それぞれt値、p値）。ここでは、「母集団の係数がゼロである」という帰無仮説を検定している。p値が極端に低い場合は、「求めた係数の値は有意にゼロから離れている」と結論付けることができる。</p></li>
 </ul>
-<p>この例の場合は、<code>Sepal.Lenght</code>が1単位増えると、<code>Petal.Length</code>が1.86だけ上昇することを示している。<br />
-切片の値は-7.1となっているが、<code>Sepal.Lenght</code>の値がゼロのときの<code>Petal.Length</code>の予測値を意味している（この例ではアヤメのがくの長さとしてありえない負の値になっているが、これは変数の標準化等を行っていないためである。詳しくは次章で解説する）。</p>
-<p><code>Sepal.Lenght</code>と<code>Petal.Length</code>の散布図に、線形モデルから推定された切片と傾きの値を持つ以下の直線を引いてみよう。</p>
+<p>この例の場合は、<code>Sepal.Length</code>が1単位増えると、<code>Petal.Length</code>が1.86だけ上昇することを示している。<br />
+切片の値は-7.1となっているが、<code>Sepal.Length</code>の値がゼロのときの<code>Petal.Length</code>の予測値を意味している（この例ではアヤメのがくの長さとしてありえない負の値になっているが、これは変数の標準化等を行っていないためである。詳しくは次章で解説する）。</p>
+<p><code>Sepal.Length</code>と<code>Petal.Length</code>の散布図に、線形モデルから推定された切片と傾きの値を持つ以下の直線を引いてみよう。</p>
 <p><span class="math display">\[
 \begin{equation}
   Petal.Length =  -7.10 + 1.86 Sepal.Length\\ \tag{3}

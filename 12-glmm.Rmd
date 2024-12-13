@@ -218,13 +218,13 @@ head(data_sample)
 予測変数と応答変数の関係に、個体特有の効果を加えたモデルは以下となる。  
 
 $$
-q = \frac{\exp(\alpha_{0} + \beta x + \alpha_{j})}{1+\exp(\alpha_{0} + \beta x + \alpha_{j})} \tag{3} \\
-\alpha_{j} \sim \text{Normal}(0, \sigma_{\alpha})\\
+\log\frac{q}{1-q} = \alpha_{0} + \beta x + \alpha_{\text{ID}} \tag{3} \\
+\alpha_{\text{ID}} \sim \text{Normal}(0, \sigma_{\alpha})\\
 y \sim \text{Binomial}(1, q)
 $$
 
-線形予測子をロジット（逆ロジット）変換して、$y=1$が生じる確率$q$を求める。応答変数$y$は、$q$をパラメータとする二項分布から生成される。これらの点は、一般化線形モデルで学んだ。  
-更に、線形予測子に、ランダム切片$\alpha_{j}$を加えた。$\alpha_{j}$は、平均ゼロ、標準偏差$\sigma_{\alpha}$の正規分布に従って生成されるとする。  
+$y=1$が生じる確率を$q$とし、線形予測子をロジット関数で変換する。更に、応答変数$y$は、$q$をパラメータとする二項分布から生成されるとする。これらの点は、一般化線形モデルで学んだ。  
+更に、線形予測子には、`ID`ごとに異なるランダム切片$\alpha_{\text{ID}}$を加えている。$\alpha_{\text{ID}}$は、平均ゼロ、標準偏差$\sigma_{\alpha}$の正規分布に従って生成されるとする。  
   
 
 正規分布以外の確率分布を扱うマルチレベルは、Rでは`lme4`パッケージの`glmer()`で扱うことができる。さっきの`lmer()`と同じ要領で、線形予測子に個体を識別する変数（`ID`）を加える。以下のように、`(1|ID)`というかたちで入れる。  
@@ -243,7 +243,10 @@ summary(model_logistic_glmm)
 ### ポアソン回帰
 
 
-同じく、`lme4`パッケージの`glmer()`を使う。確率分布は`poisson`（ポアソン分布）、リンク関数は`log`（対数）を指定する。リンク関数の指定は省略しても構わない（ポアソン分布を指定すれば、デフォルトで対数関数を選択してくれる）。
+同じく、`lme4`パッケージの`glmer()`でランダム効果を扱ったポアソン回帰を実行することができる。
+
+
+まず、以下のプログラムを実行してサンプルデータ`dat`を作る。
 
 
 ```{r}
@@ -271,12 +274,35 @@ dat = data.frame(y = c(y_1, y_2, y_3, y_4, y_5),
            ID = sort(rep(1:5, 10)))
 dat$x_std = dat$x - mean(dat$x)
 
+head(dat)
+
+```
+
+`x`を予測変数（量的変数）、`y`を応答変数（正の整数を取るカウントデータ）、`ID`が集団を意味する変数とする。5つの集団があり、それぞれの集団に`x`及び`y`が10個ずつあるデータである。
+
+```{r}
+
 ggplot2::ggplot() + 
   ggplot2::geom_point(data = dat, aes(x = x, y = y)) +
   ggplot2::facet_wrap(vars(factor(ID)))
 
 ```
 
+ 
+
+モデルは以下のようになる。  
+
+
+$$
+\log\lambda = \alpha_{0} + \beta x + \alpha_{\text{ID}} \tag{4} \\
+\alpha_{\text{ID}} \sim \text{Normal}(0, \sigma_{\alpha})\\
+y \sim \text{Poisson}(\lambda)
+$$
+
+線形予測子を対数関数で変換する。応答変数$y$は、$\lambda$をパラメータとするポアソン分布から生成されるとする。  
+更に、線形予測子に、ランダム切片$\alpha_{\text{ID}}$を加えている。$\alpha_{\text{ID}}$は、平均ゼロ、標準偏差$\sigma_{\alpha}$の正規分布に従って生成されるとする。  
+  
+ロジスティック回帰のときと同様に、`lme4`パッケージの`glmer`関数を使って分析を行う。確率分布は`poisson`（ポアソン分布）、リンク関数は`log`（対数）を指定する。リンク関数の指定は省略しても構わない（ポアソン分布を指定すれば、デフォルトで対数関数を選択してくれる）。
 
 
 ```{r}
@@ -311,17 +337,25 @@ performance::check_overdispersion(result_dis) #過分散のチェック
 
 マルチレベルモデルでは、過分散の問題にも対処することができる。
 
-$$
-\lambda_{i} = \alpha_{0} + \beta x_{i} + \alpha_{i} \tag{2} \\
-\alpha_{i} \sim \text{Normal}(0, \sigma_{\alpha})\\
-y_{i} \sim \text{Poisson}(\lambda_{i})
-$$
-観測値ごとのランダム切片（$\alpha_{i}$）を加えて、余分な分散を別のパラメータ（$\sigma_{\alpha}$）で表現する。
-
 ```{r}
 
 dat_dis$ID = 1:nrow(dat_dis) #観測値ごとに番号を割り振る（1からデータ数までの数値の連続）
 head(dat_dis)
+
+```
+
+このデータに対して、以下のモデルを当てはめる。
+
+$$
+\log\lambda = \alpha_{0} + \beta x + \alpha_{\text{ID}} \tag{5} \\
+\alpha_{\text{ID}} \sim \text{Normal}(0, \sigma_{\alpha})\\
+y \sim \text{Poisson}(\lambda)
+$$
+
+このデータは繰り返し測定のデータ（同じ個人もしくは集団から複数のデータが測定されているデータ）ではないが、観測値ごとのランダム切片（$\alpha_{\text{ID}}$）を加えることで、余分な分散を正規分布の標準偏差のパラメータ（$\sigma_{\alpha}$）で表現する。
+
+
+```{r}
 
 result_poisson_glmm = lme4::glmer(data = dat_dis, y ~ 1 + x + (1|ID), family = poisson(link = "log"))
 summary(result_poisson_glmm)

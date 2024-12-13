@@ -15,34 +15,20 @@ library(tidyverse)
 * グルーピング  
 * データの変換  
 * データの結合  
-* データの読み込み  
 
 
 ## パッケージのロード
   
-
 まず、この章で使うパッケージのロードをする（初めて使う場合は、マシンに予めパッケージをインストールする必要がある）。パッケージのインストール及びロードについては、第2章で解説している。
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
-
-library(tidyverse) 
-
-```
-
-***
-
-注意：  
-以降のプログラムでは、関数を「`XXXX::YYYY`」と表現しているが、これらは「`XXXX`パッケージに入っている`YYYY`という名前の関数を使う」ということを意味している。`XXXX::`の部分は基本的に省略しても問題ないが、例えば`tidyverse`パッケージ以外もロードしていて、同じ名前の関数が別のパッケージに含まれている場合には、思った通りの結果が表示されない場合もある。外部パッケージの関数を使う場合は、できる限り`XXXX::`を付けた方が無難である。    
-    
-***
-    
-以降では、Rに標準で入っている`iris`データを例として、ファイル操作の練習を行う。以下のプログラムを実行し、`iris`データを`dat`という名前に置き換えて使っていこう。
-
-```{r}
-
-dat = iris 
+library(dplyr) 
+library(tidyr) 
 
 ```
+
+
+以降では、Rに標準で入っている`iris`データを例として、ファイル操作の練習を行う。
 
 ## 変数の作成
 
@@ -51,21 +37,35 @@ dat = iris
 
 ```{r}
 
-dat2 = dplyr::mutate(dat, 
+dat = dplyr::mutate(iris, 
               new_var = Sepal.Length + Petal.Length, 
               hoge = ifelse(Species == "setosa", 1, 0)) 
-head(dat2)
+head(dat)
 
 ```
 
 上の例では、`Sepal.Length`と`Petal.Length`を足した`new_var`という名前の新しい変数を作っている。更に、「`Sepecies`が"`setosa`"ならば1, そうでなければ0とする」という条件で新たに`hoge`という変数を作っている。
+
+## 変数名の変更
+
+`dplyr`パッケージに入っている`rename`()`で、変数の名前を変更することができる。
+
+```{r}
+
+dat = iris #ここでは練習用に、irisデータを別の名前(dat)に変更する
+head(dat) #変更前
+dat2 = dplyr::rename(dat, 
+              hoge = Sepal.Length)
+head(dat2) #変更後
+
+```
 
 
 ## データの抽出
 
 `dplyr`パッケージに入っている`select`や `filter`関数を使うと、データの中から必要な部分のみを取り出すことができる。
 
-### 必要な列のみを取り出す（select）
+### 必要な列を取り出す（select）
 
 `select()`で、*データの名前、取り出したい変数名（複数選択可）*の順番で入力すると、指定した変数の列のみを取り出してくれる。  
   
@@ -73,15 +73,13 @@ head(dat2)
 
 ```{r}
 
-dat2 = dplyr::select(dat, Sepal.Length, Petal.Length) 
+dat = dplyr::select(iris, Sepal.Length, Petal.Length) 
 
-head(dat2)
+head(dat)
 
 ```
 
 上の例では、データの中から`Sepal.Length`と`Petal.Length`の列を取り出している。
-
-
 
 ### 条件に合う行を取り出す（filter）
 
@@ -91,8 +89,8 @@ head(dat2)
 
 ```{r}
 
-dat2 = dplyr::filter(dat, Species == "versicolor") 
-head(dat2)
+dat = dplyr::filter(iris, Species == "versicolor") 
+head(dat)
 
 ```
 
@@ -106,49 +104,34 @@ head(dat2)
 
 ## パイプ
 
-複数のプログラムをつなげることを*パイプ処理*という。`purrr`パッケージで（`tidyverse`パッケージをロードすれば自動で使える）、Rでパイプ処理をすることができる。  
+複数のプログラムをつなげることを*パイプ処理*という。  
   
 例えば、`iris`データで「あやめの種類のうち`"setosa"`のみの行を取り出して、更に`Species`、`Sepal.Length`, `Petal.Length`のみの列を取り出したい」という複数の処理をする場合を例として考える。  
 先程まで学んだ内容で、以下のように複数のプラグラムを段階的に書けばできなくはないが、プログラムが非常に長くなる（プログラムを分けて書くと途中でミスも生じやすくなる）。
 
 ```{r}
 
-dat = iris #irisデータをdatという名前に置き換える
+dat1 = dplyr::filter(iris, Species == "setosa") #まずSpeciesのうち、setosaのみを取り出す。dat1という名前で保存する。
 
-dat2 = dplyr::filter(dat, Species == "setosa") #まずSpeciesのうち、setosaのみを取り出す。dat2という名前で保存する。
+dat2 = dplyr::select(dat1, Species, Sepal.Length, Petal.Length) #別の名前で保存し直したdat1から、Sepal.LengthとPetal.Lengthの列を取り出す。dat2という名前で保存する
 
-dat3 = dplyr::select(dat2, Species, Sepal.Length, Petal.Length) #別の名前で保存し直したdat2から、Sepal.LengthとPetal.Lengthの列を取り出す。dat3という名前で保存する
-
-head(dat3)
+head(dat2)
 
 
 ```
 
-パイプ（`%>%`）を使えば、このプログラムを1文で書くことができる。
+パイプ（`|>`）を使えば、このプログラムを1文で書くことができる。
 
 
 ```{r}
-
-dat = iris #irisデータをdatという名前に置き換える
-
-dat2 = dat %>% dplyr::filter(., Species == "setosa") %>% 
-  dplyr::select(., Species, Sepal.Length, Petal.Length)
+dat2 = iris  |> dplyr::filter(Species == "setosa") |> 
+  dplyr::select(Species, Sepal.Length, Petal.Length)
 
 head(dat2)
 
 ```
 
-`%>%`はプログラムを渡していく関数であり、`.`はそのプログラム以前の結果を示している。`iris`データを`filter`に渡し、その結果を`select`に渡している。
-
-なお、`.`は省略しても良い（以降でも、`.`は省略して表記する）。
-
-```{r, eval = FALSE}
-
-dat2 = dat %>% dplyr::filter(Species == "setosa") %>% 
-  dply::select(Species, Sepal.Length, Petal.Length)
-
-```
-
+`|>`はパイプと呼ばれ、プログラムを渡していく関数である。`iris`データを`filter`に渡し、その結果を`select`に渡している。
 
 ## グルーピング
 
@@ -157,18 +140,14 @@ dat2 = dat %>% dplyr::filter(Species == "setosa") %>%
 `iris`データを例として、グループごとに平均や標準偏差を計算する方法を覚えよう。  
   
 あやめの種類ごとに、がくの長さの平均値と標準偏差を算出してみる。  
-先ほど学んだパイプ処理（`%>%`）に加え、`dplyr`パッケージの`group_by`と`summarise`関数を利用する。
+先ほど学んだパイプ処理（`|>`）に加え、`dplyr`パッケージの`group_by`と`summarise`関数を利用する。
 
 ```{r}
-
-dat = iris #irisデータをdatという名前に置き換える
-
-dat2 = dat %>% 
-  dplyr::group_by(Species) %>% 
+iris |> 
+  dplyr::group_by(Species) |> 
   dplyr::summarise(Mean = mean(Sepal.Width, na.rm = TRUE), 
                    SD = sd(Sepal.Width, na.rm = TRUE), 
                    N = length(Sepal.Width))
-dat2
 
 ```
 
@@ -232,7 +211,7 @@ R でデータ解析に用いる関数のほとんどは、「**1つの観測値
 
 ```{r}
 
-dat_long2 = dat_wide %>% 
+dat_long2 = dat_wide |> 
   tidyr::pivot_longer(cols = c("X", "Y", "Z"),
 names_to = "Condition", values_to = "Score")
 dat_long2
@@ -248,7 +227,7 @@ dat_long2
 
 ```{r}
 
-dat_wide2 = dat_long %>% 
+dat_wide2 = dat_long |> 
   tidyr::pivot_wider(names_from = Condition, values_from = Score) 
 dat_wide2
 
@@ -316,71 +295,6 @@ dat_sample3 = dplyr::left_join(dat_sample2, dat_sample, by = "Subject")
 dat_sample3
 
 ```
-
-## データの読み込み
-
-Rにもともと入っている`read.csv()`を使えばcsvファイルを読み込むことができるが、`readr`パッケージの関数を使うと大量のデータが含まれるファイルも高速で読み込んでくれる。また、`readxl`パッケージの関数を使えば、Excelファイルも読み込んでくれる。
-
-### readr
-
-様々な形式のファイルを高速で読み書きことを目標としたパッケージ。
-
-```{r, message=FALSE}
-
-dat = read.csv("./sample_data/0_sample.csv")
-dat
-
-
-dat_2 = readr::read_csv("./sample_data/0_sample.csv")
-dat_2
-
-#データの書き出し
-readr::write_excel_csv(dat_2, "./sample_data/0_sample_2.csv")
-
-```
-
-`read.csv()`ではなく、`read_csv()`なので注意（ドットではなく、アンダースコア）。
-
-ファイルを書き出すための関数も用意されている。  
-ここでは`write_excel_csv()` を使っているが、単に`write_csv()`でも可。  
-  
-また、`read_csv()`で読み込んだファイルは、データフレームではなく、*tibble*という形式になる。  
-  
-#### tibble{-}
-
-tibbleとは、Rのデータ形式の一つである。  
-  
-データフレームの可読性を向上させたものが、tibbleである。コンソールにはデータ全てではなく、最初の10行程度のみ、列も画面に入る範囲のみが表示される。  
-
-
-`as_tibble()`でデータフレームをtibble形式にすることもできる。
-
-```{r}
-dat = tibble::as_tibble(iris) #irisデータをtibble型にして、datという名前で保存する
-dat
-```
-
-
-tibbleだとデータをすべて閲覧することはできないが、すべて閲覧したい場合は`View()`を使えばよい。
-
-```{r, eval=FALSE}
-View(dat)
-```
-  
-
-### readxl
-
-`readxl`パッケージで、エクセル形式（xlsx）のファイルを読み込むことができる。  
-
-
-```{r, eval=FALSE}
-
-dat = readxl::read_excel("./sample/0_sample.xlsx") 
-dat
-
-```
-
-特にオプションを指定しなければ、1番目に保存されているシートの中身をtibble形式で読み込んでくれる。読み込みたいシートや読み込む範囲を指定したい場合など、細かい点については`read_excel`のヘルプを参照してほしい。
 
 
 ## 確認問題{-}

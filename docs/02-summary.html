@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 統計学の基礎の復習 | 心理データ応用解析法</title>
   <meta name="description" content="Chapter 3 統計学の基礎の復習 | 心理データ応用解析法" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 統計学の基礎の復習 | 心理データ応用解析法" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
 
 
-<meta name="date" content="2024-10-25" />
+<meta name="date" content="2025-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="01-intro.html"/>
-<link rel="next" href="03-data.html"/>
+<link rel="next" href="03-data_handle.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,456 +139,453 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#このテキストについて"><i class="fa fa-check"></i><b>1.1</b> このテキストについて</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#テキストの構成"><i class="fa fa-check"></i><b>1.2</b> テキストの構成</a>
+<li class="chapter" data-level="1.1" data-path="02-summary.html"><a href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AE%E6%A7%8B%E6%88%90"><i class="fa fa-check"></i><b>1.1</b> テキストの構成</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#テキストの読み方"><i class="fa fa-check"></i><b>1.2.1</b> テキストの読み方</a></li>
+<li class="chapter" data-level="1.1.1" data-path="02-summary.html"><a href="#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AE%E8%AA%AD%E3%81%BF%E6%96%B9"><i class="fa fa-check"></i><b>1.1.1</b> テキストの読み方</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="01-intro.html"><a href="01-intro.html"><i class="fa fa-check"></i><b>2</b> Rの使い方</a>
+<li class="chapter" data-level="2" data-path="02-summary.html"><a href="#r%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fa fa-check"></i><b>2</b> Rの使い方</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#rのインストール"><i class="fa fa-check"></i><b>2.1</b> Rのインストール</a></li>
-<li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="01-intro.html#rstudioのインストール"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
-<li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="01-intro.html#プログラムの書き方"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a>
+<li class="chapter" data-level="2.1" data-path="02-summary.html"><a href="#r%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fa fa-check"></i><b>2.1</b> Rのインストール</a></li>
+<li class="chapter" data-level="2.2" data-path="02-summary.html"><a href="#rstudio%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
+<li class="chapter" data-level="2.3" data-path="02-summary.html"><a href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#コンソールconsole"><i class="fa fa-check"></i><b>2.3.1</b> コンソール（Console）</a></li>
-<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="01-intro.html#スクリプト"><i class="fa fa-check"></i><b>2.3.2</b> スクリプト</a></li>
+<li class="chapter" data-level="2.3.1" data-path="02-summary.html"><a href="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%ABconsole"><i class="fa fa-check"></i><b>2.3.1</b> コンソール（Console）</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-summary.html"><a href="#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88"><i class="fa fa-check"></i><b>2.3.2</b> スクリプト</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="01-intro.html#単純な演算"><i class="fa fa-check"></i><b>2.4</b> 単純な演算</a>
+<li class="chapter" data-level="2.4" data-path="02-summary.html"><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%89"><i class="fa fa-check"></i><b>2.4</b> パッケージのインストールとロード</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="01-intro.html#コメント文"><i class="fa fa-check"></i><b>2.4.1</b> コメント文</a></li>
+<li class="chapter" data-level="2.4.1" data-path="02-summary.html"><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fa fa-check"></i><b>2.4.1</b> パッケージのインストール</a></li>
+<li class="chapter" data-level="2.4.2" data-path="02-summary.html"><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89"><i class="fa fa-check"></i><b>2.4.2</b> パッケージのロード</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="01-intro.html"><a href="01-intro.html#変数"><i class="fa fa-check"></i><b>2.5</b> 変数</a>
+<li class="chapter" data-level="2.5" data-path="02-summary.html"><a href="#r%E3%82%92%E7%B5%82%E3%82%8F%E3%82%89%E3%81%9B%E3%82%8B"><i class="fa fa-check"></i><b>2.5</b> Rを終わらせる</a></li>
+<li class="chapter" data-level="2.6" data-path="02-summary.html"><a href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E7%B7%B4%E7%BF%92"><i class="fa fa-check"></i><b>2.6</b> プログラミングの練習</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="01-intro.html"><a href="01-intro.html#変数の使い方の注意"><i class="fa fa-check"></i><b>2.5.1</b> 変数の使い方の注意</a></li>
-<li class="chapter" data-level="2.5.2" data-path="01-intro.html"><a href="01-intro.html#変数の型"><i class="fa fa-check"></i><b>2.5.2</b> 変数の型</a></li>
+<li class="chapter" data-level="2.6.1" data-path="02-summary.html"><a href="#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E6%96%87"><i class="fa fa-check"></i><b>2.6.1</b> コメント文</a></li>
+<li class="chapter" data-level="2.6.2" data-path="02-summary.html"><a href="#%E7%AE%97%E8%A1%93%E8%AD%98%E5%88%A5%E5%AD%90"><i class="fa fa-check"></i><b>2.6.2</b> 算術識別子</a></li>
+<li class="chapter" data-level="2.6.3" data-path="02-summary.html"><a href="#%E6%AF%94%E8%BC%83%E8%AD%98%E5%88%A5%E5%AD%90"><i class="fa fa-check"></i><b>2.6.3</b> 比較識別子</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="01-intro.html"><a href="01-intro.html#データ構造"><i class="fa fa-check"></i><b>2.6</b> データ構造</a>
+<li class="chapter" data-level="2.7" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0"><i class="fa fa-check"></i><b>2.7</b> 変数</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="01-intro.html"><a href="01-intro.html#ベクトル"><i class="fa fa-check"></i><b>2.6.1</b> ベクトル</a></li>
-<li class="chapter" data-level="2.6.2" data-path="01-intro.html"><a href="01-intro.html#データフレーム"><i class="fa fa-check"></i><b>2.6.2</b> データフレーム</a></li>
+<li class="chapter" data-level="2.7.1" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AE%E6%B3%A8%E6%84%8F"><i class="fa fa-check"></i><b>2.7.1</b> 変数の使い方の注意</a></li>
+<li class="chapter" data-level="2.7.2" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E5%9E%8B"><i class="fa fa-check"></i><b>2.7.2</b> 変数の型</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="01-intro.html"><a href="01-intro.html#欠損値"><i class="fa fa-check"></i><b>2.7</b> 欠損値</a></li>
-<li class="chapter" data-level="2.8" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストールとロード"><i class="fa fa-check"></i><b>2.8</b> パッケージのインストールとロード</a>
+<li class="chapter" data-level="2.8" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0"><i class="fa fa-check"></i><b>2.8</b> データ構造</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="01-intro.html"><a href="01-intro.html#パッケージのインストール"><i class="fa fa-check"></i><b>2.8.1</b> パッケージのインストール</a></li>
-<li class="chapter" data-level="2.8.2" data-path="01-intro.html"><a href="01-intro.html#パッケージのロード"><i class="fa fa-check"></i><b>2.8.2</b> パッケージのロード</a></li>
+<li class="chapter" data-level="2.8.1" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB"><i class="fa fa-check"></i><b>2.8.1</b> ベクトル</a></li>
+<li class="chapter" data-level="2.8.2" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0"><i class="fa fa-check"></i><b>2.8.2</b> データフレーム</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="01-intro.html"><a href="01-intro.html#データの読み込み"><i class="fa fa-check"></i><b>2.9</b> データの読み込み</a>
+<li class="chapter" data-level="2.9" data-path="02-summary.html"><a href="#%E6%AC%A0%E6%90%8D%E5%80%A4"><i class="fa fa-check"></i><b>2.9</b> 欠損値</a></li>
+<li class="chapter" data-level="2.10" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"><i class="fa fa-check"></i><b>2.10</b> データの読み込み</a>
 <ul>
-<li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#rstudioの機能を使って読み込む"><i class="fa fa-check"></i>1: RStudioの機能を使って読み込む</a></li>
-<li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#プログラムを書いてデータを読み込む"><i class="fa fa-check"></i>2: プログラムを書いてデータを読み込む。</a></li>
-<li class="chapter" data-level="2.9.1" data-path="01-intro.html"><a href="01-intro.html#サンプルデータ"><i class="fa fa-check"></i><b>2.9.1</b> サンプルデータ</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"><i class="fa fa-check"></i>1: RStudioの機能を使って読み込む</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"><i class="fa fa-check"></i>2: プログラムを書いてデータを読み込む。</a></li>
+<li class="chapter" data-level="2.10.1" data-path="02-summary.html"><a href="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF"><i class="fa fa-check"></i><b>2.10.1</b> サンプルデータ</a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="01-intro.html"><a href="01-intro.html#ヘルプ"><i class="fa fa-check"></i><b>2.10</b> ヘルプ</a></li>
-<li class="chapter" data-level="2.11" data-path="01-intro.html"><a href="01-intro.html#rを終わらせる"><i class="fa fa-check"></i><b>2.11</b> Rを終わらせる</a></li>
-<li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#確認問題"><i class="fa fa-check"></i>確認問題</a>
+<li class="chapter" data-level="2.11" data-path="02-summary.html"><a href="#%E3%83%98%E3%83%AB%E3%83%97"><i class="fa fa-check"></i><b>2.11</b> ヘルプ</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#問１"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#問２"><i class="fa fa-check"></i>問２</a></li>
-<li class="chapter" data-level="" data-path="01-intro.html"><a href="01-intro.html#問３"><i class="fa fa-check"></i>問３</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="02-summary.html"><a href="02-summary.html"><i class="fa fa-check"></i><b>3</b> 統計学の基礎の復習</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="02-summary.html"><a href="02-summary.html#尺度水準"><i class="fa fa-check"></i><b>3.1</b> 尺度水準</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="02-summary.html"><a href="02-summary.html#量的変数"><i class="fa fa-check"></i><b>3.1.1</b> 量的変数</a></li>
-<li class="chapter" data-level="3.1.2" data-path="02-summary.html"><a href="02-summary.html#カテゴリカル変数質的変数"><i class="fa fa-check"></i><b>3.1.2</b> カテゴリカル変数（質的変数）</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="02-summary.html"><a href="02-summary.html#基本統計量"><i class="fa fa-check"></i><b>3.2</b> 基本統計量</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="02-summary.html"><a href="02-summary.html#代表値"><i class="fa fa-check"></i><b>3.2.1</b> 代表値</a></li>
-<li class="chapter" data-level="3.2.2" data-path="02-summary.html"><a href="02-summary.html#散布度"><i class="fa fa-check"></i><b>3.2.2</b> 散布度</a></li>
-<li class="chapter" data-level="3.2.3" data-path="02-summary.html"><a href="02-summary.html#要約統計量"><i class="fa fa-check"></i><b>3.2.3</b> 要約統計量</a></li>
-<li class="chapter" data-level="3.2.4" data-path="02-summary.html"><a href="02-summary.html#グループごとの集計"><i class="fa fa-check"></i><b>3.2.4</b> グループごとの集計</a></li>
-<li class="chapter" data-level="3.2.5" data-path="02-summary.html"><a href="02-summary.html#表の作り方"><i class="fa fa-check"></i><b>3.2.5</b> 表の作り方</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="02-summary.html"><a href="02-summary.html#相関correlation"><i class="fa fa-check"></i><b>3.3</b> 相関(correlation)</a></li>
-<li class="chapter" data-level="" data-path="02-summary.html"><a href="02-summary.html#確認問題-1"><i class="fa fa-check"></i>確認問題</a>
-<ul>
-<li class="chapter" data-level="" data-path="02-summary.html"><a href="02-summary.html#問１-1"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="02-summary.html"><a href="02-summary.html#問２-1"><i class="fa fa-check"></i>問２</a></li>
-<li class="chapter" data-level="" data-path="02-summary.html"><a href="02-summary.html#問３-1"><i class="fa fa-check"></i>問３</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93"><i class="fa fa-check"></i>問３</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="03-data.html"><a href="03-data.html"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
+<li class="chapter" data-level="3" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%81%AE%E5%BE%A9%E7%BF%92"><i class="fa fa-check"></i><b>3</b> 統計学の基礎の復習</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="03-data.html"><a href="03-data.html#パッケージのロード-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
-<li class="chapter" data-level="4.2" data-path="03-data.html"><a href="03-data.html#変数の作成"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
-<li class="chapter" data-level="4.3" data-path="03-data.html"><a href="03-data.html#データの抽出-1"><i class="fa fa-check"></i><b>4.3</b> データの抽出</a>
+<li class="chapter" data-level="3.1" data-path="02-summary.html"><a href="#%E5%B0%BA%E5%BA%A6%E6%B0%B4%E6%BA%96"><i class="fa fa-check"></i><b>3.1</b> 尺度水準</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="03-data.html"><a href="03-data.html#必要な列のみを取り出すselect"><i class="fa fa-check"></i><b>4.3.1</b> 必要な列のみを取り出す（select）</a></li>
-<li class="chapter" data-level="4.3.2" data-path="03-data.html"><a href="03-data.html#条件に合う行を取り出すfilter"><i class="fa fa-check"></i><b>4.3.2</b> 条件に合う行を取り出す（filter）</a></li>
+<li class="chapter" data-level="3.1.1" data-path="02-summary.html"><a href="#%E9%87%8F%E7%9A%84%E5%A4%89%E6%95%B0"><i class="fa fa-check"></i><b>3.1.1</b> 量的変数</a></li>
+<li class="chapter" data-level="3.1.2" data-path="02-summary.html"><a href="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%82%AB%E3%83%AB%E5%A4%89%E6%95%B0%E8%B3%AA%E7%9A%84%E5%A4%89%E6%95%B0"><i class="fa fa-check"></i><b>3.1.2</b> カテゴリカル変数（質的変数）</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="03-data.html"><a href="03-data.html#パイプ"><i class="fa fa-check"></i><b>4.4</b> パイプ</a></li>
-<li class="chapter" data-level="4.5" data-path="03-data.html"><a href="03-data.html#グルーピング"><i class="fa fa-check"></i><b>4.5</b> グルーピング</a></li>
-<li class="chapter" data-level="4.6" data-path="03-data.html"><a href="03-data.html#データの変換"><i class="fa fa-check"></i><b>4.6</b> データの変換</a>
+<li class="chapter" data-level="3.2" data-path="02-summary.html"><a href="#%E5%9F%BA%E6%9C%AC%E7%B5%B1%E8%A8%88%E9%87%8F"><i class="fa fa-check"></i><b>3.2</b> 基本統計量</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="03-data.html"><a href="03-data.html#wide型とlong型の区別"><i class="fa fa-check"></i><b>4.6.1</b> wide型とlong型の区別</a></li>
-<li class="chapter" data-level="4.6.2" data-path="03-data.html"><a href="03-data.html#wide型からlong型に変換"><i class="fa fa-check"></i><b>4.6.2</b> wide型からlong型に変換</a></li>
-<li class="chapter" data-level="4.6.3" data-path="03-data.html"><a href="03-data.html#long型からwide型に変換"><i class="fa fa-check"></i><b>4.6.3</b> long型からwide型に変換</a></li>
+<li class="chapter" data-level="3.2.1" data-path="02-summary.html"><a href="#%E4%BB%A3%E8%A1%A8%E5%80%A4"><i class="fa fa-check"></i><b>3.2.1</b> 代表値</a></li>
+<li class="chapter" data-level="3.2.2" data-path="02-summary.html"><a href="#%E6%95%A3%E5%B8%83%E5%BA%A6"><i class="fa fa-check"></i><b>3.2.2</b> 散布度</a></li>
+<li class="chapter" data-level="3.2.3" data-path="02-summary.html"><a href="#%E8%A6%81%E7%B4%84%E7%B5%B1%E8%A8%88%E9%87%8F"><i class="fa fa-check"></i><b>3.2.3</b> 要約統計量</a></li>
+<li class="chapter" data-level="3.2.4" data-path="02-summary.html"><a href="#%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%94%E3%81%A8%E3%81%AE%E9%9B%86%E8%A8%88"><i class="fa fa-check"></i><b>3.2.4</b> グループごとの集計</a></li>
+<li class="chapter" data-level="3.2.5" data-path="02-summary.html"><a href="#%E8%A1%A8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9"><i class="fa fa-check"></i><b>3.2.5</b> 表の作り方</a></li>
+<li class="chapter" data-level="3.2.6" data-path="02-summary.html"><a href="#%E7%9B%B8%E9%96%A2correlation"><i class="fa fa-check"></i><b>3.2.6</b> 相関(correlation)</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="03-data.html"><a href="03-data.html#データの結合"><i class="fa fa-check"></i><b>4.7</b> データの結合</a></li>
-<li class="chapter" data-level="4.8" data-path="03-data.html"><a href="03-data.html#データの読み込み-1"><i class="fa fa-check"></i><b>4.8</b> データの読み込み</a>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-1"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="03-data.html"><a href="03-data.html#readr"><i class="fa fa-check"></i><b>4.8.1</b> readr</a></li>
-<li class="chapter" data-level="4.8.2" data-path="03-data.html"><a href="03-data.html#readxl"><i class="fa fa-check"></i><b>4.8.2</b> readxl</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="03-data.html"><a href="03-data.html#確認問題-2"><i class="fa fa-check"></i>確認問題</a>
-<ul>
-<li class="chapter" data-level="" data-path="03-data.html"><a href="03-data.html#問１-2"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="03-data.html"><a href="03-data.html#問２-2"><i class="fa fa-check"></i>問２</a></li>
-<li class="chapter" data-level="" data-path="03-data.html"><a href="03-data.html#問３-2"><i class="fa fa-check"></i>問３</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-1"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-1"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-1"><i class="fa fa-check"></i>問３</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="04-graph.html"><a href="04-graph.html"><i class="fa fa-check"></i><b>5</b> グラフ</a>
+<li class="chapter" data-level="4" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%8F%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3%E3%82%B0"><i class="fa fa-check"></i><b>4</b> データ・ハンドリング</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="04-graph.html"><a href="04-graph.html#なぜ可視化が重要か"><i class="fa fa-check"></i><b>5.1</b> なぜ可視化が重要か？</a></li>
-<li class="chapter" data-level="5.2" data-path="04-graph.html"><a href="04-graph.html#rのグラフィック関数"><i class="fa fa-check"></i><b>5.2</b> Rのグラフィック関数</a>
+<li class="chapter" data-level="4.1" data-path="02-summary.html"><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89-1"><i class="fa fa-check"></i><b>4.1</b> パッケージのロード</a></li>
+<li class="chapter" data-level="4.2" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90"><i class="fa fa-check"></i><b>4.2</b> 変数の作成</a></li>
+<li class="chapter" data-level="4.3" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AE%E5%A4%89%E6%9B%B4"><i class="fa fa-check"></i><b>4.3</b> 変数名の変更</a></li>
+<li class="chapter" data-level="4.4" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%8A%BD%E5%87%BA-1"><i class="fa fa-check"></i><b>4.4</b> データの抽出</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="04-graph.html"><a href="04-graph.html#plot"><i class="fa fa-check"></i><b>5.2.1</b> plot</a></li>
-<li class="chapter" data-level="5.2.2" data-path="04-graph.html"><a href="04-graph.html#その他のグラフ"><i class="fa fa-check"></i><b>5.2.2</b> その他のグラフ</a></li>
-<li class="chapter" data-level="5.2.3" data-path="04-graph.html"><a href="04-graph.html#グラフを重ねる"><i class="fa fa-check"></i><b>5.2.3</b> グラフを重ねる</a></li>
-<li class="chapter" data-level="5.2.4" data-path="04-graph.html"><a href="04-graph.html#図の保存"><i class="fa fa-check"></i><b>5.2.4</b> 図の保存</a></li>
+<li class="chapter" data-level="4.4.1" data-path="02-summary.html"><a href="#%E5%BF%85%E8%A6%81%E3%81%AA%E5%88%97%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99select"><i class="fa fa-check"></i><b>4.4.1</b> 必要な列を取り出す（select）</a></li>
+<li class="chapter" data-level="4.4.2" data-path="02-summary.html"><a href="#%E6%9D%A1%E4%BB%B6%E3%81%AB%E5%90%88%E3%81%86%E8%A1%8C%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99filter"><i class="fa fa-check"></i><b>4.4.2</b> 条件に合う行を取り出す（filter）</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="04-graph.html"><a href="04-graph.html#ggplot2パッケージ"><i class="fa fa-check"></i><b>5.3</b> ggplot2パッケージ</a>
+<li class="chapter" data-level="4.5" data-path="02-summary.html"><a href="#%E3%83%91%E3%82%A4%E3%83%97"><i class="fa fa-check"></i><b>4.5</b> パイプ</a></li>
+<li class="chapter" data-level="4.6" data-path="02-summary.html"><a href="#%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%94%E3%83%B3%E3%82%B0"><i class="fa fa-check"></i><b>4.6</b> グルーピング</a></li>
+<li class="chapter" data-level="4.7" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%A4%89%E6%8F%9B"><i class="fa fa-check"></i><b>4.7</b> データの変換</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="04-graph.html"><a href="04-graph.html#散布図-1"><i class="fa fa-check"></i><b>5.3.1</b> 散布図</a></li>
-<li class="chapter" data-level="5.3.2" data-path="04-graph.html"><a href="04-graph.html#ヒストグラム-1"><i class="fa fa-check"></i><b>5.3.2</b> ヒストグラム</a></li>
-<li class="chapter" data-level="5.3.3" data-path="04-graph.html"><a href="04-graph.html#箱ひげ図-1"><i class="fa fa-check"></i><b>5.3.3</b> 箱ひげ図</a></li>
-<li class="chapter" data-level="5.3.4" data-path="04-graph.html"><a href="04-graph.html#バイオリンプロット"><i class="fa fa-check"></i><b>5.3.4</b> バイオリンプロット</a></li>
-<li class="chapter" data-level="5.3.5" data-path="04-graph.html"><a href="04-graph.html#折れ線グラフ"><i class="fa fa-check"></i><b>5.3.5</b> 折れ線グラフ</a></li>
-<li class="chapter" data-level="5.3.6" data-path="04-graph.html"><a href="04-graph.html#エラーバーつきのグラフ"><i class="fa fa-check"></i><b>5.3.6</b> エラーバーつきのグラフ</a></li>
+<li class="chapter" data-level="4.7.1" data-path="02-summary.html"><a href="#wide%E5%9E%8B%E3%81%A8long%E5%9E%8B%E3%81%AE%E5%8C%BA%E5%88%A5"><i class="fa fa-check"></i><b>4.7.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="4.7.2" data-path="02-summary.html"><a href="#wide%E5%9E%8B%E3%81%8B%E3%82%89long%E5%9E%8B%E3%81%AB%E5%A4%89%E6%8F%9B"><i class="fa fa-check"></i><b>4.7.2</b> wide型からlong型に変換</a></li>
+<li class="chapter" data-level="4.7.3" data-path="02-summary.html"><a href="#long%E5%9E%8B%E3%81%8B%E3%82%89wide%E5%9E%8B%E3%81%AB%E5%A4%89%E6%8F%9B"><i class="fa fa-check"></i><b>4.7.3</b> long型からwide型に変換</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="04-graph.html"><a href="04-graph.html#オプション"><i class="fa fa-check"></i><b>5.4</b> オプション</a>
+<li class="chapter" data-level="4.8" data-path="02-summary.html"><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%B5%90%E5%90%88"><i class="fa fa-check"></i><b>4.8</b> データの結合</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-2"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="04-graph.html"><a href="04-graph.html#ファセットfacet"><i class="fa fa-check"></i><b>5.4.1</b> ファセット（Facet）</a></li>
-<li class="chapter" data-level="5.4.2" data-path="04-graph.html"><a href="04-graph.html#ラベルlabs"><i class="fa fa-check"></i><b>5.4.2</b> ラベル（labs）</a></li>
-<li class="chapter" data-level="5.4.3" data-path="04-graph.html"><a href="04-graph.html#テーマtheme"><i class="fa fa-check"></i><b>5.4.3</b> テーマ（Theme）</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-2"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-2"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-2"><i class="fa fa-check"></i>問３</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="04-graph.html"><a href="04-graph.html#図の保存-1"><i class="fa fa-check"></i><b>5.5</b> 図の保存</a></li>
-<li class="chapter" data-level="5.6" data-path="04-graph.html"><a href="04-graph.html#応用的なグラフ"><i class="fa fa-check"></i><b>5.6</b> 応用的なグラフ</a>
+</ul></li>
+<li class="chapter" data-level="5" data-path="02-summary.html"><a href="#%E3%82%B0%E3%83%A9%E3%83%95"><i class="fa fa-check"></i><b>5</b> グラフ</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="02-summary.html"><a href="#%E3%81%AA%E3%81%9C%E5%8F%AF%E8%A6%96%E5%8C%96%E3%81%8C%E9%87%8D%E8%A6%81%E3%81%8B"><i class="fa fa-check"></i><b>5.1</b> なぜ可視化が重要か？</a></li>
+<li class="chapter" data-level="5.2" data-path="02-summary.html"><a href="#r%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E9%96%A2%E6%95%B0"><i class="fa fa-check"></i><b>5.2</b> Rのグラフィック関数</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="04-graph.html"><a href="04-graph.html"><i class="fa fa-check"></i><b>5.2.1</b> plot</a></li>
+<li class="chapter" data-level="5.2.2" data-path="02-summary.html"><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95"><i class="fa fa-check"></i><b>5.2.2</b> その他のグラフ</a></li>
+<li class="chapter" data-level="5.2.3" data-path="02-summary.html"><a href="#%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E9%87%8D%E3%81%AD%E3%82%8B"><i class="fa fa-check"></i><b>5.2.3</b> グラフを重ねる</a></li>
+<li class="chapter" data-level="5.2.4" data-path="02-summary.html"><a href="#%E5%9B%B3%E3%81%AE%E4%BF%9D%E5%AD%98"><i class="fa fa-check"></i><b>5.2.4</b> 図の保存</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="02-summary.html"><a href="#ggplot2%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8"><i class="fa fa-check"></i><b>5.3</b> ggplot2パッケージ</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="02-summary.html"><a href="#%E6%95%A3%E5%B8%83%E5%9B%B3-1"><i class="fa fa-check"></i><b>5.3.1</b> 散布図</a></li>
+<li class="chapter" data-level="5.3.2" data-path="02-summary.html"><a href="#%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0-1"><i class="fa fa-check"></i><b>5.3.2</b> ヒストグラム</a></li>
+<li class="chapter" data-level="5.3.3" data-path="02-summary.html"><a href="#%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3-1"><i class="fa fa-check"></i><b>5.3.3</b> 箱ひげ図</a></li>
+<li class="chapter" data-level="5.3.4" data-path="02-summary.html"><a href="#%E3%83%90%E3%82%A4%E3%82%AA%E3%83%AA%E3%83%B3%E3%83%97%E3%83%AD%E3%83%83%E3%83%88"><i class="fa fa-check"></i><b>5.3.4</b> バイオリンプロット</a></li>
+<li class="chapter" data-level="5.3.5" data-path="02-summary.html"><a href="#%E6%8A%98%E3%82%8C%E7%B7%9A%E3%82%B0%E3%83%A9%E3%83%95"><i class="fa fa-check"></i><b>5.3.5</b> 折れ線グラフ</a></li>
+<li class="chapter" data-level="5.3.6" data-path="02-summary.html"><a href="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A4%E3%81%8D%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95"><i class="fa fa-check"></i><b>5.3.6</b> エラーバーつきのグラフ</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="02-summary.html"><a href="#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3"><i class="fa fa-check"></i><b>5.4</b> オプション</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="02-summary.html"><a href="#%E3%83%95%E3%82%A1%E3%82%BB%E3%83%83%E3%83%88facet"><i class="fa fa-check"></i><b>5.4.1</b> ファセット（Facet）</a></li>
+<li class="chapter" data-level="5.4.2" data-path="02-summary.html"><a href="#%E3%83%A9%E3%83%99%E3%83%ABlabs"><i class="fa fa-check"></i><b>5.4.2</b> ラベル（labs）</a></li>
+<li class="chapter" data-level="5.4.3" data-path="02-summary.html"><a href="#%E3%83%86%E3%83%BC%E3%83%9Etheme"><i class="fa fa-check"></i><b>5.4.3</b> テーマ（Theme）</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="02-summary.html"><a href="#%E5%9B%B3%E3%81%AE%E4%BF%9D%E5%AD%98-1"><i class="fa fa-check"></i><b>5.5</b> 図の保存</a></li>
+<li class="chapter" data-level="5.6" data-path="02-summary.html"><a href="#%E5%BF%9C%E7%94%A8%E7%9A%84%E3%81%AA%E3%82%B0%E3%83%A9%E3%83%95"><i class="fa fa-check"></i><b>5.6</b> 応用的なグラフ</a>
 <ul>
 <li class="chapter" data-level="5.6.1" data-path="04-graph.html"><a href="04-graph.html#rain-cloud-plot"><i class="fa fa-check"></i><b>5.6.1</b> Rain-cloud plot</a></li>
 <li class="chapter" data-level="5.6.2" data-path="04-graph.html"><a href="04-graph.html#ridge-plot"><i class="fa fa-check"></i><b>5.6.2</b> Ridge plot</a></li>
 <li class="chapter" data-level="5.6.3" data-path="04-graph.html"><a href="04-graph.html#alluvial-plot"><i class="fa fa-check"></i><b>5.6.3</b> Alluvial plot</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="04-graph.html"><a href="04-graph.html#その他の機能"><i class="fa fa-check"></i><b>5.7</b> その他の機能</a></li>
-<li class="chapter" data-level="" data-path="04-graph.html"><a href="04-graph.html#確認問題-3"><i class="fa fa-check"></i>確認問題</a>
+<li class="chapter" data-level="5.7" data-path="02-summary.html"><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%A9%9F%E8%83%BD"><i class="fa fa-check"></i><b>5.7</b> その他の機能</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-3"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="" data-path="04-graph.html"><a href="04-graph.html#問１-3"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="04-graph.html"><a href="04-graph.html#問２-3"><i class="fa fa-check"></i>問２</a></li>
-<li class="chapter" data-level="" data-path="04-graph.html"><a href="04-graph.html#問３-3"><i class="fa fa-check"></i>問３</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-3"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-3"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-3"><i class="fa fa-check"></i>問３</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html"><i class="fa fa-check"></i><b>6</b> 確率分布</a>
+<li class="chapter" data-level="6" data-path="02-summary.html"><a href="#%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6</b> 確率分布</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率変数と確率分布"><i class="fa fa-check"></i><b>6.1</b> 確率変数と確率分布</a>
+<li class="chapter" data-level="6.1" data-path="02-summary.html"><a href="#%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E3%81%A8%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.1</b> 確率変数と確率分布</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#離散型分布"><i class="fa fa-check"></i><b>6.1.1</b> 離散型分布</a></li>
-<li class="chapter" data-level="6.1.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#連続型分布"><i class="fa fa-check"></i><b>6.1.2</b> 連続型分布</a></li>
+<li class="chapter" data-level="6.1.1" data-path="02-summary.html"><a href="#%E9%9B%A2%E6%95%A3%E5%9E%8B%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.1.1</b> 離散型分布</a></li>
+<li class="chapter" data-level="6.1.2" data-path="02-summary.html"><a href="#%E9%80%A3%E7%B6%9A%E5%9E%8B%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.1.2</b> 連続型分布</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布"><i class="fa fa-check"></i><b>6.2</b> 二項分布</a>
+<li class="chapter" data-level="6.2" data-path="02-summary.html"><a href="#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.2</b> 二項分布</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#二項分布の期待値と分散"><i class="fa fa-check"></i><b>6.2.1</b> 二項分布の期待値と分散</a></li>
-<li class="chapter" data-level="6.2.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ベルヌーイ分布"><i class="fa fa-check"></i><b>6.2.2</b> ベルヌーイ分布</a></li>
+<li class="chapter" data-level="6.2.1" data-path="02-summary.html"><a href="#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83%E3%81%AE%E6%9C%9F%E5%BE%85%E5%80%A4%E3%81%A8%E5%88%86%E6%95%A3"><i class="fa fa-check"></i><b>6.2.1</b> 二項分布の期待値と分散</a></li>
+<li class="chapter" data-level="6.2.2" data-path="02-summary.html"><a href="#%E3%83%99%E3%83%AB%E3%83%8C%E3%83%BC%E3%82%A4%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.2.2</b> ベルヌーイ分布</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布"><i class="fa fa-check"></i><b>6.3</b> 正規分布</a>
+<li class="chapter" data-level="6.3" data-path="02-summary.html"><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.3</b> 正規分布</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布の基礎"><i class="fa fa-check"></i><b>6.3.1</b> 正規分布の基礎</a></li>
-<li class="chapter" data-level="6.3.2" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率密度関数"><i class="fa fa-check"></i><b>6.3.2</b> 確率密度関数</a></li>
-<li class="chapter" data-level="6.3.3" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布の平均値と標準偏差"><i class="fa fa-check"></i><b>6.3.3</b> 正規分布の平均値と標準偏差</a></li>
+<li class="chapter" data-level="6.3.1" data-path="02-summary.html"><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E3%81%AE%E5%9F%BA%E7%A4%8E"><i class="fa fa-check"></i><b>6.3.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="6.3.2" data-path="02-summary.html"><a href="#%E7%A2%BA%E7%8E%87%E5%AF%86%E5%BA%A6%E9%96%A2%E6%95%B0"><i class="fa fa-check"></i><b>6.3.2</b> 確率密度関数</a></li>
+<li class="chapter" data-level="6.3.3" data-path="02-summary.html"><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E3%81%AE%E5%B9%B3%E5%9D%87%E5%80%A4%E3%81%A8%E6%A8%99%E6%BA%96%E5%81%8F%E5%B7%AE"><i class="fa fa-check"></i><b>6.3.3</b> 正規分布の平均値と標準偏差</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#ポアソン分布"><i class="fa fa-check"></i><b>6.4</b> ポアソン分布</a></li>
-<li class="chapter" data-level="6.5" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#rで使える確率分布関数"><i class="fa fa-check"></i><b>6.5</b> Rで使える確率分布関数</a></li>
-<li class="chapter" data-level="6.6" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#正規分布と他の確率変数との関係"><i class="fa fa-check"></i><b>6.6</b> 正規分布と他の確率変数との関係</a>
+<li class="chapter" data-level="6.4" data-path="02-summary.html"><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.4</b> ポアソン分布</a></li>
+<li class="chapter" data-level="6.5" data-path="02-summary.html"><a href="#r%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83%E9%96%A2%E6%95%B0"><i class="fa fa-check"></i><b>6.5</b> Rで使える確率分布関数</a></li>
+<li class="chapter" data-level="6.6" data-path="02-summary.html"><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E3%81%A8%E4%BB%96%E3%81%AE%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82"><i class="fa fa-check"></i><b>6.6</b> 正規分布と他の確率変数との関係</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#中心極限定理"><i class="fa fa-check"></i><b>6.6.1</b> 中心極限定理</a></li>
+<li class="chapter" data-level="6.6.1" data-path="02-summary.html"><a href="#%E4%B8%AD%E5%BF%83%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86"><i class="fa fa-check"></i><b>6.6.1</b> 中心極限定理</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確率分布の表現の仕方"><i class="fa fa-check"></i><b>6.7</b> 確率分布の表現の仕方</a></li>
-<li class="chapter" data-level="6.8" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#その他の確率分布"><i class="fa fa-check"></i><b>6.8</b> その他の確率分布</a>
+<li class="chapter" data-level="6.7" data-path="02-summary.html"><a href="#%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83%E3%81%AE%E8%A1%A8%E7%8F%BE%E3%81%AE%E4%BB%95%E6%96%B9"><i class="fa fa-check"></i><b>6.7</b> 確率分布の表現の仕方</a></li>
+<li class="chapter" data-level="6.8" data-path="02-summary.html"><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>6.8</b> その他の確率分布</a>
 <ul>
-<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#一様分布"><i class="fa fa-check"></i>一様分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%B8%80%E6%A7%98%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>一様分布</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#確認問題-4"><i class="fa fa-check"></i>確認問題</a>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-4"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#問１-4"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="05-probability_distribution.html"><a href="05-probability_distribution.html#問２-4"><i class="fa fa-check"></i>問２</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="06-NHT.html"><a href="06-NHT.html"><i class="fa fa-check"></i><b>7</b> 統計的仮説検定</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="06-NHT.html"><a href="06-NHT.html#準備"><i class="fa fa-check"></i><b>7.1</b> 準備</a></li>
-<li class="chapter" data-level="7.2" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定の考え方"><i class="fa fa-check"></i><b>7.2</b> 統計的仮説検定の考え方</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="06-NHT.html"><a href="06-NHT.html#二項検定"><i class="fa fa-check"></i><b>7.2.1</b> 二項検定</a></li>
-<li class="chapter" data-level="7.2.2" data-path="06-NHT.html"><a href="06-NHT.html#二標本の検定"><i class="fa fa-check"></i><b>7.2.2</b> 二標本の検定</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定のまとめ"><i class="fa fa-check"></i><b>7.3</b> 統計的仮説検定のまとめ</a></li>
-<li class="chapter" data-level="7.4" data-path="06-NHT.html"><a href="06-NHT.html#p値とサンプルサイズの関係"><i class="fa fa-check"></i><b>7.4</b> p値とサンプルサイズの関係</a></li>
-<li class="chapter" data-level="7.5" data-path="06-NHT.html"><a href="06-NHT.html#効果量"><i class="fa fa-check"></i><b>7.5</b> 効果量</a></li>
-<li class="chapter" data-level="7.6" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤と第2種の過誤"><i class="fa fa-check"></i><b>7.6</b> 第1種の過誤と第2種の過誤</a></li>
-<li class="chapter" data-level="7.7" data-path="06-NHT.html"><a href="06-NHT.html#検出力"><i class="fa fa-check"></i><b>7.7</b> 検出力</a>
-<ul>
-<li class="chapter" data-level="7.7.1" data-path="06-NHT.html"><a href="06-NHT.html#検出力の高さに影響する要因"><i class="fa fa-check"></i><b>7.7.1</b> 検出力の高さに影響する要因</a></li>
-</ul></li>
-<li class="chapter" data-level="7.8" data-path="06-NHT.html"><a href="06-NHT.html#検出力分析"><i class="fa fa-check"></i><b>7.8</b> 検出力分析</a></li>
-<li class="chapter" data-level="7.9" data-path="06-NHT.html"><a href="06-NHT.html#統計的仮説検定が抱える問題"><i class="fa fa-check"></i><b>7.9</b> 統計的仮説検定が抱える問題</a>
-<ul>
-<li class="chapter" data-level="7.9.1" data-path="06-NHT.html"><a href="06-NHT.html#第1種の過誤"><i class="fa fa-check"></i><b>7.9.1</b> 第1種の過誤</a></li>
-<li class="chapter" data-level="7.9.2" data-path="06-NHT.html"><a href="06-NHT.html#多重比較の問題"><i class="fa fa-check"></i><b>7.9.2</b> 多重比較の問題</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#確認問題-5"><i class="fa fa-check"></i>確認問題</a>
-<ul>
-<li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#問１-5"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="06-NHT.html"><a href="06-NHT.html#問２-5"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-4"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-4"><i class="fa fa-check"></i>問２</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="07-analysis.html"><a href="07-analysis.html"><i class="fa fa-check"></i><b>8</b> 様々な解析法</a>
+<li class="chapter" data-level="7" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E7%9A%84%E4%BB%AE%E8%AA%AC%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>7</b> 統計的仮説検定</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="07-analysis.html"><a href="07-analysis.html#t検定"><i class="fa fa-check"></i><b>8.1</b> t検定</a>
+<li class="chapter" data-level="7.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99"><i class="fa fa-check"></i><b>7.1</b> 準備</a></li>
+<li class="chapter" data-level="7.2" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E7%9A%84%E4%BB%AE%E8%AA%AC%E6%A4%9C%E5%AE%9A%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9"><i class="fa fa-check"></i><b>7.2</b> 統計的仮説検定の考え方</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="07-analysis.html"><a href="07-analysis.html#対応のないt検定"><i class="fa fa-check"></i><b>8.1.1</b> 対応のないt検定</a></li>
-<li class="chapter" data-level="8.1.2" data-path="07-analysis.html"><a href="07-analysis.html#対応のあるt検定"><i class="fa fa-check"></i><b>8.1.2</b> 対応のあるt検定</a></li>
+<li class="chapter" data-level="7.2.1" data-path="02-summary.html"><a href="#%E4%BA%8C%E9%A0%85%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>7.2.1</b> 二項検定</a></li>
+<li class="chapter" data-level="7.2.2" data-path="02-summary.html"><a href="#%E4%BA%8C%E6%A8%99%E6%9C%AC%E3%81%AE%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>7.2.2</b> 二標本の検定</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="07-analysis.html"><a href="07-analysis.html#分散分析"><i class="fa fa-check"></i><b>8.2</b> 分散分析</a></li>
-<li class="chapter" data-level="8.3" data-path="07-analysis.html"><a href="07-analysis.html#ノンパラメトリック検定"><i class="fa fa-check"></i><b>8.3</b> ノンパラメトリック検定</a>
+<li class="chapter" data-level="7.3" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E7%9A%84%E4%BB%AE%E8%AA%AC%E6%A4%9C%E5%AE%9A%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><i class="fa fa-check"></i><b>7.3</b> 統計的仮説検定のまとめ</a></li>
+<li class="chapter" data-level="7.4" data-path="02-summary.html"><a href="#p%E5%80%A4%E3%81%A8%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AE%E9%96%A2%E4%BF%82"><i class="fa fa-check"></i><b>7.4</b> p値とサンプルサイズの関係</a></li>
+<li class="chapter" data-level="7.5" data-path="02-summary.html"><a href="#%E5%8A%B9%E6%9E%9C%E9%87%8F"><i class="fa fa-check"></i><b>7.5</b> 効果量</a></li>
+<li class="chapter" data-level="7.6" data-path="02-summary.html"><a href="#%E7%AC%AC1%E7%A8%AE%E3%81%AE%E9%81%8E%E8%AA%A4%E3%81%A8%E7%AC%AC2%E7%A8%AE%E3%81%AE%E9%81%8E%E8%AA%A4"><i class="fa fa-check"></i><b>7.6</b> 第1種の過誤と第2種の過誤</a></li>
+<li class="chapter" data-level="7.7" data-path="02-summary.html"><a href="#%E6%A4%9C%E5%87%BA%E5%8A%9B"><i class="fa fa-check"></i><b>7.7</b> 検出力</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="07-analysis.html"><a href="07-analysis.html#ウィルコクソンの順位和検定"><i class="fa fa-check"></i><b>8.3.1</b> ウィルコクソンの順位和検定</a></li>
-<li class="chapter" data-level="8.3.2" data-path="07-analysis.html"><a href="07-analysis.html#クラスカルウォリスの検定"><i class="fa fa-check"></i><b>8.3.2</b> クラスカル・ウォリスの検定</a></li>
-<li class="chapter" data-level="8.3.3" data-path="07-analysis.html"><a href="07-analysis.html#カイ二乗検定"><i class="fa fa-check"></i><b>8.3.3</b> カイ二乗検定</a></li>
+<li class="chapter" data-level="7.7.1" data-path="02-summary.html"><a href="#%E6%A4%9C%E5%87%BA%E5%8A%9B%E3%81%AE%E9%AB%98%E3%81%95%E3%81%AB%E5%BD%B1%E9%9F%BF%E3%81%99%E3%82%8B%E8%A6%81%E5%9B%A0"><i class="fa fa-check"></i><b>7.7.1</b> 検出力の高さに影響する要因</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="07-analysis.html"><a href="07-analysis.html#統計モデルとの関係"><i class="fa fa-check"></i><b>8.4</b> 「統計モデル」との関係</a></li>
+<li class="chapter" data-level="7.8" data-path="02-summary.html"><a href="#%E6%A4%9C%E5%87%BA%E5%8A%9B%E5%88%86%E6%9E%90"><i class="fa fa-check"></i><b>7.8</b> 検出力分析</a></li>
+<li class="chapter" data-level="7.9" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E7%9A%84%E4%BB%AE%E8%AA%AC%E6%A4%9C%E5%AE%9A%E3%81%8C%E6%8A%B1%E3%81%88%E3%82%8B%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>7.9</b> 統計的仮説検定が抱える問題</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="02-summary.html"><a href="#%E7%AC%AC1%E7%A8%AE%E3%81%AE%E9%81%8E%E8%AA%A4"><i class="fa fa-check"></i><b>7.9.1</b> 第1種の過誤</a></li>
+<li class="chapter" data-level="7.9.2" data-path="02-summary.html"><a href="#%E5%A4%9A%E9%87%8D%E6%AF%94%E8%BC%83%E3%81%AE%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>7.9.2</b> 多重比較の問題</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="08-linear_model.html"><a href="08-linear_model.html"><i class="fa fa-check"></i><b>9</b> 線形モデル</a>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-5"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="08-linear_model.html"><a href="08-linear_model.html#準備-1"><i class="fa fa-check"></i><b>9.1</b> 準備</a></li>
-<li class="chapter" data-level="9.2" data-path="08-linear_model.html"><a href="08-linear_model.html#線形モデルの概要"><i class="fa fa-check"></i><b>9.2</b> 線形モデルの概要</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="08-linear_model.html"><a href="08-linear_model.html#まとめ"><i class="fa fa-check"></i><b>9.2.1</b> まとめ</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="08-linear_model.html"><a href="08-linear_model.html#線形モデルによる解析"><i class="fa fa-check"></i><b>9.3</b> 線形モデルによる解析</a></li>
-<li class="chapter" data-level="9.4" data-path="08-linear_model.html"><a href="08-linear_model.html#最尤法"><i class="fa fa-check"></i><b>9.4</b> 最尤法</a>
-<ul>
-<li class="chapter" data-level="9.4.1" data-path="08-linear_model.html"><a href="08-linear_model.html#最尤法によるパラメータ推定"><i class="fa fa-check"></i><b>9.4.1</b> 最尤法によるパラメータ推定</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="08-linear_model.html"><a href="08-linear_model.html#信頼区間と予測区間"><i class="fa fa-check"></i><b>9.5</b> 信頼区間と予測区間</a>
-<ul>
-<li class="chapter" data-level="9.5.1" data-path="08-linear_model.html"><a href="08-linear_model.html#信頼区間"><i class="fa fa-check"></i><b>9.5.1</b> 信頼区間</a></li>
-<li class="chapter" data-level="9.5.2" data-path="08-linear_model.html"><a href="08-linear_model.html#予測区間"><i class="fa fa-check"></i><b>9.5.2</b> 予測区間</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="08-linear_model.html"><a href="08-linear_model.html#まとめ-1"><i class="fa fa-check"></i><b>9.6</b> まとめ</a></li>
-<li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#確認問題-6"><i class="fa fa-check"></i>確認問題</a>
-<ul>
-<li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#問１-6"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#問２-6"><i class="fa fa-check"></i>問２</a></li>
-<li class="chapter" data-level="" data-path="08-linear_model.html"><a href="08-linear_model.html#問３-4"><i class="fa fa-check"></i>問３</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-5"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-5"><i class="fa fa-check"></i>問２</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="09-linear_model2.html"><a href="09-linear_model2.html"><i class="fa fa-check"></i><b>10</b> 線形モデルの注意点</a>
+<li class="chapter" data-level="8" data-path="02-summary.html"><a href="#%E6%A7%98%E3%80%85%E3%81%AA%E8%A7%A3%E6%9E%90%E6%B3%95"><i class="fa fa-check"></i><b>8</b> 様々な解析法</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#準備-2"><i class="fa fa-check"></i><b>10.1</b> 準備</a></li>
-<li class="chapter" data-level="10.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルに含まれる統計解析"><i class="fa fa-check"></i><b>10.2</b> 線形モデルに含まれる統計解析</a></li>
-<li class="chapter" data-level="10.3" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数がカテゴリカル変数の場合"><i class="fa fa-check"></i><b>10.3</b> 予測変数がカテゴリカル変数の場合</a></li>
-<li class="chapter" data-level="10.4" data-path="09-linear_model2.html"><a href="09-linear_model2.html#グループが複数ある場合"><i class="fa fa-check"></i><b>10.4</b> グループが複数ある場合</a>
+<li class="chapter" data-level="8.1" data-path="02-summary.html"><a href="#t%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.1</b> t検定</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#基準となるグループと比較する"><i class="fa fa-check"></i><b>10.4.1</b> 基準となるグループと比較する</a></li>
+<li class="chapter" data-level="8.1.1" data-path="02-summary.html"><a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%AA%E3%81%84t%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.1.1</b> 対応のないt検定</a></li>
+<li class="chapter" data-level="8.1.2" data-path="02-summary.html"><a href="#%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%81%82%E3%82%8Bt%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.1.2</b> 対応のあるt検定</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="09-linear_model2.html"><a href="09-linear_model2.html#予測変数が複数ある場合"><i class="fa fa-check"></i><b>10.5</b> 予測変数が複数ある場合</a>
+<li class="chapter" data-level="8.2" data-path="02-summary.html"><a href="#%E5%88%86%E6%95%A3%E5%88%86%E6%9E%90"><i class="fa fa-check"></i><b>8.2</b> 分散分析</a></li>
+<li class="chapter" data-level="8.3" data-path="02-summary.html"><a href="#%E3%83%8E%E3%83%B3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%88%E3%83%AA%E3%83%83%E3%82%AF%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.3</b> ノンパラメトリック検定</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の効果の統制"><i class="fa fa-check"></i><b>10.5.1</b> 変数の効果の統制</a></li>
-<li class="chapter" data-level="10.5.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#交互作用"><i class="fa fa-check"></i><b>10.5.2</b> 交互作用</a></li>
+<li class="chapter" data-level="8.3.1" data-path="02-summary.html"><a href="#%E3%82%A6%E3%82%A3%E3%83%AB%E3%82%B3%E3%82%AF%E3%82%BD%E3%83%B3%E3%81%AE%E9%A0%86%E4%BD%8D%E5%92%8C%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.3.1</b> ウィルコクソンの順位和検定</a></li>
+<li class="chapter" data-level="8.3.2" data-path="02-summary.html"><a href="#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AB%E3%83%AB%E3%82%A6%E3%82%A9%E3%83%AA%E3%82%B9%E3%81%AE%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.3.2</b> クラスカル・ウォリスの検定</a></li>
+<li class="chapter" data-level="8.3.3" data-path="02-summary.html"><a href="#%E3%82%AB%E3%82%A4%E4%BA%8C%E4%B9%97%E6%A4%9C%E5%AE%9A"><i class="fa fa-check"></i><b>8.3.3</b> カイ二乗検定</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="09-linear_model2.html"><a href="09-linear_model2.html#変数の標準化"><i class="fa fa-check"></i><b>10.6</b> 変数の標準化</a></li>
-<li class="chapter" data-level="10.7" data-path="09-linear_model2.html"><a href="09-linear_model2.html#線形モデルを扱う上での問題"><i class="fa fa-check"></i><b>10.7</b> 線形モデルを扱う上での問題</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#多重共線性"><i class="fa fa-check"></i><b>10.7.1</b> 多重共線性</a></li>
-<li class="chapter" data-level="10.7.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#過学習"><i class="fa fa-check"></i><b>10.7.2</b> 過学習</a></li>
+<li class="chapter" data-level="8.4" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82"><i class="fa fa-check"></i><b>8.4</b> 「統計モデル」との関係</a></li>
 </ul></li>
-<li class="chapter" data-level="10.8" data-path="09-linear_model2.html"><a href="09-linear_model2.html#モデルの予測力の評価"><i class="fa fa-check"></i><b>10.8</b> モデルの予測力の評価</a>
+<li class="chapter" data-level="9" data-path="02-summary.html"><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>9</b> 線形モデル</a>
 <ul>
-<li class="chapter" data-level="10.8.1" data-path="09-linear_model2.html"><a href="09-linear_model2.html#決定係数"><i class="fa fa-check"></i><b>10.8.1</b> 決定係数</a></li>
-<li class="chapter" data-level="10.8.2" data-path="09-linear_model2.html"><a href="09-linear_model2.html#赤池情報量規準aic"><i class="fa fa-check"></i><b>10.8.2</b> 赤池情報量規準（AIC）</a></li>
+<li class="chapter" data-level="9.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99-1"><i class="fa fa-check"></i><b>9.1</b> 準備</a></li>
+<li class="chapter" data-level="9.2" data-path="02-summary.html"><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%A6%82%E8%A6%81"><i class="fa fa-check"></i><b>9.2</b> 線形モデルの概要</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="02-summary.html"><a href="#%E3%81%BE%E3%81%A8%E3%82%81"><i class="fa fa-check"></i><b>9.2.1</b> まとめ</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#確認問題-7"><i class="fa fa-check"></i>確認問題</a>
+<li class="chapter" data-level="9.3" data-path="02-summary.html"><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E8%A7%A3%E6%9E%90"><i class="fa fa-check"></i><b>9.3</b> 線形モデルによる解析</a></li>
+<li class="chapter" data-level="9.4" data-path="02-summary.html"><a href="#%E6%9C%80%E5%B0%A4%E6%B3%95"><i class="fa fa-check"></i><b>9.4</b> 最尤法</a>
 <ul>
-<li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#問1"><i class="fa fa-check"></i>問1</a></li>
-<li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#問2"><i class="fa fa-check"></i>問2</a></li>
-<li class="chapter" data-level="" data-path="09-linear_model2.html"><a href="09-linear_model2.html#問3"><i class="fa fa-check"></i>問3</a></li>
+<li class="chapter" data-level="9.4.1" data-path="02-summary.html"><a href="#%E6%9C%80%E5%B0%A4%E6%B3%95%E3%81%AB%E3%82%88%E3%82%8B%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E6%8E%A8%E5%AE%9A"><i class="fa fa-check"></i><b>9.4.1</b> 最尤法によるパラメータ推定</a></li>
 </ul></li>
+<li class="chapter" data-level="9.5" data-path="02-summary.html"><a href="#%E4%BF%A1%E9%A0%BC%E5%8C%BA%E9%96%93%E3%81%A8%E4%BA%88%E6%B8%AC%E5%8C%BA%E9%96%93"><i class="fa fa-check"></i><b>9.5</b> 信頼区間と予測区間</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="02-summary.html"><a href="#%E4%BF%A1%E9%A0%BC%E5%8C%BA%E9%96%93"><i class="fa fa-check"></i><b>9.5.1</b> 信頼区間</a></li>
+<li class="chapter" data-level="9.5.2" data-path="02-summary.html"><a href="#%E4%BA%88%E6%B8%AC%E5%8C%BA%E9%96%93"><i class="fa fa-check"></i><b>9.5.2</b> 予測区間</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="10-glm.html"><a href="10-glm.html"><i class="fa fa-check"></i><b>11</b> 一般化線形モデル</a>
+<li class="chapter" data-level="9.6" data-path="02-summary.html"><a href="#%E3%81%BE%E3%81%A8%E3%82%81-1"><i class="fa fa-check"></i><b>9.6</b> まとめ</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-6"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="10-glm.html"><a href="10-glm.html#準備-3"><i class="fa fa-check"></i><b>11.1</b> 準備</a></li>
-<li class="chapter" data-level="11.2" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデル-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデル</a></li>
-<li class="chapter" data-level="11.3" data-path="10-glm.html"><a href="10-glm.html#ロジスティック回帰"><i class="fa fa-check"></i><b>11.3</b> ロジスティック回帰</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="10-glm.html"><a href="10-glm.html#応答変数が従う確率分布"><i class="fa fa-check"></i><b>11.3.1</b> 応答変数が従う確率分布</a></li>
-<li class="chapter" data-level="11.3.2" data-path="10-glm.html"><a href="10-glm.html#リンク関数"><i class="fa fa-check"></i><b>11.3.2</b> リンク関数</a></li>
-<li class="chapter" data-level="11.3.3" data-path="10-glm.html"><a href="10-glm.html#ここまでのまとめ"><i class="fa fa-check"></i><b>11.3.3</b> ここまでのまとめ</a></li>
-<li class="chapter" data-level="11.3.4" data-path="10-glm.html"><a href="10-glm.html#rでのロジスティック回帰"><i class="fa fa-check"></i><b>11.3.4</b> Rでのロジスティック回帰</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰"><i class="fa fa-check"></i><b>11.4</b> ポアソン回帰</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="10-glm.html"><a href="10-glm.html#応答変数が従う確率分布-1"><i class="fa fa-check"></i><b>11.4.1</b> 応答変数が従う確率分布</a></li>
-<li class="chapter" data-level="11.4.2" data-path="10-glm.html"><a href="10-glm.html#リンク関数-1"><i class="fa fa-check"></i><b>11.4.2</b> リンク関数</a></li>
-<li class="chapter" data-level="11.4.3" data-path="10-glm.html"><a href="10-glm.html#rでのポアソン回帰"><i class="fa fa-check"></i><b>11.4.3</b> Rでのポアソン回帰</a></li>
-<li class="chapter" data-level="11.4.4" data-path="10-glm.html"><a href="10-glm.html#ポアソン回帰の注意点過分散"><i class="fa fa-check"></i><b>11.4.4</b> ポアソン回帰の注意点：過分散</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="10-glm.html"><a href="10-glm.html#一般化線形モデルのまとめ"><i class="fa fa-check"></i><b>11.5</b> 一般化線形モデルのまとめ</a></li>
-<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#確認問題-8"><i class="fa fa-check"></i>確認問題</a>
-<ul>
-<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問１-7"><i class="fa fa-check"></i>問１</a></li>
-<li class="chapter" data-level="" data-path="10-glm.html"><a href="10-glm.html#問２-7"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-6"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-6"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-4"><i class="fa fa-check"></i>問３</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="11-glm2.html"><a href="11-glm2.html"><i class="fa fa-check"></i><b>12</b> 一般化線形モデルの応用</a>
+<li class="chapter" data-level="10" data-path="02-summary.html"><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9"><i class="fa fa-check"></i><b>10</b> 線形モデルの注意点</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="11-glm2.html"><a href="11-glm2.html#準備-4"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
-<li class="chapter" data-level="12.2" data-path="11-glm2.html"><a href="11-glm2.html#負の二項回帰"><i class="fa fa-check"></i><b>12.2</b> 負の二項回帰</a>
+<li class="chapter" data-level="10.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99-2"><i class="fa fa-check"></i><b>10.1</b> 準備</a></li>
+<li class="chapter" data-level="10.2" data-path="02-summary.html"><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E5%90%AB%E3%81%BE%E3%82%8C%E3%82%8B%E7%B5%B1%E8%A8%88%E8%A7%A3%E6%9E%90"><i class="fa fa-check"></i><b>10.2</b> 線形モデルに含まれる統計解析</a></li>
+<li class="chapter" data-level="10.3" data-path="02-summary.html"><a href="#%E4%BA%88%E6%B8%AC%E5%A4%89%E6%95%B0%E3%81%8C%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%82%AB%E3%83%AB%E5%A4%89%E6%95%B0%E3%81%AE%E5%A0%B4%E5%90%88"><i class="fa fa-check"></i><b>10.3</b> 予測変数がカテゴリカル変数の場合</a></li>
+<li class="chapter" data-level="10.4" data-path="02-summary.html"><a href="#%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E8%A4%87%E6%95%B0%E3%81%82%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fa fa-check"></i><b>10.4</b> グループが複数ある場合</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="11-glm2.html"><a href="11-glm2.html#負の二項分布"><i class="fa fa-check"></i><b>12.2.1</b> 負の二項分布</a></li>
-<li class="chapter" data-level="12.2.2" data-path="11-glm2.html"><a href="11-glm2.html#rでの負の二項回帰"><i class="fa fa-check"></i><b>12.2.2</b> Rでの負の二項回帰</a></li>
+<li class="chapter" data-level="10.4.1" data-path="02-summary.html"><a href="#%E5%9F%BA%E6%BA%96%E3%81%A8%E3%81%AA%E3%82%8B%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%99%E3%82%8B"><i class="fa fa-check"></i><b>10.4.1</b> 基準となるグループと比較する</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="11-glm2.html"><a href="11-glm2.html#順序ロジスティック回帰"><i class="fa fa-check"></i><b>12.3</b> 順序ロジスティック回帰</a>
+<li class="chapter" data-level="10.5" data-path="02-summary.html"><a href="#%E4%BA%88%E6%B8%AC%E5%A4%89%E6%95%B0%E3%81%8C%E8%A4%87%E6%95%B0%E3%81%82%E3%82%8B%E5%A0%B4%E5%90%88"><i class="fa fa-check"></i><b>10.5</b> 予測変数が複数ある場合</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="11-glm2.html"><a href="11-glm2.html#例題"><i class="fa fa-check"></i><b>12.3.1</b> 例題</a></li>
-<li class="chapter" data-level="12.3.2" data-path="11-glm2.html"><a href="11-glm2.html#順序ロジスティック回帰モデルの詳細"><i class="fa fa-check"></i><b>12.3.2</b> 順序ロジスティック回帰モデルの詳細</a></li>
-<li class="chapter" data-level="12.3.3" data-path="11-glm2.html"><a href="11-glm2.html#rでの順序ロジスティック回帰"><i class="fa fa-check"></i><b>12.3.3</b> Rでの順序ロジスティック回帰</a></li>
-<li class="chapter" data-level="" data-path="11-glm2.html"><a href="11-glm2.html#準備-5"><i class="fa fa-check"></i>準備</a></li>
-<li class="chapter" data-level="" data-path="11-glm2.html"><a href="11-glm2.html#解析"><i class="fa fa-check"></i>解析</a></li>
-<li class="chapter" data-level="" data-path="11-glm2.html"><a href="11-glm2.html#解釈"><i class="fa fa-check"></i>解釈</a></li>
+<li class="chapter" data-level="10.5.1" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E5%8A%B9%E6%9E%9C%E3%81%AE%E7%B5%B1%E5%88%B6"><i class="fa fa-check"></i><b>10.5.1</b> 変数の効果の統制</a></li>
+<li class="chapter" data-level="10.5.2" data-path="02-summary.html"><a href="#%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8"><i class="fa fa-check"></i><b>10.5.2</b> 交互作用</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="11-glm2.html"><a href="11-glm2.html#多項ロジスティック回帰"><i class="fa fa-check"></i><b>12.4</b> 多項ロジスティック回帰</a>
+<li class="chapter" data-level="10.6" data-path="02-summary.html"><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E6%A8%99%E6%BA%96%E5%8C%96"><i class="fa fa-check"></i><b>10.6</b> 変数の標準化</a></li>
+<li class="chapter" data-level="10.7" data-path="02-summary.html"><a href="#%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86%E4%B8%8A%E3%81%A7%E3%81%AE%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>10.7</b> 線形モデルを扱う上での問題</a>
 <ul>
-<li class="chapter" data-level="" data-path="11-glm2.html"><a href="11-glm2.html#例題-1"><i class="fa fa-check"></i>例題</a></li>
-<li class="chapter" data-level="12.4.1" data-path="11-glm2.html"><a href="11-glm2.html#多項ロジスティック回帰モデルの詳細"><i class="fa fa-check"></i><b>12.4.1</b> 多項ロジスティック回帰モデルの詳細</a></li>
-<li class="chapter" data-level="12.4.2" data-path="11-glm2.html"><a href="11-glm2.html#rでの多項ロジスティック回帰"><i class="fa fa-check"></i><b>12.4.2</b> Rでの多項ロジスティック回帰</a></li>
+<li class="chapter" data-level="10.7.1" data-path="02-summary.html"><a href="#%E5%A4%9A%E9%87%8D%E5%85%B1%E7%B7%9A%E6%80%A7"><i class="fa fa-check"></i><b>10.7.1</b> 多重共線性</a></li>
+<li class="chapter" data-level="10.7.2" data-path="02-summary.html"><a href="#%E9%81%8E%E5%AD%A6%E7%BF%92"><i class="fa fa-check"></i><b>10.7.2</b> 過学習</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="11-glm2.html"><a href="11-glm2.html#ゼロ過剰ポアソンモデル"><i class="fa fa-check"></i><b>12.5</b> ゼロ過剰ポアソンモデル</a>
+<li class="chapter" data-level="10.8" data-path="02-summary.html"><a href="#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E5%8A%9B%E3%81%AE%E8%A9%95%E4%BE%A1"><i class="fa fa-check"></i><b>10.8</b> モデルの予測力の評価</a>
 <ul>
-<li class="chapter" data-level="" data-path="11-glm2.html"><a href="11-glm2.html#例題-2"><i class="fa fa-check"></i>例題</a></li>
-<li class="chapter" data-level="12.5.1" data-path="11-glm2.html"><a href="11-glm2.html#ゼロ過剰ポアソンモデルの詳細"><i class="fa fa-check"></i><b>12.5.1</b> ゼロ過剰ポアソンモデルの詳細</a></li>
-<li class="chapter" data-level="12.5.2" data-path="11-glm2.html"><a href="11-glm2.html#rでのゼロ過剰ポアソンモデル"><i class="fa fa-check"></i><b>12.5.2</b> Rでのゼロ過剰ポアソンモデル</a></li>
+<li class="chapter" data-level="10.8.1" data-path="02-summary.html"><a href="#%E6%B1%BA%E5%AE%9A%E4%BF%82%E6%95%B0"><i class="fa fa-check"></i><b>10.8.1</b> 決定係数</a></li>
+<li class="chapter" data-level="10.8.2" data-path="02-summary.html"><a href="#%E8%B5%A4%E6%B1%A0%E6%83%85%E5%A0%B1%E9%87%8F%E8%A6%8F%E6%BA%96aic"><i class="fa fa-check"></i><b>10.8.2</b> 赤池情報量規準（AIC）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="11-glm2.html"><a href="11-glm2.html#確認問題-9"><i class="fa fa-check"></i>確認問題</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="12-glmm.html"><a href="12-glmm.html"><i class="fa fa-check"></i><b>13</b> マルチレベルモデル</a>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-7"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="12-glmm.html"><a href="12-glmm.html#準備-6"><i class="fa fa-check"></i><b>13.1</b> 準備</a></li>
-<li class="chapter" data-level="13.2" data-path="12-glmm.html"><a href="12-glmm.html#個人差や集団差の問題"><i class="fa fa-check"></i><b>13.2</b> 個人差や集団差の問題</a></li>
-<li class="chapter" data-level="13.3" data-path="12-glmm.html"><a href="12-glmm.html#マルチレベルモデルの概要"><i class="fa fa-check"></i><b>13.3</b> マルチレベルモデルの概要</a></li>
-<li class="chapter" data-level="13.4" data-path="12-glmm.html"><a href="12-glmm.html#rでのマルチレベルモデル"><i class="fa fa-check"></i><b>13.4</b> Rでのマルチレベルモデル</a></li>
-<li class="chapter" data-level="13.5" data-path="12-glmm.html"><a href="12-glmm.html#正規分布以外を扱う例"><i class="fa fa-check"></i><b>13.5</b> 正規分布以外を扱う例</a>
-<ul>
-<li class="chapter" data-level="13.5.1" data-path="12-glmm.html"><a href="12-glmm.html#ロジスティック回帰-1"><i class="fa fa-check"></i><b>13.5.1</b> ロジスティック回帰</a></li>
-<li class="chapter" data-level="13.5.2" data-path="12-glmm.html"><a href="12-glmm.html#ポアソン回帰-1"><i class="fa fa-check"></i><b>13.5.2</b> ポアソン回帰</a></li>
-<li class="chapter" data-level="13.5.3" data-path="12-glmm.html"><a href="12-glmm.html#マルチレベルモデルによる過分散への対処"><i class="fa fa-check"></i><b>13.5.3</b> マルチレベルモデルによる過分散への対処</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="12-glmm.html"><a href="12-glmm.html#確認問題-10"><i class="fa fa-check"></i>確認問題</a>
-<ul>
-<li class="chapter" data-level="" data-path="12-glmm.html"><a href="12-glmm.html#問１-8"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F1"><i class="fa fa-check"></i>問1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F2"><i class="fa fa-check"></i>問2</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F3"><i class="fa fa-check"></i>問3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="13-Bayese.html"><a href="13-Bayese.html"><i class="fa fa-check"></i><b>14</b> ベイズ統計</a>
+<li class="chapter" data-level="11" data-path="02-summary.html"><a href="#%E4%B8%80%E8%88%AC%E5%8C%96%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>11</b> 一般化線形モデル</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="13-Bayese.html"><a href="13-Bayese.html#頻度主義統計学とベイズ統計学の違い"><i class="fa fa-check"></i><b>14.1</b> 頻度主義統計学とベイズ統計学の違い</a></li>
-<li class="chapter" data-level="14.2" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズの定理"><i class="fa fa-check"></i><b>14.2</b> ベイズの定理</a>
+<li class="chapter" data-level="11.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99-3"><i class="fa fa-check"></i><b>11.1</b> 準備</a></li>
+<li class="chapter" data-level="11.2" data-path="02-summary.html"><a href="#%E4%B8%80%E8%88%AC%E5%8C%96%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB-1"><i class="fa fa-check"></i><b>11.2</b> 一般化線形モデル</a></li>
+<li class="chapter" data-level="11.3" data-path="02-summary.html"><a href="#%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>11.3</b> ロジスティック回帰</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="13-Bayese.html"><a href="13-Bayese.html#例題-3"><i class="fa fa-check"></i><b>14.2.1</b> 例題</a></li>
-<li class="chapter" data-level="14.2.2" data-path="13-Bayese.html"><a href="13-Bayese.html#事前確率事後確率"><i class="fa fa-check"></i><b>14.2.2</b> 事前確率、事後確率</a></li>
-<li class="chapter" data-level="14.2.3" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズ統計-1"><i class="fa fa-check"></i><b>14.2.3</b> ベイズ統計</a></li>
+<li class="chapter" data-level="11.3.1" data-path="02-summary.html"><a href="#%E5%BF%9C%E7%AD%94%E5%A4%89%E6%95%B0%E3%81%8C%E5%BE%93%E3%81%86%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>11.3.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="11.3.2" data-path="02-summary.html"><a href="#%E3%83%AA%E3%83%B3%E3%82%AF%E9%96%A2%E6%95%B0"><i class="fa fa-check"></i><b>11.3.2</b> リンク関数</a></li>
+<li class="chapter" data-level="11.3.3" data-path="02-summary.html"><a href="#%E3%81%93%E3%81%93%E3%81%BE%E3%81%A7%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><i class="fa fa-check"></i><b>11.3.3</b> ここまでのまとめ</a></li>
+<li class="chapter" data-level="11.3.4" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>11.3.4</b> Rでのロジスティック回帰</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="13-Bayese.html"><a href="13-Bayese.html#ベイズ推定の例"><i class="fa fa-check"></i><b>14.3</b> ベイズ推定の例</a>
+<li class="chapter" data-level="11.4" data-path="02-summary.html"><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>11.4</b> ポアソン回帰</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="13-Bayese.html"><a href="13-Bayese.html#事前分布"><i class="fa fa-check"></i><b>14.3.1</b> 事前分布</a></li>
-<li class="chapter" data-level="14.3.2" data-path="13-Bayese.html"><a href="13-Bayese.html#尤度"><i class="fa fa-check"></i><b>14.3.2</b> 尤度</a></li>
-<li class="chapter" data-level="14.3.3" data-path="13-Bayese.html"><a href="13-Bayese.html#事後分布"><i class="fa fa-check"></i><b>14.3.3</b> 事後分布</a></li>
+<li class="chapter" data-level="11.4.1" data-path="02-summary.html"><a href="#%E5%BF%9C%E7%AD%94%E5%A4%89%E6%95%B0%E3%81%8C%E5%BE%93%E3%81%86%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83-1"><i class="fa fa-check"></i><b>11.4.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="11.4.2" data-path="02-summary.html"><a href="#%E3%83%AA%E3%83%B3%E3%82%AF%E9%96%A2%E6%95%B0-1"><i class="fa fa-check"></i><b>11.4.2</b> リンク関数</a></li>
+<li class="chapter" data-level="11.4.3" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>11.4.3</b> Rでのポアソン回帰</a></li>
+<li class="chapter" data-level="11.4.4" data-path="02-summary.html"><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%9B%9E%E5%B8%B0%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9%E9%81%8E%E5%88%86%E6%95%A3"><i class="fa fa-check"></i><b>11.4.4</b> ポアソン回帰の注意点：過分散</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="13-Bayese.html"><a href="13-Bayese.html#mcmc"><i class="fa fa-check"></i><b>14.4</b> MCMC</a>
+<li class="chapter" data-level="11.5" data-path="02-summary.html"><a href="#%E4%B8%80%E8%88%AC%E5%8C%96%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><i class="fa fa-check"></i><b>11.5</b> 一般化線形モデルのまとめ</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-8"><i class="fa fa-check"></i>確認問題</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="13-Bayese.html"><a href="13-Bayese.html#mcmcの例"><i class="fa fa-check"></i><b>14.4.1</b> MCMCの例</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-7"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-7"><i class="fa fa-check"></i>問２</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="13-Bayese.html"><a href="13-Bayese.html#確認問題-11"><i class="fa fa-check"></i>確認問題</a>
+</ul></li>
+<li class="chapter" data-level="12" data-path="02-summary.html"><a href="#%E4%B8%80%E8%88%AC%E5%8C%96%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%BF%9C%E7%94%A8"><i class="fa fa-check"></i><b>12</b> 一般化線形モデルの応用</a>
 <ul>
-<li class="chapter" data-level="" data-path="13-Bayese.html"><a href="13-Bayese.html#問1-1"><i class="fa fa-check"></i>問1</a></li>
+<li class="chapter" data-level="12.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99-4"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
+<li class="chapter" data-level="12.2" data-path="02-summary.html"><a href="#%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>12.2</b> 負の二項回帰</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="02-summary.html"><a href="#%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>12.2.1</b> 負の二項分布</a></li>
+<li class="chapter" data-level="12.2.2" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>12.2.2</b> Rでの負の二項回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="02-summary.html"><a href="#%E9%A0%86%E5%BA%8F%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>12.3</b> 順序ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="02-summary.html"><a href="#%E4%BE%8B%E9%A1%8C"><i class="fa fa-check"></i><b>12.3.1</b> 例題</a></li>
+<li class="chapter" data-level="12.3.2" data-path="02-summary.html"><a href="#%E9%A0%86%E5%BA%8F%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E8%A9%B3%E7%B4%B0"><i class="fa fa-check"></i><b>12.3.2</b> 順序ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="12.3.3" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E9%A0%86%E5%BA%8F%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>12.3.3</b> Rでの順序ロジスティック回帰</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%BA%96%E5%82%99-5"><i class="fa fa-check"></i>準備</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%A7%A3%E6%9E%90"><i class="fa fa-check"></i>解析</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%A7%A3%E9%87%88"><i class="fa fa-check"></i>解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="02-summary.html"><a href="#%E5%A4%9A%E9%A0%85%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>12.4</b> 多項ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%BE%8B%E9%A1%8C-1"><i class="fa fa-check"></i>例題</a></li>
+<li class="chapter" data-level="12.4.1" data-path="02-summary.html"><a href="#%E5%A4%9A%E9%A0%85%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E8%A9%B3%E7%B4%B0"><i class="fa fa-check"></i><b>12.4.1</b> 多項ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="12.4.2" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E5%A4%9A%E9%A0%85%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0"><i class="fa fa-check"></i><b>12.4.2</b> Rでの多項ロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="02-summary.html"><a href="#%E3%82%BC%E3%83%AD%E9%81%8E%E5%89%B0%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>12.5</b> ゼロ過剰ポアソンモデル</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%BE%8B%E9%A1%8C-2"><i class="fa fa-check"></i>例題</a></li>
+<li class="chapter" data-level="12.5.1" data-path="02-summary.html"><a href="#%E3%82%BC%E3%83%AD%E9%81%8E%E5%89%B0%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E8%A9%B3%E7%B4%B0"><i class="fa fa-check"></i><b>12.5.1</b> ゼロ過剰ポアソンモデルの詳細</a></li>
+<li class="chapter" data-level="12.5.2" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E3%82%BC%E3%83%AD%E9%81%8E%E5%89%B0%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>12.5.2</b> Rでのゼロ過剰ポアソンモデル</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-9"><i class="fa fa-check"></i>確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="02-summary.html"><a href="#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%AC%E3%83%99%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>13</b> マルチレベルモデル</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99-6"><i class="fa fa-check"></i><b>13.1</b> 準備</a></li>
+<li class="chapter" data-level="13.2" data-path="02-summary.html"><a href="#%E5%80%8B%E4%BA%BA%E5%B7%AE%E3%82%84%E9%9B%86%E5%9B%A3%E5%B7%AE%E3%81%AE%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>13.2</b> 個人差や集団差の問題</a></li>
+<li class="chapter" data-level="13.3" data-path="02-summary.html"><a href="#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%AC%E3%83%99%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%A6%82%E8%A6%81"><i class="fa fa-check"></i><b>13.3</b> マルチレベルモデルの概要</a></li>
+<li class="chapter" data-level="13.4" data-path="02-summary.html"><a href="#r%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%AC%E3%83%99%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>13.4</b> Rでのマルチレベルモデル</a></li>
+<li class="chapter" data-level="13.5" data-path="02-summary.html"><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E4%BB%A5%E5%A4%96%E3%82%92%E6%89%B1%E3%81%86%E4%BE%8B"><i class="fa fa-check"></i><b>13.5</b> 正規分布以外を扱う例</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="02-summary.html"><a href="#%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0-1"><i class="fa fa-check"></i><b>13.5.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="13.5.2" data-path="02-summary.html"><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%9B%9E%E5%B8%B0-1"><i class="fa fa-check"></i><b>13.5.2</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="13.5.3" data-path="02-summary.html"><a href="#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%AC%E3%83%99%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E9%81%8E%E5%88%86%E6%95%A3%E3%81%B8%E3%81%AE%E5%AF%BE%E5%87%A6"><i class="fa fa-check"></i><b>13.5.3</b> マルチレベルモデルによる過分散への対処</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-10"><i class="fa fa-check"></i>確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-8"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88"><i class="fa fa-check"></i><b>14</b> ベイズ統計</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="02-summary.html"><a href="#%E9%A0%BB%E5%BA%A6%E4%B8%BB%E7%BE%A9%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%81%A8%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%81%AE%E9%81%95%E3%81%84"><i class="fa fa-check"></i><b>14.1</b> 頻度主義統計学とベイズ統計学の違い</a></li>
+<li class="chapter" data-level="14.2" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E3%81%AE%E5%AE%9A%E7%90%86"><i class="fa fa-check"></i><b>14.2</b> ベイズの定理</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="02-summary.html"><a href="#%E4%BE%8B%E9%A1%8C-3"><i class="fa fa-check"></i><b>14.2.1</b> 例題</a></li>
+<li class="chapter" data-level="14.2.2" data-path="02-summary.html"><a href="#%E4%BA%8B%E5%89%8D%E7%A2%BA%E7%8E%87%E4%BA%8B%E5%BE%8C%E7%A2%BA%E7%8E%87"><i class="fa fa-check"></i><b>14.2.2</b> 事前確率、事後確率</a></li>
+<li class="chapter" data-level="14.2.3" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88-1"><i class="fa fa-check"></i><b>14.2.3</b> ベイズ統計</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E6%8E%A8%E5%AE%9A%E3%81%AE%E4%BE%8B"><i class="fa fa-check"></i><b>14.3</b> ベイズ推定の例</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="02-summary.html"><a href="#%E4%BA%8B%E5%89%8D%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>14.3.1</b> 事前分布</a></li>
+<li class="chapter" data-level="14.3.2" data-path="02-summary.html"><a href="#%E5%B0%A4%E5%BA%A6"><i class="fa fa-check"></i><b>14.3.2</b> 尤度</a></li>
+<li class="chapter" data-level="14.3.3" data-path="02-summary.html"><a href="#%E4%BA%8B%E5%BE%8C%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>14.3.3</b> 事後分布</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="13-Bayese.html"><a href="13-Bayese.html"><i class="fa fa-check"></i><b>14.4</b> MCMC</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="02-summary.html"><a href="#mcmc%E3%81%AE%E4%BE%8B"><i class="fa fa-check"></i><b>14.4.1</b> MCMCの例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-11"><i class="fa fa-check"></i>確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F1-1"><i class="fa fa-check"></i>問1</a></li>
 <li class="chapter" data-level="" data-path="13-Bayese.html"><a href="13-Bayese.html#section-6"><i class="fa fa-check"></i>1-1</a></li>
 <li class="chapter" data-level="" data-path="13-Bayese.html"><a href="13-Bayese.html#section-7"><i class="fa fa-check"></i>1-2</a></li>
 <li class="chapter" data-level="" data-path="13-Bayese.html"><a href="13-Bayese.html#section-8"><i class="fa fa-check"></i>1-3</a></li>
-<li class="chapter" data-level="" data-path="13-Bayese.html"><a href="13-Bayese.html#問2-1"><i class="fa fa-check"></i>問2</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F2-1"><i class="fa fa-check"></i>問2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html"><i class="fa fa-check"></i><b>15</b> ベイズ統計モデリング</a>
+<li class="chapter" data-level="15" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0"><i class="fa fa-check"></i><b>15</b> ベイズ統計モデリング</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#準備-7"><i class="fa fa-check"></i><b>15.1</b> 準備</a>
+<li class="chapter" data-level="15.1" data-path="02-summary.html"><a href="#%E6%BA%96%E5%82%99-7"><i class="fa fa-check"></i><b>15.1</b> 準備</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rstanのインストール"><i class="fa fa-check"></i><b>15.1.1</b> Rstanのインストール</a></li>
-<li class="chapter" data-level="15.1.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージのインストール"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
-<li class="chapter" data-level="15.1.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#パッケージのロード-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
+<li class="chapter" data-level="15.1.1" data-path="02-summary.html"><a href="#rstan%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fa fa-check"></i><b>15.1.1</b> Rstanのインストール</a></li>
+<li class="chapter" data-level="15.1.2" data-path="02-summary.html"><a href="#brms%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><i class="fa fa-check"></i><b>15.1.2</b> brmsパッケージのインストール</a></li>
+<li class="chapter" data-level="15.1.3" data-path="02-summary.html"><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89-2"><i class="fa fa-check"></i><b>15.1.3</b> パッケージのロード</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#rによるベイズ統計モデリング"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
-<li class="chapter" data-level="15.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ベイズ統計モデリングのプロセス"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
+<li class="chapter" data-level="15.2" data-path="02-summary.html"><a href="#r%E3%81%AB%E3%82%88%E3%82%8B%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0"><i class="fa fa-check"></i><b>15.2</b> Rによるベイズ統計モデリング</a></li>
+<li class="chapter" data-level="15.3" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9"><i class="fa fa-check"></i><b>15.3</b> ベイズ統計モデリングのプロセス</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#事前分布の設定"><i class="fa fa-check"></i><b>15.3.1</b> 事前分布の設定</a></li>
-<li class="chapter" data-level="15.3.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#mcmcの設定"><i class="fa fa-check"></i><b>15.3.2</b> MCMCの設定</a></li>
-<li class="chapter" data-level="15.3.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#事後分布の評価"><i class="fa fa-check"></i><b>15.3.3</b> 事後分布の評価</a></li>
-<li class="chapter" data-level="15.3.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#収束の評価"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
-<li class="chapter" data-level="15.3.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#モデルの予測評価"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
+<li class="chapter" data-level="15.3.1" data-path="02-summary.html"><a href="#%E4%BA%8B%E5%89%8D%E5%88%86%E5%B8%83%E3%81%AE%E8%A8%AD%E5%AE%9A"><i class="fa fa-check"></i><b>15.3.1</b> 事前分布の設定</a></li>
+<li class="chapter" data-level="15.3.2" data-path="02-summary.html"><a href="#mcmc%E3%81%AE%E8%A8%AD%E5%AE%9A"><i class="fa fa-check"></i><b>15.3.2</b> MCMCの設定</a></li>
+<li class="chapter" data-level="15.3.3" data-path="02-summary.html"><a href="#%E4%BA%8B%E5%BE%8C%E5%88%86%E5%B8%83%E3%81%AE%E8%A9%95%E4%BE%A1"><i class="fa fa-check"></i><b>15.3.3</b> 事後分布の評価</a></li>
+<li class="chapter" data-level="15.3.4" data-path="02-summary.html"><a href="#%E5%8F%8E%E6%9D%9F%E3%81%AE%E8%A9%95%E4%BE%A1"><i class="fa fa-check"></i><b>15.3.4</b> 収束の評価</a></li>
+<li class="chapter" data-level="15.3.5" data-path="02-summary.html"><a href="#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E8%A9%95%E4%BE%A1"><i class="fa fa-check"></i><b>15.3.5</b> モデルの予測評価</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでの一般化線形モデル"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
+<li class="chapter" data-level="15.4" data-path="02-summary.html"><a href="#brms%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%A7%E3%81%AE%E4%B8%80%E8%88%AC%E5%8C%96%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>15.4</b> brmsパッケージでの一般化線形モデル</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ロジスティック回帰-2"><i class="fa fa-check"></i><b>15.4.1</b> ロジスティック回帰</a></li>
-<li class="chapter" data-level="15.4.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ポアソン回帰-2"><i class="fa fa-check"></i><b>15.4.2</b> ポアソン回帰</a></li>
-<li class="chapter" data-level="15.4.3" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#負の二項回帰-1"><i class="fa fa-check"></i><b>15.4.3</b> 負の二項回帰</a></li>
-<li class="chapter" data-level="15.4.4" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#順序ロジスティック回帰-1"><i class="fa fa-check"></i><b>15.4.4</b> 順序ロジスティック回帰</a></li>
-<li class="chapter" data-level="15.4.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#多項ロジスティック回帰-1"><i class="fa fa-check"></i><b>15.4.5</b> 多項ロジスティック回帰</a></li>
-<li class="chapter" data-level="15.4.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ゼロ過剰ポアソンモデル-1"><i class="fa fa-check"></i><b>15.4.6</b> ゼロ過剰ポアソンモデル</a></li>
+<li class="chapter" data-level="15.4.1" data-path="02-summary.html"><a href="#%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0-2"><i class="fa fa-check"></i><b>15.4.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="15.4.2" data-path="02-summary.html"><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%9B%9E%E5%B8%B0-2"><i class="fa fa-check"></i><b>15.4.2</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="15.4.3" data-path="02-summary.html"><a href="#%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%9B%9E%E5%B8%B0-1"><i class="fa fa-check"></i><b>15.4.3</b> 負の二項回帰</a></li>
+<li class="chapter" data-level="15.4.4" data-path="02-summary.html"><a href="#%E9%A0%86%E5%BA%8F%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0-1"><i class="fa fa-check"></i><b>15.4.4</b> 順序ロジスティック回帰</a></li>
+<li class="chapter" data-level="15.4.5" data-path="02-summary.html"><a href="#%E5%A4%9A%E9%A0%85%E3%83%AD%E3%82%B8%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E5%9B%9E%E5%B8%B0-1"><i class="fa fa-check"></i><b>15.4.5</b> 多項ロジスティック回帰</a></li>
+<li class="chapter" data-level="15.4.6" data-path="02-summary.html"><a href="#%E3%82%BC%E3%83%AD%E9%81%8E%E5%89%B0%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AB-1"><i class="fa fa-check"></i><b>15.4.6</b> ゼロ過剰ポアソンモデル</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#brmsパッケージでのマルチレベルモデル"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
+<li class="chapter" data-level="15.5" data-path="02-summary.html"><a href="#brms%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%AC%E3%83%99%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AB"><i class="fa fa-check"></i><b>15.5</b> brmsパッケージでのマルチレベルモデル</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム切片"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
-<li class="chapter" data-level="15.5.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#ランダム傾き"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
+<li class="chapter" data-level="15.5.1" data-path="02-summary.html"><a href="#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E5%88%87%E7%89%87"><i class="fa fa-check"></i><b>15.5.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="15.5.2" data-path="02-summary.html"><a href="#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E5%82%BE%E3%81%8D"><i class="fa fa-check"></i><b>15.5.2</b> ランダム傾き</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#その他"><i class="fa fa-check"></i><b>15.6</b> その他</a>
+<li class="chapter" data-level="15.6" data-path="02-summary.html"><a href="#%E3%81%9D%E3%81%AE%E4%BB%96"><i class="fa fa-check"></i><b>15.6</b> その他</a>
 <ul>
-<li class="chapter" data-level="15.6.1" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#stanコードの出力"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
-<li class="chapter" data-level="15.6.2" data-path="14-Bayese_model.html"><a href="14-Bayese_model.html#より深く学ぶには"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
+<li class="chapter" data-level="15.6.1" data-path="02-summary.html"><a href="#stan%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%87%BA%E5%8A%9B"><i class="fa fa-check"></i><b>15.6.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="15.6.2" data-path="02-summary.html"><a href="#%E3%82%88%E3%82%8A%E6%B7%B1%E3%81%8F%E5%AD%A6%E3%81%B6%E3%81%AB%E3%81%AF"><i class="fa fa-check"></i><b>15.6.2</b> より深く学ぶには</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>付録</b></span></li>
-<li class="chapter" data-level="A" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html"><i class="fa fa-check"></i><b>A</b> 確率分布</a>
+<li class="chapter" data-level="A" data-path="02-summary.html"><a href="#%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83-1"><i class="fa fa-check"></i><b>A</b> 確率分布</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#連続型確率分布"><i class="fa fa-check"></i><b>A.1</b> 連続型確率分布</a>
+<li class="chapter" data-level="A.1" data-path="02-summary.html"><a href="#%E9%80%A3%E7%B6%9A%E5%9E%8B%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>A.1</b> 連続型確率分布</a>
 <ul>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#正規分布-1"><i class="fa fa-check"></i>正規分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#指数分布"><i class="fa fa-check"></i>指数分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#対数正規分布"><i class="fa fa-check"></i>対数正規分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#t分布"><i class="fa fa-check"></i>t分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#カイ二乗分布"><i class="fa fa-check"></i>カイ二乗分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#f分布"><i class="fa fa-check"></i>F分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#コーシー分布"><i class="fa fa-check"></i>コーシー分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83-1"><i class="fa fa-check"></i>正規分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>指数分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%AF%BE%E6%95%B0%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>対数正規分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#t%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>t分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%82%AB%E3%82%A4%E4%BA%8C%E4%B9%97%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>カイ二乗分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#f%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>F分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%BC%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>コーシー分布</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#離散型確率分布"><i class="fa fa-check"></i><b>A.2</b> 離散型確率分布</a>
+<li class="chapter" data-level="A.2" data-path="02-summary.html"><a href="#%E9%9B%A2%E6%95%A3%E5%9E%8B%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83"><i class="fa fa-check"></i><b>A.2</b> 離散型確率分布</a>
 <ul>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#二項分布-1"><i class="fa fa-check"></i>二項分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#負の二項分布-1"><i class="fa fa-check"></i>負の二項分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#幾何分布"><i class="fa fa-check"></i>幾何分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#超幾何分布"><i class="fa fa-check"></i>超幾何分布</a></li>
-<li class="chapter" data-level="" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#ポアソン分布-1"><i class="fa fa-check"></i>ポアソン分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83-1"><i class="fa fa-check"></i>二項分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83-1"><i class="fa fa-check"></i>負の二項分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>幾何分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%B6%85%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>超幾何分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%88%86%E5%B8%83-1"><i class="fa fa-check"></i>ポアソン分布</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#r-markdownの使い方"><i class="fa fa-check"></i><b>B</b> R Markdownの使い方</a></li>
-<li class="chapter" data-level="C" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#参考資料"><i class="fa fa-check"></i><b>C</b> 参考資料</a>
+<li class="chapter" data-level="B" data-path="02-summary.html"><a href="#r-markdown%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9"><i class="fa fa-check"></i><b>B</b> R Markdownの使い方</a></li>
+<li class="chapter" data-level="C" data-path="02-summary.html"><a href="#%E5%8F%82%E8%80%83%E8%B3%87%E6%96%99"><i class="fa fa-check"></i><b>C</b> 参考資料</a>
 <ul>
-<li class="chapter" data-level="C.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#文献"><i class="fa fa-check"></i><b>C.1</b> 文献</a>
+<li class="chapter" data-level="C.1" data-path="02-summary.html"><a href="#%E6%96%87%E7%8C%AE"><i class="fa fa-check"></i><b>C.1</b> 文献</a>
 <ul>
-<li class="chapter" data-level="C.1.1" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#統計学の解説書"><i class="fa fa-check"></i><b>C.1.1</b> 統計学の解説書</a></li>
-<li class="chapter" data-level="C.1.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#rを用いた統計解析の解説書"><i class="fa fa-check"></i><b>C.1.2</b> Rを用いた統計解析の解説書</a></li>
-<li class="chapter" data-level="C.1.3" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#一般化線形モデルマルチレベルモデルなどの解説書"><i class="fa fa-check"></i><b>C.1.3</b> 一般化線形モデル、マルチレベルモデルなどの解説書</a></li>
-<li class="chapter" data-level="C.1.4" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#ベイズ統計モデリングの解説書"><i class="fa fa-check"></i><b>C.1.4</b> ベイズ統計モデリングの解説書</a></li>
+<li class="chapter" data-level="C.1.1" data-path="02-summary.html"><a href="#%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%81%AE%E8%A7%A3%E8%AA%AC%E6%9B%B8"><i class="fa fa-check"></i><b>C.1.1</b> 統計学の解説書</a></li>
+<li class="chapter" data-level="C.1.2" data-path="02-summary.html"><a href="#r%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%B5%B1%E8%A8%88%E8%A7%A3%E6%9E%90%E3%81%AE%E8%A7%A3%E8%AA%AC%E6%9B%B8"><i class="fa fa-check"></i><b>C.1.2</b> Rを用いた統計解析の解説書</a></li>
+<li class="chapter" data-level="C.1.3" data-path="02-summary.html"><a href="#%E4%B8%80%E8%88%AC%E5%8C%96%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%83%9E%E3%83%AB%E3%83%81%E3%83%AC%E3%83%99%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AA%E3%81%A9%E3%81%AE%E8%A7%A3%E8%AA%AC%E6%9B%B8"><i class="fa fa-check"></i><b>C.1.3</b> 一般化線形モデル、マルチレベルモデルなどの解説書</a></li>
+<li class="chapter" data-level="C.1.4" data-path="02-summary.html"><a href="#%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC%E6%9B%B8"><i class="fa fa-check"></i><b>C.1.4</b> ベイズ統計モデリングの解説書</a></li>
 </ul></li>
-<li class="chapter" data-level="C.2" data-path="15-Appendix_References.html"><a href="15-Appendix_References.html#webサイト"><i class="fa fa-check"></i><b>C.2</b> Webサイト</a></li>
+<li class="chapter" data-level="C.2" data-path="02-summary.html"><a href="#web%E3%82%B5%E3%82%A4%E3%83%88"><i class="fa fa-check"></i><b>C.2</b> Webサイト</a></li>
 </ul></li>
 </ul>
 
@@ -607,12 +605,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="統計学の基礎の復習" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> 統計学の基礎の復習<a href="02-summary.html#統計学の基礎の復習" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 3</span> 統計学の基礎の復習<a href="#%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%81%AE%E5%BE%A9%E7%BF%92" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>平均値の計算など、心理統計の基礎を復習する。また、R で平均値などの基礎統計量を計算する方法についても解説する。</p>
 <ul>
-<li>変数の区別<br />
+<li>尺度水準<br />
 </li>
-<li>基本統計
+<li>基本統計量
 <ul>
 <li>代表値（平均、中央値）<br />
 </li>
@@ -622,39 +620,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <div id="尺度水準" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> 尺度水準<a href="02-summary.html#尺度水準" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">3.1</span> 尺度水準<a href="#%E5%B0%BA%E5%BA%A6%E6%B0%B4%E6%BA%96" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>まず、統計学における変数の種類の区別について確認する。変数の種類は大きく分けて、数値である<strong>量的変数</strong>とカテゴリーを意味する<strong>カテゴリカル変数（質的変数）</strong>の2つに区別できる。</p>
 <div id="量的変数" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> 量的変数<a href="02-summary.html#量的変数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.1.1</span> 量的変数<a href="#%E9%87%8F%E7%9A%84%E5%A4%89%E6%95%B0" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>数値として扱う変数。計算することができる。量的変数は更に、<strong>間隔尺度</strong>と<strong>比率尺度</strong>に区別される。</p>
 <div id="間隔尺度" class="section level4 unnumbered hasAnchor">
-<h4>間隔尺度<a href="02-summary.html#間隔尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>間隔尺度<a href="#%E9%96%93%E9%9A%94%E5%B0%BA%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データの間隔に意味があるもの。ゼロが何もない状態を意味するものでないもの。例えば、摂氏温度など（0℃以下も-1℃があるように、ゼロは何もない状態を意味しない）。差には意味があるが、比率については意味を持たない。例えば、「10℃と20℃の差は10℃である」とはいえるが、「20℃は10℃の2倍の熱さである」とは言えない。</p>
 </div>
 <div id="比率尺度" class="section level4 unnumbered hasAnchor">
-<h4>比率尺度<a href="02-summary.html#比率尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>比率尺度<a href="#%E6%AF%94%E7%8E%87%E5%B0%BA%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データの間隔に意味があるもの。ゼロがなにもない状態を意味するもの。例えば、身長、体重、絶対温度など。間隔を比率で表現できる。例えば、「体重100キロの人は体重50キロの人より2倍重い」といえる。</p>
 <p>また、量的変数は<strong>離散値</strong>か<strong>連続値</strong>かでも区別できる。</p>
 </div>
 <div id="離散値" class="section level4 unnumbered hasAnchor">
-<h4>離散値<a href="02-summary.html#離散値" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>離散値<a href="#%E9%9B%A2%E6%95%A3%E5%80%A4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>離散値とは、小数の間隔を持たない数値のこと。例えば個数。1個, 2個、3個と数えるが、1.1個, 1.2個などは存在しない。</p>
 </div>
 <div id="連続値" class="section level4 unnumbered hasAnchor">
-<h4>連続値<a href="02-summary.html#連続値" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>連続値<a href="#%E9%80%A3%E7%B6%9A%E5%80%A4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>連続値とは、小数の間隔を持つ数値のこと。例えば身長。150cmから151cmの間には小数で表現できる数値が連続的に並んでいる。</p>
 </div>
 </div>
 <div id="カテゴリカル変数質的変数" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> カテゴリカル変数（質的変数）<a href="02-summary.html#カテゴリカル変数質的変数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.1.2</span> カテゴリカル変数（質的変数）<a href="#%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%82%AB%E3%83%AB%E5%A4%89%E6%95%B0%E8%B3%AA%E7%9A%84%E5%A4%89%E6%95%B0" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>分類や種類などを意味するデータ。数量化して計算することはできない。<br />
 カテゴリカル変数も更に、いくつかに分類される。ここでは、<strong>名義尺度</strong>と<strong>順序尺度</strong>の区別を挙げる。</p>
 <div id="名義尺度" class="section level4 unnumbered hasAnchor">
-<h4>名義尺度<a href="02-summary.html#名義尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>名義尺度<a href="#%E5%90%8D%E7%BE%A9%E5%B0%BA%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>性別（男、女）、血液型、出身地など。順序関係がないのが特徴である（男性&lt;女性といった関係はない）。</p>
 </div>
 <div id="順序尺度" class="section level4 unnumbered hasAnchor">
-<h4>順序尺度<a href="02-summary.html#順序尺度" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>順序尺度<a href="#%E9%A0%86%E5%BA%8F%E5%B0%BA%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>「優、良、可、不可」といった成績、「1. 賛成、2. どちらでもない、3. 反対」といった尺度など。心理学ではよくリッカート尺度（＊）で態度などを測定するが、これも順序尺度である。</p>
 <p>＊「1:そう思わない、2: 思わない、3: どちらでもない, 4: そう思う、5: 強くそう思う」といったように、自分の態度に当てはまる数字を選ばせて態度の強さを測定する方法。</p>
 <p>順序尺度には順序関係があるが、間隔は定義されない。例えば、成績には優 &gt; 良 &gt; 可という順序関係があるが、優と良の間と良と可の間の幅は等しいといった定義はできない。また、良+可=優といった計算もできない。つまり、順序尺度は順序関係はあるがカテゴリカル変数である。</p>
@@ -662,11 +660,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="基本統計量" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> 基本統計量<a href="02-summary.html#基本統計量" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">3.2</span> 基本統計量<a href="#%E5%9F%BA%E6%9C%AC%E7%B5%B1%E8%A8%88%E9%87%8F" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>以下では、Rにもともと入っている<code>iris</code>データをサンプルデータとして使いながら、平均値や中央値などの<strong>代表値</strong>や分散や標準偏差などの<strong>散布度</strong>について復習する。</p>
 <hr />
 <p><code>iris</code>と入力して実行すると、データの中身を確認できるが、これだとデータ全てが出力されて見やすくない。<code>head()</code>を使うとデータの変数を含めた上部数行を表示してくれる。また、<code>str()</code>を使うと、簡略化したデータの構成を表示してくれる。これらの関数は今後もよく出てくるのでここで覚えておこう。</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="02-summary.html#cb107-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="02-summary.html#cb115-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -674,7 +672,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="02-summary.html#cb109-1" tabindex="-1"></a><span class="fu">str</span>(iris) </span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="02-summary.html#cb117-1" tabindex="-1"></a><span class="fu">str</span>(iris) </span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -683,112 +681,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <hr />
 <div id="代表値" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> 代表値<a href="02-summary.html#代表値" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.2.1</span> 代表値<a href="#%E4%BB%A3%E8%A1%A8%E5%80%A4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>データの代表となる値のこと。平均や中央値などがよく用いられる。</p>
 <div id="平均値mean" class="section level4 unnumbered hasAnchor">
-<h4>平均値(mean)<a href="02-summary.html#平均値mean" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>平均値(mean)<a href="#%E5%B9%B3%E5%9D%87%E5%80%A4mean" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span class="math inline">\(n\)</span>個の数値<span class="math inline">\(X_{1}, X_{2},  \cdots, X_{n}\)</span>からなるデータの平均値<span class="math inline">\(\bar{X}\)</span>は、以下の数式で求める。</p>
 <p><span class="math display">\[
 \bar{X} = \frac{1}{n}\sum_{k=1}^{n}X_{k}\\  
 \]</span></p>
 <p>Rで平均値を求めるには、<code>mean()</code>関数を使う。カッコの中に、平均値を求めたいデータをベクトルの形式で入れる。</p>
 <p>データフレームの場合は、「<strong>データ名$変数名</strong>」でベクトルを指定する。これはよく使う表記なので覚えておこう。</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="02-summary.html#cb111-1" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="02-summary.html#cb119-1" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 5.843333</code></pre>
 <hr />
 <p>データに欠損値が含まれている場合は、計算できない。オプションとして<code>na.rm = TRUE</code>を指定すれば、欠損値を除いて平均値を算出してくれる。</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="02-summary.html#cb113-1" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb113-2"><a href="02-summary.html#cb113-2" tabindex="-1"></a></span>
-<span id="cb113-3"><a href="02-summary.html#cb113-3" tabindex="-1"></a><span class="fu">mean</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="02-summary.html#cb121-1" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb121-2"><a href="02-summary.html#cb121-2" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="02-summary.html#cb121-3" tabindex="-1"></a><span class="fu">mean</span>(a)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="02-summary.html#cb115-1" tabindex="-1"></a><span class="fu">mean</span>(a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="02-summary.html#cb123-1" tabindex="-1"></a><span class="fu">mean</span>(a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <hr />
 </div>
 <div id="中央値median" class="section level4 unnumbered hasAnchor">
-<h4>中央値(median)<a href="02-summary.html#中央値median" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>中央値(median)<a href="#%E4%B8%AD%E5%A4%AE%E5%80%A4median" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データを小さい順から並べた場合、つまり、<span class="math inline">\(X_{1} \le X_{2} \le ... \le X_{n}\)</span>と並べた場合に、中央に位置する値を中央値という。
 データの個数を<span class="math inline">\(n\)</span>とした場合、<span class="math inline">\(n\)</span>が奇数の場合は<span class="math inline">\(X_{(n+1)/2}\)</span>、<span class="math inline">\(n\)</span>が偶数の場合は<span class="math inline">\((X_{n/2}+X_{n/2+1})/2\)</span>が中央値となる。</p>
 <p>Rで中央値を求めたい場合は、<code>median()</code>関数が使える。<code>mean()</code>と同じく、カッコ内にデータをベクトルの形式で入れる。</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="02-summary.html#cb117-1" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="02-summary.html#cb125-1" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 5.8</code></pre>
 </div>
 </div>
 <div id="散布度" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> 散布度<a href="02-summary.html#散布度" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.2.2</span> 散布度<a href="#%E6%95%A3%E5%B8%83%E5%BA%A6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>データの散らばり具合を示す値のこと。分散、標準偏差などが知られる。</p>
 <div id="分散variance" class="section level4 unnumbered hasAnchor">
-<h4>分散(variance)<a href="02-summary.html#分散variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>分散(variance)<a href="#%E5%88%86%E6%95%A3variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>分散（<span class="math inline">\(\sigma^2\)</span>）は、以下の式で定義される。すなわち、各変数が平均値から離れている程度を表現したものである。</p>
 <p><span class="math display">\[
 \sigma^2 = \frac{1}{n-1}\sum_{k=1}^{n}(X_{k}-\bar{X})^2\\  
 \]</span></p>
 <p>Rで分散を求める際には、<code>var()</code>関数を使う。</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="02-summary.html#cb119-1" tabindex="-1"></a><span class="fu">var</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="02-summary.html#cb127-1" tabindex="-1"></a><span class="fu">var</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 0.6856935</code></pre>
 </div>
 <div id="標準偏差standard-deviation" class="section level4 unnumbered hasAnchor">
-<h4>標準偏差(standard deviation)<a href="02-summary.html#標準偏差standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>標準偏差(standard deviation)<a href="#%E6%A8%99%E6%BA%96%E5%81%8F%E5%B7%AEstandard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>分散の平方根が標準偏差（<span class="math inline">\(\sigma\)</span>）である。</p>
 <p>Rで標準偏差を求める際には、<code>sd()</code>関数を使う。</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="02-summary.html#cb121-1" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="02-summary.html#cb129-1" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>## [1] 0.8280661</code></pre>
 </div>
 <div id="分位数quantile" class="section level4 unnumbered hasAnchor">
-<h4>分位数(quantile)<a href="02-summary.html#分位数quantile" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>分位数(quantile)<a href="#%E5%88%86%E4%BD%8D%E6%95%B0quantile" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>データを小さい順から大きい順に並べ替えたときに、データを分割する値を分位数という。一般的に、四分位数（25%点、50%点[中央値]、75%点で分割した値）が報告によく使われる。</p>
 <p>Rでは、<code>quantile()</code>で分位数を求められる。</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="02-summary.html#cb123-1" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length) <span class="co">#デフォルトだと、0%, 25%, 50%, 75%, 100%が表示される） </span></span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="02-summary.html#cb131-1" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length) <span class="co">#デフォルトだと、0%, 25%, 50%, 75%, 100%が表示される） </span></span></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##  4.3  5.1  5.8  6.4  7.9</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="02-summary.html#cb125-1" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.0</span>)) <span class="co">#オプションのprobsで、分割する点を任意に指定することができる。</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="02-summary.html#cb133-1" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.0</span>)) <span class="co">#オプションのprobsで、分割する点を任意に指定することができる。</span></span></code></pre></div>
 <pre><code>##  10%  30%  50%  80% 100% 
 ## 4.80 5.27 5.80 6.52 7.90</code></pre>
 </div>
 </div>
 <div id="要約統計量" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> 要約統計量<a href="02-summary.html#要約統計量" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.2.3</span> 要約統計量<a href="#%E8%A6%81%E7%B4%84%E7%B5%B1%E8%A8%88%E9%87%8F" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>以上のように、R には代表値や散布度を求めるための関数が標準で入っているが、これらをまとめて計算してくれる<code>summary()</code>もある。</p>
 <p><code>summary()</code>に変数を入れると、最小値、最大値、平均、四分位数をまとめて算出してくれる。</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="02-summary.html#cb127-1" tabindex="-1"></a><span class="fu">summary</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="02-summary.html#cb135-1" tabindex="-1"></a><span class="fu">summary</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   4.300   5.100   5.800   5.843   6.400   7.900</code></pre>
 </div>
 <div id="グループごとの集計" class="section level3 hasAnchor" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> グループごとの集計<a href="02-summary.html#グループごとの集計" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.2.4</span> グループごとの集計<a href="#%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%94%E3%81%A8%E3%81%AE%E9%9B%86%E8%A8%88" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>グループごとに統計量を集計する場合は、<code>tapply</code>関数を使う。<code>tapply()</code>に、最初に統計量を求めたい変数のベクトル、グループを意味するベクトル、求めたい統計量を入れる。</p>
 <p>例えば、サンプルデータの<code>iris</code>には、種を意味する<code>Species</code>が入っている。種ごとに平均や標準偏差などを求める場合には、以下のようにプログラムを書く。</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="02-summary.html#cb129-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean) <span class="co">#平均</span></span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="02-summary.html#cb137-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean) <span class="co">#平均</span></span></code></pre></div>
 <pre><code>##     setosa versicolor  virginica 
 ##      5.006      5.936      6.588</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="02-summary.html#cb131-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, median) <span class="co">#中央値</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="02-summary.html#cb139-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, median) <span class="co">#中央値</span></span></code></pre></div>
 <pre><code>##     setosa versicolor  virginica 
 ##        5.0        5.9        6.5</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="02-summary.html#cb133-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, sd) <span class="co">#標準偏差</span></span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="02-summary.html#cb141-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, sd) <span class="co">#標準偏差</span></span></code></pre></div>
 <pre><code>##     setosa versicolor  virginica 
 ##  0.3524897  0.5161711  0.6358796</code></pre>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="02-summary.html#cb135-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, length) <span class="co">#サンプル数</span></span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="02-summary.html#cb143-1" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, length) <span class="co">#サンプル数</span></span></code></pre></div>
 <pre><code>##     setosa versicolor  virginica 
 ##         50         50         50</code></pre>
 </div>
 <div id="表の作り方" class="section level3 hasAnchor" number="3.2.5">
-<h3><span class="header-section-number">3.2.5</span> 表の作り方<a href="02-summary.html#表の作り方" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">3.2.5</span> 表の作り方<a href="#%E8%A1%A8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>カテゴリカル変数の場合、データ全体を把握するために頻度やパーセンテージを知りたいときが多い。</p>
 <p><code>table()</code>関数を使うと、頻度を集計して表にしてくれる。</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="02-summary.html#cb137-1" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="02-summary.html#cb145-1" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species) </span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##         50         50         50</code></pre>
 <p><code>prop.table()</code>を使うと、パーセンテージを求めてくれる。</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="02-summary.html#cb139-1" tabindex="-1"></a>tab_iris <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>Species) <span class="co">#まず表を別の名前で保存する</span></span>
-<span id="cb139-2"><a href="02-summary.html#cb139-2" tabindex="-1"></a><span class="fu">prop.table</span>(tab_iris) <span class="co">#カッコの中に、表を入れる</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="02-summary.html#cb147-1" tabindex="-1"></a>tab_iris <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>Species) <span class="co">#まず表を別の名前で保存する</span></span>
+<span id="cb147-2"><a href="02-summary.html#cb147-2" tabindex="-1"></a><span class="fu">prop.table</span>(tab_iris) <span class="co">#カッコの中に、表を入れる</span></span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##  0.3333333  0.3333333  0.3333333</code></pre>
 </div>
-</div>
-<div id="相関correlation" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> 相関(correlation)<a href="02-summary.html#相関correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="相関correlation" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> 相関(correlation)<a href="#%E7%9B%B8%E9%96%A2correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>2変数間の関連のことを相関という。相関の強さは相関係数で示される。</p>
 <p>変数<span class="math inline">\(x\)</span>と変数<span class="math inline">\(y\)</span>の相関係数（<span class="math inline">\(r\)</span>）は、以下の式で求められる。</p>
 <p><span class="math display">\[
@@ -797,9 +794,9 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 <p><span class="math inline">\(\sigma_{xy}\)</span>はxとyの共分散(covariance)で、<span class="math inline">\(\sigma_{xy} = \sum^n_{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})\)</span>である（<span class="math inline">\(\bar{x}\)</span>はxの平均）。<span class="math inline">\(\sigma_{x}\)</span>と<span class="math inline">\(\sigma_{y}\)</span>はxとyそれぞれの標準偏差である。</p>
 <p>相関係数は<span class="math inline">\(-1\)</span>から<span class="math inline">\(1\)</span>までの範囲をとり得る。相関係数の絶対値が大きいほど、相関関係が強いことを意味する。相関係数<span class="math inline">\(r\)</span>が <span class="math inline">\(r &gt; 0\)</span>のときは「正の相関」、つまり一方の変数の量が増えればもう一方の変数も増える関係にあることを意味する。<span class="math inline">\(r &lt; 0\)</span>のときは「負の相関」、つまり一方が増えればもう一方が減るという関係にあることを意味する。</p>
 <p>Rで相関係数を求めるには、<code>cor()</code>が使える。カッコの中に、相関係数を求めたい2つの変数を入れれば良い。また、<code>cor.test()</code>を使うと、相関係数の検定などより詳細な結果を示してくれる。</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="02-summary.html#cb141-1" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="02-summary.html#cb149-1" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <pre><code>## [1] -0.1175698</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="02-summary.html#cb143-1" tabindex="-1"></a><span class="fu">cor.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="02-summary.html#cb151-1" tabindex="-1"></a><span class="fu">cor.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -812,32 +809,33 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 ##        cor 
 ## -0.1175698</code></pre>
 <p>なお、共分散は<code>cov()</code>で求められる。</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="02-summary.html#cb145-1" tabindex="-1"></a><span class="fu">cov</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="02-summary.html#cb153-1" tabindex="-1"></a><span class="fu">cov</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width) </span></code></pre></div>
 <pre><code>## [1] -0.042434</code></pre>
 <hr />
 <p>補足:</p>
 <p>単に「相関係数」というと、一般的には「ピアソンの積率相関係数」のことを指す場合が多い。上で示した例も、ピアソンの積率相関係数を求めている。以降の章でも、特に断りがない限り「相関係数」は積率相関係数を指すものとする。</p>
 <p>相関係数にもいくつか種類があり、例えばスピアマンの順位相関係数がある。順位相関係数は、変数を順位に変換した上で（大きい順から1, 2, …と順位を振る）その順位を使って相関係数を求めたものである。データに極端な値（外れ値）がある場合やデータ数が少ない場合は、外れ値を調整してくれる順位相関係数の方が望ましい。</p>
 <p><code>cor()</code>及び<code>cor.test()</code>のオプションで、<code>method =</code>で相関係数の算出法を指定することができる。</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="02-summary.html#cb147-1" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="02-summary.html#cb155-1" tabindex="-1"></a><span class="fu">cor</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>) </span></code></pre></div>
 <pre><code>## [1] -0.1667777</code></pre>
 <p>何も指定しなければ、デフォルトでピアソンの積率相関係数を計算してくれる。</p>
 <hr />
 </div>
+</div>
 <div id="確認問題-1" class="section level2 unnumbered hasAnchor">
-<h2>確認問題<a href="02-summary.html#確認問題-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>確認問題<a href="#%E7%A2%BA%E8%AA%8D%E5%95%8F%E9%A1%8C-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><code>iris</code>データを使って、代表値、散布度、相関係数の求め方を復習する。</p>
 <div id="問１-1" class="section level3 unnumbered hasAnchor">
-<h3>問１<a href="02-summary.html#問１-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>問１<a href="#%E5%95%8F%EF%BC%91-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>Petal.Length</code>と<code>Petal.Width</code>それぞれの平均値と標準偏差を求めよう。</p>
 </div>
 <div id="問２-1" class="section level3 unnumbered hasAnchor">
-<h3>問２<a href="02-summary.html#問２-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>問２<a href="#%E5%95%8F%EF%BC%92-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>Petal.Length</code>と<code>Petal.Width</code>の共分散を求めよう。</p>
 <p>ヒント：<code>cov()</code>で2つの変数を入れると求まる。</p>
 </div>
 <div id="問３-1" class="section level3 unnumbered hasAnchor">
-<h3>問３<a href="02-summary.html#問３-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>問３<a href="#%E5%95%8F%EF%BC%93-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>問1で求めた標準偏差と、問2で求めた共分散を使って、2変数の間の相関係数を求めよう。<br />
 また、<code>cor()</code>でも<code>Petal.Length</code>と<code>Petal.Width</code>の相関係数を求め、値が一致することを確かめよう。</p>
 <p>ヒント：相関係数の式を確認して、相関係数を求める。</p>
@@ -851,7 +849,7 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
         </div>
       </div>
 <a href="01-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="03-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="03-data_handle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -865,51 +863,51 @@ r = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Data-Analysis-for-Psychology.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": null,
-"search": true,
-"fontsettings": {
-"size": 1
-},
-"sharing": null
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Data-Analysis-for-Psychology.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "toolbar": {
+    "position": "fixed",
+    "download": null,
+    "search": true,
+    "fontsettings": {
+      "size": 1
+    },
+    "sharing": null
+  }
 });
 });
 </script>

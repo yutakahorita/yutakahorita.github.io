@@ -1,0 +1,317 @@
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) 
+```
+
+# データ・ハンドリング
+
+データに新しく変数を加えたり、データの形式を変えるなど、より高度で複雑なデータの操作について学んでいく。  
+この章では、`dplyr`や`tidyr`パッケージに入っている関数を解説する。  
+
+* 変数の作成  
+* データの抽出  
+* パイプ  
+* グルーピング  
+* データの変換  
+* データの結合  
+
+
+## パッケージのロード
+  
+まず、この章で使うパッケージのロードをする（初めて使う場合は、マシンに予めパッケージをインストールする必要がある）。パッケージのインストール及びロードについては、第2章で解説している。
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+library(dplyr) 
+library(tidyr) 
+
+```
+
+
+以降では、Rに標準で入っている`iris`データを例として、ファイル操作の練習を行う。
+
+## 変数の作成
+
+`dplyr`パッケージに入っている`mutate()`を使うと、新たに変数を追加することができる。
+`mutate()`に、*データの名前、新しい変数*の順番で入力すると、データの右端に新しい変数を追加してくれる。
+
+```{r}
+
+dat = dplyr::mutate(iris, 
+              new_var = Sepal.Length + Petal.Length, 
+              hoge = ifelse(Species == "setosa", 1, 0)) 
+head(dat)
+
+```
+
+上の例では、`Sepal.Length`と`Petal.Length`を足した`new_var`という名前の新しい変数を作っている。更に、「`Sepecies`が"`setosa`"ならば1, そうでなければ0とする」という条件で新たに`hoge`という変数を作っている。
+
+## 変数名の変更
+
+`dplyr`パッケージに入っている`rename`()`で、変数の名前を変更することができる。
+
+```{r}
+
+dat = iris #ここでは練習用に、irisデータを別の名前(dat)に変更する
+head(dat) #変更前
+dat2 = dplyr::rename(dat, 
+              hoge = Sepal.Length)
+head(dat2) #変更後
+
+```
+
+
+## データの抽出
+
+`dplyr`パッケージに入っている`select`や `filter`関数を使うと、データの中から必要な部分のみを取り出すことができる。
+
+### 必要な列を取り出す（select）
+
+`select()`で、*データの名前、取り出したい変数名（複数選択可）*の順番で入力すると、指定した変数の列のみを取り出してくれる。  
+  
+以下には、`iris`データから`Sepal.Length`と`Petal.Length`のみを取り出す場合のプログラム例を示す。
+
+```{r}
+
+dat = dplyr::select(iris, Sepal.Length, Petal.Length) 
+
+head(dat)
+
+```
+
+上の例では、データの中から`Sepal.Length`と`Petal.Length`の列を取り出している。
+
+### 条件に合う行を取り出す（filter）
+
+ある条件に合う行のみを取り出したい場合（例えばデータの中から男性のみを取り出したいなど）、`filter()`で、*データの名前、条件式*の順番で入力すると、データの中から条件に合う行のみを取り出してくれる。  
+  
+以下には、`iris`データから、あやめの種類（`"Species"`）のうち`"versicolor"`のみを取り出す場合のプログラム例を示す。
+
+```{r}
+
+dat = dplyr::filter(iris, Species == "versicolor") 
+head(dat)
+
+```
+
+データから条件に合う行だけが取り出される。上の例では、「`Species`が`versicolor`である」行を`dat`から取り出している。  
+  
+***
+
+「イコール」は`=`ではなく、`==`と表記していることに注意。つまり、計算式と論理式ではイコールの表現の仕方が異なる。他の論理式の表現については、第2章で説明しているので確認しておこう。例えば、「`Sepal.Length`が7以上」という条件で取り出したいときは、`dplyr::filter(iris, Sepal.Length >= 7) `とする。
+
+***
+
+## パイプ
+
+複数のプログラムをつなげることを*パイプ処理*という。  
+  
+例えば、`iris`データで「あやめの種類のうち`"setosa"`のみの行を取り出して、更に`Species`、`Sepal.Length`, `Petal.Length`のみの列を取り出したい」という複数の処理をする場合を例として考える。  
+先程まで学んだ内容で、以下のように複数のプラグラムを段階的に書けばできなくはないが、プログラムが非常に長くなる（プログラムを分けて書くと途中でミスも生じやすくなる）。
+
+```{r}
+
+dat1 = dplyr::filter(iris, Species == "setosa") #まずSpeciesのうち、setosaのみを取り出す。dat1という名前で保存する。
+
+dat2 = dplyr::select(dat1, Species, Sepal.Length, Petal.Length) #別の名前で保存し直したdat1から、Sepal.LengthとPetal.Lengthの列を取り出す。dat2という名前で保存する
+
+head(dat2)
+
+
+```
+
+パイプ（`|>`）を使えば、このプログラムを1文で書くことができる。
+
+
+```{r}
+dat2 = iris  |> dplyr::filter(Species == "setosa") |> 
+  dplyr::select(Species, Sepal.Length, Petal.Length)
+
+head(dat2)
+
+```
+
+`|>`はパイプと呼ばれ、プログラムを渡していく関数である。`iris`データを`filter`に渡し、その結果を`select`に渡している。
+
+## グルーピング
+
+パイプを利用することで、グループごとに統計量（平均値や標準偏差など）を算出することができる。
+  
+`iris`データを例として、グループごとに平均や標準偏差を計算する方法を覚えよう。  
+  
+あやめの種類ごとに、がくの長さの平均値と標準偏差を算出してみる。  
+先ほど学んだパイプ処理（`|>`）に加え、`dplyr`パッケージの`group_by`と`summarise`関数を利用する。
+
+```{r}
+iris |> 
+  dplyr::group_by(Species) |> 
+  dplyr::summarise(Mean = mean(Sepal.Width, na.rm = TRUE), 
+                   SD = sd(Sepal.Width, na.rm = TRUE), 
+                   N = n())
+
+```
+
+`group_by()`はグループ変数を作成する関数である。データの中でグループとして使いたい変数を括弧内に指定する。  
+`summarise()`は、複数の関数を実行させる関数である。この例では、`mean()`、`sd()`, `n()`（`dplyr`パッケージにあるデータ個数を集計する関数）の3つの関数を実行し、それぞれの結果をMean, SD, Nという別の名前で保存している。  
+  
+## データの変換
+
+`tidyr`パッケージに入っている`pivot_longer()`と`pivot_wider()`を使うと、データの並び替えなどをすることができる。
+
+### wide型とlong型の区別
+
+まず、データのレイアウトには、*wide型*と*long型*の二種類があることを理解しよう。  
+  
+以下のデータを例として説明する。A, B, Cの3人の参加者が、X, Y, Z条件の３つの条件で実験課題を行ったとする。 
+  
+まずは、以下のプログラムを実行してサンプルデータを作成しよう。
+
+```{r}
+
+dat_wide = data.frame(Subject = c("A","B","C"), 
+                      X = c(6,2,7), 
+                      Y = c(9,3,4), 
+                      Z = c(7,5,7), 
+                      Gender = c("M", "F", "F"), 
+                      Age = c(18, 19, 20))  #サンプルデータを作る
+dat_wide
+
+```
+
+このようにデータの入力方法として、**１行につき１人の参加者の情報**を入力するやり方がある（実験や調査でデータを入力する際も、このレイアウトの方が入力しやすいだろう）。このようなデータのレイアウトをwide型という。  
+  
+同じデータを、以下のようなレイアウトで表現することもできる。同じく、以下のプログラムを実行して、サンプルデータを作ろう。
+
+```{r}
+
+dat_long = data.frame(Subject = sort(rep(c("A","B","C"), 3)), 
+                      Condition = rep(c("X","Y","Z"), 3), 
+                      Score = c(6,9,7,2,3,5,7,4,7), 
+                      Gender = c("M", "M", "M", "F","F","F","F","F", "F"), 
+                      Age = sort(rep(c(18,19,20), 3)))  
+dat_long
+
+
+```
+
+**実験成績ごとに１行ずつ**でデータが作られている。すなわち、同じ参加者1人につき3行のデータがある。このようなデータの方をlong型と呼ぶ。
+
+
+#### どのデータ型にすべきか？{-}
+
+R でデータ解析に用いる関数のほとんどは、「**1つの観測値（observation）につき1行**」が原則、つまりデータがlong型であることを前提として作られている。このテキストで学ぶデータ解析も、基本的に分析で使うデータはlong型を前提とする。  
+  
+
+その一方、データを入力するときなど、実務的にはwide型が扱いやすいということもあるだろう。データ入力は研究者の都合に応じてやりやすい方法で用意するとして、解析をする際に適切なデータ形式に変換するすべを身に着けておこう。  
+  
+### wide型からlong型に変換
+
+`tidyr`パッケージの`pivot_longer()`を使う。
+
+
+```{r}
+
+dat_long2 = dat_wide |> 
+  tidyr::pivot_longer(cols = c("X", "Y", "Z"),
+names_to = "Condition", values_to = "Score")
+dat_long2
+
+```
+
+`cols =`で、並べ替える変数を指定する。`names_to =`で新しく作られるグループを意味する列の名前、`values_to =`で値を意味する列の名前を指定する。  
+
+### long型からwide型に変換
+
+`tidyr`パッケージの`pivot_wider()`を使う。
+
+
+```{r}
+
+dat_wide2 = dat_long |> 
+  tidyr::pivot_wider(names_from = Condition, values_from = Score) 
+dat_wide2
+
+```
+
+`names_from = `で横並びにしたときの値のラベル名、`values_from =`で横並びの対象となる値を指定する。
+
+
+## データの結合
+
+複数のデータを結合したい場合は、`dplyr`パッケージの`join`関数を使うとよい。`join`関数には、`left_join`, `full_join`など、いくつかの種類が用意されている。  
+  
+  
+サンプルデータを使いながら、手順について説明する。まず、以下のプログラムを実行して、サンプルデータを作ろう。
+
+```{r}
+
+dat_sample = data.frame(Subject = c("A","B","C"), 
+                        X = c(6,2,7), 
+                        Y = c(9,3,4), 
+                        Z = c(7,5,7), 
+                        Gender = c("M", "F", "F"), 
+                        Age = c(18, 19, 20))
+dat_sample
+
+```
+
+実験で3人の参加者A, B, Cについて、X, Y, Zのデータを取ったとする。  
+
+
+更に、2人の参加者（AとB）に追加で実験を行い、Wのデータを取ったとする。
+
+```{r}
+
+dat_sample2 = data.frame(Subject = c("A","B"), 
+                         W = c(8,3))  
+dat_sample2
+
+```
+
+
+`dat_sample`と`dat_sample2`のデータを結合して、一つのデータにしたい。  
+  
+`full_join()`で結合したい2つのデータ、更に結合する際にキーとなる変数（2つのデータに共通して存在する変数）を`by=`で指定すると2つのデータを結合してくれる。
+
+なお、`by=`を省くと、自動で2つのデータに共通する変数を見つけて、それを手がかりに結合してくれる。
+
+```{r, message=FALSE, warning=FALSE}
+
+dat_sample3 = dplyr::full_join(dat_sample, dat_sample2, by = "Subject")
+
+dat_sample3
+
+```
+
+`full_join()`だと、2つのデータをすべてつなげてくれる。データが含まれていない部分は、欠損になる（`data_sample2`に参加者Cのデータはないので、欠損になっている）。  
+  
+`left_join()`だと、`left_join()`で左側に入力したデータを含む部分のみをつなげてくれる。
+
+
+```{r, message=FALSE, warning=FALSE}
+
+dat_sample3 = dplyr::left_join(dat_sample2, dat_sample, by = "Subject")
+
+dat_sample3
+
+```
+
+
+## 確認問題{-}
+
+### 問１{-}
+
+`iris`データから、1)`Species`が`versicolor`である行を選び、2) `Species`, `Petal.Length`及び`Petal.Width`の列を取り出し、3) `Petal.Length`と`Petal.Width`を足し合わせた変数`hoge`を作るという一連の処理を、パイプ処理を使ってプログラム1行でやってみよう。  
+  
+### 問２{-}
+
+`iris`データから、1)`Species`が`virginica`以外の行を選び、2) `Species`, `Petal.Length`及び`Petal.Width`の列を取り出す処理を、パイプ処理を使ってプログラム1行でやってみよう。  
+  
+ヒント：Rでは、`!=`が「○○ではない」を意味する論理式である（第2章参照）。
+
+### 問３{-}
+
+`iris`データで、`Species`別に`Petal.Length`の平均値、標準偏差を求めよう。
+
+ヒント：`group_by()`と`summarise()`の使い方をおさらいする。
+

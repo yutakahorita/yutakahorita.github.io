@@ -685,7 +685,7 @@ P(x) = {}_{x+r-1}\mathrm{C}_{r-1} q^{r}(1-q)^{x}
 <span id="cb477-6"><a href="14-glm_disperse.html#cb477-6" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb477-7"><a href="14-glm_disperse.html#cb477-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> d_plot, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p_y), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb477-8"><a href="14-glm_disperse.html#cb477-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;number of failures&quot;</span>, <span class="at">y =</span> <span class="st">&quot;probability&quot;</span>, <span class="at">title =</span> <span class="st">&quot;number of success = 3&quot;</span>)</span></code></pre></div>
-<p><img src="14-glm_disperse_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>期待値<span class="math inline">\(E(x)\)</span>と分散<span class="math inline">\(Var(x)\)</span>は、以下から計算される。</p>
 <p><span class="math display">\[
 E(x) = \frac{r(1-q)}{q}\\
@@ -715,7 +715,7 @@ Var(x) = \frac{r(1-q)}{q^2}\\
 ## 6     52    A       L 1</code></pre>
 <div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="14-glm_disperse.html#cb484-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb484-2"><a href="14-glm_disperse.html#cb484-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> breaks, <span class="at">fill =</span> wool), <span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="14-glm_disperse_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-272-1.png" width="672" /></p>
 <p><code>breaks</code>に対する<code>wool</code>(A or
 B)の効果を検討する。まずは、ポアソン回帰の結果を見てみる。<code>breaks</code>を<span class="math inline">\(y\)</span>、<code>A</code>を<span class="math inline">\(x\)</span>とすると、モデルは以下のように表現できる。</p>
 <p><span class="math display">\[
@@ -818,7 +818,7 @@ model)</strong>は、データにゼロが多いカウントデータに適用�
 <p>ヒストグラムでデータの頻度を確認する。このデータにはゼロが非常に多く、ほとんどの日でカブトムシが見つからなかったことがわかる。</p>
 <div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="14-glm_disperse.html#cb495-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb495-2"><a href="14-glm_disperse.html#cb495-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">data =</span> d_zip, <span class="fu">aes</span>(<span class="at">x =</span> y), <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)  <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="14-glm_disperse_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
 </div>
 </div>
 <div id="chap14_ZIP1" class="section level2 hasAnchor" number="15.4">

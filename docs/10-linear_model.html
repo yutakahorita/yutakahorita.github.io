@@ -695,7 +695,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="10-linear_model.html#cb354-1" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb354-2"><a href="10-linear_model.html#cb354-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length))</span>
 <span id="cb354-3"><a href="10-linear_model.html#cb354-3" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="10-linear_model_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
 <p><code>Sepal.Length</code>が大きいほど<code>Petal.Length</code>が大きいという関係（正の相関）がありそうである。そこで、<code>Sepal.Length</code>の大きさから、<code>Petal.Length</code>の大きさを予測することを試みる。</p>
 <p><code>lm()</code>関数に、「応答変数~ 1 + 予測変数」のかたちで入力する。以下のプログラムを実行してみよう。<br />
 ＊<code>1 +</code>の部分は省略しても構わない。<code>1 +</code>は線形予測子の切片の部分を表している。省略しても、<code>lm()</code>は自動で切片の値を求めてくれる。</p>
@@ -746,7 +746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb358-2"><a href="10-linear_model.html#cb358-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
 <span id="cb358-3"><a href="10-linear_model.html#cb358-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length), <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb358-4"><a href="10-linear_model.html#cb358-4" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="10-linear_model_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-192-1.png" width="672" /></p>
 <p>線形モデルでは、直線の式で予測変数と応答変数の関係を表現する。実際のデータ（散布図の点）とのズレが最小になるような、直線の式を推定する（予測値と実測値とのズレが最小になるのが、最も良い予測である）。</p>
 </div>
 <div id="chap10_MLE" class="section level2 hasAnchor" number="11.4">
@@ -803,12 +803,16 @@ L = (1-\theta)^3 \theta^2 \tag{4}
 <span id="cb361-8"><a href="10-linear_model.html#cb361-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data=</span>data_mlm, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span> y), <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb361-9"><a href="10-linear_model.html#cb361-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> result_mlm<span class="sc">$</span>maximum, <span class="at">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb361-10"><a href="10-linear_model.html#cb361-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;theta&quot;</span>, <span class="at">y=</span> <span class="st">&quot;log L&quot;</span>) </span></code></pre></div>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+<pre><code>## Warning: Using `size` aesthetic for lines was
+## deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## This warning is displayed once every
+## 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
 ## generated.</code></pre>
-<p><img src="10-linear_model_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
 <p>対数尤度が最も大きくなるのは、<span class="math inline">\(\theta=\)</span> 0.4のときである（表が出た割合である2/5と一致）。</p>
 <p>ここではわかりやすくパラメータを1つのみ使って説明しているが、線形モデルの傾きや切片の推定も同じである。上の例の<span class="math inline">\(\theta\)</span>を線形予測子に置き換えて同様の計算をする。</p>
 <hr />

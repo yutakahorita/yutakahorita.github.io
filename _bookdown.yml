@@ -23,5 +23,4 @@ rmd_files:
   - 18-Bayese.Rmd
   - 19-Bayese_model.Rmd
   - 20-Appendix_References.Rmd
-new_session: yes
 output_dir: docs

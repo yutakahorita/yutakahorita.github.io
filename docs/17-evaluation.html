@@ -687,7 +687,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb563-4"><a href="17-evaluation.html#cb563-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
 <span id="cb563-5"><a href="17-evaluation.html#cb563-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb563-6"><a href="17-evaluation.html#cb563-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="17-evaluation_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-321-1.png" width="672" /></p>
 </div>
 <div id="chap17_PI" class="section level3 hasAnchor" number="18.2.2">
 <h3><span class="header-section-number">18.2.2</span> 予測区間<a href="17-evaluation.html#chap17_PI" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -713,7 +713,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb566-4"><a href="17-evaluation.html#cb566-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
 <span id="cb566-5"><a href="17-evaluation.html#cb566-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb566-6"><a href="17-evaluation.html#cb566-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_pred, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="17-evaluation_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-323-1.png" width="672" /></p>
 <p>実際のデータが予測区間の範囲に収まっているならば、そのモデルは概ねよくデータを予測できていることを示している。</p>
 </div>
 </div>
@@ -854,7 +854,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ y: num  3.03 2.23 2.71 3.77 1.34 ...</code></pre>
 <div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="17-evaluation.html#cb581-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb581-2"><a href="17-evaluation.html#cb581-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span>d, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y =</span> y))</span></code></pre></div>
-<p><img src="17-evaluation_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-329-1.png" width="672" /></p>
 <p>このデータについて、以下の線形モデルを当てはめ、パラメータを推定しよう。図に線形モデルの直線及び信頼区間を図示するところまでやってみる。</p>
 <p><span class="math display">\[
 \begin{equation}
@@ -872,7 +872,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb582-9"><a href="17-evaluation.html#cb582-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
 <span id="cb582-10"><a href="17-evaluation.html#cb582-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span></span>
 <span id="cb582-11"><a href="17-evaluation.html#cb582-11" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="17-evaluation_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-330-1.png" width="672" /></p>
 <p>直線はほとんど観測値から外れており、当てはまりが悪いようである。</p>
 <p>そこで、予測変数を増やして検討してみる。<code>lm()</code>では、予測変数<span class="math inline">\(x\)</span>のn乗を含む多項式のモデルを考慮することも可能である。例えば、以下は3次の多項式の例である。</p>
 <p><span class="math display">\[
@@ -893,7 +893,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb584-7"><a href="17-evaluation.html#cb584-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
 <span id="cb584-8"><a href="17-evaluation.html#cb584-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb584-9"><a href="17-evaluation.html#cb584-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="17-evaluation_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-332-1.png" width="672" /></p>
 <p>9次の式でも推定してみよう。</p>
 <div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="17-evaluation.html#cb585-1" tabindex="-1"></a>result_9 <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> d, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">5</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">6</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">7</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">9</span>))</span>
 <span id="cb585-2"><a href="17-evaluation.html#cb585-2" tabindex="-1"></a></span>
@@ -907,7 +907,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb585-10"><a href="17-evaluation.html#cb585-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))<span class="sc">+</span></span>
 <span id="cb585-11"><a href="17-evaluation.html#cb585-11" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb585-12"><a href="17-evaluation.html#cb585-12" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> conf_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> lwr, <span class="at">ymax =</span> upr), <span class="at">alpha =</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="17-evaluation_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-333-1.png" width="672" /></p>
 <p>線は全てのデータ点を通っている。当然ながら、データの観測値の分だけパラメータがあれば、そのモデルはデータ点を全て通る線を引くことができる。現在のデータ点全てを予測することができる。</p>
 <p>しかし、そのモデルは現在のデータを全て当てられても、<em>将来得られる未知のデータを当てられるとは限らない</em>。予測変数を多くすると現在のデータには当てはまるが、当てはまりすぎて未知のデータの予測力が低下してしまうことを、<strong>過学習(overfitting)</strong>という。</p>
 <p>複雑なモデルが現在のデータによく当てはまるのは、ある意味当然である（単なる偶然で生じた誤差も無駄に説明してしまっている）。しかし、複雑なモデルは現在のデータに当てはまっても、未知のデータにもうまく当てはまるとは限らない。</p>

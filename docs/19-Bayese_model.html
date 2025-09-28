@@ -724,7 +724,7 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <p><code>lm()</code>の出力と同様に、Population-Level Effectsという部分に各パラメータ（切片と傾き）の推定結果が出力されている。Estimateが係数の事後分布の期待値を示している。<code>lm()</code>で解析したときとほぼ同じ値が推定されている。<br />
 他にも、l-95% CIとu-95% CIといった数値が出力されているが、これらの意味を理解するにはパラメータの事後分布を図示するとよい。<code>plot()</code>に出力結果を入れると、MCMCの結果を図で示してくれる。</p>
 <div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="19-Bayese_model.html#cb609-1" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-356-1.png" width="672" /></p>
 <p>左側に表示されているのが、パラメータの事後分布（MCMCでサンプリングされた事後分布に従う乱数の分布）である。右側は、<strong>トレースプロット(traceplot)</strong>と呼ばれるものである。トレースプロットの下の軸はMCMCの試行数を示しており、MCMCのサンプリング結果の推移を示している。</p>
 <p>もう一度<code>brm()</code>の出力のl-95% CIとu-95% CIの値を確認し、図との関係を確認しよう。l-95% CIとu-95%は、パラメータの事後分布の下位5%点と上位95%点の値を示しており、この下位5%から上位95%の範囲は95% <strong>信用区間(credible intervals)</strong>と呼ばれる。95%信用区間とは、95%の確率で真のパラメータの値が含まれる範囲を意味する。</p>
 <p>例えば、切片（<code>intercept</code>）の事後分布のプロットを確認すると、だいたい-7が分布の中央に位置しており、推定された切片の事後分布の期待値（Estimate）と概ね一致しているのがわかる。また、-8から-6の範囲に事後分布の大部分が締めており、これも95%信用区間の推定結果と概ね一致している。</p>
@@ -789,26 +789,26 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="19-Bayese_model.html#cb615-1" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
 <span id="cb615-2"><a href="19-Bayese_model.html#cb615-2" tabindex="-1"></a></span>
 <span id="cb615-3"><a href="19-Bayese_model.html#cb615-3" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_trace</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#トレースプロット</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-361-1.png" width="672" /></p>
 <div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="19-Bayese_model.html#cb616-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_hist</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（ヒストグラム）</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-361-2.png" width="672" /></p>
 <div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="19-Bayese_model.html#cb617-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_dens</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（密度曲線）</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-3.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-361-3.png" width="672" /></p>
 <div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="19-Bayese_model.html#cb618-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_intervals</span>(result_brms_lm, </span>
 <span id="cb618-2"><a href="19-Bayese_model.html#cb618-2" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
 <span id="cb618-3"><a href="19-Bayese_model.html#cb618-3" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#太い線が意味する範囲（89%区間とした）</span></span>
 <span id="cb618-4"><a href="19-Bayese_model.html#cb618-4" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
 <span id="cb618-5"><a href="19-Bayese_model.html#cb618-5" tabindex="-1"></a>                          ) <span class="co">#パラメータの分布を線で示したグラフ</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-4.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-361-4.png" width="672" /></p>
 <div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="19-Bayese_model.html#cb619-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_areas</span>(result_brms_lm, </span>
 <span id="cb619-2"><a href="19-Bayese_model.html#cb619-2" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
 <span id="cb619-3"><a href="19-Bayese_model.html#cb619-3" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#色が塗られた部分（89%区間とした）</span></span>
 <span id="cb619-4"><a href="19-Bayese_model.html#cb619-4" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
 <span id="cb619-5"><a href="19-Bayese_model.html#cb619-5" tabindex="-1"></a>) <span class="co">#分布も一緒に示したグラフ</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-5.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-361-5.png" width="672" /></p>
 <div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="19-Bayese_model.html#cb620-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_combo</span>(result_brms_lm, <span class="at">combo =</span> <span class="fu">c</span>(<span class="st">&quot;hist&quot;</span>, <span class="st">&quot;dens&quot;</span>), </span>
 <span id="cb620-2"><a href="19-Bayese_model.html#cb620-2" tabindex="-1"></a>                      <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>))<span class="co">#mcmc_comboで、出力する図を複数指定することができる。</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-6.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-361-6.png" width="672" /></p>
 </div>
 <div id="chap19_brmconvergence" class="section level3 hasAnchor" number="20.3.4">
 <h3><span class="header-section-number">20.3.4</span> 収束の評価<a href="19-Bayese_model.html#chap19_brmconvergence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -821,12 +821,12 @@ Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で�
 <span id="cb621-2"><a href="19-Bayese_model.html#cb621-2" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_epred&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%信用区間を表示 </span></span>
 <span id="cb621-3"><a href="19-Bayese_model.html#cb621-3" tabindex="-1"></a>                                      )</span>
 <span id="cb621-4"><a href="19-Bayese_model.html#cb621-4" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#points=TRUEで点と一緒に示す</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-362-1.png" width="672" /></p>
 <div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="19-Bayese_model.html#cb622-1" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
 <span id="cb622-2"><a href="19-Bayese_model.html#cb622-2" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_predict&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%予測区間を表示 </span></span>
 <span id="cb622-3"><a href="19-Bayese_model.html#cb622-3" tabindex="-1"></a>                                      )</span>
 <span id="cb622-4"><a href="19-Bayese_model.html#cb622-4" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#pointsで点と一緒に示す</span></span></code></pre></div>
-<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-362-2.png" width="672" /></p>
 </div>
 </div>
 <div id="chap19_brmGLM" class="section level2 hasAnchor" number="20.4">

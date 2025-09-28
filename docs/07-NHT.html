@@ -675,7 +675,7 @@ x \sim Binomial(n, q)
 <span id="cb273-4"><a href="07-NHT.html#cb273-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data=</span>plot, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb273-5"><a href="07-NHT.html#cb273-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span><span class="st">&quot;x&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb273-6"><a href="07-NHT.html#cb273-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="07-NHT_files/figure-html/dbinom_2_plot-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/dbinom_2_plot-1.png" width="672" /></p>
 <p>では、実際にコインを10回投げてみて表が出た回数を数えてみたところ、表が2回しか出なかったとする。この結果から、「このコインにはゆがみがあって、片一方の面だけが出やすい」と言ってもよいのか？</p>
 <p>これを検討するために、表と裏それぞれが出る確率の等しいコインを投げる場合（すなわち、<span class="math inline">\(q=0.5\)</span>の場合）との比較を行い、今回の実験結果がどれくらいまれな事象と言えるのかを比較する。<br />
 このとき、「コインの表が出る確率は0.5である」といった仮説のことを<strong>帰無仮説(null hypothesis)</strong>といい、「コインの表が出る確率は0.5ではない」といった帰無仮説に対する仮説のことを<strong>対立仮説（alternative hypothesis）</strong>と呼ぶ。帰無仮説は<span class="math inline">\(H_{0}\)</span>、対立仮説は<span class="math inline">\(H_{1}\)</span>と表すこともある。つまり、この例での帰無仮説は「<span class="math inline">\(H_{0}:q=0.5\)</span>」、対立仮説は「<span class="math inline">\(H_{1}:q \neq 0.5\)</span>」となる。</p>
@@ -772,7 +772,7 @@ t = \frac{\bar{x_{A}} - \bar{x_{B}}}{\sqrt{s^2_{A}/n_{A}+s^2_{B}/n_{B}))}}
 <span id="cb286-14"><a href="07-NHT.html#cb286-14" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;t&quot;</span>, <span class="at">y =</span> <span class="st">&quot;value&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Degree of freedom&quot;</span>) <span class="sc">+</span></span>
 <span id="cb286-15"><a href="07-NHT.html#cb286-15" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_classic</span>()</span>
 <span id="cb286-16"><a href="07-NHT.html#cb286-16" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="07-NHT_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <p>標本から得た差のt値が理論分布のどこに位置するかを検討する。</p>
 <p>Rに入っている<code>t.test()</code>関数を使うことで、２つの集団の間の平均値の差の検定を行える。</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="07-NHT.html#cb287-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> sample_data, Value <span class="sc">~</span> Group) <span class="co">#dataにデータの名前、比較の対象となる変数~グループを意味する変数とうかたちで入力すると結果が出力される。</span></span></code></pre></div>

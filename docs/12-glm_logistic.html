@@ -690,7 +690,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="12-glm_logistic.html#cb430-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb430-2"><a href="12-glm_logistic.html#cb430-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
 <span id="cb430-3"><a href="12-glm_logistic.html#cb430-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
-<p><img src="12-glm_logistic_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p>では、前章までで学んだとおりに、<code>x</code>を予測変数、<code>y</code>を応答変数とした線形モデルで<code>x</code>の効果を検討しよう。</p>
 <p><span class="math display">\[
 \begin{equation}
@@ -728,7 +728,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb433-6"><a href="12-glm_logistic.html#cb433-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb433-7"><a href="12-glm_logistic.html#cb433-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
 <span id="cb433-8"><a href="12-glm_logistic.html#cb433-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
-<p><img src="12-glm_logistic_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
 <p>線形モデルから推定された直線は、「<code>x</code>が増えるほど<code>y</code>が増える」関係を表しているように見える。</p>
 <p>しかし、この線形モデルの結果は、<code>y</code>を予測する上で問題がある。</p>
 <p>解析の目的は、<span class="math inline">\(y = 1\)</span>の確率、つまりがんにかかる確率を推定することであるが、例えば<span class="math inline">\(x\)</span>が10を超えると、応答変数の予測値は1以上の値を取る。また、<span class="math inline">\(x\)</span>が2.5を下回ったときも、0未満の数値が推定されてしまう。応答変数は0か1しか取らないのに、それぞれを超える値が予測されてしまう。これは確率の推定としては不都合である。</p>
@@ -766,7 +766,7 @@ y \sim \text{Binomial}(1, q)
 <span id="cb436-4"><a href="12-glm_logistic.html#cb436-4" tabindex="-1"></a></span>
 <span id="cb436-5"><a href="12-glm_logistic.html#cb436-5" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb436-6"><a href="12-glm_logistic.html#cb436-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>z, <span class="at">y=</span>q))</span></code></pre></div>
-<p><img src="12-glm_logistic_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 <p><span class="math inline">\(z\)</span>は<span class="math inline">\(-\infty\)</span>から<span class="math inline">\(\infty\)</span>の範囲を取るが、<span class="math inline">\(z\)</span>がどのような値をとっても、<span class="math inline">\(0&lt;q&lt;1\)</span>となる（限りなく0もしくは1に近づく）。<span class="math inline">\(q\)</span>は確率なので、この0から1の範囲に収まるようになる変換は都合が良い。</p>
 <p>また、式(3)の一つ目は、
 <span class="math display">\[
@@ -832,7 +832,7 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 <span id="cb440-4"><a href="12-glm_logistic.html#cb440-4" tabindex="-1"></a></span>
 <span id="cb440-5"><a href="12-glm_logistic.html#cb440-5" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb440-6"><a href="12-glm_logistic.html#cb440-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> sample_dat, <span class="fu">aes</span>(<span class="at">x =</span> logit, <span class="at">y =</span> q))</span></code></pre></div>
-<p><img src="12-glm_logistic_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
 <p>つまり、対数オッズがプラスだと確率<span class="math inline">\(q\)</span>は0.5より大きくなり、対数オッズがマイナスだと確率<span class="math inline">\(q\)</span>は0.5より小さくなる関係にある。要は、対数オッズがプラスだと<span class="math inline">\(y = 1\)</span>が起こりやすくなり、マイナスだと起こりにくくなることを意味している。</p>
 <hr />
 <p>求めた係数の推定値を元に、確率を予測する線を引いてみよう。</p>
@@ -844,7 +844,7 @@ q = \frac{\exp(\alpha +  \beta x)}{1+\exp(\alpha +  \beta x)}
 <span id="cb441-6"><a href="12-glm_logistic.html#cb441-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">height =</span> <span class="fl">0.05</span>) <span class="sc">+</span> </span>
 <span id="cb441-7"><a href="12-glm_logistic.html#cb441-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> </span>
 <span id="cb441-8"><a href="12-glm_logistic.html#cb441-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))</span></code></pre></div>
-<p><img src="12-glm_logistic_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 <p>予測線は0から1の範囲に収まっており、線形予測子から確率の予測ができている。</p>
 </div>
 </div>

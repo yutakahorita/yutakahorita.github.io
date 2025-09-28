@@ -741,7 +741,7 @@ P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}
 <span id="cb242-4"><a href="06-probability_distribution.html#cb242-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> d_plot, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb242-5"><a href="06-probability_distribution.html#cb242-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;x&quot;</span>)</span>
 <span id="cb242-6"><a href="06-probability_distribution.html#cb242-6" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
 <p>グラフからもわかるように、表が出る確率が0.5のコインを10回投げたときに、最も出やすいのは10回中5回であることがわかる。10回中8回以上はほとんどまれであることがわかる。<br />
 この図からも、確率分布には最も出やすい変数（平均値。確率分布の場合は「期待値」と呼ぶ）と分散が存在することがわかる。</p>
 <p>二項分布の期待値<span class="math inline">\(E(x)\)</span>と分散<span class="math inline">\(Var(x)\)</span>は、以下の式から計算できる。</p>
@@ -778,7 +778,7 @@ P(x=0) = 1 - q\\
 <span id="cb251-5"><a href="06-probability_distribution.html#cb251-5" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span> </span>
 <span id="cb251-6"><a href="06-probability_distribution.html#cb251-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;x&quot;</span>)</span>
 <span id="cb251-7"><a href="06-probability_distribution.html#cb251-7" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
 </div>
 </div>
 <div id="chap06_Gaussian" class="section level2 hasAnchor" number="7.3">
@@ -801,7 +801,7 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 <span id="cb252-5"><a href="06-probability_distribution.html#cb252-5" tabindex="-1"></a>p <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb252-6"><a href="06-probability_distribution.html#cb252-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span>
 <span id="cb252-7"><a href="06-probability_distribution.html#cb252-7" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
 </div>
 <div id="chap06_ProbDensity" class="section level3 hasAnchor" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> 確率密度関数<a href="06-probability_distribution.html#chap06_ProbDensity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -836,7 +836,7 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 <span id="cb257-14"><a href="06-probability_distribution.html#cb257-14" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span> <span class="st">&quot;blue&quot;</span>)<span class="sc">+</span></span>
 <span id="cb257-15"><a href="06-probability_distribution.html#cb257-15" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_norm_3, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span>
 <span id="cb257-16"><a href="06-probability_distribution.html#cb257-16" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 </div>
 </div>
 <div id="chap06_Poisson" class="section level2 hasAnchor" number="7.4">
@@ -855,7 +855,7 @@ P(x) = \frac{\lambda^x\exp(-\lambda)}{x!}\\
 <span id="cb258-6"><a href="06-probability_distribution.html#cb258-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb258-7"><a href="06-probability_distribution.html#cb258-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> pois, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p, <span class="at">fill=</span><span class="fu">factor</span>(lambda)), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb258-8"><a href="06-probability_distribution.html#cb258-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>一定の期間中にランダムで生じる事象はポアソン分布に従う。具体的な例としては、1日の間に届くメールの件数、営業時間中に来る客の数など。</p>
 <p>二項分布の試行数<span class="math inline">\(n\)</span>が十分大きくかつ確率<span class="math inline">\(q\)</span>が小さい場合は、平均を<span class="math inline">\(np\)</span>とするポアソン分布に近似する。つまり、<em>めったに起こらない事象</em>はポアソン分布に従う。例えば、1年間の間に生じる交通事故の件数など（365日それぞれの日に0.1%で生じる場合など）。歴史的に有名な例として、「ドイツ軍で1年間で馬に蹴られて死亡した兵士の数」がポアソン分布に従うといったものがある。</p>
 <p>二項分布と同じく、<em>ポアソン分布の確率変数は離散値である</em>。離散値は、1個、2個、3個と数える個数のような整数の値をいう（1.1個といった小数の値が存在しないもの）。それに対し、正規分布の確率変数は連続量である。</p>
@@ -903,14 +903,14 @@ XXXXには確率分布の種類が入る）。</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="06-probability_distribution.html#cb270-1" tabindex="-1"></a>sample.means <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), <span class="cf">function</span>(x) {<span class="fu">mean</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )</span>
 <span id="cb270-2"><a href="06-probability_distribution.html#cb270-2" tabindex="-1"></a></span>
 <span id="cb270-3"><a href="06-probability_distribution.html#cb270-3" tabindex="-1"></a><span class="fu">hist</span>(sample.means)</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
 <p>ヒストグラムは正規分布に似ている。もっと回数を増やすと、より正規分布っぽいかたちになる。</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="06-probability_distribution.html#cb271-1" tabindex="-1"></a><span class="co">#サイコロを7回振ってその合計を求める。これを10,000回行ったときの出目の合計値の分布</span></span>
 <span id="cb271-2"><a href="06-probability_distribution.html#cb271-2" tabindex="-1"></a></span>
 <span id="cb271-3"><a href="06-probability_distribution.html#cb271-3" tabindex="-1"></a>sample.sum <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>), <span class="cf">function</span>(x) {<span class="fu">sum</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">7</span>,<span class="at">min=</span><span class="dv">1</span>,<span class="at">max=</span><span class="dv">6</span>),<span class="dv">0</span>))} )<span class="co">#sum()はカッコ内のベクトルの要素を足し合わせる関数</span></span>
 <span id="cb271-4"><a href="06-probability_distribution.html#cb271-4" tabindex="-1"></a></span>
 <span id="cb271-5"><a href="06-probability_distribution.html#cb271-5" tabindex="-1"></a><span class="fu">hist</span>(sample.sum)</span></code></pre></div>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
 <p>このように、元の母集団の分布がたとえ正規分布でなくても（この例の場合は一様分布）、その標本平均は正規分布に近似する。平均値を計算しなくても、単に値を足し合わせるだけでも同じある。</p>
 <p>中心極限定理により、たとえ元の変数が正規分布に従っていなくても、変数を加算したものは正規分布に近似する。なので、心理学で行われる様々なデータ分析も、以下のような処理を行うことで変数が正規分布に従うという前提を置いて分析が行われる。</p>
 <ul>
@@ -963,7 +963,7 @@ f(x) = \frac{1}{max - min}\\
 x \sim \text{Uniform}(min, max)\\
 \]</span></p>
 <p>例えば、以下は最小値が1、最大値が6の連続型一様分布である。以下のグラフは確率密度を示してあり、ある範囲の面積の合計がその範囲の値が生じる確率を意味する。</p>
-<p><img src="06-probability_distribution_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
 </div>
 </div>
 <div id="chap06_Practice" class="section level2 hasAnchor" number="7.9">

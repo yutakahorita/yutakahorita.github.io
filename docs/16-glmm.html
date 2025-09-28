@@ -668,7 +668,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="16-glmm.html#cb522-1" tabindex="-1"></a>graph_1 <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb522-2"><a href="16-glmm.html#cb522-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data=</span>iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Width, <span class="at">y=</span>Sepal.Length),<span class="at">size =</span> <span class="dv">3</span>)</span>
 <span id="cb522-3"><a href="16-glmm.html#cb522-3" tabindex="-1"></a>graph_1</span></code></pre></div>
-<p><img src="16-glmm_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
 <p>まず、<code>lm()</code>を使って、がくの長さを応答変数、がくの幅を予測変数とした線形モデルで係数を推定する。</p>
 <div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="16-glmm.html#cb523-1" tabindex="-1"></a>iris_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width)</span>
 <span id="cb523-2"><a href="16-glmm.html#cb523-2" tabindex="-1"></a><span class="fu">summary</span>(iris_lm)</span></code></pre></div>
@@ -695,13 +695,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb525-2"><a href="16-glmm.html#cb525-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length), <span class="at">size =</span> <span class="dv">3</span>)  <span class="sc">+</span></span>
 <span id="cb525-3"><a href="16-glmm.html#cb525-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length), <span class="at">formula =</span> y<span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb525-4"><a href="16-glmm.html#cb525-4" tabindex="-1"></a>graph_lm</span></code></pre></div>
-<p><img src="16-glmm_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-300-1.png" width="672" /></p>
 <p>がくの幅（<code>Sepal.Width</code>）は、がくの長さに対して負の影響を持っているように見える。</p>
 <p>では、この散布図を種（<code>Species</code>）ごとに色わけして示してみる。</p>
 <div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="16-glmm.html#cb526-1" tabindex="-1"></a>graph_2 <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb526-2"><a href="16-glmm.html#cb526-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length, <span class="at">color =</span> Species, <span class="at">shape =</span> Species), <span class="at">size =</span> <span class="dv">3</span>) </span>
 <span id="cb526-3"><a href="16-glmm.html#cb526-3" tabindex="-1"></a>graph_2</span></code></pre></div>
-<p><img src="16-glmm_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
 <p>種を無視して検討したところ、がくの幅と長さの間には負の関係があるようにみえたが、種ごとに分けてみると「がくの長さが大きくなるほど、がくの幅が大きくなる」関係にあるように見える。</p>
 <p>このあやめのデータのように、いくつかのデータが同じグループに属している構造の場合、グループの影響を統制しないと誤った結論を招いてしまう恐れがある。それらのデータ間には、<strong>統計的独立性が保証されていない</strong>ためである。つまり、同じ種同士のものは似た傾向にある可能性が高い（データ間で相関が存在する）。</p>
 <p><strong>独立(independence)</strong>とは、各データが他のデータに影響されないという意味である。これまで学んできた確率分布では、<strong>独立同分布(independent and identically distributed: i.i.d.)</strong>が前提とされている。例えば、コインを数回投げて表が出る回数は二項分布に従うが、表が出るかどうかは前の試行に影響されることはない（前回表が出たら、次も表が出やすいということはありえないという前提を置く）。</p>
@@ -960,7 +960,7 @@ y \sim \text{Binomial}(1, q)
 <div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="16-glmm.html#cb543-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb543-2"><a href="16-glmm.html#cb543-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
 <span id="cb543-3"><a href="16-glmm.html#cb543-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="fu">factor</span>(ID)))</span></code></pre></div>
-<p><img src="16-glmm_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
 <p>モデルは以下のようになる。</p>
 <p><span class="math display">\[
 \log\lambda = \alpha_{0} + \beta x + \alpha_{\text{ID}}  \\

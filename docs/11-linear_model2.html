@@ -968,7 +968,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>図でも条件別に<code>weight_std</code>の分布を確認してみよう。分布を見ても同様の傾向があるが、線形モデルの解析の結果その効果が有意であることが確認できた。</p>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="11-linear_model2.html#cb386-1" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb386-2"><a href="11-linear_model2.html#cb386-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> weight_std))</span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
 <p>モデル（式）を確認しながら、係数が何を意味しているのかを常に意識するようにしよう。</p>
 <hr />
 <p>このテキストでは練習のためにダミー変数を自分でプログラムを書いて作っているが、<code>lm()</code>関数にカテゴリカル変数をそのまま入れても結果を出力してくれる。カテゴリのうちアルファベット順で最初に出てくるカテゴリ(以下の<code>PlantGrowth</code>の例では<code>ctrl</code>)を基準として、残りのダミー変数を自動で作ってくれている。</p>
@@ -1055,12 +1055,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb393-6"><a href="11-linear_model2.html#cb393-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
 <span id="cb393-7"><a href="11-linear_model2.html#cb393-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb393-8"><a href="11-linear_model2.html#cb393-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
 <p>予測変数<code>x</code>の傾きはほぼフラットで、<code>y</code>に対してあまり効果がないようにみえる。</p>
 <p>しかし、このデータ<code>d</code>にはもう一つ性別を意味する<code>gender</code>という変数が含まれていた。<code>gender</code>を区別して、また<code>x</code>と<code>y</code>の散布図を見てみよう。</p>
 <div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="11-linear_model2.html#cb394-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb394-2"><a href="11-linear_model2.html#cb394-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> gender, <span class="at">color=</span>gender), <span class="at">size =</span> <span class="dv">3</span>) </span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
 <p>性別が女性（F）か男性（M）かで、<code>x</code>と<code>y</code>の関係が違うようである。<br />
 このように、別の変数との組み合わせにより、変数間の関係が変化することを<strong>交互作用(interaction)</strong>という。このデータでも、応答変数<code>y</code>に対して性別<code>gender</code>と<code>x</code>の交互作用がありそうである。</p>
 <p>交互作用のあるモデルは、以下のように表現する。</p>
@@ -1107,7 +1107,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb397-8"><a href="11-linear_model2.html#cb397-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">shape =</span> gender, <span class="at">color=</span>gender), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
 <span id="cb397-9"><a href="11-linear_model2.html#cb397-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit, <span class="at">color=</span>gender)) <span class="sc">+</span> </span>
 <span id="cb397-10"><a href="11-linear_model2.html#cb397-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> plot_conf, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr, <span class="at">color =</span>gender), <span class="at">alpha =</span> <span class="fl">0.4</span>) </span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
 <div id="chap11_NotingInteraction" class="section level3 hasAnchor" number="12.6.1">
 <h3><span class="header-section-number">12.6.1</span> 交互作用を扱うモデルの解釈<a href="11-linear_model2.html#chap11_NotingInteraction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>2要因以上の分散分析と同様に、線形モデルでも交互作用の有無を検討することができる。しかし、ここで注意が必要なのは、交互作用を含む線形モデルは解釈が複雑になることである。
@@ -1280,10 +1280,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6     52    A       L</code></pre>
 <div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="11-linear_model2.html#cb411-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb411-2"><a href="11-linear_model2.html#cb411-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_1, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks))</span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="11-linear_model2.html#cb412-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb412-2"><a href="11-linear_model2.html#cb412-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_1, <span class="fu">aes</span>(<span class="at">x =</span> tension, <span class="at">y =</span> breaks))</span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-223-2.png" width="672" /></p>
 <div id="section" class="section level4 unnumbered hasAnchor">
 <h4>1-1<a href="11-linear_model2.html#section" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>変数<code>wool</code>について, 「<code>A</code>を1, それ以外を0」としたダミー変数を作成し、そのダミー変数を予測変数、<code>breaks</code>を応答変数として線形モデルを行い、切片及びダミー変数に係る傾きの推定値を報告せよ。</p>
@@ -1317,7 +1317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6     52    A       L</code></pre>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="11-linear_model2.html#cb415-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb415-2"><a href="11-linear_model2.html#cb415-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">data =</span> prac_dat_2, <span class="fu">aes</span>(<span class="at">x =</span> wool, <span class="at">y =</span> breaks, <span class="at">fill =</span> tension))</span></code></pre></div>
-<p><img src="11-linear_model2_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
 <p>breaksを応答変数、wool, tension, wool及びtensionの交互作用項を予測変数とした線形モデルを行い、切片、woolの傾き、tensionの傾き、交互作用項の推定値を報告せよ。</p>
 </div>
 </div>

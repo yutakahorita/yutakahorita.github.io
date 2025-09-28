@@ -675,7 +675,7 @@ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 <span id="cb663-6"><a href="20-Appendix_References.html#cb663-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb663-7"><a href="20-Appendix_References.html#cb663-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> norm, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> f, <span class="at">colour =</span> par, <span class="at">linetype =</span> par)) <span class="sc">+</span> </span>
 <span id="cb663-8"><a href="20-Appendix_References.html#cb663-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;mean, sd&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;mean, sd&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
 </div>
 <div id="指数分布" class="section level3 unnumbered hasAnchor">
 <h3>指数分布<a href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -698,7 +698,7 @@ x \sim \text{Exponential}(\lambda)\\
 <span id="cb665-6"><a href="20-Appendix_References.html#cb665-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb665-7"><a href="20-Appendix_References.html#cb665-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> exp, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> f, <span class="at">colour =</span> <span class="fu">factor</span>(rate), <span class="at">linetype =</span> <span class="fu">factor</span>(rate))) <span class="sc">+</span> </span>
 <span id="cb665-8"><a href="20-Appendix_References.html#cb665-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;rate&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;rate&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
 <p>ある一定期間の間に平均して<span class="math inline">\(\lambda\)</span>回生じるイベントの時間間隔は、指数分布に従う。災害が生じてから次の災害が生じるまでの期間、店に客が来てから次の客が来るまでの期間などは指数分布に従う。</p>
 </div>
 <div id="対数正規分布" class="section level3 unnumbered hasAnchor">
@@ -721,7 +721,7 @@ x \sim \text{logNormal}(\mu, \sigma)\\
 <span id="cb667-6"><a href="20-Appendix_References.html#cb667-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb667-7"><a href="20-Appendix_References.html#cb667-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> lnorm, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> f, <span class="at">colour =</span> <span class="fu">factor</span>(par), <span class="at">linetype =</span> <span class="fu">factor</span>(par))) <span class="sc">+</span> </span>
 <span id="cb667-8"><a href="20-Appendix_References.html#cb667-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;f(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;par&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;par&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
 <p>対数正規分布は、右の方に長い裾を描く分布である。対数正規分布に従うものとしては、年収の分布などが知られている。</p>
 <div id="正規分布との関係" class="section level4 unnumbered hasAnchor">
 <h4>正規分布との関係<a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -731,11 +731,11 @@ x \sim \text{logNormal}(\mu, \sigma)\\
 <span id="cb668-3"><a href="20-Appendix_References.html#cb668-3" tabindex="-1"></a>sample.prod <span class="ot">=</span> <span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>), <span class="cf">function</span>(x) {<span class="fu">prod</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">7</span>,<span class="at">min =</span> <span class="dv">1</span>,<span class="at">max =</span> <span class="dv">6</span>),<span class="dv">0</span>))} ) <span class="co">#prod()はカッコ内のベクトルの要素をかけ合わせる関数</span></span>
 <span id="cb668-4"><a href="20-Appendix_References.html#cb668-4" tabindex="-1"></a></span>
 <span id="cb668-5"><a href="20-Appendix_References.html#cb668-5" tabindex="-1"></a><span class="fu">hist</span>(sample.prod)</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
 <p>「ランダムな変数をかけ合わせたもの」の対数を取ってその分布を確認すると、正規分布のかたちになることがわかる。</p>
 <div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="20-Appendix_References.html#cb669-1" tabindex="-1"></a>sample.prod_2 <span class="ot">=</span> <span class="fu">log</span>(sample.prod)</span>
 <span id="cb669-2"><a href="20-Appendix_References.html#cb669-2" tabindex="-1"></a><span class="fu">hist</span>(sample.prod_2)</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-395-1.png" width="672" /></p>
 <p>掛け算の対数を取るということは、足し算に直すことと同じである。つまり、対数を取ることで「ランダムな変数をかけ合わせたもの」が「ランダムな変数を足し合わせたもの」に変換される。「ランダムな変数を足し合わせたもの」は、中心極限定理により正規分布に従う。したがって、対数正規分布の対数を取ったものは正規分布になる。</p>
 </div>
 </div>
@@ -767,7 +767,7 @@ t分布は、自由度<span class="math inline">\(v\)</span>（サンプルサ�
 <span id="cb671-6"><a href="20-Appendix_References.html#cb671-6" tabindex="-1"></a></span>
 <span id="cb671-7"><a href="20-Appendix_References.html#cb671-7" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb671-8"><a href="20-Appendix_References.html#cb671-8" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_t, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">linetype =</span> <span class="fu">factor</span>(df))) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;y&quot;</span>, <span class="at">y =</span> <span class="st">&quot;density&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;df&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-397-1.png" width="672" /></p>
 </div>
 <div id="カイ二乗分布" class="section level3 unnumbered hasAnchor">
 <h3>カイ二乗分布<a href="#%E3%82%AB%E3%82%A4%E4%BA%8C%E4%B9%97%E5%88%86%E5%B8%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -795,7 +795,7 @@ t分布は、自由度<span class="math inline">\(v\)</span>（サンプルサ�
 <span id="cb673-12"><a href="20-Appendix_References.html#cb673-12" tabindex="-1"></a></span>
 <span id="cb673-13"><a href="20-Appendix_References.html#cb673-13" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb673-14"><a href="20-Appendix_References.html#cb673-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_chisq, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">linetype =</span> <span class="fu">factor</span>(df))) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;y&quot;</span>, <span class="at">y =</span> <span class="st">&quot;density&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;df&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-399-1.png" width="672" /></p>
 </div>
 <div id="f分布" class="section level3 unnumbered hasAnchor">
 <h3>F分布<a href="#f%E5%88%86%E5%B8%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -823,7 +823,7 @@ F = \frac{\chi^2_{v_{1}}/v_{1}}{\chi^2_{v_{2}}/v_{2}}
 <span id="cb675-12"><a href="20-Appendix_References.html#cb675-12" tabindex="-1"></a></span>
 <span id="cb675-13"><a href="20-Appendix_References.html#cb675-13" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb675-14"><a href="20-Appendix_References.html#cb675-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_f, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">linetype =</span> <span class="fu">factor</span>(df2))) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;y&quot;</span>, <span class="at">y =</span> <span class="st">&quot;density&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;df2&quot;</span>, <span class="at">title =</span> <span class="st">&quot;df1 = 10&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
 </div>
 <div id="コーシー分布" class="section level3 unnumbered hasAnchor">
 <h3>コーシー分布<a href="#%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%BC%E5%88%86%E5%B8%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -850,18 +850,18 @@ $$</p>
 <span id="cb677-10"><a href="20-Appendix_References.html#cb677-10" tabindex="-1"></a></span>
 <span id="cb677-11"><a href="20-Appendix_References.html#cb677-11" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb677-12"><a href="20-Appendix_References.html#cb677-12" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dat_cauchy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">linetype =</span> <span class="fu">factor</span>(scale))) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">6</span>,<span class="dv">6</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;y&quot;</span>, <span class="at">y =</span> <span class="st">&quot;density&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;scale&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-403-1.png" width="672" /></p>
 <div id="中心極限定理との関係" class="section level4 unnumbered hasAnchor">
 <h4>中心極限定理との関係<a href="#%E4%B8%AD%E5%BF%83%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>コーシー分布は、極端な値が存在することにより、その分布の特徴を平均や標準偏差などで捉えることができない。</p>
 <div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="20-Appendix_References.html#cb678-1" tabindex="-1"></a>d_cauchy <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="co">#location = 0, scale = 1のコーシー分布から乱数を100個生成する</span></span>
 <span id="cb678-2"><a href="20-Appendix_References.html#cb678-2" tabindex="-1"></a></span>
 <span id="cb678-3"><a href="20-Appendix_References.html#cb678-3" tabindex="-1"></a><span class="fu">mean</span>(d_cauchy)</span></code></pre></div>
-<pre><code>## [1] 1.686796</code></pre>
+<pre><code>## [1] -0.02417088</code></pre>
 <div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="20-Appendix_References.html#cb680-1" tabindex="-1"></a><span class="fu">median</span>(d_cauchy)</span></code></pre></div>
-<pre><code>## [1] -0.1932696</code></pre>
+<pre><code>## [1] 0.2940343</code></pre>
 <div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="20-Appendix_References.html#cb682-1" tabindex="-1"></a><span class="fu">sd</span>(d_cauchy)</span></code></pre></div>
-<pre><code>## [1] 44.94334</code></pre>
+<pre><code>## [1] 6.896175</code></pre>
 <p>コーシー分布には中心極限定理を適用できない。</p>
 <p>コーシー分布から乱数を100個作って足し合わせることを5回やり、分布を確認する。足し合わせても、正規分布に近似しないことがわかる。</p>
 <div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="20-Appendix_References.html#cb684-1" tabindex="-1"></a>d_cauchy <span class="ot">=</span> <span class="fu">rcauchy</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
@@ -872,8 +872,9 @@ $$</p>
 <span id="cb684-6"><a href="20-Appendix_References.html#cb684-6" tabindex="-1"></a></span>
 <span id="cb684-7"><a href="20-Appendix_References.html#cb684-7" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb684-8"><a href="20-Appendix_References.html#cb684-8" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">x =</span> d_cauchy)) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick
+## better value `binwidth`.</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-405-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -909,7 +910,7 @@ P(x) = {}_n\mathrm{C}_xq^{x}(1-q)^{(n-x)}
 <span id="cb687-6"><a href="20-Appendix_References.html#cb687-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb687-7"><a href="20-Appendix_References.html#cb687-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> binom, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p, <span class="at">fill =</span> <span class="fu">factor</span>(q)), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb687-8"><a href="20-Appendix_References.html#cb687-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;number of success&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;q&quot;</span>, <span class="at">title =</span> <span class="st">&quot;number of trials = 10&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-407-1.png" width="672" /></p>
 <p>第6章も参照のこと。</p>
 </div>
 <div id="負の二項分布" class="section level3 unnumbered hasAnchor">
@@ -936,7 +937,7 @@ x \sim \text{Negative Binomial}(r, q)
 <span id="cb689-6"><a href="20-Appendix_References.html#cb689-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb689-7"><a href="20-Appendix_References.html#cb689-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> nbinom, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p, <span class="at">fill =</span> <span class="fu">factor</span>(q)), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb689-8"><a href="20-Appendix_References.html#cb689-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;number of failure&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;q&quot;</span>, <span class="at">title =</span> <span class="st">&quot;number of success = 3&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-409-1.png" width="672" /></p>
 </div>
 <div id="幾何分布" class="section level3 unnumbered hasAnchor">
 <h3>幾何分布<a href="#%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -961,7 +962,7 @@ x \sim \text{Geometric}(q)\\
 <span id="cb691-6"><a href="20-Appendix_References.html#cb691-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb691-7"><a href="20-Appendix_References.html#cb691-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> geom, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p, <span class="at">fill =</span> <span class="fu">factor</span>(q)), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb691-8"><a href="20-Appendix_References.html#cb691-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;q&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-411-1.png" width="672" /></p>
 </div>
 <div id="超幾何分布" class="section level3 unnumbered hasAnchor">
 <h3>超幾何分布<a href="#%E8%B6%85%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -982,7 +983,7 @@ x \sim \text{HyperGeometric}(m,n,k)\\
 <span id="cb693-3"><a href="20-Appendix_References.html#cb693-3" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb693-4"><a href="20-Appendix_References.html#cb693-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> hyper, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(x), <span class="at">y =</span> p), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb693-5"><a href="20-Appendix_References.html#cb693-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-413-1.png" width="672" /></p>
 <div id="fisherの正確検定との関係" class="section level4 unnumbered hasAnchor">
 <h4>Fisherの正確検定との関係<a href="#fisher%E3%81%AE%E6%AD%A3%E7%A2%BA%E6%A4%9C%E5%AE%9A%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>超幾何分布は、フィッシャーの正確検定(Fisher’s exact test)でp値を求めるときに使われる。フィッシャーの正確検定は、2つのカテゴリカル変数の間に有意な関連があるかを検定するのに使われる。</p>
@@ -1090,7 +1091,7 @@ P(x) = \frac{\lambda^x\exp(-\lambda)}{x!}\\
 <span id="cb699-6"><a href="20-Appendix_References.html#cb699-6" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb699-7"><a href="20-Appendix_References.html#cb699-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">data =</span> pois, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(x), <span class="at">y=</span>p, <span class="at">fill=</span><span class="fu">factor</span>(lambda)), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb699-8"><a href="20-Appendix_References.html#cb699-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;P(x)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lambda&quot;</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="20-Appendix_References_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-419-1.png" width="672" /></p>
 <div id="二項分布との関係" class="section level4 unnumbered hasAnchor">
 <h4>二項分布との関係<a href="#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>二項分布の成功確率パラメータを<span class="math inline">\(p=\lambda/n\)</span>とする。試行回数である<span class="math inline">\(n\)</span>を大きくすると、二項分布はパラメータ<span class="math inline">\(\lambda\)</span>を持つポアソン分布に近似する。すなわち、生じる確率が小さいイベントはポアソン分布に従う。</p>

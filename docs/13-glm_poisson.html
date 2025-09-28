@@ -664,7 +664,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>xとyの関係を散布図で確認してみる。</p>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="13-glm_poisson.html#cb445-1" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb445-2"><a href="13-glm_poisson.html#cb445-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y))</span></code></pre></div>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
 <p>xが大きいほど、yが大きいという関係がありそうである。<span class="math inline">\(x\)</span>から、<span class="math inline">\(y\)</span>を予測する。</p>
 <p>まずは、線形モデルを当てはめてみよう。</p>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="13-glm_poisson.html#cb446-1" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> dat_poisson, y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x)</span>
@@ -696,7 +696,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb448-6"><a href="13-glm_poisson.html#cb448-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> fit)) <span class="sc">+</span> </span>
 <span id="cb448-7"><a href="13-glm_poisson.html#cb448-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymax =</span> upr, <span class="at">ymin =</span> lwr), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
 <span id="cb448-8"><a href="13-glm_poisson.html#cb448-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
 <p>直線の左側が、0より下にはみ出てしまっている。<span class="math inline">\(y\)</span>は正の値を取る離散値（整数）である。しかし、線形モデルで求めた直線の式ではマイナスの値も予測されてしまう。</p>
 <p>ポアソン回帰は、この問題を解消してくれる。ポアソン回帰を数式で表すと、以下のようになる。</p>
 <p><span class="math display">\[
@@ -737,10 +737,11 @@ P(y) = \frac{\lambda^y\exp(-\lambda)}{y!} \\
 <span id="cb457-2"><a href="13-glm_poisson.html#cb457-2" tabindex="-1"></a></span>
 <span id="cb457-3"><a href="13-glm_poisson.html#cb457-3" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb457-4"><a href="13-glm_poisson.html#cb457-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>x)) </span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick
+## better value `binwidth`.</code></pre>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 <p>以下に、パラメータ<span class="math inline">\(\lambda = 1\)</span>, <span class="math inline">\(\lambda = 2\)</span>, <span class="math inline">\(\lambda = 3\)</span>それぞれの場合のポアソン分布を図で示す。</p>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
 <p>ポアソン分布は、二項分布とも関連している。</p>
 <p>二項分布のパラメータは、試行回数<span class="math inline">\(n\)</span>と成功確率<span class="math inline">\(p\)</span>であった。二項分布の期待値（平均）は<span class="math inline">\(np\)</span>、分散は<span class="math inline">\(np(1-p)\)</span>である。</p>
 <p><span class="math display">\[
@@ -764,7 +765,7 @@ Var(y) = np(1-p)\\
 <span id="cb459-4"><a href="13-glm_poisson.html#cb459-4" tabindex="-1"></a></span>
 <span id="cb459-5"><a href="13-glm_poisson.html#cb459-5" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb459-6"><a href="13-glm_poisson.html#cb459-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x=</span>z, <span class="at">y=</span>lambda))</span></code></pre></div>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 <p>図からもわかるように、<span class="math inline">\(z\)</span>の値に関わらず、<span class="math inline">\(\lambda\)</span>は常に正の値を取る。ポアソン分布のパラメータ<span class="math inline">\(\lambda\)</span>は<span class="math inline">\(\lambda&gt;0\)</span>という制約があるため、このような変換をする必要がある。</p>
 <p>また、式の右辺を線形予測子にして整理すると、以下の式になる。</p>
 <p><span class="math display">\[
@@ -806,7 +807,7 @@ Var(y) = np(1-p)\\
 <span id="cb462-6"><a href="13-glm_poisson.html#cb462-6" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb462-7"><a href="13-glm_poisson.html#cb462-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="at">data =</span> dat_poisson, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
 <span id="cb462-8"><a href="13-glm_poisson.html#cb462-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> dat_predict, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) </span></code></pre></div>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-259-1.png" width="672" /></p>
 <p>ゼロよりも大きい値が予測されており、予測線も各データ（点）の近くに位置している。</p>
 <hr />
 <p>ロジスティック回帰のときと同様に、ポアソン回帰の予測変数の傾きの値も単純に「予測変数が1単位増えたときの応答変数の変化量」を意味するわけではない点に注意が必要である。式(10)をもう一度確認すると、</p>
@@ -862,7 +863,7 @@ Var(y) = np(1-p)\\
 <pre><code>## [1] 12.8751</code></pre>
 <div id="chap13_Overdisperse1" class="section level3 hasAnchor" number="14.4.1">
 <h3><span class="header-section-number">14.4.1</span> 過分散とは？<a href="13-glm_poisson.html#chap13_Overdisperse1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="13-glm_poisson_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="Data-Analysis-for-Psychology_files/figure-html/unnamed-chunk-263-1.png" width="672" /></p>
 <p>（<code>y</code>のヒストグラム。白いバーが実際の<code>y</code>の分布、薄い赤のバーはパラメータ<span class="math inline">\(\lambda\)</span>が<code>y</code>の実際の平均と等しい場合のポアソン分布）</p>
 <p>ポアソン分布は、平均と分散が等しい分布である。しかし、現実にはデータの平均と分散が等しいケースは少ない。逆に、分散が平均よりもかなり大きいケースがよく見られる。</p>
 <p>分散が平均よりも大きいときにポアソン回帰を使うと、分散を実際よりも小さいと推定してしまい、予測変数が平均に与える効果を過大に評価してしまう恐れがある（p値を過剰に小さく判断してしまい、第一種の過誤を犯しやすくなる。ポアソン回帰を行うとかなり低いp値が出ることが多いのは、このためである）。この問題は、<strong>過分散(overdispersion)</strong>と呼ばれる。</p>

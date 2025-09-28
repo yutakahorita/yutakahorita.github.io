@@ -1,11 +1,3 @@
 bookdown::gitbook:
-  split_by: chapter
-  config:
-    toolbar:
-      position: fixed
-      download: null
-      search: yes
-      fontsettings:
-          size: 1
-      sharing: null
+  split_by: rmd
 bookdown::epub_book: default

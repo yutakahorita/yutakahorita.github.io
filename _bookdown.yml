@@ -1,4 +1,27 @@
 book_filename: "Data-Analysis-for-Psychology"
 delete_merged_file: true
 chapter_name: "Chapter "
+rmd_files:
+  - index.Rmd
+  - 01-intro.Rmd
+  - 02-data.Rmd
+  - 03-summary.Rmd
+  - 04-data.Rmd
+  - 05-graph.Rmd
+  - 06-probability_distribution.Rmd
+  - 07-NHT.Rmd
+  - 08-NHT_problem.Rmd
+  - 09-analysis.Rmd
+  - 10-linear_model.Rmd
+  - 11-linear_model2.Rmd
+  - 12-glm_logistic.Rmd
+  - 13-glm_poisson.Rmd
+  - 14-glm_disperse.Rmd
+  - 15-glm_category.Rmd
+  - 16-glmm.Rmd
+  - 17-evaluation.Rmd
+  - 18-Bayese.Rmd
+  - 19-Bayese_model.Rmd
+  - 20-Appendix_References.Rmd
+new_session: yes
 output_dir: docs

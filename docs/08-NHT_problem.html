@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 統計的仮説検定が抱える問題 | 心理データ応用解析法</title>
+  <meta name="description" content="Chapter 9 統計的仮説検定が抱える問題 | 心理データ応用解析法" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 統計的仮説検定が抱える問題 | 心理データ応用解析法" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 統計的仮説検定が抱える問題 | 心理データ応用解析法" />
+  
+  
+  
+
+<meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
+
+
+<meta name="date" content="2025-09-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="07-NHT.html"/>
+<link rel="next" href="09-analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#intro_01"><i class="fa fa-check"></i><b>1.1</b> テキストの構成</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#intro_02"><i class="fa fa-check"></i><b>1.1.1</b> テキストの読み方</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="01-intro.html"><a href="01-intro.html"><i class="fa fa-check"></i><b>2</b> Rの使い方</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#chap01_R"><i class="fa fa-check"></i><b>2.1</b> Rのインストール</a></li>
+<li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="01-intro.html#chap01_RStudio"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
+<li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="01-intro.html#chap01_Programing"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#chap01_Console"><i class="fa fa-check"></i><b>2.3.1</b> コンソール</a></li>
+<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="01-intro.html#chap01_Script"><i class="fa fa-check"></i><b>2.3.2</b> スクリプト</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="01-intro.html#chap01_Package"><i class="fa fa-check"></i><b>2.4</b> パッケージ</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="01-intro.html#chap01_InstallPackage"><i class="fa fa-check"></i><b>2.4.1</b> パッケージのインストール</a></li>
+<li class="chapter" data-level="2.4.2" data-path="01-intro.html"><a href="01-intro.html#chap01_LoadPackage"><i class="fa fa-check"></i><b>2.4.2</b> パッケージのロード</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="01-intro.html"><a href="01-intro.html#chap01_Help"><i class="fa fa-check"></i><b>2.5</b> ヘルプ</a></li>
+<li class="chapter" data-level="2.6" data-path="01-intro.html"><a href="01-intro.html#chap01_End"><i class="fa fa-check"></i><b>2.6</b> Rを終わらせる</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="02-data.html"><a href="02-data.html"><i class="fa fa-check"></i><b>3</b> データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="02-data.html"><a href="02-data.html#chap02_Loading"><i class="fa fa-check"></i><b>3.1</b> はじめに（パッケージのロード）</a></li>
+<li class="chapter" data-level="3.2" data-path="02-data.html"><a href="02-data.html#chap02_Programing"><i class="fa fa-check"></i><b>3.2</b> プログラミングの練習</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="02-data.html"><a href="02-data.html#chap02_Comments"><i class="fa fa-check"></i><b>3.2.1</b> コメント文</a></li>
+<li class="chapter" data-level="3.2.2" data-path="02-data.html"><a href="02-data.html#chap02_MathIdentifer"><i class="fa fa-check"></i><b>3.2.2</b> 算術識別子</a></li>
+<li class="chapter" data-level="3.2.3" data-path="02-data.html"><a href="02-data.html#chap02_LogicalIdentifer"><i class="fa fa-check"></i><b>3.2.3</b> 比較識別子</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="02-data.html"><a href="02-data.html#chap02_Variable"><i class="fa fa-check"></i><b>3.3</b> 変数</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AE%E6%B3%A8%E6%84%8F"><i class="fa fa-check"></i>変数の使い方の注意</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="02-data.html"><a href="02-data.html#chap02_VariableType"><i class="fa fa-check"></i><b>3.4</b> 変数の型</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="02-data.html"><a href="02-data.html#chap02_numeric"><i class="fa fa-check"></i><b>3.4.1</b> 数値型(numeric)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="02-data.html"><a href="02-data.html#chap02_character"><i class="fa fa-check"></i><b>3.4.2</b> 文字列(character)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="02-data.html"><a href="02-data.html#chap02_date"><i class="fa fa-check"></i><b>3.4.3</b> 日付(date)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="02-data.html"><a href="02-data.html#chap02_logical"><i class="fa fa-check"></i><b>3.4.4</b> 論理型(logical)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="02-data.html"><a href="02-data.html#chap02_Data"><i class="fa fa-check"></i><b>3.5</b> データ構造</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="02-data.html"><a href="02-data.html#chap02_vector"><i class="fa fa-check"></i><b>3.5.1</b> ベクトル</a></li>
+<li class="chapter" data-level="3.5.2" data-path="02-data.html"><a href="02-data.html#chap02_dataframe"><i class="fa fa-check"></i><b>3.5.2</b> データフレーム</a></li>
+<li class="chapter" data-level="3.5.3" data-path="02-data.html"><a href="02-data.html#chap02_tibble"><i class="fa fa-check"></i><b>3.5.3</b> tibble</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="02-data.html"><a href="02-data.html#chap02_Missing"><i class="fa fa-check"></i><b>3.6</b> 欠損値</a></li>
+<li class="chapter" data-level="3.7" data-path="02-data.html"><a href="02-data.html#chap02_ReadingData"><i class="fa fa-check"></i><b>3.7</b> データの読み込み</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="02-data.html"><a href="02-data.html#chap02_WorkingDirectory"><i class="fa fa-check"></i><b>3.7.1</b> ワーキングディレクトリの設定</a></li>
+<li class="chapter" data-level="3.7.2" data-path="02-data.html"><a href="02-data.html#chap02_redingfiles"><i class="fa fa-check"></i><b>3.7.2</b> 外部ファイルの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="02-data.html"><a href="02-data.html#chap02_WritingData"><i class="fa fa-check"></i><b>3.8</b> データの書き出し</a></li>
+<li class="chapter" data-level="3.9" data-path="02-data.html"><a href="02-data.html#chap02_SampleData"><i class="fa fa-check"></i><b>3.9</b> サンプルデータ</a></li>
+<li class="chapter" data-level="3.10" data-path="02-data.html"><a href="02-data.html#chap02_Other"><i class="fa fa-check"></i><b>3.10</b> 補足</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="02-data.html"><a href="02-data.html#chap02_Other1"><i class="fa fa-check"></i><b>3.10.1</b> RStudioの機能でファイルを読み込む</a></li>
+<li class="chapter" data-level="3.10.2" data-path="02-data.html"><a href="02-data.html#chap02_Other2"><i class="fa fa-check"></i><b>3.10.2</b> RStudioの機能でワーキングディレクトリを指定する</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="03-summary.html"><a href="03-summary.html"><i class="fa fa-check"></i><b>4</b> 統計学の基礎の復習</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="03-summary.html"><a href="03-summary.html#chap03_Scales"><i class="fa fa-check"></i><b>4.1</b> 尺度水準</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="03-summary.html"><a href="03-summary.html#chap03_Continuous"><i class="fa fa-check"></i><b>4.1.1</b> 量的変数</a></li>
+<li class="chapter" data-level="4.1.2" data-path="03-summary.html"><a href="03-summary.html#chap03_Category"><i class="fa fa-check"></i><b>4.1.2</b> カテゴリカル変数（質的変数）</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="03-summary.html"><a href="03-summary.html#chap03_Statistics"><i class="fa fa-check"></i><b>4.2</b> 基本統計量</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="03-summary.html"><a href="03-summary.html#chap03_Mean"><i class="fa fa-check"></i><b>4.2.1</b> 代表値</a></li>
+<li class="chapter" data-level="4.2.2" data-path="03-summary.html"><a href="03-summary.html#chap03_Variance"><i class="fa fa-check"></i><b>4.2.2</b> 散布度</a></li>
+<li class="chapter" data-level="4.2.3" data-path="03-summary.html"><a href="03-summary.html#chap03_Summary"><i class="fa fa-check"></i><b>4.2.3</b> 要約統計量</a></li>
+<li class="chapter" data-level="4.2.4" data-path="03-summary.html"><a href="03-summary.html#chap03_Grouping"><i class="fa fa-check"></i><b>4.2.4</b> グループごとの集計</a></li>
+<li class="chapter" data-level="4.2.5" data-path="03-summary.html"><a href="03-summary.html#chap03_Table"><i class="fa fa-check"></i><b>4.2.5</b> 表の作り方</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="03-summary.html"><a href="03-summary.html#chap03_Correlations"><i class="fa fa-check"></i><b>4.3</b> 相関(correlation)</a></li>
+<li class="chapter" data-level="4.4" data-path="03-summary.html"><a href="03-summary.html#chap03_Practice"><i class="fa fa-check"></i><b>4.4</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="04-data.html"><a href="04-data.html"><i class="fa fa-check"></i><b>5</b> データ・ハンドリング</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="04-data.html"><a href="04-data.html#chap04_Load"><i class="fa fa-check"></i><b>5.1</b> パッケージのロード</a></li>
+<li class="chapter" data-level="5.2" data-path="04-data.html"><a href="04-data.html#chap04_mutate"><i class="fa fa-check"></i><b>5.2</b> 変数の作成</a></li>
+<li class="chapter" data-level="5.3" data-path="04-data.html"><a href="04-data.html#chap04_Extract"><i class="fa fa-check"></i><b>5.3</b> データの抽出</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="04-data.html"><a href="04-data.html#chap04_select"><i class="fa fa-check"></i><b>5.3.1</b> 必要な列のみを取り出す（select）</a></li>
+<li class="chapter" data-level="5.3.2" data-path="04-data.html"><a href="04-data.html#chap04_filter"><i class="fa fa-check"></i><b>5.3.2</b> 条件に合う行を取り出す（filter）</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="04-data.html"><a href="04-data.html#chap04_pipe"><i class="fa fa-check"></i><b>5.4</b> パイプ</a></li>
+<li class="chapter" data-level="5.5" data-path="04-data.html"><a href="04-data.html#chap04_groupby"><i class="fa fa-check"></i><b>5.5</b> グルーピング</a></li>
+<li class="chapter" data-level="5.6" data-path="04-data.html"><a href="04-data.html#chap04_pivot"><i class="fa fa-check"></i><b>5.6</b> データの変換</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="04-data.html"><a href="04-data.html#chap04_datatype"><i class="fa fa-check"></i><b>5.6.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="5.6.2" data-path="04-data.html"><a href="04-data.html#chap04_longer"><i class="fa fa-check"></i><b>5.6.2</b> wide型からlong型に変換</a></li>
+<li class="chapter" data-level="5.6.3" data-path="04-data.html"><a href="04-data.html#chap04_wider"><i class="fa fa-check"></i><b>5.6.3</b> long型からwide型に変換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="04-data.html"><a href="04-data.html#chap04_join"><i class="fa fa-check"></i><b>5.7</b> データの結合</a></li>
+<li class="chapter" data-level="5.8" data-path="04-data.html"><a href="04-data.html#chap04_Practice"><i class="fa fa-check"></i><b>5.8</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-1"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-1"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-1"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="05-graph.html"><a href="05-graph.html"><i class="fa fa-check"></i><b>6</b> データ・ビジュアライゼーション</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="05-graph.html"><a href="05-graph.html#chap05_Graphic"><i class="fa fa-check"></i><b>6.1</b> Rのグラフィック関数</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="05-graph.html"><a href="05-graph.html#chap05_plot"><i class="fa fa-check"></i><b>6.1.1</b> plot</a></li>
+<li class="chapter" data-level="6.1.2" data-path="05-graph.html"><a href="05-graph.html#chap05_otherplot"><i class="fa fa-check"></i><b>6.1.2</b> その他のグラフ</a></li>
+<li class="chapter" data-level="6.1.3" data-path="05-graph.html"><a href="05-graph.html#chap05_saveplots"><i class="fa fa-check"></i><b>6.1.3</b> 図の保存</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="05-graph.html"><a href="05-graph.html#chap05_ggplot2"><i class="fa fa-check"></i><b>6.2</b> ggplot2パッケージ</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="05-graph.html"><a href="05-graph.html#chap05_geompoint"><i class="fa fa-check"></i><b>6.2.1</b> 散布図</a></li>
+<li class="chapter" data-level="6.2.2" data-path="05-graph.html"><a href="05-graph.html#chap05_geomhistogram"><i class="fa fa-check"></i><b>6.2.2</b> ヒストグラム</a></li>
+<li class="chapter" data-level="6.2.3" data-path="05-graph.html"><a href="05-graph.html#chap05_geomboxplot"><i class="fa fa-check"></i><b>6.2.3</b> 箱ひげ図</a></li>
+<li class="chapter" data-level="6.2.4" data-path="05-graph.html"><a href="05-graph.html#chap05_geomviolin"><i class="fa fa-check"></i><b>6.2.4</b> バイオリンプロット</a></li>
+<li class="chapter" data-level="6.2.5" data-path="05-graph.html"><a href="05-graph.html#chap05_geomline"><i class="fa fa-check"></i><b>6.2.5</b> 折れ線グラフ</a></li>
+<li class="chapter" data-level="6.2.6" data-path="05-graph.html"><a href="05-graph.html#chap05_geomerrorbar"><i class="fa fa-check"></i><b>6.2.6</b> エラーバーつきのグラフ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="05-graph.html"><a href="05-graph.html#chap05_ggplot2option"><i class="fa fa-check"></i><b>6.3</b> オプション</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="05-graph.html"><a href="05-graph.html#chap05_facet"><i class="fa fa-check"></i><b>6.3.1</b> ファセット（Facet）</a></li>
+<li class="chapter" data-level="6.3.2" data-path="05-graph.html"><a href="05-graph.html#chap05_labs"><i class="fa fa-check"></i><b>6.3.2</b> ラベル（labs）</a></li>
+<li class="chapter" data-level="6.3.3" data-path="05-graph.html"><a href="05-graph.html#chap05_theme"><i class="fa fa-check"></i><b>6.3.3</b> テーマ（Theme）</a></li>
+<li class="chapter" data-level="6.3.4" data-path="05-graph.html"><a href="05-graph.html#chap05_ggsave"><i class="fa fa-check"></i><b>6.3.4</b> 図の保存</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="05-graph.html"><a href="05-graph.html#chap05_ggothers"><i class="fa fa-check"></i><b>6.4</b> 応用的なグラフ</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="05-graph.html"><a href="05-graph.html#chap05_raincloud"><i class="fa fa-check"></i><b>6.4.1</b> Rain-cloud plot</a></li>
+<li class="chapter" data-level="6.4.2" data-path="05-graph.html"><a href="05-graph.html#chap05_ridge"><i class="fa fa-check"></i><b>6.4.2</b> Ridge plot</a></li>
+<li class="chapter" data-level="6.4.3" data-path="05-graph.html"><a href="05-graph.html#chap05_alluvial"><i class="fa fa-check"></i><b>6.4.3</b> Alluvial plot</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="05-graph.html"><a href="05-graph.html#chap05_otherfunctions"><i class="fa fa-check"></i><b>6.5</b> その他の機能</a></li>
+<li class="chapter" data-level="6.6" data-path="05-graph.html"><a href="05-graph.html#chap05_Practice"><i class="fa fa-check"></i><b>6.6</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-2"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-2"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-2"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html"><i class="fa fa-check"></i><b>7</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_ProbDistribution"><i class="fa fa-check"></i><b>7.1</b> 確率変数と確率分布</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Discrete"><i class="fa fa-check"></i><b>7.1.1</b> 離散型分布</a></li>
+<li class="chapter" data-level="7.1.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Continuous"><i class="fa fa-check"></i><b>7.1.2</b> 連続型分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Binomial"><i class="fa fa-check"></i><b>7.2</b> 二項分布</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_BinomStat"><i class="fa fa-check"></i><b>7.2.1</b> 二項分布の期待値と分散</a></li>
+<li class="chapter" data-level="7.2.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Bernoulli"><i class="fa fa-check"></i><b>7.2.2</b> ベルヌーイ分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Gaussian"><i class="fa fa-check"></i><b>7.3</b> 正規分布</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Gaussian1"><i class="fa fa-check"></i><b>7.3.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="7.3.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_ProbDensity"><i class="fa fa-check"></i><b>7.3.2</b> 確率密度関数</a></li>
+<li class="chapter" data-level="7.3.3" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_GaussStat"><i class="fa fa-check"></i><b>7.3.3</b> 正規分布の平均値と標準偏差</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Poisson"><i class="fa fa-check"></i><b>7.4</b> ポアソン分布</a></li>
+<li class="chapter" data-level="7.5" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_RProbfunction"><i class="fa fa-check"></i><b>7.5</b> Rで使える確率分布関数</a></li>
+<li class="chapter" data-level="7.6" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Theorem"><i class="fa fa-check"></i><b>7.6</b> 正規分布と他の確率変数との関係</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Theorem1"><i class="fa fa-check"></i><b>7.6.1</b> 中心極限定理</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_ProbDistEquation"><i class="fa fa-check"></i><b>7.7</b> 確率分布の表現の仕方</a></li>
+<li class="chapter" data-level="7.8" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_OtherDist"><i class="fa fa-check"></i><b>7.8</b> その他の確率分布</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%B8%80%E6%A7%98%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>一様分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Practice"><i class="fa fa-check"></i><b>7.9</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-3"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-3"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="07-NHT.html"><a href="07-NHT.html"><i class="fa fa-check"></i><b>8</b> 統計的仮説検定</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="07-NHT.html"><a href="07-NHT.html#chap07_Preparation"><i class="fa fa-check"></i><b>8.1</b> 準備</a></li>
+<li class="chapter" data-level="8.2" data-path="07-NHT.html"><a href="07-NHT.html#chap07_BasisSNHT"><i class="fa fa-check"></i><b>8.2</b> 統計的仮説検定の考え方</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="07-NHT.html"><a href="07-NHT.html#chap07_binomtest"><i class="fa fa-check"></i><b>8.2.1</b> 二項検定</a></li>
+<li class="chapter" data-level="8.2.2" data-path="07-NHT.html"><a href="07-NHT.html#chap07_ttest"><i class="fa fa-check"></i><b>8.2.2</b> 二標本の検定</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="07-NHT.html"><a href="07-NHT.html#chap07_summarySNHT"><i class="fa fa-check"></i><b>8.3</b> 統計的仮説検定のまとめ</a></li>
+<li class="chapter" data-level="8.4" data-path="07-NHT.html"><a href="07-NHT.html#chap07_Practice"><i class="fa fa-check"></i><b>8.4</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html"><i class="fa fa-check"></i><b>9</b> 統計的仮説検定が抱える問題</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_preparation"><i class="fa fa-check"></i><b>9.1</b> 準備</a></li>
+<li class="chapter" data-level="9.2" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_SNHTsims"><i class="fa fa-check"></i><b>9.2</b> シミュレーション</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_function"><i class="fa fa-check"></i><b>9.2.1</b> 関数の作成</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_pvalue"><i class="fa fa-check"></i><b>9.3</b> p値とサンプルサイズの関係</a></li>
+<li class="chapter" data-level="9.4" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_EffectSize"><i class="fa fa-check"></i><b>9.4</b> 効果量（差の大きさとp値の関係）</a></li>
+<li class="chapter" data-level="9.5" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Type12Erros"><i class="fa fa-check"></i><b>9.5</b> 第1種の過誤と第2種の過誤</a></li>
+<li class="chapter" data-level="9.6" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Power"><i class="fa fa-check"></i><b>9.6</b> 検出力</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Power1"><i class="fa fa-check"></i><b>9.6.1</b> 検出力に影響する要因</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_PowerTest"><i class="fa fa-check"></i><b>9.7</b> 検出力分析</a></li>
+<li class="chapter" data-level="9.8" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Type1P"><i class="fa fa-check"></i><b>9.8</b> p値と第1種の過誤</a></li>
+<li class="chapter" data-level="9.9" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_MultipeComparison"><i class="fa fa-check"></i><b>9.9</b> 多重比較の問題</a></li>
+<li class="chapter" data-level="9.10" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Summary"><i class="fa fa-check"></i><b>9.10</b> まとめ</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="09-analysis.html"><a href="09-analysis.html"><i class="fa fa-check"></i><b>10</b> 様々な解析法</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="09-analysis.html"><a href="09-analysis.html#chap09_ttest"><i class="fa fa-check"></i><b>10.1</b> t検定</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="09-analysis.html"><a href="09-analysis.html#chap09_indttest"><i class="fa fa-check"></i><b>10.1.1</b> 対応のないt検定</a></li>
+<li class="chapter" data-level="10.1.2" data-path="09-analysis.html"><a href="09-analysis.html#chap09_pairedttest"><i class="fa fa-check"></i><b>10.1.2</b> 対応のあるt検定</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="09-analysis.html"><a href="09-analysis.html#chap09_ANOVA"><i class="fa fa-check"></i><b>10.2</b> 分散分析</a></li>
+<li class="chapter" data-level="10.3" data-path="09-analysis.html"><a href="09-analysis.html#chap09_nonpara"><i class="fa fa-check"></i><b>10.3</b> ノンパラメトリック検定</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="09-analysis.html"><a href="09-analysis.html#chap09_wilcox"><i class="fa fa-check"></i><b>10.3.1</b> ウィルコクソンの順位和検定</a></li>
+<li class="chapter" data-level="10.3.2" data-path="09-analysis.html"><a href="09-analysis.html#chap09_kruskal"><i class="fa fa-check"></i><b>10.3.2</b> クラスカル・ウォリスの検定</a></li>
+<li class="chapter" data-level="10.3.3" data-path="09-analysis.html"><a href="09-analysis.html#chap09_chisq"><i class="fa fa-check"></i><b>10.3.3</b> カイ二乗検定</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="09-analysis.html"><a href="09-analysis.html#chap09_summary"><i class="fa fa-check"></i><b>10.4</b> 「統計モデル」との関係</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="10-linear_model.html"><a href="10-linear_model.html"><i class="fa fa-check"></i><b>11</b> 線形モデル（回帰分析）</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_preparation"><i class="fa fa-check"></i><b>11.1</b> 準備</a></li>
+<li class="chapter" data-level="11.2" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_Intro"><i class="fa fa-check"></i><b>11.2</b> 線形モデルの概要</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_Summary"><i class="fa fa-check"></i><b>11.2.1</b> まとめ</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_lm"><i class="fa fa-check"></i><b>11.3</b> 線形モデルによる解析</a></li>
+<li class="chapter" data-level="11.4" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_MLE"><i class="fa fa-check"></i><b>11.4</b> 最尤法</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_MLEsim"><i class="fa fa-check"></i><b>11.4.1</b> 最尤法によるパラメータ推定</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_Practice"><i class="fa fa-check"></i><b>11.5</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-4"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-4"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-3"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="11-linear_model2.html"><a href="11-linear_model2.html"><i class="fa fa-check"></i><b>12</b> 線形モデル（t検定, 分散分析, 共分散分析）</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_preparation"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
+<li class="chapter" data-level="12.2" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_lmgroup"><i class="fa fa-check"></i><b>12.2</b> 線形モデルに含まれる統計解析</a></li>
+<li class="chapter" data-level="12.3" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_scaling"><i class="fa fa-check"></i><b>12.3</b> 変数の標準化</a></li>
+<li class="chapter" data-level="12.4" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_dummy"><i class="fa fa-check"></i><b>12.4</b> 予測変数がカテゴリカル変数の場合（ダミー変数）</a></li>
+<li class="chapter" data-level="12.5" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_onewayANOVA"><i class="fa fa-check"></i><b>12.5</b> グループが複数ある場合（一要因の分散分析）</a></li>
+<li class="chapter" data-level="12.6" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_interaction"><i class="fa fa-check"></i><b>12.6</b> 交互作用（2要因の分散分析）</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_NotingInteraction"><i class="fa fa-check"></i><b>12.6.1</b> 交互作用を扱うモデルの解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_ANCOVA"><i class="fa fa-check"></i><b>12.7</b> 予測変数が複数ある場合（共分散分析または重回帰分析）</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_Controlling"><i class="fa fa-check"></i><b>12.7.1</b> 変数の効果の統制</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_Summary"><i class="fa fa-check"></i><b>12.8</b> まとめ</a></li>
+<li class="chapter" data-level="12.9" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_Practice"><i class="fa fa-check"></i><b>12.9</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F1"><i class="fa fa-check"></i>問1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F2"><i class="fa fa-check"></i>問2</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_emmeans"><i class="fa fa-check"></i><b>12.10</b> 補足(emmeans)</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_emmeans1"><i class="fa fa-check"></i><b>12.10.1</b> 一要因の分散分析における多重比較</a></li>
+<li class="chapter" data-level="12.10.2" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_emmeans2"><i class="fa fa-check"></i><b>12.10.2</b> 二要因の分散分析における単純主効果検定</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html"><i class="fa fa-check"></i><b>13</b> 一般化線形モデル（ロジスティック回帰）</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_Preparation"><i class="fa fa-check"></i><b>13.1</b> 準備</a></li>
+<li class="chapter" data-level="13.2" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_GLM"><i class="fa fa-check"></i><b>13.2</b> 一般化線形モデル</a></li>
+<li class="chapter" data-level="13.3" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_BasisLogistic"><i class="fa fa-check"></i><b>13.3</b> ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_LogisticProb"><i class="fa fa-check"></i><b>13.3.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="13.3.2" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_LogisticLink"><i class="fa fa-check"></i><b>13.3.2</b> リンク関数</a></li>
+<li class="chapter" data-level="13.3.3" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_SummaryLogistic"><i class="fa fa-check"></i><b>13.3.3</b> ここまでのまとめ</a></li>
+<li class="chapter" data-level="13.3.4" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_glmbinom"><i class="fa fa-check"></i><b>13.3.4</b> Rでのロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_Summary"><i class="fa fa-check"></i><b>13.4</b> まとめ</a></li>
+<li class="chapter" data-level="13.5" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_Practice"><i class="fa fa-check"></i><b>13.5</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html"><i class="fa fa-check"></i><b>14</b> 一般化線形モデル（ポアソン回帰）</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Preparation"><i class="fa fa-check"></i><b>14.1</b> 準備</a></li>
+<li class="chapter" data-level="14.2" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_BasisPoisson"><i class="fa fa-check"></i><b>14.2</b> ポアソン回帰</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_PoissonProb"><i class="fa fa-check"></i><b>14.2.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="14.2.2" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_PoissonLink"><i class="fa fa-check"></i><b>14.2.2</b> リンク関数</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_glmpoisson"><i class="fa fa-check"></i><b>14.3</b> Rでのポアソン回帰</a></li>
+<li class="chapter" data-level="14.4" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Overdisperse"><i class="fa fa-check"></i><b>14.4</b> ポアソン回帰の注意点：過分散</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Overdisperse1"><i class="fa fa-check"></i><b>14.4.1</b> 過分散とは？</a></li>
+<li class="chapter" data-level="14.4.2" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_CheckOverdisperse"><i class="fa fa-check"></i><b>14.4.2</b> 過分散の確認方法</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_CopingOversdisperse"><i class="fa fa-check"></i><b>14.5</b> 過分散への対処法</a></li>
+<li class="chapter" data-level="14.6" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Summary"><i class="fa fa-check"></i><b>14.6</b> まとめ</a></li>
+<li class="chapter" data-level="14.7" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Practice"><i class="fa fa-check"></i><b>14.7</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html"><i class="fa fa-check"></i><b>15</b> 一般化線形モデル（過分散への対処）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_Preparation"><i class="fa fa-check"></i><b>15.1</b> 準備</a></li>
+<li class="chapter" data-level="15.2" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_NegativeBinom"><i class="fa fa-check"></i><b>15.2</b> 負の二項回帰</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_NegativeBinom1"><i class="fa fa-check"></i><b>15.2.1</b> 負の二項分布</a></li>
+<li class="chapter" data-level="15.2.2" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_glmnb"><i class="fa fa-check"></i><b>15.2.2</b> Rでの負の二項回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_ZIP"><i class="fa fa-check"></i><b>15.3</b> ゼロ過剰ポアソンモデル</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_ZIPExpample"><i class="fa fa-check"></i><b>15.3.1</b> 例題</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_ZIP1"><i class="fa fa-check"></i><b>15.4</b> ゼロ過剰ポアソンモデルの詳細</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_zeroinfl"><i class="fa fa-check"></i><b>15.4.1</b> Rでのゼロ過剰ポアソンモデル</a></li>
+<li class="chapter" data-level="15.4.2" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_Hurdle"><i class="fa fa-check"></i><b>15.4.2</b> ハードルモデル</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_Practice"><i class="fa fa-check"></i><b>15.5</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="15-glm_category.html"><a href="15-glm_category.html"><i class="fa fa-check"></i><b>16</b> 一般化線形モデル（複数カテゴリの分析）</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_Preparation"><i class="fa fa-check"></i><b>16.1</b> 準備</a></li>
+<li class="chapter" data-level="16.2" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_Variables"><i class="fa fa-check"></i><b>16.2</b> カテゴリカル変数の種類</a></li>
+<li class="chapter" data-level="16.3" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_OrderedLogistic"><i class="fa fa-check"></i><b>16.3</b> 順序ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_CLMExample"><i class="fa fa-check"></i><b>16.3.1</b> 例題</a></li>
+<li class="chapter" data-level="16.3.2" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_BasisCLM"><i class="fa fa-check"></i><b>16.3.2</b> 順序ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="16.3.3" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_clm"><i class="fa fa-check"></i><b>16.3.3</b> Rでの順序ロジスティック回帰</a></li>
+<li class="chapter" data-level="16.3.4" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_factor"><i class="fa fa-check"></i><b>16.3.4</b> 変数の因子型への変換</a></li>
+<li class="chapter" data-level="16.3.5" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_clm1"><i class="fa fa-check"></i><b>16.3.5</b> 解析</a></li>
+<li class="chapter" data-level="16.3.6" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_clmOutput"><i class="fa fa-check"></i><b>16.3.6</b> 解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_Multionom"><i class="fa fa-check"></i><b>16.4</b> 多項ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_MultionomExample"><i class="fa fa-check"></i><b>16.4.1</b> 例題</a></li>
+<li class="chapter" data-level="16.4.2" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_BasisMultinom"><i class="fa fa-check"></i><b>16.4.2</b> 多項ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="16.4.3" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_nlm"><i class="fa fa-check"></i><b>16.4.3</b> Rでの多項ロジスティック回帰</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="16-glmm.html"><a href="16-glmm.html"><i class="fa fa-check"></i><b>17</b> マルチレベルモデル</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="16-glmm.html"><a href="16-glmm.html#chap16_Preparation"><i class="fa fa-check"></i><b>17.1</b> 準備</a></li>
+<li class="chapter" data-level="17.2" data-path="16-glmm.html"><a href="16-glmm.html#chap16_BasisMultilevel"><i class="fa fa-check"></i><b>17.2</b> 個人差や集団差の問題</a></li>
+<li class="chapter" data-level="17.3" data-path="16-glmm.html"><a href="16-glmm.html#chap16_BasisMultilevel1"><i class="fa fa-check"></i><b>17.3</b> マルチレベルモデルの概要</a></li>
+<li class="chapter" data-level="17.4" data-path="16-glmm.html"><a href="16-glmm.html#chap16_lmer"><i class="fa fa-check"></i><b>17.4</b> Rでのマルチレベルモデル</a></li>
+<li class="chapter" data-level="17.5" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMM"><i class="fa fa-check"></i><b>17.5</b> 正規分布以外を扱う例</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMLogit"><i class="fa fa-check"></i><b>17.5.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="17.5.2" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMPoisson"><i class="fa fa-check"></i><b>17.5.2</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="17.5.3" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMOverdisperse"><i class="fa fa-check"></i><b>17.5.3</b> マルチレベルモデルによる過分散への対処</a></li>
+<li class="chapter" data-level="17.5.4" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMOthers"><i class="fa fa-check"></i><b>17.5.4</b> その他の一般化線形モデルの場合</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="16-glmm.html"><a href="16-glmm.html#chap16_Summary"><i class="fa fa-check"></i><b>17.6</b> まとめ</a></li>
+<li class="chapter" data-level="17.7" data-path="16-glmm.html"><a href="16-glmm.html#chap16_Practice"><i class="fa fa-check"></i><b>17.7</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-5"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="17-evaluation.html"><a href="17-evaluation.html"><i class="fa fa-check"></i><b>18</b> モデルの評価</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Preparation"><i class="fa fa-check"></i><b>18.1</b> 準備</a></li>
+<li class="chapter" data-level="18.2" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Intervals"><i class="fa fa-check"></i><b>18.2</b> 信頼区間と予測区間</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_CI"><i class="fa fa-check"></i><b>18.2.1</b> 信頼区間</a></li>
+<li class="chapter" data-level="18.2.2" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_PI"><i class="fa fa-check"></i><b>18.2.2</b> 予測区間</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Multico"><i class="fa fa-check"></i><b>18.3</b> 多重共線性</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_EvalMultico"><i class="fa fa-check"></i><b>18.3.1</b> 多重共線性の評価</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Overfitting"><i class="fa fa-check"></i><b>18.4</b> 過学習</a></li>
+<li class="chapter" data-level="18.5" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Creteria"><i class="fa fa-check"></i><b>18.5</b> モデルの予測力の評価</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Rsq"><i class="fa fa-check"></i><b>18.5.1</b> 決定係数</a></li>
+<li class="chapter" data-level="18.5.2" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_AIC"><i class="fa fa-check"></i><b>18.5.2</b> 赤池情報量規準（AIC）</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Practice"><i class="fa fa-check"></i><b>18.6</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="18-Bayese.html"><a href="18-Bayese.html"><i class="fa fa-check"></i><b>19</b> ベイズ統計</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BasisBayese"><i class="fa fa-check"></i><b>19.1</b> 頻度主義統計学とベイズ統計学</a></li>
+<li class="chapter" data-level="19.2" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayeseTheorem"><i class="fa fa-check"></i><b>19.2</b> ベイズの定理</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayeseExample"><i class="fa fa-check"></i><b>19.2.1</b> 例題</a></li>
+<li class="chapter" data-level="19.2.2" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_PriorPosterior"><i class="fa fa-check"></i><b>19.2.2</b> 事前確率、事後確率</a></li>
+<li class="chapter" data-level="19.2.3" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayesianStat"><i class="fa fa-check"></i><b>19.2.3</b> ベイズ統計</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayesianEst"><i class="fa fa-check"></i><b>19.3</b> ベイズ推定の例</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Prior"><i class="fa fa-check"></i><b>19.3.1</b> 事前分布</a></li>
+<li class="chapter" data-level="19.3.2" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Likelihood"><i class="fa fa-check"></i><b>19.3.2</b> 尤度</a></li>
+<li class="chapter" data-level="19.3.3" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Posterior"><i class="fa fa-check"></i><b>19.3.3</b> 事後分布</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_MCMC"><i class="fa fa-check"></i><b>19.4</b> MCMC</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_MCMCExample"><i class="fa fa-check"></i><b>19.4.1</b> MCMCの例</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Practice"><i class="fa fa-check"></i><b>19.5</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F1-1"><i class="fa fa-check"></i>問1</a></li>
+<li class="chapter" data-level="" data-path="18-Bayese.html"><a href="18-Bayese.html#section-6"><i class="fa fa-check"></i>1-1</a></li>
+<li class="chapter" data-level="" data-path="18-Bayese.html"><a href="18-Bayese.html#section-7"><i class="fa fa-check"></i>1-2</a></li>
+<li class="chapter" data-level="" data-path="18-Bayese.html"><a href="18-Bayese.html#section-8"><i class="fa fa-check"></i>1-3</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F2-1"><i class="fa fa-check"></i>問2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html"><i class="fa fa-check"></i><b>20</b> ベイズ統計モデリング</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Preparation"><i class="fa fa-check"></i><b>20.1</b> 準備</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Rstan"><i class="fa fa-check"></i><b>20.1.1</b> Rstanのインストール</a></li>
+<li class="chapter" data-level="20.1.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmspackage"><i class="fa fa-check"></i><b>20.1.2</b> brmsパッケージのインストール</a></li>
+<li class="chapter" data-level="20.1.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_loadpackage"><i class="fa fa-check"></i><b>20.1.3</b> パッケージのロード</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brms"><i class="fa fa-check"></i><b>20.2</b> Rによるベイズ統計モデリング</a></li>
+<li class="chapter" data-level="20.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Basisbrm"><i class="fa fa-check"></i><b>20.3</b> ベイズ統計モデリングのプロセス</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmprior"><i class="fa fa-check"></i><b>20.3.1</b> 事前分布の設定</a></li>
+<li class="chapter" data-level="20.3.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmMCMC"><i class="fa fa-check"></i><b>20.3.2</b> MCMCの設定</a></li>
+<li class="chapter" data-level="20.3.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmposterior"><i class="fa fa-check"></i><b>20.3.3</b> 事後分布の評価</a></li>
+<li class="chapter" data-level="20.3.4" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmconvergence"><i class="fa fa-check"></i><b>20.3.4</b> 収束の評価</a></li>
+<li class="chapter" data-level="20.3.5" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmprediction"><i class="fa fa-check"></i><b>20.3.5</b> モデルの予測評価</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmGLM"><i class="fa fa-check"></i><b>20.4</b> brmsパッケージでの一般化線形モデル</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmbernoulli"><i class="fa fa-check"></i><b>20.4.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="20.4.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmPoisson"><i class="fa fa-check"></i><b>20.4.2</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="20.4.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmnegbinom"><i class="fa fa-check"></i><b>20.4.3</b> 負の二項回帰</a></li>
+<li class="chapter" data-level="20.4.4" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmclm"><i class="fa fa-check"></i><b>20.4.4</b> 順序ロジスティック回帰</a></li>
+<li class="chapter" data-level="20.4.5" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmcategorical"><i class="fa fa-check"></i><b>20.4.5</b> 多項ロジスティック回帰</a></li>
+<li class="chapter" data-level="20.4.6" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmZIP"><i class="fa fa-check"></i><b>20.4.6</b> ゼロ過剰ポアソンモデル</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmGLMM"><i class="fa fa-check"></i><b>20.5</b> brmsパッケージでのマルチレベルモデル</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmRandIntercept"><i class="fa fa-check"></i><b>20.5.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="20.5.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmRandSlope"><i class="fa fa-check"></i><b>20.5.2</b> ランダム傾き</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Others"><i class="fa fa-check"></i><b>20.6</b> その他</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmStanCode"><i class="fa fa-check"></i><b>20.6.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="20.6.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_furtherLearning"><i class="fa fa-check"></i><b>20.6.2</b> より深く学ぶには</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>付録</b></span></li>
+<li class="chapter" data-level="A" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html"><i class="fa fa-check"></i><b>A</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_Continuous"><i class="fa fa-check"></i><b>A.1</b> 連続型確率分布</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>正規分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>指数分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%AF%BE%E6%95%B0%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>対数正規分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#t%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>t分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%82%AB%E3%82%A4%E4%BA%8C%E4%B9%97%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>カイ二乗分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#f%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>F分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%BC%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>コーシー分布</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_Discrete"><i class="fa fa-check"></i><b>A.2</b> 離散型確率分布</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>二項分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>負の二項分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>幾何分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%B6%85%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>超幾何分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>ポアソン分布</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_Markdown"><i class="fa fa-check"></i><b>B</b> R Markdownの使い方</a></li>
+<li class="chapter" data-level="C" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_References"><i class="fa fa-check"></i><b>C</b> 参考資料</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks"><i class="fa fa-check"></i><b>C.1</b> 文献</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks1"><i class="fa fa-check"></i><b>C.1.1</b> 統計学の解説書</a></li>
+<li class="chapter" data-level="C.1.2" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks2"><i class="fa fa-check"></i><b>C.1.2</b> Rを用いた統計解析の解説書</a></li>
+<li class="chapter" data-level="C.1.3" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks3"><i class="fa fa-check"></i><b>C.1.3</b> データ・ビジュアライゼーション</a></li>
+<li class="chapter" data-level="C.1.4" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks4"><i class="fa fa-check"></i><b>C.1.4</b> 一般化線形モデル、マルチレベルモデルなどの解説書</a></li>
+<li class="chapter" data-level="C.1.5" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks5"><i class="fa fa-check"></i><b>C.1.5</b> ベイズ統計モデリングの解説書</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceWeb"><i class="fa fa-check"></i><b>C.2</b> Webサイト</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理データ応用解析法</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap08_SNHTproblems" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> 統計的仮説検定が抱える問題<a href="08-NHT_problem.html#chap08_SNHTproblems" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>統計的仮説検定が抱える問題について理解する。</p>
+<ul>
+<li>p値とサンプルサイズの関係<br />
+</li>
+<li>効果量<br />
+</li>
+<li>第1種の過誤、第2種の過誤<br />
+</li>
+<li>検出力</li>
+</ul>
+<p>この章では乱数を用いたシミュレーションを通して、サンプルサイズ、効果量、p値のそれぞれの関係について理解していく。</p>
+<div id="chap08_preparation" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> 準備<a href="08-NHT_problem.html#chap08_preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>この章では、<code>ggplot2</code>、<code>pwr</code>パッケージを使う。</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="08-NHT_problem.html#cb291-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb291-2"><a href="08-NHT_problem.html#cb291-2" tabindex="-1"></a><span class="fu">library</span>(pwr)</span></code></pre></div>
+</div>
+<div id="chap08_SNHTsims" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> シミュレーション<a href="08-NHT_problem.html#chap08_SNHTsims" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>正規分布を母集団とする２つのグループA, Bがあるとする。グループAの正規分布は平均<span class="math inline">\(\mu_{A}\)</span>、標準偏差<span class="math inline">\(\sigma_{A}\)</span>、グループBの正規分布は平均<span class="math inline">\(\mu_{B}\)</span>、標準偏差<span class="math inline">\(\sigma_{B}\)</span>とする。それぞれのグループから<span class="math inline">\(n\)</span>個のサンプルを抽出するとする。</p>
+<p><code>rnorm()</code>関数を使って、正規分布から乱数を生成する。以下は、平均及び標準偏差が同じ(<span class="math inline">\(\mu_{A} = \mu_{B} = 0, \sigma_{A} = \sigma_{B} = 0\)</span>)グループAとBから20個ずつサンプルを抽出したシミュレーションの例である。</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="08-NHT_problem.html#cb292-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co">#乱数の種の設定。これに任意の数値を設定しておけば同じ結果が再現できる。</span></span>
+<span id="cb292-2"><a href="08-NHT_problem.html#cb292-2" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb292-3"><a href="08-NHT_problem.html#cb292-3" tabindex="-1"></a>g_A <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) </span>
+<span id="cb292-4"><a href="08-NHT_problem.html#cb292-4" tabindex="-1"></a>g_B <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) </span>
+<span id="cb292-5"><a href="08-NHT_problem.html#cb292-5" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, N), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, N)), <span class="at">value =</span> <span class="fu">c</span>(g_A, g_B)) <span class="co">#データフレームdとして保存</span></span>
+<span id="cb292-6"><a href="08-NHT_problem.html#cb292-6" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>##   group      value
+## 1     A -0.6264538
+## 2     A  0.1836433
+## 3     A -0.8356286
+## 4     A  1.5952808
+## 5     A  0.3295078
+## 6     A -0.8204684</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="08-NHT_problem.html#cb294-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">data =</span> d, value <span class="sc">~</span> group) <span class="co">#グループの間でvalueの平均値に差があるかをt検定で検定</span></span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = 0.69794, df = 37.917, p-value = 0.4895
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -0.3744327  0.7684235
+## sample estimates:
+## mean in group A mean in group B 
+##     0.190523876    -0.006471519</code></pre>
+<div id="chap08_function" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> 関数の作成<a href="08-NHT_problem.html#chap08_function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>上記のプログラムを毎回書き直すのも大変なので、<strong>関数(function)</strong>を作成して手順を簡略化する。</p>
+<p>グループA,
+Bのサンプルサイズ、平均、標準偏差を任意のものに設定して上記の一連のプログラムをできるように、関数<code>simulation_p</code>を自作する。以下のプログラムを全て実行する。
+実行すると、RStudioの右ウィンドウ「Environmment」の「Functions」に、<code>simulation_p</code>が表示される。</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="08-NHT_problem.html#cb296-1" tabindex="-1"></a>simulation_p <span class="ot">=</span> <span class="cf">function</span>(N, mu_A, sigma_A, mu_B, sigma_B){</span>
+<span id="cb296-2"><a href="08-NHT_problem.html#cb296-2" tabindex="-1"></a>  g_A <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> mu_A, <span class="at">sd =</span> sigma_A) </span>
+<span id="cb296-3"><a href="08-NHT_problem.html#cb296-3" tabindex="-1"></a>  g_B <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> N, <span class="at">mean =</span> mu_B, <span class="at">sd =</span> sigma_B) </span>
+<span id="cb296-4"><a href="08-NHT_problem.html#cb296-4" tabindex="-1"></a>  d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, N), <span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>, N)), <span class="at">value =</span> <span class="fu">c</span>(g_A, g_B)) </span>
+<span id="cb296-5"><a href="08-NHT_problem.html#cb296-5" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">t.test</span>(<span class="at">data =</span> d, value <span class="sc">~</span> group) <span class="co">#t検定の結果</span></span>
+<span id="cb296-6"><a href="08-NHT_problem.html#cb296-6" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb296-7"><a href="08-NHT_problem.html#cb296-7" tabindex="-1"></a>  }</span></code></pre></div>
+<p>以下はグループAの母集団の平均値を0かつ標準偏差を1(<span class="math inline">\(\mu_{A} = 0, \sigma_{A} = 1\)</span>)、
+グループBの母集団の平均値を1かつ標準偏差を1(<span class="math inline">\(\mu_{B} = 1, \sigma_{A} = 1\)</span>)として、それぞれのグループから100個(<span class="math inline">\(n=100\)</span>)のサンプルを抽出し、t検定を行った結果である。</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="08-NHT_problem.html#cb297-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb297-2"><a href="08-NHT_problem.html#cb297-2" tabindex="-1"></a><span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">100</span>, </span>
+<span id="cb297-3"><a href="08-NHT_problem.html#cb297-3" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>, </span>
+<span id="cb297-4"><a href="08-NHT_problem.html#cb297-4" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="dv">1</span>, <span class="at">sigma_B =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -6.4983, df = 197.19, p-value = 6.492e-10
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -1.1122615 -0.5943477
+## sample estimates:
+## mean in group A mean in group B 
+##       0.1088874       0.9621919</code></pre>
+<p>以降では、この関数を使ってサンプルサイズやグループAとBの平均値の差を変えてシミュレーションを行い、p値がどう変化するかを見ていく。</p>
+</div>
+</div>
+<div id="chap08_pvalue" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> p値とサンプルサイズの関係<a href="08-NHT_problem.html#chap08_pvalue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>p値はサンプルサイズ（標本数）に依存する。サンプルサイズが多くなるほどp値は小さくなる。</p>
+<p>例えば、平均0, 標準偏差1の正規分布に従う母集団Aと平均0.2, 標準偏差1の正規分布に従う母集団Bからそれぞれ標本を抽出し、AとBの間で平均値に差があるかを検討する。帰無仮説<span class="math inline">\(H_{0}:\mu_{A} - \mu_{B} = 0\)</span>が棄却されるかをt検定で検定する。<br />
+実際の母集団の真の平均値の差は<span class="math inline">\(|0-0.2|=0.2\)</span>である。</p>
+<p>図で表してみると、分布はほとんど重なりあっていて2つのグループの平均値の間にあまり差がなさそうに見える。</p>
+<p>先ほど作成した<code>simulation_p</code>関数を使って、シミュレーションをしてみよう。まずは、それぞれのグループから100個サンプルを抽出してt検定を行ってみる。</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="08-NHT_problem.html#cb299-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb299-2"><a href="08-NHT_problem.html#cb299-2" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">100</span>, </span>
+<span id="cb299-3"><a href="08-NHT_problem.html#cb299-3" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>,</span>
+<span id="cb299-4"><a href="08-NHT_problem.html#cb299-4" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="fl">0.2</span>, <span class="at">sigma_B =</span> <span class="dv">1</span></span>
+<span id="cb299-5"><a href="08-NHT_problem.html#cb299-5" tabindex="-1"></a>             )</span>
+<span id="cb299-6"><a href="08-NHT_problem.html#cb299-6" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -0.40594, df = 197.19, p-value = 0.6852
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -0.3122615  0.2056523
+## sample estimates:
+## mean in group A mean in group B 
+##       0.1088874       0.1621919</code></pre>
+<p>p値は<code>round(result$p.value, 3)</code>であり、有意水準5%とすると有意な差があるという結論は出ない。つまり、10人ずつ標本を抽出したこの結果からは、帰無仮説<span class="math inline">\(H_{0}:\mu_{A} - \mu_{B}=0\)</span>を棄却することはできない。</p>
+<p>次に、同じ平均値の差で、各グループそれぞれ500個, 500個標本を抽出してt検定をしたシミュレーション結果を見てみよう。</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="08-NHT_problem.html#cb301-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb301-2"><a href="08-NHT_problem.html#cb301-2" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">500</span>, </span>
+<span id="cb301-3"><a href="08-NHT_problem.html#cb301-3" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>,</span>
+<span id="cb301-4"><a href="08-NHT_problem.html#cb301-4" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="fl">0.2</span>, <span class="at">sigma_B =</span> <span class="dv">1</span></span>
+<span id="cb301-5"><a href="08-NHT_problem.html#cb301-5" tabindex="-1"></a>             )</span>
+<span id="cb301-6"><a href="08-NHT_problem.html#cb301-6" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -2.0079, df = 996.09, p-value = 0.04493
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -0.259852446 -0.002978632
+## sample estimates:
+## mean in group A mean in group B 
+##      0.02264409      0.15405963</code></pre>
+<p>今度は、p値が0.05よりも小さい。500人ずつ標本を抽出したこの結果からは、帰無仮説<span class="math inline">\(H_{0}:\mu_{A} - \mu_{B}=0\)</span>は棄却され、AとBとの間に平均値に有意な差があるという結論が導かれる。</p>
+<p>更に、1,000個ずつサンプルしてt検定をした結果もみてみよう。</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="08-NHT_problem.html#cb303-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb303-2"><a href="08-NHT_problem.html#cb303-2" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">1000</span>, </span>
+<span id="cb303-3"><a href="08-NHT_problem.html#cb303-3" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>,</span>
+<span id="cb303-4"><a href="08-NHT_problem.html#cb303-4" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="fl">0.2</span>, <span class="at">sigma_B =</span> <span class="dv">1</span></span>
+<span id="cb303-5"><a href="08-NHT_problem.html#cb303-5" tabindex="-1"></a>             )</span>
+<span id="cb303-6"><a href="08-NHT_problem.html#cb303-6" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -4.2113, df = 1998, p-value = 2.652e-05
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -0.2863763 -0.1043961
+## sample estimates:
+## mean in group A mean in group B 
+##     -0.01164814      0.18373809</code></pre>
+<p>p値は更に小さくなり、AとBとの間に平均値に有意な差があるという結論が導かれる。</p>
+<p>しかし、サンプルサイズが100個、500個、1,000個いずれのシミュレーションも、母集団の平均値差は0.2である。</p>
+<p>このように、<strong>p値はサンプルサイズが大きくなるほど小さくなる</strong>という性質がある。実質的にあまり大きくない差でも、サンプルを多く取れば「有意な差がある」と結論が出てしまう可能性がある。</p>
+<p>異なるグループから標本を抽出したのならば、平均値に差が存在しないということはありえない。どんなに小さくても、差は存在する(差の大きさが0.00001でも)。小さい標本では、わずかな差は誤差として評価されて「有意差がある」という結論は導かれにくい。しかし、サンプルサイズを大きくすることで差を検出しやすくなる。</p>
+<p>すなわち、p値が示しているのは<strong>差の大きさ（効果の大きさ）ではない</strong>。</p>
+</div>
+<div id="chap08_EffectSize" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> 効果量（差の大きさとp値の関係）<a href="08-NHT_problem.html#chap08_EffectSize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>そこで、平均値の差のように、効果の大きさそのものを表す指標が別にある。<strong>効果量（effect size）</strong>と呼ばれるものである。効果量には様々な種類が提案されている。</p>
+<p>例えば、2グループ間の差を表す効果量として<strong>Cohenのd (Cohen’s d)</strong>という指標がある。Cohenの dは，以下の式で計算される。<span class="math inline">\(n\)</span>はそれぞれのグループ（ここでは、AもしくはB）のサンプルサイズ、<span class="math inline">\(\bar{x}\)</span>はそれぞれのグループの標本平均，<span class="math inline">\(s_{A}^2\)</span>と<span class="math inline">\(s_{B}^2\)</span>はそれぞれ2群の不偏分散とする。<span class="math inline">\(s\)</span>は2群を合成した上での標準偏差を意味する。</p>
+<p><span class="math display">\[
+d = \frac{|\bar{x_{A}} - \bar{x_{B}|}}{s} \\
+s = \sqrt{\frac{(n_{A}-1)s_{A}^2 + (n_{B}-1)s_{B}^2}{n_{A}+n_{B}}}
+\]</span></p>
+<p>つまり、Cohenのdは２つのグループの平均値の差を標準偏差で調整したものである。一般的に、<span class="math inline">\(d=0.2\)</span>は小さい効果、<span class="math inline">\(d=0.5\)</span>が中程度の効果、<span class="math inline">\(d=0.8\)</span>が大きい効果として理解されている。このように、指標によって効果の大きさの基準が決まっている。</p>
+<p>以下に<code>simulation_p</code>を使って、サンプルサイズを100個で固定したうえで、差の効果量(d)を変化させたシミュレーションを行う。</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="08-NHT_problem.html#cb305-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb305-2"><a href="08-NHT_problem.html#cb305-2" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">100</span>, </span>
+<span id="cb305-3"><a href="08-NHT_problem.html#cb305-3" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>,</span>
+<span id="cb305-4"><a href="08-NHT_problem.html#cb305-4" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="fl">0.2</span>, <span class="at">sigma_B =</span> <span class="dv">1</span></span>
+<span id="cb305-5"><a href="08-NHT_problem.html#cb305-5" tabindex="-1"></a>             )</span>
+<span id="cb305-6"><a href="08-NHT_problem.html#cb305-6" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -0.40594, df = 197.19, p-value = 0.6852
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -0.3122615  0.2056523
+## sample estimates:
+## mean in group A mean in group B 
+##       0.1088874       0.1621919</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="08-NHT_problem.html#cb307-1" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">100</span>, </span>
+<span id="cb307-2"><a href="08-NHT_problem.html#cb307-2" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>,</span>
+<span id="cb307-3"><a href="08-NHT_problem.html#cb307-3" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="fl">0.5</span>, <span class="at">sigma_B =</span> <span class="dv">1</span></span>
+<span id="cb307-4"><a href="08-NHT_problem.html#cb307-4" tabindex="-1"></a>             )</span>
+<span id="cb307-5"><a href="08-NHT_problem.html#cb307-5" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -3.6425, df = 197.65, p-value = 0.0003449
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -0.8044964 -0.2393602
+## sample estimates:
+## mean in group A mean in group B 
+##      0.02967354      0.55160186</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="08-NHT_problem.html#cb309-1" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">100</span>, </span>
+<span id="cb309-2"><a href="08-NHT_problem.html#cb309-2" tabindex="-1"></a>             <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>,</span>
+<span id="cb309-3"><a href="08-NHT_problem.html#cb309-3" tabindex="-1"></a>             <span class="at">mu_B =</span> <span class="fl">0.8</span>, <span class="at">sigma_B =</span> <span class="dv">1</span></span>
+<span id="cb309-4"><a href="08-NHT_problem.html#cb309-4" tabindex="-1"></a>             )</span>
+<span id="cb309-5"><a href="08-NHT_problem.html#cb309-5" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  value by group
+## t = -5.2378, df = 191.19, p-value = 4.265e-07
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
+## 95 percent confidence interval:
+##  -1.0938491 -0.4953807
+## sample estimates:
+## mean in group A mean in group B 
+##     -0.03913424      0.75548064</code></pre>
+<p>効果量が大きいほど、同じサンプルサイズでも有意な差が検出しやすくなる。</p>
+<p>他にも、効果量には様々な種類がある。相関係数も係数の値が２変数間の関連の大きさを表すので、効果量の仲間である。</p>
+</div>
+<div id="chap08_Type12Erros" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> 第1種の過誤と第2種の過誤<a href="08-NHT_problem.html#chap08_Type12Erros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>例えば、２つの集団AとBの間で平均値に差があるかどうかを検定する。帰無仮説<span class="math inline">\(H_{0}\)</span>（母集団AとBの平均は等しい）と対立仮説<span class="math inline">\(H_{1}\)</span>（母集団AとBの平均の間に差がある）を以下のように表す。</p>
+<p><span class="math display">\[
+H_{0}: \mu_{A} - \mu_{B}=0\\
+H_{1}: \mu_{A} - \mu_{B}\neq0\\
+\]</span></p>
+<p>「帰無仮説が真なのに、帰無仮説を棄却してしまう（本当は差がないのに、“差がある”と判断してしまう）」の誤りのことを、<strong>第1種の過誤（type Ⅰ error）</strong>と呼ぶ。<br />
+これに対し、「帰無仮説が偽なのに、帰無仮説を棄却しない（本当は差があるのに、“差がない”と判断してしまう）」誤りのことを、<strong>第2種の過誤（type Ⅱ error）</strong>と呼ぶ。</p>
+<p>第1種の過誤を犯す確率<span class="math inline">\(\alpha\)</span>は、要は有意水準として設定した値そのものである（<span class="math inline">\(\alpha=0.05\)</span>）。有意水準を高くする、すなわち「差があると判断する基準をゆるく」してしまうとより帰無仮説を棄却しやすくなってしまう。それは同時に、「帰無仮説を誤って棄却してしまう」可能性を高めてしまう。</p>
+<p>第2種の過誤を犯す確率は、<span class="math inline">\(\beta\)</span>と表現される。</p>
+<p>それぞれの関係をまとめると、以下のように表現できる。</p>
+<p><img src="08_table01.png" /></p>
+<p>例えば、以下に帰無仮説と対立仮説との関係のイメージを図で示している。２つの集団の母集団の平均値の差の効果量を<span class="math inline">\(d\)</span>とし、帰無仮説<span class="math inline">\(H_{0}: d = 0\)</span>と対立仮説<span class="math inline">\(H_{1}: d &gt; 0\)</span>とした場合の分布を示している（単純化のため片側検定とする）。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>差<span class="math inline">\(d\)</span>が赤い部分に当てはまるときは、帰無仮説を棄却することとなる。同時に、赤い部分は第1種の過誤を犯す確率<span class="math inline">\(\alpha\)</span>を意味する。逆に、差<span class="math inline">\(d\)</span>が青い部分に含まれるときは、対立仮説の分布にも含まれているにも関わらず帰無仮説を棄却しないことを意味する。すなわち、青い部分が第２種の過誤を犯す確率<span class="math inline">\(\beta\)</span>を意味する。</p>
+<p>第1種の過誤と第2種の過誤はトレード・オフの関係にある。第1種の過誤を避けようとして有意水準を小さくすれば帰無仮説の棄却が厳しくなり、逆に第2種のエラーを犯してしまう確率も高くなる（帰無仮説が偽であるにもかかわらず、棄却しない）。<br />
+例えば、以下の左図が<span class="math inline">\(\alpha = 0.05\)</span>のとき、右図が<span class="math inline">\(\alpha = 0.01\)</span>の場合である。右図は左図と比べて赤い部分（<span class="math inline">\(\alpha\)</span>）が小さくなった一方、青い部分（<span class="math inline">\(\beta\)</span>）が大きくなっているのがわかる。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>以下の図は、第1種の過誤<span class="math inline">\(\alpha\)</span>（有意水準）と第2種の過誤<span class="math inline">\(\beta\)</span>との関係を示したものである。<span class="math inline">\(d\)</span>は2グループ間の差の効果量を意味する。それぞれのグループのサンプルサイズは50としている（縦の赤い点線が<span class="math inline">\(\alpha = 0.05\)</span>の場合）。<span class="math inline">\(\alpha\)</span>と<span class="math inline">\(\beta\)</span>は一方が増えれば、もう一方が減る関係にあることがわかる。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="chap08_Power" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> 検出力<a href="08-NHT_problem.html#chap08_Power" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>帰無仮説が偽（対立仮説が正しい）のときに帰無仮説を棄却するのが、正しい判断である。さきほどの表でも示しているように、このときの確率は<span class="math inline">\(1 - \beta\)</span>で表すことができる。この<span class="math inline">\(1 - \beta\)</span>は<strong>検出力(power)</strong>と呼ばれる。以下の図でいうと、対立仮説の分布全体から、青い部分（<span class="math inline">\(\beta\)</span>）を差し引いたところが検出力を示している。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>検出力とは、「実際に差があるときに、“差がある”と正しく判断できる確率」である。統計的仮説検定では、この検出力をいかに高くするかが重要となる。</p>
+<div id="chap08_Power1" class="section level3 hasAnchor" number="9.6.1">
+<h3><span class="header-section-number">9.6.1</span> 検出力に影響する要因<a href="08-NHT_problem.html#chap08_Power1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>検出力は、<strong>サンプルサイズが大きいほど</strong>、または<strong>効果量が大きいほど</strong>上昇する。</p>
+<p>以下の図は、サンプルサイズを変えたときの検出力の変化を示したものである。右図は、左図よりも2つの集団A, Bそれぞれのサンプルサイズを大きくした場合である。サンプルサイズを大きくすると分布が狭くなる（標準誤差が小さくなる）ので、差を検出しやすくなる。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>以下の図は、効果量を変えたときの検出力の変化を示したものである。右図は、左図よりも母集団AとBとの差（効果量）が大きい場合である。効果量が大きいほど、統計的仮説検定で有意な差を検出しやすくなる。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>以下の図は、サンプルサイズ、効果量及び検出力の関係をまとめた図である。有意水準<span class="math inline">\(\alpha = 0.05\)</span>としている（横の赤い点線が、一般的に必要とされる検出力<span class="math inline">\(\beta = 0.80\)</span>である）。サンプルサイズが増えるほど検出力は上昇し、効果量が大きいほど検出力も上昇する。</p>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+</div>
+<div id="chap08_PowerTest" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> 検出力分析<a href="08-NHT_problem.html#chap08_PowerTest" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>これまで見てきたように、サンプルサイズ、p値、検出力、効果量はそれぞれ関わり合っている。</p>
+<ul>
+<li><p>サンプルサイズが増えれば、p値は小さくなる。</p></li>
+<li><p>サンプルサイズが増えれば、検出力は上昇する。</p></li>
+<li><p>効果量が大きければ、検出力は上昇する。</p></li>
+</ul>
+<p>事前に効果量、有意水準、検出力を決めておけば、有意な差を検出するために最低限必要なサンプルサイズを求めることができる。このようなサンプルサイズの設計方法は、<strong>事前の検出力分析（prior power analysis）</strong>という。<br />
+＊効果量は事前に知ることはできないが（研究によって調べたいことそのものなので）、先行研究からこれくらいだろうという予想あるいはこのくらいの大きさを検出したいという期待によって決める。</p>
+<p>また、データの取得後に、取ったサンプルサイズ、明らかになった効果量及び有意水準から、検出力を求めることができる。これを、<strong>事後の検出力分析（post-hoc power analysis）</strong>という。</p>
+<p><code>pwr</code>パッケージに、検出力分析をするための関数がいくつか用意されている。</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="08-NHT_problem.html#cb311-1" tabindex="-1"></a><span class="co">#事前の検出力分析（サンプルサイズの設計）</span></span>
+<span id="cb311-2"><a href="08-NHT_problem.html#cb311-2" tabindex="-1"></a><span class="co">#2群間の差をt検定で検定する場合</span></span>
+<span id="cb311-3"><a href="08-NHT_problem.html#cb311-3" tabindex="-1"></a><span class="co">#各群のサンプルサイズ(n)，効果量（d: Cohen&#39;s d），有意水準（sig.level），検出力（power）のどれか３つを入れると，入れなかったものの結果が出力される。</span></span>
+<span id="cb311-4"><a href="08-NHT_problem.html#cb311-4" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>, <span class="at">power =</span> <span class="fl">0.8</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">n =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 63.76561
+##               d = 0.5
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="08-NHT_problem.html#cb313-1" tabindex="-1"></a><span class="co">#事後の検出力分析</span></span>
+<span id="cb313-2"><a href="08-NHT_problem.html#cb313-2" tabindex="-1"></a><span class="co">#２群それぞれのサンプルサイズ(n1, n2)，効果量(d), 有意水準(sig.level)を入れると，検出力が求められる。</span></span>
+<span id="cb313-3"><a href="08-NHT_problem.html#cb313-3" tabindex="-1"></a>pwr<span class="sc">::</span><span class="fu">pwr.t2n.test</span>(<span class="at">n1 =</span> <span class="dv">40</span>, <span class="at">n2 =</span> <span class="dv">40</span>, <span class="at">d =</span> <span class="fl">0.8</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<pre><code>## 
+##      t test power calculation 
+## 
+##              n1 = 40
+##              n2 = 40
+##               d = 0.8
+##       sig.level = 0.05
+##           power = 0.9421818
+##     alternative = two.sided</code></pre>
+</div>
+<div id="chap08_Type1P" class="section level2 hasAnchor" number="9.8">
+<h2><span class="header-section-number">9.8</span> p値と第1種の過誤<a href="08-NHT_problem.html#chap08_Type1P" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>今度は、同じ平均0、標準偏差1の正規分布に従う母集団AとBから1000個ずつ標本を抽出しグループAとBの間で平均値に差があるかをt検定で検定する。帰無仮説は<span class="math inline">\(H_{0}:\mu_{A} = \mu_{B}\)</span>であり、母集団の真の平均値差もゼロ（母集団AとBは全く同じ分布）なので帰無仮説が正しい。</p>
+<p>ここで、<em>帰無仮説が正しい前提のもとで抽出された標本</em>についてt検定を行い、統計的仮説検定によって正しい結論（帰無仮説を棄却しない）が導かれるかをシミュレーションしてみる。有意水準は、5%（0.05）とする。この章の最初で作成した<code>simulation_p</code>関数を使ってシミュレーションを行う。</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="08-NHT_problem.html#cb315-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb315-2"><a href="08-NHT_problem.html#cb315-2" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">1000</span>, <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>, <span class="at">mu_B =</span> <span class="dv">0</span>, <span class="at">sigma_B =</span> <span class="dv">1</span>)</span>
+<span id="cb315-3"><a href="08-NHT_problem.html#cb315-3" tabindex="-1"></a>result<span class="sc">$</span>p.value <span class="co">#p値を取り出す</span></span></code></pre></div>
+<pre><code>## [1] 0.9207967</code></pre>
+<p><span class="math inline">\(p \geq .05\)</span>であり、帰無仮説は棄却されない。</p>
+<p>では、このシミュレーションを1,000回やってみる。以下のプログラムを実行してみよう。</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="08-NHT_problem.html#cb317-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb317-2"><a href="08-NHT_problem.html#cb317-2" tabindex="-1"></a>p <span class="ot">=</span> <span class="cn">NULL</span></span>
+<span id="cb317-3"><a href="08-NHT_problem.html#cb317-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb317-4"><a href="08-NHT_problem.html#cb317-4" tabindex="-1"></a>    result <span class="ot">=</span> <span class="fu">simulation_p</span>(<span class="at">N =</span> <span class="dv">1000</span>, <span class="at">mu_A =</span> <span class="dv">0</span>, <span class="at">sigma_A =</span> <span class="dv">1</span>, <span class="at">mu_B =</span> <span class="dv">0</span>, <span class="at">sigma_B =</span> <span class="dv">1</span>)</span>
+<span id="cb317-5"><a href="08-NHT_problem.html#cb317-5" tabindex="-1"></a>    p <span class="ot">=</span> <span class="fu">c</span>(p, result<span class="sc">$</span>p.value)</span>
+<span id="cb317-6"><a href="08-NHT_problem.html#cb317-6" tabindex="-1"></a>}</span>
+<span id="cb317-7"><a href="08-NHT_problem.html#cb317-7" tabindex="-1"></a></span>
+<span id="cb317-8"><a href="08-NHT_problem.html#cb317-8" tabindex="-1"></a><span class="fu">head</span>(p) <span class="co">#1,000回のシミュレーションで得られたp値をpという名前で保存した。head()で最初の数個のみを表示する。</span></span></code></pre></div>
+<pre><code>## [1] 0.9207967 0.9756433 0.8493272 0.7180123 0.4981026 0.4375691</code></pre>
+<p>1,000回のシミュレーション中、<span class="math inline">\(p&lt;.05\)</span>が得られた結果をカウントする。</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="08-NHT_problem.html#cb319-1" tabindex="-1"></a>significant <span class="ot">=</span> <span class="fu">ifelse</span>(p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;significant&quot;</span>, <span class="st">&quot;insignificant&quot;</span>) <span class="co">#p&lt;0.05ならば&quot;significant（有意）&quot;, ちがうのならば&quot;insignificant（非有意）&quot;とする</span></span>
+<span id="cb319-2"><a href="08-NHT_problem.html#cb319-2" tabindex="-1"></a><span class="fu">table</span>(significant) <span class="co">#有意、非有意の数を集計</span></span></code></pre></div>
+<pre><code>## significant
+## insignificant   significant 
+##           952            48</code></pre>
+<p>帰無仮説が真である（母集団の間で差がない）にも関わらず、標本抽出してt検定をするのを1,000回行うと、<span class="math inline">\(p&lt;.05\)</span>となって帰無仮説を誤って棄却する結果が1,000回中<code>r</code>as.numeric(table(significant)[2])`回確認された。これは約5%で、有意水準5%と近似している。</p>
+<p>有意水準を5%に設定することはすなわち、全ての検定のうちの5%（1,000回中約50回）については誤って帰無仮説を棄却することを許してしまうのである（有意水準が第1種の過誤の確率そのものであることの理由）。有意水準は慣例的に0.05と設定されているが、上記のシミュレーションのようにたまたま有意な結果が得られて間違った結論を導いてしまう恐れが存在する。</p>
+<p>これを利用して、本当は差がないにもかかわらず「有意な差がある結果」を導くこともできる。<strong>pハッキング(p-hacking)</strong>とも表現される。</p>
+<ul>
+<li><p>たくさん実験を行って，有意な差が出た結果だけを報告する。</p></li>
+<li><p>たくさんの質問項目について個別に検定を行い、有意な結果だけについて議論する。</p></li>
+<li><p>参加者を少しずつ追加して、追加した度に検定を行い、有意差が出たら追加するのをやめる。</p></li>
+</ul>
+</div>
+<div id="chap08_MultipeComparison" class="section level2 hasAnchor" number="9.9">
+<h2><span class="header-section-number">9.9</span> 多重比較の問題<a href="08-NHT_problem.html#chap08_MultipeComparison" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>上述のシミュレーションのように、統計的仮説検定を繰り返すほど、差がなくても差があると評価してしまう確率（第1種の過誤を犯す確率）は増える。 検定をn回行ったときに、「1回でも帰無仮説を誤って棄却してしまう確率」は以下の式で表すことができる（1から全て正しく帰無仮説を棄却しなかった確率を引く）。</p>
+<p><span class="math display">\[
+p(\text{Type 1 Error}) = 1 - (1 -\alpha)^n
+\]</span></p>
+<p>例えば、5%水準で10回検定を行えば、少なくとも1回は帰無仮説を誤って棄却してしまう確率が0.4 になる。</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="08-NHT_problem.html#cb321-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)<span class="sc">^</span><span class="dv">10</span> <span class="co">#全ての確率から、「10回検定を行って全て正しい判断を行う」確率を差し引いたものが、「少なくとも1回は誤った判断をしてしまう確率」</span></span></code></pre></div>
+<pre><code>## [1] 0.4012631</code></pre>
+<p>このように複数回検定を行うことを<strong>多重比較</strong>という。多重比較を行うと、第1種の過誤を犯す確率が上昇する。以下は、検定の回数と「少なくとも1回は第1種の過誤を犯してしまう確率」との関係を有意水準<span class="math inline">\(\alpha\)</span>別に示したものである。<br />
+図からも、有意水準を厳しく設定すれば、第1種の過誤を回避することができる。そこで、分散分析で3つ以上の条件間で平均値を比較するときなどのように検定を複数行う場合には、有意水準を通常よりも厳し目に調整する<strong>多重比較の補正</strong>がなされる。</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="08-NHT_problem.html#cb323-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb323-2"><a href="08-NHT_problem.html#cb323-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb323-3"><a href="08-NHT_problem.html#cb323-3" tabindex="-1"></a></span>
+<span id="cb323-4"><a href="08-NHT_problem.html#cb323-4" tabindex="-1"></a>m_c <span class="ot">=</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>){</span>
+<span id="cb323-5"><a href="08-NHT_problem.html#cb323-5" tabindex="-1"></a>  p <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> alpha)<span class="sc">^</span>x  </span>
+<span id="cb323-6"><a href="08-NHT_problem.html#cb323-6" tabindex="-1"></a>  <span class="fu">return</span>(p)</span>
+<span id="cb323-7"><a href="08-NHT_problem.html#cb323-7" tabindex="-1"></a>}</span>
+<span id="cb323-8"><a href="08-NHT_problem.html#cb323-8" tabindex="-1"></a></span>
+<span id="cb323-9"><a href="08-NHT_problem.html#cb323-9" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">rbind</span>(</span>
+<span id="cb323-10"><a href="08-NHT_problem.html#cb323-10" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">p =</span> <span class="fu">m_c</span>(<span class="at">alpha =</span> <span class="fl">0.001</span>), <span class="at">alpha =</span> <span class="fl">0.001</span>),</span>
+<span id="cb323-11"><a href="08-NHT_problem.html#cb323-11" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">p =</span> <span class="fu">m_c</span>(<span class="at">alpha =</span> <span class="fl">0.01</span>), <span class="at">alpha =</span> <span class="fl">0.01</span>),</span>
+<span id="cb323-12"><a href="08-NHT_problem.html#cb323-12" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">p =</span> <span class="fu">m_c</span>(<span class="at">alpha =</span> <span class="fl">0.05</span>), <span class="at">alpha =</span> <span class="fl">0.05</span>)</span>
+<span id="cb323-13"><a href="08-NHT_problem.html#cb323-13" tabindex="-1"></a>)</span>
+<span id="cb323-14"><a href="08-NHT_problem.html#cb323-14" tabindex="-1"></a></span>
+<span id="cb323-15"><a href="08-NHT_problem.html#cb323-15" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb323-16"><a href="08-NHT_problem.html#cb323-16" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> p, <span class="at">linetype =</span> <span class="fu">factor</span>(alpha), <span class="at">color =</span> <span class="fu">factor</span>(alpha))) <span class="sc">+</span> </span>
+<span id="cb323-17"><a href="08-NHT_problem.html#cb323-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;number of comparisons&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Type 1 error&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;alpha&quot;</span>, <span class="at">color =</span> <span class="st">&quot;alpha&quot;</span>) <span class="sc">+</span></span>
+<span id="cb323-18"><a href="08-NHT_problem.html#cb323-18" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb323-19"><a href="08-NHT_problem.html#cb323-19" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="08-NHT_problem_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="chap08_Summary" class="section level2 hasAnchor" number="9.10">
+<h2><span class="header-section-number">9.10</span> まとめ<a href="08-NHT_problem.html#chap08_Summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>この章では統計的仮説検定の結果を解釈するうえで注意すべき点について挙げてきた。<br />
+以下に要点をまとめる。</p>
+<ul>
+<li>サンプルサイズが大きくなるほど、同じ差でも小さいp値が出やすくなる。<br />
+</li>
+<li>p値は効果（差）そのものを表す指標ではない。効果の大きさを表す「効果量」という指標が別にある。<br />
+</li>
+<li>有意水準は、第１種の過誤（本当は差がないのに、「有意差がある」と判断してしまうこと）を犯す確率と等しい。しかし、第１種の過誤を避けるために有意水準を小さくすると、第２種の過誤（本当は差があるのに、「有意差がない」と判断してしまうこと）も犯しやすくなる。<br />
+</li>
+<li>正しく差を検出する確率を「検出力」と呼ぶ。効果量が大きいほど差を検出しやすくなるのはもちろんのこと、サンプルサイズが大きければ差を検出しやすくなる。<br />
+</li>
+<li>サンプルサイズ、効果量、有意水準、検出力はそれぞれ密接に関わっている。すなわち、効果量、有意水準、検出力があらかじめ決まっていれば、有意な差を検出するために最低限必要なサンプルサイズが求まる。このように必要なサンプルサイズを計算することを、検出力分析と呼ぶ。</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="07-NHT.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="09-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

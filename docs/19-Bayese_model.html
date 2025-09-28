@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 20 ベイズ統計モデリング | 心理データ応用解析法</title>
+  <meta name="description" content="Chapter 20 ベイズ統計モデリング | 心理データ応用解析法" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 20 ベイズ統計モデリング | 心理データ応用解析法" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 20 ベイズ統計モデリング | 心理データ応用解析法" />
+  
+  
+  
+
+<meta name="author" content="帝京大学文学部心理学科　堀田結孝" />
+
+
+<meta name="date" content="2025-09-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="18-Bayese.html"/>
+<link rel="next" href="20-Appendix_References.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#intro_01"><i class="fa fa-check"></i><b>1.1</b> テキストの構成</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#intro_02"><i class="fa fa-check"></i><b>1.1.1</b> テキストの読み方</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="01-intro.html"><a href="01-intro.html"><i class="fa fa-check"></i><b>2</b> Rの使い方</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="01-intro.html"><a href="01-intro.html#chap01_R"><i class="fa fa-check"></i><b>2.1</b> Rのインストール</a></li>
+<li class="chapter" data-level="2.2" data-path="01-intro.html"><a href="01-intro.html#chap01_RStudio"><i class="fa fa-check"></i><b>2.2</b> RStudioのインストール</a></li>
+<li class="chapter" data-level="2.3" data-path="01-intro.html"><a href="01-intro.html#chap01_Programing"><i class="fa fa-check"></i><b>2.3</b> プログラムの書き方</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="01-intro.html"><a href="01-intro.html#chap01_Console"><i class="fa fa-check"></i><b>2.3.1</b> コンソール</a></li>
+<li class="chapter" data-level="2.3.2" data-path="01-intro.html"><a href="01-intro.html#chap01_Script"><i class="fa fa-check"></i><b>2.3.2</b> スクリプト</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="01-intro.html"><a href="01-intro.html#chap01_Package"><i class="fa fa-check"></i><b>2.4</b> パッケージ</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="01-intro.html"><a href="01-intro.html#chap01_InstallPackage"><i class="fa fa-check"></i><b>2.4.1</b> パッケージのインストール</a></li>
+<li class="chapter" data-level="2.4.2" data-path="01-intro.html"><a href="01-intro.html#chap01_LoadPackage"><i class="fa fa-check"></i><b>2.4.2</b> パッケージのロード</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="01-intro.html"><a href="01-intro.html#chap01_Help"><i class="fa fa-check"></i><b>2.5</b> ヘルプ</a></li>
+<li class="chapter" data-level="2.6" data-path="01-intro.html"><a href="01-intro.html#chap01_End"><i class="fa fa-check"></i><b>2.6</b> Rを終わらせる</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="02-data.html"><a href="02-data.html"><i class="fa fa-check"></i><b>3</b> データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="02-data.html"><a href="02-data.html#chap02_Loading"><i class="fa fa-check"></i><b>3.1</b> はじめに（パッケージのロード）</a></li>
+<li class="chapter" data-level="3.2" data-path="02-data.html"><a href="02-data.html#chap02_Programing"><i class="fa fa-check"></i><b>3.2</b> プログラミングの練習</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="02-data.html"><a href="02-data.html#chap02_Comments"><i class="fa fa-check"></i><b>3.2.1</b> コメント文</a></li>
+<li class="chapter" data-level="3.2.2" data-path="02-data.html"><a href="02-data.html#chap02_MathIdentifer"><i class="fa fa-check"></i><b>3.2.2</b> 算術識別子</a></li>
+<li class="chapter" data-level="3.2.3" data-path="02-data.html"><a href="02-data.html#chap02_LogicalIdentifer"><i class="fa fa-check"></i><b>3.2.3</b> 比較識別子</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="02-data.html"><a href="02-data.html#chap02_Variable"><i class="fa fa-check"></i><b>3.3</b> 変数</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%A4%89%E6%95%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AE%E6%B3%A8%E6%84%8F"><i class="fa fa-check"></i>変数の使い方の注意</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="02-data.html"><a href="02-data.html#chap02_VariableType"><i class="fa fa-check"></i><b>3.4</b> 変数の型</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="02-data.html"><a href="02-data.html#chap02_numeric"><i class="fa fa-check"></i><b>3.4.1</b> 数値型(numeric)</a></li>
+<li class="chapter" data-level="3.4.2" data-path="02-data.html"><a href="02-data.html#chap02_character"><i class="fa fa-check"></i><b>3.4.2</b> 文字列(character)</a></li>
+<li class="chapter" data-level="3.4.3" data-path="02-data.html"><a href="02-data.html#chap02_date"><i class="fa fa-check"></i><b>3.4.3</b> 日付(date)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="02-data.html"><a href="02-data.html#chap02_logical"><i class="fa fa-check"></i><b>3.4.4</b> 論理型(logical)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="02-data.html"><a href="02-data.html#chap02_Data"><i class="fa fa-check"></i><b>3.5</b> データ構造</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="02-data.html"><a href="02-data.html#chap02_vector"><i class="fa fa-check"></i><b>3.5.1</b> ベクトル</a></li>
+<li class="chapter" data-level="3.5.2" data-path="02-data.html"><a href="02-data.html#chap02_dataframe"><i class="fa fa-check"></i><b>3.5.2</b> データフレーム</a></li>
+<li class="chapter" data-level="3.5.3" data-path="02-data.html"><a href="02-data.html#chap02_tibble"><i class="fa fa-check"></i><b>3.5.3</b> tibble</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="02-data.html"><a href="02-data.html#chap02_Missing"><i class="fa fa-check"></i><b>3.6</b> 欠損値</a></li>
+<li class="chapter" data-level="3.7" data-path="02-data.html"><a href="02-data.html#chap02_ReadingData"><i class="fa fa-check"></i><b>3.7</b> データの読み込み</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="02-data.html"><a href="02-data.html#chap02_WorkingDirectory"><i class="fa fa-check"></i><b>3.7.1</b> ワーキングディレクトリの設定</a></li>
+<li class="chapter" data-level="3.7.2" data-path="02-data.html"><a href="02-data.html#chap02_redingfiles"><i class="fa fa-check"></i><b>3.7.2</b> 外部ファイルの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="02-data.html"><a href="02-data.html#chap02_WritingData"><i class="fa fa-check"></i><b>3.8</b> データの書き出し</a></li>
+<li class="chapter" data-level="3.9" data-path="02-data.html"><a href="02-data.html#chap02_SampleData"><i class="fa fa-check"></i><b>3.9</b> サンプルデータ</a></li>
+<li class="chapter" data-level="3.10" data-path="02-data.html"><a href="02-data.html#chap02_Other"><i class="fa fa-check"></i><b>3.10</b> 補足</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="02-data.html"><a href="02-data.html#chap02_Other1"><i class="fa fa-check"></i><b>3.10.1</b> RStudioの機能でファイルを読み込む</a></li>
+<li class="chapter" data-level="3.10.2" data-path="02-data.html"><a href="02-data.html#chap02_Other2"><i class="fa fa-check"></i><b>3.10.2</b> RStudioの機能でワーキングディレクトリを指定する</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="03-summary.html"><a href="03-summary.html"><i class="fa fa-check"></i><b>4</b> 統計学の基礎の復習</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="03-summary.html"><a href="03-summary.html#chap03_Scales"><i class="fa fa-check"></i><b>4.1</b> 尺度水準</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="03-summary.html"><a href="03-summary.html#chap03_Continuous"><i class="fa fa-check"></i><b>4.1.1</b> 量的変数</a></li>
+<li class="chapter" data-level="4.1.2" data-path="03-summary.html"><a href="03-summary.html#chap03_Category"><i class="fa fa-check"></i><b>4.1.2</b> カテゴリカル変数（質的変数）</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="03-summary.html"><a href="03-summary.html#chap03_Statistics"><i class="fa fa-check"></i><b>4.2</b> 基本統計量</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="03-summary.html"><a href="03-summary.html#chap03_Mean"><i class="fa fa-check"></i><b>4.2.1</b> 代表値</a></li>
+<li class="chapter" data-level="4.2.2" data-path="03-summary.html"><a href="03-summary.html#chap03_Variance"><i class="fa fa-check"></i><b>4.2.2</b> 散布度</a></li>
+<li class="chapter" data-level="4.2.3" data-path="03-summary.html"><a href="03-summary.html#chap03_Summary"><i class="fa fa-check"></i><b>4.2.3</b> 要約統計量</a></li>
+<li class="chapter" data-level="4.2.4" data-path="03-summary.html"><a href="03-summary.html#chap03_Grouping"><i class="fa fa-check"></i><b>4.2.4</b> グループごとの集計</a></li>
+<li class="chapter" data-level="4.2.5" data-path="03-summary.html"><a href="03-summary.html#chap03_Table"><i class="fa fa-check"></i><b>4.2.5</b> 表の作り方</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="03-summary.html"><a href="03-summary.html#chap03_Correlations"><i class="fa fa-check"></i><b>4.3</b> 相関(correlation)</a></li>
+<li class="chapter" data-level="4.4" data-path="03-summary.html"><a href="03-summary.html#chap03_Practice"><i class="fa fa-check"></i><b>4.4</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="04-data.html"><a href="04-data.html"><i class="fa fa-check"></i><b>5</b> データ・ハンドリング</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="04-data.html"><a href="04-data.html#chap04_Load"><i class="fa fa-check"></i><b>5.1</b> パッケージのロード</a></li>
+<li class="chapter" data-level="5.2" data-path="04-data.html"><a href="04-data.html#chap04_mutate"><i class="fa fa-check"></i><b>5.2</b> 変数の作成</a></li>
+<li class="chapter" data-level="5.3" data-path="04-data.html"><a href="04-data.html#chap04_Extract"><i class="fa fa-check"></i><b>5.3</b> データの抽出</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="04-data.html"><a href="04-data.html#chap04_select"><i class="fa fa-check"></i><b>5.3.1</b> 必要な列のみを取り出す（select）</a></li>
+<li class="chapter" data-level="5.3.2" data-path="04-data.html"><a href="04-data.html#chap04_filter"><i class="fa fa-check"></i><b>5.3.2</b> 条件に合う行を取り出す（filter）</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="04-data.html"><a href="04-data.html#chap04_pipe"><i class="fa fa-check"></i><b>5.4</b> パイプ</a></li>
+<li class="chapter" data-level="5.5" data-path="04-data.html"><a href="04-data.html#chap04_groupby"><i class="fa fa-check"></i><b>5.5</b> グルーピング</a></li>
+<li class="chapter" data-level="5.6" data-path="04-data.html"><a href="04-data.html#chap04_pivot"><i class="fa fa-check"></i><b>5.6</b> データの変換</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="04-data.html"><a href="04-data.html#chap04_datatype"><i class="fa fa-check"></i><b>5.6.1</b> wide型とlong型の区別</a></li>
+<li class="chapter" data-level="5.6.2" data-path="04-data.html"><a href="04-data.html#chap04_longer"><i class="fa fa-check"></i><b>5.6.2</b> wide型からlong型に変換</a></li>
+<li class="chapter" data-level="5.6.3" data-path="04-data.html"><a href="04-data.html#chap04_wider"><i class="fa fa-check"></i><b>5.6.3</b> long型からwide型に変換</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="04-data.html"><a href="04-data.html#chap04_join"><i class="fa fa-check"></i><b>5.7</b> データの結合</a></li>
+<li class="chapter" data-level="5.8" data-path="04-data.html"><a href="04-data.html#chap04_Practice"><i class="fa fa-check"></i><b>5.8</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-1"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-1"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-1"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="05-graph.html"><a href="05-graph.html"><i class="fa fa-check"></i><b>6</b> データ・ビジュアライゼーション</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="05-graph.html"><a href="05-graph.html#chap05_Graphic"><i class="fa fa-check"></i><b>6.1</b> Rのグラフィック関数</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="05-graph.html"><a href="05-graph.html#chap05_plot"><i class="fa fa-check"></i><b>6.1.1</b> plot</a></li>
+<li class="chapter" data-level="6.1.2" data-path="05-graph.html"><a href="05-graph.html#chap05_otherplot"><i class="fa fa-check"></i><b>6.1.2</b> その他のグラフ</a></li>
+<li class="chapter" data-level="6.1.3" data-path="05-graph.html"><a href="05-graph.html#chap05_saveplots"><i class="fa fa-check"></i><b>6.1.3</b> 図の保存</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="05-graph.html"><a href="05-graph.html#chap05_ggplot2"><i class="fa fa-check"></i><b>6.2</b> ggplot2パッケージ</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="05-graph.html"><a href="05-graph.html#chap05_geompoint"><i class="fa fa-check"></i><b>6.2.1</b> 散布図</a></li>
+<li class="chapter" data-level="6.2.2" data-path="05-graph.html"><a href="05-graph.html#chap05_geomhistogram"><i class="fa fa-check"></i><b>6.2.2</b> ヒストグラム</a></li>
+<li class="chapter" data-level="6.2.3" data-path="05-graph.html"><a href="05-graph.html#chap05_geomboxplot"><i class="fa fa-check"></i><b>6.2.3</b> 箱ひげ図</a></li>
+<li class="chapter" data-level="6.2.4" data-path="05-graph.html"><a href="05-graph.html#chap05_geomviolin"><i class="fa fa-check"></i><b>6.2.4</b> バイオリンプロット</a></li>
+<li class="chapter" data-level="6.2.5" data-path="05-graph.html"><a href="05-graph.html#chap05_geomline"><i class="fa fa-check"></i><b>6.2.5</b> 折れ線グラフ</a></li>
+<li class="chapter" data-level="6.2.6" data-path="05-graph.html"><a href="05-graph.html#chap05_geomerrorbar"><i class="fa fa-check"></i><b>6.2.6</b> エラーバーつきのグラフ</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="05-graph.html"><a href="05-graph.html#chap05_ggplot2option"><i class="fa fa-check"></i><b>6.3</b> オプション</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="05-graph.html"><a href="05-graph.html#chap05_facet"><i class="fa fa-check"></i><b>6.3.1</b> ファセット（Facet）</a></li>
+<li class="chapter" data-level="6.3.2" data-path="05-graph.html"><a href="05-graph.html#chap05_labs"><i class="fa fa-check"></i><b>6.3.2</b> ラベル（labs）</a></li>
+<li class="chapter" data-level="6.3.3" data-path="05-graph.html"><a href="05-graph.html#chap05_theme"><i class="fa fa-check"></i><b>6.3.3</b> テーマ（Theme）</a></li>
+<li class="chapter" data-level="6.3.4" data-path="05-graph.html"><a href="05-graph.html#chap05_ggsave"><i class="fa fa-check"></i><b>6.3.4</b> 図の保存</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="05-graph.html"><a href="05-graph.html#chap05_ggothers"><i class="fa fa-check"></i><b>6.4</b> 応用的なグラフ</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="05-graph.html"><a href="05-graph.html#chap05_raincloud"><i class="fa fa-check"></i><b>6.4.1</b> Rain-cloud plot</a></li>
+<li class="chapter" data-level="6.4.2" data-path="05-graph.html"><a href="05-graph.html#chap05_ridge"><i class="fa fa-check"></i><b>6.4.2</b> Ridge plot</a></li>
+<li class="chapter" data-level="6.4.3" data-path="05-graph.html"><a href="05-graph.html#chap05_alluvial"><i class="fa fa-check"></i><b>6.4.3</b> Alluvial plot</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="05-graph.html"><a href="05-graph.html#chap05_otherfunctions"><i class="fa fa-check"></i><b>6.5</b> その他の機能</a></li>
+<li class="chapter" data-level="6.6" data-path="05-graph.html"><a href="05-graph.html#chap05_Practice"><i class="fa fa-check"></i><b>6.6</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-2"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-2"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-2"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html"><i class="fa fa-check"></i><b>7</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_ProbDistribution"><i class="fa fa-check"></i><b>7.1</b> 確率変数と確率分布</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Discrete"><i class="fa fa-check"></i><b>7.1.1</b> 離散型分布</a></li>
+<li class="chapter" data-level="7.1.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Continuous"><i class="fa fa-check"></i><b>7.1.2</b> 連続型分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Binomial"><i class="fa fa-check"></i><b>7.2</b> 二項分布</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_BinomStat"><i class="fa fa-check"></i><b>7.2.1</b> 二項分布の期待値と分散</a></li>
+<li class="chapter" data-level="7.2.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Bernoulli"><i class="fa fa-check"></i><b>7.2.2</b> ベルヌーイ分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Gaussian"><i class="fa fa-check"></i><b>7.3</b> 正規分布</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Gaussian1"><i class="fa fa-check"></i><b>7.3.1</b> 正規分布の基礎</a></li>
+<li class="chapter" data-level="7.3.2" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_ProbDensity"><i class="fa fa-check"></i><b>7.3.2</b> 確率密度関数</a></li>
+<li class="chapter" data-level="7.3.3" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_GaussStat"><i class="fa fa-check"></i><b>7.3.3</b> 正規分布の平均値と標準偏差</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Poisson"><i class="fa fa-check"></i><b>7.4</b> ポアソン分布</a></li>
+<li class="chapter" data-level="7.5" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_RProbfunction"><i class="fa fa-check"></i><b>7.5</b> Rで使える確率分布関数</a></li>
+<li class="chapter" data-level="7.6" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Theorem"><i class="fa fa-check"></i><b>7.6</b> 正規分布と他の確率変数との関係</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Theorem1"><i class="fa fa-check"></i><b>7.6.1</b> 中心極限定理</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_ProbDistEquation"><i class="fa fa-check"></i><b>7.7</b> 確率分布の表現の仕方</a></li>
+<li class="chapter" data-level="7.8" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_OtherDist"><i class="fa fa-check"></i><b>7.8</b> その他の確率分布</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%B8%80%E6%A7%98%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>一様分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="06-probability_distribution.html"><a href="06-probability_distribution.html#chap06_Practice"><i class="fa fa-check"></i><b>7.9</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-3"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-3"><i class="fa fa-check"></i>問２</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="07-NHT.html"><a href="07-NHT.html"><i class="fa fa-check"></i><b>8</b> 統計的仮説検定</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="07-NHT.html"><a href="07-NHT.html#chap07_Preparation"><i class="fa fa-check"></i><b>8.1</b> 準備</a></li>
+<li class="chapter" data-level="8.2" data-path="07-NHT.html"><a href="07-NHT.html#chap07_BasisSNHT"><i class="fa fa-check"></i><b>8.2</b> 統計的仮説検定の考え方</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="07-NHT.html"><a href="07-NHT.html#chap07_binomtest"><i class="fa fa-check"></i><b>8.2.1</b> 二項検定</a></li>
+<li class="chapter" data-level="8.2.2" data-path="07-NHT.html"><a href="07-NHT.html#chap07_ttest"><i class="fa fa-check"></i><b>8.2.2</b> 二標本の検定</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="07-NHT.html"><a href="07-NHT.html#chap07_summarySNHT"><i class="fa fa-check"></i><b>8.3</b> 統計的仮説検定のまとめ</a></li>
+<li class="chapter" data-level="8.4" data-path="07-NHT.html"><a href="07-NHT.html#chap07_Practice"><i class="fa fa-check"></i><b>8.4</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html"><i class="fa fa-check"></i><b>9</b> 統計的仮説検定が抱える問題</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_preparation"><i class="fa fa-check"></i><b>9.1</b> 準備</a></li>
+<li class="chapter" data-level="9.2" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_SNHTsims"><i class="fa fa-check"></i><b>9.2</b> シミュレーション</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_function"><i class="fa fa-check"></i><b>9.2.1</b> 関数の作成</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_pvalue"><i class="fa fa-check"></i><b>9.3</b> p値とサンプルサイズの関係</a></li>
+<li class="chapter" data-level="9.4" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_EffectSize"><i class="fa fa-check"></i><b>9.4</b> 効果量（差の大きさとp値の関係）</a></li>
+<li class="chapter" data-level="9.5" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Type12Erros"><i class="fa fa-check"></i><b>9.5</b> 第1種の過誤と第2種の過誤</a></li>
+<li class="chapter" data-level="9.6" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Power"><i class="fa fa-check"></i><b>9.6</b> 検出力</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Power1"><i class="fa fa-check"></i><b>9.6.1</b> 検出力に影響する要因</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_PowerTest"><i class="fa fa-check"></i><b>9.7</b> 検出力分析</a></li>
+<li class="chapter" data-level="9.8" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Type1P"><i class="fa fa-check"></i><b>9.8</b> p値と第1種の過誤</a></li>
+<li class="chapter" data-level="9.9" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_MultipeComparison"><i class="fa fa-check"></i><b>9.9</b> 多重比較の問題</a></li>
+<li class="chapter" data-level="9.10" data-path="08-NHT_problem.html"><a href="08-NHT_problem.html#chap08_Summary"><i class="fa fa-check"></i><b>9.10</b> まとめ</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="09-analysis.html"><a href="09-analysis.html"><i class="fa fa-check"></i><b>10</b> 様々な解析法</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="09-analysis.html"><a href="09-analysis.html#chap09_ttest"><i class="fa fa-check"></i><b>10.1</b> t検定</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="09-analysis.html"><a href="09-analysis.html#chap09_indttest"><i class="fa fa-check"></i><b>10.1.1</b> 対応のないt検定</a></li>
+<li class="chapter" data-level="10.1.2" data-path="09-analysis.html"><a href="09-analysis.html#chap09_pairedttest"><i class="fa fa-check"></i><b>10.1.2</b> 対応のあるt検定</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="09-analysis.html"><a href="09-analysis.html#chap09_ANOVA"><i class="fa fa-check"></i><b>10.2</b> 分散分析</a></li>
+<li class="chapter" data-level="10.3" data-path="09-analysis.html"><a href="09-analysis.html#chap09_nonpara"><i class="fa fa-check"></i><b>10.3</b> ノンパラメトリック検定</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="09-analysis.html"><a href="09-analysis.html#chap09_wilcox"><i class="fa fa-check"></i><b>10.3.1</b> ウィルコクソンの順位和検定</a></li>
+<li class="chapter" data-level="10.3.2" data-path="09-analysis.html"><a href="09-analysis.html#chap09_kruskal"><i class="fa fa-check"></i><b>10.3.2</b> クラスカル・ウォリスの検定</a></li>
+<li class="chapter" data-level="10.3.3" data-path="09-analysis.html"><a href="09-analysis.html#chap09_chisq"><i class="fa fa-check"></i><b>10.3.3</b> カイ二乗検定</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="09-analysis.html"><a href="09-analysis.html#chap09_summary"><i class="fa fa-check"></i><b>10.4</b> 「統計モデル」との関係</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="10-linear_model.html"><a href="10-linear_model.html"><i class="fa fa-check"></i><b>11</b> 線形モデル（回帰分析）</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_preparation"><i class="fa fa-check"></i><b>11.1</b> 準備</a></li>
+<li class="chapter" data-level="11.2" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_Intro"><i class="fa fa-check"></i><b>11.2</b> 線形モデルの概要</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_Summary"><i class="fa fa-check"></i><b>11.2.1</b> まとめ</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_lm"><i class="fa fa-check"></i><b>11.3</b> 線形モデルによる解析</a></li>
+<li class="chapter" data-level="11.4" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_MLE"><i class="fa fa-check"></i><b>11.4</b> 最尤法</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_MLEsim"><i class="fa fa-check"></i><b>11.4.1</b> 最尤法によるパラメータ推定</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="10-linear_model.html"><a href="10-linear_model.html#chap10_Practice"><i class="fa fa-check"></i><b>11.5</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-4"><i class="fa fa-check"></i>問１</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%92-4"><i class="fa fa-check"></i>問２</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%93-3"><i class="fa fa-check"></i>問３</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="11-linear_model2.html"><a href="11-linear_model2.html"><i class="fa fa-check"></i><b>12</b> 線形モデル（t検定, 分散分析, 共分散分析）</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_preparation"><i class="fa fa-check"></i><b>12.1</b> 準備</a></li>
+<li class="chapter" data-level="12.2" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_lmgroup"><i class="fa fa-check"></i><b>12.2</b> 線形モデルに含まれる統計解析</a></li>
+<li class="chapter" data-level="12.3" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_scaling"><i class="fa fa-check"></i><b>12.3</b> 変数の標準化</a></li>
+<li class="chapter" data-level="12.4" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_dummy"><i class="fa fa-check"></i><b>12.4</b> 予測変数がカテゴリカル変数の場合（ダミー変数）</a></li>
+<li class="chapter" data-level="12.5" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_onewayANOVA"><i class="fa fa-check"></i><b>12.5</b> グループが複数ある場合（一要因の分散分析）</a></li>
+<li class="chapter" data-level="12.6" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_interaction"><i class="fa fa-check"></i><b>12.6</b> 交互作用（2要因の分散分析）</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_NotingInteraction"><i class="fa fa-check"></i><b>12.6.1</b> 交互作用を扱うモデルの解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_ANCOVA"><i class="fa fa-check"></i><b>12.7</b> 予測変数が複数ある場合（共分散分析または重回帰分析）</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_Controlling"><i class="fa fa-check"></i><b>12.7.1</b> 変数の効果の統制</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_Summary"><i class="fa fa-check"></i><b>12.8</b> まとめ</a></li>
+<li class="chapter" data-level="12.9" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_Practice"><i class="fa fa-check"></i><b>12.9</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F1"><i class="fa fa-check"></i>問1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F2"><i class="fa fa-check"></i>問2</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_emmeans"><i class="fa fa-check"></i><b>12.10</b> 補足(emmeans)</a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_emmeans1"><i class="fa fa-check"></i><b>12.10.1</b> 一要因の分散分析における多重比較</a></li>
+<li class="chapter" data-level="12.10.2" data-path="11-linear_model2.html"><a href="11-linear_model2.html#chap11_emmeans2"><i class="fa fa-check"></i><b>12.10.2</b> 二要因の分散分析における単純主効果検定</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html"><i class="fa fa-check"></i><b>13</b> 一般化線形モデル（ロジスティック回帰）</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_Preparation"><i class="fa fa-check"></i><b>13.1</b> 準備</a></li>
+<li class="chapter" data-level="13.2" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_GLM"><i class="fa fa-check"></i><b>13.2</b> 一般化線形モデル</a></li>
+<li class="chapter" data-level="13.3" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_BasisLogistic"><i class="fa fa-check"></i><b>13.3</b> ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_LogisticProb"><i class="fa fa-check"></i><b>13.3.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="13.3.2" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_LogisticLink"><i class="fa fa-check"></i><b>13.3.2</b> リンク関数</a></li>
+<li class="chapter" data-level="13.3.3" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_SummaryLogistic"><i class="fa fa-check"></i><b>13.3.3</b> ここまでのまとめ</a></li>
+<li class="chapter" data-level="13.3.4" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_glmbinom"><i class="fa fa-check"></i><b>13.3.4</b> Rでのロジスティック回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_Summary"><i class="fa fa-check"></i><b>13.4</b> まとめ</a></li>
+<li class="chapter" data-level="13.5" data-path="12-glm_logistic.html"><a href="12-glm_logistic.html#chap12_Practice"><i class="fa fa-check"></i><b>13.5</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html"><i class="fa fa-check"></i><b>14</b> 一般化線形モデル（ポアソン回帰）</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Preparation"><i class="fa fa-check"></i><b>14.1</b> 準備</a></li>
+<li class="chapter" data-level="14.2" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_BasisPoisson"><i class="fa fa-check"></i><b>14.2</b> ポアソン回帰</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_PoissonProb"><i class="fa fa-check"></i><b>14.2.1</b> 応答変数が従う確率分布</a></li>
+<li class="chapter" data-level="14.2.2" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_PoissonLink"><i class="fa fa-check"></i><b>14.2.2</b> リンク関数</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_glmpoisson"><i class="fa fa-check"></i><b>14.3</b> Rでのポアソン回帰</a></li>
+<li class="chapter" data-level="14.4" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Overdisperse"><i class="fa fa-check"></i><b>14.4</b> ポアソン回帰の注意点：過分散</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Overdisperse1"><i class="fa fa-check"></i><b>14.4.1</b> 過分散とは？</a></li>
+<li class="chapter" data-level="14.4.2" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_CheckOverdisperse"><i class="fa fa-check"></i><b>14.4.2</b> 過分散の確認方法</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_CopingOversdisperse"><i class="fa fa-check"></i><b>14.5</b> 過分散への対処法</a></li>
+<li class="chapter" data-level="14.6" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Summary"><i class="fa fa-check"></i><b>14.6</b> まとめ</a></li>
+<li class="chapter" data-level="14.7" data-path="13-glm_poisson.html"><a href="13-glm_poisson.html#chap13_Practice"><i class="fa fa-check"></i><b>14.7</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html"><i class="fa fa-check"></i><b>15</b> 一般化線形モデル（過分散への対処）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_Preparation"><i class="fa fa-check"></i><b>15.1</b> 準備</a></li>
+<li class="chapter" data-level="15.2" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_NegativeBinom"><i class="fa fa-check"></i><b>15.2</b> 負の二項回帰</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_NegativeBinom1"><i class="fa fa-check"></i><b>15.2.1</b> 負の二項分布</a></li>
+<li class="chapter" data-level="15.2.2" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_glmnb"><i class="fa fa-check"></i><b>15.2.2</b> Rでの負の二項回帰</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_ZIP"><i class="fa fa-check"></i><b>15.3</b> ゼロ過剰ポアソンモデル</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_ZIPExpample"><i class="fa fa-check"></i><b>15.3.1</b> 例題</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_ZIP1"><i class="fa fa-check"></i><b>15.4</b> ゼロ過剰ポアソンモデルの詳細</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_zeroinfl"><i class="fa fa-check"></i><b>15.4.1</b> Rでのゼロ過剰ポアソンモデル</a></li>
+<li class="chapter" data-level="15.4.2" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_Hurdle"><i class="fa fa-check"></i><b>15.4.2</b> ハードルモデル</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="14-glm_disperse.html"><a href="14-glm_disperse.html#chap14_Practice"><i class="fa fa-check"></i><b>15.5</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="15-glm_category.html"><a href="15-glm_category.html"><i class="fa fa-check"></i><b>16</b> 一般化線形モデル（複数カテゴリの分析）</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_Preparation"><i class="fa fa-check"></i><b>16.1</b> 準備</a></li>
+<li class="chapter" data-level="16.2" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_Variables"><i class="fa fa-check"></i><b>16.2</b> カテゴリカル変数の種類</a></li>
+<li class="chapter" data-level="16.3" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_OrderedLogistic"><i class="fa fa-check"></i><b>16.3</b> 順序ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_CLMExample"><i class="fa fa-check"></i><b>16.3.1</b> 例題</a></li>
+<li class="chapter" data-level="16.3.2" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_BasisCLM"><i class="fa fa-check"></i><b>16.3.2</b> 順序ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="16.3.3" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_clm"><i class="fa fa-check"></i><b>16.3.3</b> Rでの順序ロジスティック回帰</a></li>
+<li class="chapter" data-level="16.3.4" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_factor"><i class="fa fa-check"></i><b>16.3.4</b> 変数の因子型への変換</a></li>
+<li class="chapter" data-level="16.3.5" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_clm1"><i class="fa fa-check"></i><b>16.3.5</b> 解析</a></li>
+<li class="chapter" data-level="16.3.6" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_clmOutput"><i class="fa fa-check"></i><b>16.3.6</b> 解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_Multionom"><i class="fa fa-check"></i><b>16.4</b> 多項ロジスティック回帰</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_MultionomExample"><i class="fa fa-check"></i><b>16.4.1</b> 例題</a></li>
+<li class="chapter" data-level="16.4.2" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_BasisMultinom"><i class="fa fa-check"></i><b>16.4.2</b> 多項ロジスティック回帰モデルの詳細</a></li>
+<li class="chapter" data-level="16.4.3" data-path="15-glm_category.html"><a href="15-glm_category.html#chap15_nlm"><i class="fa fa-check"></i><b>16.4.3</b> Rでの多項ロジスティック回帰</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="16-glmm.html"><a href="16-glmm.html"><i class="fa fa-check"></i><b>17</b> マルチレベルモデル</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="16-glmm.html"><a href="16-glmm.html#chap16_Preparation"><i class="fa fa-check"></i><b>17.1</b> 準備</a></li>
+<li class="chapter" data-level="17.2" data-path="16-glmm.html"><a href="16-glmm.html#chap16_BasisMultilevel"><i class="fa fa-check"></i><b>17.2</b> 個人差や集団差の問題</a></li>
+<li class="chapter" data-level="17.3" data-path="16-glmm.html"><a href="16-glmm.html#chap16_BasisMultilevel1"><i class="fa fa-check"></i><b>17.3</b> マルチレベルモデルの概要</a></li>
+<li class="chapter" data-level="17.4" data-path="16-glmm.html"><a href="16-glmm.html#chap16_lmer"><i class="fa fa-check"></i><b>17.4</b> Rでのマルチレベルモデル</a></li>
+<li class="chapter" data-level="17.5" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMM"><i class="fa fa-check"></i><b>17.5</b> 正規分布以外を扱う例</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMLogit"><i class="fa fa-check"></i><b>17.5.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="17.5.2" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMPoisson"><i class="fa fa-check"></i><b>17.5.2</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="17.5.3" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMOverdisperse"><i class="fa fa-check"></i><b>17.5.3</b> マルチレベルモデルによる過分散への対処</a></li>
+<li class="chapter" data-level="17.5.4" data-path="16-glmm.html"><a href="16-glmm.html#chap16_GLMMOthers"><i class="fa fa-check"></i><b>17.5.4</b> その他の一般化線形モデルの場合</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="16-glmm.html"><a href="16-glmm.html#chap16_Summary"><i class="fa fa-check"></i><b>17.6</b> まとめ</a></li>
+<li class="chapter" data-level="17.7" data-path="16-glmm.html"><a href="16-glmm.html#chap16_Practice"><i class="fa fa-check"></i><b>17.7</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F%EF%BC%91-5"><i class="fa fa-check"></i>問１</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="17-evaluation.html"><a href="17-evaluation.html"><i class="fa fa-check"></i><b>18</b> モデルの評価</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Preparation"><i class="fa fa-check"></i><b>18.1</b> 準備</a></li>
+<li class="chapter" data-level="18.2" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Intervals"><i class="fa fa-check"></i><b>18.2</b> 信頼区間と予測区間</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_CI"><i class="fa fa-check"></i><b>18.2.1</b> 信頼区間</a></li>
+<li class="chapter" data-level="18.2.2" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_PI"><i class="fa fa-check"></i><b>18.2.2</b> 予測区間</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Multico"><i class="fa fa-check"></i><b>18.3</b> 多重共線性</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_EvalMultico"><i class="fa fa-check"></i><b>18.3.1</b> 多重共線性の評価</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Overfitting"><i class="fa fa-check"></i><b>18.4</b> 過学習</a></li>
+<li class="chapter" data-level="18.5" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Creteria"><i class="fa fa-check"></i><b>18.5</b> モデルの予測力の評価</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Rsq"><i class="fa fa-check"></i><b>18.5.1</b> 決定係数</a></li>
+<li class="chapter" data-level="18.5.2" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_AIC"><i class="fa fa-check"></i><b>18.5.2</b> 赤池情報量規準（AIC）</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="17-evaluation.html"><a href="17-evaluation.html#chap17_Practice"><i class="fa fa-check"></i><b>18.6</b> 確認問題</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="18-Bayese.html"><a href="18-Bayese.html"><i class="fa fa-check"></i><b>19</b> ベイズ統計</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BasisBayese"><i class="fa fa-check"></i><b>19.1</b> 頻度主義統計学とベイズ統計学</a></li>
+<li class="chapter" data-level="19.2" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayeseTheorem"><i class="fa fa-check"></i><b>19.2</b> ベイズの定理</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayeseExample"><i class="fa fa-check"></i><b>19.2.1</b> 例題</a></li>
+<li class="chapter" data-level="19.2.2" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_PriorPosterior"><i class="fa fa-check"></i><b>19.2.2</b> 事前確率、事後確率</a></li>
+<li class="chapter" data-level="19.2.3" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayesianStat"><i class="fa fa-check"></i><b>19.2.3</b> ベイズ統計</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_BayesianEst"><i class="fa fa-check"></i><b>19.3</b> ベイズ推定の例</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Prior"><i class="fa fa-check"></i><b>19.3.1</b> 事前分布</a></li>
+<li class="chapter" data-level="19.3.2" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Likelihood"><i class="fa fa-check"></i><b>19.3.2</b> 尤度</a></li>
+<li class="chapter" data-level="19.3.3" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Posterior"><i class="fa fa-check"></i><b>19.3.3</b> 事後分布</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_MCMC"><i class="fa fa-check"></i><b>19.4</b> MCMC</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_MCMCExample"><i class="fa fa-check"></i><b>19.4.1</b> MCMCの例</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="18-Bayese.html"><a href="18-Bayese.html#chap18_Practice"><i class="fa fa-check"></i><b>19.5</b> 確認問題</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F1-1"><i class="fa fa-check"></i>問1</a></li>
+<li class="chapter" data-level="" data-path="18-Bayese.html"><a href="18-Bayese.html#section-6"><i class="fa fa-check"></i>1-1</a></li>
+<li class="chapter" data-level="" data-path="18-Bayese.html"><a href="18-Bayese.html#section-7"><i class="fa fa-check"></i>1-2</a></li>
+<li class="chapter" data-level="" data-path="18-Bayese.html"><a href="18-Bayese.html#section-8"><i class="fa fa-check"></i>1-3</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%95%8F2-1"><i class="fa fa-check"></i>問2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html"><i class="fa fa-check"></i><b>20</b> ベイズ統計モデリング</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Preparation"><i class="fa fa-check"></i><b>20.1</b> 準備</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Rstan"><i class="fa fa-check"></i><b>20.1.1</b> Rstanのインストール</a></li>
+<li class="chapter" data-level="20.1.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmspackage"><i class="fa fa-check"></i><b>20.1.2</b> brmsパッケージのインストール</a></li>
+<li class="chapter" data-level="20.1.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_loadpackage"><i class="fa fa-check"></i><b>20.1.3</b> パッケージのロード</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brms"><i class="fa fa-check"></i><b>20.2</b> Rによるベイズ統計モデリング</a></li>
+<li class="chapter" data-level="20.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Basisbrm"><i class="fa fa-check"></i><b>20.3</b> ベイズ統計モデリングのプロセス</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmprior"><i class="fa fa-check"></i><b>20.3.1</b> 事前分布の設定</a></li>
+<li class="chapter" data-level="20.3.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmMCMC"><i class="fa fa-check"></i><b>20.3.2</b> MCMCの設定</a></li>
+<li class="chapter" data-level="20.3.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmposterior"><i class="fa fa-check"></i><b>20.3.3</b> 事後分布の評価</a></li>
+<li class="chapter" data-level="20.3.4" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmconvergence"><i class="fa fa-check"></i><b>20.3.4</b> 収束の評価</a></li>
+<li class="chapter" data-level="20.3.5" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmprediction"><i class="fa fa-check"></i><b>20.3.5</b> モデルの予測評価</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmGLM"><i class="fa fa-check"></i><b>20.4</b> brmsパッケージでの一般化線形モデル</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmbernoulli"><i class="fa fa-check"></i><b>20.4.1</b> ロジスティック回帰</a></li>
+<li class="chapter" data-level="20.4.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmPoisson"><i class="fa fa-check"></i><b>20.4.2</b> ポアソン回帰</a></li>
+<li class="chapter" data-level="20.4.3" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmnegbinom"><i class="fa fa-check"></i><b>20.4.3</b> 負の二項回帰</a></li>
+<li class="chapter" data-level="20.4.4" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmclm"><i class="fa fa-check"></i><b>20.4.4</b> 順序ロジスティック回帰</a></li>
+<li class="chapter" data-level="20.4.5" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmcategorical"><i class="fa fa-check"></i><b>20.4.5</b> 多項ロジスティック回帰</a></li>
+<li class="chapter" data-level="20.4.6" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmZIP"><i class="fa fa-check"></i><b>20.4.6</b> ゼロ過剰ポアソンモデル</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmGLMM"><i class="fa fa-check"></i><b>20.5</b> brmsパッケージでのマルチレベルモデル</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmRandIntercept"><i class="fa fa-check"></i><b>20.5.1</b> ランダム切片</a></li>
+<li class="chapter" data-level="20.5.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmRandSlope"><i class="fa fa-check"></i><b>20.5.2</b> ランダム傾き</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_Others"><i class="fa fa-check"></i><b>20.6</b> その他</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_brmStanCode"><i class="fa fa-check"></i><b>20.6.1</b> Stanコードの出力</a></li>
+<li class="chapter" data-level="20.6.2" data-path="19-Bayese_model.html"><a href="19-Bayese_model.html#chap19_furtherLearning"><i class="fa fa-check"></i><b>20.6.2</b> より深く学ぶには</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>付録</b></span></li>
+<li class="chapter" data-level="A" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html"><i class="fa fa-check"></i><b>A</b> 確率分布</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_Continuous"><i class="fa fa-check"></i><b>A.1</b> 連続型確率分布</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>正規分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>指数分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%AF%BE%E6%95%B0%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>対数正規分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#t%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>t分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%82%AB%E3%82%A4%E4%BA%8C%E4%B9%97%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>カイ二乗分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#f%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>F分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%BC%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>コーシー分布</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_Discrete"><i class="fa fa-check"></i><b>A.2</b> 離散型確率分布</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>二項分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%B2%A0%E3%81%AE%E4%BA%8C%E9%A0%85%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>負の二項分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>幾何分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E8%B6%85%E5%B9%BE%E4%BD%95%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>超幾何分布</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#%E3%83%9D%E3%82%A2%E3%82%BD%E3%83%B3%E5%88%86%E5%B8%83"><i class="fa fa-check"></i>ポアソン分布</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_Markdown"><i class="fa fa-check"></i><b>B</b> R Markdownの使い方</a></li>
+<li class="chapter" data-level="C" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_References"><i class="fa fa-check"></i><b>C</b> 参考資料</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks"><i class="fa fa-check"></i><b>C.1</b> 文献</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks1"><i class="fa fa-check"></i><b>C.1.1</b> 統計学の解説書</a></li>
+<li class="chapter" data-level="C.1.2" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks2"><i class="fa fa-check"></i><b>C.1.2</b> Rを用いた統計解析の解説書</a></li>
+<li class="chapter" data-level="C.1.3" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks3"><i class="fa fa-check"></i><b>C.1.3</b> データ・ビジュアライゼーション</a></li>
+<li class="chapter" data-level="C.1.4" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks4"><i class="fa fa-check"></i><b>C.1.4</b> 一般化線形モデル、マルチレベルモデルなどの解説書</a></li>
+<li class="chapter" data-level="C.1.5" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceBooks5"><i class="fa fa-check"></i><b>C.1.5</b> ベイズ統計モデリングの解説書</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="20-Appendix_References.html"><a href="20-Appendix_References.html#A_ReferenceWeb"><i class="fa fa-check"></i><b>C.2</b> Webサイト</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">心理データ応用解析法</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap19_BayesianModels" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number">Chapter 20</span> ベイズ統計モデリング<a href="19-Bayese_model.html#chap19_BayesianModels" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>この章では、これまで学んできた一般化線形モデルなどの解析をベイズ統計の枠組みで行う方法について解説する。<code>rstan</code>と<code>brms</code>パッケージを使い、一般化線形モデルやマルチレベルモデルのパラメータの事後分布をMCMCで推定する。</p>
+<p>この章で書かれている内容を行う前に、前の章で説明したベイズ統計の概要を理解しておくこと（前の章を読んでいるという前提で説明をする）。「事前分布」、「事後分布」、「MCMC」について、前の章で確認しておくこと。</p>
+<div id="chap19_Preparation" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> 準備<a href="19-Bayese_model.html#chap19_Preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chap19_Rstan" class="section level3 hasAnchor" number="20.1.1">
+<h3><span class="header-section-number">20.1.1</span> Rstanのインストール<a href="19-Bayese_model.html#chap19_Rstan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>MCMCを行うために、Stanと呼ばれるプラットフォームが必要にある。RStanはRからStanを使うために開発されたインターフェースである。この章の内容の解析を行うためには、RStanパッケージのインストールが事前に必要となる。</p>
+<p>RStan（<code>rstan</code>）のインストール方法については、「RStan Getting Started (Japanese)」<a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)">https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)</a>のページを参照のこと。「Rtool」、「C++コンパイラ（MacならばXCode）」のインストールも必要になる。</p>
+</div>
+<div id="chap19_brmspackage" class="section level3 hasAnchor" number="20.1.2">
+<h3><span class="header-section-number">20.1.2</span> brmsパッケージのインストール<a href="19-Bayese_model.html#chap19_brmspackage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>rstan</code>をインストールできたら、<code>brms</code>パッケージもインストールする。<br />
+Stanを使ってベイズ推定（MCMC）を行うためには、Stan言語で解析用のコードを書く必要があるが、<code>brms</code>パッケージを使えばユーザーがコードを書く必要なく、線形のモデルやオプションを指定するだけで自動でStanコードを生成してMCMCを行ってくれる。</p>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="19-Bayese_model.html#cb601-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;brms&quot;</span>)</span></code></pre></div>
+</div>
+<div id="chap19_loadpackage" class="section level3 hasAnchor" number="20.1.3">
+<h3><span class="header-section-number">20.1.3</span> パッケージのロード<a href="19-Bayese_model.html#chap19_loadpackage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>rstan</code>と<code>brms</code>をロードする。</p>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="19-Bayese_model.html#cb602-1" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb602-2"><a href="19-Bayese_model.html#cb602-2" tabindex="-1"></a><span class="fu">library</span>(brms)</span></code></pre></div>
+<p>また、計算の高速化のために、以下のプログラムも実行しておく。</p>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="19-Bayese_model.html#cb603-1" tabindex="-1"></a><span class="co">#計算を高速化するオプション</span></span>
+<span id="cb603-2"><a href="19-Bayese_model.html#cb603-2" tabindex="-1"></a><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb603-3"><a href="19-Bayese_model.html#cb603-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span></code></pre></div>
+</div>
+</div>
+<div id="chap19_brms" class="section level2 hasAnchor" number="20.2">
+<h2><span class="header-section-number">20.2</span> Rによるベイズ統計モデリング<a href="19-Bayese_model.html#chap19_brms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>回帰分析のパラメータ（傾きと切片）のベイズ推定を例として、<code>brms</code>パッケージを使った解析の手順について確認していく。</p>
+<p>第9章で、<code>iris</code>データを用いて以下の回帰分析を行った。</p>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="19-Bayese_model.html#cb604-1" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">lm</span>(<span class="at">data =</span> iris, Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length) </span>
+<span id="cb604-2"><a href="19-Bayese_model.html#cb604-2" tabindex="-1"></a><span class="fu">summary</span>(result)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Petal.Length ~ 1 + Sepal.Length, data = iris)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.47747 -0.59072 -0.00668  0.60484  2.49512 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -7.10144    0.50666  -14.02   &lt;2e-16 ***
+## Sepal.Length  1.85843    0.08586   21.65   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8678 on 148 degrees of freedom
+## Multiple R-squared:   0.76,  Adjusted R-squared:  0.7583 
+## F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>同じデータについて<code>brms</code>パッケージの<code>brm()</code>を使って、MCMCでパラメータの事後分布を推定してみよう。<code>glm()</code>と同じ書き方で、線形予測子、確率分布、リンク関数を指定すれば良い。回帰分析なので、確率分布は正規分布(gaussian)、リンク関数は恒等リンク(identity)とする。</p>
+<p>また、オプションの<code>seed</code>には常に一定の値を指定すること（ここでは1と指定した）。MCMCは乱数を使ったシミュレーションであるので、やり直すたびに微妙に異なる結果が得られる可能性にある。しかし、<code>seed</code>に同じ値を設定すれば、やり直しても同じ結果を再現することできる。</p>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="19-Bayese_model.html#cb606-1" tabindex="-1"></a>result_brms_lm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> iris, </span>
+<span id="cb606-2"><a href="19-Bayese_model.html#cb606-2" tabindex="-1"></a>                        Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length, </span>
+<span id="cb606-3"><a href="19-Bayese_model.html#cb606-3" tabindex="-1"></a>                        <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb606-4"><a href="19-Bayese_model.html#cb606-4" tabindex="-1"></a>                        <span class="at">seed =</span> <span class="dv">1</span> </span>
+<span id="cb606-5"><a href="19-Bayese_model.html#cb606-5" tabindex="-1"></a>                        )</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="19-Bayese_model.html#cb607-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_lm)</span></code></pre></div>
+<pre><code>##  Family: gaussian 
+##   Links: mu = identity 
+## Formula: Petal.Length ~ 1 + Sepal.Length 
+##    Data: iris (Number of observations: 150) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##              Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept       -7.10      0.51    -8.12    -6.07 1.00     3831     2967
+## Sepal.Length     1.86      0.09     1.69     2.03 1.00     3797     2942
+## 
+## Further Distributional Parameters:
+##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## sigma     0.87      0.05     0.78     0.98 1.00     4074     2871
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+<p>最初に、応答変数が従う確率分布(Family)、リンク関数(Links)、線形予測子(Formula)、データ(Data)の情報が出力される。更に、Samplesの部分にMCMCの設定が表記されているが、これらの意味については後ほど説明する。</p>
+<p><code>lm()</code>の出力と同様に、Population-Level Effectsという部分に各パラメータ（切片と傾き）の推定結果が出力されている。Estimateが係数の事後分布の期待値を示している。<code>lm()</code>で解析したときとほぼ同じ値が推定されている。<br />
+他にも、l-95% CIとu-95% CIといった数値が出力されているが、これらの意味を理解するにはパラメータの事後分布を図示するとよい。<code>plot()</code>に出力結果を入れると、MCMCの結果を図で示してくれる。</p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="19-Bayese_model.html#cb609-1" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>左側に表示されているのが、パラメータの事後分布（MCMCでサンプリングされた事後分布に従う乱数の分布）である。右側は、<strong>トレースプロット(traceplot)</strong>と呼ばれるものである。トレースプロットの下の軸はMCMCの試行数を示しており、MCMCのサンプリング結果の推移を示している。</p>
+<p>もう一度<code>brm()</code>の出力のl-95% CIとu-95% CIの値を確認し、図との関係を確認しよう。l-95% CIとu-95%は、パラメータの事後分布の下位5%点と上位95%点の値を示しており、この下位5%から上位95%の範囲は95% <strong>信用区間(credible intervals)</strong>と呼ばれる。95%信用区間とは、95%の確率で真のパラメータの値が含まれる範囲を意味する。</p>
+<p>例えば、切片（<code>intercept</code>）の事後分布のプロットを確認すると、だいたい-7が分布の中央に位置しており、推定された切片の事後分布の期待値（Estimate）と概ね一致しているのがわかる。また、-8から-6の範囲に事後分布の大部分が締めており、これも95%信用区間の推定結果と概ね一致している。</p>
+<hr />
+<p>最尤推定法（最小二乗法）によるパラメータ推定である<code>lm()</code>の出力結果とは異なり、ベイズ推定である<code>brm()</code>の結果ではp値が表示されていていない点に注目しよう。前の章でも述べたように、データを定数、パラメータを確率変数として考えるベイズ統計には、統計的仮説検定の枠組みで扱うp値（帰無仮説のもとでデータが得られる確率）という概念はない。</p>
+<p>ベイズ推定による一般化線形モデルで係数の効果に意味があるかを議論したいのならば、パラメータの信用区間について注目する。<code>brm()</code>の出力結果で係数の信用区間にゼロが含まれているかどうかが、<code>lm()</code>のp値が示す結果（係数がゼロから有意に離れているか）と対応している。</p>
+</div>
+<div id="chap19_Basisbrm" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> ベイズ統計モデリングのプロセス<a href="19-Bayese_model.html#chap19_Basisbrm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>brm()</code>のプログラムの書き方を確認しながら、ベイズ統計モデリングの手順について確認していこう。</p>
+<div id="chap19_brmprior" class="section level3 hasAnchor" number="20.3.1">
+<h3><span class="header-section-number">20.3.1</span> 事前分布の設定<a href="19-Bayese_model.html#chap19_brmprior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>パラメータの事後分布を推定するためには、まずパラメータ（切片と傾き）の事前分布を設定する必要がある。何か仮説があって事前にパラメータの範囲を設けることに正当な理由があるのならば、任意の範囲を設定しても構わない。例えば、身長を予測するならば切片の事前分布として0cm - 300cmの一様分布を設定するというのは妥当であろう。それに対し、特に仮説がない、パラメータの事前分布について確信がない場合は、<strong>無情報事前分布(non-informative prior)</strong>を設定する。</p>
+<p>特に仮説がなければ、<code>brm()</code>では何も設定する必要はない。自動で事前分布を無情報事前分布としてくれる（例えば傾きなどをフラットな一様分布に設定してくれる）。</p>
+<p><code>get_prior()</code>に、モデル、確率分布、リンク関数を指定すれば、設定される事前分布を推定の前に確認することができる。</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="19-Bayese_model.html#cb610-1" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">get_prior</span>(<span class="at">data=</span> iris, </span>
+<span id="cb610-2"><a href="19-Bayese_model.html#cb610-2" tabindex="-1"></a>                Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width,</span>
+<span id="cb610-3"><a href="19-Bayese_model.html#cb610-3" tabindex="-1"></a>                <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>)) </span></code></pre></div>
+<pre><code>##                   prior     class        coef group resp dpar nlpar lb ub tag
+##                  (flat)         b                                            
+##                  (flat)         b Sepal.Width                                
+##  student_t(3, 5.8, 2.5) Intercept                                            
+##    student_t(3, 0, 2.5)     sigma                                    0       
+##        source
+##       default
+##  (vectorized)
+##       default
+##       default</code></pre>
+<p>事前分布を任意に指定したい場合は、<code>brm()</code>のオプションとして<code>set_prior()</code>で設定することができる。以下に、プログラムの例を示す。</p>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="19-Bayese_model.html#cb612-1" tabindex="-1"></a>result_brm_lm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
+<span id="cb612-2"><a href="19-Bayese_model.html#cb612-2" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width,</span>
+<span id="cb612-3"><a href="19-Bayese_model.html#cb612-3" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb612-4"><a href="19-Bayese_model.html#cb612-4" tabindex="-1"></a>                          <span class="at">prior =</span> <span class="fu">c</span>(<span class="fu">set_prior</span>(<span class="st">&quot;normal(0,10)&quot;</span>, <span class="at">class =</span> <span class="st">&quot;b&quot;</span>),</span>
+<span id="cb612-5"><a href="19-Bayese_model.html#cb612-5" tabindex="-1"></a>                                    <span class="co">#傾きbの事前分布を平均0, 標準偏差10の正規分布に設定</span></span>
+<span id="cb612-6"><a href="19-Bayese_model.html#cb612-6" tabindex="-1"></a>                                    <span class="fu">set_prior</span>(<span class="st">&quot;cauchy(0,5)&quot;</span>, <span class="at">class =</span> <span class="st">&quot;sigma&quot;</span>)</span>
+<span id="cb612-7"><a href="19-Bayese_model.html#cb612-7" tabindex="-1"></a>                                    <span class="co">#正規分布の分散の事前分布を半コーシー分布に設定</span></span>
+<span id="cb612-8"><a href="19-Bayese_model.html#cb612-8" tabindex="-1"></a>                                    ),</span>
+<span id="cb612-9"><a href="19-Bayese_model.html#cb612-9" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
+<span id="cb612-10"><a href="19-Bayese_model.html#cb612-10" tabindex="-1"></a>)</span>
+<span id="cb612-11"><a href="19-Bayese_model.html#cb612-11" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">prior_summary</span>(result_brm_lm) <span class="co">#prior_summaryに結果を入れると、設定した事前分布を確認することができる</span></span></code></pre></div>
+</div>
+<div id="chap19_brmMCMC" class="section level3 hasAnchor" number="20.3.2">
+<h3><span class="header-section-number">20.3.2</span> MCMCの設定<a href="19-Bayese_model.html#chap19_brmMCMC" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>brm()</code>のオプションで、MCMCシミュレーションの設定を指定することができる。</p>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="19-Bayese_model.html#cb613-1" tabindex="-1"></a>result_brms <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> iris, </span>
+<span id="cb613-2"><a href="19-Bayese_model.html#cb613-2" tabindex="-1"></a>                        Petal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Length, </span>
+<span id="cb613-3"><a href="19-Bayese_model.html#cb613-3" tabindex="-1"></a>                        <span class="at">iter =</span> <span class="dv">2000</span>,</span>
+<span id="cb613-4"><a href="19-Bayese_model.html#cb613-4" tabindex="-1"></a>                        <span class="at">warmup =</span> <span class="dv">1000</span>,</span>
+<span id="cb613-5"><a href="19-Bayese_model.html#cb613-5" tabindex="-1"></a>                        <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb613-6"><a href="19-Bayese_model.html#cb613-6" tabindex="-1"></a>                        <span class="at">seed =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><code>iter</code>で乱数生成の試行数、<code>warmup</code>でwarmup期間の数、<code>chains</code>でマルコフ連鎖の数を指定する。前の章の内容をおさらいすると、MCMCではパラメータの事後分布に従う乱数を生成するシミュレーションを繰り返し、全シミュレーションの結果から作られた分布をパラメータの事後分布として採用する。<code>iter</code>で、乱数生成の繰り返し数を設定する（この例では、2,000試行に設定）。また、MCMCシミュレーションの最初の部分は、乱数の初期値による影響を大きく受けていて最終的に事後分布を作成する上で使い物にならない。そのため、最初の試行は切り捨てられる。<code>warmup</code>で、その切り捨てる期間を指定する（この例では、最初の1,000試行を切り捨てるように設定）。MCMCでは一般的に乱数生成を1からやり直して何セットか行い、事後分布を評価する。<code>chain</code>で、このセット数を設定する（この例では、4セットに設定）。最終的に得られるMCMCサンプル（シミュレーションの結果）は、(iter - warmup)*chains個になる。</p>
+<p><code>iter</code>, <code>warmup</code>, <code>chains</code>の指定をしなければ、デフォルトで設定されている値(<code>iter = 2000, warmup = 1000, chains = 4</code>)でMCMCが実行される。</p>
+</div>
+<div id="chap19_brmposterior" class="section level3 hasAnchor" number="20.3.3">
+<h3><span class="header-section-number">20.3.3</span> 事後分布の評価<a href="19-Bayese_model.html#chap19_brmposterior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>事前分布、MCMCの設定ができたら、<code>brm()</code>を実行してMCMCを行う。</p>
+<p>シミュレーションが終わったら、結果を確認する。先ほど示したように、<code>summary()</code>で事後分布の期待値などの要約を確認するのももちろん、図でも確認する。<code>plot()</code>で簡単な図を作成することができる。</p>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="19-Bayese_model.html#cb614-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_lm)</span>
+<span id="cb614-2"><a href="19-Bayese_model.html#cb614-2" tabindex="-1"></a><span class="fu">plot</span>(result_brms_lm)</span></code></pre></div>
+<p>他にも、MCMCの結果を図示するためのパッケージとして、<code>bayesplot</code>パッケージがある（<code>brms</code>パッケージをインストールすると一緒にインストールされる）。</p>
+<p>以下に、事後分布を図示する例をいくつか示す（<code>pars</code>で出力したいパラメータの値を任意に指定することも可能）。</p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="19-Bayese_model.html#cb615-1" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
+<span id="cb615-2"><a href="19-Bayese_model.html#cb615-2" tabindex="-1"></a></span>
+<span id="cb615-3"><a href="19-Bayese_model.html#cb615-3" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_trace</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#トレースプロット</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="19-Bayese_model.html#cb616-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_hist</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（ヒストグラム）</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="19-Bayese_model.html#cb617-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_dens</span>(result_brms_lm, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>)) <span class="co">#事後分布（密度曲線）</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-3.png" width="672" /></p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="19-Bayese_model.html#cb618-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_intervals</span>(result_brms_lm, </span>
+<span id="cb618-2"><a href="19-Bayese_model.html#cb618-2" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
+<span id="cb618-3"><a href="19-Bayese_model.html#cb618-3" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#太い線が意味する範囲（89%区間とした）</span></span>
+<span id="cb618-4"><a href="19-Bayese_model.html#cb618-4" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
+<span id="cb618-5"><a href="19-Bayese_model.html#cb618-5" tabindex="-1"></a>                          ) <span class="co">#パラメータの分布を線で示したグラフ</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-4.png" width="672" /></p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="19-Bayese_model.html#cb619-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_areas</span>(result_brms_lm, </span>
+<span id="cb619-2"><a href="19-Bayese_model.html#cb619-2" tabindex="-1"></a>                          <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>), </span>
+<span id="cb619-3"><a href="19-Bayese_model.html#cb619-3" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fl">0.89</span>, <span class="co">#色が塗られた部分（89%区間とした）</span></span>
+<span id="cb619-4"><a href="19-Bayese_model.html#cb619-4" tabindex="-1"></a>                          <span class="at">prob_outer =</span> <span class="fl">0.95</span><span class="co">#細い線が意味する範囲（95%区間とした）</span></span>
+<span id="cb619-5"><a href="19-Bayese_model.html#cb619-5" tabindex="-1"></a>) <span class="co">#分布も一緒に示したグラフ</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-5.png" width="672" /></p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="19-Bayese_model.html#cb620-1" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">mcmc_combo</span>(result_brms_lm, <span class="at">combo =</span> <span class="fu">c</span>(<span class="st">&quot;hist&quot;</span>, <span class="st">&quot;dens&quot;</span>), </span>
+<span id="cb620-2"><a href="19-Bayese_model.html#cb620-2" tabindex="-1"></a>                      <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">&quot;b_Intercept&quot;</span>, <span class="st">&quot;b_Sepal.Length&quot;</span>))<span class="co">#mcmc_comboで、出力する図を複数指定することができる。</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-13-6.png" width="672" /></p>
+</div>
+<div id="chap19_brmconvergence" class="section level3 hasAnchor" number="20.3.4">
+<h3><span class="header-section-number">20.3.4</span> 収束の評価<a href="19-Bayese_model.html#chap19_brmconvergence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>MCMCによる事後分布の推定は乱数を使ったシミュレーションなので、シミュレーション結果は毎回異なる。しかし、得られた結果が毎回かなり違うのならば、その結果は信用できないということになる。<code>summary()</code>の出力に表示されている<code>Rhat</code>が、MCMCの結果が安定している（収束している）かを評価する指標として用いられる。<code>Rhat</code>が1.00を超えている場合は収束していないことが疑われるので、MCMCの設定やモデルの修正などの対処が必要になる（詳細については、参考文献リストに挙げたベイズ統計モデリングに関する解説書を参照のこと）。</p>
+</div>
+<div id="chap19_brmprediction" class="section level3 hasAnchor" number="20.3.5">
+<h3><span class="header-section-number">20.3.5</span> モデルの予測評価<a href="19-Bayese_model.html#chap19_brmprediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>推定結果が、実際のデータをうまく予測できているかを評価する。ここでは、回帰直線の信用区間や予測区間を図示して確認する方法を示す。</p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="19-Bayese_model.html#cb621-1" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
+<span id="cb621-2"><a href="19-Bayese_model.html#cb621-2" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_epred&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%信用区間を表示 </span></span>
+<span id="cb621-3"><a href="19-Bayese_model.html#cb621-3" tabindex="-1"></a>                                      )</span>
+<span id="cb621-4"><a href="19-Bayese_model.html#cb621-4" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#points=TRUEで点と一緒に示す</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="19-Bayese_model.html#cb622-1" tabindex="-1"></a>pred_line <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">conditional_effects</span>(result_brms_lm,</span>
+<span id="cb622-2"><a href="19-Bayese_model.html#cb622-2" tabindex="-1"></a>                                      <span class="at">method =</span> <span class="st">&quot;posterior_predict&quot;</span>, <span class="at">prob=</span><span class="fl">0.95</span> <span class="co">#95%予測区間を表示 </span></span>
+<span id="cb622-3"><a href="19-Bayese_model.html#cb622-3" tabindex="-1"></a>                                      )</span>
+<span id="cb622-4"><a href="19-Bayese_model.html#cb622-4" tabindex="-1"></a><span class="fu">plot</span>(pred_line, <span class="at">points=</span><span class="cn">TRUE</span>)　<span class="co">#pointsで点と一緒に示す</span></span></code></pre></div>
+<p><img src="19-Bayese_model_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+</div>
+</div>
+<div id="chap19_brmGLM" class="section level2 hasAnchor" number="20.4">
+<h2><span class="header-section-number">20.4</span> brmsパッケージでの一般化線形モデル<a href="19-Bayese_model.html#chap19_brmGLM" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>brm()</code>で確率分布やリンク関数を変更すれば、ロジスティック回帰やポアソン回帰のベイズ推定も行うことができる。プログラムの書き方は<code>glm()</code>とほぼ同じである。</p>
+<p>以下のプログラムの例ではリンク関数の指定も記述しているが、省略しても構わない（デフォルトでその確率分布に対して適切なリンク関数が設定されている）。</p>
+<div id="chap19_brmbernoulli" class="section level3 hasAnchor" number="20.4.1">
+<h3><span class="header-section-number">20.4.1</span> ロジスティック回帰<a href="19-Bayese_model.html#chap19_brmbernoulli" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>第12章でロジスティック回帰の練習に使ったサンプルデータを使って、パラメータの事後分布の推定を行ってみよう。以下に第12章に示したサンプルデータの作成プログラムを再掲する。</p>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="19-Bayese_model.html#cb623-1" tabindex="-1"></a><span class="fu">library</span>(MASS) </span>
+<span id="cb623-2"><a href="19-Bayese_model.html#cb623-2" tabindex="-1"></a>dat <span class="ot">=</span> biopsy</span>
+<span id="cb623-3"><a href="19-Bayese_model.html#cb623-3" tabindex="-1"></a>dat<span class="sc">$</span>y <span class="ot">=</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>class <span class="sc">==</span> <span class="st">&quot;malignant&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#classがbenignならばゼロ、それ以外なら1という変数yを作る</span></span>
+<span id="cb623-4"><a href="19-Bayese_model.html#cb623-4" tabindex="-1"></a>dat<span class="sc">$</span>x <span class="ot">=</span> dat<span class="sc">$</span>V1 <span class="co">#V1という変数をxという名前に変える</span></span>
+<span id="cb623-5"><a href="19-Bayese_model.html#cb623-5" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>##        ID V1 V2 V3 V4 V5 V6 V7 V8 V9     class y x
+## 1 1000025  5  1  1  1  2  1  3  1  1    benign 0 5
+## 2 1002945  5  4  4  5  7 10  3  2  1    benign 0 5
+## 3 1015425  3  1  1  1  2  2  3  1  1    benign 0 3
+## 4 1016277  6  8  8  1  3  4  3  7  1    benign 0 6
+## 5 1017023  4  1  1  3  2  1  3  1  1    benign 0 4
+## 6 1017122  8 10 10  8  7 10  9  7  1 malignant 1 8</code></pre>
+<p>確率分布（family）にはベルヌーイ分布(<code>bernoulli</code>)、リンク関数（link）には<code>logit</code>を指定する。</p>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="19-Bayese_model.html#cb625-1" tabindex="-1"></a>result_brms_logistic <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> dat, </span>
+<span id="cb625-2"><a href="19-Bayese_model.html#cb625-2" tabindex="-1"></a>          y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, </span>
+<span id="cb625-3"><a href="19-Bayese_model.html#cb625-3" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">bernoulli</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>), </span>
+<span id="cb625-4"><a href="19-Bayese_model.html#cb625-4" tabindex="-1"></a>          <span class="at">seed =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="19-Bayese_model.html#cb626-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_logistic)</span></code></pre></div>
+<pre><code>##  Family: bernoulli 
+##   Links: mu = logit 
+## Formula: y ~ 1 + x 
+##    Data: dat (Number of observations: 699) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept    -5.21      0.38    -6.01    -4.49 1.00     2156     2007
+## x             0.95      0.07     0.81     1.10 1.00     2370     2346
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+<div id="chap19_brmPoisson" class="section level3 hasAnchor" number="20.4.2">
+<h3><span class="header-section-number">20.4.2</span> ポアソン回帰<a href="19-Bayese_model.html#chap19_brmPoisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>第12章のサンプルデータを使って、<code>brm()</code>でポアソン回帰を行ってみる。</p>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="19-Bayese_model.html#cb628-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb628-2"><a href="19-Bayese_model.html#cb628-2" tabindex="-1"></a>N<span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb628-3"><a href="19-Bayese_model.html#cb628-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span>N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb628-4"><a href="19-Bayese_model.html#cb628-4" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">exp</span>(<span class="fl">0.01</span><span class="sc">+</span> <span class="fl">0.6</span><span class="sc">*</span>x)</span>
+<span id="cb628-5"><a href="19-Bayese_model.html#cb628-5" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rpois</span>(<span class="at">n=</span>N, <span class="at">lambda =</span> lambda)</span>
+<span id="cb628-6"><a href="19-Bayese_model.html#cb628-6" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span>
+<span id="cb628-7"><a href="19-Bayese_model.html#cb628-7" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>##    y        x
+## 1  3 1.373546
+## 2  3 2.183643
+## 3  1 1.164371
+## 4 17 3.595281
+## 5  5 2.329508
+## 6  1 1.179532</code></pre>
+<p>確率分布（family）にはポアソン分布(<code>poisson</code>)、リンク関数（link）には<code>log</code>を指定する。</p>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="19-Bayese_model.html#cb630-1" tabindex="-1"></a>result_brms_poisson <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> dat, </span>
+<span id="cb630-2"><a href="19-Bayese_model.html#cb630-2" tabindex="-1"></a>                                 y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> x, </span>
+<span id="cb630-3"><a href="19-Bayese_model.html#cb630-3" tabindex="-1"></a>                                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>),</span>
+<span id="cb630-4"><a href="19-Bayese_model.html#cb630-4" tabindex="-1"></a>                                <span class="at">seed =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="19-Bayese_model.html#cb631-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_poisson)</span></code></pre></div>
+<pre><code>##  Family: poisson 
+##   Links: mu = log 
+## Formula: y ~ 1 + x 
+##    Data: dat (Number of observations: 50) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept    -0.70      0.28    -1.26    -0.17 1.00     1464     1687
+## x             0.90      0.11     0.70     1.11 1.00     1595     1976
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+<div id="chap19_brmnegbinom" class="section level3 hasAnchor" number="20.4.3">
+<h3><span class="header-section-number">20.4.3</span> 負の二項回帰<a href="19-Bayese_model.html#chap19_brmnegbinom" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>サンプルデータを使って、<code>brm()</code>で負の二項回帰を行ってみる。</p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="19-Bayese_model.html#cb633-1" tabindex="-1"></a>d <span class="ot">=</span> warpbreaks <span class="co">#別の名前(d)で保存する</span></span>
+<span id="cb633-2"><a href="19-Bayese_model.html#cb633-2" tabindex="-1"></a>d<span class="sc">$</span>A <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(d<span class="sc">$</span>wool <span class="sc">==</span> <span class="st">&quot;A&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>) <span class="co">#Aなら1, Bなら0のダミー</span></span>
+<span id="cb633-3"><a href="19-Bayese_model.html#cb633-3" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>##   breaks wool tension A
+## 1     26    A       L 1
+## 2     30    A       L 1
+## 3     54    A       L 1
+## 4     25    A       L 1
+## 5     70    A       L 1
+## 6     52    A       L 1</code></pre>
+<p>確率分布（family）には負の二項分布(<code>negbinomial</code>)、リンク関数（link）には<code>log</code>を指定する。</p>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="19-Bayese_model.html#cb635-1" tabindex="-1"></a>result_brms_negbin <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> d, </span>
+<span id="cb635-2"><a href="19-Bayese_model.html#cb635-2" tabindex="-1"></a>                                 breaks <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> A, </span>
+<span id="cb635-3"><a href="19-Bayese_model.html#cb635-3" tabindex="-1"></a>                                 <span class="at">family =</span> <span class="fu">negbinomial</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>),</span>
+<span id="cb635-4"><a href="19-Bayese_model.html#cb635-4" tabindex="-1"></a>                               <span class="at">seed =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="19-Bayese_model.html#cb636-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_negbin)</span></code></pre></div>
+<pre><code>##  Family: negbinomial 
+##   Links: mu = log 
+## Formula: breaks ~ 1 + A 
+##    Data: d (Number of observations: 54) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##           Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept     3.23      0.09     3.06     3.40 1.00     3304     2674
+## A             0.21      0.12    -0.03     0.44 1.00     3150     2910
+## 
+## Further Distributional Parameters:
+##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## shape     6.79      1.65     4.07    10.48 1.00     3163     2654
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+<div id="chap19_brmclm" class="section level3 hasAnchor" number="20.4.4">
+<h3><span class="header-section-number">20.4.4</span> 順序ロジスティック回帰<a href="19-Bayese_model.html#chap19_brmclm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>第13章のサンプルデータを使って、<code>brm()</code>で順序ロジスティック回帰を行ってみる。</p>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="19-Bayese_model.html#cb638-1" tabindex="-1"></a><span class="do">###サンプルデータの作成</span></span>
+<span id="cb638-2"><a href="19-Bayese_model.html#cb638-2" tabindex="-1"></a>Sleep <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
+<span id="cb638-3"><a href="19-Bayese_model.html#cb638-3" tabindex="-1"></a>Score <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb638-4"><a href="19-Bayese_model.html#cb638-4" tabindex="-1"></a>Score <span class="ot">=</span> <span class="fu">factor</span>(Score, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb638-5"><a href="19-Bayese_model.html#cb638-5" tabindex="-1"></a></span>
+<span id="cb638-6"><a href="19-Bayese_model.html#cb638-6" tabindex="-1"></a>sample_ordered <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Score =</span> Score, <span class="at">Sleep =</span> Sleep)</span>
+<span id="cb638-7"><a href="19-Bayese_model.html#cb638-7" tabindex="-1"></a><span class="fu">head</span>(sample_ordered)</span></code></pre></div>
+<pre><code>##   Score Sleep
+## 1     3     6
+## 2     3     1
+## 3     3     5
+## 4     2     2
+## 5     3     5
+## 6     3     6</code></pre>
+<p>確率分布（family）に<code>cumulative</code>、リンク関数（link）には<code>logit</code>を指定する。</p>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="19-Bayese_model.html#cb640-1" tabindex="-1"></a>result_brms_cum <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> sample_ordered,</span>
+<span id="cb640-2"><a href="19-Bayese_model.html#cb640-2" tabindex="-1"></a>                            Score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sleep,</span>
+<span id="cb640-3"><a href="19-Bayese_model.html#cb640-3" tabindex="-1"></a>                            <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb640-4"><a href="19-Bayese_model.html#cb640-4" tabindex="-1"></a>                            <span class="at">seed =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="19-Bayese_model.html#cb641-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_cum)</span></code></pre></div>
+<pre><code>##  Family: cumulative 
+##   Links: mu = logit 
+## Formula: Score ~ 1 + Sleep 
+##    Data: sample_ordered (Number of observations: 30) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##              Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept[1]    -0.79      0.85    -2.57     0.80 1.00     3034     2855
+## Intercept[2]     0.77      0.74    -0.69     2.29 1.00     3928     3263
+## Intercept[3]     3.20      0.97     1.38     5.23 1.00     2810     2563
+## Intercept[4]     4.48      1.13     2.45     6.82 1.00     2888     2695
+## Sleep            0.46      0.18     0.11     0.84 1.00     2813     2578
+## 
+## Further Distributional Parameters:
+##      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## disc     1.00      0.00     1.00     1.00   NA       NA       NA
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+<div id="chap19_brmcategorical" class="section level3 hasAnchor" number="20.4.5">
+<h3><span class="header-section-number">20.4.5</span> 多項ロジスティック回帰<a href="19-Bayese_model.html#chap19_brmcategorical" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>第13章のサンプルデータを使って、<code>brm()</code>で多項ロジスティック回帰を行ってみる。</p>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="19-Bayese_model.html#cb643-1" tabindex="-1"></a><span class="do">###サンプルデータの作成</span></span>
+<span id="cb643-2"><a href="19-Bayese_model.html#cb643-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb643-3"><a href="19-Bayese_model.html#cb643-3" tabindex="-1"></a>Male <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="dv">25</span>))</span>
+<span id="cb643-4"><a href="19-Bayese_model.html#cb643-4" tabindex="-1"></a>Grade <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">2</span>)</span>
+<span id="cb643-5"><a href="19-Bayese_model.html#cb643-5" tabindex="-1"></a>Faculty <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Literature&quot;</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;Economics&quot;</span>, <span class="dv">20</span>), <span class="fu">rep</span>(<span class="st">&quot;Physical&quot;</span>, <span class="dv">15</span>))</span>
+<span id="cb643-6"><a href="19-Bayese_model.html#cb643-6" tabindex="-1"></a>sample_mnl <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Faculty =</span> Faculty, <span class="at">Male =</span> Male, <span class="at">Grade =</span> Grade)</span>
+<span id="cb643-7"><a href="19-Bayese_model.html#cb643-7" tabindex="-1"></a><span class="fu">head</span>(sample_mnl)</span></code></pre></div>
+<pre><code>##      Faculty Male    Grade
+## 1 Literature    0 3.747092
+## 2 Literature    1 5.367287
+## 3 Literature    0 3.328743
+## 4 Literature    1 8.190562
+## 5 Literature    0 5.659016
+## 6 Literature    1 3.359063</code></pre>
+<p>確率分布（family）としてカテゴリカル分布（<code>categorical</code>）、<code>logit</code>を指定する。</p>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="19-Bayese_model.html#cb645-1" tabindex="-1"></a>result_brms_mnl <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> sample_mnl, </span>
+<span id="cb645-2"><a href="19-Bayese_model.html#cb645-2" tabindex="-1"></a>                            Faculty <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Male <span class="sc">+</span> Grade, </span>
+<span id="cb645-3"><a href="19-Bayese_model.html#cb645-3" tabindex="-1"></a>                            <span class="at">family =</span> <span class="fu">categorical</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb645-4"><a href="19-Bayese_model.html#cb645-4" tabindex="-1"></a>                            <span class="at">seed =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="19-Bayese_model.html#cb646-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_mnl)</span></code></pre></div>
+<pre><code>##  Family: categorical 
+##   Links: muLiterature = logit; muPhysical = logit 
+## Formula: Faculty ~ 1 + Male + Grade 
+##    Data: sample_mnl (Number of observations: 50) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##                        Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+## muLiterature_Intercept    -0.41      1.30    -3.10     2.09 1.00     4645
+## muPhysical_Intercept      -0.84      1.32    -3.46     1.70 1.00     4350
+## muLiterature_Male         -0.12      0.72    -1.56     1.24 1.00     4269
+## muLiterature_Grade         0.03      0.22    -0.40     0.49 1.00     4846
+## muPhysical_Male            0.18      0.72    -1.21     1.61 1.00     4464
+## muPhysical_Grade           0.09      0.22    -0.35     0.53 1.00     4390
+##                        Tail_ESS
+## muLiterature_Intercept     3144
+## muPhysical_Intercept       2935
+## muLiterature_Male          3261
+## muLiterature_Grade         3169
+## muPhysical_Male            2987
+## muPhysical_Grade           2970
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+<div id="chap19_brmZIP" class="section level3 hasAnchor" number="20.4.6">
+<h3><span class="header-section-number">20.4.6</span> ゼロ過剰ポアソンモデル<a href="19-Bayese_model.html#chap19_brmZIP" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>第13章のサンプルデータを使って、<code>brm()</code>でゼロ過剰ポアソンモデルを当てはめてみる。</p>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="19-Bayese_model.html#cb648-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, </span>
+<span id="cb648-2"><a href="19-Bayese_model.html#cb648-2" tabindex="-1"></a>      <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, </span>
+<span id="cb648-3"><a href="19-Bayese_model.html#cb648-3" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb648-4"><a href="19-Bayese_model.html#cb648-4" tabindex="-1"></a>Rain <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, </span>
+<span id="cb648-5"><a href="19-Bayese_model.html#cb648-5" tabindex="-1"></a>         <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, </span>
+<span id="cb648-6"><a href="19-Bayese_model.html#cb648-6" tabindex="-1"></a>         <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb648-7"><a href="19-Bayese_model.html#cb648-7" tabindex="-1"></a>Humidity <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">59</span>, <span class="dv">58</span>, <span class="dv">56</span>, <span class="dv">59</span>, <span class="dv">58</span>, <span class="dv">51</span>, <span class="dv">30</span>, <span class="dv">56</span>, </span>
+<span id="cb648-8"><a href="19-Bayese_model.html#cb648-8" tabindex="-1"></a>             <span class="dv">49</span>, <span class="dv">48</span>, <span class="dv">35</span>, <span class="dv">45</span>, <span class="dv">54</span>, <span class="dv">64</span>, <span class="dv">49</span>, <span class="dv">54</span>, <span class="dv">49</span>, <span class="dv">36</span>, </span>
+<span id="cb648-9"><a href="19-Bayese_model.html#cb648-9" tabindex="-1"></a>             <span class="dv">46</span>, <span class="dv">46</span>, <span class="dv">49</span>, <span class="dv">61</span>, <span class="dv">58</span>, <span class="dv">48</span>, <span class="dv">47</span>, <span class="dv">57</span>, <span class="dv">56</span>, <span class="dv">43</span>)</span>
+<span id="cb648-10"><a href="19-Bayese_model.html#cb648-10" tabindex="-1"></a>Temperature <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">29</span>, <span class="dv">30</span>, <span class="dv">29</span>, <span class="dv">31</span>,</span>
+<span id="cb648-11"><a href="19-Bayese_model.html#cb648-11" tabindex="-1"></a>                <span class="dv">32</span>, <span class="dv">30</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">29</span>,</span>
+<span id="cb648-12"><a href="19-Bayese_model.html#cb648-12" tabindex="-1"></a>                <span class="dv">30</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">30</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">29</span>, <span class="dv">29</span>)</span>
+<span id="cb648-13"><a href="19-Bayese_model.html#cb648-13" tabindex="-1"></a>d_zip <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y, <span class="at">Rain =</span> Rain, <span class="at">Humidity =</span> Humidity, <span class="at">Temperature =</span> Temperature)</span>
+<span id="cb648-14"><a href="19-Bayese_model.html#cb648-14" tabindex="-1"></a><span class="fu">head</span>(d_zip)</span></code></pre></div>
+<pre><code>##   y Rain Humidity Temperature
+## 1 1    0       50          29
+## 2 2    0       50          30
+## 3 0    1       59          31
+## 4 0    1       58          30
+## 5 2    0       56          31
+## 6 0    1       59          30</code></pre>
+<p><code>brm()</code>では、ゼロ過剰ポアソンモデルを扱うための<code>zero_inflated_poisson</code>という確率分布のfamilyが用意されている。<code>bf()</code>で、カウントデータを予測する線形予測子と、ゼロ過剰(<code>zi</code>)を予測する線形予測子のそれぞれを分けて入力する。リンク関数は、カウントデータの推定(<code>link</code>)には<code>log</code>、ゼロの推定（<code>link_zi</code>）には<code>logit</code>を指定する。</p>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="19-Bayese_model.html#cb650-1" tabindex="-1"></a>result_brms_zip <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> d_zip,</span>
+<span id="cb650-2"><a href="19-Bayese_model.html#cb650-2" tabindex="-1"></a>                            <span class="fu">bf</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Humidity <span class="sc">+</span> Temperature, zi <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Rain),</span>
+<span id="cb650-3"><a href="19-Bayese_model.html#cb650-3" tabindex="-1"></a>                            <span class="at">family =</span> <span class="fu">zero_inflated_poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>, <span class="at">link_zi =</span> <span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb650-4"><a href="19-Bayese_model.html#cb650-4" tabindex="-1"></a>                            <span class="at">seed =</span> <span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="19-Bayese_model.html#cb651-1" tabindex="-1"></a><span class="fu">summary</span>(result_brms_zip)</span></code></pre></div>
+<pre><code>##  Family: zero_inflated_poisson 
+##   Links: mu = log; zi = logit 
+## Formula: y ~ 1 + Humidity + Temperature 
+##          zi ~ 1 + Rain
+##    Data: d_zip (Number of observations: 30) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Regression Coefficients:
+##              Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept      -13.59      7.31   -27.97     0.71 1.00     2448     2294
+## zi_Intercept    -1.32      0.95    -3.63     0.06 1.00     1727      951
+## Humidity        -0.06      0.05    -0.16     0.04 1.00     2268     2782
+## Temperature      0.57      0.24     0.10     1.04 1.00     2623     2585
+## zi_Rain          2.46      1.22     0.45     5.20 1.00     2233     1270
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+<p>カウントデータの予測にポアソン分布ではなく負の二項分布を扱う場合には、<code>zero_inflated_negbinomial</code>が用意されている。</p>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="19-Bayese_model.html#cb653-1" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data =</span> d_zip,</span>
+<span id="cb653-2"><a href="19-Bayese_model.html#cb653-2" tabindex="-1"></a>          <span class="fu">bf</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Humidity <span class="sc">+</span> Temperature, zi <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Rain),</span>
+<span id="cb653-3"><a href="19-Bayese_model.html#cb653-3" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">zero_inflated_negbinomial</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>, <span class="at">link_zi =</span> <span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb653-4"><a href="19-Bayese_model.html#cb653-4" tabindex="-1"></a>          <span class="at">seed =</span> <span class="dv">1</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="chap19_brmGLMM" class="section level2 hasAnchor" number="20.5">
+<h2><span class="header-section-number">20.5</span> brmsパッケージでのマルチレベルモデル<a href="19-Bayese_model.html#chap19_brmGLMM" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>繰り返し測定を含むデータの場合は、マルチレベルモデルで個人差や集団差を統制する必要がある（マルチレベルモデルについては、第13章を参照のこと）。<code>brm()</code>では、マルチレベルモデルを扱うこともできる。<br />
+<code>lme4</code>パッケージの<code>glmer()</code>関数と同様の形式でランダム効果を加えることで、マルチレベルモデルの推定を行うことができる。</p>
+<p>第13章で例として用いた<code>iris</code>データを使って、マルチレベルモデルのベイズ推定を行ってみよう。</p>
+<div id="chap19_brmRandIntercept" class="section level3 hasAnchor" number="20.5.1">
+<h3><span class="header-section-number">20.5.1</span> ランダム切片<a href="19-Bayese_model.html#chap19_brmRandIntercept" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>グループごとに異なる切片（ランダム切片）を考慮する場合、式の中に<code>(1|グループを意味する変数)</code>というかたちでランダム切片を加える。</p>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="19-Bayese_model.html#cb654-1" tabindex="-1"></a>model_brm_lmm <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
+<span id="cb654-2"><a href="19-Bayese_model.html#cb654-2" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Species),<span class="co">#(1|Species)をランダム切片として加える</span></span>
+<span id="cb654-3"><a href="19-Bayese_model.html#cb654-3" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb654-4"><a href="19-Bayese_model.html#cb654-4" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
+<span id="cb654-5"><a href="19-Bayese_model.html#cb654-5" tabindex="-1"></a>                          )</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="19-Bayese_model.html#cb655-1" tabindex="-1"></a><span class="fu">summary</span>(model_brm_lmm)</span></code></pre></div>
+<pre><code>##  Family: gaussian 
+##   Links: mu = identity 
+## Formula: Sepal.Length ~ 1 + Sepal.Width + (1 | Species) 
+##    Data: iris (Number of observations: 150) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Multilevel Hyperparameters:
+## ~Species (Number of levels: 3) 
+##               Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## sd(Intercept)     1.63      0.88     0.56     3.76 1.04      129      127
+## 
+## Regression Coefficients:
+##             Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept       3.51      1.03     1.46     5.75 1.06       50       25
+## Sepal.Width     0.81      0.11     0.59     1.00 1.01      507     1882
+## 
+## Further Distributional Parameters:
+##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## sigma     0.44      0.03     0.39     0.49 1.05       73      158
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+<p>上の例では、あやめの種（<code>Species</code>）ごとに切片（<code>Intercept</code>）が異なるという前提で推定を行っている。Group-Level Effectsに、ランダム切片の分散の推定結果が出力されている。</p>
+</div>
+<div id="chap19_brmRandSlope" class="section level3 hasAnchor" number="20.5.2">
+<h3><span class="header-section-number">20.5.2</span> ランダム傾き<a href="19-Bayese_model.html#chap19_brmRandSlope" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>グループごとに異なる傾き、すなわちランダム傾きをモデルに入れることもできる。式の中に<code>(予測変数|グループを意味する変数)</code>というかたちで加える。</p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="19-Bayese_model.html#cb657-1" tabindex="-1"></a>model_brm_lmm_2 <span class="ot">=</span> brms<span class="sc">::</span><span class="fu">brm</span>(<span class="at">data=</span> iris, </span>
+<span id="cb657-2"><a href="19-Bayese_model.html#cb657-2" tabindex="-1"></a>                          Sepal.Length <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> Sepal.Width <span class="sc">+</span> (Sepal.Width<span class="sc">|</span>Species),</span>
+<span id="cb657-3"><a href="19-Bayese_model.html#cb657-3" tabindex="-1"></a>                          <span class="co">#(Sepal.Width|Species)を加える。Speciesごとに異なる切片とSepal.Widthに係る傾きを想定する。</span></span>
+<span id="cb657-4"><a href="19-Bayese_model.html#cb657-4" tabindex="-1"></a>                          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>),</span>
+<span id="cb657-5"><a href="19-Bayese_model.html#cb657-5" tabindex="-1"></a>                          <span class="at">seed =</span> <span class="dv">1</span></span>
+<span id="cb657-6"><a href="19-Bayese_model.html#cb657-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="19-Bayese_model.html#cb658-1" tabindex="-1"></a><span class="fu">summary</span>(model_brm_lmm_2)</span></code></pre></div>
+<pre><code>##  Family: gaussian 
+##   Links: mu = identity 
+## Formula: Sepal.Length ~ 1 + Sepal.Width + (Sepal.Width | Species) 
+##    Data: iris (Number of observations: 150) 
+##   Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+##          total post-warmup draws = 4000
+## 
+## Multilevel Hyperparameters:
+## ~Species (Number of levels: 3) 
+##                            Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+## sd(Intercept)                  1.24      0.97     0.07     3.78 1.00      906
+## sd(Sepal.Width)                0.38      0.34     0.02     1.28 1.00      831
+## cor(Intercept,Sepal.Width)     0.13      0.56    -0.91     0.97 1.00     1464
+##                            Tail_ESS
+## sd(Intercept)                   837
+## sd(Sepal.Width)                1336
+## cor(Intercept,Sepal.Width)     1915
+## 
+## Regression Coefficients:
+##             Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## Intercept       3.42      0.81     1.74     5.20 1.00      832      928
+## Sepal.Width     0.80      0.24     0.26     1.30 1.01      875      628
+## 
+## Further Distributional Parameters:
+##       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+## sigma     0.44      0.03     0.40     0.50 1.00     1995     2409
+## 
+## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS
+## and Tail_ESS are effective sample size measures, and Rhat is the potential
+## scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+<p>上の例では、あやめの種（<code>Species</code>）ごとに<code>Sepal.Width</code>に係る傾きが異なるという前提で推定を行っている。</p>
+<p>Group-Level Effectsの部分に、ランダム傾きとランダム切片の分散の推定結果が表示されている。同時に、ランダム効果同士（グループごとの傾きと切片）の相関の推定結果も出力される。</p>
+</div>
+</div>
+<div id="chap19_Others" class="section level2 hasAnchor" number="20.6">
+<h2><span class="header-section-number">20.6</span> その他<a href="19-Bayese_model.html#chap19_Others" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chap19_brmStanCode" class="section level3 hasAnchor" number="20.6.1">
+<h3><span class="header-section-number">20.6.1</span> Stanコードの出力<a href="19-Bayese_model.html#chap19_brmStanCode" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>make_stancode()</code>で、モデルのStanコードを出力することができる。モデルに直接修正を加えたいときに使える。</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="19-Bayese_model.html#cb660-1" tabindex="-1"></a>brms<span class="sc">::</span><span class="fu">make_stancode</span>(<span class="at">data =</span> iris, </span>
+<span id="cb660-2"><a href="19-Bayese_model.html#cb660-2" tabindex="-1"></a>                    Petal.Length <span class="sc">~</span> Sepal.Length, </span>
+<span id="cb660-3"><a href="19-Bayese_model.html#cb660-3" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span><span class="st">&quot;identity&quot;</span>))</span></code></pre></div>
+<pre><code>## // generated with brms 2.23.0
+## functions {
+## }
+## data {
+##   int&lt;lower=1&gt; N;  // total number of observations
+##   vector[N] Y;  // response variable
+##   int&lt;lower=1&gt; K;  // number of population-level effects
+##   matrix[N, K] X;  // population-level design matrix
+##   int&lt;lower=1&gt; Kc;  // number of population-level effects after centering
+##   int prior_only;  // should the likelihood be ignored?
+## }
+## transformed data {
+##   matrix[N, Kc] Xc;  // centered version of X without an intercept
+##   vector[Kc] means_X;  // column means of X before centering
+##   for (i in 2:K) {
+##     means_X[i - 1] = mean(X[, i]);
+##     Xc[, i - 1] = X[, i] - means_X[i - 1];
+##   }
+## }
+## parameters {
+##   vector[Kc] b;  // regression coefficients
+##   real Intercept;  // temporary intercept for centered predictors
+##   real&lt;lower=0&gt; sigma;  // dispersion parameter
+## }
+## transformed parameters {
+##   // prior contributions to the log posterior
+##   real lprior = 0;
+##   lprior += student_t_lpdf(Intercept | 3, 4.3, 2.5);
+##   lprior += student_t_lpdf(sigma | 3, 0, 2.5)
+##     - 1 * student_t_lccdf(0 | 3, 0, 2.5);
+## }
+## model {
+##   // likelihood including constants
+##   if (!prior_only) {
+##     target += normal_id_glm_lpdf(Y | Xc, Intercept, b, sigma);
+##   }
+##   // priors including constants
+##   target += lprior;
+## }
+## generated quantities {
+##   // actual population-level intercept
+##   real b_Intercept = Intercept - dot_product(means_X, b);
+## }</code></pre>
+</div>
+<div id="chap19_furtherLearning" class="section level3 hasAnchor" number="20.6.2">
+<h3><span class="header-section-number">20.6.2</span> より深く学ぶには<a href="19-Bayese_model.html#chap19_furtherLearning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>このように、<code>brm()</code>を使えばStanに関するプログラミングの知識が特になくても、簡単にMCMCで一般化線形モデルのパラメータ推定を行うことができる。ただし、この章の内容は、あくまでMCMCの練習に過ぎない。特にマルチレベルモデルのような複雑なモデルの推定は、推定結果が収束しないなど、うまく行かないケースに直面することも多い。</p>
+<p>本格的にMCMCによる一般化線形モデルのベイズ推定を行うとなると、事前分布やMCMCの設定についてもっと深い知識が必要になる。より深く学ぶには、StanのWebサイトあるいはRとStanの使い方に関する解説書などを参照してほしい（付録の参考文献リストに示している）。</p>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="18-Bayese.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="20-Appendix_References.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

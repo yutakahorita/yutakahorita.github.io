@@ -1,3 +1,0 @@
-bookdown::gitbook:
-  split_by: rmd
-bookdown::epub_book: default

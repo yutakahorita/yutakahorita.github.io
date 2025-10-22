@@ -1,0 +1,122 @@
+---
+title: "研究業績・教育"
+---
+
+# 経歴
+
+2019年4月– 帝京大学 文学部 心理学科 准教授
+
+2016年4月–2019年3月　帝京大学 文学部 心理学科 講師
+
+2013年10月–2016年3月　国立情報学研究所 ビッグデータ数理国際研究センター JST, ERATO, 河原林巨大グラフプロジェクト　特任助教
+
+2011年4月–2013年9月　日本学術振興会特別研究員-PD\
+（2011年4月-2012年10月 受入研究機関, 上智大学; 　2012年11月-2013年9月 受入研究機関, 北海道大学）
+
+2011年3月　北海道大学大学院文学研究科 人間システム科学専攻 博士課程修了　博士号（文学）取得
+
+2008年4月–2011年3月　日本学術振興会特別研究員-DC1（北海道大学）
+
+2008年3月　北海道大学大学院文学研究科 人間システム科学専攻 修士課程修了
+
+2006年3月　北海道大学文学部　卒業
+
+# 研究業績
+
+## 論文
+
+### 学術論文（英文）
+
+\*Correspondence author
+
+-   **Horita, Y.**\*, & Yamazaki, M. (2025). Generalized trust rather than perception of relational mobility correlates with nominating close friends in a social network. *Japanese Psychological Research*, *67*(2), 272–283. <https://doi.org/10.1111/jpr.12451>
+
+-   **Horita, Y.\***, Yamazaki, M., & Tahara, A. (2025). Relational mobility is associated with generalized rust but not intimacy: A survey of individuals from the U.S. and Japan. *Asian Journal of Social Psychology*, *28*(3), e70027. <https://doi.org/10.1111/ajsp.70027>
+
+-   **Horita, Y.**\*, & Kawada, K. (2025). Evaluations of dominant leadership in workplaces are associated with paranoia. *Letters on Evolutionary Behavioral Science*, *16*(1), 1–7. <https://doi.org/10.5178/lebs.2025.123> 
+
+-   **Horita, Y.\***, & Hamada, S. (2024). Revisiting the bounded generalized reciprocity model: Ingroup favoritism and concerns about negative evaluation. *Journal of Experimental Social Psychology*, *113*, 104618. <https://doi.org/10.1016/j.jesp.2024.104618>
+
+-   **Horita, Y.\*** (2023). Paranoid thinking and perceived competitive intention. *PeerJ*, 11, e15003. <https://doi.org/10.7717/peerj.15003>
+
+-   **Horita, Y.** (2021). Conjecturing harmful intent and preemptive strike in paranoia. *Frontiers in Psychology*, *12*, 726081. <https://doi.org/10.3389/fpsyg.2021.726081>
+
+-   **Horita, Y.** (2020). Greater effects of mutual cooperation and defection on subsequent cooperation in direct reciprocity games than generalized reciprocity games: Behavioral experiments and analysis using multilevel models. *PLOS ONE*, *15*, e0242607. <https://doi.org/10.1371/journal.pone.0242607>
+
+-   **Horita, Y.\***, & Takezawa, M. (2018). Cultural differences in strength of conformity explained through pathogen stress: a statistical test using hierarchical Bayesian estimation. *Frontiers in Psychology*, *9*, 1921. <https://doi.org/10.3389/fpsyg.2018.01921> 
+
+-   **Horita, Y.**, Takezawa, M., Inukai, K., Kita, T., & Masuda, N.\* (2017). Reinforcement learning accounts for moody conditional cooperation behavior: experimental results. *Scientific Reports*, *7*, 39275. <https://doi.org/10.1038/srep39275> 
+
+-   Ezaki, T., **Horita, Y.**, Takezawa, M., & Masuda N.\* (2016). Reinforcement learning explains conditional cooperation and its moody cousin. *PLoS Computational Biology*, *12*, e1005034. <https://doi.org/10.1371/journal.pcbi.1005034> 
+
+-   **Horita, Y.**, Takezawa, M., Kinjo, T., Nakawake, Y., & Masuda, N.\* (2016). Transient nature of cooperation by pay-it-forward reciprocity. *Scientific Reports*, *6*, 19471. <https://doi.org/10.1038/srep19471> 
+
+-   **Horita, Y.**, & Takezawa, M.\* (2014). Observation enhances third-party punishment only among people who were not hot-tempered. *Letters on Evolutionary Behavioral Science*, *5*, 5-8. <https://doi.org/10.5178/lebs.2014.28> 
+
+-   Yamagishi, T.\*, **Horita, Y.**, Mifune, N., Hashimoto, H., Li, Y., Shinada, M., Miura, A., Inukai, K., Takagishi, H., & Simunovic, D. (2012). Rejection of unfair offers in the ultimatum game is no evidence of strong reciprocity. *Proceedings of the National Academy of Sciences of the United States of America*, *109*, 20364-20368. <https://doi.org/10.1073/pnas.1212126109> 
+
+-   **Horita, Y.** (2010). Punishers may be chosen as resource providers but not as recipients. *Letters on Evolutionary Behavioral Science*, *1*, 6-9. <https://doi.org/10.5178/lebs.2010.2>
+
+-   Schug, J., Matsumoto, D., **Horita, Y.**, Yamagishi, T.\*, & Bonnet, K. (2010). Emotional expressivity as a signal of cooperation. *Evolution and Human Behavior*, *31*, 87-94. <https://doi.org/10.1016/j.evolhumbehav.2009.09.006>
+
+-   Yamagishi, T.\*, **Horita, Y.**, Takagishi, H., Shinada, M., Tanida, S., & Cook, K. S. (2009) The private rejection of unfair offers and emotional commitment. *Proceedings of the National Academy of Sciences of the United States of America*, *106*, 11520-11523. <https://doi.org/10.1073/pnas.0900636106>
+
+### 学術論文（和文）
+
+-   波多野礼佳・**堀田結孝**・山岸俊男 (2013). 他者意見が罰行動に与える影響 　心理学研究, *83*, 582-588. <https://doi.org/10.4992/jjpsy.83.582>
+
+-   **堀田結孝**・山岸俊男 (2010). 集団内における互恵性の適応基盤 心理学研究，*81***,** 114-122. <https://doi.org/10.4992/jjpsy.81.114> 
+
+-   **堀田結孝**・山岸俊男 (2008). 最後通告ゲームでの意図のない不公正分配の拒否　実験社会心理学研究, *47***,** 169-177. <https://doi.org/10.2130/jjesp.47.169>
+
+-   **堀田結孝**・山岸俊男 (2007). 互酬性と同一性保護――最後通告ゲームにおける拒否の理由――　心理学研究, *78***,** 446-451. <https://doi.org/10.4992/jjpsy.78.446>
+
+### 招待論文
+
+-   **堀田結孝** (2019). 人間の協力行動に関する実験ゲーム研究と組織管理への応用可能性． 組織科学, *53*,33-42. <https://doi.org/10.11207/soshikikagaku.53.2_33> 
+
+### 紀要論文
+
+-   田原朱主加・**堀田結孝** (2024). 大学生の就職活動不安とソーシャル・サポートとの関連　帝京大学心理学紀要, *28*, 39–56. 
+
+-   **堀田結孝** (2020). 教育方法の評価へのベイズ統計モデリングの応用． 帝京大学学生カウンセリング研究, *8*, 7-17.
+
+## **競争的資金の獲得**
+
+### 研究代表者
+
+-   2021年度 - 2023年度 科学研究費補助金 基盤研究（C） 「社会的ネットワークと関係形成場面における行動戦略：関係流動性に着目して」
+
+-   2018年度 - 2020年度 科学研究費補助金 若手研究 「協力の文脈における人間の行動規則の推定：計算論モデルからのアプローチ」
+
+-   2015年度–  2017年度 科学研究費補助金 若手研究（Ｂ）「社会構造と秩序維持方略の相互作用モデルの構築」
+
+### 研究分担者
+
+-   2017年度 - 2020年度 科学研究費補助金 基盤研究（Ｂ）「帰納的学習を介した規範の進化と維持：新たな実験パラダイムの構築を目指して」（研究代表者：竹澤正哲）
+
+# 教育
+
+## 授業科目の経験
+
+帝京大学
+
+-   2016年度-2018年度
+
+消費者心理学，産業労働心理学，心理学特殊講義Ⅰ，企業経営心理学，社会心理学概論，心理学基礎実験実習，心理学特殊実験演習，心理データ解析法
+
+-   2019年度 -
+
+産業・組織心理学，心理データ応用解析法，進化心理学，心理データサイエンス基礎演習（心理学情報処理演習），心理学基礎実験実習（心理学実験），心理学基礎演習，心理学研究演習
+
+明治大学（兼任）
+
+-   2023年度-
+
+「社会心理学（社会・集団・家族心理学）」
+
+中央大学（兼任）
+
+-   2023年度-
+
+「産業・組織心理学」

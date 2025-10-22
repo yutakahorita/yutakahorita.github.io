@@ -1,0 +1,7 @@
+---
+title: "MISC"
+---
+
+[「心理データ応用解析法」のテキスト](https://yutakahorita.github.io/psychol_applied_analysis/)
+
+帝京大学文学部心理学科の「心理データ応用解析法」で使っているテキストです。Rによる統計解析について解説しています。随時，内容を更新しています。

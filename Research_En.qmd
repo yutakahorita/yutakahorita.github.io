@@ -1,0 +1,63 @@
+---
+title: "Research"
+---
+
+My research focuses on the evolutionary basis of human prosociality. From an evolutionary perspective, I have studied the psychological underpinnings of social behaviors that underlie large-scale human societies, including altruism, punishment of norm violators, trust, and group-oriented cooperation. I am also interested in the diversity of human psychology and the interaction between individual psychology and the environment as a consequence of cultural evolution (e.g., social learning and norm influence).
+
+## **1. Psychological mechanisms underlying altruistic behaviors**
+
+We investigate the role of emotions underlying altruistic behavior or punishment using behavioral experiments. In a series of studies, we have shown that altruistic behavior and punishment are driven by strong emotions rather than rational calculations.
+
+**keywords:** altruistic behaviors, reciprocity, punishment, emotion
+
+**Selected papers:**
+
+1.  Schug, J., Matsumoto, D., Horita, Y., Yamagishi, T.\*, & Bonnet, K. (2010). Emotional expressivity as a signal of cooperation. *Evolution and Human Behavior*, *31*, 87-94. <https://doi.org/10.1016/j.evolhumbehav.2009.09.006>
+
+2.  Yamagishi, T., Horita, Y., Takagishi, H., Shinada, M., Tanida, S., & Cook, K. S. (2009) The private rejection of unfair offers and emotional commitment. *Proceedings of the National Academy of Sciences of the United States of America*, *106*, 11520-11523. <https://doi.org/10.1073/pnas.0900636106> 
+
+## **2. The roles of institutions in maintaining our large-scale societies**
+
+We explore the role of institutions in enhancing cooperation. We are interested in how the institutions are sustainable in society despite the costs of maintaining them. We focus on the roles of the sanctioning system and reputation. 
+
+**keywords:** punishment, reputation
+
+**Selected papers:**
+
+1.  Horita, Y., & Takezawa, M. (2014). Observation enhances third-party punishment only among people who were not hot-tempered. *Letters on Evolutionary Behavioral Science*, *5*, 5-8. <https://doi.org/10.5178/lebs.2014.28>
+
+2.  Horita, Y. (2010). Punishers may be chosen as resource providers but not as recipients. *Letters on Evolutionary Behavioral Science*, *1*, 6-9. <https://doi.org/10.5178/lebs.2010.2> 
+
+## **3. Co-evolution between altruism and culture** 
+
+We are investigating the influence of ecological or institutional factors on cultural differences in the psychological mechanisms associated with altruism. 
+
+**keywords:** cultural differences, cultural evolution
+
+**Selected paper:**
+
+1.  Horita, Y., & Takezawa, M. (2018). Cultural differences in strength of conformity explained through pathogen stress: a statistical test using hierarchical Bayesian estimation. *Frontiers in Psychology*, *9*, 1921. <https://doi.org/10.3389/fpsyg.2018.01921> 
+
+## **4. Psychological tendencies behind trust or distrust**
+
+From an evolutionary perspective, we examine when and how negative thoughts, such as distrust of others, can arise.
+
+**keywords:** trust, distrust, aggressive behavior, fear of harmful intention
+
+**Selected papers:**
+
+1.  Horita, Y., & Kawada, K. (2025). Evaluations of dominant leadership in workplaces are associated with paranoia. *Letters on Evolutionary Behavioral Science*, *16*(1), 1–7. <https://doi.org/10.5178/lebs.2025.123> 
+
+2.  Horita, Y. (2023). Paranoid thinking and perceived competitive intention. *PeerJ*, *11*, e15003. <https://doi.org/10.7717/peerj.15003>
+
+3.  Horita, Y. (2021). Conjecturing harmful intent and preemptive strike in paranoia. *Frontiers in Psychology*, *12*, 726081. <https://doi.org/10.3389/fpsyg.2021.726081> 
+
+## **5. Group-oriented cooperation** 
+
+We are interested in the psychological and evolutionary basis behind cooperative behaviors related to groups, such as ingroup bias.  
+
+**keywords:** ingroup bias, reputation
+
+**Selected paper:**
+
+1.  Horita, Y., & Hamada, S. (2024). Revisiting the bounded generalized reciprocity model: Ingroup favoritism and concerns about negative evaluation. *Journal of Experimental Social Psychology*, *113*, 104618. <https://doi.org/10.1016/j.jesp.2024.104618> 

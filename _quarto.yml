@@ -3,6 +3,9 @@ project:
   output-dir: docs
 
 website:
+  title: "Yutaka Horita"
+  site-url: https://yutakahorita.github.io/
+  description: "堀田結孝(Yutaka Horita)のページ"
   sidebar:
     style: "docked"
     search: true
